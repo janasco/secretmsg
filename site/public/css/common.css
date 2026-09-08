@@ -37,15 +37,58 @@ html.light {
   --pill-inactive-text: #475569;
 }
 
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-main);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+}
+
+/* ==========================================================================
+   Global Typography Scale & Legibility Engine
+   Upgrades all micro & normal text across every platform page to comfortable sizes
+   ========================================================================== */
+p, li, dd, dt, th, td {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  font-size: 1rem;
+}
+
+:not(.material-symbols-outlined).text-\[10px\],
+:not(.material-symbols-outlined).text-\[11px\] {
+  font-size: 0.8125rem !important; /* 13px */
+  line-height: 1.35rem !important;
+}
+
+:not(.material-symbols-outlined).text-xs {
+  font-size: 0.9375rem !important; /* 15px */
+  line-height: 1.5rem !important;
+}
+
+:not(.material-symbols-outlined).text-sm {
+  font-size: 1.0625rem !important; /* 17px */
+  line-height: 1.65rem !important;
+}
+
+:not(.material-symbols-outlined).text-base {
+  font-size: 1.1875rem !important; /* 19px */
+  line-height: 1.75rem !important;
 }
 
 /* --------------------------------------------------------------------------

@@ -9,12 +9,45 @@
   --accent-glow: rgba(99, 102, 241, 0.18);
 }
 
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background-color: var(--bg-main);
   background-image: 
     radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
     radial-gradient(at 100% 100%, rgba(245, 158, 11, 0.06) 0px, transparent 50%);
   background-attachment: fixed;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+p, li, dd, dt, th, td {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+:not(.material-symbols-outlined).text-\[10px\],
+:not(.material-symbols-outlined).text-\[11px\] {
+  font-size: 0.8125rem !important;
+  line-height: 1.35rem !important;
+}
+
+:not(.material-symbols-outlined).text-xs {
+  font-size: 0.9375rem !important;
+  line-height: 1.5rem !important;
+}
+
+:not(.material-symbols-outlined).text-sm {
+  font-size: 1.0625rem !important;
+  line-height: 1.65rem !important;
+}
+
+:not(.material-symbols-outlined).text-base {
+  font-size: 1.1875rem !important;
+  line-height: 1.75rem !important;
 }
 
 /* Glassmorphic Cards */
