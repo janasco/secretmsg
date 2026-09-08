@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <title>Child Safety & Protection Policy - SecretMsg</title>
+  <meta name="description" content="SecretMsg Child Safety Policy. Uncompromising zero-tolerance policy against Child Sexual Abuse Material (CSAM), minor exploitation, and child endangerment."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme') || 'system';
+      const isDark = saved === 'dark' || (saved === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="js/theme.js"></script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-white selection:text-[#0B0E14]">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/p/safety" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#0B0E14] font-black text-sm shadow-md group-hover:scale-105 transition-transform">
+          S
+        </div>
+        <span class="font-bold text-lg text-white tracking-tight">SecretMsg</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-rose-400 bg-rose-950/60 px-2 py-0.5 rounded border border-rose-500/30">Child Safety</span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme">
+          <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+        <a href="/p/safety" class="px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span> Safety Hub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
+    <div class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-semibold mb-4">
+        <span class="material-symbols-outlined text-[14px]">shield_person</span>
+        Zero Tolerance • Protecting Minors Online
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+        Child Safety & Protection Policy
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+        SecretMsg takes child safety with the utmost seriousness. We maintain an uncompromising, zero-tolerance stance against any form of child sexual abuse material (CSAM), minor exploitation, or predatory behavior.
+      </p>
+    </div>
+
+    <!-- Red Alert Box -->
+    <div class="glass-panel rounded-2xl p-5 border border-rose-500/30 bg-rose-950/20 mb-10 space-y-2 text-xs">
+      <h3 class="font-bold text-sm text-rose-300 flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-[18px]">emergency</span>
+        Mandatory Law Enforcement & NCMEC Escalation
+      </h3>
+      <p class="text-slate-300 leading-relaxed">
+        Any attempt to transmit, solicit, promote, or store Child Sexual Abuse Material (CSAM) or engage in the exploitation of minors will result in immediate account termination, perpetual network bans, and immediate mandatory reporting to the <strong>National Center for Missing & Exploited Children (NCMEC)</strong> and relevant international law enforcement agencies.
+      </p>
+    </div>
+
+    <article class="space-y-8 text-slate-300 text-sm leading-relaxed border-t border-white/10 pt-8">
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">01</span> Minimum Age Requirement (13+)
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs">
+          SecretMsg is strictly restricted to individuals aged <strong>13 or older</strong> (or the minimum legal age of digital consent in their jurisdiction). We do not knowingly collect personal information or permit accounts for children under 13. If we discover an account registered by an underage minor, the account and all associated inbox data are permanently deleted immediately.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">02</span> Proactive Automated Safeguards
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="glass-panel p-4 rounded-xl">
+            <strong class="text-white block mb-1">Keyword & Pattern Quarantine</strong>
+            <span class="text-slate-400">Automated edge filters scan for predatory terminology, phone numbers, external meeting requests, and flagged grooming phrases.</span>
+          </div>
+          <div class="glass-panel p-4 rounded-xl">
+            <strong class="text-white block mb-1">Immediate In-App Reporting</strong>
+            <span class="text-slate-400">Every message card contains an instant 1-tap report button that flags the message for priority administrative quarantine.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">03</span> Guidance for Parents and Guardians
+        </h2>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Parents are encouraged to speak openly with their teens about online communication boundaries:
+        </p>
+        <ul class="list-disc list-inside space-y-1 pl-4 text-slate-300 text-xs border-l border-white/10">
+          <li>Remind your teen never to share their home address, school name, phone number, or geolocation in public prompts.</li>
+          <li>Encourage them to report or delete uncomfortable messages immediately using the in-app controls.</li>
+          <li>Teens have 1-tap self-service power to wipe their entire inbox or delete their account permanently at any moment.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">04</span> Child Safety Contact
+        </h2>
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <div>
+            <span class="font-bold text-white block">Dedicated Child Protection Team</span>
+            <span class="text-slate-400 font-mono">safety@secretmsg.net • abuse@secretmsg.net</span>
+          </div>
+          <a href="mailto:safety@secretmsg.net" class="px-4 py-2 bg-rose-500 text-white font-semibold rounded-full hover:bg-rose-600 transition-colors text-center shrink-0">
+            Report Child Concern
+          </a>
+        </div>
+      </section>
+    </article>
+
+    <div class="mt-14 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-4">
+        <a href="/p/community-guidelines" class="hover:text-white transition-colors">Community Guidelines</a>
+        <a href="/p/guide-to-online-safety" class="hover:text-white transition-colors">Online Safety Guide</a>
+        <a href="/p/safety-tools" class="hover:text-white transition-colors">Safety Tools</a>
+      </div>
+      <span>© 2026 SecretMsg. All rights reserved.</span>
+    </div>
+  </main>
+</body>
+</html>

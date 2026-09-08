@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <title>Our Safety Tools & Controls - SecretMsg</title>
+  <meta name="description" content="Explore SecretMsg's built-in safety tools: 1-tap message reporting, Cloudflare Turnstile bot shielding, double-blind replies, and self-service account wipeouts."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme') || 'system';
+      const isDark = saved === 'dark' || (saved === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="js/theme.js"></script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-white selection:text-[#0B0E14]">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/p/safety" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#0B0E14] font-black text-sm shadow-md group-hover:scale-105 transition-transform">
+          S
+        </div>
+        <span class="font-bold text-lg text-white tracking-tight">SecretMsg</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-sky-400 bg-sky-950/60 px-2 py-0.5 rounded border border-sky-500/30">Safety Tools</span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme">
+          <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+        <a href="/p/safety" class="px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span> Safety Hub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
+    <div class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 text-xs font-semibold mb-4">
+        <span class="material-symbols-outlined text-[14px]">handyman</span>
+        Empowering User Controls
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+        Our Built-in Safety Tools
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+        You are always in the driver's seat. Explore the suite of automated and self-service protective features engineered into SecretMsg.
+      </p>
+    </div>
+
+    <!-- 6 Safety Tools Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-rose-400 text-[24px]">flag</span>
+          <h3 class="font-bold text-sm text-white">1-Tap Message Reporting</h3>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">Every message received in your inbox features a prominent report action. Submitting immediately removes the message from your view and queues the submission hash for moderation.</p>
+      </div>
+
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-sky-400 text-[24px]">verified_user</span>
+          <h3 class="font-bold text-sm text-white">Cloudflare Turnstile Bot Shield</h3>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">Non-intrusive challenge verifying that every sender is an authentic human. Blocks automated spambots, script floods, and rapid-fire trolling without annoying CAPTCHAs.</p>
+      </div>
+
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-indigo-400 text-[24px]">visibility_off</span>
+          <h3 class="font-bold text-sm text-white">Double-Blind Anonymous Replies</h3>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">Recipients can reply to anonymous senders through one-time cryptographic tokens without either party's email or identity ever being disclosed.</p>
+      </div>
+
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-emerald-400 text-[24px]">filter_alt</span>
+          <h3 class="font-bold text-sm text-white">Toxicity & Keyword Guardrails</h3>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">Stateless edge heuristics filter out phone numbers, addresses, sexual solicitation, and malicious terms before they ever reach your inbox view.</p>
+      </div>
+
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-amber-400 text-[24px]">cleaning_services</span>
+          <h3 class="font-bold text-sm text-white">1-Tap Inbox Wipeout</h3>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">Clean slate whenever you want. With a single tap in Settings, you can scrub all received messages in your inbox instantly with zero recoverable residual data.</p>
+      </div>
+
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-purple-400 text-[24px]">delete_forever</span>
+          <h3 class="font-bold text-sm text-white">Instant Account Erasure</h3>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">Total self-service deletion. Deleting your account instantly deletes your username, email, active links, and all stored communications forever via SQL cascade.</p>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-4">
+        <a href="/p/community-guidelines" class="hover:text-white transition-colors">Community Guidelines</a>
+        <a href="/p/approach-to-safety" class="hover:text-white transition-colors">Our Approach to Safety</a>
+        <a href="/p/resources" class="hover:text-white transition-colors">Crisis Resources</a>
+      </div>
+      <span>© 2026 SecretMsg. All rights reserved.</span>
+    </div>
+  </main>
+</body>
+</html>

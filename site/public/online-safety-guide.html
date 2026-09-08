@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <title>Guide to Online Safety - SecretMsg</title>
+  <meta name="description" content="Actionable digital wellness advice for creators, teens, and everyday users on sharing anonymous links safely, handling peer pressure, and protecting your mental health."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme') || 'system';
+      const isDark = saved === 'dark' || (saved === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="js/theme.js"></script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-white selection:text-[#0B0E14]">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/p/safety" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#0B0E14] font-black text-sm shadow-md group-hover:scale-105 transition-transform">
+          S
+        </div>
+        <span class="font-bold text-lg text-white tracking-tight">SecretMsg</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">Guide</span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme">
+          <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+        <a href="/p/safety" class="px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span> Safety Hub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
+    <div class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-semibold mb-4">
+        <span class="material-symbols-outlined text-[14px]">menu_book</span>
+        Digital Wellness & Best Practices
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+        Our Guide to Online Safety
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+        Actionable advice to help you enjoy candid communication while maintaining strict personal boundaries, digital peace of mind, and mental well-being.
+      </p>
+    </div>
+
+    <!-- 5 Safety Rules -->
+    <div class="space-y-4 mb-10">
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 flex gap-4 items-start">
+        <div class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-300 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
+        <div class="space-y-1 text-xs">
+          <strong class="text-white text-sm block">Never Share Private Geolocation or Identifiers</strong>
+          <p class="text-slate-400 leading-relaxed">When posting a prompt on your Instagram Story or TikTok, never mention your current real-time location, daily routine, school address, or home street. Keep public prompts fun and personality-focused.</p>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 flex gap-4 items-start">
+        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
+        <div class="space-y-1 text-xs">
+          <strong class="text-white text-sm block">Remember: Feedback Doesn't Define Your Worth</strong>
+          <p class="text-slate-400 leading-relaxed">Anonymous responses reflect the sender's current headspace, not who you are. If you ever receive a negative or uncomfortable message, don't let it linger—delete it instantly.</p>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 flex gap-4 items-start">
+        <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</div>
+        <div class="space-y-1 text-xs">
+          <strong class="text-white text-sm block">Don't Engage with Trolls or Bait</strong>
+          <p class="text-slate-400 leading-relaxed">Replying to hostile messages or posting screenshots of mean comments gives trolls the exact attention they crave. Hit "Report", delete the message, and starve them of an audience.</p>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 flex gap-4 items-start">
+        <div class="w-8 h-8 rounded-full bg-rose-500/20 text-rose-300 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">4</div>
+        <div class="space-y-1 text-xs">
+          <strong class="text-white text-sm block">Spot-Report Red Flag Behavior</strong>
+          <p class="text-slate-400 leading-relaxed">If anyone sends violent threats, sexually explicit harassment, or encourages self-harm, report it immediately. Our safety team logs the incident and takes immediate action.</p>
+        </div>
+      </div>
+
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 flex gap-4 items-start">
+        <div class="w-8 h-8 rounded-full bg-sky-500/20 text-sky-300 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">5</div>
+        <div class="space-y-1 text-xs">
+          <strong class="text-white text-sm block">Take Digital Detox Breaks</strong>
+          <p class="text-slate-400 leading-relaxed">You don't need to keep your link active 24/7. When school, work, or life gets hectic, pause your link or delete your account. You always have full autonomy.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-4">
+        <a href="/p/safety-tools" class="hover:text-white transition-colors">Our Safety Tools</a>
+        <a href="/p/approach-to-safety" class="hover:text-white transition-colors">Approach to Safety</a>
+        <a href="/p/resources" class="hover:text-white transition-colors">Crisis Support</a>
+      </div>
+      <span>© 2026 SecretMsg. All rights reserved.</span>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <title>Our Approach to Safety - SecretMsg</title>
+  <meta name="description" content="Discover SecretMsg's defense-in-depth approach to digital safety, automated spam defense, anti-harassment filtering, and zero-retention principles."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme') || 'system';
+      const isDark = saved === 'dark' || (saved === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="js/theme.js"></script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-white selection:text-[#0B0E14]">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/p/safety" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#0B0E14] font-black text-sm shadow-md group-hover:scale-105 transition-transform">
+          S
+        </div>
+        <span class="font-bold text-lg text-white tracking-tight">SecretMsg</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-indigo-400 bg-indigo-950/60 px-2 py-0.5 rounded border border-indigo-500/30">Approach</span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme">
+          <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+        <a href="/p/safety" class="px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span> Safety Hub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
+    <div class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold mb-4">
+        <span class="material-symbols-outlined text-[14px]">psychology</span>
+        Engineering Philosophy & Architecture
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+        Our Approach to Safety
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+        True online safety cannot be a cosmetic checklist added after the fact. At SecretMsg, safety is treated as a fundamental architectural pillar embedded into every line of code.
+      </p>
+    </div>
+
+    <!-- 4 Pillars Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
+        <span class="material-symbols-outlined text-emerald-400 text-[26px]">shield</span>
+        <h3 class="font-bold text-sm text-white">Defense in Depth</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">Multi-layered security: Cloudflare edge bot protection, rate-limit firewalls, pattern heuristics, and in-app moderation controls.</p>
+      </div>
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
+        <span class="material-symbols-outlined text-sky-400 text-[26px]">lock_reset</span>
+        <h3 class="font-bold text-sm text-white">Zero-Retention Principles</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">By refusing to store sender identities or behavioral profiles, we eliminate data honeypots that could ever be compromised or leaked.</p>
+      </div>
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
+        <span class="material-symbols-outlined text-amber-400 text-[26px]">tune</span>
+        <h3 class="font-bold text-sm text-white">Recipient Sovereignty</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">You control your experience. Toggle double-blind replies, pause link receipt, wipe your inbox, or delete your account in 1 tap.</p>
+      </div>
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
+        <span class="material-symbols-outlined text-rose-400 text-[26px]">block</span>
+        <h3 class="font-bold text-sm text-white">Swift Takedowns</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">Reports are handled with extreme urgency. Abusive message hashes and IP ranges are quarantined across the edge instantly.</p>
+      </div>
+    </div>
+
+    <article class="space-y-8 text-slate-300 text-sm leading-relaxed border-t border-white/10 pt-8">
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">01</span> Why Anonymity Requires Strict Guardrails
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs">
+          Anonymity can empower people to share heartwarming compliments, candid truths, and romantic sparks that they would otherwise feel too shy to express in person. However, without safeguards, anonymity can also be abused by bad actors. Our philosophy is to preserve the magic of candid honesty while building ironclad shields against harassment, stalking, and spam.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">02</span> Automated Edge Moderation
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs">
+          Before any anonymous message reaches a recipient's inbox, our stateless edge worker passes it through Turnstile bot verification and toxicity heuristics. Messages containing known harassment patterns, threats, or prohibited terminology are immediately intercepted and quarantined.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">03</span> Continuous Evolution
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs">
+          As online trends and slang evolve, we continually update our moderation filters, listening directly to user feedback and working closely with open-source trust & safety standards.
+        </p>
+      </section>
+    </article>
+
+    <div class="mt-14 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-4">
+        <a href="/p/safety-tools" class="hover:text-white transition-colors">Our Safety Tools</a>
+        <a href="/p/community-guidelines" class="hover:text-white transition-colors">Community Guidelines</a>
+        <a href="/p/resources" class="hover:text-white transition-colors">Crisis Resources</a>
+      </div>
+      <span>© 2026 SecretMsg. All rights reserved.</span>
+    </div>
+  </main>
+</body>
+</html>
