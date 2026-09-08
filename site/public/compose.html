@@ -58,9 +58,14 @@
         <span class="material-symbols-outlined text-[24px]">arrow_back</span>
       </a>
       <h1 class="text-base font-bold text-white truncate px-2">Send Secret Message</h1>
-      <button onclick="toggleSecurityModal()" aria-label="Security Info" class="p-2 -mr-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center" title="100% Encrypted & Anonymous">
-        <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">shield</span>
-      </button>
+      <div class="flex items-center gap-1 -mr-2">
+        <button onclick="window.SecretMsgTheme.toggle()" aria-label="Toggle Theme" class="p-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center" title="Toggle Theme (Dark / Light / System)">
+          <span data-theme-icon class="material-symbols-outlined text-[20px]">dark_mode</span>
+        </button>
+        <button onclick="toggleSecurityModal()" aria-label="Security Info" class="p-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center" title="100% Encrypted & Anonymous">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+        </button>
+      </div>
     </header>
 
     <!-- Main Content -->

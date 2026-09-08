@@ -53,6 +53,14 @@
       70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
       100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
     }
+    html.light .pulse-glow {
+      animation: pulseGlowLight 2s infinite;
+    }
+    @keyframes pulseGlowLight {
+      0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+    }
   </style>
 </head>
 <body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen">
@@ -69,9 +77,14 @@
         <span class="material-symbols-outlined text-[24px]">arrow_back</span>
       </a>
       <h1 class="text-base font-bold text-white tracking-tight">TBH Roulette 🎲</h1>
-      <a href="sticker-studio.html" aria-label="Create Sticker" class="p-2 -mr-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center">
-        <span class="material-symbols-outlined text-[22px]">photo_filter</span>
-      </a>
+      <div class="flex items-center gap-1 -mr-2">
+        <button onclick="window.SecretMsgTheme.toggle()" aria-label="Toggle Theme" class="p-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center" title="Toggle Theme (Dark / Light / System)">
+          <span data-theme-icon class="material-symbols-outlined text-[20px]">dark_mode</span>
+        </button>
+        <a href="sticker-studio.html" aria-label="Create Sticker" class="p-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center">
+          <span class="material-symbols-outlined text-[22px]">photo_filter</span>
+        </a>
+      </div>
     </header>
 
     <!-- Main Canvas -->
