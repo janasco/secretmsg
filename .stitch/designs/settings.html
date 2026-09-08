@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Privacy &amp; Security Vault</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#2e3037",
+                        "on-tertiary": "#2f3131",
+                        "on-secondary-fixed-variant": "#414753",
+                        "surface-dim": "#10131a",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-primary-fixed": "#1a1c1c",
+                        "secondary-fixed": "#dde2f2",
+                        "on-tertiary-container": "#636565",
+                        "inverse-primary": "#5d5f5f",
+                        "primary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "background": "#10131a",
+                        "on-surface-variant": "#c4c7c8",
+                        "surface-tint": "#c6c6c7",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#c1c6d6",
+                        "surface-container-low": "#191c22",
+                        "surface": "#10131a",
+                        "inverse-surface": "#e1e2eb",
+                        "on-primary-container": "#636565",
+                        "primary-fixed": "#e2e2e2",
+                        "on-secondary-fixed": "#161c27",
+                        "tertiary": "#ffffff",
+                        "on-secondary": "#2b313c",
+                        "secondary-container": "#434956",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "primary-container": "#e2e2e2",
+                        "on-background": "#e1e2eb",
+                        "tertiary-container": "#e2e2e2",
+                        "outline": "#8e9192",
+                        "surface-container-highest": "#32353c",
+                        "on-surface": "#e1e2eb",
+                        "on-error": "#690005",
+                        "surface-container-high": "#272a31",
+                        "on-secondary-container": "#b3b8c7",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "outline-variant": "#444748",
+                        "surface-bright": "#363940",
+                        "secondary": "#c1c6d6",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-primary": "#2f3131",
+                        "surface-variant": "#32353c",
+                        "surface-container-lowest": "#0b0e14",
+                        "surface-container": "#1d2026",
+                        "on-tertiary-fixed-variant": "#454747"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xs": "8px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "gutter": "12px",
+                        "base": "4px",
+                        "container-padding": "20px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-xl-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-xl": ["32px", { "lineHeight": "36px", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "headline-xl-mobile": ["28px", { "lineHeight": "32px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-panel {
+            background: rgba(21, 27, 38, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 0.5px solid rgba(255, 255, 255, 0.12);
+        }
+        .white-glow {
+            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #ffffff;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #ffffff;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: #ffffff;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-background dark:bg-background border-b border-white/10 flex items-center px-container-padding h-14 w-full">
+<button class="mr-sm text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 duration-100 p-2 -ml-2 rounded-full focus:outline-none focus:ring-1 focus:ring-white/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile text-primary tracking-tight">Privacy &amp; Security Vault</h1>
+</header>
+<!-- Main Content -->
+<main class="flex-grow px-container-padding py-lg flex flex-col gap-lg max-w-3xl mx-auto w-full">
+<!-- Zero-Log Guarantee Card -->
+<section class="glass-panel rounded-xl p-md flex items-start gap-sm white-glow">
+<div class="flex-shrink-0 text-primary mt-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div>
+<h2 class="font-body-lg text-body-lg text-primary mb-1">Zero-Log Guarantee</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">We never store sender IP addresses or tracking cookies.</p>
+</div>
+</section>
+<!-- Messaging Controls Section -->
+<section class="glass-panel rounded-xl flex flex-col">
+<div class="p-md border-b border-white/10">
+<h3 class="font-body-lg text-body-lg text-primary">Messaging Controls</h3>
+</div>
+<div class="flex flex-col">
+<!-- Toggle 1 -->
+<div class="flex items-center justify-between p-md border-b border-white/10">
+<div class="pr-sm">
+<div class="font-body-md text-body-md text-primary">Allow Double-Blind Anonymous Replies</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in flex-shrink-0">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-surface-container-low border-2 border-outline-variant appearance-none cursor-pointer transition-transform duration-200 ease-in-out z-10 top-0 left-0 checked:translate-x-6 checked:bg-surface-container-low checked:border-primary" id="toggle1" name="toggle1" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer transition-colors duration-200 ease-in-out" for="toggle1"></label>
+</div>
+</div>
+<!-- Toggle 2 -->
+<div class="flex items-center justify-between p-md border-b border-white/10">
+<div class="pr-sm flex flex-col gap-1">
+<div class="font-body-md text-body-md text-primary">Display Approximate Sender Clues</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-[12px]">e.g. Device type, general location</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in flex-shrink-0">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-surface-container-low border-2 border-outline-variant appearance-none cursor-pointer transition-transform duration-200 ease-in-out z-10 top-0 left-0 checked:translate-x-6 checked:bg-surface-container-low checked:border-primary" id="toggle2" name="toggle2" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer transition-colors duration-200 ease-in-out" for="toggle2"></label>
+</div>
+</div>
+<!-- Toggle 3 -->
+<div class="flex items-center justify-between p-md">
+<div class="pr-sm">
+<div class="font-body-md text-body-md text-primary">Strict Bot Shield (Cloudflare Turnstile)</div>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in flex-shrink-0">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-surface-container-low border-2 border-outline-variant appearance-none cursor-pointer transition-transform duration-200 ease-in-out z-10 top-0 left-0 checked:translate-x-6 checked:bg-surface-container-low checked:border-primary" id="toggle3" name="toggle3" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer transition-colors duration-200 ease-in-out" for="toggle3"></label>
+</div>
+</div>
+</div>
+</section>
+<!-- Account & Verification Section -->
+<section class="glass-panel rounded-xl flex flex-col p-md gap-sm">
+<h3 class="font-body-lg text-body-lg text-primary mb-1">Identity &amp; Verification</h3>
+<div class="flex items-center justify-between bg-surface-container/50 rounded-lg p-sm border border-white/5">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">mail</span>
+<span class="font-body-md text-body-md text-primary">janasco@duck.com</span>
+</div>
+<div class="bg-primary text-on-primary font-label-caps text-label-caps px-2 py-1 rounded-full uppercase">Verified</div>
+</div>
+<div class="flex items-center justify-between bg-surface-container/50 rounded-lg p-sm border border-white/5">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">alternate_email</span>
+<span class="font-body-md text-body-md text-primary">@janasco</span>
+</div>
+<div class="border border-outline-variant text-on-surface-variant font-label-caps text-label-caps px-2 py-1 rounded-full uppercase">Active</div>
+</div>
+</section>
+<!-- Nuclear Data Control Section -->
+<section class="glass-panel rounded-xl flex flex-col p-md border-error/20">
+<h3 class="font-body-lg text-body-lg text-error mb-sm">Nuclear Options</h3>
+<div class="flex flex-col gap-sm">
+<button class="w-full flex items-center justify-center gap-xs bg-surface-container text-primary font-body-md text-body-md py-3 rounded-full border border-white/10 hover:bg-white/5 active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 0;">warning</span>
+                    Wipe All Stored Messages
+                </button>
+<button class="w-full flex items-center justify-center bg-transparent text-error font-body-md text-body-md py-3 rounded-full border border-error/30 hover:bg-error/10 active:scale-95 transition-all duration-150">
+                    Delete Account Permanently
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pt-2 pb-6 bg-surface-container-low/95 dark:bg-surface-container-low/95 border-t border-white/5 z-50 backdrop-blur-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-primary font-bold bg-white/5 rounded-xl px-2 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined font-headline-xl text-headline-xl text-primary" style="font-variation-settings: 'FILL' 1;">enhanced_encryption</span>
+<span class="font-label-caps text-label-caps mt-1">Vault</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined font-headline-xl text-headline-xl" style="font-variation-settings: 'FILL' 0;">shield_lock</span>
+<span class="font-label-caps text-label-caps mt-1">Secure</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined font-headline-xl text-headline-xl" style="font-variation-settings: 'FILL' 0;">grid_view</span>
+<span class="font-label-caps text-label-caps mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined font-headline-xl text-headline-xl" style="font-variation-settings: 'FILL' 0;">history_edu</span>
+<span class="font-label-caps text-label-caps mt-1">Logs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined font-headline-xl text-headline-xl" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="font-label-caps text-label-caps mt-1">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple logic for custom toggle visuals to ensure label background updates
+        document.querySelectorAll('.toggle-checkbox').forEach(toggle => {
+            toggle.addEventListener('change', (e) => {
+                const label = e.target.nextElementSibling;
+                if(e.target.checked) {
+                    label.classList.add('bg-primary');
+                    label.classList.remove('bg-surface-variant');
+                } else {
+                    label.classList.add('bg-surface-variant');
+                    label.classList.remove('bg-primary');
+                }
+            });
+            // Initial state check
+            if(toggle.checked) {
+                const label = toggle.nextElementSibling;
+                label.classList.add('bg-primary');
+                label.classList.remove('bg-surface-variant');
+            }
+        });
+    </script>
+</body></html>

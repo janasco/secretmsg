@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>Supporters Wall & Perks - SecretMsg</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-lowest": "#0b0e14",
+            "primary": "#ffffff",
+            "surface-dim": "#10131a",
+            "on-background": "#e1e2eb",
+            "surface-container-high": "#272a31",
+            "surface-variant": "#32353c",
+            "surface-container": "#1d2026"
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen">
+  <div class="mobile-viewport">
+    <!-- Toast Notice -->
+    <div id="toast" class="toast-notice">
+      <span class="material-symbols-outlined text-[18px]">check_circle</span>
+      <span id="toast-text">Redirecting to Polar.sh...</span>
+    </div>
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-white/10 flex justify-between items-center h-14 px-4">
+      <a href="profile.html" aria-label="Back to profile" class="p-2 -ml-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center">
+        <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+      </a>
+      <div class="flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-amber-400 text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+        <h1 class="text-base font-bold text-white tracking-tight">Supporters Wall</h1>
+      </div>
+      <a href="https://polar.sh" target="_blank" class="text-[10px] font-bold text-sky-400 bg-sky-950/60 px-2 py-1 rounded-full border border-sky-500/30">
+        Polar.sh
+      </a>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 px-4 py-4 flex flex-col gap-4 pb-28">
+      <!-- Monthly Server Funding Progress -->
+      <section class="glass-panel rounded-3xl p-5 flex flex-col gap-3 border border-white/15 relative overflow-hidden white-glow">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block mb-0.5">Community Server Goal</span>
+            <h2 class="text-base font-bold text-white">100% Privacy-Preserving Infrastructure</h2>
+          </div>
+          <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">72% Funded</span>
+        </div>
+
+        <div>
+          <div class="flex justify-between items-baseline mb-1.5">
+            <span class="text-xl font-bold text-white font-mono">$180 <span class="text-xs text-slate-400 font-normal">raised this month</span></span>
+            <span class="text-xs text-slate-400 font-mono">Target: $250/mo</span>
+          </div>
+          <div class="w-full h-2.5 bg-[#10131A] rounded-full overflow-hidden border border-white/10 p-0.5">
+            <div class="h-full bg-gradient-to-r from-emerald-400 to-sky-400 rounded-full w-[72%]"></div>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-slate-400 leading-relaxed pt-1">
+          Covers Cloudflare Workers edge compute, distributed D1 database, and Resend passwordless OTP email verification.
+        </p>
+      </section>
+
+      <!-- Supporter Perks Breakdown -->
+      <section class="flex flex-col gap-2">
+        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider px-1">Supporter Tier Perks ($5/mo)</span>
+        <div class="grid grid-cols-2 gap-2">
+          <div class="glass-panel rounded-2xl p-3 border border-white/10 flex flex-col gap-1">
+            <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white mb-1">
+              <span class="material-symbols-outlined text-[16px]">link</span>
+            </div>
+            <h3 class="text-xs font-bold text-white">Custom Vanity Links</h3>
+            <p class="text-[10px] text-slate-400">Claim clean handles like secretmsg.net/alex</p>
+          </div>
+
+          <div class="glass-panel rounded-2xl p-3 border border-white/10 flex flex-col gap-1">
+            <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white mb-1">
+              <span class="material-symbols-outlined text-[16px]">mark_chat_read</span>
+            </div>
+            <h3 class="text-xs font-bold text-white">Double-Blind Replies</h3>
+            <p class="text-[10px] text-slate-400">Reply without unmasking either party</p>
+          </div>
+
+          <div class="glass-panel rounded-2xl p-3 border border-white/10 flex flex-col gap-1">
+            <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white mb-1">
+              <span class="material-symbols-outlined text-[16px]">palette</span>
+            </div>
+            <h3 class="text-xs font-bold text-white">Sticker Studio Themes</h3>
+            <p class="text-[10px] text-slate-400">Exclusive Instagram and Snapchat styles</p>
+          </div>
+
+          <div class="glass-panel rounded-2xl p-3 border border-white/10 flex flex-col gap-1">
+            <div class="w-7 h-7 rounded-full bg-amber-400/20 flex items-center justify-center text-amber-300 mb-1">
+              <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <h3 class="text-xs font-bold text-white">Golden Profile Badge</h3>
+            <p class="text-[10px] text-slate-400">Tasteful supporter icon on your profile</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Community Supporters Wall -->
+      <section class="flex flex-col gap-2">
+        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider px-1">Community Backers Wall</span>
+        <div class="flex flex-col gap-2">
+          <div class="glass-panel rounded-2xl p-3.5 border border-white/10 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center font-bold text-xs">
+                ⭐
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">Alex R.</span>
+                <span class="text-[10px] text-slate-400">"Keep building open-source privacy apps!"</span>
+              </div>
+            </div>
+            <span class="text-[10px] text-slate-400 font-mono">Gold Backer</span>
+          </div>
+
+          <div class="glass-panel rounded-2xl p-3.5 border border-white/10 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center font-bold text-xs">
+                ⭐
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">Anonymous Supporter</span>
+                <span class="text-[10px] text-slate-400">"The Instagram story stickers are incredible."</span>
+              </div>
+            </div>
+            <span class="text-[10px] text-slate-400 font-mono">Supporter</span>
+          </div>
+
+          <div class="glass-panel rounded-2xl p-3.5 border border-white/10 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center font-bold text-xs">
+                ⭐
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">Elena K.</span>
+                <span class="text-[10px] text-slate-400">"Finally an anonymous app without spam and ads."</span>
+              </div>
+            </div>
+            <span class="text-[10px] text-slate-400 font-mono">Supporter</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Primary CTA -->
+      <section class="mt-2">
+        <button onclick="supportPolar()" class="w-full h-12 bg-white text-[#0B0E14] font-bold text-xs rounded-full flex items-center justify-center gap-2 active:scale-98 transition-all hover:bg-slate-100 shadow-xl white-glow">
+          <span class="material-symbols-outlined text-[18px]">favorite</span>
+          Become a Supporter via Polar.sh 💙
+        </button>
+      </section>
+    </main>
+
+    <!-- Persistent Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#0B0E14]/95 backdrop-blur-xl border-t border-white/10 pb-safe">
+      <div class="flex justify-around items-center h-16 max-w-xl mx-auto px-2">
+        <a href="index.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">home</span>
+          <span class="text-[10px] font-semibold mt-0.5">Home</span>
+        </a>
+        <a href="dice.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">casino</span>
+          <span class="text-[10px] font-semibold mt-0.5">Dice</span>
+        </a>
+        <a href="sticker-studio.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">photo_filter</span>
+          <span class="text-[10px] font-semibold mt-0.5">Stickers</span>
+        </a>
+        <a href="inbox.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white relative py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">mail</span>
+          <span class="text-[10px] font-semibold mt-0.5">Inbox</span>
+          <span class="absolute top-1 right-2.5 w-2 h-2 bg-rose-500 rounded-full border border-[#0B0E14]"></span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center justify-center text-white relative py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">person</span>
+          <span class="text-[10px] font-semibold mt-0.5">Profile</span>
+          <span class="w-1 h-1 bg-white rounded-full mt-0.5"></span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function supportPolar() {
+      showToast('Opening Polar.sh pledge portal...');
+      setTimeout(() => {
+        window.open('https://polar.sh/janasco/secretmsg', '_blank');
+      }, 500);
+    }
+  </script>
+</body>
+</html>

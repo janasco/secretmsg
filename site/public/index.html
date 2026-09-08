@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+  <title>SecretMsg - Anonymous TBH & Vibe Templates</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-lowest": "#0b0e14",
+            "primary": "#ffffff",
+            "surface-dim": "#10131a",
+            "primary-container": "#e2e2e2",
+            "on-background": "#e1e2eb",
+            "outline": "#8e9192",
+            "background": "#10131a",
+            "surface-container-high": "#272a31",
+            "surface-variant": "#32353c",
+            "surface-bright": "#363940",
+            "secondary": "#c1c6d6",
+            "surface-container": "#1d2026",
+            "surface": "#10131a",
+            "error": "#ffb4ab"
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen">
+  <div class="mobile-viewport">
+    <!-- Toast Notice -->
+    <div id="toast" class="toast-notice">
+      <span class="material-symbols-outlined text-[18px]">check_circle</span>
+      <span id="toast-text">Link copied to clipboard!</span>
+    </div>
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-white/10">
+      <div class="flex justify-between items-center h-14 px-4 max-w-xl mx-auto">
+        <a href="index.html" class="flex items-center gap-2 group">
+          <span class="material-symbols-outlined text-white text-[24px]" style="font-variation-settings: 'FILL' 1;">lock_open_right</span>
+          <span class="text-lg font-bold text-white tracking-tight uppercase">SecretMsg</span>
+          <span class="bg-white/10 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full border border-white/20">PRO</span>
+        </a>
+        <div class="flex items-center gap-1">
+          <a href="settings.html" class="p-2 text-slate-400 hover:text-white transition-colors" title="Settings">
+            <span class="material-symbols-outlined text-[22px]">tune</span>
+          </a>
+          <a href="inbox.html" class="p-2 text-slate-400 hover:text-white transition-colors relative" title="Inbox">
+            <span class="material-symbols-outlined text-[22px]">mail</span>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full border border-[#0B0E14]"></span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Scrollable Content Area -->
+    <main class="flex-1 px-4 py-5 flex flex-col gap-5 pb-28">
+      <!-- Search Section -->
+      <section class="glass-panel rounded-full h-[46px] flex items-center px-4 w-full focus-within:ring-2 focus-within:ring-white/40 transition-all duration-300">
+        <span class="material-symbols-outlined text-slate-400 mr-2.5 text-[20px]">search</span>
+        <input id="template-search" class="bg-transparent border-none outline-none text-white flex-grow text-sm placeholder:text-slate-500 focus:ring-0 px-0 h-full" placeholder="Search viral vibes, prompts, or friends..." type="text"/>
+        <button id="clear-search" class="text-slate-400 hover:text-white transition-colors hidden">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </section>
+
+      <!-- Category Filter Row -->
+      <!-- Category Filter Pills -->
+      <section class="overflow-x-auto no-scrollbar -mx-4 px-4">
+        <div id="category-pills" class="flex gap-2 min-w-max">
+          <button data-category="all" class="cat-pill bg-white text-[#0B0E14] px-4 py-2 rounded-full font-semibold text-xs transition-all shadow-sm">
+            🔥 All Viral (14,000+)
+          </button>
+          <button data-category="trending" class="cat-pill glass-panel text-slate-300 hover:text-white px-4 py-2 rounded-full font-semibold text-xs transition-all">
+            ⚡ Trending (2,000+)
+          </button>
+          <button data-category="crush" class="cat-pill glass-panel text-slate-300 hover:text-white px-4 py-2 rounded-full font-semibold text-xs transition-all">
+            💘 Crush & Flirt (2,000+)
+          </button>
+          <button data-category="spicy" class="cat-pill glass-panel text-slate-300 hover:text-white px-4 py-2 rounded-full font-semibold text-xs transition-all">
+            🌶️ Spicy (2,000+)
+          </button>
+          <button data-category="confessions" class="cat-pill glass-panel text-slate-300 hover:text-white px-4 py-2 rounded-full font-semibold text-xs transition-all">
+            🤫 Confessions (2,000+)
+          </button>
+          <button data-category="chaotic" class="cat-pill glass-panel text-slate-300 hover:text-white px-4 py-2 rounded-full font-semibold text-xs transition-all">
+            🌪️ Chaotic & Wild (2,000+)
+          </button>
+          <button data-category="realtalk" class="cat-pill glass-panel text-slate-300 hover:text-white px-4 py-2 rounded-full font-semibold text-xs transition-all">
+            💬 Real Talk (2,000+)
+          </button>
+          <button data-category="latenight" class="cat-pill glass-panel text-slate-300 hover:text-white px-4 py-2 rounded-full font-semibold text-xs transition-all">
+            🌙 3AM Thoughts (2,000+)
+          </button>
+          <a href="dice.html" class="glass-panel text-slate-300 hover:text-white px-4 py-2 rounded-full font-semibold text-xs transition-all flex items-center gap-1">
+            🎲 Roulette (1,500/vibe)
+          </a>
+        </div>
+      </section>
+
+      <!-- Hero Quick Action Card -->
+      <section class="glass-panel rounded-2xl p-5 flex flex-col gap-3 relative overflow-hidden group border border-white/15">
+        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="flex items-start justify-between z-10">
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 flex items-center gap-1 mb-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Your Public TBH Card
+            </span>
+            <h2 class="text-base font-bold text-white leading-snug">Receive candid anonymous messages anywhere</h2>
+          </div>
+          <a href="sticker-studio.html" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors" title="Export as Story Sticker">
+            <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+          </a>
+        </div>
+        
+        <div class="bg-[#10131A] rounded-xl p-3 flex justify-between items-center hairline-border z-10">
+          <div class="flex items-center gap-2 truncate">
+            <span class="material-symbols-outlined text-slate-400 text-[18px]">link</span>
+            <span class="text-xs font-mono text-slate-300 truncate">secretmsg.net/janasco</span>
+          </div>
+          <span class="text-[10px] text-emerald-400 font-semibold uppercase tracking-wider bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">Active</span>
+        </div>
+        
+        <div class="flex gap-2 mt-1 z-10">
+          <button id="copy-link-btn" class="flex-1 h-11 bg-white hover:bg-slate-100 text-[#0B0E14] font-semibold text-xs rounded-full flex items-center justify-center gap-2 active:scale-98 transition-transform shadow-md">
+            <span class="material-symbols-outlined text-[18px]">content_copy</span>
+            Copy My Link
+          </button>
+          <a href="profile.html" class="w-11 h-11 glass-panel hover:bg-white/10 text-white rounded-full flex items-center justify-center active:scale-98 transition-transform" title="View Profile">
+            <span class="material-symbols-outlined text-[20px]">qr_code_2</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Viral Templates Grid -->
+      <section class="flex flex-col gap-3">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-2">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-300">Viral Templates</h3>
+            <span id="template-count" class="text-[11px] bg-white/10 text-slate-300 px-2.5 py-0.5 rounded-full font-semibold">14,000</span>
+          </div>
+          <a href="dice.html" class="text-xs font-semibold text-white/80 hover:text-white flex items-center gap-1 transition-colors">
+            Roulette <span class="material-symbols-outlined text-[16px]">casino</span>
+          </a>
+        </div>
+
+        <div id="templates-container" class="flex flex-col gap-3">
+          <!-- Dynamically populated from window.SECRETMSG_TEMPLATES -->
+        </div>
+
+        <button id="load-more-btn" class="w-full py-3 glass-panel glass-panel-hover rounded-2xl text-xs font-bold text-white flex items-center justify-center gap-2 mt-2 transition-all">
+          <span id="load-more-text">Load More Viral Templates</span>
+          <span class="material-symbols-outlined text-[16px]">expand_more</span>
+        </button>
+
+        <div id="no-results" class="hidden glass-panel rounded-2xl p-8 text-center flex flex-col items-center gap-2">
+          <span class="material-symbols-outlined text-slate-500 text-[36px]">search_off</span>
+          <p class="text-sm text-slate-400">No viral templates match your search.</p>
+          <button onclick="document.getElementById('template-search').value=''; filterTemplates();" class="text-xs font-semibold text-white underline mt-1">Clear search</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Persistent Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#0B0E14]/95 backdrop-blur-xl border-t border-white/10 pb-safe">
+      <div class="flex justify-around items-center h-16 max-w-xl mx-auto px-2">
+        <a href="index.html" class="flex flex-col items-center justify-center text-white relative py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">home</span>
+          <span class="text-[10px] font-semibold mt-0.5">Home</span>
+          <span class="w-1 h-1 bg-white rounded-full mt-0.5"></span>
+        </a>
+        <a href="dice.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">casino</span>
+          <span class="text-[10px] font-semibold mt-0.5">Dice</span>
+        </a>
+        <a href="sticker-studio.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">photo_filter</span>
+          <span class="text-[10px] font-semibold mt-0.5">Stickers</span>
+        </a>
+        <a href="inbox.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white relative py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">mail</span>
+          <span class="text-[10px] font-semibold mt-0.5">Inbox</span>
+          <span class="absolute top-1 right-2.5 w-2 h-2 bg-rose-500 rounded-full border border-[#0B0E14]"></span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">person</span>
+          <span class="text-[10px] font-semibold mt-0.5">Profile</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <script src="js/templates-data.js"></script>
+  <script>
+    // Copy link helper
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    document.getElementById('copy-link-btn').addEventListener('click', () => {
+      navigator.clipboard?.writeText('https://secretmsg.net/janasco');
+      showToast('Link copied: secretmsg.net/janasco');
+    });
+
+    // Navigate to compose with prompt
+    function goToCompose(promptText) {
+      window.location.href = `compose.html?prompt=${encodeURIComponent(promptText)}`;
+    }
+
+    // Dynamic Viral Templates Engine
+    const allTemplates = window.SECRETMSG_TEMPLATES || [];
+    let activeCat = 'all';
+    let searchQuery = '';
+    let displayedCount = 0;
+    const PAGE_SIZE = 24;
+
+    const container = document.getElementById('templates-container');
+    const countBadge = document.getElementById('template-count');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const loadMoreText = document.getElementById('load-more-text');
+    const noResults = document.getElementById('no-results');
+
+    function getFilteredList() {
+      return allTemplates.filter(t => {
+        const matchesCat = (activeCat === 'all' || t.cat === activeCat);
+        const matchesQuery = (!searchQuery || t.prompt.toLowerCase().includes(searchQuery));
+        return matchesCat && matchesQuery;
+      });
+    }
+
+    function renderCard(t) {
+      const card = document.createElement('div');
+      card.className = 'template-card glass-panel glass-panel-hover rounded-2xl p-4 flex flex-col gap-3 cursor-pointer transition-transform active:scale-[0.99]';
+      card.setAttribute('data-cat', t.cat);
+      card.onclick = () => goToCompose(t.prompt);
+
+      card.innerHTML = `
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] uppercase font-bold tracking-wider ${t.tagClass} px-2.5 py-1 rounded-full border">
+            ${t.tag}
+          </span>
+          <span class="material-symbols-outlined text-slate-500 text-[18px]">arrow_forward</span>
+        </div>
+        <p class="template-prompt text-base font-semibold text-white leading-snug">"${t.prompt}"</p>
+        <div class="flex justify-between items-center pt-1 border-t border-white/5">
+          <span class="text-xs text-slate-400">Tap to compose message</span>
+          <button class="bg-white/10 hover:bg-white text-slate-300 hover:text-[#0B0E14] px-3.5 py-1.5 rounded-full text-xs font-semibold hairline-border transition-all">
+            Send Now
+          </button>
+        </div>
+      `;
+      return card;
+    }
+
+    function renderTemplates(reset = false) {
+      const filtered = getFilteredList();
+      countBadge.textContent = filtered.length.toLocaleString();
+
+      if (reset) {
+        container.innerHTML = '';
+        displayedCount = 0;
+      }
+
+      if (filtered.length === 0) {
+        noResults.classList.remove('hidden');
+        loadMoreBtn.classList.add('hidden');
+        return;
+      } else {
+        noResults.classList.add('hidden');
+      }
+
+      const nextBatch = filtered.slice(displayedCount, displayedCount + PAGE_SIZE);
+      const fragment = document.createDocumentFragment();
+      nextBatch.forEach(t => fragment.appendChild(renderCard(t)));
+      container.appendChild(fragment);
+
+      displayedCount += nextBatch.length;
+
+      if (displayedCount >= filtered.length) {
+        loadMoreBtn.classList.add('hidden');
+      } else {
+        loadMoreBtn.classList.remove('hidden');
+        loadMoreText.textContent = `Load More (${displayedCount} of ${filtered.length.toLocaleString()})`;
+      }
+    }
+
+    loadMoreBtn.addEventListener('click', () => {
+      renderTemplates(false);
+    });
+
+    // Category Filtering
+    const pills = document.querySelectorAll('.cat-pill');
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => {
+          p.className = 'cat-pill glass-panel text-slate-300 hover:text-white px-4 py-2 rounded-full font-semibold text-xs transition-all';
+        });
+        pill.className = 'cat-pill bg-white text-[#0B0E14] px-4 py-2 rounded-full font-semibold text-xs transition-all shadow-sm';
+        activeCat = pill.getAttribute('data-category');
+        renderTemplates(true);
+      });
+    });
+
+    // Search Filtering
+    const searchInput = document.getElementById('template-search');
+    const clearBtn = document.getElementById('clear-search');
+    searchInput.addEventListener('input', () => {
+      searchQuery = searchInput.value.toLowerCase().trim();
+      if (searchQuery.length > 0) {
+        clearBtn.classList.remove('hidden');
+      } else {
+        clearBtn.classList.add('hidden');
+      }
+      renderTemplates(true);
+    });
+
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearBtn.classList.add('hidden');
+      renderTemplates(true);
+    });
+
+    // Initial render
+    renderTemplates(true);
+  </script>
+</body>
+</html>

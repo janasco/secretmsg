@@ -1,0 +1,16 @@
+{
+  "name": "secretmsg",
+  "version": "1.0.0",
+  "description": "SecretMsg - Open Source Anonymous Messaging & Story Sticker Platform",
+  "author": "janasco <janasco@duck.com>",
+  "license": "MIT",
+  "homepage": "https://secretmsg.net",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm --prefix apps/web run dev",
+    "build": "npm --prefix apps/web run build",
+    "preview": "npm --prefix apps/web run preview"
+  }
+}

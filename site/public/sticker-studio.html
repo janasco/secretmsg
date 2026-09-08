@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>Story Sticker Studio - SecretMsg</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-lowest": "#0b0e14",
+            "primary": "#ffffff",
+            "surface-dim": "#10131a",
+            "on-background": "#e1e2eb",
+            "surface-container-high": "#272a31",
+            "surface-variant": "#32353c",
+            "surface-container": "#1d2026"
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .theme-obsidian {
+      background: radial-gradient(circle at center, #151B26 0%, #07090D 100%);
+    }
+    .theme-cyber {
+      background: linear-gradient(135deg, #09203F 0%, #537895 100%);
+    }
+    .theme-sunset {
+      background: linear-gradient(135deg, #2E0854 0%, #FF6B6B 100%);
+    }
+    .theme-candy {
+      background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+    }
+    .theme-white {
+      background: linear-gradient(135deg, #2B32B2 0%, #1488CC 100%);
+    }
+  </style>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen">
+  <div class="mobile-viewport">
+    <!-- Toast Notice -->
+    <div id="toast" class="toast-notice">
+      <span class="material-symbols-outlined text-[18px]">check_circle</span>
+      <span id="toast-text">Sticker prepared for Instagram!</span>
+    </div>
+
+    <!-- Top App Bar -->
+    <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-white/10 flex justify-between items-center h-14 px-4">
+      <a href="index.html" aria-label="Go back" class="p-2 -ml-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center">
+        <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+      </a>
+      <h1 class="text-base font-bold text-white tracking-tight">Story Sticker Studio 📸</h1>
+      <button onclick="resetSticker()" class="text-xs font-semibold text-slate-300 hover:text-white px-2 py-1 transition-colors">
+        Reset
+      </button>
+    </header>
+
+    <!-- Main Canvas -->
+    <main class="flex-1 px-4 py-4 flex flex-col items-center gap-5 pb-28">
+      <!-- Live 9:16 Mockup Frame -->
+      <section class="w-full max-w-[320px] flex flex-col items-center">
+        <div id="story-canvas" class="theme-obsidian relative w-full aspect-[9/16] rounded-3xl hairline-border border-white/20 overflow-hidden shadow-2xl flex flex-col items-center justify-between p-5 transition-all duration-500">
+          <!-- Story Header -->
+          <div class="w-full flex items-center justify-between z-10 pt-2">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-full bg-white/20 p-0.5 border border-white/40">
+                <div class="w-full h-full rounded-full bg-[#151B26] flex items-center justify-center text-[10px] font-bold text-white">
+                  J
+                </div>
+              </div>
+              <div>
+                <span class="text-[11px] font-bold text-white block leading-none">Your Story</span>
+                <span class="text-[9px] text-white/60">Tap to reply</span>
+              </div>
+            </div>
+            <span class="text-[10px] font-mono bg-white/15 text-white px-2 py-0.5 rounded-full border border-white/20">secretmsg.net</span>
+          </div>
+
+          <!-- Floating Sticker Element -->
+          <div id="sticker-box" class="relative z-10 w-full max-w-[260px] bg-[#151B26]/85 backdrop-blur-xl rounded-2xl hairline-border border-white/25 p-5 flex flex-col items-center text-center gap-2.5 shadow-2xl white-glow transform hover:scale-105 transition-transform duration-300 cursor-pointer">
+            <div class="absolute -top-3 right-4 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-lg text-[#0B0E14]">
+              <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">push_pin</span>
+            </div>
+            <h2 id="sticker-question" class="text-base font-bold text-white tracking-tight leading-snug">
+              send me anonymous tbh messages 🫣
+            </h2>
+            <div class="bg-white/10 px-3.5 py-1 rounded-full hairline-border border-white/20 flex items-center gap-1.5">
+              <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+              <span class="text-[11px] font-mono font-semibold text-white">@janasco</span>
+            </div>
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent my-0.5"></div>
+            <p class="text-[10px] text-slate-400">
+              Tap here to send on secretmsg.net
+            </p>
+          </div>
+
+          <!-- Story Footer -->
+          <div class="w-full text-center z-10 pb-1">
+            <span class="text-[10px] font-semibold text-white/70 bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+              🔗 Swipe up or tap link
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Customization Controls -->
+      <section class="w-full max-w-sm flex flex-col gap-4">
+        <!-- Theme Palette -->
+        <div class="flex flex-col gap-1.5">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider pl-1">Story Background Theme</span>
+          <div class="flex items-center justify-between glass-panel p-2.5 rounded-2xl">
+            <button onclick="setTheme('theme-obsidian', this)" class="theme-btn w-9 h-9 rounded-full bg-[#151B26] ring-2 ring-white ring-offset-2 ring-offset-[#0B0E14] transition-all" title="Obsidian Void"></button>
+            <button onclick="setTheme('theme-cyber', this)" class="theme-btn w-9 h-9 rounded-full bg-gradient-to-br from-cyan-600 to-blue-800 transition-all opacity-70 hover:opacity-100" title="Cyber Neon"></button>
+            <button onclick="setTheme('theme-sunset', this)" class="theme-btn w-9 h-9 rounded-full bg-gradient-to-br from-purple-800 to-rose-500 transition-all opacity-70 hover:opacity-100" title="Amber Sunset"></button>
+            <button onclick="setTheme('theme-candy', this)" class="theme-btn w-9 h-9 rounded-full bg-gradient-to-br from-indigo-700 via-pink-600 to-amber-400 transition-all opacity-70 hover:opacity-100" title="Cotton Candy"></button>
+            <button onclick="setTheme('theme-white', this)" class="theme-btn w-9 h-9 rounded-full bg-gradient-to-br from-blue-700 to-sky-400 transition-all opacity-70 hover:opacity-100" title="Sky Blue"></button>
+          </div>
+        </div>
+
+        <!-- Questions Carousel -->
+        <div class="flex flex-col gap-1.5">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider pl-1">Quick Question Styles</span>
+          <div class="flex overflow-x-auto gap-2 no-scrollbar pb-1">
+            <button onclick="setStickerPrompt('send me anonymous tbh messages 🫣', this)" class="prompt-pill px-3.5 py-1.5 rounded-full bg-white text-[#0B0E14] text-xs font-semibold whitespace-nowrap shadow-sm">
+              TBH
+            </button>
+            <button onclick="setStickerPrompt('who has a secret crush on me? be honest 💕', this)" class="prompt-pill px-3.5 py-1.5 rounded-full glass-panel text-slate-300 hover:text-white text-xs font-semibold whitespace-nowrap">
+              Crush
+            </button>
+            <button onclick="setStickerPrompt('drop an assumption about me, I\'ll confirm or deny ✨', this)" class="prompt-pill px-3.5 py-1.5 rounded-full glass-panel text-slate-300 hover:text-white text-xs font-semibold whitespace-nowrap">
+              Assumptions
+            </button>
+            <button onclick="setStickerPrompt('confess something you never had the guts to tell me in person 🤐', this)" class="prompt-pill px-3.5 py-1.5 rounded-full glass-panel text-slate-300 hover:text-white text-xs font-semibold whitespace-nowrap">
+              Confessions
+            </button>
+            <button onclick="setStickerPrompt('what was the first impression you had of me? 👀', this)" class="prompt-pill px-3.5 py-1.5 rounded-full glass-panel text-slate-300 hover:text-white text-xs font-semibold whitespace-nowrap">
+              First Impression
+            </button>
+          </div>
+        </div>
+
+        <!-- Custom Prompt Input -->
+        <div class="flex flex-col gap-1.5">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider pl-1">Or Type Custom Question</span>
+          <div class="glass-panel rounded-xl flex items-center px-3 h-11">
+            <input id="custom-prompt-input" type="text" placeholder="Write your own story sticker text..." class="bg-transparent border-none text-white text-xs placeholder:text-slate-500 w-full focus:ring-0 outline-none p-0"/>
+            <button onclick="applyCustomPrompt()" class="text-xs font-bold text-white bg-white/10 hover:bg-white hover:text-[#0B0E14] px-2.5 py-1 rounded-lg transition-colors ml-2 shrink-0">
+              Apply
+            </button>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col gap-2.5 mt-2">
+          <button onclick="shareToStories('Instagram')" class="w-full h-12 bg-white text-[#0B0E14] rounded-full font-bold text-xs flex items-center justify-center gap-2 hover:bg-slate-100 active:scale-98 transition-all white-glow shadow-xl">
+            <span class="material-symbols-outlined text-[18px]">share</span>
+            Share to Instagram / Snapchat Stories
+          </button>
+          <button onclick="downloadSticker()" class="w-full h-12 glass-panel text-white rounded-full font-semibold text-xs flex items-center justify-center gap-2 hover:bg-white/10 active:scale-98 transition-all">
+            <span class="material-symbols-outlined text-[18px]">download</span>
+            Download High-Res Story Card PNG
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Persistent Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#0B0E14]/95 backdrop-blur-xl border-t border-white/10 pb-safe">
+      <div class="flex justify-around items-center h-16 max-w-xl mx-auto px-2">
+        <a href="index.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">home</span>
+          <span class="text-[10px] font-semibold mt-0.5">Home</span>
+        </a>
+        <a href="dice.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">casino</span>
+          <span class="text-[10px] font-semibold mt-0.5">Dice</span>
+        </a>
+        <a href="sticker-studio.html" class="flex flex-col items-center justify-center text-white relative py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">photo_filter</span>
+          <span class="text-[10px] font-semibold mt-0.5">Stickers</span>
+          <span class="w-1 h-1 bg-white rounded-full mt-0.5"></span>
+        </a>
+        <a href="inbox.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white relative py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">mail</span>
+          <span class="text-[10px] font-semibold mt-0.5">Inbox</span>
+          <span class="absolute top-1 right-2.5 w-2 h-2 bg-rose-500 rounded-full border border-[#0B0E14]"></span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">person</span>
+          <span class="text-[10px] font-semibold mt-0.5">Profile</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    // Read question param if coming from dice
+    const urlParams = new URLSearchParams(window.location.search);
+    const qParam = urlParams.get('question');
+    if (qParam) {
+      document.getElementById('sticker-question').textContent = qParam;
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function setTheme(themeClass, btn) {
+      const canvas = document.getElementById('story-canvas');
+      canvas.className = `${themeClass} relative w-full aspect-[9/16] rounded-3xl hairline-border border-white/20 overflow-hidden shadow-2xl flex flex-col items-center justify-between p-5 transition-all duration-500`;
+      
+      document.querySelectorAll('.theme-btn').forEach(b => {
+        b.className = b.className.replace(/ring-2 ring-white ring-offset-2 ring-offset-\[#0B0E14\]/g, '') + ' opacity-70 hover:opacity-100';
+      });
+      btn.className = btn.className.replace(/opacity-70 hover:opacity-100/g, '') + ' ring-2 ring-white ring-offset-2 ring-offset-[#0B0E14] opacity-100';
+      showToast('Theme updated!');
+    }
+
+    function setStickerPrompt(prompt, btn) {
+      document.getElementById('sticker-question').textContent = prompt;
+      document.querySelectorAll('.prompt-pill').forEach(p => {
+        p.className = 'prompt-pill px-3.5 py-1.5 rounded-full glass-panel text-slate-300 hover:text-white text-xs font-semibold whitespace-nowrap';
+      });
+      btn.className = 'prompt-pill px-3.5 py-1.5 rounded-full bg-white text-[#0B0E14] text-xs font-semibold whitespace-nowrap shadow-sm';
+      showToast('Sticker question updated!');
+    }
+
+    function applyCustomPrompt() {
+      const val = document.getElementById('custom-prompt-input').value.trim();
+      if (!val) return;
+      document.getElementById('sticker-question').textContent = val;
+      showToast('Custom question applied!');
+    }
+
+    function resetSticker() {
+      document.getElementById('sticker-question').textContent = "send me anonymous tbh messages 🫣";
+      setTheme('theme-obsidian', document.querySelectorAll('.theme-btn')[0]);
+      showToast('Sticker reset to default');
+    }
+
+    function shareToStories(platform) {
+      navigator.clipboard?.writeText('https://secretmsg.net/janasco');
+      showToast(`Link copied! Ready to paste sticker in ${platform}`);
+    }
+
+    function downloadSticker() {
+      showToast('Story card downloaded in high resolution!');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+{
+  "name": "projects/9285542180576435575",
+  "projectId": "9285542180576435575",
+  "title": "SecretMsg Mobile",
+  "visibility": "PRIVATE",
+  "createTime": "2026-09-04T12:45:27.264944Z",
+  "updateTime": "2026-09-04T13:20:13.000000Z",
+  "projectType": "PROJECT_DESIGN",
+  "origin": "STITCH",
+  "deviceType": "MOBILE",
+  "designTheme": {
+    "colorMode": "DARK",
+    "font": "INTER",
+    "roundness": "ROUND_SIXTEEN",
+    "customColor": "#FFFFFF"
+  },
+  "screens": {
+    "index": {
+      "id": "2b79240a1aac44e78b1c3fbd8ae7c6ad",
+      "sourceScreen": "projects/9285542180576435575/screens/2b79240a1aac44e78b1c3fbd8ae7c6ad",
+      "width": 780,
+      "height": 3114
+    },
+    "compose": {
+      "id": "5a65771d7c11468db3f2197983ae1215",
+      "sourceScreen": "projects/9285542180576435575/screens/5a65771d7c11468db3f2197983ae1215",
+      "width": 780,
+      "height": 1898
+    },
+    "dice": {
+      "id": "812e51fec1a341a8a9dff0933bd0cfcb",
+      "sourceScreen": "projects/9285542180576435575/screens/812e51fec1a341a8a9dff0933bd0cfcb",
+      "width": 780,
+      "height": 2204
+    },
+    "sticker_studio": {
+      "id": "ca21655b00ef4f949d32bb4bdd451076",
+      "sourceScreen": "projects/9285542180576435575/screens/ca21655b00ef4f949d32bb4bdd451076",
+      "width": 780,
+      "height": 2304
+    },
+    "inbox": {
+      "id": "93c29ff15a6c40d091818bb3fc157abf",
+      "sourceScreen": "projects/9285542180576435575/screens/93c29ff15a6c40d091818bb3fc157abf",
+      "width": 780,
+      "height": 1944
+    },
+    "message_detail": {
+      "id": "93c398f66e534ccd99889244d0cf0eff",
+      "sourceScreen": "projects/9285542180576435575/screens/93c398f66e534ccd99889244d0cf0eff",
+      "width": 780,
+      "height": 2104
+    },
+    "profile": {
+      "id": "630e799a345b4d5881dddf3d324c2df1",
+      "sourceScreen": "projects/9285542180576435575/screens/630e799a345b4d5881dddf3d324c2df1",
+      "width": 780,
+      "height": 2592
+    },
+    "supporters": {
+      "id": "00f059a520894f2ba07c0041229275d5",
+      "sourceScreen": "projects/9285542180576435575/screens/00f059a520894f2ba07c0041229275d5",
+      "width": 780,
+      "height": 2214
+    },
+    "settings": {
+      "id": "d6a9141398784a4191a21b3fabd5fbdb",
+      "sourceScreen": "projects/9285542180576435575/screens/d6a9141398784a4191a21b3fabd5fbdb",
+      "width": 780,
+      "height": 2214
+    }
+  },
+  "metadata": {
+    "userRole": "OWNER"
+  }
+}

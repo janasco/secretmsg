@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>Message Details - SecretMsg</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-lowest": "#0b0e14",
+            "primary": "#ffffff",
+            "surface-dim": "#10131a",
+            "on-background": "#e1e2eb",
+            "surface-container-high": "#272a31",
+            "surface-variant": "#32353c",
+            "surface-container": "#1d2026"
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen">
+  <div class="mobile-viewport">
+    <!-- Toast Notice -->
+    <div id="toast" class="toast-notice">
+      <span class="material-symbols-outlined text-[18px]">check_circle</span>
+      <span id="toast-text">Reply sent anonymously!</span>
+    </div>
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-white/10 flex justify-between items-center h-14 px-4">
+      <a href="inbox.html" aria-label="Back to inbox" class="p-2 -ml-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center">
+        <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+      </a>
+      <h1 class="text-base font-bold text-white tracking-tight">Message Details</h1>
+      <div class="flex items-center gap-1">
+        <button onclick="togglePin()" id="pin-btn" class="p-2 text-slate-400 hover:text-white transition-colors" title="Pin Message">
+          <span class="material-symbols-outlined text-[20px]">push_pin</span>
+        </button>
+        <button onclick="deleteMessage()" class="p-2 -mr-2 text-slate-400 hover:text-rose-400 transition-colors" title="Delete Message">
+          <span class="material-symbols-outlined text-[20px]">delete</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 px-4 py-4 flex flex-col gap-4 pb-28">
+      <!-- Main Message Card -->
+      <section class="glass-panel rounded-3xl p-5 flex flex-col gap-3 relative overflow-hidden border border-white/15 white-glow">
+        <div class="flex items-center justify-between">
+          <span id="msg-badge" class="text-xs font-bold uppercase tracking-wider text-[#0B0E14] bg-white px-3 py-1 rounded-full shadow-sm">
+            💘 Secret Crush
+          </span>
+          <span id="msg-time" class="text-xs text-slate-400 font-mono">10m ago</span>
+        </div>
+
+        <p id="msg-content" class="text-lg font-semibold text-white leading-relaxed pt-1">
+          "I've had a secret crush on you since last summer when we were study partners... 🫣"
+        </p>
+
+        <div class="flex items-center justify-between pt-3 border-t border-white/10 text-xs text-slate-400">
+          <span class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px] text-emerald-400">verified</span>
+            Zero-Knowledge Anonymous
+          </span>
+          <button onclick="shareAsSticker()" class="text-xs font-semibold text-white hover:underline flex items-center gap-1">
+            <span class="material-symbols-outlined text-[15px]">photo_camera</span> Story Card
+          </button>
+        </div>
+      </section>
+
+      <!-- Sender Context & Hints Card -->
+      <section class="glass-panel rounded-2xl p-4 flex flex-col gap-2 border border-white/10">
+        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[15px]">radar</span> Anonymous Sender Context
+        </span>
+        <div class="grid grid-cols-2 gap-2 mt-1">
+          <div class="bg-[#10131A] p-2.5 rounded-xl border border-white/5">
+            <span class="text-[10px] text-slate-400 block font-mono">CLIENT</span>
+            <span class="text-xs font-semibold text-white">Android Client</span>
+          </div>
+          <div class="bg-[#10131A] p-2.5 rounded-xl border border-white/5">
+            <span class="text-[10px] text-slate-400 block font-mono">APPROX REGION</span>
+            <span class="text-xs font-semibold text-white">London, UK</span>
+          </div>
+          <div class="bg-[#10131A] p-2.5 rounded-xl border border-white/5">
+            <span class="text-[10px] text-slate-400 block font-mono">SECURITY</span>
+            <span class="text-xs font-semibold text-emerald-400">End-to-End Sealed</span>
+          </div>
+          <div class="bg-[#10131A] p-2.5 rounded-xl border border-white/5">
+            <span class="text-[10px] text-slate-400 block font-mono">REPLY LINK</span>
+            <span class="text-xs font-semibold text-sky-400">Single-Use Active</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Double-Blind Reply Thread Box -->
+      <section class="glass-panel rounded-3xl p-5 flex flex-col gap-3 border border-white/15">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px] text-white">mark_chat_read</span>
+            <h3 class="text-sm font-bold text-white">Double-Blind Reply</h3>
+          </div>
+          <span class="text-[10px] font-mono text-slate-400 bg-white/10 px-2 py-0.5 rounded-full">1-Time Reply</span>
+        </div>
+
+        <p class="text-xs text-slate-400">
+          The sender can read your response via their private single-use link. Neither identity is ever revealed.
+        </p>
+
+        <div id="reply-input-area" class="flex flex-col gap-2 mt-1">
+          <textarea id="reply-text" class="w-full h-24 bg-[#10131A] text-white text-xs p-3 rounded-xl border border-white/10 resize-none outline-none focus:ring-2 focus:ring-white/30 placeholder:text-slate-500" placeholder="Type your honest answer back to the sender..."></textarea>
+          <button id="reply-btn" onclick="sendReply()" class="w-full h-11 bg-white text-[#0B0E14] font-bold text-xs rounded-full flex items-center justify-center gap-2 active:scale-98 transition-all hover:bg-slate-100 shadow-md">
+            <span class="material-symbols-outlined text-[16px]">send</span>
+            Send Anonymous Reply 💬
+          </button>
+        </div>
+
+        <div id="reply-sent-box" class="hidden bg-emerald-950/40 border border-emerald-500/30 p-3.5 rounded-2xl flex items-center gap-3">
+          <span class="material-symbols-outlined text-emerald-400 text-[24px]">task_alt</span>
+          <div>
+            <span class="text-xs font-bold text-white block">Reply Published to Token</span>
+            <span class="text-[11px] text-slate-300">The sender can now view your reply at their token link.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Secondary Actions -->
+      <section class="flex justify-center gap-4 py-2 text-xs">
+        <button onclick="shareAsSticker()" class="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
+          <span class="material-symbols-outlined text-[16px]">share</span> Share to Story
+        </button>
+        <button onclick="reportAbuse()" class="text-slate-500 hover:text-rose-400 flex items-center gap-1 transition-colors">
+          <span class="material-symbols-outlined text-[16px]">flag</span> Report / Block
+        </button>
+      </section>
+    </main>
+
+    <!-- Persistent Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#0B0E14]/95 backdrop-blur-xl border-t border-white/10 pb-safe">
+      <div class="flex justify-around items-center h-16 max-w-xl mx-auto px-2">
+        <a href="index.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">home</span>
+          <span class="text-[10px] font-semibold mt-0.5">Home</span>
+        </a>
+        <a href="dice.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">casino</span>
+          <span class="text-[10px] font-semibold mt-0.5">Dice</span>
+        </a>
+        <a href="sticker-studio.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">photo_filter</span>
+          <span class="text-[10px] font-semibold mt-0.5">Stickers</span>
+        </a>
+        <a href="inbox.html" class="flex flex-col items-center justify-center text-white relative py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">mail</span>
+          <span class="text-[10px] font-semibold mt-0.5">Inbox</span>
+          <span class="w-1 h-1 bg-white rounded-full mt-0.5"></span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">person</span>
+          <span class="text-[10px] font-semibold mt-0.5">Profile</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    const messagesDb = {
+      '1': {
+        badge: '💘 Secret Crush',
+        time: '10m ago',
+        content: 'I\'ve had a secret crush on you since last summer when we were study partners... 🫣'
+      },
+      '2': {
+        badge: '✨ Mutual Vibe',
+        time: '42m ago',
+        content: 'TBH you give off effortless main character aesthetic ✨ You\'re way cooler than you realize.'
+      },
+      '3': {
+        badge: '🤝 Close Friend',
+        time: '2d ago',
+        content: 'You always checked in on me during finals week, you\'re genuinely the realest friend I have.'
+      },
+      '4': {
+        badge: '🤫 Confession',
+        time: '3d ago',
+        content: 'Honest impression: at first you seemed intimidating, but you\'re actually so funny and kind once someone talks to you.'
+      }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const msgId = urlParams.get('id') || '1';
+    const data = messagesDb[msgId] || messagesDb['1'];
+
+    document.getElementById('msg-badge').textContent = data.badge;
+    document.getElementById('msg-time').textContent = data.time;
+    document.getElementById('msg-content').textContent = `"${data.content}"`;
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    let isPinned = false;
+    function togglePin() {
+      isPinned = !isPinned;
+      document.getElementById('pin-btn').className = isPinned ? 'p-2 text-amber-400 transition-colors' : 'p-2 text-slate-400 hover:text-white transition-colors';
+      showToast(isPinned ? 'Message pinned to top' : 'Message unpinned');
+    }
+
+    function deleteMessage() {
+      if (confirm('Delete this anonymous message permanently?')) {
+        showToast('Message deleted');
+        setTimeout(() => window.location.href = 'inbox.html', 600);
+      }
+    }
+
+    function sendReply() {
+      const text = document.getElementById('reply-text').value.trim();
+      if (!text) {
+        showToast('Type a reply first');
+        return;
+      }
+      document.getElementById('reply-btn').innerHTML = `<span class="animate-spin material-symbols-outlined text-[16px]">progress_activity</span> Sending...`;
+      setTimeout(() => {
+        document.getElementById('reply-input-area').classList.add('hidden');
+        document.getElementById('reply-sent-box').classList.remove('hidden');
+        showToast('Anonymous reply sent successfully!');
+      }, 700);
+    }
+
+    function shareAsSticker() {
+      const q = document.getElementById('msg-content').textContent.replace(/"/g, '');
+      window.location.href = `sticker-studio.html?question=${encodeURIComponent(q)}`;
+    }
+
+    function reportAbuse() {
+      alert('Message flagged. The sender\'s device has been blocked from sending you future messages.');
+      showToast('Sender blocked');
+    }
+  </script>
+</body>
+</html>

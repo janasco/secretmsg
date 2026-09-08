@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>Privacy & Security Vault - SecretMsg</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-lowest": "#0b0e14",
+            "primary": "#ffffff",
+            "surface-dim": "#10131a",
+            "on-background": "#e1e2eb",
+            "surface-container-high": "#272a31",
+            "surface-variant": "#32353c",
+            "surface-container": "#1d2026"
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen">
+  <div class="mobile-viewport">
+    <!-- Toast Notice -->
+    <div id="toast" class="toast-notice">
+      <span class="material-symbols-outlined text-[18px]">check_circle</span>
+      <span id="toast-text">Settings updated</span>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirm-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+      <div class="glass-panel border border-red-500/30 rounded-3xl p-6 max-w-xs w-full flex flex-col items-center text-center gap-3">
+        <div class="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400">
+          <span class="material-symbols-outlined text-2xl">warning</span>
+        </div>
+        <h3 id="modal-title" class="text-base font-bold text-white">Confirm Action</h3>
+        <p id="modal-desc" class="text-xs text-slate-300">Are you sure you want to proceed? This action cannot be undone.</p>
+        <div class="flex gap-2 w-full mt-2">
+          <button onclick="closeModal()" class="flex-1 py-2.5 bg-white/10 text-white rounded-full text-xs font-semibold hover:bg-white/15">
+            Cancel
+          </button>
+          <button id="modal-confirm-btn" onclick="executeModalAction()" class="flex-1 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-full text-xs font-bold shadow-lg shadow-red-900/30">
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-white/10 flex items-center h-14 px-4 gap-3">
+      <a href="profile.html" class="p-2 -ml-2 text-slate-400 hover:text-white transition-colors" title="Back to Profile">
+        <span class="material-symbols-outlined text-[22px]">arrow_back</span>
+      </a>
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-white text-[20px]">shield</span>
+        <h1 class="text-base font-bold text-white tracking-tight">Privacy & Security Vault</h1>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 px-4 py-4 flex flex-col gap-4 pb-28">
+
+      <!-- Zero-Log Guarantee Banner -->
+      <section class="glass-panel rounded-2xl p-4 flex items-start gap-3 border border-white/15 white-glow">
+        <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white flex-shrink-0 mt-0.5">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <h2 class="text-sm font-bold text-white">Zero-Log Guarantee</h2>
+            <span class="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2 py-0.5 rounded-full">ENFORCED</span>
+          </div>
+          <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+            SecretMsg operates on a stateless edge architecture. We never store sender IP addresses, canvas fingerprints, or tracking cookies.
+          </p>
+        </div>
+      </section>
+
+      <!-- Messaging Controls -->
+      <section class="glass-panel rounded-2xl border border-white/10 overflow-hidden">
+        <div class="px-4 py-3 border-b border-white/10 bg-white/5 flex items-center justify-between">
+          <span class="text-xs font-bold text-white uppercase tracking-wider">Messaging Controls</span>
+          <span class="text-[10px] text-slate-400 font-mono">Real-time</span>
+        </div>
+
+        <div class="divide-y divide-white/5">
+          <!-- Toggle 1 -->
+          <div class="p-4 flex items-center justify-between gap-3">
+            <div class="flex-1">
+              <div class="text-xs font-semibold text-white">Allow Double-Blind Anonymous Replies</div>
+              <div class="text-[11px] text-slate-400 mt-0.5">Senders can reply without ever revealing identity</div>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+              <input type="checkbox" checked onchange="toggleSetting('Double-Blind Replies', this.checked)" class="sr-only peer">
+              <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white peer-checked:after:bg-[#0B0E14]"></div>
+            </label>
+          </div>
+
+          <!-- Toggle 2 -->
+          <div class="p-4 flex items-center justify-between gap-3">
+            <div class="flex-1">
+              <div class="text-xs font-semibold text-white">Display Approximate Sender Clues</div>
+              <div class="text-[11px] text-slate-400 mt-0.5">Show broad hints like "iOS device" or timezone</div>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+              <input type="checkbox" checked onchange="toggleSetting('Sender Clues', this.checked)" class="sr-only peer">
+              <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white peer-checked:after:bg-[#0B0E14]"></div>
+            </label>
+          </div>
+
+          <!-- Toggle 3 -->
+          <div class="p-4 flex items-center justify-between gap-3">
+            <div class="flex-1">
+              <div class="text-xs font-semibold text-white">Cloudflare Turnstile Bot Shield</div>
+              <div class="text-[11px] text-slate-400 mt-0.5">Block scripted spam and automated reply bots</div>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+              <input type="checkbox" checked onchange="toggleSetting('Bot Shield', this.checked)" class="sr-only peer">
+              <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white peer-checked:after:bg-[#0B0E14]"></div>
+            </label>
+          </div>
+
+          <!-- Toggle 4 -->
+          <div class="p-4 flex items-center justify-between gap-3">
+            <div class="flex-1">
+              <div class="text-xs font-semibold text-white">AI Harassment Filter</div>
+              <div class="text-[11px] text-slate-400 mt-0.5">Automatically quarantine toxic or abusive submissions</div>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+              <input type="checkbox" checked onchange="toggleSetting('AI Moderation', this.checked)" class="sr-only peer">
+              <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white peer-checked:after:bg-[#0B0E14]"></div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Account & Passkey Credentials -->
+      <section class="glass-panel rounded-2xl border border-white/10 p-4 flex flex-col gap-3">
+        <span class="text-xs font-bold text-white uppercase tracking-wider">Account & Credentials</span>
+
+        <div class="bg-[#10131A] rounded-xl p-3 border border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="material-symbols-outlined text-slate-400 text-[20px]">mail</span>
+            <div>
+              <div class="text-xs font-mono text-white font-medium">janasco@duck.com</div>
+              <div class="text-[10px] text-slate-400">Recovery email</div>
+            </div>
+          </div>
+          <span class="text-[10px] font-bold text-white bg-white/20 px-2 py-0.5 rounded-full border border-white/30">VERIFIED</span>
+        </div>
+
+        <div class="bg-[#10131A] rounded-xl p-3 border border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="material-symbols-outlined text-slate-400 text-[20px]">alternate_email</span>
+            <div>
+              <div class="text-xs font-mono text-white font-medium">@janasco</div>
+              <div class="text-[10px] text-slate-400">Claimed vanity slug</div>
+            </div>
+          </div>
+          <span class="text-[10px] font-bold text-slate-300 border border-white/15 px-2 py-0.5 rounded-full">ACTIVE</span>
+        </div>
+
+        <div class="bg-[#10131A] rounded-xl p-3 border border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="material-symbols-outlined text-slate-400 text-[20px]">key</span>
+            <div>
+              <div class="text-xs font-mono text-white font-medium">FIDO2 / Touch ID</div>
+              <div class="text-[10px] text-slate-400">Hardware Passkey enrolled</div>
+            </div>
+          </div>
+          <span class="text-[10px] font-bold text-emerald-400 bg-emerald-950/50 px-2 py-0.5 rounded-full">ENABLED</span>
+        </div>
+      </section>
+
+      <!-- Nuclear Options -->
+      <section class="glass-panel rounded-2xl border border-red-500/20 p-4 flex flex-col gap-3">
+        <div class="flex items-center gap-2 text-red-400">
+          <span class="material-symbols-outlined text-[18px]">delete_forever</span>
+          <span class="text-xs font-bold uppercase tracking-wider">Nuclear Options</span>
+        </div>
+
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Permanent data expungement actions. Once executed, cryptographic decryption keys are scrubbed immediately.
+        </p>
+
+        <div class="flex flex-col gap-2 mt-1">
+          <button onclick="promptAction('wipe')" class="w-full py-2.5 bg-white/5 hover:bg-white/10 text-slate-200 border border-white/15 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all active:scale-95">
+            <span class="material-symbols-outlined text-red-400 text-[18px]">cleaning_services</span>
+            Wipe All Stored Inbox Messages
+          </button>
+          <button onclick="promptAction('delete')" class="w-full py-2.5 bg-red-950/40 hover:bg-red-900/50 text-red-300 border border-red-500/30 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition-all active:scale-95">
+            <span class="material-symbols-outlined text-[18px]">person_off</span>
+            Delete Account Permanently
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Persistent Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#0B0E14]/95 backdrop-blur-xl border-t border-white/10 pb-safe">
+      <div class="flex justify-around items-center h-16 max-w-xl mx-auto px-2">
+        <a href="index.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">home</span>
+          <span class="text-[10px] font-semibold mt-0.5">Home</span>
+        </a>
+        <a href="dice.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">casino</span>
+          <span class="text-[10px] font-semibold mt-0.5">Dice</span>
+        </a>
+        <a href="sticker-studio.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">photo_filter</span>
+          <span class="text-[10px] font-semibold mt-0.5">Stickers</span>
+        </a>
+        <a href="inbox.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white relative py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">mail</span>
+          <span class="text-[10px] font-semibold mt-0.5">Inbox</span>
+          <span class="absolute top-1 right-2.5 w-2 h-2 bg-rose-500 rounded-full border border-[#0B0E14]"></span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center justify-center text-white relative py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">person</span>
+          <span class="text-[10px] font-semibold mt-0.5">Profile</span>
+          <span class="w-1 h-1 bg-white rounded-full mt-0.5"></span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    let currentAction = null;
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function toggleSetting(name, state) {
+      showToast(`${name}: ${state ? 'Enabled' : 'Disabled'}`);
+    }
+
+    function promptAction(type) {
+      currentAction = type;
+      const modal = document.getElementById('confirm-modal');
+      const title = document.getElementById('modal-title');
+      const desc = document.getElementById('modal-desc');
+
+      if (type === 'wipe') {
+        title.textContent = 'Wipe Inbox?';
+        desc.textContent = 'All received secret messages and reply threads will be permanently erased.';
+      } else if (type === 'delete') {
+        title.textContent = 'Delete Account?';
+        desc.textContent = 'Your vanity slug @janasco and profile will be released. This cannot be recovered.';
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('confirm-modal').classList.add('hidden');
+      currentAction = null;
+    }
+
+    function executeModalAction() {
+      const action = currentAction;
+      closeModal();
+      if (action === 'wipe') {
+        showToast('All inbox messages wiped successfully');
+      } else if (action === 'delete') {
+        showToast('Account scheduled for permanent deletion');
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1500);
+      }
+    }
+  </script>
+</body>
+</html>

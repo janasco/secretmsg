@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>My Profile & Vanity Link - SecretMsg</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-lowest": "#0b0e14",
+            "primary": "#ffffff",
+            "surface-dim": "#10131a",
+            "on-background": "#e1e2eb",
+            "surface-container-high": "#272a31",
+            "surface-variant": "#32353c",
+            "surface-container": "#1d2026"
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen">
+  <div class="mobile-viewport">
+    <!-- Toast Notice -->
+    <div id="toast" class="toast-notice">
+      <span class="material-symbols-outlined text-[18px]">check_circle</span>
+      <span id="toast-text">Link copied!</span>
+    </div>
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-white/10 flex justify-between items-center h-14 px-4">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-white text-[22px]">account_circle</span>
+        <h1 class="text-base font-bold text-white tracking-tight">My Profile</h1>
+      </div>
+      <div class="flex items-center gap-1">
+        <a href="supporters.html" class="p-2 text-amber-300 hover:text-amber-200 transition-colors" title="Supporters Perks">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+        </a>
+        <a href="settings.html" class="p-2 -mr-2 text-slate-400 hover:text-white transition-colors" title="Settings">
+          <span class="material-symbols-outlined text-[22px]">settings</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 px-4 py-4 flex flex-col gap-4 pb-28">
+      <!-- Profile Identity Card -->
+      <section class="glass-panel rounded-3xl p-5 flex flex-col items-center text-center gap-3 border border-white/15 white-glow relative overflow-hidden">
+        <div class="absolute -top-12 -right-12 w-32 h-32 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+
+        <div class="relative">
+          <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-white/30 via-slate-400 to-white/10 p-0.5 border border-white/30">
+            <div class="w-full h-full rounded-full bg-[#151B26] flex items-center justify-center text-2xl font-bold text-white">
+              J
+            </div>
+          </div>
+          <a href="supporters.html" class="absolute -bottom-1 -right-1 bg-amber-400 text-[#0B0E14] text-[10px] font-bold px-2 py-0.5 rounded-full border border-[#0B0E14] shadow flex items-center gap-0.5">
+            <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span> PRO
+          </a>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-white">janasco</h2>
+          <p class="text-xs text-slate-400 font-mono">@janasco • secretmsg.net</p>
+        </div>
+
+        <!-- Vanity Link Box -->
+        <div class="w-full bg-[#10131A] rounded-2xl p-3 border border-white/10 flex items-center justify-between mt-1">
+          <div class="flex items-center gap-2 truncate">
+            <span class="material-symbols-outlined text-slate-400 text-[18px]">link</span>
+            <span class="text-xs font-mono text-slate-200 truncate">secretmsg.net/janasco</span>
+          </div>
+          <span class="text-[10px] text-emerald-400 font-semibold bg-emerald-950/60 px-2 py-0.5 rounded">Live</span>
+        </div>
+
+        <!-- Share Actions -->
+        <div class="flex gap-2 w-full mt-1">
+          <button id="copy-btn" onclick="copyLink()" class="flex-1 py-2.5 bg-white text-[#0B0E14] text-xs font-bold rounded-full flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-md hover:bg-slate-100">
+            <span class="material-symbols-outlined text-[16px]">content_copy</span>
+            Copy Link
+          </button>
+          <button onclick="openQrModal()" class="py-2.5 px-4 glass-panel text-white text-xs font-semibold rounded-full flex items-center justify-center gap-1.5 active:scale-95 transition-all hover:bg-white/10">
+            <span class="material-symbols-outlined text-[16px]">qr_code_2</span>
+            QR
+          </button>
+        </div>
+      </section>
+
+      <!-- Activity Metrics -->
+      <section class="grid grid-cols-3 gap-2.5">
+        <div class="glass-panel rounded-2xl p-3 text-center border border-white/10">
+          <span class="text-[10px] font-mono text-slate-400 uppercase block">Messages</span>
+          <span class="text-xl font-bold text-white mt-0.5 block">128</span>
+        </div>
+        <div class="glass-panel rounded-2xl p-3 text-center border border-white/10">
+          <span class="text-[10px] font-mono text-slate-400 uppercase block">Shares</span>
+          <span class="text-xl font-bold text-white mt-0.5 block">42</span>
+        </div>
+        <div class="glass-panel rounded-2xl p-3 text-center border border-white/10">
+          <span class="text-[10px] font-mono text-slate-400 uppercase block">Cheers</span>
+          <span class="text-xl font-bold text-amber-300 mt-0.5 block">96</span>
+        </div>
+      </section>
+
+      <!-- Hub Quick Links Menu -->
+      <section class="flex flex-col gap-2">
+        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider px-1">Creator Tools</span>
+        <div class="glass-panel rounded-2xl divide-y divide-white/10 border border-white/10 overflow-hidden">
+          <a href="sticker-studio.html" class="p-3.5 flex items-center justify-between hover:bg-white/5 transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">
+                <span class="material-symbols-outlined text-[18px]">photo_filter</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">Story Sticker Studio</span>
+                <span class="text-[10px] text-slate-400">Export high-res Instagram & Snapchat cards</span>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-slate-500 text-[18px]">chevron_right</span>
+          </a>
+
+          <a href="supporters.html" class="p-3.5 flex items-center justify-between hover:bg-white/5 transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-amber-400/10 flex items-center justify-center text-amber-300">
+                <span class="material-symbols-outlined text-[18px]">volunteer_activism</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">Supporters Wall & Perks</span>
+                <span class="text-[10px] text-slate-400">Polar.sh tiers, golden badges, and funding goals</span>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-slate-500 text-[18px]">chevron_right</span>
+          </a>
+
+          <a href="settings.html" class="p-3.5 flex items-center justify-between hover:bg-white/5 transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">
+                <span class="material-symbols-outlined text-[18px]">shield</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">Privacy & Security Vault</span>
+                <span class="text-[10px] text-slate-400">Zero-log verification, wipe messages, OTP auth</span>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-slate-500 text-[18px]">chevron_right</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Active Pinned Prompts -->
+      <section class="flex flex-col gap-2">
+        <div class="flex justify-between items-center px-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Active Prompts on Profile</span>
+          <a href="dice.html" class="text-xs font-semibold text-white/80 hover:text-white flex items-center gap-0.5">
+            + New Prompt
+          </a>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-3.5 flex items-center justify-between border border-white/10">
+          <div class="flex-1 pr-2">
+            <span class="text-[10px] font-bold text-rose-300 uppercase">Featured TBH</span>
+            <p class="text-xs text-white font-medium mt-0.5">"Send me an honest TBH. Don't hold back 🫣"</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer shrink-0">
+            <input checked type="checkbox" class="sr-only peer" onchange="showToast('Prompt visibility updated')"/>
+            <div class="w-9 h-5 bg-[#10131A] border border-white/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-white peer-checked:after:bg-[#0B0E14]"></div>
+          </label>
+        </div>
+      </section>
+    </main>
+
+    <!-- QR Code Modal -->
+    <div id="qr-modal" class="fixed inset-0 z-50 bg-[#0B0E14]/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+      <div class="glass-panel border border-white/20 rounded-3xl p-6 max-w-xs w-full text-center flex flex-col items-center gap-4">
+        <div class="flex justify-between items-center w-full">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Scan to Send Message</span>
+          <button onclick="closeQrModal()" class="text-slate-400 hover:text-white">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+
+        <!-- Clean Scalable Vector QR Code -->
+        <div class="p-4 bg-white rounded-2xl shadow-xl">
+          <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="160" height="160" fill="white"/>
+            <!-- Outer Corner 1 -->
+            <rect x="10" y="10" width="40" height="40" rx="6" fill="#0B0E14"/>
+            <rect x="18" y="18" width="24" height="24" rx="3" fill="white"/>
+            <rect x="24" y="24" width="12" height="12" rx="2" fill="#0B0E14"/>
+            <!-- Outer Corner 2 -->
+            <rect x="110" y="10" width="40" height="40" rx="6" fill="#0B0E14"/>
+            <rect x="118" y="18" width="24" height="24" rx="3" fill="white"/>
+            <rect x="124" y="24" width="12" height="12" rx="2" fill="#0B0E14"/>
+            <!-- Outer Corner 3 -->
+            <rect x="10" y="110" width="40" height="40" rx="6" fill="#0B0E14"/>
+            <rect x="18" y="118" width="24" height="24" rx="3" fill="white"/>
+            <rect x="24" y="124" width="12" height="12" rx="2" fill="#0B0E14"/>
+            <!-- QR Data Matrix Pattern -->
+            <rect x="60" y="20" width="8" height="20" fill="#0B0E14"/>
+            <rect x="80" y="10" width="16" height="8" fill="#0B0E14"/>
+            <rect x="70" y="40" width="12" height="12" fill="#0B0E14"/>
+            <rect x="90" y="30" width="8" height="18" fill="#0B0E14"/>
+            <rect x="20" y="60" width="18" height="8" fill="#0B0E14"/>
+            <rect x="40" y="70" width="8" height="18" fill="#0B0E14"/>
+            <rect x="60" y="60" width="40" height="40" rx="6" fill="#0B0E14"/>
+            <circle cx="80" cy="80" r="8" fill="white"/>
+            <rect x="110" y="60" width="18" height="8" fill="#0B0E14"/>
+            <rect x="130" y="80" width="18" height="18" fill="#0B0E14"/>
+            <rect x="60" y="110" width="20" height="8" fill="#0B0E14"/>
+            <rect x="70" y="130" width="18" height="18" fill="#0B0E14"/>
+            <rect x="100" y="120" width="30" height="8" fill="#0B0E14"/>
+            <rect x="120" y="130" width="18" height="18" fill="#0B0E14"/>
+          </svg>
+        </div>
+
+        <div class="text-center">
+          <span class="text-xs font-mono text-slate-300 block">secretmsg.net/janasco</span>
+          <p class="text-[10px] text-slate-400 mt-0.5">Scan with phone camera to open instant TBH</p>
+        </div>
+
+        <button onclick="copyLink()" class="w-full py-2.5 bg-white text-[#0B0E14] font-bold text-xs rounded-full">
+          Copy Public Link
+        </button>
+      </div>
+    </div>
+
+    <!-- Persistent Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#0B0E14]/95 backdrop-blur-xl border-t border-white/10 pb-safe">
+      <div class="flex justify-around items-center h-16 max-w-xl mx-auto px-2">
+        <a href="index.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">home</span>
+          <span class="text-[10px] font-semibold mt-0.5">Home</span>
+        </a>
+        <a href="dice.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">casino</span>
+          <span class="text-[10px] font-semibold mt-0.5">Dice</span>
+        </a>
+        <a href="sticker-studio.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">photo_filter</span>
+          <span class="text-[10px] font-semibold mt-0.5">Stickers</span>
+        </a>
+        <a href="inbox.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white relative py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">mail</span>
+          <span class="text-[10px] font-semibold mt-0.5">Inbox</span>
+          <span class="absolute top-1 right-2.5 w-2 h-2 bg-rose-500 rounded-full border border-[#0B0E14]"></span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center justify-center text-white relative py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">person</span>
+          <span class="text-[10px] font-semibold mt-0.5">Profile</span>
+          <span class="w-1 h-1 bg-white rounded-full mt-0.5"></span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function copyLink() {
+      navigator.clipboard?.writeText('https://secretmsg.net/janasco');
+      showToast('Public link copied to clipboard!');
+    }
+
+    function openQrModal() {
+      document.getElementById('qr-modal').classList.remove('hidden');
+    }
+
+    function closeQrModal() {
+      document.getElementById('qr-modal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
