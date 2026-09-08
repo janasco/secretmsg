@@ -119,34 +119,83 @@
         </div>
       </section>
 
-      <!-- Double-Blind Reply Thread Box -->
-      <section class="glass-panel rounded-3xl p-5 flex flex-col gap-3 border border-white/15">
+      <!-- Reply in Public or Private Mode Section -->
+      <section class="glass-panel rounded-3xl p-5 flex flex-col gap-3.5 border border-white/15">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-[18px] text-white">mark_chat_read</span>
-            <h3 class="text-sm font-bold text-white">Double-Blind Reply</h3>
+            <span class="material-symbols-outlined text-[20px] text-white">forum</span>
+            <h3 class="text-sm font-bold text-white">Reply to Question</h3>
           </div>
-          <span class="text-[10px] font-mono text-slate-400 bg-white/10 px-2 py-0.5 rounded-full">1-Time Reply</span>
+          <span id="reply-mode-pill" class="text-[10px] font-mono text-indigo-300 bg-indigo-500/20 border border-indigo-500/30 px-2.5 py-0.5 rounded-full font-bold">
+            Public Q&A Thread
+          </span>
         </div>
 
-        <p class="text-xs text-slate-400">
-          The sender can read your response via their private single-use link. Neither identity is ever revealed.
-        </p>
-
-        <div id="reply-input-area" class="flex flex-col gap-2 mt-1">
-          <textarea id="reply-text" class="w-full h-24 bg-[#10131A] text-white text-xs p-3 rounded-xl border border-white/10 resize-none outline-none focus:ring-2 focus:ring-white/30 placeholder:text-slate-500" placeholder="Type your honest answer back to the sender..."></textarea>
-          <button id="reply-btn" onclick="sendReply()" class="w-full h-11 bg-white text-[#0B0E14] font-bold text-xs rounded-full flex items-center justify-center gap-2 active:scale-98 transition-all hover:bg-slate-100 shadow-md">
-            <span class="material-symbols-outlined text-[16px]">send</span>
-            Send Anonymous Reply 💬
+        <!-- Mode Toggle: Public vs Private -->
+        <div class="grid grid-cols-2 gap-1.5 p-1 bg-white/5 rounded-2xl border border-white/10 text-xs font-semibold">
+          <button id="btn-mode-public" onclick="setReplyMode('public')" class="py-2 rounded-xl bg-white text-[#0B0E14] font-bold shadow-sm transition-all flex items-center justify-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">public</span>
+            Reply in Public
+          </button>
+          <button id="btn-mode-private" onclick="setReplyMode('private')" class="py-2 rounded-xl text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">lock</span>
+            Reply in Private
           </button>
         </div>
 
-        <div id="reply-sent-box" class="hidden bg-emerald-950/40 border border-emerald-500/30 p-3.5 rounded-2xl flex items-center gap-3">
-          <span class="material-symbols-outlined text-emerald-400 text-[24px]">task_alt</span>
-          <div>
-            <span class="text-xs font-bold text-white block">Reply Published to Token</span>
-            <span class="text-[11px] text-slate-300">The sender can now view your reply at their token link.</span>
+        <p id="reply-mode-hint" class="text-xs text-slate-400 leading-relaxed">
+          <strong>Public Q&A:</strong> Your reply will appear on your public board and make a thread so friends can follow the conversation or ask follow-ups.
+        </p>
+
+        <!-- Ongoing Thread History -->
+        <div id="thread-stream" class="space-y-2.5 pt-2 border-t border-white/10">
+          <div class="flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <span>THREAD CONVERSATION</span>
+            <span id="thread-status" class="text-emerald-400">● Live Thread</span>
           </div>
+
+          <!-- Turn 1: Sender Question -->
+          <div class="bg-white/5 p-3.5 rounded-2xl border border-white/10 space-y-1">
+            <div class="flex items-center justify-between text-[10px] text-slate-400">
+              <span class="font-bold text-slate-300 flex items-center gap-1">
+                <span class="w-2 h-2 rounded-full bg-slate-500"></span> Anonymous Friend
+              </span>
+              <span class="font-mono">Question</span>
+            </div>
+            <p id="thread-q" class="text-xs text-slate-200 font-medium leading-relaxed pt-0.5"></p>
+          </div>
+
+          <!-- Turn 2: Existing or New Answer -->
+          <div id="thread-answer-card" class="hidden bg-indigo-950/40 p-3.5 rounded-2xl border border-indigo-500/30 space-y-1">
+            <div class="flex items-center justify-between text-[10px]">
+              <span class="font-bold text-indigo-300 flex items-center gap-1">
+                <span class="w-2 h-2 rounded-full bg-indigo-400"></span> You (Board Owner)
+              </span>
+              <span id="thread-answer-badge" class="font-mono text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.2 rounded">Public Answer</span>
+            </div>
+            <p id="thread-answer-text" class="text-xs text-slate-100 font-medium leading-relaxed pt-0.5"></p>
+          </div>
+        </div>
+
+        <div id="reply-input-area" class="flex flex-col gap-2 mt-1">
+          <textarea id="reply-text" class="w-full h-24 bg-[#10131A] text-white text-xs p-3 rounded-xl border border-white/10 resize-none outline-none focus:ring-2 focus:ring-white/30 placeholder:text-slate-500" placeholder="Type your answer... make threads and keep the fun going!"></textarea>
+          <button id="reply-btn" onclick="sendReply()" class="w-full h-11 bg-white text-[#0B0E14] font-bold text-xs rounded-full flex items-center justify-center gap-2 active:scale-98 transition-all hover:bg-slate-100 shadow-md">
+            <span class="material-symbols-outlined text-[16px]">send</span>
+            <span id="reply-btn-label">Post Public Reply & Share</span>
+          </button>
+        </div>
+
+        <div id="reply-sent-box" class="hidden bg-emerald-950/40 border border-emerald-500/30 p-3.5 rounded-2xl flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-emerald-400 text-[24px]">task_alt</span>
+            <div>
+              <span id="sent-title" class="text-xs font-bold text-white block">Published to Public Thread!</span>
+              <span id="sent-desc" class="text-[11px] text-slate-300">Friends can see this Q&A thread and ask follow-ups.</span>
+            </div>
+          </div>
+          <button onclick="shareAsSticker()" class="px-3.5 py-1.5 bg-white text-[#0B0E14] text-xs font-bold rounded-full shrink-0 shadow hover:bg-slate-100 transition-all flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">share</span> Story
+          </button>
         </div>
       </section>
 
@@ -220,6 +269,34 @@
     document.getElementById('msg-badge').textContent = data.badge;
     document.getElementById('msg-time').textContent = data.time;
     document.getElementById('msg-content').textContent = `"${data.content}"`;
+    document.getElementById('thread-q').textContent = `"${data.content}"`;
+
+    let currentReplyMode = 'public';
+
+    function setReplyMode(mode) {
+      currentReplyMode = mode;
+      const btnPub = document.getElementById('btn-mode-public');
+      const btnPriv = document.getElementById('btn-mode-private');
+      const pill = document.getElementById('reply-mode-pill');
+      const hint = document.getElementById('reply-mode-hint');
+      const btnLabel = document.getElementById('reply-btn-label');
+
+      if (mode === 'public') {
+        btnPub.className = 'py-2 rounded-xl bg-white text-[#0B0E14] font-bold shadow-sm transition-all flex items-center justify-center gap-1.5';
+        btnPriv.className = 'py-2 rounded-xl text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5';
+        pill.textContent = 'Public Q&A Thread';
+        pill.className = 'text-[10px] font-mono text-indigo-300 bg-indigo-500/20 border border-indigo-500/30 px-2.5 py-0.5 rounded-full font-bold';
+        hint.innerHTML = '<strong>Public Q&A:</strong> Your reply will appear on your public board and make a thread so friends can follow the conversation or ask follow-ups.';
+        btnLabel.textContent = 'Post Public Reply & Share';
+      } else {
+        btnPriv.className = 'py-2 rounded-xl bg-white text-[#0B0E14] font-bold shadow-sm transition-all flex items-center justify-center gap-1.5';
+        btnPub.className = 'py-2 rounded-xl text-slate-300 hover:text-white transition-all flex items-center justify-center gap-1.5';
+        pill.textContent = 'Private 1-on-1 Whisper';
+        pill.className = 'text-[10px] font-mono text-emerald-300 bg-emerald-500/20 border border-emerald-500/30 px-2.5 py-0.5 rounded-full font-bold';
+        hint.innerHTML = '<strong>Private Whisper:</strong> Only the original anonymous sender can view your reply via their secret link. Neither identity is revealed.';
+        btnLabel.textContent = 'Send Private Whisper 🔒';
+      }
+    }
 
     function showToast(msg) {
       const toast = document.getElementById('toast');
@@ -249,10 +326,31 @@
         return;
       }
       document.getElementById('reply-btn').innerHTML = `<span class="animate-spin material-symbols-outlined text-[16px]">progress_activity</span> Sending...`;
+      
       setTimeout(() => {
         document.getElementById('reply-input-area').classList.add('hidden');
         document.getElementById('reply-sent-box').classList.remove('hidden');
-        showToast('Anonymous reply sent successfully!');
+        
+        // Update thread UI with the answer
+        const answerCard = document.getElementById('thread-answer-card');
+        const answerText = document.getElementById('thread-answer-text');
+        const answerBadge = document.getElementById('thread-answer-badge');
+        answerText.textContent = text;
+        answerCard.classList.remove('hidden');
+
+        if (currentReplyMode === 'public') {
+          answerBadge.textContent = 'Public Answer';
+          answerBadge.className = 'font-mono text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded';
+          document.getElementById('sent-title').textContent = 'Published to Public Thread!';
+          document.getElementById('sent-desc').textContent = 'Friends can see this Q&A thread and ask follow-ups.';
+          showToast('Public reply published to your thread!');
+        } else {
+          answerBadge.textContent = 'Private Whisper';
+          answerBadge.className = 'font-mono text-indigo-300 font-bold bg-indigo-950/60 px-2 py-0.5 rounded';
+          document.getElementById('sent-title').textContent = 'Private Whisper Delivered!';
+          document.getElementById('sent-desc').textContent = 'Sender can read via their private token link.';
+          showToast('Private whisper sent to sender token!');
+        }
       }, 700);
     }
 
