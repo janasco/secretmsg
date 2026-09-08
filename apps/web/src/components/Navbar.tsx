@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Sparkles, LogOut, User, Lock, Moon, Sun, Laptop } from 'lucide-react';
+import { Heart, Sparkles, LogOut, User, Lock, Moon, Sun } from 'lucide-react';
 import { UserProfile } from '../lib/api';
 import { getInitialTheme, applyAppTheme, ThemeMode } from '../lib/theme';
 
@@ -18,7 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({ user, onOpenDonation, onLogout }
   }, [theme]);
 
   const cycleTheme = () => {
-    const next: ThemeMode = theme === 'dark' ? 'light' : theme === 'light' ? 'system' : 'dark';
+    const next: ThemeMode = theme === 'dark' ? 'light' : 'dark';
     setTheme(next);
   };
 
@@ -44,12 +44,14 @@ export const Navbar: React.FC<NavbarProps> = ({ user, onOpenDonation, onLogout }
           <button
             onClick={cycleTheme}
             className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
-            title={`Theme: ${theme.toUpperCase()} (Click to toggle)`}
+            title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
             aria-label="Toggle theme mode"
           >
-            {theme === 'dark' && <Moon className="w-4 h-4 text-indigo-300" />}
-            {theme === 'light' && <Sun className="w-4 h-4 text-amber-400" />}
-            {theme === 'system' && <Laptop className="w-4 h-4 text-slate-300" />}
+            {theme === 'dark' ? (
+              <Moon className="w-4 h-4 text-indigo-300" />
+            ) : (
+              <Sun className="w-4 h-4 text-amber-400" />
+            )}
           </button>
 
           <Link

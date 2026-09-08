@@ -1,17 +1,22 @@
-export type ThemeMode = 'dark' | 'light' | 'system';
+export type ThemeMode = 'dark' | 'light';
 
 const THEME_KEY = 'secretmsg_theme';
 
-export function getInitialTheme(): ThemeMode {
-  if (typeof window === 'undefined') return 'system';
-  return (localStorage.getItem(THEME_KEY) as ThemeMode) || 'system';
+export function getSystemTheme(): ThemeMode {
+  if (typeof window === 'undefined') return 'dark';
+  return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
 }
 
-export function applyAppTheme(theme: ThemeMode): boolean {
+export function getInitialTheme(): ThemeMode {
+  if (typeof window === 'undefined') return 'dark';
+  const saved = localStorage.getItem(THEME_KEY) as ThemeMode;
+  if (saved === 'dark' || saved === 'light') return saved;
+  return getSystemTheme();
+}
+
+export function applyAppTheme(theme: ThemeMode, persist = true): boolean {
   if (typeof window === 'undefined') return true;
-  const isDark =
-    theme === 'dark' ||
-    (theme === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const isDark = theme === 'dark';
 
   if (isDark) {
     document.documentElement.classList.add('dark');
@@ -21,6 +26,8 @@ export function applyAppTheme(theme: ThemeMode): boolean {
     document.documentElement.classList.add('light');
   }
 
-  localStorage.setItem(THEME_KEY, theme);
+  if (persist) {
+    localStorage.setItem(THEME_KEY, theme);
+  }
   return isDark;
 }
