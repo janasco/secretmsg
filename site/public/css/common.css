@@ -219,6 +219,74 @@ html.light footer .text-slate-500 {
   color: #475569 !important;
 }
 
+html.light footer a {
+  color: #475569;
+}
+
+html.light footer a:hover {
+  color: #0F172A !important;
+}
+
+html.light footer a.text-amber-300,
+html.light footer a.text-amber-700 {
+  color: #B45309 !important;
+}
+
+html.light footer a.text-amber-300:hover,
+html.light footer a.text-amber-700:hover {
+  color: #78350F !important;
+}
+
+html.light footer a.text-purple-400,
+html.light footer a.text-purple-600 {
+  color: #7E22CE !important;
+}
+
+html.light footer a.text-purple-400:hover,
+html.light footer a.text-purple-600:hover {
+  color: #581C87 !important;
+}
+
+html.light footer a.text-sky-400,
+html.light footer a.text-sky-600 {
+  color: #0284C7 !important;
+}
+
+html.light footer a.text-sky-400:hover,
+html.light footer a.text-sky-600:hover {
+  color: #0369A1 !important;
+}
+
+html.light footer a.text-indigo-400,
+html.light footer a.text-indigo-600 {
+  color: #4F46E5 !important;
+}
+
+html.light footer a.text-indigo-400:hover,
+html.light footer a.text-indigo-600:hover {
+  color: #3730A3 !important;
+}
+
+html.light footer a.text-emerald-400,
+html.light footer a.text-emerald-600 {
+  color: #059669 !important;
+}
+
+html.light footer a.text-emerald-400:hover,
+html.light footer a.text-emerald-600:hover {
+  color: #065F46 !important;
+}
+
+html.light footer a.text-rose-400,
+html.light footer a.text-rose-600 {
+  color: #E11D48 !important;
+}
+
+html.light footer a.text-rose-400:hover,
+html.light footer a.text-rose-600:hover {
+  color: #9F1239 !important;
+}
+
 /* --------------------------------------------------------------------------
    Light Mode: Typography & Headings (High-Contrast & WCAG Compliant)
    -------------------------------------------------------------------------- */
@@ -780,16 +848,29 @@ html.light .landing-cta-section button[type="submit"]:hover {
 html.light .demo-sandbox-banner {
   background-color: #EEF2FF !important;
   border-bottom: 1px solid #C7D2FE !important;
+  color: #1E1B4B !important;
 }
 
+html.light .demo-sandbox-banner,
 html.light .demo-sandbox-banner .text-indigo-300,
+html.light .demo-sandbox-banner .text-indigo-200,
+html.light .demo-sandbox-banner .text-indigo-900,
 html.light .demo-sandbox-banner span,
 html.light .demo-sandbox-banner strong {
-  color: #312E81 !important;
+  color: #1E1B4B !important;
+}
+
+html.light .demo-sandbox-banner .material-symbols-outlined {
+  color: #4F46E5 !important;
 }
 
 html.light .demo-sandbox-banner button {
   color: #4338CA !important;
+  font-weight: 600 !important;
+}
+
+html.light .demo-sandbox-banner button:hover {
+  color: #1E1B4B !important;
 }
 
 html.light .demo-creator-avatar {

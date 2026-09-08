@@ -1040,32 +1040,32 @@
   </section>
 
   <!-- Quick Claim CTA Section -->
-  <section class="landing-cta-section py-20 border-t border-white/10 bg-gradient-to-b from-[#0B0E14] via-[#121622] to-[#0B0E14]">
+  <section class="landing-cta-section py-20 border-t border-slate-200 dark:border-white/10 bg-gradient-to-b from-slate-50 via-indigo-50/20 to-slate-100 dark:from-[#0B0E14] dark:via-[#121622] dark:to-[#0B0E14] transition-colors">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-      <div class="cta-brand-badge w-14 h-14 rounded-2xl bg-white text-[#0B0E14] font-black text-2xl flex items-center justify-center mx-auto mb-5 shadow-2xl shadow-white/10">
+      <div class="cta-brand-badge w-14 h-14 rounded-2xl bg-slate-900 text-white dark:bg-white dark:text-[#0B0E14] font-black text-2xl flex items-center justify-center mx-auto mb-5 shadow-2xl shadow-slate-900/10 dark:shadow-white/10">
         S
       </div>
-      <h2 class="font-display text-3xl sm:text-5xl font-black text-white tracking-tight">
+      <h2 class="font-display text-3xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
         Claim Your Link in Seconds
       </h2>
-      <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-lg mx-auto">
+      <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-3 max-w-lg mx-auto">
         Join thousands of creators sharing candid TBH prompts on Instagram Stories today.
       </p>
 
       <form onsubmit="handleClaimLink(event)" class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-2 max-w-md mx-auto">
         <div class="relative w-full">
-          <span class="cta-at-symbol absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 font-mono text-sm">@</span>
+          <span class="cta-at-symbol absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 font-mono text-sm">@</span>
           <input
             id="claim-username-cta"
             type="text"
             placeholder="yourhandle"
-            class="w-full pl-9 pr-4 py-3 rounded-full bg-white/5 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all font-mono"
+            class="w-full pl-9 pr-4 py-3 rounded-full bg-white dark:bg-white/5 border border-slate-300 dark:border-white/15 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-indigo-500 dark:focus:border-white focus:ring-1 focus:ring-indigo-500 dark:focus:ring-white transition-all font-mono shadow-sm"
             required
           />
         </div>
         <button
           type="submit"
-          class="cta-submit-btn w-full sm:w-auto px-7 py-3 rounded-full bg-white text-[#0B0E14] font-bold text-sm hover:bg-slate-100 active:scale-95 transition-all shrink-0 shadow-lg shadow-white/10"
+          class="cta-submit-btn w-full sm:w-auto px-7 py-3 rounded-full bg-slate-900 text-white dark:bg-white dark:text-[#0B0E14] font-bold text-sm hover:bg-slate-800 dark:hover:bg-slate-100 active:scale-95 transition-all shrink-0 shadow-lg shadow-slate-900/10 dark:shadow-white/10"
         >
           Claim Link
         </button>
@@ -1074,15 +1074,15 @@
   </section>
 
   <!-- Comprehensive Footer -->
-  <footer class="border-t border-white/10 bg-[#07090D] py-14">
+  <footer class="border-t border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-[#07090D] py-14 transition-colors">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-5 gap-8 text-xs">
       <!-- Brand column -->
       <div class="col-span-2 space-y-3">
         <div class="flex items-center gap-2">
-          <div class="w-7 h-7 rounded-xl bg-white flex items-center justify-center text-[#0B0E14] font-bold text-xs">S</div>
-          <span class="font-display font-extrabold text-base text-white">SecretMsg</span>
+          <div class="w-7 h-7 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-[#0B0E14] flex items-center justify-center font-bold text-xs">S</div>
+          <span class="font-display font-extrabold text-base text-slate-900 dark:text-white">SecretMsg</span>
         </div>
-        <p class="text-slate-400 text-xs max-w-sm leading-relaxed">
+        <p class="text-slate-600 dark:text-slate-400 text-xs max-w-sm leading-relaxed">
           The modern, privacy-first anonymous Q&A platform. 14,000+ templates, 3D dice roulette, zero tracking pixels, and instant GDPR account erasure.
         </p>
         <div class="pt-2 text-slate-500 font-mono text-[11px]">
@@ -1092,48 +1092,48 @@
 
       <!-- App Links -->
       <div class="space-y-2">
-        <h5 class="font-bold text-white uppercase tracking-wider text-[11px]">Platform</h5>
+        <h5 class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[11px]">Platform</h5>
         <ul class="space-y-1.5">
-          <li><a href="/about" class="hover:text-white transition-colors text-purple-400 font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">auto_awesome</span> About Us</a></li>
-          <li><a href="/login" class="hover:text-white transition-colors text-sky-400 font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">login</span> Board Login</a></li>
-          <li><a href="/faq" class="hover:text-white transition-colors text-amber-300 font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">help</span> Help & FAQs</a></li>
-          <li><a href="/demo" class="hover:text-white transition-colors text-indigo-400 font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">play_circle</span> Interactive Demo</a></li>
-          <li><a href="https://m.secretmsg.net" class="hover:text-white transition-colors">Mobile Web App</a></li>
-          <li><a href="/dice.html" class="hover:text-white transition-colors">3D Dice Roulette</a></li>
-          <li><a href="/sticker-studio.html" class="hover:text-white transition-colors">Sticker Studio</a></li>
-          <li><a href="/inbox.html" class="hover:text-white transition-colors">Anonymous Inbox</a></li>
+          <li><a href="/about" class="text-purple-600 dark:text-purple-400 hover:text-purple-900 dark:hover:text-white transition-colors font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">auto_awesome</span> About Us</a></li>
+          <li><a href="/login" class="text-sky-600 dark:text-sky-400 hover:text-sky-900 dark:hover:text-white transition-colors font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">login</span> Board Login</a></li>
+          <li><a href="/faq" class="text-amber-700 dark:text-amber-300 hover:text-amber-900 dark:hover:text-white transition-colors font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">help</span> Help & FAQs</a></li>
+          <li><a href="/demo" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-white transition-colors font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">play_circle</span> Interactive Demo</a></li>
+          <li><a href="https://m.secretmsg.net" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Mobile Web App</a></li>
+          <li><a href="/dice.html" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">3D Dice Roulette</a></li>
+          <li><a href="/sticker-studio.html" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Sticker Studio</a></li>
+          <li><a href="/inbox.html" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Anonymous Inbox</a></li>
         </ul>
       </div>
 
       <!-- Trust & Safety -->
       <div class="space-y-2">
-        <h5 class="font-bold text-white uppercase tracking-wider text-[11px]">Trust & Safety</h5>
+        <h5 class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[11px]">Trust & Safety</h5>
         <ul class="space-y-1.5">
-          <li><a href="/p/safety" class="hover:text-white transition-colors text-emerald-400 font-semibold">Safety Center</a></li>
-          <li><a href="/p/child-safety-policy" class="hover:text-white transition-colors">Child Safety Policy</a></li>
-          <li><a href="/p/approach-to-safety" class="hover:text-white transition-colors">Approach to Safety</a></li>
-          <li><a href="/p/guide-to-online-safety" class="hover:text-white transition-colors">Online Safety Guide</a></li>
-          <li><a href="/p/community-guidelines" class="hover:text-white transition-colors">Community Guidelines</a></li>
-          <li><a href="/p/safety-tools" class="hover:text-white transition-colors">Our Safety Tools</a></li>
-          <li><a href="/p/resources" class="hover:text-white transition-colors">Crisis Resources (988)</a></li>
-          <li><a href="/p/contact-us" class="hover:text-white transition-colors text-rose-400">Contact & Escalations</a></li>
+          <li><a href="/p/safety" class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-white transition-colors font-semibold">Safety Center</a></li>
+          <li><a href="/p/child-safety-policy" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Child Safety Policy</a></li>
+          <li><a href="/p/approach-to-safety" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Approach to Safety</a></li>
+          <li><a href="/p/guide-to-online-safety" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Online Safety Guide</a></li>
+          <li><a href="/p/community-guidelines" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Community Guidelines</a></li>
+          <li><a href="/p/safety-tools" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Our Safety Tools</a></li>
+          <li><a href="/p/resources" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Crisis Resources (988)</a></li>
+          <li><a href="/p/contact-us" class="text-rose-600 dark:text-rose-400 hover:text-rose-900 dark:hover:text-white transition-colors font-semibold">Contact & Escalations</a></li>
         </ul>
       </div>
 
       <!-- Legal & Code -->
       <div class="space-y-2">
-        <h5 class="font-bold text-white uppercase tracking-wider text-[11px]">Legal & Open Source</h5>
+        <h5 class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[11px]">Legal & Open Source</h5>
         <ul class="space-y-1.5">
-          <li><a href="/p/privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
-          <li><a href="/p/terms" class="hover:text-white transition-colors">Terms of Service</a></li>
-          <li><a href="/p/cookies" class="hover:text-white transition-colors">Cookies Policy</a></li>
-          <li><a href="/p/disclaimer" class="hover:text-white transition-colors">Disclaimer & Safety</a></li>
-          <li><a href="https://github.com/janasco/secretmsg" target="_blank" rel="noopener" class="hover:text-white transition-colors">GitHub Repository</a></li>
+          <li><a href="/p/privacy" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="/p/terms" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Terms of Service</a></li>
+          <li><a href="/p/cookies" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Cookies Policy</a></li>
+          <li><a href="/p/disclaimer" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Disclaimer & Safety</a></li>
+          <li><a href="https://github.com/janasco/secretmsg" target="_blank" rel="noopener" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">GitHub Repository</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 mt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 mt-8 border-t border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
       <span>© 2026 SecretMsg (secretmsg.net). All rights reserved.</span>
       <span>Encrypted & Safe • Automated Spam & Bot Protection</span>
     </div>

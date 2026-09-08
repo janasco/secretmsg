@@ -80,14 +80,14 @@
   </header>
 
   <!-- Sandbox Banner -->
-  <div class="demo-sandbox-banner bg-indigo-600/10 border-b border-indigo-500/20 px-4 py-3">
+  <div class="demo-sandbox-banner px-4 py-3 border-b bg-indigo-50 border-indigo-200/80 text-indigo-950 dark:bg-indigo-950/40 dark:border-indigo-500/20 dark:text-indigo-200 transition-colors">
     <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
-      <div class="flex items-center gap-2 text-indigo-300">
-        <span class="material-symbols-outlined text-[18px] animate-pulse text-indigo-400">science</span>
-        <span><strong>Interactive Playground:</strong> Send simulated messages, shuffle prompts, and inspect incoming messages. No account needed!</span>
+      <div class="flex items-center gap-2 text-indigo-900 dark:text-indigo-200">
+        <span class="material-symbols-outlined text-[18px] text-indigo-600 dark:text-indigo-400 animate-pulse shrink-0">science</span>
+        <span class="leading-relaxed"><strong class="font-bold text-indigo-950 dark:text-white">Interactive Playground:</strong> Send simulated messages, shuffle prompts, and inspect incoming messages. No account needed!</span>
       </div>
-      <div class="flex items-center gap-2">
-        <button onclick="resetDemoData()" class="text-[11px] underline text-slate-400 hover:text-white transition-colors">
+      <div class="flex items-center gap-2 shrink-0">
+        <button onclick="resetDemoData()" class="text-[11px] font-semibold underline text-indigo-700 hover:text-indigo-950 dark:text-indigo-300 dark:hover:text-white transition-colors">
           Reset Demo Data
         </button>
       </div>
@@ -407,12 +407,12 @@
   </div>
 
   <!-- Comprehensive Legal & Safety Footer -->
-  <footer class="border-t border-white/10 bg-[#07090D] py-12 mt-16 text-xs text-slate-400">
+  <footer class="border-t border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-[#07090D] py-12 mt-16 text-xs text-slate-600 dark:text-slate-400 transition-colors">
     <div class="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
       <div class="space-y-2">
         <div class="flex items-center gap-2">
-          <div class="w-6 h-6 rounded-lg bg-white flex items-center justify-center text-[#0B0E14] font-bold text-xs">S</div>
-          <span class="font-bold text-white">SecretMsg Demo</span>
+          <div class="w-6 h-6 rounded-lg bg-slate-900 text-white dark:bg-white dark:text-[#0B0E14] flex items-center justify-center font-bold text-xs">S</div>
+          <span class="font-bold text-slate-900 dark:text-white">SecretMsg Demo</span>
         </div>
         <p class="text-[11px] text-slate-500 leading-relaxed">
           Zero-knowledge anonymous Q&A platform with 14,000+ templates.
@@ -420,33 +420,33 @@
       </div>
 
       <div class="space-y-1.5">
-        <h5 class="font-bold text-white uppercase tracking-wider text-[10px]">Trust & Safety</h5>
+        <h5 class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px]">Trust & Safety</h5>
         <ul class="space-y-1 text-[11px]">
-          <li><a href="/p/safety" class="hover:text-white transition-colors text-emerald-400 font-semibold">Safety Hub</a></li>
-          <li><a href="/p/child-safety-policy" class="hover:text-white transition-colors">Child Safety Policy</a></li>
-          <li><a href="/p/community-guidelines" class="hover:text-white transition-colors">Community Guidelines</a></li>
-          <li><a href="/p/resources" class="hover:text-white transition-colors">Crisis Resources (988)</a></li>
-          <li><a href="/p/contact-us" class="hover:text-white transition-colors">Contact Us</a></li>
+          <li><a href="/p/safety" class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-white transition-colors font-semibold">Safety Hub</a></li>
+          <li><a href="/p/child-safety-policy" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Child Safety Policy</a></li>
+          <li><a href="/p/community-guidelines" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Community Guidelines</a></li>
+          <li><a href="/p/resources" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Crisis Resources (988)</a></li>
+          <li><a href="/p/contact-us" class="text-rose-600 dark:text-rose-400 hover:text-rose-900 dark:hover:text-white transition-colors font-semibold">Contact Us</a></li>
         </ul>
       </div>
 
       <div class="space-y-1.5">
-        <h5 class="font-bold text-white uppercase tracking-wider text-[10px]">Legal Policies</h5>
+        <h5 class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px]">Legal Policies</h5>
         <ul class="space-y-1 text-[11px]">
-          <li><a href="/p/privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
-          <li><a href="/p/terms" class="hover:text-white transition-colors">Terms of Service</a></li>
-          <li><a href="/p/cookies" class="hover:text-white transition-colors">Cookies Policy</a></li>
-          <li><a href="/p/disclaimer" class="hover:text-white transition-colors">Disclaimer</a></li>
+          <li><a href="/p/privacy" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="/p/terms" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Terms of Service</a></li>
+          <li><a href="/p/cookies" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Cookies Policy</a></li>
+          <li><a href="/p/disclaimer" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Disclaimer</a></li>
         </ul>
       </div>
 
       <div class="space-y-1.5">
-        <h5 class="font-bold text-white uppercase tracking-wider text-[10px]">Platform Links</h5>
+        <h5 class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px]">Platform Links</h5>
         <ul class="space-y-1 text-[11px]">
-          <li><a href="/" class="hover:text-white transition-colors">Home Landing</a></li>
-          <li><a href="https://m.secretmsg.net" class="hover:text-white transition-colors">Mobile Web App</a></li>
-          <li><a href="/dice.html" class="hover:text-white transition-colors">3D Dice Roulette</a></li>
-          <li><a href="/sticker-studio.html" class="hover:text-white transition-colors">Sticker Studio</a></li>
+          <li><a href="/" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Home Landing</a></li>
+          <li><a href="https://m.secretmsg.net" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Mobile Web App</a></li>
+          <li><a href="/dice.html" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">3D Dice Roulette</a></li>
+          <li><a href="/sticker-studio.html" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Sticker Studio</a></li>
         </ul>
       </div>
     </div>
