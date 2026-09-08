@@ -85,15 +85,25 @@
       <!-- Section 1 -->
       <section class="space-y-3">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
-          <span class="text-slate-500 font-mono text-xs">01</span> What We Store on Your Device
+          <span class="text-slate-500 font-mono text-xs">01</span> What Are Cookies and Local Storage?
         </h2>
-        <div class="space-y-3 text-xs">
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          Cookies are small text files placed on your device (computer, smartphone, or tablet) when you visit a website. They are commonly used to make websites work efficiently, remember your preferences, and maintain secure sessions. Local storage technologies (like HTML5 local storage) provide cookie-equivalent functionality directly within your browser, allowing fast, client-side persistence of your settings without transmitting unnecessary data on every network request.
+        </p>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">02</span> How We Use Cookies & Local Storage
+        </h2>
+        <div class="space-y-3 text-xs sm:text-sm">
           <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
             <div class="flex justify-between items-center">
-              <strong class="text-white text-sm">1. Theme Preference (<code class="text-indigo-300 font-mono">secretmsg_theme</code>)</strong>
+              <strong class="text-white text-sm">1. Preferences Storage (<code class="text-indigo-300 font-mono">secretmsg_theme</code>, <code class="text-indigo-300 font-mono">active_board</code>)</strong>
               <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 text-slate-300 font-mono">LocalStorage</span>
             </div>
-            <p class="text-slate-400">Stores whether you selected Dark Mode, Light Mode, or System Mode so the application renders in your preferred aesthetic without flickering.</p>
+            <p class="text-slate-400">Stores whether you selected Dark Mode, Light Mode, or System Mode and your current active board identifier so the application renders in your preferred aesthetic and loads your link instantly without flickering.</p>
           </div>
 
           <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
@@ -101,7 +111,7 @@
               <strong class="text-white text-sm">2. Human Verification Security Token</strong>
               <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 text-slate-300 font-mono">Essential Security</span>
             </div>
-            <p class="text-slate-400">Temporary security token used to verify that you are a real person and not an automated spam bot. Does not track your activity across websites.</p>
+            <p class="text-slate-400">Temporary security token used to verify that you are a real person and not an automated spam bot. Does not track your personal identity or activity across third-party websites.</p>
           </div>
 
           <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
@@ -109,30 +119,40 @@
               <strong class="text-white text-sm">3. Authenticated Session Token (<code class="text-amber-300 font-mono">secretmsg_auth</code>)</strong>
               <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 text-slate-300 font-mono">Secure HttpOnly Cookie</span>
             </div>
-            <p class="text-slate-400">Only present if you register an account to view your anonymous inbox. Kept encrypted and discarded upon logout or account deletion.</p>
+            <p class="text-slate-400">Only present when you register and log into your board to access your private inbox. Kept encrypted, strictly restricted to secretmsg.net, and permanently discarded upon logout or account deletion.</p>
           </div>
-        </div>
-      </section>
-
-      <!-- Section 2 -->
-      <section class="space-y-3">
-        <h2 class="text-lg font-bold text-white flex items-center gap-2">
-          <span class="text-slate-500 font-mono text-xs">02</span> What We NEVER Store or Use
-        </h2>
-        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2 text-xs text-slate-300">
-          <p>🚫 <strong>Zero Advertising Cookies:</strong> We do not partner with Google Ads, Meta Pixel, TikTok Pixel, or ad exchange retargeting networks.</p>
-          <p>🚫 <strong>Zero Cross-Site Tracking:</strong> We never fingerprint your hardware or monitor your browsing behavior outside of secretmsg.net.</p>
-          <p>🚫 <strong>Zero Commercial Analytics:</strong> No third-party data broker receives session replay recordings or heatmaps of your clicks.</p>
         </div>
       </section>
 
       <!-- Section 3 -->
       <section class="space-y-3">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
-          <span class="text-slate-500 font-mono text-xs">03</span> Managing Your Browser Storage
+          <span class="text-slate-500 font-mono text-xs">03</span> What We NEVER Store or Use
         </h2>
-        <p class="text-slate-400 leading-relaxed text-xs">
-          Because we only use strictly necessary data, blocking LocalStorage or cookies in your browser settings may prevent you from logging into your inbox, saving your theme, or passing bot verification. You can clear your cookies or local storage at any time via your browser's Developer Tools or Privacy Settings.
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2 text-xs sm:text-sm text-slate-300">
+          <p>🚫 <strong>Zero Advertising Cookies:</strong> We do not partner with ad exchanges, data brokers, or retargeting networks.</p>
+          <p>🚫 <strong>Zero Cross-Site Tracking:</strong> We never fingerprint your hardware or monitor your browsing behavior outside of secretmsg.net.</p>
+          <p>🚫 <strong>Zero Commercial Analytics:</strong> No third-party marketing company receives session replay recordings or clickstream heatmaps.</p>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">04</span> Your Choices & Managing Browser Storage
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          You have full control over cookies and local storage. You can withdraw your consent, block, or clear cookies and site data at any time through your browser's settings (such as Chrome Settings → Privacy & Security → Clear Browsing Data). Note that because we only use strictly necessary data, disabling all local storage may prevent you from remaining logged into your inbox or passing automated bot verification.
+        </p>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">05</span> GDPR & International Compliance
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          This Cookie Policy complies with the General Data Protection Regulation (GDPR) and the EU ePrivacy Directive. Because we use strictly essential, non-tracking technologies for basic security and preferences, we do not require intrusive tracking consent banners while ensuring you have complete transparency and control. For questions, reach out to <a href="mailto:privacy@secretmsg.net" class="text-indigo-400 underline font-mono">privacy@secretmsg.net</a>.
         </p>
       </section>
     </article>

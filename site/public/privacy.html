@@ -101,95 +101,181 @@
       <!-- Section 1 -->
       <section class="space-y-3">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
-          <span class="text-slate-500 font-mono text-xs">01</span> What Information We Collect
+          <span class="text-slate-500 font-mono text-xs">01</span> The Basics: How SecretMsg Works
         </h2>
-        
-        <div class="space-y-2 pl-4 border-l border-white/10">
-          <h3 class="font-semibold text-white text-sm">A. For Anonymous Message Senders</h3>
-          <ul class="list-disc list-inside space-y-1 text-slate-400">
-            <li><strong class="text-slate-200">Zero Identification:</strong> We do NOT collect or store your real name, phone number, address, or social profile credentials.</li>
-            <li><strong class="text-slate-200">Message Content:</strong> The text you submit is stored securely in encrypted storage solely so the recipient can read it.</li>
-            <li><strong class="text-slate-200">Automated Spam Defense:</strong> Non-invasive checks verify human interaction without storing tracking cookies.</li>
-            <li><strong class="text-slate-200">Security Checks:</strong> Network systems protect the platform against automated spam and abuse; your IP is never saved with the message text.</li>
-          </ul>
-        </div>
-
-        <div class="space-y-2 pl-4 border-l border-white/10 mt-3">
-          <h3 class="font-semibold text-white text-sm">B. For Registered Recipients (Account Holders)</h3>
-          <ul class="list-disc list-inside space-y-1 text-slate-400">
-            <li><strong class="text-slate-200">Email Address:</strong> Used solely to verify your login via secure one-time verification codes.</li>
-            <li><strong class="text-slate-200">Unique Username / Handle:</strong> The public slug used to generate your public TBH card link (e.g., <code class="text-slate-200 font-mono text-xs">secretmsg.net/yourname</code>).</li>
-            <li><strong class="text-slate-200">Inbox Contents:</strong> Received anonymous messages, archived notes, and responses.</li>
-          </ul>
-        </div>
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          SecretMsg allows users to receive questions and messages through social media and direct links:
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-xs sm:text-sm text-slate-400 pl-2">
+          <li>
+            <strong class="text-slate-200">Account Users:</strong> Users create a personalized link (such as <code class="text-slate-200 font-mono text-xs">secretmsg.net/yourname</code>) and share it on Instagram Stories, WhatsApp, TikTok, X, or other channels to invite questions from anyone who has access to the link.
+          </li>
+          <li>
+            <strong class="text-slate-200">Message Senders:</strong> When a person clicks the link, they visit a page where they can submit an anonymous message or question directly to the Account User without creating an account or logging in.
+          </li>
+          <li>
+            <strong class="text-slate-200">Public or Private Replies:</strong> The Account User has the choice to publish their answers publicly (to their board, threads, or social media stories) or reply privately to the sender via a secure one-time link.
+          </li>
+          <li>
+            <strong class="text-slate-200">Sender Anonymity:</strong> SecretMsg does not store the name or social media handles of the Message Sender and cannot reveal this identity to the Account User or anyone else.
+          </li>
+          <li>
+            <strong class="text-slate-200">Optional Sender Clues:</strong> If permitted by the sender, SecretMsg may share high-level non-identifying hints (such as broad device type or approximate geographic region) with the Account User.
+          </li>
+        </ul>
       </section>
 
       <!-- Section 2 -->
       <section class="space-y-3">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
-          <span class="text-slate-500 font-mono text-xs">02</span> What We Will NEVER Do
+          <span class="text-slate-500 font-mono text-xs">02</span> Personal Information We Collect
         </h2>
-        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2 text-xs text-slate-300">
-          <p>🚫 We <strong class="text-white">never sell, rent, license, or trade</strong> your personal email address or message logs to third-party data brokers or marketing conglomerates.</p>
-          <p>🚫 We <strong class="text-white">never disclose the sender's identity</strong> or IP address to the message recipient.</p>
-          <p>🚫 We <strong class="text-white">never run retargeting pixels</strong>, advertising trackers, or invasive analytics scripts.</p>
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          We collect information depending on how you interact with our platform:
+        </p>
+
+        <div class="space-y-3 pl-4 border-l border-white/10 text-xs sm:text-sm">
+          <div>
+            <h3 class="font-semibold text-white">A. Information You Provide to Us</h3>
+            <ul class="list-disc list-inside space-y-1.5 text-slate-400 mt-1">
+              <li><strong class="text-slate-200">Account Information:</strong> When you register a board, you provide a username/slug, display name, and password or email address used strictly to authenticate your login.</li>
+              <li><strong class="text-slate-200">Questions & Messages:</strong> Text and prompt answers submitted to Account Users through our composer.</li>
+              <li><strong class="text-slate-200">Feedback & Support Correspondence:</strong> Information you submit when contacting our support or trust & safety team.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-white">B. Automatically Collected Information</h3>
+            <ul class="list-disc list-inside space-y-1.5 text-slate-400 mt-1">
+              <li><strong class="text-slate-200">Device & Connection Data:</strong> Operating system, browser type, general location (such as city or region for non-identifying sender hints if enabled), and security verification tokens.</li>
+              <li><strong class="text-slate-200">Local Storage Technologies:</strong> We use modern browser local storage (HTML5) to remember your preferences (such as Dark or Light theme mode, local drafts, and active board credentials) directly on your device.</li>
+            </ul>
+          </div>
         </div>
       </section>
 
       <!-- Section 3 -->
       <section class="space-y-3">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
-          <span class="text-slate-500 font-mono text-xs">03</span> Third-Party Service Providers
+          <span class="text-slate-500 font-mono text-xs">03</span> What We Will NEVER Do
         </h2>
-        <p class="text-slate-400">
-          SecretMsg relies only on minimal, privacy-first infrastructure:
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-          <div class="glass-panel p-3 rounded-xl">
-            <span class="font-semibold text-white block mb-0.5">Encrypted Server & Database Hosting</span>
-            <span class="text-slate-400">Provides fast encrypted connections, security shielding, and private database storage.</span>
-          </div>
-          <div class="glass-panel p-3 rounded-xl">
-            <span class="font-semibold text-white block mb-0.5">Fast Login Email Service</span>
-            <span class="text-slate-400">Sends short-lived one-time login verification codes directly to your inbox. Zero marketing newsletters.</span>
-          </div>
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2 text-xs sm:text-sm text-slate-300">
+          <p>🚫 We <strong class="text-white">never sell, rent, license, or monetize</strong> your personal information, messages, or emails to advertisers or third-party data brokers.</p>
+          <p>🚫 We <strong class="text-white">never disclose the sender's identity</strong> to the recipient.</p>
+          <p>🚫 We <strong class="text-white">never use retargeting pixels</strong>, invasive tracking beacons, or cross-site advertising trackers.</p>
         </div>
       </section>
 
       <!-- Section 4 -->
       <section class="space-y-3">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
-          <span class="text-slate-500 font-mono text-xs">04</span> GDPR & CCPA Rights: Instant Complete Deletion
+          <span class="text-slate-500 font-mono text-xs">04</span> How We Use Your Information
         </h2>
-        <p class="text-slate-400 leading-relaxed">
-          Under the General Data Protection Regulation (GDPR), the California Consumer Privacy Act (CCPA), and our fundamental engineering principles, you retain the unmitigated right to erasure:
-        </p>
-        <div class="glass-panel p-4 rounded-2xl border border-rose-500/20 bg-rose-500/5 text-xs text-slate-300 space-y-1.5">
-          <p class="font-semibold text-rose-300 flex items-center gap-1.5">
-            <span class="material-symbols-outlined text-[16px]">lock_reset</span>
-            Self-Service Account Wipeout
-          </p>
-          <p class="text-slate-400">
-            Open <strong class="text-white">Settings → Delete Account</strong> at any time. When confirmed, a cascaded SQL transaction permanently purges your account row, email address, custom handle, and all inbox messages forever. This process is instant and cannot be undone.
-          </p>
-        </div>
+        <ul class="list-disc list-inside space-y-1.5 text-xs sm:text-sm text-slate-400">
+          <li><strong class="text-slate-200">Providing the Services:</strong> To deliver messages, maintain private inboxes, publish public Q&A threads, and generate story sticker cards.</li>
+          <li><strong class="text-slate-200">Platform Safety & Moderation:</strong> To investigate, detect, and block abusive, harassing, hateful, or illegal messages and protect community members.</li>
+          <li><strong class="text-slate-200">Customer Support:</strong> To answer your questions, resolve account issues, and respond to safety inquiries.</li>
+          <li><strong class="text-slate-200">Legal Compliance:</strong> To comply with legal obligations, enforce our terms, and cooperate with law enforcement when required by law.</li>
+        </ul>
       </section>
 
       <!-- Section 5 -->
       <section class="space-y-3">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
-          <span class="text-slate-500 font-mono text-xs">05</span> Inquiries & Data Protection Contact
+          <span class="text-slate-500 font-mono text-xs">05</span> Automated Safety & Content Moderation
         </h2>
-        <p class="text-slate-400 leading-relaxed">
-          If you have questions regarding this Privacy Policy or wish to request data verification, contact the project maintainer:
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          To protect user safety, SecretMsg utilizes automated content moderation filters and algorithms designed to screen incoming messages. These filters detect and block harmful language, cyberbullying, predatory behavior, threats, and illegal material before it reaches recipients' inboxes. Recipients also retain full authority to report or block any message with a single tap.
+        </p>
+      </section>
+
+      <!-- Section 6 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">06</span> How Information Is Shared
+        </h2>
+        <div class="space-y-2 text-xs sm:text-sm text-slate-400">
+          <p>
+            <strong class="text-white">Public Social Sharing by Users:</strong> When an Account User chooses to post a response publicly, the question text and their answer become visible on their public Q&A thread and wherever they share it on social media.
+          </p>
+          <p>
+            <strong class="text-white">Trusted Service Providers:</strong> We work with essential service providers who assist in operating our platform, including secure server hosting, database storage, and transactional email verification. These providers are bound by strict confidentiality and data protection standards.
+          </p>
+          <p>
+            <strong class="text-white">Compliance & Safety:</strong> We may disclose information if we believe in good faith that such action is necessary to comply with legal requests, prevent physical harm or financial loss, or protect the safety and integrity of our users.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 7 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">07</span> Your Rights & Choices (GDPR & CCPA)
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          Regardless of your location, you have strong rights regarding your personal information:
+        </p>
+        <ul class="list-disc list-inside space-y-1.5 text-xs sm:text-sm text-slate-400 pl-2">
+          <li><strong class="text-slate-200">Access & Portability:</strong> You may request details about the data associated with your account.</li>
+          <li><strong class="text-slate-200">Correction:</strong> You can update your display name and password directly from your dashboard settings.</li>
+          <li><strong class="text-slate-200">Instant Complete Erasure:</strong> You have the right to permanently delete your data at any time.</li>
+        </ul>
+        <div class="glass-panel p-4 rounded-2xl border border-rose-500/20 bg-rose-500/5 text-xs text-slate-300 space-y-1.5 mt-2">
+          <p class="font-semibold text-rose-300 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">lock_reset</span>
+            Self-Service 1-Tap Account Wipeout
+          </p>
+          <p class="text-slate-400">
+            Open <strong class="text-white">Settings → Delete Account</strong> at any time. When confirmed, our systems immediately and permanently wipe your account, custom handle, email address, and all received messages forever. This deletion is permanent and cannot be reversed.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 8 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">08</span> Do Not Track Signals
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          Because we do not track our users across third-party websites or serve targeted behavioral advertising, our privacy practices remain consistent whether or not your browser transmits a "Do Not Track" signal.
+        </p>
+      </section>
+
+      <!-- Section 9 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">09</span> Children's Privacy
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          Our Services are not directed to children under 13 years of age (or the minimum legal age in your jurisdiction). We do not knowingly collect personal information from children. If we learn that personal information has been collected from a child under 13 without verified parental consent, we will promptly delete that information. Parents or guardians may contact us at <a href="mailto:safety@secretmsg.net" class="text-indigo-400 underline font-mono">safety@secretmsg.net</a>.
+        </p>
+      </section>
+
+      <!-- Section 10 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">10</span> Data Retention & Security Practices
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          We retain your information only for as long as necessary to fulfill the purposes outlined in this policy or until you request deletion. We implement reasonable technical, administrative, and physical safeguards designed to protect personal data against unauthorized access, loss, alteration, or misuse.
+        </p>
+      </section>
+
+      <!-- Section 11 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">11</span> Inquiries & Data Protection Contact
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          If you have questions regarding this Privacy Policy, our data practices, or wish to exercise your legal privacy rights, contact us at:
         </p>
         <div class="bg-white/5 rounded-2xl p-4 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
           <div>
-            <span class="font-bold text-white block">SecretMsg Privacy Contact</span>
-            <span class="text-slate-400 font-mono">privacy@secretmsg.net</span>
+            <span class="font-bold text-white block">SecretMsg Privacy & Data Protection</span>
+            <span class="text-slate-400 font-mono">privacy@secretmsg.net • support@secretmsg.net</span>
           </div>
           <a href="mailto:privacy@secretmsg.net" class="px-4 py-2 bg-white text-[#0B0E14] font-semibold rounded-full hover:bg-slate-100 transition-colors text-center shrink-0">
-            Send Inquiries
+            Contact Privacy Team
           </a>
         </div>
       </section>
