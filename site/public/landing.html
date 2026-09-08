@@ -66,8 +66,9 @@
   </style>
   <script>
     (function() {
-      const saved = localStorage.getItem('secretmsg_theme') || 'system';
-      const isDark = saved === 'dark' || (saved === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      const saved = localStorage.getItem('secretmsg_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = (saved === 'dark' || saved === 'light') ? (saved === 'dark') : prefersDark;
       if (isDark) {
         document.documentElement.classList.add('dark');
         document.documentElement.classList.remove('light');
