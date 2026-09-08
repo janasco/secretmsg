@@ -16,7 +16,7 @@ This repository contains the **open-source client applications, mobile designs, 
 - **Design Tokens & Constitution** (`.stitch`): Semantic design system tokens and screen constitution.
 
 > [!NOTE]
-> To protect platform stability, user data privacy, and prevent bot abuse, backend edge infrastructure (Cloudflare Workers, D1 database schemas, Turnstile verification, and Polar webhook processors) is maintained in an isolated private repository. This public client interacts with the edge platform strictly via standard REST API contracts (`https://api.secretmsg.net`).
+> To protect platform stability, user data privacy, and prevent spam abuse, backend services and private database storage are maintained in an isolated private repository. This public client interacts with the backend strictly via standard REST API contracts (`https://api.secretmsg.net`).
 
 ---
 
@@ -47,7 +47,7 @@ cp .env.example apps/web/.env
 | `VITE_API_URL` | Edge API endpoint | `https://api.secretmsg.net` |
 | `VITE_APP_URL` | Public web app domain | `https://secretmsg.net` |
 | `VITE_USE_MOCK` | Offline mock mode (No API required) | `true` or `false` |
-| `VITE_TURNSTILE_SITE_KEY` | Cloudflare Turnstile public key | `1x00000000000000000000AA` |
+| `VITE_TURNSTILE_SITE_KEY` | Bot protection public key | `1x00000000000000000000AA` |
 
 ### 4. Running the Web App
 

@@ -109,15 +109,15 @@
           <ul class="list-disc list-inside space-y-1 text-slate-400">
             <li><strong class="text-slate-200">Zero Identification:</strong> We do NOT collect or store your real name, phone number, address, or social profile credentials.</li>
             <li><strong class="text-slate-200">Message Content:</strong> The text you submit is stored securely in encrypted storage solely so the recipient can read it.</li>
-            <li><strong class="text-slate-200">Spam Defense (Cloudflare Turnstile):</strong> Non-invasive browser validation verifies human interaction without storing tracking cookies.</li>
-            <li><strong class="text-slate-200">Transient Edge Telemetry:</strong> Cloudflare edge nodes process request headers transiently for anti-DDoS rate-limiting; your IP is never saved with the message text.</li>
+            <li><strong class="text-slate-200">Automated Spam Defense:</strong> Non-invasive checks verify human interaction without storing tracking cookies.</li>
+            <li><strong class="text-slate-200">Security Checks:</strong> Network systems protect the platform against automated spam and abuse; your IP is never saved with the message text.</li>
           </ul>
         </div>
 
         <div class="space-y-2 pl-4 border-l border-white/10 mt-3">
           <h3 class="font-semibold text-white text-sm">B. For Registered Recipients (Account Holders)</h3>
           <ul class="list-disc list-inside space-y-1 text-slate-400">
-            <li><strong class="text-slate-200">Email Address:</strong> Used solely to authenticate your login via passwordless One-Time Passcodes (OTP).</li>
+            <li><strong class="text-slate-200">Email Address:</strong> Used solely to verify your login via secure one-time verification codes.</li>
             <li><strong class="text-slate-200">Unique Username / Handle:</strong> The public slug used to generate your public TBH card link (e.g., <code class="text-slate-200 font-mono text-xs">secretmsg.net/yourname</code>).</li>
             <li><strong class="text-slate-200">Inbox Contents:</strong> Received anonymous messages, archived notes, and responses.</li>
           </ul>
@@ -142,16 +142,16 @@
           <span class="text-slate-500 font-mono text-xs">03</span> Third-Party Service Providers
         </h2>
         <p class="text-slate-400">
-          SecretMsg relies only on minimal, enterprise-grade privacy infrastructure:
+          SecretMsg relies only on minimal, privacy-first infrastructure:
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
           <div class="glass-panel p-3 rounded-xl">
-            <span class="font-semibold text-white block mb-0.5">Cloudflare (Edge & D1 Database)</span>
-            <span class="text-slate-400">Provides TLS 1.3 encrypted edge routing, DDoS shielding, and distributed SQLite database storage.</span>
+            <span class="font-semibold text-white block mb-0.5">Encrypted Server & Database Hosting</span>
+            <span class="text-slate-400">Provides fast encrypted connections, security shielding, and private database storage.</span>
           </div>
           <div class="glass-panel p-3 rounded-xl">
-            <span class="font-semibold text-white block mb-0.5">Resend (Transactional OTP Email)</span>
-            <span class="text-slate-400">Dispatches short-lived 6-digit login verification codes directly to your inbox. Zero marketing newsletters.</span>
+            <span class="font-semibold text-white block mb-0.5">Fast Login Email Service</span>
+            <span class="text-slate-400">Sends short-lived one-time login verification codes directly to your inbox. Zero marketing newsletters.</span>
           </div>
         </div>
       </section>
