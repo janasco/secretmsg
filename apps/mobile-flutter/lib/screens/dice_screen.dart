@@ -88,7 +88,7 @@ class _DiceScreenState extends State<DiceScreen> with SingleTickerProviderStateM
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text(
-          'TBH Roulette & Dice',
+          'Roulette & Dice',
           style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: AppTheme.primaryWhite),
         ),
       ),

@@ -72,7 +72,7 @@ Set `VITE_USE_MOCK="false"` in `apps/web/.env`. The client will connect directly
 The mobile application prototype consists of 9 fully-linked screens:
 1. **`index.html`** — Home & Explore (Live search, categories, viral templates)
 2. **`compose.html`** — Compose Anonymous Message (Prompt filler, vibes, double-blind reply token)
-3. **`dice.html`** — TBH Roulette & 3D Interactive Three.js Dice
+3. **`dice.html`** — Roulette & 3D Interactive Three.js Dice
 4. **`sticker-studio.html`** — 9:16 Instagram/Snapchat Story Sticker Exporter
 5. **`inbox.html`** — Secret Inbox & Message Previews
 6. **`message-detail.html`** — Message Thread & Double-Blind Reply
