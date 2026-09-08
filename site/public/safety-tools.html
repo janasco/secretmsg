@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
   <title>Our Safety Tools & Controls - SecretMsg</title>
-  <meta name="description" content="Explore SecretMsg's built-in safety tools: 1-tap message reporting, smart bot shielding, double-blind replies, and self-service account wipeouts."/>
+  <meta name="description" content="Discover SecretMsg's safety controls: Hidden Words filtering down to emojis, Blocked Users management, Pause My Link timers, Enhanced Moderation, and 1-tap wipeouts."/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -43,7 +43,7 @@
       </a>
 
       <div class="flex items-center gap-2">
-        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme" aria-label="Toggle Theme">
           <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
         </button>
         <a href="/p/safety" class="px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors flex items-center gap-1">
@@ -53,76 +53,150 @@
     </div>
   </header>
 
-  <!-- Content -->
+  <!-- Main Container -->
   <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
-    <div class="mb-10">
+    <!-- Header Banner -->
+    <div class="mb-10 text-center sm:text-left">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 text-xs font-semibold mb-4">
-        <span class="material-symbols-outlined text-[14px]">handyman</span>
-        Empowering User Controls
+        <span class="material-symbols-outlined text-[14px]">tune</span>
+        Recipient Sovereignty • User Control Suite
       </div>
       <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-        Our Built-in Safety Tools
+        Our Safety Tools &amp; Controls
       </h1>
-      <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
-        You are always in the driver's seat. Explore the suite of automated and self-service protective features engineered into SecretMsg.
+      <p class="text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
+        SecretMsg is meant to be a place that is fun and safe for all, where you can be your authentic self and deepen connections with real-world friends. We have engineered a multi-layered safety suite that puts total control over your inbox directly into your hands.
       </p>
     </div>
 
-    <!-- 6 Safety Tools Grid -->
+    <!-- 4 Primary Safety Controls -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
-        <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-rose-400 text-[24px]">flag</span>
-          <h3 class="font-bold text-sm text-white">1-Tap Message Reporting</h3>
+      <!-- 1. Hidden Words -->
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2.5">
+        <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center">
+          <span class="material-symbols-outlined text-[24px]">spellcheck</span>
         </div>
-        <p class="text-xs text-slate-400 leading-relaxed">Every message received in your inbox features a prominent report action. Submitting immediately removes the message from your view and queues the submission hash for moderation.</p>
+        <h3 class="font-bold text-base text-white">Hidden Words &amp; Emojis</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Create a custom blocklist of words, phrases, and emojis that will automatically be filtered out from all future messages. You decide precisely what is allowed into your inbox, down to the word and even down to the emoji.
+        </p>
+        <span class="inline-block text-[11px] text-purple-300 font-medium bg-purple-950/50 px-2 py-0.5 rounded border border-purple-500/20">
+          Settings → Safety Controls → Filter Keywords
+        </span>
       </div>
 
-      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
-        <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-sky-400 text-[24px]">verified_user</span>
-          <h3 class="font-bold text-sm text-white">Smart Bot & Spam Shield</h3>
+      <!-- 2. Blocked Users -->
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2.5">
+        <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center">
+          <span class="material-symbols-outlined text-[24px]">block</span>
         </div>
-        <p class="text-xs text-slate-400 leading-relaxed">Non-intrusive verification ensuring that every sender is an authentic human. Blocks automated spambots, script floods, and rapid-fire trolling without annoying CAPTCHAs.</p>
+        <h3 class="font-bold text-base text-white">Blocked Senders Management</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          View an overview of everyone you have blocked from your link. Blocked senders are permanently forbidden from submitting new messages to your board, and you retain full freedom to unblock them at any time.
+        </p>
+        <span class="inline-block text-[11px] text-rose-300 font-medium bg-rose-950/50 px-2 py-0.5 rounded border border-rose-500/20">
+          Settings → Safety Controls → Blocked Users
+        </span>
       </div>
 
-      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
-        <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-indigo-400 text-[24px]">visibility_off</span>
-          <h3 class="font-bold text-sm text-white">Double-Blind Anonymous Replies</h3>
+      <!-- 3. Pause My Link -->
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2.5">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
+          <span class="material-symbols-outlined text-[24px]">pause_circle</span>
         </div>
-        <p class="text-xs text-slate-400 leading-relaxed">Recipients can reply to anonymous senders through one-time cryptographic tokens without either party's email or identity ever being disclosed.</p>
+        <h3 class="font-bold text-base text-white">Pause My Link (Digital Detox)</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          If you ever feel overwhelmed by a high volume of messages, you can pause your SecretMsg link instantly. Select preset timers of <strong>1 hour, 6 hours, 24 hours, or pause indefinitely</strong> until you are ready to resume.
+        </p>
+        <span class="inline-block text-[11px] text-amber-300 font-medium bg-amber-950/50 px-2 py-0.5 rounded border border-amber-500/20">
+          Settings → Link Status → Pause Receipt
+        </span>
       </div>
 
-      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
-        <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-emerald-400 text-[24px]">filter_alt</span>
-          <h3 class="font-bold text-sm text-white">Toxicity & Keyword Guardrails</h3>
+      <!-- 4. Enhanced Moderation -->
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2.5">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+          <span class="material-symbols-outlined text-[24px]">shield</span>
         </div>
-        <p class="text-xs text-slate-400 leading-relaxed">Smart safety filters block phone numbers, addresses, sexual solicitation, and malicious terms before they ever reach your inbox view.</p>
-      </div>
-
-      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
-        <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-amber-400 text-[24px]">cleaning_services</span>
-          <h3 class="font-bold text-sm text-white">1-Tap Inbox Wipeout</h3>
-        </div>
-        <p class="text-xs text-slate-400 leading-relaxed">Clean slate whenever you want. With a single tap in Settings, you can scrub all received messages in your inbox instantly with zero recoverable residual data.</p>
-      </div>
-
-      <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
-        <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-purple-400 text-[24px]">delete_forever</span>
-          <h3 class="font-bold text-sm text-white">Instant Account Erasure</h3>
-        </div>
-        <p class="text-xs text-slate-400 leading-relaxed">Total self-service deletion. Deleting your account instantly deletes your username, email, active links, and all stored communications forever via SQL cascade.</p>
+        <h3 class="font-bold text-base text-white">Enhanced Moderation Mode</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Toggle on Enhanced Moderation to apply heightened sensitivity filters. Borderline negative questions, sarcastic teasing, or sensitive themes are automatically intercepted before reaching your inbox.
+        </p>
+        <span class="inline-block text-[11px] text-emerald-300 font-medium bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-500/20">
+          Settings → Safety Controls → Strict Filter
+        </span>
       </div>
     </div>
 
+    <!-- Architectural Safeguards -->
+    <article class="space-y-8 text-slate-300 text-sm leading-relaxed border-t border-white/10 pt-8">
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">01</span> What, Who &amp; When: Complete Recipient Sovereignty
+        </h2>
+        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+          Taken together, these safety controls allow you to manage:
+        </p>
+        <ul class="list-disc list-inside space-y-1.5 text-slate-300 pl-2 text-xs sm:text-sm">
+          <li><strong>What you see:</strong> Custom keyword filters and Enhanced Moderation strip out unwanted themes and language automatically.</li>
+          <li><strong>Who can send:</strong> 1-tap blocking and session throttling lock out unwanted senders permanently.</li>
+          <li><strong>When you receive:</strong> Pause your link on a schedule or on-demand for total digital peace of mind.</li>
+        </ul>
+      </section>
+
+      <!-- Additional Built-in Controls -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">02</span> Instant Action &amp; Data Erasure Controls
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-rose-400 text-[18px]">cleaning_services</span>
+              1-Tap Inbox Clean Slate
+            </strong>
+            <p class="text-slate-400 leading-relaxed">
+              Start fresh anytime. With a single confirmation in Settings, permanently purge all stored messages from your inbox with zero residual logs.
+            </p>
+          </div>
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-purple-400 text-[18px]">delete_forever</span>
+              Permanent Account Wipeout
+            </strong>
+            <p class="text-slate-400 leading-relaxed">
+              Complete self-service deletion. Deleting your account deletes your username handle, stored questions, replies, and settings forever.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Community Support Banner -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">03</span> 24/7 Community Support Team
+        </h2>
+        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+          Technology works hand-in-hand with real people. Our dedicated trust and community team works day and night to investigate user reports and assist with account security.
+        </p>
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs mt-3">
+          <div>
+            <span class="font-bold text-white block">Trust &amp; Safety Community Support</span>
+            <span class="text-slate-400 font-mono">safety@secretmsg.net • support@secretmsg.net</span>
+          </div>
+          <a href="mailto:safety@secretmsg.net" class="px-4 py-2 bg-sky-600 text-white font-semibold rounded-full hover:bg-sky-500 transition-colors text-center shrink-0">
+            Email Safety Team
+          </a>
+        </div>
+      </section>
+    </article>
+
+    <!-- Footer Links -->
     <div class="mt-14 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
       <div class="flex items-center gap-4">
+        <a href="/p/safety" class="hover:text-white transition-colors">Safety Hub</a>
         <a href="/p/community-guidelines" class="hover:text-white transition-colors">Community Guidelines</a>
-        <a href="/p/approach-to-safety" class="hover:text-white transition-colors">Our Approach to Safety</a>
+        <a href="/p/approach-to-safety" class="hover:text-white transition-colors">Approach to Safety</a>
         <a href="/p/resources" class="hover:text-white transition-colors">Crisis Resources</a>
       </div>
       <span>© 2026 SecretMsg. All rights reserved.</span>
