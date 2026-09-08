@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/common.css"/>
+  <script src="js/sanitize.js"></script>
   
   <script>
     tailwind.config = {
@@ -392,6 +393,10 @@
           <input
             id="demo-claim-input"
             type="text"
+            minlength="4"
+            maxlength="30"
+            pattern="[a-zA-Z0-9_\-\.]{4,30}"
+            title="Username must be at least 4 characters"
             placeholder="yourusername"
             class="pl-7 pr-3 py-2 rounded-full bg-white/5 border border-white/15 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-white transition-all font-mono w-40"
             required
@@ -738,10 +743,17 @@
 
     function handleDemoClaim(e) {
       e.preventDefault();
-      const username = document.getElementById('demo-claim-input').value.trim().replace(/^@/, '');
-      if (username) {
-        window.location.href = `/${username}`;
+      const rawInput = document.getElementById('demo-claim-input').value;
+      const val = window.SecretMsgSanitize ? window.SecretMsgSanitize.validateUsername(rawInput) : {
+        isValid: rawInput.trim().length >= 4,
+        error: rawInput.trim().length < 4 ? 'Username must be at least 4 characters long.' : null,
+        value: rawInput.trim()
+      };
+      if (!val.isValid) {
+        showToast(val.error || 'Username must be at least 4 characters long.');
+        return;
       }
+      window.location.href = `/${val.value}`;
     }
 
     function showToast(msg) {

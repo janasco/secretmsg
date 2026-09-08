@@ -79,6 +79,7 @@
     })();
   </script>
   <script src="js/theme.js"></script>
+  <script src="js/sanitize.js"></script>
 </head>
 <body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-indigo-500 selection:text-white hero-glow">
   <!-- Top Navigation Header -->
@@ -158,11 +159,11 @@
       </div>
 
       <form id="hero-create-form" onsubmit="handleHeroCreate(event)" class="space-y-4">
-        <!-- Display Name -->
+        <!-- Display Name / Username -->
         <div class="space-y-1.5">
           <label class="text-sm sm:text-base font-bold text-slate-200 block flex items-center justify-between">
-            <span>1. Your Display Name</span>
-            <span class="text-xs text-slate-400 font-normal">So friends know whose link it is</span>
+            <span>1. Your Board Link / Username</span>
+            <span class="text-xs text-slate-400 font-normal">Min 4 characters (e.g. alex, sarah)</span>
           </label>
           <div class="relative">
             <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-mono text-sm sm:text-base font-medium">secretmsg.net/</span>
@@ -171,8 +172,11 @@
               type="text"
               placeholder="yourname"
               required
-              pattern="[a-zA-Z0-9_\-\.]{3,30}"
-              class="w-full pl-36 pr-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm sm:text-base placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-mono"
+              minlength="4"
+              maxlength="30"
+              pattern="[a-zA-Z0-9_\-\.]{4,30}"
+              title="Must be at least 4 characters long (letters, numbers, underscores, hyphens, dots)"
+              class="w-full pl-36 pr-4 py-3.5 rounded-xl bg-white/5 border border-white/15 text-white text-sm sm:text-base placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-mono"
             />
           </div>
         </div>
@@ -1051,7 +1055,11 @@
           <input
             id="claim-username-cta"
             type="text"
-            placeholder="yourhandle"
+            placeholder="yourhandle (min 4 chars)"
+            minlength="4"
+            maxlength="30"
+            pattern="[a-zA-Z0-9_\-\.]{4,30}"
+            title="Username must be at least 4 characters long (letters, numbers, underscores, hyphens, dots)"
             class="w-full pl-10 pr-4 py-3.5 rounded-full bg-white dark:bg-white/5 border border-slate-300 dark:border-white/15 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 text-base focus:outline-none focus:border-indigo-500 dark:focus:border-white focus:ring-1 focus:ring-indigo-500 dark:focus:ring-white transition-all font-mono shadow-sm"
             required
           />
@@ -1092,6 +1100,7 @@
           <li><a href="/faq" class="text-amber-700 dark:text-amber-300 hover:text-amber-900 dark:hover:text-white transition-colors font-semibold flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">help</span> Help & FAQs</a></li>
           <li><a href="/demo" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-white transition-colors font-semibold flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">play_circle</span> Interactive Demo</a></li>
           <li><a href="https://m.secretmsg.net" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Mobile Web App</a></li>
+          <li><a href="/supporters.html" class="text-amber-500 dark:text-amber-400 hover:text-amber-700 dark:hover:text-white transition-colors font-semibold flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span> Supporter Perks ($2-$7)</a></li>
           <li><a href="/dice.html" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">3D Dice Roulette</a></li>
           <li><a href="/sticker-studio.html" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Sticker Studio</a></li>
           <li><a href="/inbox.html" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Anonymous Inbox</a></li>
@@ -1157,21 +1166,36 @@
       const pwdInput = document.getElementById('hero-password');
       if (!nameInput || !pwdInput) return;
 
-      const rawName = nameInput.value.trim().replace(/^@/, '');
-      const pwd = pwdInput.value;
-      if (!rawName || rawName.length < 3) {
-        alert('Please enter a valid display name (at least 3 characters).');
-        return;
-      }
-      if (!pwd || pwd.length < 6) {
-        alert('Please enter a password with at least 6 characters.');
+      const rawName = nameInput.value;
+      const rawPwd = pwdInput.value;
+
+      // Platform input sanitize & validation engine
+      const val = window.SecretMsgSanitize ? window.SecretMsgSanitize.validateUsername(rawName) : null;
+      if (val && !val.valid) {
+        alert(val.error);
+        nameInput.focus();
         return;
       }
 
-      const slug = rawName.toLowerCase().replace(/[^a-z0-9_\-\.]/g, '');
+      const slug = val ? val.sanitized : rawName.trim().replace(/^@/, '').toLowerCase().replace(/[^a-z0-9_\-\.]/g, '');
+      if (slug.length < 4) {
+        alert('Board Link or Username cannot be less than 4 characters (must be at least 4 characters).');
+        nameInput.focus();
+        return;
+      }
+
+      const pwdVal = window.SecretMsgSanitize ? window.SecretMsgSanitize.validatePassword(rawPwd) : { valid: rawPwd.length >= 6 };
+      if (!pwdVal.valid) {
+        alert(pwdVal.error || 'Please enter a password with at least 6 characters.');
+        pwdInput.focus();
+        return;
+      }
+
+      const cleanDisplayName = window.SecretMsgSanitize ? window.SecretMsgSanitize.sanitizeDisplayName(rawName) : slug;
+
       localStorage.setItem('secretmsg_active_board', slug);
-      localStorage.setItem('secretmsg_display_name', rawName);
-      localStorage.setItem('secretmsg_board_pwd', pwd);
+      localStorage.setItem('secretmsg_display_name', cleanDisplayName);
+      localStorage.setItem('secretmsg_board_pwd', rawPwd.trim());
 
       const linkEl = document.getElementById('created-link-url');
       if (linkEl) {
@@ -1226,10 +1250,21 @@
       e.preventDefault();
       const usernameInput = document.getElementById('claim-username-cta') || document.getElementById('claim-username');
       if (!usernameInput) return;
-      const username = usernameInput.value.trim().replace(/^@/, '');
-      if (username) {
-        window.location.href = `/${username}`;
+
+      const val = window.SecretMsgSanitize ? window.SecretMsgSanitize.validateUsername(usernameInput.value) : null;
+      if (val && !val.valid) {
+        alert(val.error);
+        usernameInput.focus();
+        return;
       }
+      const clean = val ? val.sanitized : usernameInput.value.trim().replace(/^@/, '').toLowerCase().replace(/[^a-z0-9_\-\.]/g, '');
+      if (clean.length < 4) {
+        alert('Board Link or Username cannot be less than 4 characters (must be at least 4 characters).');
+        usernameInput.focus();
+        return;
+      }
+
+      window.location.href = `/${clean}`;
     }
 
     // Auto-fill claim handle if redirected from unavailable slug

@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/common.css"/>
+  <script src="js/sanitize.js"></script>
   
   <script>
     tailwind.config = {
@@ -96,13 +97,17 @@
                 id="login-slug"
                 type="text"
                 placeholder="yourhandle"
+                minlength="4"
+                maxlength="30"
+                pattern="[a-zA-Z0-9_\-\.]{4,30}"
+                title="Handle must be at least 4 characters"
                 class="w-full pl-32 pr-4 py-3 rounded-2xl bg-white/5 border border-white/15 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-mono"
                 required
               />
             </div>
             <span class="text-[11px] text-slate-400">
-            Enter your unique link or username (e.g. <code>alex</code> or <code>secretmsg.net/alex</code>).
-          </span>
+              Enter your unique link or username (minimum 4 characters, e.g. <code>alex</code> or <code>secretmsg.net/alex</code>).
+            </span>
           </div>
 
           <!-- Password -->
@@ -204,18 +209,32 @@
 
     function handleLogin(e) {
       e.preventDefault();
-      const slugInput = document.getElementById('login-slug').value.trim().replace(/^@/, '').replace(/^https?:\/\/secretmsg\.net\//, '');
+      const rawInput = document.getElementById('login-slug').value;
       const pwd = document.getElementById('login-password').value;
       const btn = document.getElementById('login-btn');
 
-      if (!slugInput || !pwd) return;
+      const val = window.SecretMsgSanitize ? window.SecretMsgSanitize.validateUsername(rawInput) : {
+        isValid: rawInput.trim().length >= 4,
+        error: rawInput.trim().length < 4 ? 'Username must be at least 4 characters long.' : null,
+        value: rawInput.trim()
+      };
+
+      if (!val.isValid) {
+        alert(val.error || 'Please enter a valid board username (at least 4 characters).');
+        return;
+      }
+
+      if (!pwd) {
+        alert('Please enter your board password.');
+        return;
+      }
 
       btn.disabled = true;
       btn.innerHTML = `<span class="animate-spin material-symbols-outlined text-[16px]">progress_activity</span> Authenticating Board...`;
 
       setTimeout(() => {
         // Save active session locally
-        localStorage.setItem('secretmsg_active_board', slugInput);
+        localStorage.setItem('secretmsg_active_board', val.value);
         localStorage.setItem('secretmsg_logged_in', 'true');
         window.location.href = '/profile.html';
       }, 600);

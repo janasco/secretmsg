@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/common.css"/>
+  <link rel="stylesheet" href="/css/common.css"/>
   <script>
     tailwind.config = {
       darkMode: "class",
@@ -29,7 +29,7 @@
       }
     })();
   </script>
-  <script src="js/theme.js"></script>
+  <script src="/js/theme.js"></script>
 </head>
 <body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-white selection:text-[#0B0E14]">
   <!-- Header -->
@@ -47,8 +47,12 @@
         <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme" aria-label="Toggle Theme">
           <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
         </button>
+        <a href="https://m.secretmsg.net" class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/10 hover:bg-white hover:text-[#0B0E14] transition-all text-slate-200">
+          <span class="material-symbols-outlined text-[16px]">smartphone</span>
+          Open Web App
+        </a>
         <a href="/p/safety" class="px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors flex items-center gap-1">
-          <span class="material-symbols-outlined text-[16px]">arrow_back</span> Safety Hub
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span> Safety Center
         </a>
       </div>
     </div>
@@ -58,9 +62,9 @@
   <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
     <!-- Header Banner -->
     <div class="mb-10 text-center sm:text-left">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold mb-4">
-        <span class="material-symbols-outlined text-[14px]">psychology</span>
-        Our Commitment • Proactive Digital Safeguards
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-800 dark:bg-indigo-500/10 dark:border-indigo-500/20 dark:text-indigo-300 text-xs font-semibold mb-4 shadow-sm">
+        <span class="material-symbols-outlined text-[15px] text-indigo-600 dark:text-indigo-400">psychology</span>
+        <span>Our Commitment • Proactive Digital Safeguards</span>
       </div>
       <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
         Our Approach to Safety

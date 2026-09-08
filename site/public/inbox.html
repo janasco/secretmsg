@@ -88,6 +88,22 @@
         </button>
       </section>
 
+      <!-- Viewer Hints Banner -->
+      <section id="inbox-viewer-banner" class="glass-panel rounded-2xl p-3 border border-white/10 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5 truncate">
+          <div id="inbox-viewer-icon" class="w-8 h-8 rounded-full bg-sky-500/20 text-sky-300 flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[18px]">visibility</span>
+          </div>
+          <div class="truncate">
+            <span id="inbox-viewer-title" class="text-xs font-bold text-white block truncate">Viewer Hints: 148 views this week</span>
+            <span id="inbox-viewer-sub" class="text-[10px] text-emerald-400 block truncate">+38 visitors clicked your story link</span>
+          </div>
+        </div>
+        <a id="inbox-viewer-cta" href="supporters.html?feature=viewer_hints" class="px-3 py-1.5 bg-white/10 hover:bg-white/15 text-white text-xs font-semibold rounded-full shrink-0 active:scale-95 transition-all">
+          View Stats
+        </a>
+      </section>
+
       <!-- KPI Metrics Cards -->
       <section class="grid grid-cols-3 gap-2.5">
         <div class="glass-panel rounded-2xl p-3 text-center border border-white/10">
@@ -269,6 +285,51 @@
         }
       });
     }
+
+    function syncInboxViewerHints() {
+      const hasViewer = localStorage.getItem('secretmsg_unlocked_viewer_hints') === 'true';
+      const icon = document.getElementById('inbox-viewer-icon');
+      const title = document.getElementById('inbox-viewer-title');
+      const sub = document.getElementById('inbox-viewer-sub');
+      const cta = document.getElementById('inbox-viewer-cta');
+
+      const storedViews = localStorage.getItem('secretmsg_viewer_count');
+      const views = storedViews ? parseInt(storedViews, 10) : 148;
+
+      if (hasViewer) {
+        if (icon) {
+          icon.className = 'w-8 h-8 rounded-full bg-sky-500/20 text-sky-300 flex items-center justify-center shrink-0';
+          icon.innerHTML = '<span class="material-symbols-outlined text-[18px]">visibility</span>';
+        }
+        if (title) title.textContent = `Viewer Hints: ${views} board views`;
+        if (sub) {
+          sub.textContent = '+38 visitors opened your link this week';
+          sub.className = 'text-[10px] text-emerald-400 block truncate';
+        }
+        if (cta) {
+          cta.textContent = 'View Stats';
+          cta.href = 'profile.html';
+          cta.className = 'px-3 py-1.5 bg-white/10 hover:bg-white/15 text-white text-xs font-semibold rounded-full shrink-0 active:scale-95 transition-all';
+        }
+      } else {
+        if (icon) {
+          icon.className = 'w-8 h-8 rounded-full bg-white/10 text-slate-400 flex items-center justify-center shrink-0';
+          icon.innerHTML = '<span class="material-symbols-outlined text-[18px]">visibility_off</span>';
+        }
+        if (title) title.textContent = 'Viewer Hints: Who visited your link?';
+        if (sub) {
+          sub.textContent = 'Unlock live view count & visitor metrics';
+          sub.className = 'text-[10px] text-slate-400 block truncate';
+        }
+        if (cta) {
+          cta.textContent = 'Unlock $3';
+          cta.href = 'supporters.html?feature=viewer_hints';
+          cta.className = 'px-3 py-1.5 bg-sky-400 text-[#0B0E14] font-bold text-xs rounded-full shrink-0 active:scale-95 transition-all shadow-sm';
+        }
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', syncInboxViewerHints);
   </script>
 </body>
 </html>

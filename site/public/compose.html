@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/common.css"/>
+  <script src="js/sanitize.js"></script>
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -87,7 +88,7 @@
         <div>
           <div class="flex items-center justify-center gap-1.5">
             <h2 id="recipient-handle" class="text-base font-bold text-white">@alex</h2>
-            <span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+            <span id="recipient-verified-badge" class="hidden material-symbols-outlined text-amber-400 text-[16px]" style="font-variation-settings: 'FILL' 1;" title="Verified Supporter">verified</span>
           </div>
           <p id="active-prompt" class="text-xs text-slate-300 mt-1 max-w-[280px] bg-white/5 py-1.5 px-3 rounded-xl border border-white/10 italic">
             "Send me an honest TBH. Don't hold back 🫣"
@@ -334,28 +335,46 @@
       document.title = `${slugText} - Link Not Available Yet | SecretMsg`;
     }
 
-    function showComposerState(username) {
+    function showComposerState(username, isVerified = false) {
       document.getElementById('composer-view').classList.remove('hidden');
       document.getElementById('unavailable-view').classList.add('hidden');
       const clean = username || 'alex';
       const handleEl = document.getElementById('recipient-handle');
       const avatarEl = document.getElementById('user-avatar');
+      const badgeEl = document.getElementById('recipient-verified-badge');
       if (handleEl) handleEl.textContent = `@${clean}`;
       if (avatarEl) avatarEl.textContent = clean.charAt(0).toUpperCase();
+      
+      // Verified badge: only show if user has donated for verified badge perk
+      if (badgeEl) {
+        if (isVerified) {
+          badgeEl.classList.remove('hidden');
+        } else {
+          badgeEl.classList.add('hidden');
+        }
+      }
+
       document.title = `Send @${clean} an Anonymous Message - SecretMsg`;
       const descEl = document.getElementById('sent-success-desc');
       if (descEl) descEl.textContent = `Your message has been delivered to @${clean}'s secret inbox.`;
+
+      // Viewer Hints Tracking: increment link views count
+      const curViews = parseInt(localStorage.getItem('secretmsg_viewer_count') || '148', 10);
+      localStorage.setItem('secretmsg_viewer_count', (curViews + 1).toString());
     }
 
     async function initRecipient() {
-      if (!cleanUser) {
-        showUnavailableState('');
+      if (!cleanUser || cleanUser.length < 4) {
+        showUnavailableState(cleanUser);
         return;
       }
 
       // If matches active created board in this browser or recognized demo users
       if (cleanUser === activeBoard || DEMO_USERS.includes(cleanUser.toLowerCase())) {
-        showComposerState(cleanUser);
+        const isVerified = cleanUser === activeBoard 
+          ? (localStorage.getItem('secretmsg_unlocked_badge') === 'true')
+          : (cleanUser === 'alex' && localStorage.getItem('secretmsg_unlocked_badge') === 'true');
+        showComposerState(cleanUser, isVerified);
         return;
       }
 
@@ -365,7 +384,8 @@
         if (res.ok) {
           const data = await res.json();
           if (data && data.user) {
-            showComposerState(data.user.username);
+            const isVerified = Boolean(data.user.has_verified_badge || data.user.is_premium);
+            showComposerState(data.user.username, isVerified);
             return;
           }
         }
@@ -429,11 +449,14 @@
     }
 
     function handleSend() {
-      if (!textarea.value.trim()) {
-        showToast('Please type a message first!');
+      const rawText = textarea.value;
+      const sanitized = window.SecretMsgSanitize ? window.SecretMsgSanitize.sanitizeMessageText(rawText) : rawText.trim();
+      if (!sanitized) {
+        showToast('Please type a valid message first!');
         textarea.focus();
         return;
       }
+      textarea.value = sanitized;
       const sendBtn = document.getElementById('send-btn');
       sendBtn.innerHTML = `<span class="animate-spin material-symbols-outlined text-[18px]">progress_activity</span> Encrypting & Sending...`;
       sendBtn.disabled = true;

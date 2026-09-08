@@ -94,41 +94,213 @@
         </p>
       </section>
 
-      <!-- Supporter Perks Breakdown -->
-      <section class="flex flex-col gap-2">
-        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider px-1">Supporter Tier Perks ($5/mo)</span>
-        <div class="grid grid-cols-2 gap-2">
-          <div class="glass-panel rounded-2xl p-3 border border-white/10 flex flex-col gap-1">
-            <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white mb-1">
-              <span class="material-symbols-outlined text-[16px]">link</span>
+      <!-- Supporter Donation Plans: Feature-by-Feature Unlocks -->
+      <section class="flex flex-col gap-3">
+        <div class="flex justify-between items-end px-1">
+          <div>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Modular Feature Unlocks</span>
+            <h3 class="text-sm font-bold text-white">Choose the Features You Want</h3>
+          </div>
+          <span class="text-[10px] font-mono text-indigo-400 bg-indigo-950/60 px-2 py-0.5 rounded border border-indigo-500/30">Independent Perks</span>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <!-- 1. Verified Badge Unlock -->
+          <div id="card-verified-badge" class="glass-panel rounded-2xl p-4 border border-white/15 flex flex-col gap-3 transition-all">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center border border-amber-400/30 shrink-0">
+                  <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <h4 class="text-sm font-bold text-white">Verified Badge</h4>
+                    <span id="badge-status-pill" class="text-[10px] font-mono font-bold px-2 py-0.2 rounded bg-white/10 text-slate-300">Locked</span>
+                  </div>
+                  <p class="text-xs text-slate-400 mt-0.5">Show off a verified supporter checkmark on your profile and board.</p>
+                </div>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="text-base font-bold text-white font-mono">$2</span>
+                <span class="text-[10px] text-slate-400 block">one-time / mo</span>
+              </div>
             </div>
-            <h3 class="text-xs font-bold text-white">Custom Vanity Links</h3>
-            <p class="text-[10px] text-slate-400">Claim clean handles like secretmsg.net/alex</p>
+
+            <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-white/10">
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-amber-300 text-[16px]">check_circle</span>
+                <span>Verified checkmark badge next to your @handle</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-amber-300 text-[16px]">check_circle</span>
+                <span>Visible on public board, profile card, and reply threads</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-amber-300 text-[16px]">check_circle</span>
+                <span>Community Supporter icon on the backers wall</span>
+              </li>
+            </ul>
+
+            <div class="flex gap-2 pt-1">
+              <button onclick="supportFeature('badge', 'Verified Badge', 2)" class="flex-1 py-2.5 bg-amber-400 hover:bg-amber-300 text-[#0B0E14] font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-md">
+                <span class="material-symbols-outlined text-[16px]">volunteer_activism</span>
+                <span id="badge-btn-text">Donate $2 to Unlock Badge</span>
+              </button>
+              <button onclick="toggleFeature('badge')" class="px-3 py-2.5 bg-white/10 hover:bg-white/15 text-white text-xs font-semibold rounded-xl active:scale-95 transition-all" title="Simulate Toggle">
+                Toggle
+              </button>
+            </div>
           </div>
 
-          <div class="glass-panel rounded-2xl p-3 border border-white/10 flex flex-col gap-1">
-            <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white mb-1">
-              <span class="material-symbols-outlined text-[16px]">mark_chat_read</span>
+          <!-- 2. Viewer Hints Unlock -->
+          <div id="card-viewer-hints" class="glass-panel rounded-2xl p-4 border border-white/15 flex flex-col gap-3 transition-all">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-300 flex items-center justify-center border border-sky-500/30 shrink-0">
+                  <span class="material-symbols-outlined text-[22px]">visibility</span>
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <h4 class="text-sm font-bold text-white">Viewer Hints</h4>
+                    <span id="viewer-status-pill" class="text-[10px] font-mono font-bold px-2 py-0.2 rounded bg-white/10 text-slate-300">Locked</span>
+                  </div>
+                  <p class="text-xs text-slate-400 mt-0.5">Reveal the real number of viewers and visitors to your board.</p>
+                </div>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="text-base font-bold text-white font-mono">$3</span>
+                <span class="text-[10px] text-slate-400 block">one-time / mo</span>
+              </div>
             </div>
-            <h3 class="text-xs font-bold text-white">Double-Blind Replies</h3>
-            <p class="text-[10px] text-slate-400">Reply without unmasking either party</p>
+
+            <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-white/10">
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-sky-400 text-[16px]">check_circle</span>
+                <span>Reveal real-time viewer count on your profile & inbox</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-sky-400 text-[16px]">check_circle</span>
+                <span>Track how many people visited your board from Instagram/Snap</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-sky-400 text-[16px]">check_circle</span>
+                <span>Peak visiting hours breakdown & 7-day impression counter</span>
+              </li>
+            </ul>
+
+            <div class="flex gap-2 pt-1">
+              <button onclick="supportFeature('viewer_hints', 'Viewer Hints', 3)" class="flex-1 py-2.5 bg-sky-400 hover:bg-sky-300 text-[#0B0E14] font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-md">
+                <span class="material-symbols-outlined text-[16px]">visibility</span>
+                <span id="viewer-btn-text">Donate $3 for Viewer Hints</span>
+              </button>
+              <button onclick="toggleFeature('viewer_hints')" class="px-3 py-2.5 bg-white/10 hover:bg-white/15 text-white text-xs font-semibold rounded-xl active:scale-95 transition-all" title="Simulate Toggle">
+                Toggle
+              </button>
+            </div>
           </div>
 
-          <div class="glass-panel rounded-2xl p-3 border border-white/10 flex flex-col gap-1">
-            <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white mb-1">
-              <span class="material-symbols-outlined text-[16px]">palette</span>
+          <!-- 3. Sender Hints Unlock -->
+          <div id="card-sender-hints" class="glass-panel rounded-2xl p-4 border border-white/15 flex flex-col gap-3 transition-all">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center border border-purple-500/30 shrink-0">
+                  <span class="material-symbols-outlined text-[22px]">radar</span>
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <h4 class="text-sm font-bold text-white">Sender Hints</h4>
+                    <span id="sender-status-pill" class="text-[10px] font-mono font-bold px-2 py-0.2 rounded bg-white/10 text-slate-300">Locked</span>
+                  </div>
+                  <p class="text-xs text-slate-400 mt-0.5">Unlock device OS, browser family, and city clues on questions.</p>
+                </div>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="text-base font-bold text-white font-mono">$4</span>
+                <span class="text-[10px] text-slate-400 block">one-time / mo</span>
+              </div>
             </div>
-            <h3 class="text-xs font-bold text-white">Sticker Studio Themes</h3>
-            <p class="text-[10px] text-slate-400">Exclusive Instagram and Snapchat styles</p>
+
+            <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-white/10">
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-purple-400 text-[16px]">check_circle</span>
+                <span>Device client hints (iOS, Android, macOS, Windows)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-purple-400 text-[16px]">check_circle</span>
+                <span>Approximate sender region & city without unmasking identity</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-purple-400 text-[16px]">check_circle</span>
+                <span>Sender time zone & network client profile</span>
+              </li>
+            </ul>
+
+            <div class="flex gap-2 pt-1">
+              <button onclick="supportFeature('sender_hints', 'Sender Hints', 4)" class="flex-1 py-2.5 bg-purple-400 hover:bg-purple-300 text-[#0B0E14] font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-md">
+                <span class="material-symbols-outlined text-[16px]">radar</span>
+                <span id="sender-btn-text">Donate $4 for Sender Hints</span>
+              </button>
+              <button onclick="toggleFeature('sender_hints')" class="px-3 py-2.5 bg-white/10 hover:bg-white/15 text-white text-xs font-semibold rounded-xl active:scale-95 transition-all" title="Simulate Toggle">
+                Toggle
+              </button>
+            </div>
           </div>
 
-          <div class="glass-panel rounded-2xl p-3 border border-white/10 flex flex-col gap-1">
-            <div class="w-7 h-7 rounded-full bg-amber-400/20 flex items-center justify-center text-amber-300 mb-1">
-              <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+          <!-- 4. All-in-One VIP Pass (Best Value) -->
+          <div id="card-all-bundle" class="glass-panel rounded-2xl p-4 border border-indigo-500/40 bg-indigo-950/20 flex flex-col gap-3 relative overflow-hidden">
+            <div class="absolute -right-8 -top-8 w-24 h-24 bg-indigo-500/10 rounded-full blur-xl pointer-events-none"></div>
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-400 to-indigo-500 text-white flex items-center justify-center font-bold shrink-0 shadow-lg">
+                  <span class="material-symbols-outlined text-[22px]">stars</span>
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <h4 class="text-sm font-bold text-white">Complete VIP Pass</h4>
+                    <span class="text-[9px] font-mono font-bold uppercase bg-amber-400 text-[#0B0E14] px-1.5 py-0.2 rounded font-black">Best Value</span>
+                  </div>
+                  <p class="text-xs text-slate-300 mt-0.5">Verified Badge + Viewer Hints + Sender Hints combined.</p>
+                </div>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="text-base font-bold text-white font-mono">$7</span>
+                <span class="text-[10px] text-emerald-400 block font-semibold">Save 22%</span>
+              </div>
             </div>
-            <h3 class="text-xs font-bold text-white">Golden Profile Badge</h3>
-            <p class="text-[10px] text-slate-400">Tasteful supporter icon on your profile</p>
+
+            <p class="text-xs text-slate-300 leading-relaxed pt-1 border-t border-white/10">
+              Get all three premium unlocks in one single donation. Boost your board engagement and unlock every creator insight.
+            </p>
+
+            <button onclick="supportFeature('bundle', 'Complete VIP Pass', 7)" class="w-full py-2.5 bg-white text-[#0B0E14] hover:bg-slate-100 font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-lg white-glow">
+              <span class="material-symbols-outlined text-[16px]">all_inclusive</span>
+              Unlock All Perks for $7
+            </button>
           </div>
+        </div>
+      </section>
+
+      <!-- Instant Testing Sandbox -->
+      <section class="glass-panel rounded-2xl p-4 border border-emerald-500/30 bg-emerald-950/10 flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-emerald-400 text-[20px]">toggle_on</span>
+            <h4 class="text-xs font-bold text-white uppercase tracking-wider">Perk Testing Sandbox</h4>
+          </div>
+          <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">Immediate Sync</span>
+        </div>
+
+        <p class="text-xs text-slate-300">
+          Want to test how the verified badge, viewer counter, and sender hints appear on your board right now? Use the instant controls below:
+        </p>
+
+        <div class="grid grid-cols-2 gap-2 pt-1">
+          <button onclick="unlockAllPerks()" class="py-2 px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl active:scale-95 transition-all flex items-center justify-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">lock_open</span> Unlock All
+          </button>
+          <button onclick="resetAllPerks()" class="py-2 px-3 bg-white/10 hover:bg-white/15 text-slate-300 font-semibold text-xs rounded-xl active:scale-95 transition-all flex items-center justify-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">lock</span> Lock All
+          </button>
         </div>
       </section>
 
@@ -143,45 +315,45 @@
               </div>
               <div>
                 <span class="text-xs font-bold text-white block">Alex R.</span>
-                <span class="text-[10px] text-slate-400">"Keep building open-source privacy apps!"</span>
+                <span class="text-[10px] text-slate-400">"The verified badge and viewer hints are awesome."</span>
               </div>
             </div>
-            <span class="text-[10px] text-slate-400 font-mono">Gold Backer</span>
+            <span class="text-[10px] text-amber-400 font-mono font-semibold">VIP Supporter</span>
           </div>
 
           <div class="glass-panel rounded-2xl p-3.5 border border-white/10 flex items-center justify-between gap-3">
             <div class="flex items-center gap-2.5">
-              <div class="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center font-bold text-xs">
-                ⭐
+              <div class="w-8 h-8 rounded-full bg-sky-400/20 text-sky-300 flex items-center justify-center font-bold text-xs">
+                👀
               </div>
               <div>
                 <span class="text-xs font-bold text-white block">Anonymous Supporter</span>
-                <span class="text-[10px] text-slate-400">"The Instagram story stickers are incredible."</span>
+                <span class="text-[10px] text-slate-400">"Love knowing how many people click my story link!"</span>
               </div>
             </div>
-            <span class="text-[10px] text-slate-400 font-mono">Supporter</span>
+            <span class="text-[10px] text-sky-400 font-mono font-semibold">Viewer Hints</span>
           </div>
 
           <div class="glass-panel rounded-2xl p-3.5 border border-white/10 flex items-center justify-between gap-3">
             <div class="flex items-center gap-2.5">
-              <div class="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center font-bold text-xs">
-                ⭐
+              <div class="w-8 h-8 rounded-full bg-purple-400/20 text-purple-300 flex items-center justify-center font-bold text-xs">
+                🕵️
               </div>
               <div>
                 <span class="text-xs font-bold text-white block">Elena K.</span>
-                <span class="text-[10px] text-slate-400">"Finally an anonymous app without spam and ads."</span>
+                <span class="text-[10px] text-slate-400">"Sender hints helped me guess who sent the study question."</span>
               </div>
             </div>
-            <span class="text-[10px] text-slate-400 font-mono">Supporter</span>
+            <span class="text-[10px] text-purple-400 font-mono font-semibold">Sender Hints</span>
           </div>
         </div>
       </section>
 
       <!-- Primary CTA -->
-      <section class="mt-2">
+      <section class="mt-1">
         <button onclick="supportPolar()" class="w-full h-12 bg-white text-[#0B0E14] font-bold text-xs rounded-full flex items-center justify-center gap-2 active:scale-98 transition-all hover:bg-slate-100 shadow-xl white-glow">
           <span class="material-symbols-outlined text-[18px]">favorite</span>
-          Become a Supporter via Polar.sh 💙
+          Donate via Polar.sh Portal 💙
         </button>
       </section>
     </main>
@@ -223,12 +395,127 @@
       setTimeout(() => toast.classList.remove('show'), 2200);
     }
 
+    function syncPerkBadges() {
+      const hasBadge = localStorage.getItem('secretmsg_unlocked_badge') === 'true';
+      const hasViewer = localStorage.getItem('secretmsg_unlocked_viewer_hints') === 'true';
+      const hasSender = localStorage.getItem('secretmsg_unlocked_sender_hints') === 'true';
+
+      const badgePill = document.getElementById('badge-status-pill');
+      const viewerPill = document.getElementById('viewer-status-pill');
+      const senderPill = document.getElementById('sender-status-pill');
+      const badgeBtnText = document.getElementById('badge-btn-text');
+      const viewerBtnText = document.getElementById('viewer-btn-text');
+      const senderBtnText = document.getElementById('sender-btn-text');
+
+      if (badgePill) {
+        badgePill.textContent = hasBadge ? 'Active Perk ✓' : 'Locked';
+        badgePill.className = hasBadge 
+          ? 'text-[10px] font-mono font-bold px-2 py-0.2 rounded bg-amber-400/20 text-amber-300 border border-amber-400/30' 
+          : 'text-[10px] font-mono font-bold px-2 py-0.2 rounded bg-white/10 text-slate-300';
+      }
+      if (badgeBtnText) {
+        badgeBtnText.textContent = hasBadge ? 'Perk Active (Donate Again)' : 'Donate $2 to Unlock Badge';
+      }
+
+      if (viewerPill) {
+        viewerPill.textContent = hasViewer ? 'Active Perk ✓' : 'Locked';
+        viewerPill.className = hasViewer 
+          ? 'text-[10px] font-mono font-bold px-2 py-0.2 rounded bg-sky-400/20 text-sky-300 border border-sky-400/30' 
+          : 'text-[10px] font-mono font-bold px-2 py-0.2 rounded bg-white/10 text-slate-300';
+      }
+      if (viewerBtnText) {
+        viewerBtnText.textContent = hasViewer ? 'Perk Active (Donate Again)' : 'Donate $3 for Viewer Hints';
+      }
+
+      if (senderPill) {
+        senderPill.textContent = hasSender ? 'Active Perk ✓' : 'Locked';
+        senderPill.className = hasSender 
+          ? 'text-[10px] font-mono font-bold px-2 py-0.2 rounded bg-purple-400/20 text-purple-300 border border-purple-400/30' 
+          : 'text-[10px] font-mono font-bold px-2 py-0.2 rounded bg-white/10 text-slate-300';
+      }
+      if (senderBtnText) {
+        senderBtnText.textContent = hasSender ? 'Perk Active (Donate Again)' : 'Donate $4 for Sender Hints';
+      }
+    }
+
+    function toggleFeature(feature) {
+      if (feature === 'badge') {
+        const cur = localStorage.getItem('secretmsg_unlocked_badge') === 'true';
+        localStorage.setItem('secretmsg_unlocked_badge', (!cur).toString());
+        showToast(!cur ? 'Verified Badge unlocked!' : 'Verified Badge locked.');
+      } else if (feature === 'viewer_hints') {
+        const cur = localStorage.getItem('secretmsg_unlocked_viewer_hints') === 'true';
+        localStorage.setItem('secretmsg_unlocked_viewer_hints', (!cur).toString());
+        showToast(!cur ? 'Viewer Hints unlocked!' : 'Viewer Hints locked.');
+      } else if (feature === 'sender_hints') {
+        const cur = localStorage.getItem('secretmsg_unlocked_sender_hints') === 'true';
+        localStorage.setItem('secretmsg_unlocked_sender_hints', (!cur).toString());
+        showToast(!cur ? 'Sender Hints unlocked!' : 'Sender Hints locked.');
+      }
+      syncPerkBadges();
+    }
+
+    function unlockAllPerks() {
+      localStorage.setItem('secretmsg_unlocked_badge', 'true');
+      localStorage.setItem('secretmsg_unlocked_viewer_hints', 'true');
+      localStorage.setItem('secretmsg_unlocked_sender_hints', 'true');
+      syncPerkBadges();
+      showToast('All perks unlocked! Check Profile & Messages.');
+    }
+
+    function resetAllPerks() {
+      localStorage.setItem('secretmsg_unlocked_badge', 'false');
+      localStorage.setItem('secretmsg_unlocked_viewer_hints', 'false');
+      localStorage.setItem('secretmsg_unlocked_sender_hints', 'false');
+      syncPerkBadges();
+      showToast('All perks reset to standard free tier.');
+    }
+
+    function supportFeature(key, title, amount) {
+      showToast(`Opening Polar donation for ${title} ($${amount})...`);
+      // Also enable locally for smooth instant experience
+      if (key === 'badge') localStorage.setItem('secretmsg_unlocked_badge', 'true');
+      if (key === 'viewer_hints') localStorage.setItem('secretmsg_unlocked_viewer_hints', 'true');
+      if (key === 'sender_hints') localStorage.setItem('secretmsg_unlocked_sender_hints', 'true');
+      if (key === 'bundle') {
+        localStorage.setItem('secretmsg_unlocked_badge', 'true');
+        localStorage.setItem('secretmsg_unlocked_viewer_hints', 'true');
+        localStorage.setItem('secretmsg_unlocked_sender_hints', 'true');
+      }
+      syncPerkBadges();
+      setTimeout(() => {
+        window.open(`https://polar.sh/janasco/secretmsg?feature=${key}&amount=${amount}`, '_blank');
+      }, 700);
+    }
+
     function supportPolar() {
       showToast('Opening Polar.sh pledge portal...');
       setTimeout(() => {
         window.open('https://polar.sh/janasco/secretmsg', '_blank');
       }, 500);
     }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      syncPerkBadges();
+
+      // Check URL search params for targeted feature scroll & highlight
+      const params = new URLSearchParams(window.location.search);
+      const feat = params.get('feature');
+      if (feat) {
+        let cardId = null;
+        if (feat === 'badge' || feat === 'verified_badge') cardId = 'card-verified-badge';
+        if (feat === 'viewer_hints') cardId = 'card-viewer-hints';
+        if (feat === 'sender_hints') cardId = 'card-sender-hints';
+        if (feat === 'bundle') cardId = 'card-all-bundle';
+        if (cardId) {
+          const card = document.getElementById(cardId);
+          if (card) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            card.classList.add('ring-2', 'ring-white', 'shadow-2xl');
+          }
+        }
+      }
+    });
   </script>
 </body>
 </html>
