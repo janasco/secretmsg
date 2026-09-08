@@ -27,38 +27,36 @@
 └── site/public/
     ├── css/
     │   └── common.css
-    ├── index.html               # Screen 1: Home & Explore
-    ├── compose.html             # Screen 2: Compose Anonymous Message
-    ├── dice.html                # Screen 3: TBH Roulette & Prompt Shuffle
+    ├── landing.html             # Screen 0: Desktop & Mobile Minimal Landing Page (2-link Nav)
+    ├── index.html               # Screen 1: Home & Explore (14,000+ Templates)
+    ├── compose.html             # Screen 2: Compose Anonymous Message (Sanitize & Pause Aware)
+    ├── dice.html                # Screen 3: 3D Roulette & Prompt Shuffle
     ├── sticker-studio.html      # Screen 4: Story Sticker Studio
-    ├── inbox.html               # Screen 5: Secret Inbox
-    ├── message-detail.html      # Screen 6: Message Detail & Double-Blind Reply
-    ├── profile.html             # Screen 7: Profile & Vanity Link Hub
-    ├── supporters.html          # Screen 8: Supporters Wall & Polar Perks
-    └── settings.html            # Screen 9: Privacy & Account Settings
+    ├── inbox.html               # Screen 5: Secret Inbox (Viewer Counter & Quarantine Tabs)
+    ├── message-detail.html      # Screen 6: Message Detail, Sender Hints & Block Controls
+    ├── profile.html             # Screen 7: Profile, Vanity Link Hub & Verified Badge
+    ├── supporters.html          # Screen 8: Modular Supporter Wall ($2-$7 Perks)
+    ├── settings.html            # Screen 9: Preferences & Safety Controls (Words, Block, Pause)
+    └── safety.html              # Screen 10: Safety Center & Trust Documentation
 ```
 
 ## 4. Live Sitemap
+- [x] `landing.html` — Minimalist Landing Page (Retained 2-link header, direct creation form)
 - [x] `index.html` — Home & Explore (Featured viral templates, categories, search bar)
-- [x] `compose.html` — Compose Anonymous Message (Target recipient, vibe tag, send button)
-- [x] `dice.html` — TBH Roulette & Prompt Shuffle (Interactive prompt die roll)
+- [x] `compose.html` — Compose Anonymous Message (Validation, pause checking, hidden words block)
+- [x] `dice.html` — TBH Roulette & Prompt Shuffle (Interactive 3D Three.js dice)
 - [x] `sticker-studio.html` — Instagram/Snapchat Story Sticker Exporter
-- [x] `inbox.html` — Anonymous Inbox & Unread Messages Feed
-- [x] `message-detail.html` — Message Detail with Double-Blind Reply
-- [x] `profile.html` — Profile & Vanity Link Hub
-- [x] `supporters.html` — Supporters Wall & Polar Perks
-- [x] `settings.html` — Privacy Vault & Data Controls
+- [x] `inbox.html` — Anonymous Inbox & Unread Messages Feed with View Counts
+- [x] `message-detail.html` — Message Detail with Double-Blind Reply & Sender Hints
+- [x] `profile.html` — Profile & Vanity Link Hub with Verified Badges
+- [x] `supporters.html` — Modular Supporter Wall ($2 Verified Badge, $3 Viewer Hints, $4 Sender Hints, $7 VIP)
+- [x] `settings.html` — Preferences (Notifications & 3-Choice Theme) & Safety Controls (Hidden Words, Blocked Users, Pause Link)
+- [x] `safety.html` & Sub-pages — Safety Center, Child Safety, Guidelines, Crisis Resources
 
-## 5. The Roadmap (Backlog)
-### High Priority
-- Initialize Stitch project and core tokens.
-- Generate Screen 1: Home & Explore with categories, search bar, and viral templates.
-- Generate Screen 2: Compose Message.
-- Generate Screen 3: Dice Prompt Shuffle.
-- Generate Screen 4: Story Sticker Studio.
-- Generate Screen 5: Secret Inbox.
-- Generate Screen 6: Message Detail with Double-Blind Reply.
-- Generate Screen 7: Profile & Vanity Link Hub.
-- Generate Screen 8: Supporters Wall.
-- Generate Screen 9: Privacy & Settings.
-- Build interactive mobile container with bottom navigation bar and shared routing.
+## 5. Architectural Accomplishments
+- [x] 3-Choice Appearance System: Always Light, Always Dark, System Default.
+- [x] Platform Input Sanitization: Strict 4-character minimum and XSS protection.
+- [x] Modular Feature Donations: Independent database flags for Verified Badge, Viewer Hints, and Sender Hints.
+- [x] Complete Safety Controls Suite: Pause Link (1h, 6h, 24h, permanent), custom Hidden Words filter, and sender device blocking.
+- [x] Zero-breaking 2-link landing header navigation with rich responsive footer.
+

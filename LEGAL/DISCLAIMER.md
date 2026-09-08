@@ -33,11 +33,14 @@ By using SecretMsg, you explicitly acknowledge that:
 
 ---
 
-## 4. Abuse, Harassment & DMCA Take-Down Procedure
+## 4. Abuse Prevention & User Safety Controls
 
-We have zero tolerance for malicious behavior, cyberbullying, harassment, or illegal content.
+We maintain a strict zero-tolerance standard against malicious behavior, cyberbullying, harassment, and harmful communications.
 
-If you have received harmful messages or believe content on SecretMsg violates your rights:
-1. **Immediate In-App Action**: Every message card includes a **"Report Message"** action. Submitting a report immediately flags the message for administrative review and quarantine.
-2. **Permanent Account Deletion**: If you no longer wish to receive anonymous messages, you may delete your account at any time with an instant wipe of all data.
-3. **Contact Maintainer**: You can submit a takedown request or report abuse directly to `abuse@secretmsg.net` or `janasco@duck.com`. We respond promptly to all legitimate reports.
+Every user is equipped with real-time proactive safety controls in **Settings**:
+1. **Pause My Link**: Instantly freeze your board for 1 hour, 6 hours, 24 hours, or permanently to prevent anyone from submitting messages.
+2. **Hidden Words Blocklist**: Create custom filters for words, phrases, or emojis to block harmful incoming submissions.
+3. **Sender Device Blocking & Report**: Report any message directly from your inbox and block the sender device from ever sending to your board again.
+4. **Permanent Account Deletion**: Instant, cascade deletion of your entire account and all received messages.
+5. **Contact & Escalations**: Direct human escalations to `abuse@secretmsg.net` or `janasco@duck.com` with rapid turnaround.
+

@@ -1,22 +1,74 @@
 # SecretMsg (`secretmsg`)
 
-> The open-source client application for SecretMsg — an anonymous question & message sharing platform built for Instagram Stories, TikTok, and direct links. Featuring real-time 3D dice roulette, viral TBH templates, and one-tap story stickers.
+> The open-source client application and platform for SecretMsg — a privacy-first anonymous question & message sharing platform built for Instagram Stories, TikTok, and direct links. Featuring real-time 3D dice roulette, viral TBH templates, granular supporter perks, comprehensive safety controls, and one-tap story stickers.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Platform: Web & Android](https://img.shields.io/badge/Platform-Web%20%7C%20Android-green.svg)]()
 [![Open Source](https://img.shields.io/badge/Open%20Source-Transparent%20%26%20Private-black.svg)]()
 [![Polar.sh: Issue Funding](https://img.shields.io/badge/Fund%20Issues-Polar.sh-blueviolet.svg)](https://polar.sh/janasco/secretmsg)
 
-**SecretMsg** is an open-source, privacy-first anonymous messaging and viral TBH platform running on [`secretmsg.net`](https://secretmsg.net). Anyone can receive candid questions, compliments, and social feedback via a personalized public link without revealing sender identity.
+**SecretMsg** is an open-source, privacy-first anonymous messaging and viral TBH platform running on [`secretmsg.net`](https://secretmsg.net) and [`m.secretmsg.net`](https://m.secretmsg.net). Anyone can receive candid questions, compliments, and social feedback via a personalized public link without revealing sender identity.
+
+---
+
+## What's New & Core Capabilities
+
+### 1. Account Preferences & Safety Controls
+- **Preferences → Appearance**: 3-choice theme engine supporting:
+  - *Always Light Mode*
+  - *Always Dark Mode*
+  - *Follow System Settings (Default)*
+- **Preferences → Notifications**:
+  - Reminders to post & share active links
+  - Real-time new message alerts
+  - Team SecretMsg occasional game prompts
+  - Daily Question of the Day (QOTD) reminders
+- **Safety Controls → Hidden Words**: Create custom blocklists of words, phrases, and emojis to automatically reject unwanted messages at compose time or quarantine them in inbox.
+- **Safety Controls → Block Users**: View and manage blocked sender devices with instant unblock toggles.
+- **Safety Controls → Pause My Link**: Temporarily or permanently halt incoming submissions (1 hour, 6 hours, 24 hours, or indefinite) with friendly public pause notices.
+
+### 2. Modular Feature Donation Plans (Supporter Perks)
+Supporters can unlock standalone individual features or the full VIP bundle:
+- **Verified Badge ($2)**: Official verified checkmark displayed on public boards, compose headers, and recipient profiles.
+- **Viewer Hints ($3)**: Live viewer counter tracking real-time impressions on user links.
+- **Sender Hints ($4)**: Clues and approximate device/context signals for received messages.
+- **Complete VIP Pass ($7)**: All premium perks combined.
+
+### 3. Platform Sanitization & Handle Validation
+- Strict handle requirements: Board links and usernames must be **at least 4 characters** (alphanumeric, underscores, hyphens, dots).
+- Edge and client-side sanitization against XSS, script injection, and malformed inputs.
+
+### 4. Streamlined Navigation & Responsive Design
+- Clean 2-item top navigation (`Explore Demo` + `Safety`) ensuring rock-solid stability and zero layout wrapping across mobile, tablet, and desktop screens.
+- Comprehensive footer directories for all platform tools, guidelines, and legal disclosures.
+
+---
+
+## Repository Structure
 
 This repository contains the **open-source client applications, mobile designs, and frontend packages**:
-- **React + Vite Web App** (`apps/web`): Production client interface with responsive cards, OTP authentication, and story card exporters.
-- **Mobile Design System & Screens** (`site/public`): 9 mobile screens built with the **Stitch Loop** featuring crisp white accents on dark obsidian canvas.
+- **Mobile Web Pages & Screens** (`site/public`): 10+ mobile and desktop screens built with high-contrast accessibility, dark/light modes, and large legible typography.
 - **Android App Links & Capacitor** (`apps/mobile-android`): Android application wrapper and deep linking configuration.
 - **Design Tokens & Constitution** (`.stitch`): Semantic design system tokens and screen constitution.
 
 > [!NOTE]
-> To protect platform stability, user data privacy, and prevent spam abuse, backend services and private database storage are maintained in an isolated private repository. This public client interacts with the backend strictly via standard REST API contracts (`https://api.secretmsg.net`).
+> To protect platform stability, user data privacy, and prevent abuse, backend edge workers and private database storage are maintained in an isolated private repository. This public client interacts with the edge services strictly via standard REST API contracts (`https://api.secretmsg.net`).
+
+---
+
+## Screens & Prototype Directory (`site/public/`)
+
+1. **`landing.html`** — Minimalist Desktop/Mobile Landing Page (2-link header, direct board creation, instant handle claims).
+2. **`index.html`** — Mobile Home & Explore (14,000+ viral templates, search, categories).
+3. **`compose.html`** — Compose Anonymous Message (Input sanitization, pause enforcement, hidden word rejection).
+4. **`dice.html`** — 3D Interactive Three.js Roulette Dice & Prompt Shuffle.
+5. **`sticker-studio.html`** — 9:16 Instagram/Snapchat Story Sticker Exporter.
+6. **`inbox.html`** — Anonymous Inbox (Quarantine tabs, real-time unread badges, viewer counter).
+7. **`message-detail.html`** — Message Thread, Sender Hints unlock, double-blind replies, and Report/Block controls.
+8. **`profile.html`** — Vanity Handle Hub, Verified Badge status, and Vector SVG QR Code.
+9. **`supporters.html`** — Modular Feature Donation Wall ($2 Verified Badge, $3 Viewer Hints, $4 Sender Hints, $7 Complete VIP).
+10. **`settings.html`** — Preferences (Notifications & 3-Choice Appearance) & Safety Controls (Hidden Words, Block Users, Pause My Link).
+11. **`safety.html` & Sub-pages** — Comprehensive Safety Center, Child Safety Policy, Online Safety Guide, Crisis Hotlines.
 
 ---
 
@@ -26,106 +78,24 @@ This repository contains the **open-source client applications, mobile designs, 
 - **Node.js**: v18.0.0 or later
 - **npm**: v9.0.0 or later
 
-### 2. Installation
-Clone the repository and install dependencies:
+### 2. Running the Public Prototype
+Clone the repository and serve the static files:
 
 ```bash
 git clone https://github.com/janasco/secretmsg.git
 cd secretmsg
-npm install
-```
-
-### 3. Environment Configuration
-Copy the template environment file:
-
-```bash
-cp .env.example apps/web/.env
-```
-
-| Variable | Description | Default |
-|---|---|---|
-| `VITE_API_URL` | Edge API endpoint | `https://api.secretmsg.net` |
-| `VITE_APP_URL` | Public web app domain | `https://secretmsg.net` |
-| `VITE_USE_MOCK` | Offline mock mode (No API required) | `true` or `false` |
-| `VITE_TURNSTILE_SITE_KEY` | Bot protection public key | `1x00000000000000000000AA` |
-
-### 4. Running the Web App
-
-#### Option A: Offline Mock Mode (Recommended for UI & Design Contributors)
-If you do not have an API backend running, enable mock mode in `apps/web/.env`:
-```ini
-VITE_USE_MOCK="true"
-```
-Then start the development server:
-```bash
-npm run dev
-```
-Open [http://localhost:5173](http://localhost:5173) in your browser. All features (composing messages, reading inbox, double-blind replies, and supporter wall) will work locally using browser storage!
-
-#### Option B: Live Edge API Mode
-Set `VITE_USE_MOCK="false"` in `apps/web/.env`. The client will connect directly to `https://api.secretmsg.net`.
-
----
-
-## Mobile Screen Prototypes (`site/public/`)
-
-The mobile application prototype consists of 9 fully-linked screens:
-1. **`index.html`** — Home & Explore (Live search, categories, viral templates)
-2. **`compose.html`** — Compose Anonymous Message (Prompt filler, vibes, double-blind reply token)
-3. **`dice.html`** — Roulette & 3D Interactive Three.js Dice
-4. **`sticker-studio.html`** — 9:16 Instagram/Snapchat Story Sticker Exporter
-5. **`inbox.html`** — Secret Inbox & Message Previews
-6. **`message-detail.html`** — Message Thread & Double-Blind Reply
-7. **`profile.html`** — Vanity Handle Hub & Vector SVG QR Code
-8. **`supporters.html`** — Supporters Wall & Polar.sh Perks
-9. **`settings.html`** — Privacy & Security Vault (Zero-Log Guarantee, nuclear data wipes)
-
-You can preview them directly in any browser or with:
-```bash
 npx serve site/public
 ```
 
----
-
-## Architecture & File Tree
-
-```
-secretmsg-public/
-├── .env.example               # Safe environment configuration template
-├── .gitignore                 # Exclusion rules
-├── README.md                  # Main documentation
-├── CONTRIBUTING.md            # Guidelines for open source contributors
-├── LICENSE                    # MIT License
-├── LEGAL/
-│   ├── TERMS_OF_SERVICE.md    # Terms of Service
-│   ├── PRIVACY_POLICY.md      # Zero-Log Privacy Policy
-│   └── DISCLAIMER.md          # Open-Source Disclaimer
-├── apps/
-│   ├── web/                   # React 18 + Vite + Tailwind CSS web application
-│   │   ├── src/
-│   │   │   ├── components/    # Story cards, Compose modals, QR modal, Toast
-│   │   │   ├── pages/         # Landing, SendMessage, Inbox, Settings, Legal
-│   │   │   └── lib/           # ApiClient and MockApiClient
-│   │   └── package.json
-│   └── mobile-android/        # Capacitor Android configuration & App Links
-├── site/
-│   └── public/                # 9 Stitch Loop mobile HTML/CSS/JS screens
-└── .stitch/                   # Design system tokens and screen constitution
-```
+Open [http://localhost:3000](http://localhost:3000) in your browser. All client features (theme toggle, local storage mock data, board generation, and safety controls) function out-of-the-box.
 
 ---
 
 ## Community & Issue Funding ([Polar.sh](https://polar.sh/janasco/secretmsg))
 
 SecretMsg is funded transparently through **[Polar.sh](https://polar.sh/janasco/secretmsg)**:
-- **Issue Funding**: Backers can pledge funding directly to GitHub issues (e.g. native iOS app, new sticker themes, or encryption tools).
-- **Supporter Perks**: Donors receive custom vanity handles and community wall recognition.
-
----
-
-## Security & Reporting
-
-To report security vulnerabilities, abuse vectors, or UI bugs, please review our [Security Policy](LEGAL/PRIVACY_POLICY.md) or open an issue on GitHub.
+- **Issue Funding**: Backers can pledge funding directly to GitHub issues.
+- **Supporter Perks**: Donors unlock Verified Badges, Viewer Hints, and Sender Hints directly on the platform.
 
 ---
 

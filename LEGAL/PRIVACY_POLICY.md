@@ -15,10 +15,11 @@ At SecretMsg (`secretmsg.net`), privacy is not an afterthought—it is the core 
 - **Transient Ephemeral Logs**: Standard Cloudflare edge infrastructure may process IP addresses transiently for rate-limiting and DDoS defense; however, IP addresses are never associated with message bodies in the application database.
 
 ### For Registered Recipients (Account Holders)
-- **Email Address**: Collected strictly to authenticate your account via passwordless one-time passcodes (OTP) sent through Resend.
-- **Username / Public Handle**: The unique slug used to construct your sharing link (e.g. `secretmsg.net/janasco-8f2k`).
-- **Received Messages**: The text of messages sent to your link.
-- **Supporter Status**: Flag indicating whether you have unlocked donation / supporter features.
+- **Email Address / Account Identifier**: Collected strictly to authenticate your account.
+- **Username / Public Handle**: The unique slug (minimum 4 characters) used to construct your sharing link (e.g. `secretmsg.net/yourname`).
+- **Received Messages**: The sanitized text of messages sent to your link.
+- **Supporter Status & Perks**: Flags indicating whether you have unlocked modular donation perks (Verified Badge, Viewer Hints, Sender Hints, or Complete VIP Pass).
+- **Client Preferences & Safety Controls**: Notification preferences, appearance preferences, custom hidden word blocklists, blocked sender lists, and link pause settings are stored directly in your local browser storage or associated securely with your board session.
 
 ---
 
@@ -27,6 +28,7 @@ At SecretMsg (`secretmsg.net`), privacy is not an afterthought—it is the core 
 - We **never sell, rent, or trade** user data or email addresses to advertisers, data brokers, or third parties.
 - We **never display advertising tracking pixels** or third-party behavioral trackers.
 - We **never reveal the sender's identity to the recipient**.
+- We **never log or sell custom hidden word lists or blocked user lists**.
 
 ---
 

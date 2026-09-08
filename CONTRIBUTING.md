@@ -8,38 +8,32 @@ Thank you for your interest in improving SecretMsg! We welcome contributions to 
 
 1. **Fork and Clone**:
    ```bash
-   git clone https://github.com/your-username/secretmsg.git
+   git clone https://github.com/janasco/secretmsg.git
    cd secretmsg
    ```
-2. **Install Dependencies**:
+2. **Serve Public Prototype**:
    ```bash
-   npm install
+   npx serve site/public
    ```
-3. **Run with Offline Mock Mode**:
-   Create `apps/web/.env` with:
-   ```ini
-   VITE_USE_MOCK="true"
-   ```
-   Start the Vite dev server:
-   ```bash
-   npm run dev
-   ```
-   This gives you instant mock messages, full inbox interaction, and prompt tests without needing access to any backend server.
+   Open `http://localhost:3000`. All screens are wired with local mock state and live browser storage.
 
 ---
 
-## Code Quality Standards
+## Design & Engineering Standards
 
-- **TypeScript**: Strive for type safety across components and utilities.
-- **Tailwind CSS**: Use predefined design tokens and avoid inline color hacks.
-- **Privacy First**: Never introduce client-side analytics, session replay trackers, or third-party cookies.
-- **Author Identity**: Keep commit authorship attributed to yourself without automated bot labels.
+- **Handle & Input Validation**: All board links and usernames must enforce a minimum length of 4 characters (`[a-zA-Z0-9_\-\.]{4,30}`) and pass through `SecretMsgSanitize` (`site/public/js/sanitize.js`).
+- **Typography & Font Scaling**: All pages must use large, accessible text as standard (`text-base` for normal body copy, `text-sm` minimum for auxiliary metadata). Avoid micro-fonts.
+- **Theme & Appearance Consistency**: Support the 3-choice appearance system (`dark`, `light`, `system` default) using `SecretMsgTheme` (`site/public/js/theme.js`). Ensure high contrast in both dark obsidian and light card styles.
+- **Header Navigation Stability**: Keep header navigation minimal (2 primary links) to ensure zero layout breaks across viewport breakpoints. Auxiliary links belong in the footer columns.
+- **Privacy by Default**: Never introduce client-side analytics, session replay trackers, third-party cookies, or invasive telemetry.
+- **Commit Authorship**: Keep commits attributed to personal contributor identities without automated bot co-authors.
 
 ---
 
 ## Submitting Pull Requests
 
 1. Create a feature branch: `git checkout -b feat/my-improvement`
-2. Commit your changes: `git commit -m "feat: add animated prompt switcher"`
+2. Commit your changes: `git commit -m "feat: enhance sticker template exporter"`
 3. Push to your fork: `git push origin feat/my-improvement`
 4. Open a Pull Request against `main`.
+

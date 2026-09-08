@@ -97,24 +97,28 @@ The visual aesthetic is **Hyper-Clean Minimalist Mobile** with **Crisp White Acc
 - Crisp weights: 700 for bold stat titles, 600 for card headers, 400 for message text.
 
 ## 4. Layout & Mobile Dimensions
-- Target screen width: 390px (Mobile portrait, iPhone 15/16 and modern Android form-factor).
-- Header: Sticky 56px top bar with back navigation, logo mark, and contextual action.
-- Content: Scrollable container with 16px horizontal padding and 12px gap between cards.
+- Target screen width: 390px (Mobile portrait, iPhone 15/16 and modern Android form-factor) up to 1200px desktop.
+- Header: Sticky 56px–64px top bar. For landing pages, **retain only two navigation links** (`Explore Demo` and `Safety`) plus action buttons to guarantee zero layout wrapping or breaking across viewports.
+- Content: Scrollable container with 16px horizontal padding and 12px–20px gap between cards.
 - Bottom Navigation: Fixed 64px bottom bar with icons and labels for Home, Explore/Dice, Create/Stickers, Inbox, and Profile.
 
 ## 5. UI Components
 - **Search Bar**: Capsule pill input with search icon, clear button, and placeholder text "Search vibes, categories, friends..."
 - **Category Chips**: Horizontal scrolling pill selector with active white fill state and inactive translucent border state.
 - **Viral Template Card**: Rounded 16px card, subtle gradient ambient glow, prompt headline, category pill tag, and "Try Prompt" button.
+- **Preferences & Safety Toggles**: High-contrast radio cards for 3-choice appearance (`Always Light`, `Always Dark`, `Follow System`) and toggles for notifications, hidden words, blocked senders, and pause links.
+- **Modular Supporter Cards**: Dedicated tier selectors for Verified Badge ($2), Viewer Hints ($3), Sender Hints ($4), and VIP Pass ($7).
 - **Bottom Navigation Bar**: Persistent 5-tab bar with icons (Home, Dice, Stickers, Inbox, Profile).
 
 ## 6. Design System Notes for Stitch Generation
 ```
 DESIGN SYSTEM (REQUIRED):
-- Platform: Mobile viewport (390px width), clean minimalist mobile app layout.
-- Theme: Clean minimalist dark titanium mode with high-contrast CRISP WHITE ACCENTS.
-- Colors: Background #0B0E14, Card surface #151B26, Pure white #FFFFFF for primary accents & active pills, outline border rgba(255, 255, 255, 0.12), muted gray #94A3B8.
-- Typography: Modern Inter typography, crisp legibility, tight headings, subtle letter spacing.
-- Components: Rounded-2xl (16px) cards, pill-shaped tags (rounded-full), frosted glass search bar, persistent bottom navigation bar (Home, Dice, Stickers, Inbox, Profile) with white active indicator.
-- Micro-details: Subtle hairlines, high touch-target buttons, clean white glowing highlights.
+- Platform: Mobile viewport (390px width) to modern desktop, clean minimalist layout.
+- Theme: 3-Choice Theme Support (Always Dark Obsidian titanium #0B0E14, Always Crisp Light #F8FAFC with slate borders, or System Settings default).
+- Typography: Enlarged normal font scale (text-base standard body, text-lg/xl headers) using Inter, crystal clear readability and zero eye strain.
+- Colors (Dark): Background #0B0E14, Card surface #151B26, Pure white #FFFFFF for primary accents & active pills, outline border rgba(255, 255, 255, 0.12), muted gray #94A3B8.
+- Colors (Light): Background #F8FAFC, Card surface #FFFFFF, High-contrast dark #0F172A for headings, border #E2E8F0.
+- Navigation Rule: Top header navigation MUST retain only two primary links (e.g. Demo + Safety) so the layout never breaks or wraps on narrow desktop/tablet screens.
+- Micro-details: Subtle hairlines, high touch-target buttons, clean glowing highlights.
 ```
+

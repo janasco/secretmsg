@@ -98,32 +98,28 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation Links -->
+      <!-- Desktop Navigation Links (Retained Two Essential Links) -->
       <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-300">
-        <a href="#how-to-create" class="hover:text-white transition-colors">How It Works</a>
-        <a href="#features" class="hover:text-white transition-colors">Features</a>
-        <a href="/demo" class="hover:text-white transition-colors text-indigo-400 flex items-center gap-1 font-bold">
+        <a href="/demo" class="hover:text-white transition-colors text-indigo-400 flex items-center gap-1.5 font-bold">
           <span class="material-symbols-outlined text-[18px]">play_circle</span> Explore Demo
         </a>
-        <a href="/dice.html" class="hover:text-white transition-colors flex items-center gap-1 text-amber-300 font-bold">
-          <span class="material-symbols-outlined text-[18px]">casino</span> 3D Roulette
+        <a href="/p/safety" class="hover:text-white transition-colors text-emerald-400 flex items-center gap-1.5 font-semibold">
+          <span class="material-symbols-outlined text-[18px]">verified_user</span> Safety
         </a>
-        <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
-        <a href="/p/safety" class="hover:text-white transition-colors">Safety</a>
       </nav>
 
       <!-- Action Buttons -->
-      <div class="flex items-center gap-2.5">
-        <button onclick="window.SecretMsgTheme.toggle()" class="w-10 h-10 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme (Dark / Light)" aria-label="Toggle Theme">
-          <span data-theme-icon class="material-symbols-outlined text-[20px]">dark_mode</span>
+      <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme (Dark / Light)" aria-label="Toggle Theme">
+          <span data-theme-icon class="material-symbols-outlined text-[18px] sm:text-[20px]">dark_mode</span>
         </button>
-        <a href="/login" class="px-4 py-2.5 rounded-full text-sm font-bold glass-panel text-slate-200 hover:text-white transition-all flex items-center gap-1.5">
-          <span class="material-symbols-outlined text-[18px]">login</span>
-          Board Login
+        <a href="/login" class="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold glass-panel text-slate-200 hover:text-white transition-all flex items-center gap-1.5 whitespace-nowrap">
+          <span class="material-symbols-outlined text-[16px] sm:text-[18px]">login</span>
+          <span>Board Login</span>
         </a>
-        <a href="#create" class="px-5 py-2.5 rounded-full text-sm font-bold bg-white text-[#0B0E14] hover:bg-slate-100 active:scale-95 transition-all shadow-md flex items-center gap-2">
-          <span class="material-symbols-outlined text-[18px]">add_link</span>
-          Create Link
+        <a href="#create" class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold bg-white text-[#0B0E14] hover:bg-slate-100 active:scale-95 transition-all shadow-md flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+          <span class="material-symbols-outlined text-[16px] sm:text-[18px]">add_link</span>
+          <span>Create Link</span>
         </a>
       </div>
     </div>
@@ -1095,6 +1091,8 @@
       <div class="space-y-3">
         <h5 class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-xs sm:text-sm">Platform</h5>
         <ul class="space-y-2">
+          <li><a href="#how-to-create" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">How It Works</a></li>
+          <li><a href="#features" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Features & Capabilities</a></li>
           <li><a href="/about" class="text-purple-600 dark:text-purple-400 hover:text-purple-900 dark:hover:text-white transition-colors font-semibold flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">auto_awesome</span> About Us</a></li>
           <li><a href="/login" class="text-sky-600 dark:text-sky-400 hover:text-sky-900 dark:hover:text-white transition-colors font-semibold flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">login</span> Board Login</a></li>
           <li><a href="/faq" class="text-amber-700 dark:text-amber-300 hover:text-amber-900 dark:hover:text-white transition-colors font-semibold flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">help</span> Help & FAQs</a></li>

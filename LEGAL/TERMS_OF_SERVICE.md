@@ -37,19 +37,28 @@ You agree **NEVER** to use SecretMsg to:
 
 ---
 
-## 4. User Accounts & Deletion
+## 4. User Accounts, Controls & Deletion
 
-- To receive messages, you must register using a valid email address via one-time passcode (OTP).
+- To receive messages, you register with a unique handle of at least 4 characters.
 - You are responsible for keeping your access credentials safe.
+- **Recipient Safety Controls**: Account holders have full access to proactive safety controls in **Settings**:
+  - **Pause My Link**: You may pause your link for 1 hour, 6 hours, 24 hours, or indefinitely to stop receiving messages.
+  - **Hidden Words**: You may define custom blocklists of words, phrases, or emojis to filter incoming submissions.
+  - **Block Users**: You may block abusive sender devices from sending further messages to your board.
 - **Account Deletion**: You retain full ownership and control over your account. You can permanently delete your account and all associated received messages at any time via your account settings. This action is irreversible.
 
 ---
 
-## 5. Donations & Supporter Perks
+## 5. Voluntary Donations & Supporter Features
 
-- Voluntary contributions and donations assist in paying for infrastructure, domain registration, edge hosting, and email OTP services.
+- Voluntary contributions and donations assist in paying for infrastructure, domain registration, edge hosting, and platform maintenance.
+- Supporters may unlock modular features:
+  - **Verified Badge ($2)**: Visual badge confirming link authenticity.
+  - **Viewer Hints ($3)**: Live traffic view counters for public boards.
+  - **Sender Hints ($4)**: Clues and approximate device signals on received messages.
+  - **Complete VIP Pass ($7)**: All perks combined.
 - Donations are voluntary gifts and do not constitute an investment, stock purchase, or guarantee of uninterrupted uptime.
-- Supporter features (such as vanity handles or custom themes) are provided as a token of gratitude and remain subject to the same community guidelines and terms.
+- Supporter features remain subject to all community guidelines and terms of conduct.
 
 ---
 

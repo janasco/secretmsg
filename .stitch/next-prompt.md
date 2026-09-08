@@ -1,27 +1,26 @@
 ---
 page: settings
 ---
-Mobile app Privacy Vault & Security Settings Screen for SecretMsg (`secretmsg.net`).
+Mobile app Preferences & Safety Controls Screen for SecretMsg (`secretmsg.net`).
 
 **DESIGN SYSTEM (REQUIRED):**
-- Platform: Mobile viewport (390px width), clean minimalist mobile app layout.
-- Theme: Clean minimalist dark titanium mode with high-contrast CRISP WHITE ACCENTS.
-- Colors: Background #0B0E14, Card surface #151B26, Pure white #FFFFFF for primary accents & active pills, outline border rgba(255, 255, 255, 0.12), muted gray #94A3B8.
-- Typography: Modern Inter typography, crisp legibility, tight headings, subtle letter spacing.
-- Components: Rounded-2xl (16px) cards, pill-shaped tags (rounded-full), frosted glass search bar, persistent bottom navigation bar (Home, Dice, Stickers, Inbox, Profile) with white active indicator.
-- Micro-details: Subtle hairlines, high touch-target buttons, clean white glowing highlights.
+- Platform: Mobile viewport (390px width) up to desktop, clean minimalist UI.
+- Theme: 3-Choice Appearance (Always Dark Obsidian, Always Light Crisp White, Follow System Settings).
+- Colors: High-contrast text, clear tactile form inputs, subtle translucent borders.
+- Typography: Large accessible font sizing (text-base standard body, text-lg/xl headings).
 
 **Page Structure:**
-1. **Top Header**: Back arrow to Profile, title "Privacy & Security Vault".
-2. **Zero-Log Guarantee Card**: Minimalist security shield banner certifying that sender IP addresses and tracking cookies are never stored.
-3. **Messaging Controls Section**:
-   - Toggle "Allow Double-Blind Anonymous Replies" (Active)
-   - Toggle "Display Approximate Sender Clues" (Active)
-   - Toggle "Strict Bot Shield (Cloudflare Turnstile)" (Active)
-4. **Account & Verification**:
-   - Verified email: `janasco@duck.com` (Passwordless OTP)
-   - Vanity handle: `@janasco` (Active)
-5. **Nuclear Data Control Cards**:
-   - Button: "Wipe All Stored Messages" (Permanent purge)
-   - Button: "Delete Account Permanently"
-6. **Bottom Navigation Bar**: Persistent 5-tab dock.
+1. **Top Header**: Back arrow, title "Preferences & Safety".
+2. **Preferences Section**:
+   - **Appearance Engine**: 3-Choice selector (`Always Light`, `Always Dark`, `Follow System Settings`).
+   - **Notification Toggles**: Reminders to post, New message alerts, Team SecretMsg prompts, Daily Question of the Day (QOTD).
+3. **Safety Controls Section**:
+   - **Hidden Words**: Custom keyword, phrase, and emoji blocklist with instant add/remove pills.
+   - **Block Users**: Blocked sender devices manager with one-tap unblock controls.
+   - **Pause My Link**: Timed or permanent pause selector (1h, 6h, 24h, Permanent) with live board status banner.
+4. **Account & Supporter Status**:
+   - Active board handle `@yourname` (min 4 characters).
+   - Supporter Perks status (Verified Badge, Viewer Hints, Sender Hints).
+5. **Nuclear Data Wipe Controls**:
+   - Instant message purge & permanent account deletion with cascading erase.
+
