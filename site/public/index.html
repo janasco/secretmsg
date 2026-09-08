@@ -36,6 +36,20 @@
       }
     }
   </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme') || 'system';
+      const isDark = saved === 'dark' || (saved === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="js/theme.js"></script>
 </head>
 <body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen">
   <div class="mobile-viewport">
@@ -53,7 +67,10 @@
           <span class="text-lg font-bold text-white tracking-tight uppercase">SecretMsg</span>
           <span class="bg-white/10 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full border border-white/20">PRO</span>
         </a>
-        <div class="flex items-center gap-1">
+        <div class="flex items-center gap-0.5">
+          <button onclick="window.SecretMsgTheme.toggle()" class="p-2 text-slate-400 hover:text-white transition-colors" title="Toggle Theme (Dark / Light / System)" aria-label="Toggle Theme">
+            <span data-theme-icon class="material-symbols-outlined text-[20px]">dark_mode</span>
+          </button>
           <a href="settings.html" class="p-2 text-slate-400 hover:text-white transition-colors" title="Settings">
             <span class="material-symbols-outlined text-[22px]">tune</span>
           </a>

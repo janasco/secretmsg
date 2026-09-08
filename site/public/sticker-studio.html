@@ -29,6 +29,20 @@
       }
     }
   </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme') || 'system';
+      const isDark = saved === 'dark' || (saved === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="js/theme.js"></script>
   <style>
     .theme-obsidian {
       background: radial-gradient(circle at center, #151B26 0%, #07090D 100%);

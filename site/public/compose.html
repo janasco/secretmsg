@@ -29,6 +29,20 @@
       }
     }
   </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme') || 'system';
+      const isDark = saved === 'dark' || (saved === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="js/theme.js"></script>
 </head>
 <body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen">
   <div class="mobile-viewport">

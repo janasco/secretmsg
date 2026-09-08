@@ -1,7 +1,8 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { ShieldCheck, Heart, Sparkles, LogOut, User, Lock } from 'lucide-react';
-import { ApiClient, UserProfile } from '../lib/api';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Heart, Sparkles, LogOut, User, Lock, Moon, Sun, Laptop } from 'lucide-react';
+import { UserProfile } from '../lib/api';
+import { getInitialTheme, applyAppTheme, ThemeMode } from '../lib/theme';
 
 interface NavbarProps {
   user: UserProfile | null;
@@ -10,7 +11,16 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ user, onOpenDonation, onLogout }) => {
-  const navigate = useNavigate();
+  const [theme, setTheme] = useState<ThemeMode>(getInitialTheme);
+
+  useEffect(() => {
+    applyAppTheme(theme);
+  }, [theme]);
+
+  const cycleTheme = () => {
+    const next: ThemeMode = theme === 'dark' ? 'light' : theme === 'light' ? 'system' : 'dark';
+    setTheme(next);
+  };
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-dark-950/80 backdrop-blur-md">
@@ -31,6 +41,17 @@ export const Navbar: React.FC<NavbarProps> = ({ user, onOpenDonation, onLogout }
 
         {/* Navigation Actions */}
         <div className="flex items-center space-x-2 sm:space-x-3">
+          <button
+            onClick={cycleTheme}
+            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+            title={`Theme: ${theme.toUpperCase()} (Click to toggle)`}
+            aria-label="Toggle theme mode"
+          >
+            {theme === 'dark' && <Moon className="w-4 h-4 text-indigo-300" />}
+            {theme === 'light' && <Sun className="w-4 h-4 text-amber-400" />}
+            {theme === 'system' && <Laptop className="w-4 h-4 text-slate-300" />}
+          </button>
+
           <Link
             to="/supporters"
             className="text-xs text-slate-400 hover:text-slate-200 px-2.5 py-1.5 rounded-lg hover:bg-white/5 transition-colors font-medium flex items-center space-x-1"

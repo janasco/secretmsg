@@ -19,6 +19,20 @@
       }
     }
   </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme') || 'system';
+      const isDark = saved === 'dark' || (saved === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="js/theme.js"></script>
 </head>
 <body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-white selection:text-[#0B0E14]">
   <!-- Top Navigation Bar -->
@@ -33,6 +47,9 @@
       </a>
 
       <div class="flex items-center gap-2">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme" aria-label="Toggle Theme">
+          <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
         <a href="https://m.secretmsg.net" class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/10 hover:bg-white hover:text-[#0B0E14] transition-all text-slate-200">
           <span class="material-symbols-outlined text-[16px]">smartphone</span>
           Open Web App
