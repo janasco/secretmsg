@@ -80,7 +80,7 @@
   </header>
 
   <!-- Sandbox Banner -->
-  <div class="bg-indigo-600/10 border-b border-indigo-500/20 px-4 py-3">
+  <div class="demo-sandbox-banner bg-indigo-600/10 border-b border-indigo-500/20 px-4 py-3">
     <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
       <div class="flex items-center gap-2 text-indigo-300">
         <span class="material-symbols-outlined text-[18px] animate-pulse text-indigo-400">science</span>
@@ -124,13 +124,13 @@
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
               <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-500 to-sky-400 p-0.5">
-                <div class="w-full h-full rounded-full bg-[#151B26] flex items-center justify-center font-bold text-white text-base">
+                <div class="demo-creator-avatar w-full h-full rounded-full bg-[#151B26] flex items-center justify-center font-bold text-white text-base">
                   D
                 </div>
               </div>
               <div>
                 <div class="flex items-center gap-1">
-                  <span class="font-bold text-white text-sm">@demo_creator</span>
+                  <span class="demo-creator-handle font-bold text-white text-sm">@demo_creator</span>
                   <span class="material-symbols-outlined text-white text-[15px]" style="font-variation-settings: 'FILL' 1;">verified</span>
                 </div>
                 <span class="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
@@ -140,14 +140,14 @@
               </div>
             </div>
 
-            <button onclick="shuffleDemoPrompt()" class="flex items-center gap-1 px-3 py-1.5 rounded-full glass-panel hover:bg-white/10 text-slate-200 text-xs font-semibold active:scale-95 transition-all" title="Shuffle TBH Prompt">
+            <button onclick="shuffleDemoPrompt()" class="demo-shuffle-btn flex items-center gap-1 px-3 py-1.5 rounded-full glass-panel hover:bg-white/10 text-slate-200 text-xs font-semibold active:scale-95 transition-all" title="Shuffle Roulette Prompt">
               <span class="material-symbols-outlined text-[15px] text-amber-400">casino</span>
               Shuffle
             </button>
           </div>
 
           <!-- Active Prompt Display -->
-          <div class="bg-[#10131A] rounded-2xl p-3.5 border border-white/10">
+          <div class="demo-prompt-box bg-[#10131A] rounded-2xl p-3.5 border border-white/10">
             <div class="flex items-center justify-between text-[10px] text-indigo-400 font-bold uppercase tracking-wider font-mono">
               <span id="demo-prompt-tag">🤫 Confessions</span>
               <span class="text-slate-500">Curated Roulette Pool</span>
@@ -264,7 +264,7 @@
             Need inspiration for your next Instagram Story? Roll random categories across 14,000+ curated viral prompts.
           </p>
 
-          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+          <div class="demo-roulette-box p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
             <div class="flex items-center justify-between text-xs">
               <span id="roulette-dice-vibe" class="font-bold text-amber-400 font-mono">🎲 Rolled: Spicy & Bold</span>
               <span class="text-slate-500 text-[10px]">Pool #742</span>
@@ -280,7 +280,7 @@
             <span class="material-symbols-outlined text-[16px]">shuffle</span>
             Roll Random Prompt
           </button>
-          <a href="/dice.html" class="px-4 py-2.5 rounded-full glass-panel hover:bg-white/10 text-white font-semibold text-xs flex items-center gap-1 transition-all">
+          <a href="/dice.html" class="demo-glass-action-btn px-4 py-2.5 rounded-full glass-panel hover:bg-white/10 text-white font-semibold text-xs flex items-center gap-1 transition-all">
             Full 3D App <span class="material-symbols-outlined text-[14px]">open_in_new</span>
           </a>
         </div>
@@ -324,7 +324,7 @@
             <span class="material-symbols-outlined text-[16px]">download</span>
             Simulate Story Export
           </button>
-          <a href="/sticker-studio.html" class="px-4 py-2.5 rounded-full glass-panel hover:bg-white/10 text-white font-semibold text-xs flex items-center gap-1 transition-all">
+          <a href="/sticker-studio.html" class="demo-glass-action-btn px-4 py-2.5 rounded-full glass-panel hover:bg-white/10 text-white font-semibold text-xs flex items-center gap-1 transition-all">
             Open Studio <span class="material-symbols-outlined text-[14px]">open_in_new</span>
           </a>
         </div>
@@ -345,7 +345,7 @@
         </button>
       </div>
 
-      <div class="bg-white/5 rounded-2xl p-4 border border-white/10">
+      <div class="demo-modal-msg-box bg-white/5 rounded-2xl p-4 border border-white/10">
         <p id="modal-msg-content" class="text-xs text-white leading-relaxed italic">
           Message text goes here...
         </p>
@@ -370,7 +370,7 @@
         <button onclick="sendDemoReply()" class="flex-1 py-2.5 bg-white text-[#0B0E14] font-bold text-xs rounded-full hover:bg-slate-100 transition-colors">
           Send Blind Reply
         </button>
-        <button onclick="closeReplyModal()" class="px-4 py-2.5 glass-panel text-slate-300 font-semibold text-xs rounded-full hover:text-white transition-colors">
+        <button onclick="closeReplyModal()" class="demo-modal-close-btn px-4 py-2.5 glass-panel text-slate-300 font-semibold text-xs rounded-full hover:text-white transition-colors">
           Close
         </button>
       </div>
@@ -378,7 +378,7 @@
   </div>
 
   <!-- Persistent Sticky Call-to-Action Bar -->
-  <div class="fixed bottom-0 left-0 right-0 z-40 bg-[#0B0E14]/95 backdrop-blur-xl border-t border-white/10 py-3 px-4">
+  <div class="demo-sticky-bar fixed bottom-0 left-0 right-0 z-40 bg-[#0B0E14]/95 backdrop-blur-xl border-t border-white/10 py-3 px-4">
     <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
       <div class="text-center sm:text-left">
         <span class="text-xs font-bold text-white block">Ready to create your own link?</span>
@@ -558,25 +558,25 @@
       }
 
       container.innerHTML = filtered.map(msg => `
-        <div class="glass-panel rounded-2xl p-4 border border-white/10 hover:border-indigo-500/40 transition-all cursor-pointer group space-y-2.5 ${msg.read ? 'opacity-85' : 'border-indigo-500/30'}" onclick="openReplyModal(${msg.id})">
+        <div class="demo-message-card glass-panel rounded-2xl p-4 border border-white/10 hover:border-indigo-500/40 transition-all cursor-pointer group space-y-2.5 ${msg.read ? 'opacity-85' : 'border-indigo-500/30'}" onclick="openReplyModal(${msg.id})">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-indigo-300 font-mono">
+              <span class="demo-msg-pill text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-indigo-300 font-mono">
                 ${msg.vibeLabel}
               </span>
               ${!msg.read ? '<span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-ping"></span>' : ''}
             </div>
             <div class="flex items-center gap-2 text-[10px] text-slate-500">
-              <span>${msg.time}</span>
+              <span class="demo-msg-time">${msg.time}</span>
               <button onclick="event.stopPropagation(); deleteDemoMessage(${msg.id})" class="text-slate-500 hover:text-rose-400 p-1" title="Delete Message">
                 <span class="material-symbols-outlined text-[14px]">delete</span>
               </button>
             </div>
           </div>
-          <p class="text-xs text-white leading-relaxed group-hover:text-indigo-100 transition-colors">
+          <p class="demo-msg-text text-xs text-white leading-relaxed group-hover:text-indigo-100 transition-colors">
             "${escapeHtml(msg.text)}"
           </p>
-          <div class="flex items-center justify-between pt-1 border-t border-white/5 text-[10px] text-slate-400">
+          <div class="demo-msg-footer flex items-center justify-between pt-1 border-t border-white/5 text-[10px] text-slate-400">
             <span class="flex items-center gap-1 text-slate-400 group-hover:text-indigo-300 transition-colors">
               <span class="material-symbols-outlined text-[12px]">reply</span> Click to reply double-blind
             </span>

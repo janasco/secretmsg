@@ -713,3 +713,337 @@ html.light .toast-notice {
   color: #FFFFFF !important;
   box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25) !important;
 }
+
+/* ==========================================================================
+   Light Mode: Landing Page Final Section (.landing-cta-section)
+   Fixes dark-on-dark unreadable text and renders high-contrast radiant theme
+   ========================================================================== */
+html.light .landing-cta-section,
+html.light section.landing-cta-section,
+html.light section[class*="from-[#0B0E14]"][class*="to-[#0B0E14]"] {
+  background: linear-gradient(180deg, #F8FAFC 0%, #EFF6FF 50%, #F1F5F9 100%) !important;
+  background-image: linear-gradient(180deg, #F8FAFC 0%, #EFF6FF 50%, #F1F5F9 100%) !important;
+  border-top: 1px solid #E2E8F0 !important;
+}
+
+html.light .landing-cta-section h2,
+html.light section[class*="from-[#0B0E14]"][class*="to-[#0B0E14]"] h2 {
+  color: #0F172A !important;
+}
+
+html.light .landing-cta-section p,
+html.light section[class*="from-[#0B0E14]"][class*="to-[#0B0E14]"] p {
+  color: #475569 !important;
+}
+
+html.light .cta-brand-badge,
+html.light .landing-cta-section .w-14.h-14 {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15) !important;
+}
+
+html.light .cta-at-symbol,
+html.light .landing-cta-section span.text-slate-500 {
+  color: #64748B !important;
+}
+
+html.light input#claim-username-cta,
+html.light .landing-cta-section input {
+  background-color: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #0F172A !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05) !important;
+}
+
+html.light input#claim-username-cta::placeholder,
+html.light .landing-cta-section input::placeholder {
+  color: #94A3B8 !important;
+}
+
+html.light .cta-submit-btn,
+html.light .landing-cta-section button[type="submit"] {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12) !important;
+}
+
+html.light .cta-submit-btn:hover,
+html.light .landing-cta-section button[type="submit"]:hover {
+  background-color: #1E293B !important;
+}
+
+/* ==========================================================================
+   Light Mode: Interactive Demo Sandbox (/demo)
+   Guarantees all text, chips, inputs, modals, and dynamic cards are ultra-legible
+   ========================================================================== */
+html.light .demo-sandbox-banner {
+  background-color: #EEF2FF !important;
+  border-bottom: 1px solid #C7D2FE !important;
+}
+
+html.light .demo-sandbox-banner .text-indigo-300,
+html.light .demo-sandbox-banner span,
+html.light .demo-sandbox-banner strong {
+  color: #312E81 !important;
+}
+
+html.light .demo-sandbox-banner button {
+  color: #4338CA !important;
+}
+
+html.light .demo-creator-avatar {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+}
+
+html.light .demo-creator-handle {
+  color: #0F172A !important;
+}
+
+/* Active Prompt Card in Composer */
+html.light .demo-prompt-box,
+html.light .bg-\[\#10131A\] {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #E2E8F0 !important;
+}
+
+html.light #demo-prompt-tag {
+  color: #4338CA !important;
+}
+
+html.light #demo-active-prompt {
+  color: #0F172A !important;
+}
+
+html.light .demo-prompt-box span.text-slate-500 {
+  color: #64748B !important;
+}
+
+/* Vibe Chips and Filter Pills */
+html.light .demo-vibe-chip,
+html.light .demo-inbox-filter {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #475569 !important;
+}
+
+html.light .demo-vibe-chip:hover,
+html.light .demo-inbox-filter:hover {
+  background-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+html.light .demo-vibe-chip.bg-white,
+html.light .demo-inbox-filter.bg-white {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+  border-color: #0F172A !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15) !important;
+}
+
+/* Composer Textarea */
+html.light #demo-input-text {
+  background-color: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #0F172A !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+}
+
+html.light #demo-input-text::placeholder {
+  color: #94A3B8 !important;
+}
+
+html.light #demo-char-count {
+  color: #64748B !important;
+}
+
+html.light .demo-shuffle-btn {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+html.light .demo-shuffle-btn:hover {
+  background-color: #E2E8F0 !important;
+}
+
+/* Inbox Count Badge */
+html.light #demo-inbox-count {
+  background-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+/* Inbox Message Cards & Hover State */
+html.light #demo-messages-container .glass-panel,
+html.light .demo-message-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
+}
+
+html.light #demo-messages-container .glass-panel:hover,
+html.light .demo-message-card:hover {
+  border-color: #818CF8 !important;
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12) !important;
+}
+
+html.light #demo-messages-container .demo-msg-text,
+html.light #demo-messages-container p {
+  color: #0F172A !important;
+}
+
+/* Fix the disappearing white text on hover */
+html.light #demo-messages-container .group:hover .demo-msg-text,
+html.light #demo-messages-container .group:hover p {
+  color: #4338CA !important;
+}
+
+html.light .demo-msg-pill,
+html.light #demo-messages-container span.bg-white\/10 {
+  background-color: #EEF2FF !important;
+  color: #4338CA !important;
+  border: 1px solid #C7D2FE !important;
+}
+
+html.light .demo-msg-time {
+  color: #64748B !important;
+}
+
+html.light .demo-msg-footer {
+  border-top-color: #F1F5F9 !important;
+}
+
+html.light .demo-msg-footer span {
+  color: #64748B !important;
+}
+
+html.light #demo-messages-container .group:hover .demo-msg-footer span {
+  color: #4338CA !important;
+}
+
+/* 3D Dice Showcase Box */
+html.light .demo-roulette-box {
+  background-color: #FFFBEB !important;
+  border: 1px solid #FDE68A !important;
+}
+
+html.light #roulette-dice-vibe {
+  color: #B45309 !important;
+}
+
+html.light #roulette-dice-text {
+  color: #1E293B !important;
+}
+
+html.light .demo-glass-action-btn {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+html.light .demo-glass-action-btn:hover {
+  background-color: #E2E8F0 !important;
+  color: #000000 !important;
+}
+
+/* Double-Blind Reply Modal */
+html.light #demo-reply-modal {
+  background-color: rgba(15, 23, 42, 0.55) !important;
+}
+
+html.light #demo-reply-modal .glass-panel {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25) !important;
+}
+
+html.light #modal-msg-vibe {
+  color: #0F172A !important;
+}
+
+html.light .demo-modal-msg-box,
+html.light #demo-reply-modal .bg-white\/5 {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #E2E8F0 !important;
+}
+
+html.light #modal-msg-content {
+  color: #0F172A !important;
+}
+
+html.light #modal-msg-time {
+  color: #64748B !important;
+}
+
+html.light #modal-reply-input {
+  background-color: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+html.light #modal-reply-input::placeholder {
+  color: #94A3B8 !important;
+}
+
+html.light .demo-modal-close-btn,
+html.light #demo-reply-modal button[onclick="closeReplyModal()"] {
+  background-color: #F1F5F9 !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #475569 !important;
+}
+
+html.light #demo-reply-modal button[onclick="sendDemoReply()"] {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+}
+
+/* Sticky Claim Bar on Demo Page */
+html.light .demo-sticky-bar {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-top: 1px solid #E2E8F0 !important;
+  box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.08) !important;
+}
+
+html.light .demo-sticky-bar span.text-white {
+  color: #0F172A !important;
+}
+
+html.light .demo-sticky-bar span.text-slate-400 {
+  color: #475569 !important;
+}
+
+html.light #demo-claim-input {
+  background-color: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+html.light #demo-claim-input::placeholder {
+  color: #94A3B8 !important;
+}
+
+html.light .demo-sticky-bar button[type="submit"] {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+}
+
+/* Header Action & Brand Badge Contrast in Light Mode */
+html.light header a[href="/#create"],
+html.light header a[href="#create"] {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12) !important;
+}
+
+html.light header a[href="/#create"]:hover,
+html.light header a[href="#create"]:hover {
+  background-color: #1E293B !important;
+}
+
+html.light header .w-8.h-8.bg-white,
+html.light footer .w-6.h-6.bg-white,
+html.light footer .w-7.h-7.bg-white {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+}
