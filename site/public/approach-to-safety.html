@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
   <title>Our Approach to Safety - SecretMsg</title>
-  <meta name="description" content="Discover SecretMsg's defense-in-depth approach to digital safety, automated spam defense, anti-harassment filtering, and zero-retention principles."/>
+  <meta name="description" content="Discover SecretMsg's proactive approach to safety: automated deep-learning content moderation, 24/7 human oversight, recipient sovereignty controls, and our safety FAQ."/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -43,7 +43,7 @@
       </a>
 
       <div class="flex items-center gap-2">
-        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme" aria-label="Toggle Theme">
           <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
         </button>
         <a href="/p/safety" class="px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors flex items-center gap-1">
@@ -53,77 +53,201 @@
     </div>
   </header>
 
-  <!-- Content -->
+  <!-- Main Container -->
   <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
-    <div class="mb-10">
+    <!-- Header Banner -->
+    <div class="mb-10 text-center sm:text-left">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold mb-4">
         <span class="material-symbols-outlined text-[14px]">psychology</span>
-        Engineering Philosophy & Architecture
+        Our Commitment • Proactive Digital Safeguards
       </div>
       <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
         Our Approach to Safety
       </h1>
-      <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
-        True online safety cannot be a cosmetic checklist added after the fact. At SecretMsg, safety is treated as a fundamental architectural pillar embedded into every line of code.
+      <p class="text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
+        At SecretMsg, safety is our highest priority. We created SecretMsg as a vibrant anonymous Q&amp;A platform where you can foster authentic, meaningful connections with friends, ask fun questions, reply in public or private, and keep the conversation going — all within a community rooted in kindness and respect.
       </p>
     </div>
 
-    <!-- 4 Pillars Grid -->
+    <!-- Safety Pillars Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
       <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
-        <span class="material-symbols-outlined text-emerald-400 text-[26px]">shield</span>
-        <h3 class="font-bold text-sm text-white">Defense in Depth</h3>
-        <p class="text-xs text-slate-400 leading-relaxed">Multi-layered security: advanced bot protection, rate-limit firewalls, pattern heuristics, and in-app moderation controls.</p>
+        <span class="material-symbols-outlined text-emerald-400 text-[26px]">smart_toy</span>
+        <h3 class="font-bold text-sm text-white">Automated First Line of Defense</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          State-of-the-art automated moderation scans every incoming question before delivery, filtering toxic language, hate speech, and predatory content.
+        </p>
       </div>
       <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
-        <span class="material-symbols-outlined text-sky-400 text-[26px]">lock_reset</span>
-        <h3 class="font-bold text-sm text-white">Zero-Retention Principles</h3>
-        <p class="text-xs text-slate-400 leading-relaxed">By refusing to store sender identities or behavioral profiles, we eliminate data honeypots that could ever be compromised or leaked.</p>
+        <span class="material-symbols-outlined text-sky-400 text-[26px]">support_agent</span>
+        <h3 class="font-bold text-sm text-white">24/7 Human Trust &amp; Safety Team</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Our community operations team monitors user reports, escalations, and support requests around the clock to ensure safety and quick action.
+        </p>
       </div>
       <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
         <span class="material-symbols-outlined text-amber-400 text-[26px]">tune</span>
         <h3 class="font-bold text-sm text-white">Recipient Sovereignty</h3>
-        <p class="text-xs text-slate-400 leading-relaxed">You control your experience. Toggle double-blind replies, pause link receipt, wipe your inbox, or delete your account in 1 tap.</p>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Pause your link at any time, filter custom keywords, block unwanted senders in 1 tap, or wipe your entire inbox in an instant.
+        </p>
       </div>
       <div class="glass-panel rounded-2xl p-5 border border-white/10 space-y-2">
-        <span class="material-symbols-outlined text-rose-400 text-[26px]">block</span>
-        <h3 class="font-bold text-sm text-white">Swift Takedowns</h3>
-        <p class="text-xs text-slate-400 leading-relaxed">Reports are handled with extreme urgency. Abusive messages and repeat offenders are blocked instantly.</p>
+        <span class="material-symbols-outlined text-rose-400 text-[26px]">report</span>
+        <h3 class="font-bold text-sm text-white">Swift In-App Reporting</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Reporting an uncomfortable message instantly purges it from your board and flags the sender's anonymous session for review and throttling.
+        </p>
       </div>
     </div>
 
-    <article class="space-y-8 text-slate-300 text-sm leading-relaxed border-t border-white/10 pt-8">
+    <!-- Main Content -->
+    <article class="space-y-10 text-slate-300 text-sm leading-relaxed border-t border-white/10 pt-8">
+      <!-- Section 1: Philosophy -->
       <section class="space-y-3">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
-          <span class="text-slate-500 font-mono text-xs">01</span> Why Anonymity Requires Strict Guardrails
+          <span class="text-slate-500 font-mono text-xs">01</span> Cultivating Kindness in Anonymous Q&amp;A
         </h2>
-        <p class="text-slate-400 leading-relaxed text-xs">
-          Anonymity can empower people to share heartwarming compliments, candid truths, and romantic sparks that they would otherwise feel too shy to express in person. However, without safeguards, anonymity can also be abused by bad actors. Our philosophy is to preserve the magic of candid honesty while building ironclad shields against harassment, stalking, and spam.
+        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+          Anonymity can empower people to share candid compliments, wholesome confessions, and creative questions that they might feel too hesitant to say aloud. However, an open door must always have an ironclad shield.
+        </p>
+        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+          SecretMsg has engineered an extensive ecosystem of security controls, safety infrastructure, clear community guidelines, and proactive policies that make us a leading voice for user protection in anonymous communication. You are always in control of your link, your board, and your conversations.
         </p>
       </section>
 
+      <!-- Section 2: Moderation Engine -->
       <section class="space-y-3">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
-          <span class="text-slate-500 font-mono text-xs">02</span> Automated Moderation
+          <span class="text-slate-500 font-mono text-xs">02</span> Advanced Content Moderation Architecture
         </h2>
-        <p class="text-slate-400 leading-relaxed text-xs">
-          Before any anonymous message reaches a recipient's inbox, our system verifies it through automatic bot detection and safety filters. Messages containing known harassment patterns, threats, or prohibited content are immediately intercepted and blocked.
+        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+          We take cases of bullying, hate, or violence with extreme seriousness. SecretMsg utilizes a multi-layered moderation pipeline combining automated machine intelligence with experienced human oversight:
         </p>
+        <div class="space-y-3 text-xs sm:text-sm text-slate-400 pt-2">
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold">1. Deep-Learning Automated Pre-Delivery Filter</strong>
+            <p class="text-slate-300 leading-relaxed text-xs">
+              Before any message hits a user's inbox, automated deep-learning algorithms analyze the text. Our models understand context, nuances of modern internet slang, and semantic emoji combinations to detect abusive intent, self-harm language, harassment, or predatory behavior. Messages flagged as harmful are intercepted and blocked before delivery.
+            </p>
+          </div>
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold">2. 24/7 Human Community Review</strong>
+            <p class="text-slate-300 leading-relaxed text-xs">
+              Automated systems are accompanied by real-world human experience. Our specialized Trust &amp; Safety team reviews escalations, investigates ambiguous reports, and acts swiftly against bad actors.
+            </p>
+          </div>
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold">3. Balanced Expression and Safety</strong>
+            <p class="text-slate-300 leading-relaxed text-xs">
+              Content moderation is a careful balance between user expression and community protection. Our rules ensure SecretMsg remains a safe, uplifting space where genuine curiosity thrives free from harassment or intimidation.
+            </p>
+          </div>
+        </div>
       </section>
 
+      <!-- Section 3: In-App Reporting -->
       <section class="space-y-3">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
-          <span class="text-slate-500 font-mono text-xs">03</span> Continuous Evolution
+          <span class="text-slate-500 font-mono text-xs">03</span> How In-App Reporting &amp; Blocking Works
         </h2>
-        <p class="text-slate-400 leading-relaxed text-xs">
-          As online trends and slang evolve, we continually update our moderation filters, listening directly to user feedback and working closely with open-source trust & safety standards.
+        <div class="space-y-2 text-xs sm:text-sm text-slate-400">
+          <p>
+            When you receive a message on SecretMsg that you find inappropriate, offensive, or harmful, you can report it directly within your inbox in seconds:
+          </p>
+          <ul class="list-disc list-inside space-y-1.5 text-slate-300 pl-2 text-xs sm:text-sm">
+            <li><strong>Tap Report:</strong> Click or tap the Report button (<span class="text-amber-400 font-bold">⚠</span>) on any message card.</li>
+            <li><strong>Immediate Quarantine:</strong> The message is instantly deleted from your active board and queued for administrative review.</li>
+            <li><strong>1-Tap Sender Block:</strong> Select "Block User" to prevent that sender's anonymous session from ever sending you another message.</li>
+            <li><strong>Contextual Assessment:</strong> Our team reviews reported content against our Community Guidelines and Terms of Service, taking punitive action up to permanent network bans.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 4: Safety FAQ -->
+      <section class="space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">04</span> Safety Frequently Asked Questions
+        </h2>
+        <div class="space-y-3 text-xs sm:text-sm">
+          <!-- Q1 -->
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1.5">
+            <h3 class="font-bold text-white text-xs sm:text-sm flex items-center gap-2">
+              <span class="text-indigo-400">Q:</span> What is and isn't allowed on SecretMsg?
+            </h3>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              Our <a href="/p/community-guidelines" class="text-indigo-400 underline">Community Guidelines</a> and <a href="/p/terms" class="text-indigo-400 underline">Terms of Service</a> define all prohibited behavior. In general, SecretMsg is an uplifting place to have fun, ask questions, share compliments, and create authentic Q&amp;A threads with friends. Cyberbullying, hate speech, threats, sexual harassment, and predatory behavior are strictly prohibited.
+            </p>
+          </div>
+
+          <!-- Q2 -->
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1.5">
+            <h3 class="font-bold text-white text-xs sm:text-sm flex items-center gap-2">
+              <span class="text-indigo-400">Q:</span> Can I block anonymous message senders?
+            </h3>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              Yes. Whenever you view a message, you can tap the Report button (⚠) and select "Block sender". The message will be purged from your inbox and that sender will be forbidden from sending messages to your link.
+            </p>
+          </div>
+
+          <!-- Q3 -->
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1.5">
+            <h3 class="font-bold text-white text-xs sm:text-sm flex items-center gap-2">
+              <span class="text-indigo-400">Q:</span> I received an emergency message; what should I do?
+            </h3>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              If a message suggests that you or someone else may be in imminent physical danger or crisis, please contact local emergency services or law enforcement immediately. Once emergency responders are engaged, please notify our safety team at <a href="mailto:safety@secretmsg.net" class="text-rose-400 underline font-mono">safety@secretmsg.net</a> so we can take immediate protective action.
+            </p>
+          </div>
+
+          <!-- Q4 -->
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1.5">
+            <h3 class="font-bold text-white text-xs sm:text-sm flex items-center gap-2">
+              <span class="text-indigo-400">Q:</span> I received a concerning message; how do I get help?
+            </h3>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              If the message is concerning but not an immediate physical emergency, reach out to our team at <a href="mailto:safety@secretmsg.net" class="text-indigo-400 underline font-mono">safety@secretmsg.net</a>. A member of our team will review the issue and assist you with guidance and technical controls.
+            </p>
+          </div>
+
+          <!-- Q5 -->
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1.5">
+            <h3 class="font-bold text-white text-xs sm:text-sm flex items-center gap-2">
+              <span class="text-indigo-400">Q:</span> Where can I find crisis and mental health resources?
+            </h3>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              Visit our dedicated <a href="/p/resources" class="text-indigo-400 underline">Safety &amp; Crisis Resources</a> page for direct hotlines, text lines, and confidential support services for mental health, anti-bullying, and crisis intervention.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Contact Banner -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">05</span> We Are Here to Help
+        </h2>
+        <p class="text-slate-400 text-xs sm:text-sm">
+          No concern is too small. If you ever have a question about our safety tools or need assistance with your link:
         </p>
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs mt-3">
+          <div>
+            <span class="font-bold text-white block">Trust &amp; Safety Community Help</span>
+            <span class="text-slate-400 font-mono">safety@secretmsg.net • support@secretmsg.net</span>
+          </div>
+          <a href="mailto:safety@secretmsg.net" class="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-500 transition-colors text-center shrink-0">
+            Contact Safety Team
+          </a>
+        </div>
       </section>
     </article>
 
+    <!-- Footer Links -->
     <div class="mt-14 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
       <div class="flex items-center gap-4">
-        <a href="/p/safety-tools" class="hover:text-white transition-colors">Our Safety Tools</a>
+        <a href="/p/safety" class="hover:text-white transition-colors">Safety Hub</a>
+        <a href="/p/child-safety-policy" class="hover:text-white transition-colors">Child Safety Policy</a>
+        <a href="/p/safety-tools" class="hover:text-white transition-colors">Safety Tools</a>
         <a href="/p/community-guidelines" class="hover:text-white transition-colors">Community Guidelines</a>
         <a href="/p/resources" class="hover:text-white transition-colors">Crisis Resources</a>
       </div>
