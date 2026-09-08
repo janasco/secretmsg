@@ -111,7 +111,7 @@
             </h2>
             <div class="bg-white/10 px-3.5 py-1 rounded-full hairline-border border-white/20 flex items-center gap-1.5">
               <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-              <span class="text-[11px] font-mono font-semibold text-white">@janasco</span>
+              <span id="sticker-handle" class="text-[11px] font-mono font-semibold text-white">@yourname</span>
             </div>
             <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent my-0.5"></div>
             <p class="text-[10px] text-slate-400">
@@ -266,8 +266,12 @@
       showToast('Sticker reset to default');
     }
 
+    const activeHandle = (localStorage.getItem('secretmsg_active_board') || localStorage.getItem('secretmsg_display_name') || 'yourname').replace(/^@/, '');
+    const stickerHandleEl = document.getElementById('sticker-handle');
+    if (stickerHandleEl) stickerHandleEl.textContent = `@${activeHandle}`;
+
     function shareToStories(platform) {
-      navigator.clipboard?.writeText('https://secretmsg.net/janasco');
+      navigator.clipboard?.writeText(`https://secretmsg.net/${activeHandle}`);
       showToast(`Link copied! Ready to paste sticker in ${platform}`);
     }
 

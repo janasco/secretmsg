@@ -145,7 +145,7 @@
         <div class="bg-[#10131A] rounded-xl p-3 flex justify-between items-center hairline-border z-10">
           <div class="flex items-center gap-2 truncate">
             <span class="material-symbols-outlined text-slate-400 text-[18px]">link</span>
-            <span class="text-xs font-mono text-slate-300 truncate">secretmsg.net/janasco</span>
+            <span id="my-board-link-text" class="text-xs font-mono text-slate-300 truncate">secretmsg.net/yourname</span>
           </div>
           <span class="text-[10px] text-emerald-400 font-semibold uppercase tracking-wider bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">Active</span>
         </div>
@@ -229,9 +229,14 @@
       setTimeout(() => toast.classList.remove('show'), 2200);
     }
 
+    const activeBoard = (localStorage.getItem('secretmsg_active_board') || localStorage.getItem('secretmsg_display_name') || 'yourname').replace(/^@/, '');
+    const myLinkText = document.getElementById('my-board-link-text');
+    if (myLinkText) myLinkText.textContent = `secretmsg.net/${activeBoard}`;
+
     document.getElementById('copy-link-btn').addEventListener('click', () => {
-      navigator.clipboard?.writeText('https://secretmsg.net/janasco');
-      showToast('Link copied: secretmsg.net/janasco');
+      const url = `https://secretmsg.net/${activeBoard}`;
+      navigator.clipboard?.writeText(url);
+      showToast(`Link copied: secretmsg.net/${activeBoard}`);
     });
 
     // Navigate to compose with prompt

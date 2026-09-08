@@ -265,12 +265,12 @@
           <div class="flex items-center gap-3">
             <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-500 to-sky-400 p-0.5">
               <div class="w-full h-full rounded-full bg-[#151B26] flex items-center justify-center font-bold text-white text-lg">
-                J
+                A
               </div>
             </div>
             <div>
               <div class="flex items-center gap-1">
-                <span class="font-bold text-white text-sm">@janasco</span>
+                <span class="font-bold text-white text-sm">@alex</span>
                 <span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
               </div>
               <span class="text-[11px] text-emerald-400 font-mono flex items-center gap-1">
@@ -280,9 +280,6 @@
             </div>
           </div>
           <div class="flex items-center gap-2">
-            <a href="/janasco" class="text-xs font-semibold px-3 py-1.5 rounded-full bg-white/10 hover:bg-white text-slate-300 hover:text-[#0B0E14] transition-all flex items-center gap-1" title="Send anonymous message to @janasco">
-              @janasco Card <span class="material-symbols-outlined text-[14px]">open_in_new</span>
-            </a>
             <a href="/demo" class="text-xs font-semibold px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white hover:opacity-90 transition-all flex items-center gap-1 shadow-sm">
               Explore Demo <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
             </a>
@@ -1089,7 +1086,7 @@
           The modern, privacy-first anonymous Q&A platform. 14,000+ templates, 3D dice roulette, zero tracking pixels, and instant GDPR account erasure.
         </p>
         <div class="pt-2 text-slate-500 font-mono text-[11px]">
-          Created by <strong class="text-slate-300">janasco</strong> • Open Source
+          Privacy-First Anonymous Messaging • Open Source
         </div>
       </div>
 
@@ -1100,7 +1097,6 @@
           <li><a href="/login" class="hover:text-white transition-colors text-sky-400 font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">login</span> Board Login</a></li>
           <li><a href="/faq" class="hover:text-white transition-colors text-amber-300 font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">help</span> Help & FAQs</a></li>
           <li><a href="/demo" class="hover:text-white transition-colors text-indigo-400 font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">play_circle</span> Interactive Demo</a></li>
-          <li><a href="/janasco" class="hover:text-white transition-colors">@janasco Profile Card</a></li>
           <li><a href="https://m.secretmsg.net" class="hover:text-white transition-colors">Mobile Web App</a></li>
           <li><a href="/dice.html" class="hover:text-white transition-colors">3D Dice Roulette</a></li>
           <li><a href="/sticker-studio.html" class="hover:text-white transition-colors">Sticker Studio</a></li>
@@ -1241,6 +1237,26 @@
         window.location.href = `/${username}`;
       }
     }
+
+    // Auto-fill claim handle if redirected from unavailable slug
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const claimHandle = params.get('claim');
+      if (claimHandle) {
+        const clean = claimHandle.trim().replace(/^@/, '');
+        const input = document.getElementById('hero-display-name');
+        if (input && clean) {
+          input.value = clean;
+          const createSec = document.getElementById('create');
+          if (createSec) {
+            createSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          const pwdInput = document.getElementById('hero-password');
+          if (pwdInput) setTimeout(() => pwdInput.focus(), 500);
+          showToast(`Claim @${clean} now — set a password below!`);
+        }
+      }
+    });
   </script>
 </body>
 </html>

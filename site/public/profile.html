@@ -89,15 +89,15 @@
         </div>
 
         <div>
-          <h2 class="text-lg font-bold text-white">janasco</h2>
-          <p class="text-xs text-slate-400 font-mono">@janasco • secretmsg.net</p>
+          <h2 id="profile-display-name" class="text-lg font-bold text-white">Your Board</h2>
+          <p id="profile-handle" class="text-xs text-slate-400 font-mono">@yourname • secretmsg.net</p>
         </div>
 
         <!-- Vanity Link Box -->
         <div class="w-full bg-[#10131A] rounded-2xl p-3 border border-white/10 flex items-center justify-between mt-1">
           <div class="flex items-center gap-2 truncate">
             <span class="material-symbols-outlined text-slate-400 text-[18px]">link</span>
-            <span class="text-xs font-mono text-slate-200 truncate">secretmsg.net/janasco</span>
+            <span id="profile-vanity-link" class="text-xs font-mono text-slate-200 truncate">secretmsg.net/yourname</span>
           </div>
           <span class="text-[10px] text-emerald-400 font-semibold bg-emerald-950/60 px-2 py-0.5 rounded">Live</span>
         </div>
@@ -190,8 +190,7 @@
             <input
               id="display-name-input"
               type="text"
-              value="janasco"
-              placeholder="Your display name"
+              placeholder="Enter your display name"
               class="flex-1 px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white text-xs focus:outline-none focus:border-indigo-500"
             />
             <button onclick="saveDisplayName()" class="px-4 py-2.5 bg-white text-[#0B0E14] text-xs font-bold rounded-xl hover:bg-slate-100 active:scale-95 transition-all">
@@ -303,7 +302,7 @@
         </div>
 
         <div class="text-center">
-          <span class="text-xs font-mono text-slate-300 block">secretmsg.net/janasco</span>
+          <span id="qr-modal-link" class="text-xs font-mono text-slate-300 block">secretmsg.net/yourname</span>
           <p class="text-[10px] text-slate-400 mt-0.5">Scan with phone camera to open instant TBH</p>
         </div>
 
@@ -318,31 +317,45 @@
       <div class="flex justify-around items-center h-16 max-w-xl mx-auto px-2">
         <a href="index.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
           <span class="material-symbols-outlined text-[24px]">home</span>
-          <span class="text-[10px] font-semibold mt-0.5">Home</span>
+          <span class="text-[10px] mt-0.5 font-medium">Home</span>
+        </a>
+        <a href="inbox.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">mail</span>
+          <span class="text-[10px] mt-0.5 font-medium">Inbox</span>
         </a>
         <a href="dice.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
           <span class="material-symbols-outlined text-[24px]">casino</span>
-          <span class="text-[10px] font-semibold mt-0.5">Dice</span>
+          <span class="text-[10px] mt-0.5 font-medium">Roulette</span>
         </a>
-        <a href="sticker-studio.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
-          <span class="material-symbols-outlined text-[24px]">photo_filter</span>
-          <span class="text-[10px] font-semibold mt-0.5">Stickers</span>
-        </a>
-        <a href="inbox.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white relative py-1 px-3 transition-colors">
-          <span class="material-symbols-outlined text-[24px]">mail</span>
-          <span class="text-[10px] font-semibold mt-0.5">Inbox</span>
-          <span class="absolute top-1 right-2.5 w-2 h-2 bg-rose-500 rounded-full border border-[#0B0E14]"></span>
-        </a>
-        <a href="profile.html" class="flex flex-col items-center justify-center text-white relative py-1 px-3 transition-colors">
+        <a href="profile.html" class="flex flex-col items-center justify-center text-white py-1 px-3 transition-colors">
           <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">person</span>
-          <span class="text-[10px] font-semibold mt-0.5">Profile</span>
-          <span class="w-1 h-1 bg-white rounded-full mt-0.5"></span>
+          <span class="text-[10px] mt-0.5 font-bold">Profile</span>
         </a>
       </div>
     </nav>
   </div>
 
   <script>
+    function getActiveBoard() {
+      return localStorage.getItem('secretmsg_active_board') || localStorage.getItem('secretmsg_display_name') || 'yourname';
+    }
+
+    function initProfile() {
+      const active = getActiveBoard();
+      const clean = active.replace(/^@/, '');
+      const dispEl = document.getElementById('profile-display-name');
+      const handleEl = document.getElementById('profile-handle');
+      const vanityEl = document.getElementById('profile-vanity-link');
+      const qrLinkEl = document.getElementById('qr-modal-link');
+      const inputEl = document.getElementById('display-name-input');
+
+      if (dispEl) dispEl.textContent = localStorage.getItem('secretmsg_display_name') || clean;
+      if (handleEl) handleEl.textContent = `@${clean} • secretmsg.net`;
+      if (vanityEl) vanityEl.textContent = `secretmsg.net/${clean}`;
+      if (qrLinkEl) qrLinkEl.textContent = `secretmsg.net/${clean}`;
+      if (inputEl) inputEl.value = localStorage.getItem('secretmsg_display_name') || clean;
+    }
+
     function showToast(msg) {
       const toast = document.getElementById('toast');
       document.getElementById('toast-text').textContent = msg;
@@ -351,7 +364,9 @@
     }
 
     function copyLink() {
-      navigator.clipboard?.writeText('https://secretmsg.net/janasco');
+      const active = getActiveBoard().replace(/^@/, '');
+      const url = `https://secretmsg.net/${active}`;
+      navigator.clipboard?.writeText(url);
       showToast('Public link copied to clipboard!');
     }
 
@@ -366,6 +381,7 @@
       const name = document.getElementById('display-name-input').value.trim();
       if (!name) return;
       localStorage.setItem('secretmsg_display_name', name);
+      initProfile();
       showToast(`Display name updated to "${name}"!`);
     }
 
@@ -389,6 +405,8 @@
         }, 1200);
       }
     }
+
+    window.addEventListener('DOMContentLoaded', initProfile);
   </script>
 </body>
 </html>
