@@ -329,7 +329,30 @@
       }
     }
 
-    window.addEventListener('DOMContentLoaded', syncInboxViewerHints);
+    function applyHiddenWordsFilter() {
+      let hiddenWords = [];
+      try {
+        hiddenWords = JSON.parse(localStorage.getItem('secretmsg_hidden_words') || '[]');
+      } catch {}
+      if (hiddenWords.length === 0) return;
+
+      document.querySelectorAll('.message-card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        const matched = hiddenWords.find(w => text.includes(w.toLowerCase()));
+        if (matched && !card.querySelector('.hidden-word-tag')) {
+          card.classList.add('opacity-40');
+          const tag = document.createElement('div');
+          tag.className = 'hidden-word-tag text-[10px] text-amber-400 font-mono bg-amber-950/60 px-2 py-0.5 rounded border border-amber-500/30 inline-block mb-1';
+          tag.textContent = `⚠️ Filtered by your hidden words ("${matched}")`;
+          card.insertBefore(tag, card.firstChild);
+        }
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      syncInboxViewerHints();
+      applyHiddenWordsFilter();
+    });
   </script>
 </body>
 </html>

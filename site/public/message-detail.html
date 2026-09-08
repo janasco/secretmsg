@@ -411,8 +411,20 @@
     }
 
     function reportAbuse() {
-      alert('Message flagged. The sender\'s device has been blocked from sending you future messages.');
-      showToast('Sender blocked');
+      if (confirm('Flag this message and block the sender from sending you future messages?')) {
+        let blocked = [];
+        try {
+          blocked = JSON.parse(localStorage.getItem('secretmsg_blocked_users') || '[]');
+        } catch {}
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        blocked.unshift({
+          identifier: `Blocked Device #${Math.floor(1000 + Math.random() * 9000)} (${msgId === '1' ? 'Android / London' : 'iOS / US'})`,
+          date: dateStr
+        });
+        localStorage.setItem('secretmsg_blocked_users', JSON.stringify(blocked));
+        showToast('Sender blocked permanently. View in Settings > Block Users.');
+      }
     }
 
     function syncSenderHints() {

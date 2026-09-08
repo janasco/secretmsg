@@ -226,6 +226,30 @@
       </div>
     </main>
 
+    <!-- Recipient Paused View (Shown when link is paused by owner) -->
+    <main id="paused-view" class="hidden flex-1 px-4 py-8 flex flex-col items-center justify-center text-center gap-6 pb-28">
+      <div class="w-20 h-20 rounded-3xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center shadow-xl">
+        <span class="material-symbols-outlined text-[42px]">pause_circle</span>
+      </div>
+
+      <div class="space-y-2 max-w-xs">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold font-mono">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+          <span>Taking a Break</span>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">
+          This Board Is Currently Paused
+        </h2>
+        <p id="paused-message-desc" class="text-xs text-slate-400 leading-relaxed">
+          <strong id="paused-slug" class="text-white font-mono">@user</strong> has temporarily paused receiving secret messages. Please check back later!
+        </p>
+      </div>
+
+      <a href="/" class="px-6 py-2.5 bg-white text-[#0B0E14] text-xs font-bold rounded-full shadow-lg hover:bg-slate-100 transition-all active:scale-95">
+        Create Your Own Secret Link
+      </a>
+    </main>
+
     <!-- Sent Confirmation Modal -->
     <div id="sent-modal" class="fixed inset-0 z-50 bg-[#0B0E14]/80 backdrop-blur-md hidden flex items-center justify-center p-4">
       <div class="glass-panel border border-white/20 rounded-3xl p-6 max-w-xs w-full text-center flex flex-col items-center gap-4 animate-in fade-in duration-200">
@@ -363,9 +387,35 @@
       localStorage.setItem('secretmsg_viewer_count', (curViews + 1).toString());
     }
 
+    function isLinkPaused(slug) {
+      if (slug === activeBoard) {
+        const pausedUntil = localStorage.getItem('secretmsg_link_paused_until');
+        if (pausedUntil && pausedUntil !== '0') {
+          if (pausedUntil === 'permanent') return true;
+          const exp = parseInt(pausedUntil, 10);
+          if (Date.now() < exp) return true;
+        }
+      }
+      return false;
+    }
+
+    function showPausedState(slug) {
+      document.getElementById('composer-view').classList.add('hidden');
+      document.getElementById('unavailable-view').classList.add('hidden');
+      document.getElementById('paused-view').classList.remove('hidden');
+      document.getElementById('paused-slug').textContent = `@${slug}`;
+      document.title = `@${slug}'s Board Is Paused - SecretMsg`;
+    }
+
     async function initRecipient() {
       if (!cleanUser || cleanUser.length < 4) {
         showUnavailableState(cleanUser);
+        return;
+      }
+
+      // Check if recipient has paused their link
+      if (isLinkPaused(cleanUser)) {
+        showPausedState(cleanUser);
         return;
       }
 
@@ -456,6 +506,21 @@
         textarea.focus();
         return;
       }
+
+      // Check recipient's hidden words / phrases / emojis filter
+      let hiddenWords = [];
+      try {
+        hiddenWords = JSON.parse(localStorage.getItem('secretmsg_hidden_words') || '[]');
+      } catch {}
+      if (hiddenWords.length > 0) {
+        const lower = sanitized.toLowerCase();
+        const matched = hiddenWords.find(w => lower.includes(w.toLowerCase()));
+        if (matched) {
+          alert(`This message contains a word or phrase that this creator has filtered ("${matched}"). Please be kind and respectful.`);
+          return;
+        }
+      }
+
       textarea.value = sanitized;
       const sendBtn = document.getElementById('send-btn');
       sendBtn.innerHTML = `<span class="animate-spin material-symbols-outlined text-[18px]">progress_activity</span> Encrypting & Sending...`;

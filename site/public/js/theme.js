@@ -1,4 +1,4 @@
-// SecretMsg Dual-Theme System (Light & Dark, Auto-Detecting System Preference by Default)
+// SecretMsg Theme System (Light, Dark, and Follow System Settings default)
 (function () {
   const THEME_KEY = 'secretmsg_theme';
 
@@ -8,19 +8,23 @@
 
   function getUserPreference() {
     const val = localStorage.getItem(THEME_KEY);
-    if (val === 'dark' || val === 'light') return val;
-    return null;
+    if (val === 'dark' || val === 'light' || val === 'system') return val;
+    return 'system'; // default
   }
 
-  function getCurrentTheme() {
-    return getUserPreference() || getSystemTheme();
+  function getEffectiveTheme() {
+    const pref = getUserPreference();
+    if (pref === 'dark') return 'dark';
+    if (pref === 'light') return 'light';
+    return getSystemTheme();
   }
 
-  function applyTheme(theme, persist = true) {
-    const active = (theme === 'light') ? 'light' : 'dark';
+  function applyTheme(pref, persist = true) {
+    const preference = (pref === 'light' || pref === 'dark' || pref === 'system') ? pref : 'system';
+    const effective = (preference === 'system') ? getSystemTheme() : preference;
     const root = document.documentElement;
 
-    if (active === 'dark') {
+    if (effective === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
       root.setAttribute('data-theme', 'dark');
@@ -31,40 +35,42 @@
     }
 
     if (persist) {
-      localStorage.setItem(THEME_KEY, active);
+      localStorage.setItem(THEME_KEY, preference);
     }
 
-    updateThemeUI(active);
+    updateThemeUI(effective, preference);
 
     // Dispatch event for components that need to react (e.g. Three.js canvas in dice.html)
-    window.dispatchEvent(new CustomEvent('secretmsg-theme-change', { detail: { theme: active, active } }));
+    window.dispatchEvent(new CustomEvent('secretmsg-theme-change', { detail: { theme: effective, preference } }));
   }
 
-  function updateThemeUI(theme) {
-    // Update any theme selector buttons on the page (Dark vs Light)
+  function updateThemeUI(effective, preference) {
+    const currentPref = preference || getUserPreference();
+    const currentEffective = effective || getEffectiveTheme();
+
+    // Update 3-way or 2-way theme selector buttons on the page
     document.querySelectorAll('[data-theme-btn]').forEach(btn => {
       const btnTheme = btn.getAttribute('data-theme-btn');
-      if (btnTheme === theme) {
-        btn.classList.add('theme-btn-active');
+      const isActive = (btnTheme === currentPref) || (!currentPref && btnTheme === 'system');
+      if (isActive) {
+        btn.classList.add('theme-btn-active', 'bg-white', 'text-[#0B0E14]', 'font-bold', 'shadow-sm');
+        btn.classList.remove('text-slate-300', 'hover:text-white');
         btn.setAttribute('aria-pressed', 'true');
       } else {
-        btn.classList.remove('theme-btn-active');
+        btn.classList.remove('theme-btn-active', 'bg-white', 'text-[#0B0E14]', 'font-bold', 'shadow-sm');
+        btn.classList.add('text-slate-300', 'hover:text-white');
         btn.setAttribute('aria-pressed', 'false');
       }
     });
 
     // Update icons on toggle buttons
     document.querySelectorAll('[data-theme-icon]').forEach(el => {
-      if (theme === 'light') {
-        el.textContent = 'light_mode';
-      } else {
-        el.textContent = 'dark_mode';
-      }
+      el.textContent = (currentEffective === 'light') ? 'light_mode' : 'dark_mode';
     });
 
     // Update button title/aria-label for 2-way toggle buttons
     document.querySelectorAll('button[onclick*="SecretMsgTheme.toggle"]').forEach(btn => {
-      const nextTheme = theme === 'dark' ? 'Light' : 'Dark';
+      const nextTheme = currentEffective === 'dark' ? 'Light' : 'Dark';
       btn.setAttribute('title', `Switch to ${nextTheme} Mode`);
       btn.setAttribute('aria-label', `Switch to ${nextTheme} Mode`);
     });
@@ -73,23 +79,19 @@
   // Set up listeners for system color scheme changes
   if (window.matchMedia) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      // Only auto-switch if user hasn't explicitly locked in a theme choice
-      if (!getUserPreference()) {
-        applyTheme(e.matches ? 'dark' : 'light', false);
+      const pref = getUserPreference();
+      if (pref === 'system') {
+        applyTheme('system', false);
       }
     });
   }
 
-  // Initial apply (clean legacy 'system' value if found)
-  const legacy = localStorage.getItem(THEME_KEY);
-  if (legacy && legacy !== 'dark' && legacy !== 'light') {
-    localStorage.removeItem(THEME_KEY);
-  }
-  applyTheme(getCurrentTheme(), Boolean(getUserPreference()));
+  // Initial apply
+  applyTheme(getUserPreference(), false);
 
   // Attach global API
   window.SecretMsgTheme = {
-    get: getCurrentTheme,
+    get: getEffectiveTheme,
     getUserPreference: getUserPreference,
     getSystemTheme: getSystemTheme,
     set: function (theme) {
@@ -104,11 +106,11 @@
 
   // Wire up any data-theme-btn clicks on DOM ready
   document.addEventListener('DOMContentLoaded', () => {
-    updateThemeUI(getCurrentTheme());
+    updateThemeUI(getEffectiveTheme(), getUserPreference());
     document.querySelectorAll('[data-theme-btn]').forEach(btn => {
       btn.addEventListener('click', () => {
         const theme = btn.getAttribute('data-theme-btn');
-        if (theme === 'dark' || theme === 'light') {
+        if (theme === 'dark' || theme === 'light' || theme === 'system') {
           applyTheme(theme, true);
         }
       });
