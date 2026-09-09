@@ -27,16 +27,23 @@
 - **Safety Controls → Block Users**: View and manage blocked sender devices with instant unblock toggles.
 - **Safety Controls → Pause My Link**: Temporarily or permanently halt incoming submissions (1 hour, 6 hours, 24 hours, or indefinite) with friendly public pause notices.
 
-### 2. Modular Feature Donation Plans (Supporter Perks)
-Supporters can unlock standalone individual features or the full VIP bundle:
-- **Verified Badge ($2)**: Official verified checkmark displayed on public boards, compose headers, and recipient profiles.
-- **Viewer Hints ($3)**: Live viewer counter tracking real-time impressions on user links.
-- **Sender Hints ($4)**: Clues and approximate device/context signals for received messages.
-- **Complete VIP Pass ($7)**: All premium perks combined.
+### 2. Modular Supporter Perks
+Supporters can unlock standalone individual features or the full VIP bundle through [Polar.sh](https://polar.sh/janasco/secretmsg):
+
+| Perk | Price | Effect |
+|---|---|---|
+| **Verified Badge** | $5 | Official verified checkmark on public boards, compose headers, and recipient profiles |
+| **Viewer Hints** | $5 | Live viewer counter tracking real-time impressions on user links |
+| **Sender Hints** | $5 | Clues and approximate device/context signals for received messages |
+| **Complete VIP Pass** | all perks | Requires donor tier support. Tiers: `Coffee Backer` ($5+), `Silver Patron` ($15+), `Golden Guardian` ($25+) |
+
+Perks are granted **only via the signature-verified Polar webhook** after a successful checkout. There is no client-side unlock path.
 
 ### 3. Platform Sanitization & Handle Validation
 - Strict handle requirements: Board links and usernames must be **at least 4 characters** (alphanumeric, underscores, hyphens, dots).
 - Edge and client-side sanitization against XSS, script injection, and malformed inputs.
+- Server-side rejection of recipient-hidden words, enforced regardless of sender.
+- Cloudflare Turnstile bot verification is **required** before any message is accepted.
 
 ### 4. Streamlined Navigation & Responsive Design
 - Clean 2-item top navigation (`Explore Demo` + `Safety`) ensuring rock-solid stability and zero layout wrapping across mobile, tablet, and desktop screens.
@@ -56,6 +63,14 @@ This repository contains the **open-source client applications, mobile designs, 
 
 ---
 
+## Security Highlights (Production Hardening Pass — Sept 2026)
+
+- **Fail-closed Turnstile**: missing secret, test secret, or failed challenge ⇒ the message is rejected. No bypass paths.
+- **Fail-closed payment grants**: the former `/api/donation/google-pay` endpoint (which granted paid perks from an unverified client POST) is disabled. Perks now come exclusively from the HMAC-verified Polar webhook.
+- **CORS strict allowlist**: disallowed origins receive `Access-Control-Allow-Origin: null` and are blocked, rather than silently falling back to `secretmsg.net`.
+- **Cryptographically clean tokens**: `generateRandomToken` uses rejection sampling to remove modulo bias.
+- **Rate limiting**: message sending, OTP requests/verification, checkout, public profile views, and abuse reports are all rate-limited per IP / email.
+
 ## Screens & Prototype Directory (`site/public/`)
 
 1. **`landing.html`** — Minimalist Desktop/Mobile Landing Page (2-link header, direct board creation, instant handle claims).
@@ -66,7 +81,7 @@ This repository contains the **open-source client applications, mobile designs, 
 6. **`inbox.html`** — Anonymous Inbox (Quarantine tabs, real-time unread badges, viewer counter).
 7. **`message-detail.html`** — Message Thread, Sender Hints unlock, double-blind replies, and Report/Block controls.
 8. **`profile.html`** — Vanity Handle Hub, Verified Badge status, and Vector SVG QR Code.
-9. **`supporters.html`** — Modular Feature Donation Wall ($2 Verified Badge, $3 Viewer Hints, $4 Sender Hints, $7 Complete VIP).
+9. **`supporters.html`** — Modular Donation Wall ($5 Verified Badge, $5 Viewer Hints, $5 Sender Hints).
 10. **`settings.html`** — Preferences (Notifications & 3-Choice Appearance) & Safety Controls (Hidden Words, Block Users, Pause My Link).
 11. **`safety.html` & Sub-pages** — Comprehensive Safety Center, Child Safety Policy, Online Safety Guide, Crisis Hotlines.
 
@@ -113,12 +128,17 @@ npm run android:build
 
 ---
 
-
 ## Community & Issue Funding ([Polar.sh](https://polar.sh/janasco/secretmsg))
 
 SecretMsg is funded transparently through **[Polar.sh](https://polar.sh/janasco/secretmsg)**:
 - **Issue Funding**: Backers can pledge funding directly to GitHub issues.
 - **Supporter Perks**: Donors unlock Verified Badges, Viewer Hints, and Sender Hints directly on the platform.
+
+---
+
+## Contributing
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for coding standards, safety controls, and PR guidelines.
 
 ---
 

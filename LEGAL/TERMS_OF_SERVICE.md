@@ -53,10 +53,10 @@ You agree **NEVER** to use SecretMsg to:
 
 - Voluntary contributions and donations assist in paying for infrastructure, domain registration, edge hosting, and platform maintenance.
 - Supporters may unlock modular features:
-  - **Verified Badge ($2)**: Visual badge confirming link authenticity.
-  - **Viewer Hints ($3)**: Live traffic view counters for public boards.
-  - **Sender Hints ($4)**: Clues and approximate device signals on received messages.
-  - **Complete VIP Pass ($7)**: All perks combined.
+  - **Verified Badge ($5)**: Visual badge confirming link authenticity.
+  - **Viewer Hints ($5)**: Live traffic view counters for public boards.
+  - **Sender Hints ($5)**: Clues and approximate device signals on received messages.
+  - **Complete VIP Pass**: All perks combined (requires donor tier support).
 - Donations are voluntary gifts and do not constitute an investment, stock purchase, or guarantee of uninterrupted uptime.
 - Supporter features remain subject to all community guidelines and terms of conduct.
 
