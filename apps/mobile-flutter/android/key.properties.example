@@ -1,0 +1,20 @@
+# Copy this file to android/key.properties and fill it in to produce an
+# upload-ready release build. Both key.properties and the keystore itself are
+# gitignored - never commit either one.
+#
+# Generate the keystore first (keep the resulting .jks somewhere safe and
+# backed up; losing it means you can never update the app on Play again):
+#
+#   keytool -genkeypair -v \
+#     -keystore $HOME/secretmsg-upload.jks \
+#     -storetype PKCS12 \
+#     -keyalg RSA -keysize 2048 -validity 10000 \
+#     -alias upload
+#
+# storeFile must be an absolute path. On Windows use forward slashes,
+# e.g. C:/Users/you/secretmsg-upload.jks
+
+storePassword=
+keyPassword=
+keyAlias=upload
+storeFile=
