@@ -17,7 +17,7 @@ export const SafetyToolsPage: React.FC = () => {
               </div>
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Boundary Setting</span>
-                <h2 className="text-xl sm:text-2xl font-bold text-white">Pause My Link (Digital Detox)</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-white">Pause Submissions (Quiet Mode)</h2>
               </div>
             </div>
             <span className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300">
@@ -67,7 +67,7 @@ export const SafetyToolsPage: React.FC = () => {
           </div>
 
           <div className="text-xs text-slate-400 pt-1">
-            <span>Configurable in: <strong>Settings &rarr; Safety Controls &rarr; Pause My Link</strong></span>
+            <span>Configurable in: <strong>Settings &rarr; Safety Controls &rarr; Pause Submissions</strong></span>
           </div>
         </div>
 
@@ -79,7 +79,7 @@ export const SafetyToolsPage: React.FC = () => {
               </div>
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-purple-400">Content Moderation</span>
-                <h2 className="text-xl sm:text-2xl font-bold text-white">Hidden Words, Phrases &amp; Emojis</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-white">Filtered Words, Phrases &amp; Emojis</h2>
               </div>
             </div>
             <span className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300">
@@ -142,7 +142,7 @@ export const SafetyToolsPage: React.FC = () => {
           </div>
 
           <div className="text-xs text-slate-400 pt-1">
-            <span>Configurable in: <strong>Settings &rarr; Safety Controls &rarr; Hidden Words</strong></span>
+            <span>Configurable in: <strong>Settings &rarr; Safety Controls &rarr; Filtered Words</strong></span>
           </div>
         </div>
 
@@ -202,7 +202,7 @@ export const SafetyToolsPage: React.FC = () => {
             Together, these tools ensure that you—and only you—control the experience on your link:
           </p>
           <ul className="list-disc list-inside space-y-2 text-slate-300 pl-2">
-            <li><strong>What you receive:</strong> Custom Hidden Words and AI moderation filters intercept offensive messages before you ever see them.</li>
+            <li><strong>What you receive:</strong> Custom Filtered Words and AI moderation filters intercept offensive messages before you ever see them.</li>
             <li><strong>Who can participate:</strong> Device-level blocking locks out malicious or harassing senders permanently.</li>
             <li><strong>When your board is open:</strong> Pause your link on a schedule (1h, 6h, 24h) or indefinitely whenever you need peace of mind.</li>
           </ul>

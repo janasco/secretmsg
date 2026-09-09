@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
-  <title>Account Preferences & Safety Controls - SecretMsg</title>
+  <title>Profile & Safety Controls - SecretMsg</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
@@ -125,13 +125,13 @@
         <div class="flex flex-col gap-6">
 
       <!-- ========================================== -->
-      <!-- GROUP 1: PREFERENCES > APPEARANCE          -->
+      <!-- GROUP 1: PREFERENCES > THEME & DISPLAY          -->
       <!-- ========================================== -->
       <section class="glass-panel rounded-3xl border border-white/10 p-5 flex flex-col gap-3">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-indigo-400 text-[20px]">palette</span>
-            <h2 class="text-xs font-bold text-white uppercase tracking-wider">Preferences &gt; Appearance</h2>
+            <h2 class="text-xs font-bold text-white uppercase tracking-wider">Preferences &gt; Theme &amp; Display</h2>
           </div>
           <span class="text-[10px] text-slate-400 font-mono">Theme Mode</span>
         </div>
@@ -158,13 +158,13 @@
       </section>
 
       <!-- ========================================== -->
-      <!-- GROUP 2: PREFERENCES > NOTIFICATIONS       -->
+      <!-- GROUP 2: PREFERENCES > ALERTS & NOTIFICATIONS       -->
       <!-- ========================================== -->
       <section class="glass-panel rounded-3xl border border-white/10 overflow-hidden">
         <div class="px-5 py-3.5 border-b border-white/10 bg-white/5 flex items-center justify-between">
           <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-amber-400 text-[20px]">notifications_active</span>
-            <h2 class="text-xs font-bold text-white uppercase tracking-wider">Preferences &gt; Notifications</h2>
+            <h2 class="text-xs font-bold text-white uppercase tracking-wider">Preferences &gt; Alerts &amp; Notifications</h2>
           </div>
           <span class="text-[10px] text-slate-400 font-mono">Alerts</span>
         </div>
@@ -245,13 +245,13 @@
         <div class="flex flex-col gap-6">
 
       <!-- ========================================== -->
-      <!-- GROUP 3: SAFETY CONTROLS > PAUSE MY LINK   -->
+      <!-- GROUP 3: SAFETY CONTROLS > PAUSE SUBMISSIONS   -->
       <!-- ========================================== -->
       <section class="glass-panel rounded-3xl border border-white/10 p-5 flex flex-col gap-3.5">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-amber-400 text-[20px]">pause_circle</span>
-            <h2 class="text-xs font-bold text-white uppercase tracking-wider">Safety Controls &gt; Pause My Link</h2>
+            <h2 class="text-xs font-bold text-white uppercase tracking-wider">Safety Controls &gt; Pause Submissions</h2>
           </div>
           <span id="pause-status-pill" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-500/30">Active</span>
         </div>
@@ -293,13 +293,13 @@
       </section>
 
       <!-- ========================================== -->
-      <!-- GROUP 4: SAFETY CONTROLS > HIDDEN WORDS    -->
+      <!-- GROUP 4: SAFETY CONTROLS > FILTERED WORDS    -->
       <!-- ========================================== -->
       <section class="glass-panel rounded-3xl border border-white/10 p-5 flex flex-col gap-3.5">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-sky-400 text-[20px]">filter_alt</span>
-            <h2 class="text-xs font-bold text-white uppercase tracking-wider">Safety Controls &gt; Hidden Words</h2>
+            <h2 class="text-xs font-bold text-white uppercase tracking-wider">Safety Controls &gt; Filtered Words</h2>
           </div>
           <span id="hidden-words-count" class="text-[10px] font-mono text-sky-400 bg-sky-950/60 px-2 py-0.5 rounded border border-sky-500/30">0 Rules</span>
         </div>
@@ -323,9 +323,9 @@
           </button>
         </div>
 
-        <!-- Active Hidden Words Chips -->
+        <!-- Active Filtered Words Chips -->
         <div id="hidden-words-container" class="flex flex-wrap gap-1.5 min-h-[40px] p-2.5 bg-[#10131A] rounded-2xl border border-white/10 items-center">
-          <span class="text-[11px] text-slate-500 italic px-1">No custom hidden words added yet.</span>
+          <span class="text-[11px] text-slate-500 italic px-1">No custom filtered words added yet.</span>
         </div>
 
         <!-- Quick Presets -->
@@ -338,13 +338,13 @@
       </section>
 
       <!-- ========================================== -->
-      <!-- GROUP 5: SAFETY CONTROLS > BLOCK USERS     -->
+      <!-- GROUP 5: SAFETY CONTROLS > BLOCKED SENDERS     -->
       <!-- ========================================== -->
       <section class="glass-panel rounded-3xl border border-white/10 p-5 flex flex-col gap-3.5">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-rose-400 text-[20px]">person_off</span>
-            <h2 class="text-xs font-bold text-white uppercase tracking-wider">Safety Controls &gt; Block Users</h2>
+            <h2 class="text-xs font-bold text-white uppercase tracking-wider">Safety Controls &gt; Blocked Senders</h2>
           </div>
           <span id="blocked-users-count" class="text-[10px] font-mono text-rose-400 bg-rose-950/60 px-2 py-0.5 rounded border border-rose-500/30">0 Blocked</span>
         </div>
@@ -529,7 +529,7 @@
     }
 
     // ==========================================
-    // SAFETY CONTROLS: PAUSE MY LINK
+    // SAFETY CONTROLS: PAUSE SUBMISSIONS
     // ==========================================
     // paused_until as returned by the real API: null = active, -1 = paused permanently,
     // otherwise a future unix-epoch-seconds timestamp.
@@ -631,7 +631,7 @@
     }
 
     // ==========================================
-    // SAFETY CONTROLS: HIDDEN WORDS
+    // SAFETY CONTROLS: FILTERED WORDS
     // ==========================================
     let cachedHiddenWords = [];
 
@@ -645,7 +645,7 @@
           window.location.href = '/login.html';
           return;
         }
-        console.error('Failed to load hidden words:', err);
+        console.error('Failed to load filtered words:', err);
         cachedHiddenWords = [];
       }
       renderHiddenWords();
@@ -665,7 +665,7 @@
           window.location.href = '/login.html';
           return;
         }
-        showToast(err.message || 'Failed to save hidden words');
+        showToast(err.message || 'Failed to save filtered words');
       }
     }
 
@@ -679,7 +679,7 @@
       if (!container) return;
 
       if (words.length === 0) {
-        container.innerHTML = '<span class="text-[11px] text-slate-500 italic px-1">No custom hidden words added yet.</span>';
+        container.innerHTML = '<span class="text-[11px] text-slate-500 italic px-1">No custom filtered words added yet.</span>';
         return;
       }
 
@@ -708,7 +708,7 @@
       const words = cachedHiddenWords.concat([val]);
       await persistHiddenWords(words);
       input.value = '';
-      showToast(`Added "${val}" to hidden words`);
+      showToast(`Added "${val}" to filtered words`);
     }
 
     async function removeHiddenWord(idx) {
@@ -737,7 +737,7 @@
     }
 
     // ==========================================
-    // SAFETY CONTROLS: BLOCK USERS
+    // SAFETY CONTROLS: BLOCKED SENDERS
     // ==========================================
     function getBlockedUsers() {
       try {

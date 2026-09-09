@@ -42,9 +42,9 @@ You agree **NEVER** to use SecretMsg to:
 - To receive messages, you register with a unique handle of at least 4 characters.
 - You are responsible for keeping your access credentials safe.
 - **Recipient Safety Controls**: Account holders have full access to proactive safety controls in **Settings**:
-  - **Pause My Link**: You may pause your link for 1 hour, 6 hours, 24 hours, or indefinitely to stop receiving messages.
-  - **Hidden Words**: You may define custom blocklists of words, phrases, or emojis to filter incoming submissions.
-  - **Block Users**: You may block abusive sender devices from sending further messages to your board.
+  - **Pause Submissions**: You may pause your link for 1 hour, 6 hours, 24 hours, or indefinitely to stop receiving messages.
+  - **Filtered Words**: You may define custom blocklists of words, phrases, or emojis to filter incoming submissions.
+  - **Blocked Senders**: You may block abusive sender devices from sending further messages to your board.
 - **Account Deletion**: You retain full ownership and control over your account. You can permanently delete your account and all associated received messages at any time via your account settings. This action is irreversible.
 
 ---

@@ -549,7 +549,7 @@
         return;
       }
 
-      // Check recipient's hidden words / phrases / emojis filter
+      // Check recipient's word, phrase, and emoji filters
       let hiddenWords = [];
       try {
         hiddenWords = JSON.parse(localStorage.getItem('secretmsg_hidden_words') || '[]');

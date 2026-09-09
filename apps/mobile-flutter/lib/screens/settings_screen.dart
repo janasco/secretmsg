@@ -419,7 +419,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Pause my link', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
+        const Text('Pause submissions', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
         const SizedBox(height: 4),
         const Text('While paused, senders see your profile but cannot deliver new messages.', style: TextStyle(color: Color(0xFF64748B), fontSize: 11, height: 1.5)),
         const SizedBox(height: 10),

@@ -13,16 +13,16 @@
 
 ## Key Features
 
-### 1. Account Preferences & Safety Controls
-- **Appearance**: a 3-choice theme engine that switches between:
+### 1. Profile & Safety Controls
+- **Theme & Display**: a 3-choice theme engine that switches between:
   - *Always Light Mode*
   - *Always Dark Mode*
   - *Follow System Settings (Default)*
-- **Notifications**: opt-in alerts covering link-sharing reminders, incoming-message pings, occasional team prompts, and Daily Question of the Day (QOTD) nudges.
-- **Hidden Words**: build custom blocklists of words, phrases, and emojis that auto-reject matching input at compose time or shunt it to the inbox quarantine.
-- **Block Users**: review and manage blocked sender devices with instant unblock toggles.
-- **Pause My Link**: suspend incoming submissions for 1 hour, 6 hours, 24 hours, or indefinitely, with a friendly public notice shown while paused.
-- **Owner login**: secure email one-time-password (OTP) sign-in for the private inbox and settings.
+- **Alerts & Notifications**: opt-in alerts covering link-sharing reminders, incoming-message pings, occasional team prompts, and Daily Question of the Day (QOTD) nudges.
+- **Filtered Words**: build custom blocklists of words, phrases, and emojis that auto-reject matching input at compose time or shunt it to the inbox quarantine.
+- **Blocked Senders**: review and manage blocked sender devices with instant unblock toggles.
+- **Pause Submissions**: suspend incoming submissions for 1 hour, 6 hours, 24 hours, or indefinitely, with a friendly public notice shown while paused.
+- **Owner Sign-In**: secure email one-time-password (OTP) sign-in for the private inbox and settings.
 
 ### 2. Modular Supporter Perks
 Supporters can purchase standalone perks individually or bundle them into the full VIP pass, checkout handled via [Polar.sh](https://polar.sh/janasco/secretmsg):
@@ -39,7 +39,7 @@ Perks are granted **only via the signature-verified Polar webhook** after a succ
 ### 3. Platform Sanitization & Handle Validation
 - Strict handle requirements: board links and usernames must be **at least 4 characters** (alphanumeric, underscores, hyphens, dots).
 - Edge and client-side sanitization against XSS, script injection, and malformed inputs.
-- Server-side rejection of recipient-hidden words, enforced regardless of sender.
+- Server-side rejection of recipient word filters, enforced regardless of sender.
 - Automated bot screening is **required** before any message is accepted.
 - **Rate limiting** on message sending, OTP requests, and other sensitive actions.
 - **Server-side sanitization** scrubs hostile payloads so they never reach storage or other users.
@@ -84,7 +84,7 @@ This repository contains the **open-source client applications, mobile designs, 
 7. **`message-detail.html`** — Message Thread, Sender Hints unlock, double-blind replies, and Report/Block controls.
 8. **`profile.html`** — Vanity Handle Hub, Verified Badge status, and Vector SVG QR Code.
 9. **`supporters.html`** — Modular Donation Wall ($5 Verified Badge, $5 Viewer Hints, $5 Sender Hints).
-10. **`settings.html`** — Preferences (Notifications & 3-Choice Appearance) & Safety Controls (Hidden Words, Block Users, Pause My Link).
+10. **`settings.html`** — Preferences (Alerts & Notifications, 3-choice Theme & Display) & Safety Controls (Filtered Words, Blocked Senders, Pause Submissions).
 11. **`safety.html` & Sub-pages** — Comprehensive Safety Center, Child Safety Policy, Online Safety Guide, Crisis Hotlines.
 
 ---

@@ -147,7 +147,7 @@ class ApiClient {
     return user;
   }
 
-  // ---- PATCH /api/me (pause + hidden words) ----
+  // ---- PATCH /api/me (pause + filtered words) ----
   static Future<void> updateMe({
     int? pausedUntil,
     bool clearPause = false,

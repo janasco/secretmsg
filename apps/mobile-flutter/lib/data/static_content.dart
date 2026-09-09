@@ -406,10 +406,10 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
     StaticSection('Overview', [
       'SecretMsg puts complete sovereignty over your inbox directly into your hands. Every account holder has access to real-time proactive safety controls designed to prevent abuse, enforce digital boundaries, and filter unwanted language down to specific emojis.',
     ]),
-    StaticSection('Pause My Link (Digital Detox)', [
+    StaticSection('Pause Submissions (Quiet Mode)', [
       'If you ever feel overwhelmed, need to study, or want to take a break from social media, you can freeze your SecretMsg link instantly. When your link is paused, no one can send you messages.',
     ]),
-    StaticSection('Hidden Words, Phrases & Emojis', [
+    StaticSection('Filtered Words, Phrases & Emojis', [
       'Create a personalized blocklist tailored to your personal boundaries. SecretMsg gives you granular control down to specific keywords, traumatic themes, negative slang, or even specific emojis.',
       'If a sender attempts to submit a message containing any word from your list, the form blocks submission immediately with a friendly warning.',
       'Any borderline messages are routed to a separate Quarantine folder so they never appear in your main feed unless you choose to review them.',
@@ -437,7 +437,7 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'Free, confidential, and available 24 hours a day, 7 days a week:',
     ]),
     StaticSection('Ready to customize your safety preferences?', [
-      'Configure your hidden words, pause your link, or adjust notification alerts in Settings.',
+      'Configure your filtered words, pause your link, or adjust notification alerts in Settings.',
     ]),
   ]),
   'terms': StaticPageContent('Terms of Service', [
