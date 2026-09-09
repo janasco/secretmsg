@@ -161,9 +161,9 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, onLogout, onOp
 
       {/* Legal & Project Information */}
       <div className="pt-4 border-t border-white/10 flex flex-wrap gap-4 text-xs text-slate-500">
-        <Link to="/legal/terms" className="hover:text-slate-400">Terms of Service</Link>
-        <Link to="/legal/privacy" className="hover:text-slate-400">Privacy Policy</Link>
-        <Link to="/legal/disclaimer" className="hover:text-slate-400">Personal Project Disclaimer</Link>
+        <Link to="/p/terms" className="hover:text-slate-400">Terms of Service</Link>
+        <Link to="/p/privacy" className="hover:text-slate-400">Privacy Policy</Link>
+        <Link to="/p/disclaimer" className="hover:text-slate-400">Personal Project Disclaimer</Link>
       </div>
     </div>
   );

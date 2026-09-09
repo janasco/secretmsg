@@ -144,9 +144,9 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
 
         <div className="pt-2 border-t border-white/5 text-center text-[11px] text-slate-500">
           <span>By continuing, you agree to our </span>
-          <Link to="/legal/terms" className="underline hover:text-slate-400">Terms</Link>
+          <Link to="/p/terms" className="underline hover:text-slate-400">Terms</Link>
           <span> and </span>
-          <Link to="/legal/privacy" className="underline hover:text-slate-400">Privacy Policy</Link>.
+          <Link to="/p/privacy" className="underline hover:text-slate-400">Privacy Policy</Link>.
         </div>
       </div>
     </div>

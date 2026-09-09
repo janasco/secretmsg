@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Send, Shield, Sparkles, CheckCircle2, Lock, ArrowRight, Dices, Heart, Flame, Smile, Coffee } from 'lucide-react';
 import { ApiClient, UserProfile, PUBLIC_BASE_URL } from '../lib/api';
 
@@ -508,7 +509,7 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
           <Shield className="w-3.5 h-3.5 text-indigo-400" />
           <span>Zero sender tracking. Protected by automated spam screening.</span>
         </div>
-        <a href="/legal/privacy" className="hover:underline text-slate-400">Privacy Policy</a>
+        <Link to="/p/privacy" className="hover:underline text-slate-400">Privacy Policy</Link>
       </div>
     </div>
   );
