@@ -1,0 +1,36 @@
+Share one link. Collect honest questions. Reply on your terms.
+
+SecretMsg gives you a personal link you can drop in your Instagram story, TikTok bio, or a group chat. Anyone who opens it can send you an anonymous question or message — no account, no sign-up, nothing to install. You read everything in the app and decide what to answer.
+
+WHAT YOU GET
+
+• Your own secret link — one short URL that belongs to you
+• An inbox for everything people send you
+• Double-blind replies: answer a sender without either of you learning who the other is
+• Prompt roulette: 9,000 conversation starters when you want ideas
+• Story stickers to share a question or an answer straight to your feed
+
+CONTROLS THAT ARE ACTUALLY YOURS
+
+• Filtered Words — build your own blocklist of words, phrases, or emoji. Anything matching is refused at the moment someone tries to send it.
+• Pause Submissions — freeze your link for an hour, six hours, a day, or indefinitely. Senders see a friendly notice instead of a form.
+• Report — flag anything abusive straight from the message.
+• Delete your account — wipe your profile and every message you have received, permanently, from Settings. No email required, no waiting.
+
+PRIVACY BY DEFAULT
+
+Senders are anonymous to you, and you are anonymous to senders. We do not ask a sender for a name, a phone number, or an account — there is nothing to hand over. We do not sell data, and there are no third-party ad or analytics trackers in this app.
+
+VIEW ON THE WEB
+
+Prefer a bigger screen? Settings gives you a short pairing code. Type it at secretmsg.net and that browser can read your inbox for the session — view-only, so your settings and replies stay on your phone.
+
+SUPPORT THE PROJECT
+
+SecretMsg is an independent, open-source project with no ads. Optional one-off purchases unlock cosmetic and quality-of-life extras — a verified badge, viewer hints, sender hints — or you can use everything essential for free, forever. Nothing behind a subscription.
+
+A NOTE ON KINDNESS
+
+Anonymity should make people braver, not crueller. Messages that threaten, harass, or target anyone are not welcome here and are removed. If something crosses a line, report it — and use Filtered Words and Pause Submissions freely, they exist so the inbox stays yours.
+
+Open source: github.com/janasco/secretmsg
