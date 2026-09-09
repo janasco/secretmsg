@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../api/api_client.dart';
@@ -199,6 +202,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
+  Future<void> _showPairCode() async {
+    try {
+      final res = await ApiClient.createPairCode();
+      if (!mounted) return;
+      await showDialog<void>(
+        context: context,
+        builder: (_) => _PairCodeDialog(code: res.code, expiresIn: res.expiresIn),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+    }
+  }
+
   Widget _buildError() {
     return ListView(
       children: [
@@ -287,6 +304,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         icon: Icons.article_outlined,
                         label: 'Terms & safety center',
                         onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => StaticScreen(keyOf: 'about'))),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  _SectionCard(
+                    title: 'View on web',
+                    icon: Icons.devices_outlined,
+                    children: [
+                      const Text(
+                        'Read your inbox in a browser. The code lasts 5 minutes, works once, and gives view-only access - replies and settings stay here in the app.',
+                        style: TextStyle(color: Color(0xFF64748B), fontSize: 11, height: 1.5),
+                      ),
+                      const SizedBox(height: 6),
+                      _ActionTile(
+                        icon: Icons.qr_code_2,
+                        label: 'Show pairing code',
+                        onTap: _showPairCode,
                       ),
                     ],
                   ),
@@ -588,6 +622,113 @@ class _ActionTile extends StatelessWidget {
       title: Text(label, style: TextStyle(color: danger ? const Color(0xFFF87171) : const Color(0xFFCBD5E1), fontSize: 14)),
       trailing: const Icon(Icons.chevron_right, size: 18, color: Color(0xFF475569)),
       onTap: onTap,
+    );
+  }
+}
+
+/// Shows a pairing code with a live countdown. The code is useless once it
+/// expires or has been redeemed, so it is safe to display in full.
+class _PairCodeDialog extends StatefulWidget {
+  final String code;
+  final int expiresIn;
+  const _PairCodeDialog({required this.code, required this.expiresIn});
+
+  @override
+  State<_PairCodeDialog> createState() => _PairCodeDialogState();
+}
+
+class _PairCodeDialogState extends State<_PairCodeDialog> {
+  late int _left = widget.expiresIn;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(const Duration(seconds: 1), (t) {
+      if (!mounted) {
+        t.cancel();
+        return;
+      }
+      setState(() => _left = _left > 0 ? _left - 1 : 0);
+      if (_left <= 0) t.cancel();
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final expired = _left <= 0;
+    final mm = (_left ~/ 60).toString();
+    final ss = (_left % 60).toString().padLeft(2, '0');
+    return AlertDialog(
+      backgroundColor: const Color(0xFF0F1220),
+      title: const Text(
+        'Open your inbox on the web',
+        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w800),
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Text(
+            'Go to secretmsg.net/login and enter this code:',
+            style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12, height: 1.5),
+          ),
+          const SizedBox(height: 14),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 14),
+            decoration: BoxDecoration(
+              color: const Color(0xFF0B0E1A),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: AppColors.border),
+            ),
+            child: SelectableText(
+              widget.code,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: expired ? const Color(0xFF64748B) : Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.w800,
+                letterSpacing: 4,
+                fontFamily: 'monospace',
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            expired
+                ? 'Expired. Close this and generate a new code.'
+                : 'Expires in $mm:$ss',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: expired ? const Color(0xFFF87171) : const Color(0xFF64748B),
+              fontSize: 11,
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: expired
+              ? null
+              : () {
+                  Clipboard.setData(ClipboardData(text: widget.code));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Pairing code copied')),
+                  );
+                },
+          child: const Text('Copy', style: TextStyle(color: Color(0xFFA5B4FC))),
+        ),
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: const Text('Done', style: TextStyle(color: Color(0xFFA5B4FC))),
+        ),
+      ],
     );
   }
 }

@@ -139,6 +139,17 @@ class ApiClient {
     return (user: user, token: token);
   }
 
+  // ---- Web pairing (POST /api/auth/pair/create) ----
+  /// Requests a short-lived, single-use code the owner types into
+  /// secretmsg.net to open a view-only session in a browser.
+  static Future<({String code, int expiresIn})> createPairCode() async {
+    final data = await _postJson('/api/auth/pair/create', const {}, auth: true);
+    return (
+      code: data['code']?.toString() ?? '',
+      expiresIn: (data['expires_in'] as num?)?.toInt() ?? 300,
+    );
+  }
+
   // ---- Authenticated profile (GET /api/me) ----
   static Future<UserProfile> getMe() async {
     final data = await _getJson('/api/me');

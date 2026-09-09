@@ -87,6 +87,41 @@ export class ApiClient {
   static removeToken() {
     localStorage.removeItem('secretmsg_auth_token');
     localStorage.removeItem('secretmsg_user_profile');
+    localStorage.removeItem('secretmsg_auth_scope');
+  }
+
+  /** 'full' for an owner session, 'read' for a browser paired from the app. */
+  static getScope(): 'full' | 'read' {
+    return localStorage.getItem('secretmsg_auth_scope') === 'read' ? 'read' : 'full';
+  }
+
+  static setScope(scope: 'full' | 'read') {
+    localStorage.setItem('secretmsg_auth_scope', scope);
+  }
+
+  /** Paired browsers can read the inbox but cannot change anything. */
+  static isReadOnly(): boolean {
+    return this.getScope() === 'read';
+  }
+
+  /**
+   * Exchanges the 8-character code shown in the Android app for a read-only
+   * web session. The code is single-use and expires after five minutes.
+   */
+  static async redeemPairCode(code: string): Promise<{ user: UserProfile; token: string }> {
+    const res = await fetch(`${API_BASE_URL}/api/auth/pair/redeem`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code }),
+    });
+    const data = await res.json() as { user?: UserProfile; token?: string; scope?: string; error?: string };
+    if (!res.ok || !data.token || !data.user) {
+      throw new Error(data.error || 'That code is invalid or has expired.');
+    }
+    this.setToken(data.token);
+    this.setScope(data.scope === 'read' ? 'read' : 'full');
+    this.saveUser(data.user);
+    return { user: data.user, token: data.token };
   }
 
   static getSavedUser(): UserProfile | null {
@@ -152,6 +187,7 @@ export class ApiClient {
       throw new Error(data.error || 'Invalid or expired OTP');
     }
     this.setToken(data.token);
+    this.setScope('full');
     this.saveUser(data.user);
     return { user: data.user, token: data.token };
   }
