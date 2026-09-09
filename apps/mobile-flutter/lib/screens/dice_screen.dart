@@ -21,15 +21,38 @@ class _DiceScreenState extends State<DiceScreen> {
   int _visible = 30;
   static final _rand = Random();
 
+  List<RouletteCategory>? _categories;
+  Object? _loadError;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPrompts();
+  }
+
+  Future<void> _loadPrompts() async {
+    setState(() => _loadError = null);
+    try {
+      final categories = await RouletteData.load();
+      if (!mounted) return;
+      setState(() => _categories = categories);
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _loadError = e);
+    }
+  }
+
   List<String> get _pool {
-    for (final c in ROULETTE_CATEGORIES) {
+    final categories = _categories;
+    if (categories == null) return const <String>[];
+    for (final c in categories) {
       if (c.key == _category) return c.prompts;
     }
-    return ROULETTE_CATEGORIES.first.prompts;
+    return categories.first.prompts;
   }
 
   void _roll() {
-    if (_rolling) return;
+    if (_rolling || _pool.isEmpty) return;
     setState(() {
       _rolling = true;
       _current = null;
@@ -56,8 +79,44 @@ class _DiceScreenState extends State<DiceScreen> {
     );
   }
 
+  Widget _buildPlaceholder() {
+    if (_loadError != null) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Could not load the prompt pool.',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Color(0xFFCBD5E1), fontSize: 14, fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 12),
+              OutlinedButton(onPressed: _loadPrompts, child: const Text('Retry')),
+            ],
+          ),
+        ),
+      );
+    }
+    return const Center(
+      child: SizedBox(
+        height: 22,
+        width: 22,
+        child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF818CF8)),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final categories = _categories;
+    if (categories == null) {
+      return Scaffold(
+        appBar: const AppTopBar(title: 'Dice Prompt Roulette'),
+        body: _buildPlaceholder(),
+      );
+    }
     return Scaffold(
       appBar: const AppTopBar(title: 'Dice Prompt Roulette'),
       body: SingleChildScrollView(
@@ -93,7 +152,7 @@ class _DiceScreenState extends State<DiceScreen> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                for (final c in ROULETTE_CATEGORIES)
+                for (final c in categories)
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8),
                     child: ChoiceChip(
