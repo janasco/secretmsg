@@ -25,13 +25,13 @@ class FooterLinks extends StatelessWidget {
       case 'home':
         Navigator.of(context).popUntil((r) => r.isFirst);
       case 'supporters':
-        _go(context, const SupportersScreen());
+        _go(context, const AppShell(initialTab: AppTab.supporters));
       case 'dice':
         _go(context, const DiceScreen());
       case 'sticker':
         _go(context, const StickerStudioScreen());
       case 'inbox':
-        _go(context, const InboxScreen());
+        _go(context, const AppShell(initialTab: AppTab.inbox));
       default:
         _go(context, StaticScreen(keyOf: target));
     }

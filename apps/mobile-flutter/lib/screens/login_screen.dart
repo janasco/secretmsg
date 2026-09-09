@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../api/api_client.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
-import 'settings_screen.dart';
+import 'app_shell.dart';
 
 class LoginScreen extends StatefulWidget {
   final String? prefillUsername;
@@ -90,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
       await ApiClient.verifyOtp(email, otp, username: username.isEmpty ? null : username.toLowerCase());
       if (!mounted) return;
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => const SettingsScreen()),
+        MaterialPageRoute(builder: (_) => const AppShell(initialTab: AppTab.settings)),
         (route) => false,
       );
     } on ApiException catch (e) {

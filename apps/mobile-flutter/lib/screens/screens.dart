@@ -1,3 +1,4 @@
+export 'app_shell.dart';
 export 'dice_screen.dart';
 export 'inbox_screen.dart';
 export 'landing_screen.dart';

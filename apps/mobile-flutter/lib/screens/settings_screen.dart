@@ -10,6 +10,7 @@ import '../api/models.dart';
 import '../api/session.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
+import 'app_shell.dart';
 import 'inbox_screen.dart';
 import 'landing_screen.dart';
 import 'login_screen.dart';
@@ -202,6 +203,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
+  /// Switches tabs when this screen is inside the shell, and falls back to a
+  /// push when it is not.
+  void _openTab(AppTab tab, Widget standalone) {
+    final shell = AppShellScope.maybeOf(context);
+    if (shell != null) {
+      shell.switchTo(tab);
+      return;
+    }
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => standalone));
+  }
+
   Future<void> _showPairCode() async {
     try {
       final res = await ApiClient.createPairCode();
@@ -262,7 +274,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _ProfileCard(user: u, onOpenInbox: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const InboxScreen()))),
+                  _ProfileCard(user: u, onOpenInbox: () => _openTab(AppTab.inbox, const InboxScreen())),
                   const SizedBox(height: 16),
                   _SectionCard(
                     title: 'Your SecretLink',
@@ -298,7 +310,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       _ActionTile(
                         icon: Icons.emoji_events_outlined,
                         label: 'Supporters wall',
-                        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SupportersScreen())),
+                        onTap: () => _openTab(AppTab.supporters, const SupportersScreen()),
                       ),
                       _ActionTile(
                         icon: Icons.article_outlined,

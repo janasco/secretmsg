@@ -36,13 +36,13 @@ class LandingScreen extends StatelessWidget {
         ),
         actions: [
           TextButton(
-            onPressed: () => _go(context, const InboxScreen()),
+            onPressed: () => _go(context, const AppShell(initialTab: AppTab.inbox)),
             child: const Text('Inbox', style: TextStyle(color: Color(0xFFA5B4FC))),
           ),
           IconButton(
             icon: const Icon(Icons.person_outline, size: 20),
             color: const Color(0xFFA5B4FC),
-            onPressed: () => _go(context, const SettingsScreen()),
+            onPressed: () => _go(context, const AppShell(initialTab: AppTab.settings)),
           ),
         ],
       ),
@@ -100,7 +100,7 @@ class _Hero extends StatelessWidget {
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 14),
                       ),
-                      onPressed: () => onGo(const SendScreen()),
+                      onPressed: () => onGo(const AppShell(initialTab: AppTab.send)),
                       child: const Text('Send it to a friend', style: TextStyle(fontWeight: FontWeight.w800)),
                     ),
                   ),

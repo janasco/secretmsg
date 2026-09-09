@@ -3,15 +3,13 @@ import 'package:flutter/services.dart';
 
 import 'api/session.dart';
 import 'diag/turnstile_diag.dart';
-import 'screens/inbox_screen.dart';
+import 'screens/app_shell.dart';
 import 'screens/landing_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/send_screen.dart';
 import 'screens/static_screen.dart';
-import 'screens/supporters_screen.dart';
 import 'screens/sticker_studio_screen.dart';
 import 'screens/dice_screen.dart';
-import 'screens/settings_screen.dart';
 import 'theme.dart';
 
 void main() {
@@ -85,12 +83,12 @@ class DeepLinkRouter {
 
     switch (first) {
       case 'inbox':
-        return const InboxScreen();
+        return const AppShell(initialTab: AppTab.inbox);
       case 'settings':
-        return const SettingsScreen();
+        return const AppShell(initialTab: AppTab.settings);
       case 'supporters':
       case 'donors':
-        return const SupportersScreen();
+        return const AppShell(initialTab: AppTab.supporters);
       case 'sticker-studio':
       case 'sticker':
         return const StickerStudioScreen();
@@ -99,7 +97,12 @@ class DeepLinkRouter {
       case 'login':
         return const LoginScreen();
       case 'send':
-        return raw.length > 1 ? SendScreen(initialUsername: raw[1]) : const SendScreen();
+        // A link addressed to someone opens the composer on its own, because
+        // the sender is usually a stranger with no inbox of their own. A bare
+        // /send is the shell's composer tab.
+        return raw.length > 1
+            ? SendScreen(initialUsername: raw[1])
+            : const AppShell(initialTab: AppTab.send);
       case 'reply':
       case 'demo':
         // Web-only flows with no native equivalent.
@@ -140,7 +143,7 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
     Widget next = const LandingScreen();
     try {
       final token = await Session.getToken();
-      if (token != null && token.isNotEmpty) next = const InboxScreen();
+      if (token != null && token.isNotEmpty) next = const AppShell(initialTab: AppTab.inbox);
     } catch (_) {
       // Unreadable secure storage just means we show the landing screen.
     }
@@ -158,13 +161,13 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
       home: isDiag ? const TurnstileDiagScreen() : (_home ?? const _Booting()),
       routes: {
         '/home': (_) => const LandingScreen(),
-        '/inbox': (_) => const InboxScreen(),
-        '/settings': (_) => const SettingsScreen(),
-        '/supporters': (_) => const SupportersScreen(),
+        '/inbox': (_) => const AppShell(initialTab: AppTab.inbox),
+        '/settings': (_) => const AppShell(initialTab: AppTab.settings),
+        '/supporters': (_) => const AppShell(initialTab: AppTab.supporters),
         '/sticker': (_) => const StickerStudioScreen(),
         '/dice': (_) => const DiceScreen(),
         '/login': (_) => const LoginScreen(),
-        '/send': (_) => const SendScreen(),
+        '/send': (_) => const AppShell(initialTab: AppTab.send),
         '/about': (_) => const StaticScreen(keyOf: 'about'),
         '/faq': (_) => const StaticScreen(keyOf: 'faq'),
         '/privacy': (_) => const StaticScreen(keyOf: 'privacy'),

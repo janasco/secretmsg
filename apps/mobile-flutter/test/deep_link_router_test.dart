@@ -1,13 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:secretmsg_mobile/main.dart';
+import 'package:secretmsg_mobile/screens/app_shell.dart';
 import 'package:secretmsg_mobile/screens/dice_screen.dart';
-import 'package:secretmsg_mobile/screens/inbox_screen.dart';
 import 'package:secretmsg_mobile/screens/landing_screen.dart';
 import 'package:secretmsg_mobile/screens/send_screen.dart';
-import 'package:secretmsg_mobile/screens/settings_screen.dart';
 import 'package:secretmsg_mobile/screens/static_screen.dart';
-import 'package:secretmsg_mobile/screens/supporters_screen.dart';
 
 void main() {
   group('document pages are not mistaken for board handles', () {
@@ -44,17 +42,28 @@ void main() {
     });
   });
 
-  group('app routes', () {
-    test('inbox', () => expect(DeepLinkRouter.routeFor('https://secretmsg.net/inbox'), isA<InboxScreen>()));
-    test('inbox on the app subdomain',
-        () => expect(DeepLinkRouter.routeFor('https://app.secretmsg.net/inbox'), isA<InboxScreen>()));
-    test('settings', () => expect(DeepLinkRouter.routeFor('https://secretmsg.net/settings'), isA<SettingsScreen>()));
-    test('supporters', () => expect(DeepLinkRouter.routeFor('https://secretmsg.net/supporters'), isA<SupportersScreen>()));
-    test('donors alias', () => expect(DeepLinkRouter.routeFor('https://secretmsg.net/donors'), isA<SupportersScreen>()));
+  group('owner routes land in the tab shell', () {
+    void expectsTab(String url, AppTab tab) {
+      final screen = DeepLinkRouter.routeFor(url);
+      expect(screen, isA<AppShell>(), reason: '$url should open the shell');
+      expect((screen as AppShell).initialTab, tab);
+    }
+
+    test('inbox', () => expectsTab('https://secretmsg.net/inbox', AppTab.inbox));
+    test('inbox on the app subdomain', () => expectsTab('https://app.secretmsg.net/inbox', AppTab.inbox));
+    test('settings', () => expectsTab('https://secretmsg.net/settings', AppTab.settings));
+    test('supporters', () => expectsTab('https://secretmsg.net/supporters', AppTab.supporters));
+    test('donors alias', () => expectsTab('https://secretmsg.net/donors', AppTab.supporters));
+    test('bare /send is the composer tab', () => expectsTab('https://secretmsg.net/send', AppTab.send));
+  });
+
+  group('standalone screens', () {
     test('dice', () => expect(DeepLinkRouter.routeFor('https://secretmsg.net/dice'), isA<DiceScreen>()));
   });
 
   group('board handles still reach the composer', () {
+    // An addressed link is opened by a stranger who has no inbox of their own,
+    // so it stays a standalone screen rather than a tab.
     test('bare handle', () {
       final screen = DeepLinkRouter.routeFor('https://secretmsg.net/janasco');
       expect(screen, isA<SendScreen>());
@@ -74,13 +83,8 @@ void main() {
 
     test('explicit /send/<user>', () {
       final screen = DeepLinkRouter.routeFor('https://secretmsg.net/send/janasco');
-      expect((screen as SendScreen).initialUsername, 'janasco');
-    });
-
-    test('/send with no handle', () {
-      final screen = DeepLinkRouter.routeFor('https://secretmsg.net/send');
       expect(screen, isA<SendScreen>());
-      expect((screen as SendScreen).initialUsername, isNull);
+      expect((screen as SendScreen).initialUsername, 'janasco');
     });
   });
 
