@@ -116,7 +116,7 @@
       });
     });
 
-    // Auto-load SecretMsg Native Mobile Bridge if running in mobile/Capacitor context
+    // Auto-load SecretMsg Native Mobile Bridge if running in a mobile app context
     if (!window.SecretMsgNative && !document.querySelector('script[src*="mobile-bridge.js"]')) {
       const bridgeScript = document.createElement('script');
       bridgeScript.src = (window.location.pathname.startsWith('/p/') || window.location.pathname.startsWith('/m/')) ? '/js/mobile-bridge.js' : 'js/mobile-bridge.js';

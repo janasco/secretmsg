@@ -1,6 +1,6 @@
 /**
  * SecretMsg Android & Native Mobile Bridge
- * Seamless integration between SecretMsg web views and Capacitor native Android runtime.
+ * Seamless integration between SecretMsg web views and the native Android runtime.
  * Provides hardware back button navigation, status/navigation bar theming,
  * native share sheet invocation, tactile haptic feedback, and deep link routing.
  */
@@ -611,7 +611,7 @@
         var paymentData = await client.loadPaymentData(paymentDataRequest);
         haptics.success();
 
-        // Submit token to Edge Worker API to grant the perk
+        // Submit token to the backend API to grant the perk
         if (window.SecretMsgAPI && typeof window.SecretMsgAPI.submitGooglePayDonation === 'function') {
           var res = await window.SecretMsgAPI.submitGooglePayDonation(feature, paymentData, Number(amount));
           return res;

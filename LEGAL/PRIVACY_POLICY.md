@@ -11,8 +11,8 @@ At SecretMsg (`secretmsg.net`), privacy is not an afterthought—it is the core 
 ### For Message Senders (Anonymous Users)
 - **Zero Identification**: When you send an anonymous message to a user via `secretmsg.net/{username}`, we **do NOT store** your name, phone number, physical address, or account information.
 - **Message Content**: We temporarily store the sanitized text content of your message so the recipient can read it.
-- **Spam Verification**: We use Cloudflare Turnstile to verify that you are a human. Turnstile evaluates non-invasive browser signals without tracking cookies or cross-site monitoring.
-- **Transient Ephemeral Logs**: Standard Cloudflare edge infrastructure may process IP addresses transiently for rate-limiting and DDoS defense; however, IP addresses are never associated with message bodies in the application database.
+- **Spam Verification**: We use automated human-verification tools to confirm you are not a bot. They evaluate non-invasive browser signals without tracking cookies or cross-site monitoring.
+- **Transient Ephemeral Logs**: Standard hosting infrastructure may process IP addresses transiently for rate-limiting and abuse defense; however, IP addresses are never associated with message bodies in the application database.
 
 ### For Registered Recipients (Account Holders)
 - **Email Address / Account Identifier**: Collected strictly to authenticate your account.
@@ -45,8 +45,8 @@ Information is used solely to:
 ## 4. Third-Party Service Providers
 
 We utilize minimal, privacy-conscious infrastructure providers:
-- **Cloudflare** (Edge routing, Cloudflare D1 database, Turnstile bot defense).
-- **Resend** (Transactional email delivery for login OTPs).
+- **Hosting & Infrastructure** (secure hosting, storage, and abuse defense).
+- **Email Delivery** (A transactional email service used for login codes).
 - **Donation Providers** (Payment processors for supporters; we never see or store raw credit card details).
 
 ---

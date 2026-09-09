@@ -5,6 +5,11 @@ import { Shield, ArrowLeft } from 'lucide-react';
 export const LegalPage: React.FC = () => {
   const { doc } = useParams<{ doc: string }>();
 
+  if (typeof window !== 'undefined' && window.location.hostname !== 'secretmsg.net' && window.location.hostname.endsWith('secretmsg.net')) {
+    window.location.replace(`https://secretmsg.net/legal/${doc || ''}`.replace(/\/$/, ''));
+    return null;
+  }
+
   return (
     <div className="max-w-3xl mx-auto py-12 px-4 space-y-8">
       <Link to="/" className="inline-flex items-center space-x-1.5 text-xs text-slate-400 hover:text-white transition-colors">
@@ -27,9 +32,9 @@ export const LegalPage: React.FC = () => {
               <h3 className="text-base font-bold text-white">1. Core Privacy Philosophy</h3>
               <p>SecretMsg (secretmsg.net) collects zero identifying details from message senders. We do not require an account, name, or phone number to send an anonymous message.</p>
               <h3 className="text-base font-bold text-white">2. Right to Erasure (GDPR / CCPA)</h3>
-              <p>Account holders can permanently wipe their profile and all received messages from Cloudflare D1 at any time under Settings → Delete Account.</p>
+              <p>Account holders can permanently wipe their profile and all received messages from secure storage at any time under Settings → Delete Account.</p>
               <h3 className="text-base font-bold text-white">3. Third-Party Infrastructure</h3>
-              <p>We use Cloudflare (edge hosting & D1 database), Cloudflare Turnstile (bot protection), and Resend (email OTP delivery). We never sell data to advertisers.</p>
+              <p>We use secure cloud infrastructure for hosting and storage, automated spam-defense for bot protection, and a transactional email provider for login codes. We never sell data to advertisers.</p>
             </>
           ) : doc === 'disclaimer' ? (
             <>

@@ -123,7 +123,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, onLogout, onOp
             <span>Danger Zone (GDPR / CCPA Data Erasure)</span>
           </h4>
           <p className="text-xs text-slate-400">
-            Deleting your account will permanently wipe your profile and delete all received messages from Cloudflare D1. This action is instantaneous and cannot be reversed.
+            Deleting your account will permanently wipe your profile and delete all received messages from secure storage. This action is instantaneous and cannot be reversed.
           </p>
         </div>
 

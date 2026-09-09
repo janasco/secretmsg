@@ -12,6 +12,7 @@ import {
   Dices,
   Smartphone
 } from 'lucide-react';
+import { Footer } from '../components/Footer';
 
 interface LandingPageProps {
   onOpenDonation: () => void;
@@ -94,13 +95,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
         </div>
 
         <div className="pt-2">
-          <a
-            href="https://m.secretmsg.net"
-            className="inline-flex items-center space-x-1.5 text-xs text-slate-400 hover:text-indigo-300 transition-colors"
-          >
+          <span className="inline-flex items-center space-x-1.5 text-xs text-slate-400">
             <Smartphone className="w-3.5 h-3.5" />
-            <span>On a phone or Android? Open touch-optimized Mobile App at m.secretmsg.net &rarr;</span>
-          </a>
+            <span>Android app available on GitHub Releases — or use the full mobile-friendly site on any phone.</span>
+          </span>
         </div>
       </div>
 
@@ -194,7 +192,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
           </div>
           <h3 className="text-base font-bold text-white">3. Zero Tracker Guarantee</h3>
           <p className="text-xs text-slate-400 leading-relaxed">
-            Protected by Cloudflare D1 and Turnstile. No sketchy paywalls to reveal identities, no ad profiling, pure privacy.
+            Protected by secure storage and automated spam screening. No sketchy paywalls to reveal identities, no ad profiling, pure privacy.
           </p>
         </div>
       </div>
@@ -208,7 +206,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
           </div>
           <h3 className="text-xl font-bold text-white">Built for Privacy, Not for Profit</h3>
           <p className="text-xs sm:text-sm text-slate-400 max-w-xl">
-            SecretMsg is an open-source personal project created by janasco. No hidden trackers, no ad networks, no data selling. Hosted securely on Cloudflare Edge.
+            SecretMsg is an open-source personal project created by janasco. No hidden trackers, no ad networks, no data selling. Hosted on secure, hardened infrastructure.
           </p>
         </div>
         <div className="flex items-center space-x-3 shrink-0">
@@ -225,21 +223,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
       </div>
 
       {/* Footer */}
-      <footer className="pt-12 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-        <div className="flex items-center space-x-2">
-          <span>© 2026 secretmsg.net</span>
-          <span>•</span>
-          <span>Personal Project by janasco</span>
-        </div>
-        <div className="flex flex-wrap items-center space-x-4">
-          <a href="https://m.secretmsg.net" className="hover:text-slate-300 transition-colors">Mobile App</a>
-          <a href="/about.html" className="text-purple-400 hover:text-purple-300 font-medium transition-colors">About Us</a>
-          <Link to="/supporters" className="text-amber-400 hover:text-amber-300 font-medium transition-colors">Supporters Wall</Link>
-          <Link to="/legal/terms" className="hover:text-slate-300 transition-colors">Terms of Service</Link>
-          <Link to="/legal/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
-          <Link to="/legal/disclaimer" className="hover:text-slate-300 transition-colors">Disclaimer</Link>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

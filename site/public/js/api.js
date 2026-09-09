@@ -1,9 +1,9 @@
 /**
  * SecretMsg Platform API Client
- * Talks to the real Cloudflare Worker backend at api.secretmsg.net.
+ * Talks to the real backend API at api.secretmsg.net.
  *
  * IMPORTANT: calls must use the absolute API_BASE_URL, not relative /api/... paths.
- * secretmsg.net (this static site) does not proxy /api/* to the Worker - a relative
+ * secretmsg.net (this static site) does not proxy /api/* to the backend - a relative
  * fetch silently falls through to this site's own HTML fallback instead of the API.
  */
 (function (root, factory) {

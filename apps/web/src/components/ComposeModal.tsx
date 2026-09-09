@@ -142,8 +142,8 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
   const turnstileWidgetIdRef = useRef<string | null>(null);
 
-  // Cloudflare Turnstile is loaded via <script render=explicit> in index.html, so we
-  // mount the widget ourselves once window.turnstile is ready (script tag is async/defer).
+  // The bot-check widget is loaded via <script render=explicit> in index.html, so we
+  // mount the widget ourselves once it is ready (script tag is async/defer).
   useEffect(() => {
     if (!TURNSTILE_SITE_KEY) return;
 
@@ -230,7 +230,7 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
       }
     } catch (err: any) {
       setError(err.message || 'Failed to send message. Please try again.');
-      // Turnstile tokens are single-use; reset the widget so the user can retry.
+      // Bot-check tokens are single-use; reset the widget so the user can retry.
       setTurnstileToken(null);
       if (turnstileWidgetIdRef.current && (window as any).turnstile) {
         (window as any).turnstile.reset(turnstileWidgetIdRef.current);
@@ -480,7 +480,7 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
           </span>
         </label>
 
-        {/* Cloudflare Turnstile Widget */}
+        {/* Bot-Check Widget */}
         {TURNSTILE_SITE_KEY && (
           <div ref={turnstileContainerRef} className="flex justify-center" />
         )}
@@ -506,7 +506,7 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
       <div className="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-500">
         <div className="flex items-center space-x-1.5">
           <Shield className="w-3.5 h-3.5 text-indigo-400" />
-          <span>Zero sender tracking. Cloudflare Turnstile protected.</span>
+          <span>Zero sender tracking. Protected by automated spam screening.</span>
         </div>
         <a href="/legal/privacy" className="hover:underline text-slate-400">Privacy Policy</a>
       </div>

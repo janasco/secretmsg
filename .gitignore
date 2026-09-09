@@ -31,11 +31,11 @@ build/
 *.swo
 .DS_Store
 
-# Cloudflare & Wrangler cache
+# Deployment tooling cache
 .wrangler/
 .mf/
 
-# Android / Capacitor native build artifacts
+# Android native build artifacts
 .gradle/
 local.properties
 *.jks

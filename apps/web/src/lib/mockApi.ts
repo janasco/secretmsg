@@ -1,7 +1,7 @@
 /**
  * SecretMsg Offline Mock API Adapter
  * Enables open-source contributors to develop and test the full client UI
- * without needing a Cloudflare backend or production credentials.
+ * without needing a live backend or production credentials.
  */
 
 import { UserProfile, AnonymousMessage, SupportersData } from './api';

@@ -33,7 +33,7 @@ export function getAccountAppUrl(path = '/'): string {
   return `${ACCOUNT_APP_URL}${cleanPath}`;
 }
 
-// Strictly disabled - always connect to production Cloudflare D1 real database
+// Strictly disabled - always connect to the production real database
 const USE_MOCK = false;
 
 export interface UserProfile {
