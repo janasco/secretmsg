@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { ViewOnlyNote } from '../components/ViewOnlyBanner';
 import { ApiClient, UnauthorizedError, UserProfile, getShareUrl } from '../lib/api';
 import { ShieldAlert, Trash2, Heart, Check, Copy } from 'lucide-react';
 
@@ -10,6 +11,8 @@ interface SettingsPageProps {
 }
 
 export const SettingsPage: React.FC<SettingsPageProps> = ({ user, onLogout, onOpenDonation }) => {
+  // A browser paired from the app holds a read-only token; every write 403s.
+  const isReadOnly = ApiClient.isReadOnly();
   const navigate = useNavigate();
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -106,12 +109,16 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, onLogout, onOp
             </div>
           </div>
 
-          <button
-            onClick={onOpenDonation}
-            className="py-2 px-3 rounded-lg text-xs font-semibold bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/20 transition-colors"
-          >
-            {user.is_premium === 1 ? 'Supporter Perks' : 'Upgrade & Support'}
-          </button>
+          {isReadOnly ? (
+            <ViewOnlyNote>Purchases happen in the app.</ViewOnlyNote>
+          ) : (
+            <button
+              onClick={onOpenDonation}
+              className="py-2 px-3 rounded-lg text-xs font-semibold bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/20 transition-colors"
+            >
+              {user.is_premium === 1 ? 'Supporter Perks' : 'Upgrade & Support'}
+            </button>
+          )}
         </div>
       </div>
 
@@ -148,6 +155,10 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, onLogout, onOp
               </button>
             </div>
           </div>
+        ) : isReadOnly ? (
+          <ViewOnlyNote>
+            Deleting your account is only possible from the app, on the device you signed in with.
+          </ViewOnlyNote>
         ) : (
           <button
             onClick={() => setConfirmDelete(true)}

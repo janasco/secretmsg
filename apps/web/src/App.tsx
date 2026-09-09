@@ -1,6 +1,7 @@
 import React, { useState, Suspense, lazy } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { ApiClient, UserProfile } from './lib/api';
+import { ViewOnlyBanner } from './components/ViewOnlyBanner';
 import { Navbar } from './components/Navbar';
 import { DonationModal } from './components/DonationModal';
 import { LandingPage } from './pages/LandingPage';
@@ -54,6 +55,8 @@ export const App: React.FC = () => {
         onOpenDonation={() => setIsDonationOpen(true)}
         onLogout={handleLogout}
       />
+
+      <ViewOnlyBanner />
 
       <main className="flex-1">
         <Routes>

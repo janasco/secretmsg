@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ViewOnlyNote } from '../components/ViewOnlyBanner';
 import { ApiClient, UnauthorizedError, UserProfile, AnonymousMessage, getShareUrl } from '../lib/api';
 import { StoryCardModal } from '../components/StoryCardModal';
 import { MessageSquare, Reply, Flag, Copy, Check, Share2, Heart, Smartphone, Clock } from 'lucide-react';
@@ -11,6 +12,8 @@ interface InboxPageProps {
 }
 
 export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLogout }) => {
+  // A browser paired from the app holds a read-only token; every write 403s.
+  const isReadOnly = ApiClient.isReadOnly();
   const navigate = useNavigate();
   const [messages, setMessages] = useState<AnonymousMessage[]>([]);
   const [loading, setLoading] = useState(true);
@@ -249,16 +252,22 @@ export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLo
                       </div>
                     </div>
                   ) : (
-                    <button
-                      onClick={() => {
-                        setReplyOpenId(msg.id);
-                        setReplyText('');
-                      }}
-                      className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center space-x-1 font-medium pt-1"
-                    >
-                      <Reply className="w-3.5 h-3.5" />
-                      <span>Reply Anonymously</span>
-                    </button>
+                    isReadOnly ? (
+                      <ViewOnlyNote className="mt-1">
+                        Replies are sent from the app.
+                      </ViewOnlyNote>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          setReplyOpenId(msg.id);
+                          setReplyText('');
+                        }}
+                        className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center space-x-1 font-medium pt-1"
+                      >
+                        <Reply className="w-3.5 h-3.5" />
+                        <span>Reply Anonymously</span>
+                      </button>
+                    )
                   )}
                 </div>
               )}
