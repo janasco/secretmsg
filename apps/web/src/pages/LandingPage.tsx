@@ -232,6 +232,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
           <span>Personal Project by janasco</span>
         </div>
         <div className="flex flex-wrap items-center space-x-4">
+          <a href="https://m.secretmsg.net" className="hover:text-slate-300 transition-colors">Mobile App</a>
           <a href="/about.html" className="text-purple-400 hover:text-purple-300 font-medium transition-colors">About Us</a>
           <Link to="/supporters" className="text-amber-400 hover:text-amber-300 font-medium transition-colors">Supporters Wall</Link>
           <Link to="/legal/terms" className="hover:text-slate-300 transition-colors">Terms of Service</Link>
