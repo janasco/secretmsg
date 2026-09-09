@@ -49,10 +49,9 @@ Supporters can unlock standalone individual features or the full VIP bundle:
 This repository contains the **open-source client applications, mobile designs, and frontend packages**:
 - **Mobile Web Pages & Screens** (`site/public`): 10+ mobile and desktop screens built with high-contrast accessibility, dark/light modes, and large legible typography.
 - **Android App Links & Capacitor** (`apps/mobile-android`): Android application wrapper and deep linking configuration.
-- **Design Tokens & Constitution** (`.stitch`): Semantic design system tokens and screen constitution.
 
 > [!NOTE]
-> To protect platform stability, user data privacy, and prevent abuse, backend edge workers and private database storage are maintained in an isolated private repository. This public client interacts with the edge services strictly via standard REST API contracts (`https://api.secretmsg.net`).
+> To protect platform stability, user data privacy, and prevent abuse, backend edge workers, database storage, and Stitch design system prototypes (`.stitch`) are maintained in an isolated private repository (`secretmsg-private`). This public client interacts with the edge services strictly via standard REST API contracts (`https://api.secretmsg.net`).
 
 ---
 

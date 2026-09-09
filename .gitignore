@@ -41,3 +41,7 @@ local.properties
 *.jks
 *.keystore
 .cxx/
+
+# Stitch design system & prototypes (maintained in secretmsg-private)
+.stitch/
+
