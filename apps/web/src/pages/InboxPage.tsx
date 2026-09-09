@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ApiClient, UnauthorizedError, UserProfile, AnonymousMessage } from '../lib/api';
+import { ApiClient, UnauthorizedError, UserProfile, AnonymousMessage, getShareUrl } from '../lib/api';
 import { StoryCardModal } from '../components/StoryCardModal';
 import { MessageSquare, Reply, Flag, Copy, Check, Share2, Heart, Smartphone, Clock } from 'lucide-react';
 
@@ -41,7 +41,7 @@ export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLo
 
   if (!user) return null;
 
-  const publicLink = `${window.location.origin}/${user.username}`;
+  const publicLink = getShareUrl(user.username);
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(publicLink);

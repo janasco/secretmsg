@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Send, Shield, Sparkles, CheckCircle2, Lock, ArrowRight, Dices, Heart, Flame, Smile, Coffee } from 'lucide-react';
-import { ApiClient, UserProfile } from '../lib/api';
+import { ApiClient, UserProfile, PUBLIC_BASE_URL } from '../lib/api';
 
 const TURNSTILE_SITE_KEY = (import.meta as any).env?.VITE_TURNSTILE_SITE_KEY || '';
 
@@ -264,7 +264,7 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
               If @{recipient.username} replies to your message, you can view their response anonymously using this private link:
             </p>
             <div className="bg-dark-950 px-3 py-2 rounded-lg text-xs font-mono text-indigo-300 select-all break-all border border-white/5">
-              {window.location.origin}/reply/{replyToken}
+              {PUBLIC_BASE_URL}/reply/{replyToken}
             </div>
           </div>
         )}

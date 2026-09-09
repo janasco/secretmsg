@@ -16,8 +16,19 @@
   'use strict';
 
   var API_BASE_URL = 'https://api.secretmsg.net';
+  var PUBLIC_DOMAIN = 'https://secretmsg.net';
+  var APP_DOMAIN = 'https://app.secretmsg.net';
   var TOKEN_KEY = 'secretmsg_auth_token';
   var USER_KEY = 'secretmsg_user_profile';
+
+  function getShareUrl(username) {
+    return PUBLIC_DOMAIN + '/' + encodeURIComponent(username);
+  }
+
+  function getAppUrl(path) {
+    var p = path || '/';
+    return APP_DOMAIN + (p.charAt(0) === '/' ? p : '/' + p);
+  }
 
   // Thrown when a Bearer-authed request comes back 401 - the session token is
   // missing, expired, or invalid. Callers should treat this as "log the user out".
@@ -248,6 +259,10 @@
 
   return {
     API_BASE_URL: API_BASE_URL,
+    PUBLIC_DOMAIN: PUBLIC_DOMAIN,
+    APP_DOMAIN: APP_DOMAIN,
+    getShareUrl: getShareUrl,
+    getAppUrl: getAppUrl,
     UnauthorizedError: UnauthorizedError,
     getToken: getToken,
     setToken: setToken,

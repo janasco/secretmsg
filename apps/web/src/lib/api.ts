@@ -13,7 +13,26 @@ export class UnauthorizedError extends Error {
   }
 }
 
-const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'https://api.secretmsg.net';
+export const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'https://api.secretmsg.net';
+export const PUBLIC_BASE_URL = (import.meta as any).env?.VITE_PUBLIC_URL || 'https://secretmsg.net';
+export const ACCOUNT_APP_URL = (import.meta as any).env?.VITE_ACCOUNT_APP_URL || 'https://app.secretmsg.net';
+
+/**
+ * Returns the public submission link that recipients share with visitors.
+ * Always resolves to the public portal (secretmsg.net/{username}) so visitors submit there.
+ */
+export function getShareUrl(username: string): string {
+  return `${PUBLIC_BASE_URL}/${encodeURIComponent(username)}`;
+}
+
+/**
+ * Returns the account management app URL for dashboard/inbox/settings.
+ */
+export function getAccountAppUrl(path = '/'): string {
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `${ACCOUNT_APP_URL}${cleanPath}`;
+}
+
 // Strictly disabled - always connect to production Cloudflare D1 real database
 const USE_MOCK = false;
 

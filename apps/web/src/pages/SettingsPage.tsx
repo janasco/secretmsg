@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { ApiClient, UnauthorizedError, UserProfile } from '../lib/api';
+import { ApiClient, UnauthorizedError, UserProfile, getShareUrl } from '../lib/api';
 import { ShieldAlert, Trash2, Heart, Check, Copy } from 'lucide-react';
 
 interface SettingsPageProps {
@@ -23,7 +23,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, onLogout, onOp
 
   if (!user) return null;
 
-  const publicLink = `${window.location.origin}/${user.username}`;
+  const publicLink = getShareUrl(user.username);
 
   const handleDeleteAccount = async () => {
     setIsDeleting(true);

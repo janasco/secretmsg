@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Copy, Check, Download, X, Share2, Wand2 } from 'lucide-react';
-import { UserProfile } from '../lib/api';
+import { UserProfile, getShareUrl } from '../lib/api';
 
 interface StoryCardModalProps {
   user: UserProfile;
@@ -32,7 +32,7 @@ export const StoryCardModal: React.FC<StoryCardModalProps> = ({ user, isOpen, on
 
   if (!isOpen) return null;
 
-  const publicUrl = `${window.location.origin}/${user.username}`;
+  const publicUrl = getShareUrl(user.username);
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(publicUrl);
