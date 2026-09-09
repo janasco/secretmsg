@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Sparkles, LogOut, User, Lock, Moon, Sun } from 'lucide-react';
+import { Heart, Sparkles, LogOut, User, Lock } from 'lucide-react';
 import { UserProfile } from '../lib/api';
-import { getInitialTheme, applyAppTheme, ThemeMode } from '../lib/theme';
 
 interface NavbarProps {
   user: UserProfile | null;
@@ -11,17 +10,6 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ user, onOpenDonation, onLogout }) => {
-  const [theme, setTheme] = useState<ThemeMode>(getInitialTheme);
-
-  useEffect(() => {
-    applyAppTheme(theme);
-  }, [theme]);
-
-  const cycleTheme = () => {
-    const next: ThemeMode = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-  };
-
   return (
     <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-dark-950/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -41,19 +29,6 @@ export const Navbar: React.FC<NavbarProps> = ({ user, onOpenDonation, onLogout }
 
         {/* Navigation Actions */}
         <div className="flex items-center space-x-2 sm:space-x-3">
-          <button
-            onClick={cycleTheme}
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
-            title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
-            aria-label="Toggle theme mode"
-          >
-            {theme === 'dark' ? (
-              <Moon className="w-4 h-4 text-indigo-300" />
-            ) : (
-              <Sun className="w-4 h-4 text-amber-400" />
-            )}
-          </button>
-
           <Link
             to="/supporters"
             className="text-xs text-slate-400 hover:text-slate-200 px-2.5 py-1.5 rounded-lg hover:bg-white/5 transition-colors font-medium flex items-center space-x-1"

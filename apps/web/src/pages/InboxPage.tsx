@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ApiClient, UserProfile, AnonymousMessage } from '../lib/api';
+import { ApiClient, UnauthorizedError, UserProfile, AnonymousMessage } from '../lib/api';
 import { StoryCardModal } from '../components/StoryCardModal';
-import { Sparkles, MessageSquare, Pin, Reply, Flag, Copy, Check, Share2, Heart, Smartphone, Clock } from 'lucide-react';
+import { MessageSquare, Reply, Flag, Copy, Check, Share2, Heart, Smartphone, Clock } from 'lucide-react';
 
 interface InboxPageProps {
   user: UserProfile | null;
   onOpenDonation: () => void;
+  onLogout: () => void;
 }
 
-export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation }) => {
+export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLogout }) => {
   const navigate = useNavigate();
   const [messages, setMessages] = useState<AnonymousMessage[]>([]);
   const [loading, setLoading] = useState(true);
@@ -27,9 +28,16 @@ export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation }) =>
 
     ApiClient.getInbox()
       .then((msgs) => setMessages(msgs))
-      .catch((err) => console.error('Failed to load messages:', err))
+      .catch((err) => {
+        if (err instanceof UnauthorizedError) {
+          onLogout();
+          navigate('/login');
+          return;
+        }
+        console.error('Failed to load messages:', err);
+      })
       .finally(() => setLoading(false));
-  }, [user, navigate]);
+  }, [user, navigate, onLogout]);
 
   if (!user) return null;
 
@@ -54,6 +62,11 @@ export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation }) =>
       setReplyOpenId(null);
       setReplyText('');
     } catch (err: any) {
+      if (err instanceof UnauthorizedError) {
+        onLogout();
+        navigate('/login');
+        return;
+      }
       alert(err.message || 'Failed to submit reply');
     } finally {
       setIsReplying(false);

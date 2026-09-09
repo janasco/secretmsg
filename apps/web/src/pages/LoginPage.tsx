@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ApiClient, UserProfile } from '../lib/api';
-import { Mail, KeyRound, ArrowRight, ShieldCheck, Lock } from 'lucide-react';
+import { Mail, KeyRound, ArrowRight, Lock } from 'lucide-react';
 
 interface LoginPageProps {
   onLoginSuccess: (user: UserProfile) => void;

@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Lock, 
-  ShieldCheck, 
-  Sparkles, 
-  Send, 
-  Share2, 
-  Heart, 
-  ArrowRight, 
-  Github, 
-  CheckCircle2, 
-  Flame, 
-  Smile, 
-  Coffee, 
-  Dices,
-  Instagram
+import {
+  Lock,
+  ShieldCheck,
+  Sparkles,
+  Send,
+  Share2,
+  Heart,
+  ArrowRight,
+  Github,
+  Dices
 } from 'lucide-react';
 
 interface LandingPageProps {

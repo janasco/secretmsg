@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { ApiClient, UserProfile } from '../lib/api';
-import { User, ShieldAlert, Trash2, Heart, ExternalLink, Check, Copy } from 'lucide-react';
+import { ApiClient, UnauthorizedError, UserProfile } from '../lib/api';
+import { ShieldAlert, Trash2, Heart, Check, Copy } from 'lucide-react';
 
 interface SettingsPageProps {
   user: UserProfile | null;
@@ -15,10 +15,13 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, onLogout, onOp
   const [isDeleting, setIsDeleting] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
 
-  if (!user) {
-    navigate('/login');
-    return null;
-  }
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
+
+  if (!user) return null;
 
   const publicLink = `${window.location.origin}/${user.username}`;
 
@@ -30,6 +33,11 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, onLogout, onOp
       onLogout();
       navigate('/');
     } catch (err: any) {
+      if (err instanceof UnauthorizedError) {
+        onLogout();
+        navigate('/login');
+        return;
+      }
       alert(err.message || 'Failed to delete account');
       setIsDeleting(false);
     }

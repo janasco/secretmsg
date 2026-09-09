@@ -234,7 +234,9 @@ export const SupportersPage: React.FC<SupportersPageProps> = ({ onOpenDonation }
                         <h4 className="text-sm font-bold text-white group-hover:text-amber-200 transition-colors">
                           {supporter.alias}
                         </h4>
-                        <Lock className="w-3 h-3 text-slate-500" title="Identity Protected" />
+                        <span title="Identity Protected">
+                          <Lock className="w-3 h-3 text-slate-500" />
+                        </span>
                       </div>
                       <span className="text-[11px] text-slate-500 font-mono flex items-center space-x-1">
                         <Calendar className="w-3 h-3" />

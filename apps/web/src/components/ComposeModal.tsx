@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { Send, Shield, Sparkles, CheckCircle2, Lock, ArrowRight, Dices, Heart, Flame, Smile, Coffee, UserCheck } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Send, Shield, Sparkles, CheckCircle2, Lock, ArrowRight, Dices, Heart, Flame, Smile, Coffee } from 'lucide-react';
 import { ApiClient, UserProfile } from '../lib/api';
+
+const TURNSTILE_SITE_KEY = (import.meta as any).env?.VITE_TURNSTILE_SITE_KEY || '';
 
 interface ComposeModalProps {
   recipient: UserProfile;
@@ -135,6 +137,50 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
   const [sentSuccess, setSentSuccess] = useState(false);
   const [replyToken, setReplyToken] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+
+  const turnstileContainerRef = useRef<HTMLDivElement>(null);
+  const turnstileWidgetIdRef = useRef<string | null>(null);
+
+  // Cloudflare Turnstile is loaded via <script render=explicit> in index.html, so we
+  // mount the widget ourselves once window.turnstile is ready (script tag is async/defer).
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY) return;
+
+    let cancelled = false;
+    let pollId: ReturnType<typeof setInterval> | null = null;
+
+    const renderWidget = () => {
+      const ts = (window as any).turnstile;
+      if (!ts || !turnstileContainerRef.current || cancelled) return;
+      turnstileWidgetIdRef.current = ts.render(turnstileContainerRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        theme: 'dark',
+        callback: (token: string) => setTurnstileToken(token),
+        'expired-callback': () => setTurnstileToken(null),
+        'error-callback': () => setTurnstileToken(null),
+      });
+    };
+
+    if ((window as any).turnstile) {
+      renderWidget();
+    } else {
+      pollId = setInterval(() => {
+        if ((window as any).turnstile) {
+          if (pollId) clearInterval(pollId);
+          renderWidget();
+        }
+      }, 100);
+    }
+
+    return () => {
+      cancelled = true;
+      if (pollId) clearInterval(pollId);
+      if (turnstileWidgetIdRef.current && (window as any).turnstile) {
+        (window as any).turnstile.remove(turnstileWidgetIdRef.current);
+      }
+    };
+  }, []);
 
   const maxLength = 500;
   const remaining = maxLength - content.length;
@@ -163,6 +209,10 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!content.trim() || isSending) return;
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      setError('Please complete the verification challenge before sending.');
+      return;
+    }
 
     setError(null);
     setIsSending(true);
@@ -171,7 +221,7 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
       const res = await ApiClient.sendAnonymousMessage(
         recipient.username,
         content.trim(),
-        undefined, // Turnstile token handled via widget or header
+        turnstileToken || undefined,
         allowClue
       );
       setSentSuccess(true);
@@ -180,6 +230,11 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
       }
     } catch (err: any) {
       setError(err.message || 'Failed to send message. Please try again.');
+      // Turnstile tokens are single-use; reset the widget so the user can retry.
+      setTurnstileToken(null);
+      if (turnstileWidgetIdRef.current && (window as any).turnstile) {
+        (window as any).turnstile.reset(turnstileWidgetIdRef.current);
+      }
     } finally {
       setIsSending(false);
     }
@@ -425,10 +480,15 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
           </span>
         </label>
 
+        {/* Cloudflare Turnstile Widget */}
+        {TURNSTILE_SITE_KEY && (
+          <div ref={turnstileContainerRef} className="flex justify-center" />
+        )}
+
         {/* Submission Button */}
         <button
           type="submit"
-          disabled={!content.trim() || isSending}
+          disabled={!content.trim() || isSending || (!!TURNSTILE_SITE_KEY && !turnstileToken)}
           className="w-full py-3.5 px-4 rounded-xl font-medium text-sm bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-600 hover:opacity-95 text-white shadow-lg shadow-indigo-500/25 flex items-center justify-center space-x-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSending ? (

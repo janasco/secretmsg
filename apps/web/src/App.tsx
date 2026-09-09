@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { ApiClient, UserProfile } from './lib/api';
 import { Navbar } from './components/Navbar';
@@ -35,7 +35,7 @@ export const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<LandingPage onOpenDonation={() => setIsDonationOpen(true)} />} />
           <Route path="/login" element={<LoginPage onLoginSuccess={(u) => setUser(u)} />} />
-          <Route path="/inbox" element={<InboxPage user={user} onOpenDonation={() => setIsDonationOpen(true)} />} />
+          <Route path="/inbox" element={<InboxPage user={user} onOpenDonation={() => setIsDonationOpen(true)} onLogout={handleLogout} />} />
           <Route path="/settings" element={<SettingsPage user={user} onLogout={handleLogout} onOpenDonation={() => setIsDonationOpen(true)} />} />
           <Route path="/supporters" element={<SupportersPage onOpenDonation={() => setIsDonationOpen(true)} />} />
           <Route path="/donors" element={<SupportersPage onOpenDonation={() => setIsDonationOpen(true)} />} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Copy, Check, Download, X, Share2, MessageCircleHeart, Flame, Eye, Wand2 } from 'lucide-react';
+import { Copy, Check, Download, X, Share2, Wand2 } from 'lucide-react';
 import { UserProfile } from '../lib/api';
 
 interface StoryCardModalProps {

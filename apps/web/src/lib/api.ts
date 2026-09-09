@@ -4,6 +4,15 @@
 
 import { MockApiClient } from './mockApi';
 
+// Thrown when a Bearer-authed request comes back 401 — the session token is missing,
+// expired, or invalid. Callers should treat this as "log the user out", not a generic error.
+export class UnauthorizedError extends Error {
+  constructor(message = 'Session expired. Please log in again.') {
+    super(message);
+    this.name = 'UnauthorizedError';
+  }
+}
+
 const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'https://api.secretmsg.net';
 const USE_MOCK = (import.meta as any).env?.VITE_USE_MOCK === 'true';
 
@@ -135,6 +144,7 @@ export class ApiClient {
     const res = await fetch(`${API_BASE_URL}/api/inbox`, {
       headers: { 'Authorization': `Bearer ${token}` },
     });
+    if (res.status === 401) throw new UnauthorizedError();
     if (!res.ok) throw new Error('Failed to load inbox');
     const data = await res.json() as { messages: AnonymousMessage[] };
     return data.messages || [];
@@ -153,6 +163,7 @@ export class ApiClient {
       },
       body: JSON.stringify({ reply }),
     });
+    if (res.status === 401) throw new UnauthorizedError();
     if (!res.ok) throw new Error('Failed to send reply');
   }
 
@@ -177,6 +188,7 @@ export class ApiClient {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` },
     });
+    if (res.status === 401) throw new UnauthorizedError();
     if (!res.ok) throw new Error('Failed to delete account');
     this.removeToken();
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Heart, Sparkles, Shield, Check, ExternalLink, X, Github } from 'lucide-react';
 
 interface DonationModalProps {
@@ -95,14 +96,14 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
           </a>
 
           <div className="text-center pt-1">
-            <a
-              href="/supporters"
+            <Link
+              to="/supporters"
               onClick={onClose}
               className="text-xs text-indigo-400 hover:text-indigo-300 font-medium hover:underline inline-flex items-center space-x-1"
             >
               <span>View Wall of Anonymous Donors</span>
               <span>→</span>
-            </a>
+            </Link>
           </div>
 
           <div className="flex items-center justify-center space-x-2 text-[11px] text-slate-500">
