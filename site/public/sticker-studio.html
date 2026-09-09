@@ -307,7 +307,8 @@
       showToast('Sticker reset to default');
     }
 
-    const activeHandle = (localStorage.getItem('secretmsg_active_board') || localStorage.getItem('secretmsg_display_name') || 'yourname').replace(/^@/, '');
+    const savedUser = window.SecretMsgAPI && window.SecretMsgAPI.getSavedUser();
+    const activeHandle = ((savedUser && savedUser.username) || localStorage.getItem('secretmsg_active_board') || localStorage.getItem('secretmsg_display_name') || 'yourname').replace(/^@/, '');
     const stickerHandleEl = document.getElementById('sticker-handle');
     if (stickerHandleEl) stickerHandleEl.textContent = `@${activeHandle}`;
 

@@ -14,7 +14,8 @@ export class UnauthorizedError extends Error {
 }
 
 const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'https://api.secretmsg.net';
-const USE_MOCK = (import.meta as any).env?.VITE_USE_MOCK === 'true';
+// Strictly disabled - always connect to production Cloudflare D1 real database
+const USE_MOCK = false;
 
 export interface UserProfile {
   id: string;
