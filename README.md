@@ -7,7 +7,7 @@
 [![Open Source](https://img.shields.io/badge/Open%20Source-Transparent%20%26%20Private-black.svg)]()
 [![Polar.sh: Issue Funding](https://img.shields.io/badge/Fund%20Issues-Polar.sh-blueviolet.svg)](https://polar.sh/janasco/secretmsg)
 
-**SecretMsg** is an open-source, privacy-first anonymous messaging and viral TBH platform running on [`secretmsg.net`](https://secretmsg.net) and [`m.secretmsg.net`](https://m.secretmsg.net). Anyone can receive candid questions, compliments, and social feedback via a personalized public link without revealing sender identity.
+**SecretMsg** is an open-source, privacy-first anonymous messaging and viral TBH platform running on [`secretmsg.net`](https://secretmsg.net) with a dedicated account hub at [`app.secretmsg.net`](https://app.secretmsg.net) and a native Flutter Android client in this repository. Anyone can receive candid questions, compliments, and social feedback via a personalized public link without revealing sender identity.
 
 ---
 
@@ -43,7 +43,7 @@ Perks are granted **only via the signature-verified Polar webhook** after a succ
 - Strict handle requirements: Board links and usernames must be **at least 4 characters** (alphanumeric, underscores, hyphens, dots).
 - Edge and client-side sanitization against XSS, script injection, and malformed inputs.
 - Server-side rejection of recipient-hidden words, enforced regardless of sender.
-- Cloudflare Turnstile bot verification is **required** before any message is accepted.
+- Automated bot screening is **required** before any message is accepted.
 
 ### 4. Streamlined Navigation & Responsive Design
 - Clean 2-item top navigation (`Explore Demo` + `Safety`) ensuring rock-solid stability and zero layout wrapping across mobile, tablet, and desktop screens.
@@ -54,18 +54,18 @@ Perks are granted **only via the signature-verified Polar webhook** after a succ
 ## Repository Structure & Architecture
 
 This repository contains the **open-source client applications, mobile designs, and frontend packages**:
-- **Desktop & Responsive Web App** (`apps/web`): React 18 + Vite + Tailwind CSS web platform deployed to **`https://secretmsg.net`**. Features wide desktop inbox dashboards, responsive navbar, modals, and Cloudflare Pages SPA client routing.
-- **Mobile Web Client & Touch Screens** (`site/public`): Touch-optimized mobile interface deployed to **`https://m.secretmsg.net`** (and bundled into native Android via Capacitor).
-- **Android App & Capacitor Wrapper** (`apps/mobile-android`): Capacitor 6 native Android project with hardware navigation, system status bar integration, tactile haptics, and deep linking.
+- **Desktop & Responsive Web App** (`apps/web`): The modern responsive web platform deployed to **`https://secretmsg.net`**. Features wide desktop inbox dashboards, responsive navbar, modals, and client-side routing.
+- **Flutter Android App** (`apps/mobile-flutter`): Native Flutter (Dart) Android application — the primary mobile client — shipped as release **APK & AAB** builds. Implements the full mobile experience: public send pages with automated bot screening, story sticker studio, dice prompt roulette, email-OTP sign-in, inbox & double-blind replies, settings & safety controls, supporters wall, and all legal/safety screens, with deep links and native haptics/share.
+- **Legacy Prototypes & Wrappers** (`site/public`, `apps/mobile-android`): Earlier touch-optimized static HTML prototype and its legacy Android wrapper. No longer deployed (the `m.secretmsg.net` hostname has been decommissioned); kept for reference.
 
 > [!NOTE]
-> To protect platform stability, user data privacy, and prevent abuse, backend edge workers, database storage, and Stitch design system prototypes (`.stitch`) are maintained in an isolated private repository (`secretmsg-private`). Client apps interact with edge services strictly via standard REST API contracts (`https://api.secretmsg.net`).
+> To protect platform stability, user data privacy, and prevent abuse, backend services, database storage, and design-system prototypes are maintained in an isolated private repository. Client apps interact with services strictly via standard REST API contracts (`https://api.secretmsg.net`).
 
 ---
 
 ## Security Highlights (Production Hardening Pass — Sept 2026)
 
-- **Fail-closed Turnstile**: missing secret, test secret, or failed challenge ⇒ the message is rejected. No bypass paths.
+- **Fail-closed bot screening**: a missing or invalid human-check token ⇒ the message is rejected. No bypass paths.
 - **Fail-closed payment grants**: the former `/api/donation/google-pay` endpoint (which granted paid perks from an unverified client POST) is disabled. Perks now come exclusively from the HMAC-verified Polar webhook.
 - **CORS strict allowlist**: disallowed origins receive `Access-Control-Allow-Origin: null` and are blocked, rather than silently falling back to `secretmsg.net`.
 - **Cryptographically clean tokens**: `generateRandomToken` uses rejection sampling to remove modulo bias.
@@ -104,27 +104,22 @@ npx serve site/public
 
 Open [http://localhost:3000](http://localhost:3000) in your browser. All client features (theme toggle, local storage mock data, board generation, and safety controls) function out-of-the-box.
 
-### 3. Android Mobile Application (`apps/mobile-android`)
+### 3. Flutter Android App (`apps/mobile-flutter`)
 
-Built with **Capacitor 6** with native hardware navigation, status bar theming, haptics, and social sharing:
+The mobile client is a native Flutter application. Build the release APK and AAB:
 
 ```bash
-# Sync web assets and Capacitor Android plugins
-npm run android:sync
-
-# Open in Android Studio
-npm run android:open
-
-# Or build debug APK directly via Gradle
-npm run android:build
+cd apps/mobile-flutter
+flutter pub get
+flutter build apk --release        # outputs build/app/outputs/flutter-apk/app-release.apk
+flutter build appbundle --release  # outputs build/app/outputs/bundle/release/app-release.aab
 ```
 
 **Key Native Mobile Capabilities**:
-- **Hardware Back Button Handling**: Intercepts Android back presses to dismiss active modals, overlays, and drawers before navigating back or prompting exit on the root screen.
-- **Dynamic Status & System Bar Sync**: Automatically updates system status bar styling (`#0B0E14` dark / `#FFFFFF` light) in lockstep with user theme preferences.
-- **Tactile Haptic Feedback**: Delivers subtle physical feedback on 3D dice roulette rolls, button taps, and link copying.
-- **Native Social Share Sheet**: Triggers the native Android share drawer for sharing profile links and 9:16 story stickers to Instagram, Snapchat, and WhatsApp.
-- **App Links & Deep Linking**: Auto-verifies `https://secretmsg.net/@handle`, `https://m.secretmsg.net`, and custom `secretmsg://` intents.
+- **Bot screening**: A native widget produces a verified human-check token before any message send (fail-closed at the API).
+- **OTP Authentication**: Email one-time-password sign-in; the JWT is stored in the Android Keystore via `flutter_secure_storage`.
+- **Deep Links**: `https://secretmsg.net/{username}` opens the public send screen; `https://app.secretmsg.net/inbox` opens the inbox.
+- **Native Haptics & Share Sheet**: Haptic feedback on rolls/sends plus the system share drawer for story stickers and links.
 
 ---
 
