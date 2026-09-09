@@ -490,100 +490,146 @@
     // ==========================================
     // SAFETY CONTROLS: PAUSE MY LINK
     // ==========================================
-    function initPauseStatus() {
-      const pausedUntil = localStorage.getItem('secretmsg_link_paused_until');
+    // paused_until as returned by the real API: null = active, -1 = paused permanently,
+    // otherwise a future unix-epoch-seconds timestamp.
+    let cachedPausedUntil = null;
+
+    async function initPauseStatus() {
+      try {
+        const me = await window.SecretMsgAPI.getMe();
+        cachedPausedUntil = me.is_paused ? (me.paused_until === -1 ? -1 : me.paused_until) : null;
+      } catch (err) {
+        if (err instanceof window.SecretMsgAPI.UnauthorizedError) {
+          window.SecretMsgAPI.removeToken();
+          window.location.href = '/login.html';
+          return;
+        }
+        console.error('Failed to load pause status:', err);
+      }
+      renderPauseStatus();
+    }
+
+    function renderPauseStatus() {
+      const pausedUntil = cachedPausedUntil;
       const statusPill = document.getElementById('pause-status-pill');
       const statusDot = document.getElementById('pause-status-dot');
       const statusText = document.getElementById('pause-status-text');
       const resumeBtn = document.getElementById('resume-link-btn');
 
-      if (!pausedUntil || pausedUntil === '0') {
-        // Active
+      if (pausedUntil === null) {
         if (statusPill) {
           statusPill.textContent = 'Active';
           statusPill.className = 'text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-500/30';
         }
-        if (statusDot) {
-          statusDot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0 animate-pulse';
-        }
+        if (statusDot) statusDot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0 animate-pulse';
         if (statusText) statusText.textContent = 'Link is active and receiving messages';
         if (resumeBtn) resumeBtn.classList.add('hidden');
-      } else if (pausedUntil === 'permanent') {
-        // Permanent pause
+      } else if (pausedUntil === -1) {
         if (statusPill) {
           statusPill.textContent = 'Paused Permanently';
           statusPill.className = 'text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-rose-950/60 text-rose-400 border border-rose-500/30';
         }
-        if (statusDot) {
-          statusDot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0';
-        }
+        if (statusDot) statusDot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0';
         if (statusText) statusText.textContent = 'Link is paused permanently (no submissions)';
         if (resumeBtn) resumeBtn.classList.remove('hidden');
       } else {
-        // Timed pause
-        const expTime = parseInt(pausedUntil, 10);
-        if (Date.now() > expTime) {
-          // Expired, auto-resume
-          localStorage.setItem('secretmsg_link_paused_until', '0');
-          initPauseStatus();
+        const expMs = pausedUntil * 1000;
+        if (Date.now() > expMs) {
+          cachedPausedUntil = null;
+          renderPauseStatus();
           return;
         }
-        const minLeft = Math.ceil((expTime - Date.now()) / 60000);
+        const minLeft = Math.ceil((expMs - Date.now()) / 60000);
         const timeStr = minLeft > 60 ? `${Math.ceil(minLeft / 60)}h remaining` : `${minLeft}m remaining`;
 
         if (statusPill) {
           statusPill.textContent = `Paused (${timeStr})`;
           statusPill.className = 'text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-950/60 text-amber-400 border border-amber-500/30';
         }
-        if (statusDot) {
-          statusDot.className = 'w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0';
-        }
+        if (statusDot) statusDot.className = 'w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0';
         if (statusText) statusText.textContent = `Link is paused (${timeStr})`;
         if (resumeBtn) resumeBtn.classList.remove('hidden');
       }
     }
 
-    function setPauseDuration(duration) {
+    async function setPauseDuration(duration) {
+      let pausedUntil;
+      let message;
       if (duration === 'active') {
-        localStorage.setItem('secretmsg_link_paused_until', '0');
-        showToast('Link resumed! Receiving messages normally.');
+        pausedUntil = null;
+        message = 'Link resumed! Receiving messages normally.';
       } else if (duration === '1h') {
-        const exp = Date.now() + 3600 * 1000;
-        localStorage.setItem('secretmsg_link_paused_until', exp.toString());
-        showToast('Link paused for 1 hour.');
+        pausedUntil = Math.floor(Date.now() / 1000) + 3600;
+        message = 'Link paused for 1 hour.';
       } else if (duration === '6h') {
-        const exp = Date.now() + 6 * 3600 * 1000;
-        localStorage.setItem('secretmsg_link_paused_until', exp.toString());
-        showToast('Link paused for 6 hours.');
+        pausedUntil = Math.floor(Date.now() / 1000) + 6 * 3600;
+        message = 'Link paused for 6 hours.';
       } else if (duration === '24h') {
-        const exp = Date.now() + 24 * 3600 * 1000;
-        localStorage.setItem('secretmsg_link_paused_until', exp.toString());
-        showToast('Link paused for 24 hours.');
+        pausedUntil = Math.floor(Date.now() / 1000) + 24 * 3600;
+        message = 'Link paused for 24 hours.';
       } else if (duration === 'permanent') {
-        localStorage.setItem('secretmsg_link_paused_until', 'permanent');
-        showToast('Link paused permanently until resumed.');
+        pausedUntil = -1;
+        message = 'Link paused permanently until resumed.';
+      } else {
+        return;
       }
-      initPauseStatus();
+
+      try {
+        await window.SecretMsgAPI.updateSettings({ paused_until: pausedUntil });
+        cachedPausedUntil = pausedUntil;
+        renderPauseStatus();
+        showToast(message);
+      } catch (err) {
+        if (err instanceof window.SecretMsgAPI.UnauthorizedError) {
+          window.SecretMsgAPI.removeToken();
+          window.location.href = '/login.html';
+          return;
+        }
+        showToast(err.message || 'Failed to update pause status');
+      }
     }
 
     // ==========================================
     // SAFETY CONTROLS: HIDDEN WORDS
     // ==========================================
-    function getHiddenWords() {
-      try {
-        return JSON.parse(localStorage.getItem('secretmsg_hidden_words') || '[]');
-      } catch {
-        return [];
-      }
-    }
+    let cachedHiddenWords = [];
 
-    function saveHiddenWords(arr) {
-      localStorage.setItem('secretmsg_hidden_words', JSON.stringify(arr));
+    async function loadHiddenWords() {
+      try {
+        const me = await window.SecretMsgAPI.getMe();
+        cachedHiddenWords = Array.isArray(me.hidden_words) ? me.hidden_words : [];
+      } catch (err) {
+        if (err instanceof window.SecretMsgAPI.UnauthorizedError) {
+          window.SecretMsgAPI.removeToken();
+          window.location.href = '/login.html';
+          return;
+        }
+        console.error('Failed to load hidden words:', err);
+        cachedHiddenWords = [];
+      }
       renderHiddenWords();
     }
 
+    async function persistHiddenWords(words) {
+      const previous = cachedHiddenWords;
+      cachedHiddenWords = words;
+      renderHiddenWords();
+      try {
+        await window.SecretMsgAPI.updateSettings({ hidden_words: words });
+      } catch (err) {
+        cachedHiddenWords = previous;
+        renderHiddenWords();
+        if (err instanceof window.SecretMsgAPI.UnauthorizedError) {
+          window.SecretMsgAPI.removeToken();
+          window.location.href = '/login.html';
+          return;
+        }
+        showToast(err.message || 'Failed to save hidden words');
+      }
+    }
+
     function renderHiddenWords() {
-      const words = getHiddenWords();
+      const words = cachedHiddenWords;
       const container = document.getElementById('hidden-words-container');
       const countEl = document.getElementById('hidden-words-count');
 
@@ -606,7 +652,7 @@
       `).join('');
     }
 
-    function addHiddenWord() {
+    async function addHiddenWord() {
       const input = document.getElementById('hidden-word-input');
       if (!input) return;
       const val = input.value.trim().toLowerCase();
@@ -614,27 +660,26 @@
         showToast('Type a word or emoji first');
         return;
       }
-      const words = getHiddenWords();
-      if (words.includes(val)) {
+      if (cachedHiddenWords.includes(val)) {
         showToast('Rule already exists');
         return;
       }
-      words.push(val);
-      saveHiddenWords(words);
+      const words = cachedHiddenWords.concat([val]);
+      await persistHiddenWords(words);
       input.value = '';
       showToast(`Added "${val}" to hidden words`);
     }
 
-    function removeHiddenWord(idx) {
-      const words = getHiddenWords();
+    async function removeHiddenWord(idx) {
+      const words = cachedHiddenWords.slice();
       const removed = words.splice(idx, 1);
-      saveHiddenWords(words);
+      await persistHiddenWords(words);
       showToast(`Removed "${removed[0]}"`);
     }
 
-    function addPresetWords() {
+    async function addPresetWords() {
       const presets = ['hate', 'ugly', 'stupid', 'kys', 'fat', 'loser', 'trash', 'fake'];
-      const current = getHiddenWords();
+      const current = cachedHiddenWords.slice();
       let added = 0;
       presets.forEach(p => {
         if (!current.includes(p)) {
@@ -642,7 +687,7 @@
           added++;
         }
       });
-      saveHiddenWords(current);
+      await persistHiddenWords(current);
       showToast(`Added ${added} common safety filter rules`);
     }
 
@@ -763,7 +808,7 @@
       }
       initNotificationPrefs();
       initPauseStatus();
-      renderHiddenWords();
+      loadHiddenWords();
       renderBlockedUsers();
     });
   </script>

@@ -354,10 +354,6 @@
     const passedUser = urlParams.get('user') || urlParams.get('to') || (pathPart && !pathPart.endsWith('.html') && pathPart !== 'compose' ? pathPart : '');
     const cleanUser = decodeURIComponent(passedUser).trim().replace(/^@/, '');
 
-    // Built-in recognized demo boards
-    const DEMO_USERS = ['alex', 'sarah', 'demo', 'tbh', 'secret', 'team'];
-    const activeBoard = localStorage.getItem('secretmsg_active_board');
-
     function showUnavailableState(slug) {
       document.getElementById('composer-view').classList.add('hidden');
       document.getElementById('unavailable-view').classList.remove('hidden');
@@ -390,22 +386,8 @@
       document.title = `Send @${clean} an Anonymous Message - SecretMsg`;
       const descEl = document.getElementById('sent-success-desc');
       if (descEl) descEl.textContent = `Your message has been delivered to @${clean}'s secret inbox.`;
-
-      // Viewer Hints Tracking: increment link views count
-      const curViews = parseInt(localStorage.getItem('secretmsg_viewer_count') || '148', 10);
-      localStorage.setItem('secretmsg_viewer_count', (curViews + 1).toString());
-    }
-
-    function isLinkPaused(slug) {
-      if (slug === activeBoard) {
-        const pausedUntil = localStorage.getItem('secretmsg_link_paused_until');
-        if (pausedUntil && pausedUntil !== '0') {
-          if (pausedUntil === 'permanent') return true;
-          const exp = parseInt(pausedUntil, 10);
-          if (Date.now() < exp) return true;
-        }
-      }
-      return false;
+      // Note: view counts are tracked server-side (GET /api/user/:username increments
+      // views_count) via the getRecipientProfile() call in initRecipient() below.
     }
 
     function showPausedState(slug) {
@@ -422,35 +404,18 @@
         return;
       }
 
-      // Check if recipient has paused their link
-      if (isLinkPaused(cleanUser)) {
-        showPausedState(cleanUser);
-        return;
-      }
-
-      // If matches active created board in this browser or recognized demo users
-      if (cleanUser === activeBoard || DEMO_USERS.includes(cleanUser.toLowerCase())) {
-        const isVerified = cleanUser === activeBoard 
-          ? (localStorage.getItem('secretmsg_unlocked_badge') === 'true')
-          : (cleanUser === 'alex' && localStorage.getItem('secretmsg_unlocked_badge') === 'true');
-        showComposerState(cleanUser, isVerified);
-        return;
-      }
-
-      // Check remote database via the real backend API
       try {
         const user = await window.SecretMsgAPI.getRecipientProfile(cleanUser);
-        if (user) {
-          const isVerified = Boolean(user.is_premium);
-          showComposerState(user.username, isVerified);
+        if (user.is_paused) {
+          showPausedState(user.username);
           return;
         }
+        const isVerified = Boolean(user.is_premium);
+        showComposerState(user.username, isVerified);
       } catch (err) {
         console.warn('Backend user check error:', err);
+        showUnavailableState(cleanUser);
       }
-
-      // User does not exist in DB and not built-in: SHOW UNAVAILABLE & CLAIM OPTION!
-      showUnavailableState(cleanUser);
     }
 
     initRecipient();
@@ -549,20 +514,10 @@
         return;
       }
 
-      // Check recipient's hidden words / phrases / emojis filter
-      let hiddenWords = [];
-      try {
-        hiddenWords = JSON.parse(localStorage.getItem('secretmsg_hidden_words') || '[]');
-      } catch {}
-      if (hiddenWords.length > 0) {
-        const lower = sanitized.toLowerCase();
-        const matched = hiddenWords.find(w => lower.includes(w.toLowerCase()));
-        if (matched) {
-          alert(`This message contains a word or phrase that this creator has filtered ("${matched}"). Please be kind and respectful.`);
-          return;
-        }
-      }
-
+      // The recipient's hidden-words filter is enforced server-side (POST
+      // /api/message checks it against the real recipient's list) - a client-side
+      // check here would only ever see the sender's own browser storage, not the
+      // recipient's, which is meaningless.
       textarea.value = sanitized;
       const sendBtn = document.getElementById('send-btn');
       sendBtn.innerHTML = `<span class="animate-spin material-symbols-outlined text-[18px]">progress_activity</span> Encrypting & Sending...`;

@@ -127,6 +127,21 @@
     return data.user;
   }
 
+  // updates: { paused_until?: number|null, hidden_words?: string[] }
+  async function updateSettings(updates) {
+    var token = getToken();
+    if (!token) throw new UnauthorizedError('Not logged in');
+    var res = await fetch(API_BASE_URL + '/api/me', {
+      method: 'PATCH',
+      headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify(updates),
+    });
+    if (res.status === 401) throw new UnauthorizedError();
+    var data = await parseJsonSafe(res);
+    if (!res.ok) throw new Error(data.error || 'Failed to update settings');
+    return data;
+  }
+
   async function getInbox() {
     var token = getToken();
     if (!token) throw new UnauthorizedError('Not logged in');
@@ -251,6 +266,7 @@
     deleteAccount: deleteAccount,
     reportMessage: reportMessage,
     getSupporters: getSupporters,
+    updateSettings: updateSettings,
     createCheckout: createCheckout,
     submitGooglePayDonation: submitGooglePayDonation,
   };

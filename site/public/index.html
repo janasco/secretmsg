@@ -52,6 +52,7 @@
   </script>
   <script src="js/theme.js"></script>
   <script src="js/mobile-bridge.js"></script>
+  <script src="js/api.js"></script>
 </head>
 <body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen">
   <div class="mobile-viewport">
@@ -149,7 +150,7 @@
             <span class="material-symbols-outlined text-slate-400 text-[18px]">link</span>
             <span id="my-board-link-text" class="text-xs font-mono text-slate-300 truncate">secretmsg.net/yourname</span>
           </div>
-          <span class="text-[10px] text-emerald-400 font-semibold uppercase tracking-wider bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">Active</span>
+          <span id="my-board-link-status" class="text-[10px] text-emerald-400 font-semibold uppercase tracking-wider bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">Active</span>
         </div>
         
         <div class="flex gap-2 mt-1 z-10">
@@ -231,14 +232,28 @@
       setTimeout(() => toast.classList.remove('show'), 2200);
     }
 
-    const activeBoard = (localStorage.getItem('secretmsg_active_board') || localStorage.getItem('secretmsg_display_name') || 'yourname').replace(/^@/, '');
+    const loggedInUser = window.SecretMsgAPI && window.SecretMsgAPI.isLoggedIn() ? window.SecretMsgAPI.getSavedUser() : null;
     const myLinkText = document.getElementById('my-board-link-text');
-    if (myLinkText) myLinkText.textContent = `secretmsg.net/${activeBoard}`;
+    const myLinkStatus = document.getElementById('my-board-link-status');
+
+    if (loggedInUser && myLinkText) {
+      myLinkText.textContent = `secretmsg.net/${loggedInUser.username}`;
+    } else if (myLinkText) {
+      myLinkText.textContent = 'Log in to see your link';
+      if (myLinkStatus) {
+        myLinkStatus.textContent = 'Not logged in';
+        myLinkStatus.className = 'text-[10px] text-slate-400 font-semibold uppercase tracking-wider bg-white/5 px-2 py-0.5 rounded border border-white/10';
+      }
+    }
 
     document.getElementById('copy-link-btn').addEventListener('click', () => {
-      const url = `https://secretmsg.net/${activeBoard}`;
+      if (!loggedInUser) {
+        window.location.href = '/login.html';
+        return;
+      }
+      const url = `https://secretmsg.net/${loggedInUser.username}`;
       navigator.clipboard?.writeText(url);
-      showToast(`Link copied: secretmsg.net/${activeBoard}`);
+      showToast(`Link copied: secretmsg.net/${loggedInUser.username}`);
     });
 
     // Navigate to compose with prompt
