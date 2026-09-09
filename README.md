@@ -11,24 +11,21 @@
 
 ---
 
-## What's New & Core Capabilities
+## Key Features
 
 ### 1. Account Preferences & Safety Controls
-- **Preferences → Appearance**: 3-choice theme engine supporting:
+- **Appearance**: a 3-choice theme engine that switches between:
   - *Always Light Mode*
   - *Always Dark Mode*
   - *Follow System Settings (Default)*
-- **Preferences → Notifications**:
-  - Reminders to post & share active links
-  - Real-time new message alerts
-  - Team SecretMsg occasional game prompts
-  - Daily Question of the Day (QOTD) reminders
-- **Safety Controls → Hidden Words**: Create custom blocklists of words, phrases, and emojis to automatically reject unwanted messages at compose time or quarantine them in inbox.
-- **Safety Controls → Block Users**: View and manage blocked sender devices with instant unblock toggles.
-- **Safety Controls → Pause My Link**: Temporarily or permanently halt incoming submissions (1 hour, 6 hours, 24 hours, or indefinite) with friendly public pause notices.
+- **Notifications**: opt-in alerts covering link-sharing reminders, incoming-message pings, occasional team prompts, and Daily Question of the Day (QOTD) nudges.
+- **Hidden Words**: build custom blocklists of words, phrases, and emojis that auto-reject matching input at compose time or shunt it to the inbox quarantine.
+- **Block Users**: review and manage blocked sender devices with instant unblock toggles.
+- **Pause My Link**: suspend incoming submissions for 1 hour, 6 hours, 24 hours, or indefinitely, with a friendly public notice shown while paused.
+- **Owner login**: secure email one-time-password (OTP) sign-in for the private inbox and settings.
 
 ### 2. Modular Supporter Perks
-Supporters can unlock standalone individual features or the full VIP bundle through [Polar.sh](https://polar.sh/janasco/secretmsg):
+Supporters can purchase standalone perks individually or bundle them into the full VIP pass, checkout handled via [Polar.sh](https://polar.sh/janasco/secretmsg):
 
 | Perk | Price | Effect |
 |---|---|---|
@@ -40,14 +37,19 @@ Supporters can unlock standalone individual features or the full VIP bundle thro
 Perks are granted **only via the signature-verified Polar webhook** after a successful checkout. There is no client-side unlock path.
 
 ### 3. Platform Sanitization & Handle Validation
-- Strict handle requirements: Board links and usernames must be **at least 4 characters** (alphanumeric, underscores, hyphens, dots).
+- Strict handle requirements: board links and usernames must be **at least 4 characters** (alphanumeric, underscores, hyphens, dots).
 - Edge and client-side sanitization against XSS, script injection, and malformed inputs.
 - Server-side rejection of recipient-hidden words, enforced regardless of sender.
 - Automated bot screening is **required** before any message is accepted.
+- **Rate limiting** on message sending, OTP requests, and other sensitive actions.
+- **Server-side sanitization** scrubs hostile payloads so they never reach storage or other users.
 
-### 4. Streamlined Navigation & Responsive Design
-- Clean 2-item top navigation (`Explore Demo` + `Safety`) ensuring rock-solid stability and zero layout wrapping across mobile, tablet, and desktop screens.
-- Comprehensive footer directories for all platform tools, guidelines, and legal disclosures.
+### 4. Double-Blind Replies, Report Controls & Platform Guidance
+- **Double-blind replies**: reply to a message without ever learning the sender's identity; each party sees only the exchange they belong to.
+- **Report controls**: flag abusive messages straight from the thread for review.
+- **Safety Center**: a dedicated hub plus child safety policy, community guidelines, and an online safety guide — all reachable from the footer.
+- **Streamlined navigation**: a clean 2-item top nav (`Explore Demo` + `Safety`) that stays stable and wraps cleanly on mobile, tablet, and desktop.
+- **Comprehensive footer directories** list every platform tool, guideline, and legal disclosure in one place.
 
 ---
 
