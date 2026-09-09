@@ -9,6 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/common.css"/>
   <script src="js/sanitize.js"></script>
+  <script src="js/api.js"></script>
+  <!-- Cloudflare Turnstile (anti-spam) -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -45,6 +48,7 @@
     })();
   </script>
   <script src="js/theme.js"></script>
+  <script src="js/mobile-bridge.js"></script>
 </head>
 <body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen">
   <div class="mobile-viewport">
@@ -162,6 +166,11 @@
         </label>
       </section>
 
+      <!-- Cloudflare Turnstile Widget -->
+      <section class="flex justify-center">
+        <div id="turnstile-container"></div>
+      </section>
+
       <!-- CTA Send Button -->
       <section class="mt-2">
         <button id="send-btn" onclick="handleSend()" class="w-full h-13 py-3.5 bg-white text-[#0B0E14] rounded-full text-sm font-bold flex items-center justify-center gap-2 white-glow active:scale-95 transition-all hover:bg-slate-100 shadow-xl">
@@ -262,10 +271,10 @@
         </div>
 
         <div id="reply-token-card" class="w-full bg-[#10131A] p-3 rounded-xl border border-white/10 text-left">
-          <span class="text-[10px] font-mono text-slate-400 block mb-1">Your Private Reply Token</span>
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono text-white truncate">sec-rpl-98a4f1...</span>
-            <button onclick="copyReplyToken()" class="text-xs text-slate-300 hover:text-white font-semibold flex items-center gap-1">
+          <span class="text-[10px] font-mono text-slate-400 block mb-1">Your Private Reply Link</span>
+          <div class="flex items-center justify-between gap-2">
+            <span id="reply-token-text" class="text-xs font-mono text-white truncate">-</span>
+            <button onclick="copyReplyToken()" class="text-xs text-slate-300 hover:text-white font-semibold flex items-center gap-1 shrink-0">
               <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
             </button>
           </div>
@@ -428,16 +437,13 @@
         return;
       }
 
-      // Check remote database /api/user/:username
+      // Check remote database via the real backend API
       try {
-        const res = await fetch(`/api/user/${encodeURIComponent(cleanUser)}`);
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.user) {
-            const isVerified = Boolean(data.user.has_verified_badge || data.user.is_premium);
-            showComposerState(data.user.username, isVerified);
-            return;
-          }
+        const user = await window.SecretMsgAPI.getRecipientProfile(cleanUser);
+        if (user) {
+          const isVerified = Boolean(user.is_premium);
+          showComposerState(user.username, isVerified);
+          return;
         }
       } catch (err) {
         console.warn('Backend user check error:', err);
@@ -498,12 +504,48 @@
       modal.classList.toggle('hidden');
     }
 
-    function handleSend() {
+    // Cloudflare Turnstile: mount the widget once the async script has loaded.
+    // The site key is public (safe to embed in client code, per Cloudflare's docs).
+    const TURNSTILE_SITE_KEY = '0x4AAAAAAEsIItNVg9CO0YY9';
+    let turnstileWidgetId = null;
+    let turnstileToken = null;
+
+    function renderTurnstile() {
+      const container = document.getElementById('turnstile-container');
+      if (!window.turnstile || !container) return;
+      turnstileWidgetId = window.turnstile.render(container, {
+        sitekey: TURNSTILE_SITE_KEY,
+        theme: 'dark',
+        callback: (token) => { turnstileToken = token; },
+        'expired-callback': () => { turnstileToken = null; },
+        'error-callback': () => { turnstileToken = null; },
+      });
+    }
+
+    if (window.turnstile) {
+      renderTurnstile();
+    } else {
+      const turnstilePoll = setInterval(() => {
+        if (window.turnstile) {
+          clearInterval(turnstilePoll);
+          renderTurnstile();
+        }
+      }, 100);
+    }
+
+    let lastReplyToken = null;
+
+    async function handleSend() {
       const rawText = textarea.value;
       const sanitized = window.SecretMsgSanitize ? window.SecretMsgSanitize.sanitizeMessageText(rawText) : rawText.trim();
       if (!sanitized) {
         showToast('Please type a valid message first!');
         textarea.focus();
+        return;
+      }
+
+      if (!turnstileToken) {
+        showToast('Please complete the verification challenge before sending.');
         return;
       }
 
@@ -526,11 +568,31 @@
       sendBtn.innerHTML = `<span class="animate-spin material-symbols-outlined text-[18px]">progress_activity</span> Encrypting & Sending...`;
       sendBtn.disabled = true;
 
-      setTimeout(() => {
+      const allowClue = document.getElementById('reply-toggle').checked;
+
+      try {
+        const result = await window.SecretMsgAPI.sendAnonymousMessage(cleanUser, sanitized, turnstileToken, allowClue);
+        lastReplyToken = result.replyToken || null;
+        const tokenEl = document.getElementById('reply-token-text');
+        const cardEl = document.getElementById('reply-token-card');
+        if (lastReplyToken) {
+          tokenEl.textContent = lastReplyToken;
+          cardEl.classList.remove('hidden');
+        } else {
+          cardEl.classList.add('hidden');
+        }
         document.getElementById('sent-modal').classList.remove('hidden');
+      } catch (err) {
+        showToast(err.message || 'Failed to send message. Please try again.');
+        // Turnstile tokens are single-use; reset the widget so the user can retry.
+        turnstileToken = null;
+        if (turnstileWidgetId !== null && window.turnstile) {
+          window.turnstile.reset(turnstileWidgetId);
+        }
+      } finally {
         sendBtn.innerHTML = `<span class="material-symbols-outlined text-[20px]">lock</span> Send Privately 🚀`;
         sendBtn.disabled = false;
-      }, 700);
+      }
     }
 
     function resetCompose() {
@@ -540,7 +602,9 @@
     }
 
     function copyReplyToken() {
-      navigator.clipboard?.writeText('https://secretmsg.net/reply/sec-rpl-98a4f1837c');
+      if (!lastReplyToken) return;
+      const url = `https://secretmsg.net/reply/${lastReplyToken}`;
+      navigator.clipboard?.writeText(url);
       showToast('Reply link copied!');
     }
   </script>

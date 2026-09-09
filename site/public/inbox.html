@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/common.css"/>
+  <script src="js/api.js"></script>
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -44,6 +45,7 @@
     })();
   </script>
   <script src="js/theme.js"></script>
+  <script src="js/mobile-bridge.js"></script>
 </head>
 <body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen">
   <div class="mobile-viewport">
@@ -61,7 +63,7 @@
       <div class="flex items-center gap-1.5">
         <span class="material-symbols-outlined text-white text-[20px]" style="font-variation-settings: 'FILL' 1;">mail</span>
         <h1 class="text-base font-bold text-white tracking-tight">Secret Inbox</h1>
-        <span class="bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full ml-1">4 New</span>
+        <span id="unread-badge" class="hidden bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full ml-1"></span>
       </div>
       <div class="flex items-center gap-1 -mr-2">
         <button onclick="window.SecretMsgTheme.toggle()" aria-label="Toggle Theme" class="p-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center" title="Toggle Theme (Dark / Light)">
@@ -78,13 +80,13 @@
       <!-- Filter Segment Control -->
       <section class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
         <button onclick="filterInbox('all', this)" class="inbox-filter-btn bg-white text-[#0B0E14] font-semibold text-xs px-4 py-2 rounded-full whitespace-nowrap active:scale-95 transition-all shadow-sm">
-          All (14)
+          All (<span id="count-all">0</span>)
         </button>
         <button onclick="filterInbox('unread', this)" class="inbox-filter-btn glass-panel text-slate-300 hover:text-white font-semibold text-xs px-4 py-2 rounded-full whitespace-nowrap active:scale-95 transition-all">
-          Unread (4)
+          Unread (<span id="count-unread">0</span>)
         </button>
         <button onclick="filterInbox('pinned', this)" class="inbox-filter-btn glass-panel text-slate-300 hover:text-white font-semibold text-xs px-4 py-2 rounded-full whitespace-nowrap active:scale-95 transition-all">
-          Pinned (2)
+          Pinned (<span id="count-pinned">0</span>)
         </button>
       </section>
 
@@ -108,15 +110,15 @@
       <section class="grid grid-cols-3 gap-2.5">
         <div class="glass-panel rounded-2xl p-3 text-center border border-white/10">
           <span class="text-[10px] font-mono text-slate-400 block uppercase">Total</span>
-          <span class="text-xl font-bold text-white mt-0.5 block">128</span>
+          <span id="kpi-total" class="text-xl font-bold text-white mt-0.5 block">0</span>
         </div>
         <div class="glass-panel rounded-2xl p-3 text-center border border-white/10">
-          <span class="text-[10px] font-mono text-slate-400 block uppercase">TBH</span>
-          <span class="text-xl font-bold text-white mt-0.5 block">84</span>
+          <span class="text-[10px] font-mono text-slate-400 block uppercase">Unread</span>
+          <span id="kpi-unread" class="text-xl font-bold text-white mt-0.5 block">0</span>
         </div>
         <div class="glass-panel rounded-2xl p-3 text-center border border-white/10">
-          <span class="text-[10px] font-mono text-slate-400 block uppercase">Crushes</span>
-          <span class="text-xl font-bold text-rose-400 mt-0.5 block">44</span>
+          <span class="text-[10px] font-mono text-slate-400 block uppercase">Replied</span>
+          <span id="kpi-replied" class="text-xl font-bold text-emerald-400 mt-0.5 block">0</span>
         </div>
       </section>
 
@@ -129,103 +131,17 @@
           </span>
         </div>
 
-        <div id="messages-list" class="flex flex-col gap-2.5">
-          <!-- Message 1 (Unread Crush) -->
-          <div data-state="unread" class="message-card glass-panel glass-panel-hover rounded-2xl p-4 flex flex-col gap-2.5 cursor-pointer relative border-l-4 border-l-rose-500" onclick="openDetail('1')">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-rose-300 bg-rose-500/15 px-2.5 py-0.5 rounded-full border border-rose-500/30">
-                  💘 Secret Crush
-                </span>
-                <span class="w-2 h-2 rounded-full bg-white animate-pulse" title="Unread"></span>
-              </div>
-              <span class="text-[11px] text-slate-400 font-mono">10m ago</span>
-            </div>
-            <p class="text-sm text-slate-100 font-medium leading-relaxed">
-              "I've had a secret crush on you since last summer when we were study partners... 🫣"
-            </p>
-            <div class="flex justify-between items-center pt-2 border-t border-white/10 text-xs text-slate-400">
-              <span class="flex items-center gap-1 text-[11px]">
-                <span class="material-symbols-outlined text-[14px]">reply</span> Reply token enabled
-              </span>
-              <span class="text-white font-semibold flex items-center gap-1 text-[11px]">
-                Read & Reply <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-              </span>
-            </div>
-          </div>
-
-          <!-- Message 2 (Unread Mutual) -->
-          <div data-state="unread" class="message-card glass-panel glass-panel-hover rounded-2xl p-4 flex flex-col gap-2.5 cursor-pointer relative border-l-4 border-l-sky-500" onclick="openDetail('2')">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-sky-300 bg-sky-500/15 px-2.5 py-0.5 rounded-full border border-sky-500/30">
-                  ✨ Mutual Vibe
-                </span>
-                <span class="w-2 h-2 rounded-full bg-white animate-pulse" title="Unread"></span>
-              </div>
-              <span class="text-[11px] text-slate-400 font-mono">42m ago</span>
-            </div>
-            <p class="text-sm text-slate-100 font-medium leading-relaxed">
-              "TBH you give off effortless main character aesthetic ✨ You're way cooler than you realize."
-            </p>
-            <div class="flex justify-between items-center pt-2 border-t border-white/10 text-xs text-slate-400">
-              <span class="flex items-center gap-1 text-[11px]">
-                <span class="material-symbols-outlined text-[14px]">location_on</span> Sent from Android
-              </span>
-              <span class="text-white font-semibold flex items-center gap-1 text-[11px]">
-                Read & Reply <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-              </span>
-            </div>
-          </div>
-
-          <!-- Message 3 (Pinned Close Friend) -->
-          <div data-state="pinned" class="message-card glass-panel glass-panel-hover rounded-2xl p-4 flex flex-col gap-2.5 cursor-pointer relative border border-white/20" onclick="openDetail('3')">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-300 bg-emerald-500/15 px-2.5 py-0.5 rounded-full border border-emerald-500/30">
-                  🤝 Close Friend
-                </span>
-                <span class="material-symbols-outlined text-[16px] text-amber-400" title="Pinned">push_pin</span>
-              </div>
-              <span class="text-[11px] text-slate-400 font-mono">2d ago</span>
-            </div>
-            <p class="text-sm text-slate-100 font-medium leading-relaxed">
-              "You always checked in on me during finals week, you're genuinely the realest friend I have."
-            </p>
-            <div class="flex justify-between items-center pt-2 border-t border-white/10 text-xs text-slate-400">
-              <span class="flex items-center gap-1 text-[11px]">
-                <span class="material-symbols-outlined text-[14px]">favorite</span> Pinned to top
-              </span>
-              <span class="text-white font-semibold flex items-center gap-1 text-[11px]">
-                View Thread <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-              </span>
-            </div>
-          </div>
-
-          <!-- Message 4 (Pinned Confession) -->
-          <div data-state="pinned" class="message-card glass-panel glass-panel-hover rounded-2xl p-4 flex flex-col gap-2.5 cursor-pointer relative border border-white/20" onclick="openDetail('4')">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-violet-300 bg-violet-500/15 px-2.5 py-0.5 rounded-full border border-violet-500/30">
-                  🤫 Confession
-                </span>
-                <span class="material-symbols-outlined text-[16px] text-amber-400" title="Pinned">push_pin</span>
-              </div>
-              <span class="text-[11px] text-slate-400 font-mono">3d ago</span>
-            </div>
-            <p class="text-sm text-slate-100 font-medium leading-relaxed">
-              "Honest impression: at first you seemed intimidating, but you're actually so funny and kind once someone talks to you."
-            </p>
-            <div class="flex justify-between items-center pt-2 border-t border-white/10 text-xs text-slate-400">
-              <span class="flex items-center gap-1 text-[11px]">
-                <span class="material-symbols-outlined text-[14px]">visibility</span> Viewed
-              </span>
-              <span class="text-white font-semibold flex items-center gap-1 text-[11px]">
-                View Thread <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-              </span>
-            </div>
-          </div>
+        <div id="messages-loading" class="text-center py-10 text-xs text-slate-400">
+          <span class="animate-spin material-symbols-outlined text-[24px] block mb-2">progress_activity</span>
+          Loading your inbox...
         </div>
+
+        <div id="messages-empty" class="hidden text-center py-10 text-xs text-slate-400">
+          <span class="material-symbols-outlined text-[32px] block mb-2 opacity-50">mail</span>
+          No messages yet. Share your link to start receiving anonymous messages!
+        </div>
+
+        <div id="messages-list" class="flex flex-col gap-2.5"></div>
       </section>
     </main>
 
@@ -258,6 +174,8 @@
   </div>
 
   <script>
+    let inboxMessages = [];
+
     function showToast(msg) {
       const toast = document.getElementById('toast');
       document.getElementById('toast-text').textContent = msg;
@@ -266,7 +184,11 @@
     }
 
     function openDetail(id) {
-      window.location.href = `message-detail.html?id=${id}`;
+      // No single-message GET endpoint exists on the backend - hand the already-fetched
+      // message off via sessionStorage so message-detail.html doesn't need to refetch.
+      const msg = inboxMessages.find((m) => m.id === id);
+      if (msg) sessionStorage.setItem('secretmsg_open_message', JSON.stringify(msg));
+      window.location.href = `message-detail.html?id=${encodeURIComponent(id)}`;
     }
 
     function filterInbox(state, btn) {
@@ -286,15 +208,136 @@
       });
     }
 
-    function syncInboxViewerHints() {
-      const hasViewer = localStorage.getItem('secretmsg_unlocked_viewer_hints') === 'true';
+    function timeAgo(isoString) {
+      const then = new Date(isoString.replace(' ', 'T') + (isoString.includes('Z') ? '' : 'Z')).getTime();
+      const diffSec = Math.max(0, Math.floor((Date.now() - then) / 1000));
+      if (diffSec < 60) return 'just now';
+      if (diffSec < 3600) return `${Math.floor(diffSec / 60)}m ago`;
+      if (diffSec < 86400) return `${Math.floor(diffSec / 3600)}h ago`;
+      return `${Math.floor(diffSec / 86400)}d ago`;
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str == null ? '' : String(str);
+      return div.innerHTML;
+    }
+
+    function renderMessages() {
+      const listEl = document.getElementById('messages-list');
+      const emptyEl = document.getElementById('messages-empty');
+      const loadingEl = document.getElementById('messages-loading');
+      loadingEl.classList.add('hidden');
+
+      if (inboxMessages.length === 0) {
+        emptyEl.classList.remove('hidden');
+        listEl.innerHTML = '';
+        return;
+      }
+      emptyEl.classList.add('hidden');
+
+      // Pinned first, then newest first (matches the backend's own ordering, kept
+      // consistent here in case messages get re-rendered after a local reply/pin change).
+      const sorted = inboxMessages.slice().sort((a, b) => {
+        if (a.is_pinned !== b.is_pinned) return b.is_pinned - a.is_pinned;
+        return new Date(b.created_at) - new Date(a.created_at);
+      });
+
+      listEl.innerHTML = sorted.map((m) => {
+        const state = m.is_pinned ? 'pinned' : (m.is_read ? 'read' : 'unread');
+        const borderClass = m.is_pinned ? 'border border-white/20' : (m.is_read ? 'border border-white/10' : 'border-l-4 border-l-rose-500');
+        const statusBadge = m.is_pinned
+          ? '<span class="material-symbols-outlined text-[16px] text-amber-400" title="Pinned">push_pin</span>'
+          : (!m.is_read ? '<span class="w-2 h-2 rounded-full bg-white animate-pulse" title="Unread"></span>' : '');
+        const footerLeft = m.device_hint
+          ? `<span class="flex items-center gap-1 text-[11px]"><span class="material-symbols-outlined text-[14px]">smartphone</span> Sent from ${escapeHtml(m.device_hint)}</span>`
+          : `<span class="flex items-center gap-1 text-[11px]"><span class="material-symbols-outlined text-[14px]">reply</span> Reply token enabled</span>`;
+        const footerRight = m.reply_content
+          ? '<span class="text-emerald-400 font-semibold flex items-center gap-1 text-[11px]">Replied <span class="material-symbols-outlined text-[14px]">check</span></span>'
+          : '<span class="text-white font-semibold flex items-center gap-1 text-[11px]">Read & Reply <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>';
+
+        return `
+          <div data-state="${state}" class="message-card glass-panel glass-panel-hover rounded-2xl p-4 flex flex-col gap-2.5 cursor-pointer relative ${borderClass}" onclick="openDetail('${m.id}')">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-300 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/20">
+                  🤫 Anonymous Message
+                </span>
+                ${statusBadge}
+              </div>
+              <span class="text-[11px] text-slate-400 font-mono">${timeAgo(m.created_at)}</span>
+            </div>
+            <p class="text-sm text-slate-100 font-medium leading-relaxed">"${escapeHtml(m.content)}"</p>
+            <div class="flex justify-between items-center pt-2 border-t border-white/10 text-xs text-slate-400">
+              ${footerLeft}
+              ${footerRight}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function updateCountsAndKpis() {
+      const total = inboxMessages.length;
+      const unread = inboxMessages.filter((m) => !m.is_read && !m.is_pinned).length;
+      const pinned = inboxMessages.filter((m) => m.is_pinned).length;
+      const replied = inboxMessages.filter((m) => m.reply_content).length;
+
+      document.getElementById('count-all').textContent = total;
+      document.getElementById('count-unread').textContent = unread;
+      document.getElementById('count-pinned').textContent = pinned;
+      document.getElementById('kpi-total').textContent = total;
+      document.getElementById('kpi-unread').textContent = unread;
+      document.getElementById('kpi-replied').textContent = replied;
+
+      const badge = document.getElementById('unread-badge');
+      if (unread > 0) {
+        badge.textContent = `${unread} New`;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
+    async function loadInbox() {
+      try {
+        inboxMessages = await window.SecretMsgAPI.getInbox();
+        renderMessages();
+        updateCountsAndKpis();
+      } catch (err) {
+        if (err instanceof window.SecretMsgAPI.UnauthorizedError) {
+          window.SecretMsgAPI.removeToken();
+          window.location.href = '/login.html';
+          return;
+        }
+        document.getElementById('messages-loading').classList.add('hidden');
+        document.getElementById('messages-empty').classList.remove('hidden');
+        document.getElementById('messages-empty').textContent = 'Failed to load your inbox. Please refresh to try again.';
+        console.error('Failed to load inbox:', err);
+      }
+    }
+
+    if (!window.SecretMsgAPI.isLoggedIn()) {
+      window.location.href = '/login.html';
+    } else {
+      loadInbox();
+    }
+
+    async function syncInboxViewerHints() {
       const icon = document.getElementById('inbox-viewer-icon');
       const title = document.getElementById('inbox-viewer-title');
       const sub = document.getElementById('inbox-viewer-sub');
       const cta = document.getElementById('inbox-viewer-cta');
 
-      const storedViews = localStorage.getItem('secretmsg_viewer_count');
-      const views = storedViews ? parseInt(storedViews, 10) : 148;
+      let hasViewer = false;
+      let views = 0;
+      try {
+        const me = await window.SecretMsgAPI.getMe();
+        hasViewer = Boolean(me.has_viewer_hints);
+        views = me.views_count || 0;
+      } catch (err) {
+        console.error('Failed to load viewer hints status:', err);
+      }
 
       if (hasViewer) {
         if (icon) {
@@ -303,7 +346,7 @@
         }
         if (title) title.textContent = `Viewer Hints: ${views} board views`;
         if (sub) {
-          sub.textContent = '+38 visitors opened your link this week';
+          sub.textContent = 'Total profile views since your board was created';
           sub.className = 'text-[10px] text-emerald-400 block truncate';
         }
         if (cta) {

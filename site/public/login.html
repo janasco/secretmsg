@@ -11,7 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/common.css"/>
   <script src="js/sanitize.js"></script>
-  
+  <script src="js/api.js"></script>
+
   <script>
     tailwind.config = {
       darkMode: "class",
@@ -40,6 +41,7 @@
     })();
   </script>
   <script src="js/theme.js"></script>
+  <script src="js/mobile-bridge.js"></script>
 </head>
 <body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-indigo-500 selection:text-white flex flex-col justify-between">
 
@@ -84,68 +86,68 @@
 
       <!-- Login Form Card -->
       <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl space-y-5">
-        <form onsubmit="handleLogin(event)" class="space-y-4">
-          
-          <!-- Board Link / Username -->
+        <div id="login-error" class="hidden p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl text-xs text-rose-300"></div>
+
+        <!-- Step 1: Email -->
+        <form id="email-step" onsubmit="handleRequestCode(event)" class="space-y-4">
           <div class="space-y-1.5">
             <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
-              Board Link or Username
+              Email Address
             </label>
-            <div class="relative">
-              <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 font-mono text-xs">secretmsg.net/</span>
-              <input
-                id="login-slug"
-                type="text"
-                placeholder="yourhandle"
-                minlength="4"
-                maxlength="30"
-                pattern="[a-zA-Z0-9_\-\.]{4,30}"
-                title="Handle must be at least 4 characters"
-                class="w-full pl-32 pr-4 py-3 rounded-2xl bg-white/5 border border-white/15 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-mono"
-                required
-              />
-            </div>
+            <input
+              id="login-email"
+              type="email"
+              placeholder="you@example.com"
+              class="w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/15 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+              required
+            />
             <span class="text-[11px] text-slate-400">
-              Enter your unique link or username (minimum 4 characters, e.g. <code>alex</code> or <code>secretmsg.net/alex</code>).
+              We'll email you a one-time 6-digit code. No password needed.
             </span>
           </div>
 
-          <!-- Password -->
-          <div class="space-y-1.5">
-            <div class="flex items-center justify-between">
-              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
-                Board Password
-              </label>
-              <a href="/profile.html" class="text-[11px] text-indigo-400 hover:text-indigo-300 transition-colors">
-                Forgot password?
-              </a>
-            </div>
-            <div class="relative">
-              <input
-                id="login-password"
-                type="password"
-                placeholder="Enter the password you set during creation"
-                class="w-full pl-4 pr-10 py-3 rounded-2xl bg-white/5 border border-white/15 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
-                required
-              />
-              <button
-                type="button"
-                onclick="togglePasswordVisibility()"
-                class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
-                tabindex="-1"
-              >
-                <span id="pwd-icon" class="material-symbols-outlined text-[18px]">visibility</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Submit Button -->
           <button
-            id="login-btn"
+            id="request-code-btn"
             type="submit"
             class="w-full py-3.5 rounded-full bg-white text-[#0B0E14] font-bold text-xs hover:bg-slate-100 active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2"
           >
-            <span>Log In to Message Board</span>
+            <span>Send Login Code</span>
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </button>
+        </form>
+
+        <!-- Step 2: OTP Code (hidden until code is requested) -->
+        <form id="otp-step" onsubmit="handleVerifyCode(event)" class="space-y-4 hidden">
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between">
+              <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                6-Digit Code
+              </label>
+              <button type="button" onclick="backToEmailStep()" class="text-[11px] text-indigo-400 hover:text-indigo-300 transition-colors">
+                Use a different email
+              </button>
+            </div>
+            <input
+              id="login-otp"
+              type="text"
+              inputmode="numeric"
+              pattern="[0-9]{6}"
+              maxlength="6"
+              placeholder="123456"
+              class="w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/15 text-white placeholder-slate-500 text-sm font-mono tracking-[0.4em] text-center focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+              required
+            />
+            <span id="otp-sent-note" class="text-[11px] text-slate-400">
+              Enter the code we just emailed you. It expires in 15 minutes.
+            </span>
+          </div>
+
+          <button
+            id="verify-code-btn"
+            type="submit"
+            class="w-full py-3.5 rounded-full bg-white text-[#0B0E14] font-bold text-xs hover:bg-slate-100 active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2"
+          >
+            <span>Log In</span>
             <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
           </button>
         </form>
@@ -172,9 +174,9 @@
           Trouble logging in?
         </div>
         <ul class="space-y-1 text-[11px] text-slate-400 list-disc list-inside">
-          <li>Ensure cookies are enabled in your browser (Settings → Cookies → Allow).</li>
-          <li>We recommend Chrome on Android & iPhone for optimal board storage.</li>
-          <li>Make sure you enter the exact link name you created without spaces.</li>
+          <li>Check your spam/junk folder if the code doesn't arrive within a minute.</li>
+          <li>Codes expire after 15 minutes — request a new one if yours timed out.</li>
+          <li>Use the same email you signed up with to reach your existing board.</li>
         </ul>
       </div>
 
@@ -195,49 +197,80 @@
   </footer>
 
   <script>
-    function togglePasswordVisibility() {
-      const input = document.getElementById('login-password');
-      const icon = document.getElementById('pwd-icon');
-      if (input.type === 'password') {
-        input.type = 'text';
-        icon.textContent = 'visibility_off';
-      } else {
-        input.type = 'password';
-        icon.textContent = 'visibility';
-      }
+    // If already logged in with a real session token, skip straight to the inbox.
+    if (window.SecretMsgAPI && window.SecretMsgAPI.isLoggedIn()) {
+      window.location.href = '/inbox.html';
     }
 
-    function handleLogin(e) {
+    let pendingEmail = '';
+
+    function showLoginError(message) {
+      const box = document.getElementById('login-error');
+      box.textContent = message;
+      box.classList.remove('hidden');
+    }
+
+    function clearLoginError() {
+      document.getElementById('login-error').classList.add('hidden');
+    }
+
+    function backToEmailStep() {
+      document.getElementById('otp-step').classList.add('hidden');
+      document.getElementById('email-step').classList.remove('hidden');
+      clearLoginError();
+    }
+
+    async function handleRequestCode(e) {
       e.preventDefault();
-      const rawInput = document.getElementById('login-slug').value;
-      const pwd = document.getElementById('login-password').value;
-      const btn = document.getElementById('login-btn');
+      clearLoginError();
+      const email = document.getElementById('login-email').value.trim();
+      const btn = document.getElementById('request-code-btn');
 
-      const val = window.SecretMsgSanitize ? window.SecretMsgSanitize.validateUsername(rawInput) : {
-        isValid: rawInput.trim().length >= 4,
-        error: rawInput.trim().length < 4 ? 'Username must be at least 4 characters long.' : null,
-        value: rawInput.trim()
-      };
-
-      if (!val.isValid) {
-        alert(val.error || 'Please enter a valid board username (at least 4 characters).');
-        return;
-      }
-
-      if (!pwd) {
-        alert('Please enter your board password.');
+      if (!email || !email.includes('@')) {
+        showLoginError('Please enter a valid email address.');
         return;
       }
 
       btn.disabled = true;
-      btn.innerHTML = `<span class="animate-spin material-symbols-outlined text-[16px]">progress_activity</span> Authenticating Board...`;
+      btn.innerHTML = `<span class="animate-spin material-symbols-outlined text-[16px]">progress_activity</span> Sending Code...`;
 
-      setTimeout(() => {
-        // Save active session locally
-        localStorage.setItem('secretmsg_active_board', val.value);
-        localStorage.setItem('secretmsg_logged_in', 'true');
-        window.location.href = '/profile.html';
-      }, 600);
+      try {
+        await window.SecretMsgAPI.requestOtp(email);
+        pendingEmail = email;
+        document.getElementById('otp-sent-note').textContent = `Enter the code we just emailed to ${email}. It expires in 15 minutes.`;
+        document.getElementById('email-step').classList.add('hidden');
+        document.getElementById('otp-step').classList.remove('hidden');
+        document.getElementById('login-otp').focus();
+      } catch (err) {
+        showLoginError(err.message || 'Failed to send login code. Please try again.');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `<span>Send Login Code</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>`;
+      }
+    }
+
+    async function handleVerifyCode(e) {
+      e.preventDefault();
+      clearLoginError();
+      const otp = document.getElementById('login-otp').value.trim();
+      const btn = document.getElementById('verify-code-btn');
+
+      if (!/^[0-9]{6}$/.test(otp)) {
+        showLoginError('Please enter the 6-digit code from your email.');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = `<span class="animate-spin material-symbols-outlined text-[16px]">progress_activity</span> Verifying...`;
+
+      try {
+        await window.SecretMsgAPI.verifyOtp(pendingEmail, otp);
+        window.location.href = '/inbox.html';
+      } catch (err) {
+        showLoginError(err.message || 'Invalid or expired code. Please try again.');
+        btn.disabled = false;
+        btn.innerHTML = `<span>Log In</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span>`;
+      }
     }
   </script>
 </body>
