@@ -45,3 +45,6 @@ local.properties
 # Stitch design system & prototypes (maintained in secretmsg-private)
 .stitch/
 
+
+# Firebase config (must not be committed)
+google-services.json
