@@ -58,24 +58,52 @@
       <span id="toast-text">Message sent anonymously!</span>
     </div>
 
-    <!-- Header with Back Arrow and Security Lock -->
-    <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-white/10 flex justify-between items-center h-14 px-4">
-      <a href="index.html" aria-label="Go back" class="p-2 -ml-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center">
-        <span class="material-symbols-outlined text-[24px]">arrow_back</span>
-      </a>
-      <h1 class="text-base font-bold text-white truncate px-2">Send Secret Message</h1>
-      <div class="flex items-center gap-1 -mr-2">
-        <button onclick="window.SecretMsgTheme.toggle()" aria-label="Toggle Theme" class="p-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center" title="Toggle Theme (Dark / Light)">
-          <span data-theme-icon class="material-symbols-outlined text-[20px]">dark_mode</span>
-        </button>
-        <button onclick="toggleSecurityModal()" aria-label="Security Info" class="p-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center" title="100% Encrypted & Anonymous">
-          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">shield</span>
-        </button>
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-white/10 h-16 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto h-full flex justify-between items-center">
+        <!-- Brand & Back Button -->
+        <div class="flex items-center gap-3">
+          <a href="index.html" aria-label="Go back" class="p-2 -ml-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center">
+            <span class="material-symbols-outlined text-[22px]">arrow_back</span>
+          </a>
+          <a href="landing.html" class="flex items-center gap-2 group">
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-500 to-amber-400 p-0.5 shadow">
+              <div class="w-full h-full bg-[#0B0E14] rounded-[10px] flex items-center justify-center">
+                <span class="material-symbols-outlined text-white text-[16px]">lock</span>
+              </div>
+            </div>
+            <span class="font-bold text-base tracking-tight text-white hidden sm:inline">secretmsg<span class="text-amber-400">.net</span></span>
+          </a>
+          <span class="text-slate-600 hidden sm:inline">/</span>
+          <div class="flex items-center gap-1.5">
+            <h1 class="text-base font-bold text-white tracking-tight">Send Secret Message</h1>
+          </div>
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-1.5">
+          <a href="index.html" class="text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors">Explore</a>
+          <a href="inbox.html" class="text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors">Inbox</a>
+          <a href="supporters.html" class="text-xs font-semibold text-amber-300 hover:text-amber-200 px-3 py-1.5 rounded-lg hover:bg-amber-500/10 transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> Perks
+          </a>
+          <a href="safety.html" class="text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors">Safety</a>
+        </nav>
+
+        <!-- Right Controls -->
+        <div class="flex items-center gap-1">
+          <button onclick="window.SecretMsgTheme.toggle()" aria-label="Toggle Theme" class="p-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center" title="Toggle Theme (Dark / Light)">
+            <span data-theme-icon class="material-symbols-outlined text-[20px]">dark_mode</span>
+          </button>
+          <button onclick="toggleSecurityModal()" aria-label="Security Info" class="p-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center" title="100% Encrypted & Anonymous">
+            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+          </button>
+        </div>
       </div>
     </header>
 
     <!-- Main Content: Composer View (Shown when user exists) -->
-    <main id="composer-view" class="flex-1 px-4 py-4 flex flex-col gap-4 pb-28">
+    <main id="composer-view" class="flex-1 max-w-2xl mx-auto w-full px-4 sm:px-6 py-6 md:py-10 flex flex-col gap-5 pb-28 md:pb-16">
       <!-- Recipient Profile Card -->
       <section class="glass-panel rounded-2xl p-4 flex flex-col items-center text-center gap-3">
         <div class="relative">
@@ -184,7 +212,7 @@
     </main>
 
     <!-- Recipient Unavailable / Claim Handle View (Shown when user does not exist) -->
-    <main id="unavailable-view" class="hidden flex-1 px-4 py-8 flex flex-col items-center justify-center text-center gap-6 pb-28">
+    <main id="unavailable-view" class="hidden flex-1 max-w-lg mx-auto w-full px-4 py-12 md:py-16 flex flex-col items-center justify-center text-center gap-6 pb-28 md:pb-16">
       <div class="relative">
         <div class="w-20 h-20 rounded-3xl bg-amber-500/10 border border-amber-500/20 text-amber-500 flex items-center justify-center shadow-xl">
           <span class="material-symbols-outlined text-[42px]">link_off</span>
@@ -194,7 +222,7 @@
         </div>
       </div>
 
-      <div class="space-y-2 max-w-xs">
+      <div class="space-y-2 max-w-sm">
         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold font-mono">
           <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
           <span>Slug Available</span>
@@ -208,7 +236,7 @@
       </div>
 
       <!-- Claim Handle Box -->
-      <div class="glass-panel p-5 rounded-3xl border border-white/15 max-w-xs w-full text-left space-y-3 shadow-xl">
+      <div class="glass-panel p-6 rounded-3xl border border-white/15 max-w-sm w-full text-left space-y-3 shadow-xl">
         <div class="flex items-center gap-2">
           <span class="material-symbols-outlined text-emerald-400 text-[20px]">verified</span>
           <span class="font-bold text-xs text-white">Claim this link for yourself</span>
@@ -236,7 +264,7 @@
     </main>
 
     <!-- Recipient Paused View (Shown when link is paused by owner) -->
-    <main id="paused-view" class="hidden flex-1 px-4 py-8 flex flex-col items-center justify-center text-center gap-6 pb-28">
+    <main id="paused-view" class="hidden flex-1 max-w-lg mx-auto w-full px-4 py-12 md:py-16 flex flex-col items-center justify-center text-center gap-6 pb-28 md:pb-16">
       <div class="w-20 h-20 rounded-3xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center shadow-xl">
         <span class="material-symbols-outlined text-[42px]">pause_circle</span>
       </div>

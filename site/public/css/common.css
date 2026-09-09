@@ -126,7 +126,8 @@ textarea {
    Canvas, Body & Viewports
    -------------------------------------------------------------------------- */
 .mobile-viewport {
-  max-width: 440px;
+  width: 100%;
+  max-width: 480px;
   min-height: 100vh;
   margin: 0 auto;
   position: relative;
@@ -134,7 +135,18 @@ textarea {
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
-  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, max-width 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .mobile-viewport {
+    max-width: 1200px;
+    box-shadow: none;
+    border-left: none;
+    border-right: none;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 html.light,
@@ -149,6 +161,13 @@ html.light body {
 html.light .mobile-viewport {
   background-color: #FFFFFF !important;
   box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.10), 0 0 0 1px rgba(15, 23, 42, 0.06) !important;
+}
+
+@media (min-width: 768px) {
+  html.light .mobile-viewport {
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
 }
 
 /* --------------------------------------------------------------------------

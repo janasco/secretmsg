@@ -63,42 +63,83 @@
     </div>
 
     <!-- Top Navigation Header -->
-    <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-white/10">
-      <div class="flex justify-between items-center h-14 px-4 max-w-xl mx-auto">
-        <a href="index.html" class="flex items-center gap-2 group">
-          <span class="material-symbols-outlined text-white text-[24px]" style="font-variation-settings: 'FILL' 1;">lock_open_right</span>
-          <span class="text-lg font-bold text-white tracking-tight uppercase">SecretMsg</span>
-          <span class="bg-white/10 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full border border-white/20">PRO</span>
-        </a>
-        <div class="flex items-center gap-0.5">
-          <button onclick="window.SecretMsgTheme.toggle()" class="p-2 text-slate-400 hover:text-white transition-colors" title="Toggle Theme (Dark / Light)" aria-label="Toggle Theme">
+    <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-white/10 h-16 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto h-full flex justify-between items-center">
+        <!-- Brand & Tagline -->
+        <div class="flex items-center gap-3">
+          <a href="index.html" class="flex items-center gap-2 group">
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-500 to-amber-400 p-0.5 shadow">
+              <div class="w-full h-full bg-[#0B0E14] rounded-[10px] flex items-center justify-center">
+                <span class="material-symbols-outlined text-white text-[16px]">lock_open_right</span>
+              </div>
+            </div>
+            <span class="font-bold text-base tracking-tight text-white">SecretMsg<span class="text-amber-400 font-mono text-xs ml-1 bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.5 rounded">PRO</span></span>
+          </a>
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-1.5">
+          <a href="index.html" class="text-xs font-semibold text-white bg-white/10 px-3 py-1.5 rounded-lg transition-colors">Explore</a>
+          <a href="dice.html" class="text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">casino</span> Roulette
+          </a>
+          <a href="sticker-studio.html" class="text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">photo_filter</span> Stickers
+          </a>
+          <a href="inbox.html" class="text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors">Inbox</a>
+          <a href="profile.html" class="text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors">My Profile</a>
+          <a href="supporters.html" class="text-xs font-semibold text-amber-300 hover:text-amber-200 px-3 py-1.5 rounded-lg hover:bg-amber-500/10 transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span> Perks
+          </a>
+          <a href="settings.html" class="text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors">Settings</a>
+          <a href="safety.html" class="text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors">Safety</a>
+        </nav>
+
+        <!-- Right Controls -->
+        <div class="flex items-center gap-1.5">
+          <button onclick="window.SecretMsgTheme.toggle()" class="p-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center" title="Toggle Theme (Dark / Light)" aria-label="Toggle Theme">
             <span data-theme-icon class="material-symbols-outlined text-[20px]">dark_mode</span>
           </button>
-          <a href="settings.html" class="p-2 text-slate-400 hover:text-white transition-colors" title="Settings">
+          <a href="settings.html" class="p-2 text-slate-400 hover:text-white transition-colors md:hidden" title="Settings">
             <span class="material-symbols-outlined text-[22px]">tune</span>
           </a>
-          <a href="inbox.html" class="p-2 text-slate-400 hover:text-white transition-colors relative" title="Inbox">
+          <a href="inbox.html" class="p-2 text-slate-400 hover:text-white transition-colors relative md:hidden" title="Inbox">
             <span class="material-symbols-outlined text-[22px]">mail</span>
             <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full border border-[#0B0E14]"></span>
+          </a>
+          <a href="profile.html" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white/10 hover:bg-white/15 text-white transition-colors border border-white/10">
+            <span class="material-symbols-outlined text-[15px]">person</span> My Board
           </a>
         </div>
       </div>
     </header>
 
     <!-- Main Scrollable Content Area -->
-    <main class="flex-1 px-4 py-5 flex flex-col gap-5 pb-28">
-      <!-- Search Section -->
-      <section class="glass-panel rounded-full h-[46px] flex items-center px-4 w-full focus-within:ring-2 focus-within:ring-white/40 transition-all duration-300">
-        <span class="material-symbols-outlined text-slate-400 mr-2.5 text-[20px]">search</span>
-        <input id="template-search" class="bg-transparent border-none outline-none text-white flex-grow text-sm placeholder:text-slate-500 focus:ring-0 px-0 h-full" placeholder="Search viral vibes, prompts, or friends..." type="text"/>
-        <button id="clear-search" class="text-slate-400 hover:text-white transition-colors hidden">
-          <span class="material-symbols-outlined text-[18px]">close</span>
-        </button>
-      </section>
+    <main class="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 flex flex-col gap-6 pb-28 md:pb-12">
+      <!-- Search & Featured Row on Desktop -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+        <!-- Search Bar (7 cols on desktop) -->
+        <section class="md:col-span-7 glass-panel rounded-full h-[50px] flex items-center px-4 w-full focus-within:ring-2 focus-within:ring-white/40 transition-all duration-300">
+          <span class="material-symbols-outlined text-slate-400 mr-2.5 text-[20px]">search</span>
+          <input id="template-search" class="bg-transparent border-none outline-none text-white flex-grow text-sm placeholder:text-slate-500 focus:ring-0 px-0 h-full" placeholder="Search viral vibes, prompts, or friends..." type="text"/>
+          <button id="clear-search" class="text-slate-400 hover:text-white transition-colors hidden">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+        </section>
 
-      <!-- Category Filter Row -->
+        <!-- Quick Links (5 cols on desktop) -->
+        <div class="md:col-span-5 flex items-center justify-end gap-2 text-xs">
+          <a href="dice.html" class="px-4 py-2.5 rounded-full glass-panel hover:bg-white/10 text-white font-semibold transition-all flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">casino</span> Spin Roulette
+          </a>
+          <a href="sticker-studio.html" class="px-4 py-2.5 rounded-full glass-panel hover:bg-white/10 text-white font-semibold transition-all flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">photo_filter</span> Story Studio
+          </a>
+        </div>
+      </div>
+
       <!-- Category Filter Pills -->
-      <section class="overflow-x-auto no-scrollbar -mx-4 px-4">
+      <section class="overflow-x-auto no-scrollbar -mx-4 sm:-mx-6 px-4 sm:px-6 pb-1">
         <div id="category-pills" class="flex gap-2 min-w-max">
           <button data-category="all" class="cat-pill bg-white text-[#0B0E14] px-4 py-2 rounded-full font-semibold text-xs transition-all shadow-sm">
             🔥 All Viral (14,000+)
@@ -131,41 +172,34 @@
       </section>
 
       <!-- Hero Quick Action Card -->
-      <section class="glass-panel rounded-2xl p-5 flex flex-col gap-3 relative overflow-hidden group border border-white/15">
-        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
-        <div class="flex items-start justify-between z-10">
-          <div>
-            <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 flex items-center gap-1 mb-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Your Public TBH Card
-            </span>
-            <h2 class="text-base font-bold text-white leading-snug">Receive candid anonymous messages anywhere</h2>
-          </div>
-          <a href="sticker-studio.html" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors" title="Export as Story Sticker">
-            <span class="material-symbols-outlined text-[20px]">photo_camera</span>
-          </a>
+      <section class="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 relative overflow-hidden group border border-white/15">
+        <div class="absolute -right-8 -bottom-8 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="space-y-1.5 z-10">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Your Public TBH Board
+          </span>
+          <h2 class="text-lg sm:text-xl font-bold text-white leading-snug">Receive candid anonymous messages anywhere</h2>
+          <p class="text-xs text-slate-400">Share your board link on Instagram, Snapchat, TikTok bio, or WhatsApp status.</p>
         </div>
         
-        <div class="bg-[#10131A] rounded-xl p-3 flex justify-between items-center hairline-border z-10">
-          <div class="flex items-center gap-2 truncate">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 z-10 shrink-0">
+          <div class="bg-[#10131A] rounded-xl px-3.5 py-2.5 flex items-center gap-2 hairline-border min-w-[220px]">
             <span class="material-symbols-outlined text-slate-400 text-[18px]">link</span>
             <span id="my-board-link-text" class="text-xs font-mono text-slate-300 truncate">secretmsg.net/yourname</span>
+            <span id="my-board-link-status" class="text-[10px] text-emerald-400 font-semibold uppercase tracking-wider bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 ml-auto">Active</span>
           </div>
-          <span id="my-board-link-status" class="text-[10px] text-emerald-400 font-semibold uppercase tracking-wider bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">Active</span>
-        </div>
-        
-        <div class="flex gap-2 mt-1 z-10">
-          <button id="copy-link-btn" class="flex-1 h-11 bg-white hover:bg-slate-100 text-[#0B0E14] font-semibold text-xs rounded-full flex items-center justify-center gap-2 active:scale-98 transition-transform shadow-md">
+          <button id="copy-link-btn" class="h-10 px-5 bg-white hover:bg-slate-100 text-[#0B0E14] font-semibold text-xs rounded-xl flex items-center justify-center gap-2 active:scale-98 transition-transform shadow-md">
             <span class="material-symbols-outlined text-[18px]">content_copy</span>
             Copy My Link
           </button>
-          <a href="profile.html" class="w-11 h-11 glass-panel hover:bg-white/10 text-white rounded-full flex items-center justify-center active:scale-98 transition-transform" title="View Profile">
-            <span class="material-symbols-outlined text-[20px]">qr_code_2</span>
+          <a href="sticker-studio.html" class="h-10 px-3.5 glass-panel hover:bg-white/10 text-white rounded-xl flex items-center justify-center text-xs font-semibold gap-1.5 transition-colors" title="Export as Story Sticker">
+            <span class="material-symbols-outlined text-[18px]">photo_camera</span> Sticker
           </a>
         </div>
       </section>
 
       <!-- Viral Templates Grid -->
-      <section class="flex flex-col gap-3">
+      <section class="flex flex-col gap-4">
         <div class="flex justify-between items-center">
           <div class="flex items-center gap-2">
             <h3 class="text-sm font-bold uppercase tracking-wider text-slate-300">Viral Templates</h3>
@@ -176,11 +210,11 @@
           </a>
         </div>
 
-        <div id="templates-container" class="flex flex-col gap-3">
+        <div id="templates-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <!-- Dynamically populated from window.SECRETMSG_TEMPLATES -->
         </div>
 
-        <button id="load-more-btn" class="w-full py-3 glass-panel glass-panel-hover rounded-2xl text-xs font-bold text-white flex items-center justify-center gap-2 mt-2 transition-all">
+        <button id="load-more-btn" class="w-full py-3.5 glass-panel glass-panel-hover rounded-2xl text-xs font-bold text-white flex items-center justify-center gap-2 mt-2 transition-all">
           <span id="load-more-text">Load More Viral Templates</span>
           <span class="material-symbols-outlined text-[16px]">expand_more</span>
         </button>
@@ -193,8 +227,8 @@
       </section>
     </main>
 
-    <!-- Persistent Bottom Navigation Bar -->
-    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#0B0E14]/95 backdrop-blur-xl border-t border-white/10 pb-safe">
+    <!-- Persistent Bottom Navigation Bar (Hidden on Desktop) -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#0B0E14]/95 backdrop-blur-xl border-t border-white/10 pb-safe md:hidden">
       <div class="flex justify-around items-center h-16 max-w-xl mx-auto px-2">
         <a href="index.html" class="flex flex-col items-center justify-center text-white relative py-1 px-3 transition-colors">
           <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">home</span>

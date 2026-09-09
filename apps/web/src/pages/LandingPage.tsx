@@ -9,7 +9,8 @@ import {
   Heart,
   ArrowRight,
   Github,
-  Dices
+  Dices,
+  Smartphone
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -90,6 +91,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
             <Heart className="w-4 h-4 text-amber-400 fill-amber-400" />
             <span>Support Project & Get Badge</span>
           </button>
+        </div>
+
+        <div className="pt-2">
+          <a
+            href="https://m.secretmsg.net"
+            className="inline-flex items-center space-x-1.5 text-xs text-slate-400 hover:text-indigo-300 transition-colors"
+          >
+            <Smartphone className="w-3.5 h-3.5" />
+            <span>On a phone or Android? Open touch-optimized Mobile App at m.secretmsg.net &rarr;</span>
+          </a>
         </div>
       </div>
 

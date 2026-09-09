@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Sparkles, LogOut, User, Lock } from 'lucide-react';
+import { Heart, Sparkles, LogOut, User, Lock, Smartphone } from 'lucide-react';
 import { UserProfile } from '../lib/api';
 
 interface NavbarProps {
@@ -29,6 +29,15 @@ export const Navbar: React.FC<NavbarProps> = ({ user, onOpenDonation, onLogout }
 
         {/* Navigation Actions */}
         <div className="flex items-center space-x-2 sm:space-x-3">
+          <a
+            href="https://m.secretmsg.net"
+            className="text-xs text-slate-400 hover:text-slate-200 px-2.5 py-1.5 rounded-lg hover:bg-white/5 transition-colors font-medium hidden sm:flex items-center space-x-1"
+            title="Open touch-optimized mobile web version"
+          >
+            <Smartphone className="w-3.5 h-3.5 text-indigo-400" />
+            <span>Mobile App</span>
+          </a>
+
           <Link
             to="/supporters"
             className="text-xs text-slate-400 hover:text-slate-200 px-2.5 py-1.5 rounded-lg hover:bg-white/5 transition-colors font-medium flex items-center space-x-1"
