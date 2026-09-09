@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <title>Our Safety Tools & Controls - SecretMsg</title>
+  <meta name="description" content="Explore SecretMsg's recipient safety tools: Pause My Link timers, Hidden Words & Emoji blocklists, Device-Level Sender Blocking, and instant inbox clean slates."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/common.css"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = (saved === 'dark' || saved === 'light') ? (saved === 'dark') : prefersDark;
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="/js/theme.js"></script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-white selection:text-[#0B0E14] transition-colors">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/p/safety" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#0B0E14] font-black text-sm shadow-md group-hover:scale-105 transition-transform">
+          S
+        </div>
+        <span class="font-bold text-lg text-white tracking-tight">SecretMsg</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-sky-400 bg-sky-950/60 px-2 py-0.5 rounded border border-sky-500/30">Safety Tools</span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme" aria-label="Toggle Theme">
+          <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+        <a href="/settings.html" class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/10 hover:bg-white hover:text-[#0B0E14] transition-all text-slate-200">
+          <span class="material-symbols-outlined text-[16px]">tune</span>
+          Open Safety Settings
+        </a>
+        <a href="/p/safety" class="px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span> Safety Center
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
+    <!-- Header Banner -->
+    <div class="mb-12 text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-sky-800 dark:bg-sky-500/10 dark:border-sky-500/20 dark:text-sky-300 text-xs font-semibold mb-4 shadow-sm">
+        <span class="material-symbols-outlined text-[16px] text-sky-600 dark:text-sky-400">shield_person</span>
+        <span>Recipient Sovereignty • User Protection Suite</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+        Our Safety Tools &amp; Controls
+      </h1>
+      <p class="text-slate-300 dark:text-slate-300 text-base sm:text-lg mt-4 leading-relaxed">
+        SecretMsg puts complete sovereignty over your inbox directly into your hands. Every account holder has access to real-time proactive safety controls designed to prevent abuse, enforce digital boundaries, and filter unwanted language down to specific emojis.
+      </p>
+    </div>
+
+    <!-- 3 Core Proactive Safety Spotlights -->
+    <div class="space-y-8 mb-14">
+
+      <!-- 1. Pause My Link Spotlight -->
+      <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 space-y-5 relative overflow-hidden">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[28px]">pause_circle</span>
+            </div>
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Boundary Setting</span>
+              <h2 class="text-xl sm:text-2xl font-bold text-white">Pause My Link (Digital Detox)</h2>
+            </div>
+          </div>
+          <span class="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            Live Control
+          </span>
+        </div>
+
+        <p class="text-slate-300 text-base leading-relaxed">
+          If you ever feel overwhelmed, need to study, or want to take a break from social media, you can freeze your SecretMsg link instantly. When your link is paused, no one can send you messages.
+        </p>
+
+        <!-- Timer Duration Pills -->
+        <div class="space-y-2">
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Preset Pause Durations</label>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            <div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center hover:border-amber-400/50 transition-colors">
+              <span class="block text-sm font-bold text-white">1 Hour</span>
+              <span class="text-[11px] text-slate-400">Quick Break</span>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center hover:border-amber-400/50 transition-colors">
+              <span class="block text-sm font-bold text-white">6 Hours</span>
+              <span class="text-[11px] text-slate-400">Study / Work</span>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center hover:border-amber-400/50 transition-colors">
+              <span class="block text-sm font-bold text-white">24 Hours</span>
+              <span class="text-[11px] text-slate-400">Full Detox</span>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center hover:border-amber-400/50 transition-colors">
+              <span class="block text-sm font-bold text-white">Permanent</span>
+              <span class="text-[11px] text-slate-400">Until Resumed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sender Preview Box -->
+        <div class="bg-[#10131A] rounded-2xl p-4 border border-white/10 space-y-2">
+          <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px] text-amber-400">visibility</span>
+            What Senders See When Your Board Is Paused
+          </span>
+          <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center gap-3">
+            <span class="material-symbols-outlined text-amber-400 text-[24px]">lock_clock</span>
+            <div class="text-xs sm:text-sm text-slate-300">
+              <strong class="text-white block font-semibold">This Board Is Currently Paused</strong>
+              The creator is taking a digital break. Submissions are temporarily paused and will resume automatically.
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-400 pt-1">
+          <span>Configurable in: <strong>Settings → Safety Controls → Pause My Link</strong></span>
+          <a href="/settings.html" class="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1">
+            Try in Settings <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Hidden Words & Emojis Spotlight -->
+      <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 space-y-5 relative overflow-hidden">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[28px]">spellcheck</span>
+            </div>
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-purple-400">Content Moderation</span>
+              <h2 class="text-xl sm:text-2xl font-bold text-white">Hidden Words, Phrases &amp; Emojis</h2>
+            </div>
+          </div>
+          <span class="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300">
+            Real-time Blocklist
+          </span>
+        </div>
+
+        <p class="text-slate-300 text-base leading-relaxed">
+          Create a personalized blocklist tailored to your personal boundaries. SecretMsg gives you granular control down to specific keywords, traumatic themes, negative slang, or even specific emojis.
+        </p>
+
+        <!-- Visual Blocklist Chips -->
+        <div class="space-y-2">
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Example Blocklist Filters</label>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-200 text-xs font-medium flex items-center gap-1.5">
+              <span>🐍 snake</span>
+              <span class="material-symbols-outlined text-[14px] text-purple-400">lock</span>
+            </span>
+            <span class="px-3 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-200 text-xs font-medium flex items-center gap-1.5">
+              <span>🤡 clown</span>
+              <span class="material-symbols-outlined text-[14px] text-purple-400">lock</span>
+            </span>
+            <span class="px-3 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-200 text-xs font-medium flex items-center gap-1.5">
+              <span>ugly</span>
+              <span class="material-symbols-outlined text-[14px] text-purple-400">lock</span>
+            </span>
+            <span class="px-3 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-200 text-xs font-medium flex items-center gap-1.5">
+              <span>hate</span>
+              <span class="material-symbols-outlined text-[14px] text-purple-400">lock</span>
+            </span>
+            <span class="px-3 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-200 text-xs font-medium flex items-center gap-1.5">
+              <span>spoilers</span>
+              <span class="material-symbols-outlined text-[14px] text-purple-400">lock</span>
+            </span>
+            <span class="px-3 py-1.5 rounded-full bg-white/5 border border-dashed border-white/20 text-slate-400 text-xs font-medium flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]">add</span> Add any word or emoji
+            </span>
+          </div>
+        </div>
+
+        <!-- Dual Shield Workflow -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+          <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1.5">
+            <span class="text-purple-400 font-bold flex items-center gap-1">
+              <span class="material-symbols-outlined text-[18px]">verified</span>
+              Shield 1: Compose Prevention
+            </span>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              If a sender attempts to submit a message containing any word from your list, the form blocks submission immediately with a friendly warning.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1.5">
+            <span class="text-purple-400 font-bold flex items-center gap-1">
+              <span class="material-symbols-outlined text-[18px]">inbox</span>
+              Shield 2: Inbox Quarantine
+            </span>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              Any borderline messages are routed to a separate Quarantine folder so they never appear in your main feed unless you choose to review them.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-400 pt-1">
+          <span>Configurable in: <strong>Settings → Safety Controls → Hidden Words</strong></span>
+          <a href="/settings.html" class="text-purple-400 hover:text-purple-300 font-semibold flex items-center gap-1">
+            Customize List <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. Blocked Users Spotlight -->
+      <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 space-y-5 relative overflow-hidden">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[28px]">block</span>
+            </div>
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-rose-400">Harassment Defense</span>
+              <h2 class="text-xl sm:text-2xl font-bold text-white">Device-Level Sender Blocking</h2>
+            </div>
+          </div>
+          <span class="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-300">
+            Cryptographic Ban
+          </span>
+        </div>
+
+        <p class="text-slate-300 text-base leading-relaxed">
+          If someone sends you a message that violates your boundaries, you don't need to know who they are in real life to prevent them from ever contacting you again.
+        </p>
+
+        <!-- 3 Step Blocking Diagram -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
+            <span class="text-rose-400 font-bold block">Step 1: Tap Report / Block</span>
+            <p class="text-slate-300 leading-relaxed">
+              On any message detail card, tap <strong>Report / Block</strong> with a single tap.
+            </p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
+            <span class="text-rose-400 font-bold block">Step 2: Instant Lockout</span>
+            <p class="text-slate-300 leading-relaxed">
+              The sender's unique device signature is added to your personal blocklist automatically.
+            </p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
+            <span class="text-rose-400 font-bold block">Step 3: Manage in Settings</span>
+            <p class="text-slate-300 leading-relaxed">
+              Review blocked devices in Settings anytime with complete 1-tap unblock freedom.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-400 pt-1">
+          <span>Configurable in: <strong>Settings → Safety Controls → Blocked Users</strong></span>
+          <a href="/settings.html" class="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1">
+            Manage Blocked Devices <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Architectural Safeguards & Data Rights -->
+    <article class="space-y-8 text-slate-300 text-base leading-relaxed border-t border-white/10 pt-10">
+      <section class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-sm">01</span> What, Who &amp; When: Complete Recipient Sovereignty
+        </h2>
+        <p class="text-slate-300 leading-relaxed">
+          Together, these tools ensure that you—and only you—control the experience on your link:
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-slate-300 pl-2">
+          <li><strong>What you receive:</strong> Custom Hidden Words and AI moderation filters intercept offensive messages before you ever see them.</li>
+          <li><strong>Who can participate:</strong> Device-level blocking locks out malicious or harassing senders permanently.</li>
+          <li><strong>When your board is open:</strong> Pause your link on a schedule (1h, 6h, 24h) or indefinitely whenever you need peace of mind.</li>
+        </ul>
+      </section>
+
+      <!-- Instant Action & Data Erasure Controls -->
+      <section class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-sm">02</span> Instant Action &amp; Data Erasure Controls
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="glass-panel p-5 rounded-2xl border border-white/10 space-y-2">
+            <strong class="text-white block font-bold text-base flex items-center gap-2">
+              <span class="material-symbols-outlined text-rose-400 text-[20px]">cleaning_services</span>
+              1-Tap Inbox Clean Slate
+            </strong>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Start completely fresh anytime. With a single confirmation in Settings, permanently purge all stored messages from your inbox with zero residual server logs.
+            </p>
+          </div>
+          <div class="glass-panel p-5 rounded-2xl border border-white/10 space-y-2">
+            <strong class="text-white block font-bold text-base flex items-center gap-2">
+              <span class="material-symbols-outlined text-purple-400 text-[20px]">delete_forever</span>
+              Permanent Account Wipeout
+            </strong>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Complete self-service deletion. Deleting your account deletes your username handle, stored questions, replies, and settings forever with immediate SQL cascading erase.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Community Support & Crisis Helpline -->
+      <section class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-sm">03</span> Human Support &amp; 24/7 Crisis Assistance
+        </h2>
+        <p class="text-slate-300 leading-relaxed">
+          Technology works hand-in-hand with human care. If you ever experience harassment, threats, or emotional distress, we offer rapid response channels and direct integration with 24/7 crisis lifelines.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+          <div class="bg-white/5 rounded-2xl p-5 border border-white/10 space-y-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Direct Human Escalation</span>
+            <h4 class="text-base font-bold text-white">Trust &amp; Safety Team</h4>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Contact us directly with reports or inquiries:
+            </p>
+            <div class="text-xs font-mono text-slate-300 pt-1">
+              safety@secretmsg.net • abuse@secretmsg.net
+            </div>
+            <a href="mailto:safety@secretmsg.net" class="inline-block mt-2 px-4 py-2 bg-sky-600 text-white font-semibold rounded-full hover:bg-sky-500 transition-colors text-xs text-center">
+              Email Safety Team
+            </a>
+          </div>
+
+          <div class="bg-white/5 rounded-2xl p-5 border border-white/10 space-y-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Immediate 24/7 Support</span>
+            <h4 class="text-base font-bold text-white">Crisis &amp; Mental Health Hotlines</h4>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Free, confidential, and available 24 hours a day, 7 days a week:
+            </p>
+            <div class="text-xs text-slate-300 space-y-1 pt-1">
+              <div><strong>US &amp; Canada:</strong> Call or text <strong>988</strong></div>
+              <div><strong>Crisis Text Line:</strong> Text <strong>HOME to 741741</strong></div>
+              <div><strong>UK:</strong> Call <strong>111</strong> or text <strong>SHOUT to 85258</strong></div>
+            </div>
+            <a href="/p/resources" class="inline-block mt-2 px-4 py-2 bg-emerald-600 text-white font-semibold rounded-full hover:bg-emerald-500 transition-colors text-xs text-center">
+              View All Crisis Resources
+            </a>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <!-- Interactive Jump to Settings CTA -->
+    <div class="mt-12 p-6 rounded-3xl bg-gradient-to-r from-sky-500/10 via-indigo-500/10 to-purple-500/10 border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div>
+        <h3 class="text-lg font-bold text-white">Ready to customize your safety preferences?</h3>
+        <p class="text-sm text-slate-300 mt-1">Configure your hidden words, pause your link, or adjust notification alerts in Settings.</p>
+      </div>
+      <a href="/settings.html" class="px-6 py-3 rounded-full bg-white text-[#0B0E14] font-bold text-sm hover:bg-slate-100 active:scale-95 transition-all shrink-0 shadow-lg">
+        Open Settings
+      </a>
+    </div>
+
+    <!-- Footer Links -->
+    <div class="mt-14 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-4">
+        <a href="/p/safety" class="hover:text-white transition-colors">Safety Hub</a>
+        <a href="/p/community-guidelines" class="hover:text-white transition-colors">Community Guidelines</a>
+        <a href="/p/approach-to-safety" class="hover:text-white transition-colors">Approach to Safety</a>
+        <a href="/p/resources" class="hover:text-white transition-colors">Crisis Resources</a>
+      </div>
+      <span>© 2026 SecretMsg. All rights reserved.</span>
+    </div>
+  </main>
+</body>
+</html>

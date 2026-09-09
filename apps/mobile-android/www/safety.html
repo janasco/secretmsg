@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <title>Safety Center & Crisis Resources - SecretMsg</title>
+  <meta name="description" content="SecretMsg Safety Center. Resources for healthy anonymous communication, reporting abuse, mental health crisis hotlines, and teen safety."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/common.css"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = (saved === 'dark' || saved === 'light') ? (saved === 'dark') : prefersDark;
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="/js/theme.js"></script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-white selection:text-[#0B0E14]">
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#0B0E14] font-black text-sm shadow-md group-hover:scale-105 transition-transform">
+          S
+        </div>
+        <span class="font-bold text-lg text-white tracking-tight">SecretMsg</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">Safety</span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme" aria-label="Toggle Theme">
+          <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+        <a href="https://m.secretmsg.net" class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/10 hover:bg-white hover:text-[#0B0E14] transition-all text-slate-200">
+          <span class="material-symbols-outlined text-[16px]">smartphone</span>
+          Open Web App
+        </a>
+        <a href="/" class="px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span> Back
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Safety Container -->
+  <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
+    <!-- Header Banner -->
+    <div class="mb-10 text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-300 text-xs font-semibold mb-4 shadow-sm">
+        <span class="material-symbols-outlined text-[15px] text-emerald-600 dark:text-emerald-400">favorite</span>
+        <span>Community Care &amp; Protection</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+        Safety Center & Crisis Help
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+        Your emotional well-being and psychological safety are paramount. Discover our proactive moderation tools, reporting procedures, and immediate 24/7 crisis hotlines.
+      </p>
+    </div>
+
+    <!-- Emergency Crisis Help Banner -->
+    <div class="glass-panel rounded-2xl p-5 border border-sky-500/30 bg-sky-950/20 mb-10 space-y-3">
+      <div class="flex items-center gap-2 text-sky-300 font-bold text-sm">
+        <span class="material-symbols-outlined text-[20px]">support_agent</span>
+        Need to talk to someone right now? You are not alone.
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        If you or someone you know is feeling overwhelmed, hopeless, or experiencing suicidal thoughts, free confidential support is available 24/7:
+      </p>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2">
+        <div class="bg-white/5 rounded-xl p-3 border border-white/10 flex flex-col justify-between">
+          <span class="text-xs font-bold text-white">988 Lifeline (USA & Canada)</span>
+          <span class="text-[11px] text-slate-400 mt-1">Call or text <strong class="text-sky-300">988</strong> free & confidential anytime.</span>
+        </div>
+        <div class="bg-white/5 rounded-xl p-3 border border-white/10 flex flex-col justify-between">
+          <span class="text-xs font-bold text-white">Crisis Text Line</span>
+          <span class="text-[11px] text-slate-400 mt-1">Text <strong class="text-sky-300">HOME to 741741</strong> to connect with a counselor.</span>
+        </div>
+        <div class="bg-white/5 rounded-xl p-3 border border-white/10 flex flex-col justify-between">
+          <span class="text-xs font-bold text-white">The Trevor Project</span>
+          <span class="text-[11px] text-slate-400 mt-1">LGBTQ+ youth crisis lifeline: Call <strong class="text-sky-300">1-866-488-7386</strong>.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dedicated Safety Sub-Pages Directory -->
+    <div class="mb-10">
+      <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
+        <span class="material-symbols-outlined text-emerald-400 text-[18px]">policy</span>
+        Explore Safety & Community Policies
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <a href="/p/child-safety-policy" class="glass-panel p-4 rounded-xl border border-white/10 hover:border-emerald-500/40 hover:bg-white/5 transition-all group flex items-start gap-3">
+          <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-[20px]">child_care</span>
+          </div>
+          <div>
+            <div class="font-bold text-sm text-white group-hover:text-emerald-300 transition-colors flex items-center gap-1">
+              Child Safety Policy
+              <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">
+              Zero tolerance for CSAM, mandatory 13+ age policy, parental guidance, and immediate NCMEC escalation.
+            </p>
+          </div>
+        </a>
+
+        <a href="/p/approach-to-safety" class="glass-panel p-4 rounded-xl border border-white/10 hover:border-indigo-500/40 hover:bg-white/5 transition-all group flex items-start gap-3">
+          <div class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-[20px]">shield</span>
+          </div>
+          <div>
+            <div class="font-bold text-sm text-white group-hover:text-indigo-300 transition-colors flex items-center gap-1">
+              Our Approach to Safety
+              <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">
+              Defense-in-depth architecture, zero-retention privacy, automated ML toxicity filtering, and rapid human moderation.
+            </p>
+          </div>
+        </a>
+
+        <a href="/p/guide-to-online-safety" class="glass-panel p-4 rounded-xl border border-white/10 hover:border-sky-500/40 hover:bg-white/5 transition-all group flex items-start gap-3">
+          <div class="w-9 h-9 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-[20px]">psychology</span>
+          </div>
+          <div>
+            <div class="font-bold text-sm text-white group-hover:text-sky-300 transition-colors flex items-center gap-1">
+              Our Guide to Online Safety
+              <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">
+              Actionable digital wellness practices, anti-cyberbullying strategies, social media boundaries, and healthy TBH etiquette.
+            </p>
+          </div>
+        </a>
+
+        <a href="/p/community-guidelines" class="glass-panel p-4 rounded-xl border border-white/10 hover:border-amber-500/40 hover:bg-white/5 transition-all group flex items-start gap-3">
+          <div class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-[20px]">groups</span>
+          </div>
+          <div>
+            <div class="font-bold text-sm text-white group-hover:text-amber-300 transition-colors flex items-center gap-1">
+              Our Community Guidelines
+              <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">
+              Clear rules of conduct, prohibited behaviors, toxicity thresholds, harassment prevention, and enforcement actions.
+            </p>
+          </div>
+        </a>
+
+        <a href="/p/safety-tools" class="glass-panel p-4 rounded-xl border border-white/10 hover:border-purple-500/40 hover:bg-white/5 transition-all group flex items-start gap-3">
+          <div class="w-9 h-9 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-[20px]">handyman</span>
+          </div>
+          <div>
+            <div class="font-bold text-sm text-white group-hover:text-purple-300 transition-colors flex items-center gap-1">
+              Our Safety Tools
+              <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">
+              1-tap message reporting, automated bot deterrence, double-blind replies, inbox wipeout, and account erasure.
+            </p>
+          </div>
+        </a>
+
+        <a href="/p/resources" class="glass-panel p-4 rounded-xl border border-white/10 hover:border-rose-500/40 hover:bg-white/5 transition-all group flex items-start gap-3">
+          <div class="w-9 h-9 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-[20px]">emergency</span>
+          </div>
+          <div>
+            <div class="font-bold text-sm text-white group-hover:text-rose-300 transition-colors flex items-center gap-1">
+              Our Resources & Hotlines
+              <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">
+              24/7 confidential crisis hotlines, 988 Suicide & Crisis Lifeline, Crisis Text Line 741741, Trevor Project, and global directories.
+            </p>
+          </div>
+        </a>
+
+        <a href="/p/contact-us" class="sm:col-span-2 glass-panel p-4 rounded-xl border border-white/10 hover:border-emerald-500/40 hover:bg-white/5 transition-all group flex items-start gap-3">
+          <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-[20px]">contact_support</span>
+          </div>
+          <div>
+            <div class="font-bold text-sm text-white group-hover:text-emerald-300 transition-colors flex items-center gap-1">
+              Contact Us & Urgent Escalations
+              <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">
+              Direct departmental contacts for urgent abuse reports, legal inquiries, child safety alerts, and user support.
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Safety Features Grid -->
+    <div class="space-y-8 border-t border-white/10 pt-8 text-sm">
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-emerald-400 text-[20px]">shield_lock</span>
+          Our Built-In Protective Safeguards
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1 text-xs">
+            <span class="font-bold text-white block">Automated Spam & Bot Filter</span>
+            <span class="text-slate-400">Automated protection prevents spam attacks and bot flooding without intrusive tracking.</span>
+          </div>
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1 text-xs">
+            <span class="font-bold text-white block">One-Tap Message Reporting</span>
+            <span class="text-slate-400">Every message in your inbox features an instant "Report" button that quarantines the message and logs abuse.</span>
+          </div>
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1 text-xs">
+            <span class="font-bold text-white block">Immediate Account Wipeout</span>
+            <span class="text-slate-400">You have complete control to instantly wipe your entire account and all messages permanently at any second.</span>
+          </div>
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1 text-xs">
+            <span class="font-bold text-white block">Proactive Abuse Throttling</span>
+            <span class="text-slate-400">Automated rate-limiting prevents harassment campaigns by locking out abusive senders.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Advice for Teens & Parents -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-amber-400 text-[20px]">tips_and_updates</span>
+          Advice for Teens & Parents
+        </h2>
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2 text-xs text-slate-300 leading-relaxed">
+          <p>💡 <strong class="text-white">Remember that feedback does not define you:</strong> Anonymous messages reflect the sender's thoughts, not your worth. If a message ever feels uncomfortable, delete or report it immediately.</p>
+          <p>💡 <strong class="text-white">Never share sensitive personal info:</strong> Never post your home address, phone number, school location, or private credentials in your public link or reply stickers.</p>
+          <p>💡 <strong class="text-white">Take breaks when needed:</strong> If social media or feedback starts feeling stressful, pause or delete your link. You have 100% control.</p>
+        </div>
+      </section>
+
+      <!-- Reporting Contact -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="material-symbols-outlined text-rose-400 text-[20px]">report</span>
+          Urgent Abuse Assistance
+        </h2>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          If you encounter cyberbullying or illegal activity, report it directly to our moderation queue:
+        </p>
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <div>
+            <span class="font-bold text-white block">Direct Abuse Escalation</span>
+            <span class="text-slate-400 font-mono">abuse@secretmsg.net</span>
+          </div>
+          <a href="/p/contact-us" class="px-4 py-2 bg-rose-500 text-white font-semibold rounded-full hover:bg-rose-600 transition-colors text-center shrink-0">
+            Contact Support
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer Legal Nav -->
+    <div class="mt-14 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-4">
+        <a href="/p/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="/p/terms" class="hover:text-white transition-colors">Terms of Service</a>
+        <a href="/p/cookies" class="hover:text-white transition-colors">Cookies Policy</a>
+        <a href="/p/disclaimer" class="hover:text-white transition-colors">Disclaimer & Safety</a>
+      </div>
+      <span>© 2026 SecretMsg. All rights reserved.</span>
+    </div>
+  </main>
+</body>
+</html>

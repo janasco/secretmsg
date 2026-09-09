@@ -34,3 +34,10 @@ build/
 # Cloudflare & Wrangler cache
 .wrangler/
 .mf/
+
+# Android / Capacitor native build artifacts
+.gradle/
+local.properties
+*.jks
+*.keystore
+.cxx/

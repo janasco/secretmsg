@@ -89,7 +89,30 @@ npx serve site/public
 
 Open [http://localhost:3000](http://localhost:3000) in your browser. All client features (theme toggle, local storage mock data, board generation, and safety controls) function out-of-the-box.
 
+### 3. Android Mobile Application (`apps/mobile-android`)
+
+Built with **Capacitor 6** with native hardware navigation, status bar theming, haptics, and social sharing:
+
+```bash
+# Sync web assets and Capacitor Android plugins
+npm run android:sync
+
+# Open in Android Studio
+npm run android:open
+
+# Or build debug APK directly via Gradle
+npm run android:build
+```
+
+**Key Native Mobile Capabilities**:
+- **Hardware Back Button Handling**: Intercepts Android back presses to dismiss active modals, overlays, and drawers before navigating back or prompting exit on the root screen.
+- **Dynamic Status & System Bar Sync**: Automatically updates system status bar styling (`#0B0E14` dark / `#FFFFFF` light) in lockstep with user theme preferences.
+- **Tactile Haptic Feedback**: Delivers subtle physical feedback on 3D dice roulette rolls, button taps, and link copying.
+- **Native Social Share Sheet**: Triggers the native Android share drawer for sharing profile links and 9:16 story stickers to Instagram, Snapchat, and WhatsApp.
+- **App Links & Deep Linking**: Auto-verifies `https://secretmsg.net/@handle`, `https://m.secretmsg.net`, and custom `secretmsg://` intents.
+
 ---
+
 
 ## Community & Issue Funding ([Polar.sh](https://polar.sh/janasco/secretmsg))
 

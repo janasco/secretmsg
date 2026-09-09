@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>My Profile & Vanity Link - SecretMsg</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <script src="js/api.js"></script>
+  <script src="js/sanitize.js"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-lowest": "#0b0e14",
+            "primary": "#ffffff",
+            "surface-dim": "#10131a",
+            "on-background": "#e1e2eb",
+            "surface-container-high": "#272a31",
+            "surface-variant": "#32353c",
+            "surface-container": "#1d2026"
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = (saved === 'dark' || saved === 'light') ? (saved === 'dark') : prefersDark;
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="js/theme.js"></script>
+  <script src="js/mobile-bridge.js"></script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen">
+  <div class="mobile-viewport">
+    <!-- Toast Notice -->
+    <div id="toast" class="toast-notice">
+      <span class="material-symbols-outlined text-[18px]">check_circle</span>
+      <span id="toast-text">Link copied!</span>
+    </div>
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-white/10 flex justify-between items-center h-14 px-4">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-white text-[22px]">account_circle</span>
+        <h1 class="text-base font-bold text-white tracking-tight">My Profile</h1>
+      </div>
+      <div class="flex items-center gap-1">
+        <button onclick="window.SecretMsgTheme.toggle()" aria-label="Toggle Theme" class="p-2 text-slate-300 hover:text-white transition-colors rounded-full flex items-center" title="Toggle Theme (Dark / Light)">
+          <span data-theme-icon class="material-symbols-outlined text-[20px]">dark_mode</span>
+        </button>
+        <a href="supporters.html" class="p-2 text-amber-300 hover:text-amber-200 transition-colors" title="Supporters Perks">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+        </a>
+        <a href="settings.html" class="p-2 -mr-2 text-slate-400 hover:text-white transition-colors" title="Settings">
+          <span class="material-symbols-outlined text-[22px]">settings</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 px-4 py-4 flex flex-col gap-4 pb-28">
+      <!-- Profile Identity Card -->
+      <section class="glass-panel rounded-3xl p-5 flex flex-col items-center text-center gap-3 border border-white/15 white-glow relative overflow-hidden">
+        <div class="absolute -top-12 -right-12 w-32 h-32 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+
+        <div class="relative">
+          <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-white/30 via-slate-400 to-white/10 p-0.5 border border-white/30">
+            <div id="profile-avatar-char" class="w-full h-full rounded-full bg-[#151B26] flex items-center justify-center text-2xl font-bold text-white">
+              J
+            </div>
+          </div>
+          <a id="profile-pro-badge" href="supporters.html?feature=badge" class="hidden absolute -bottom-1 -right-1 bg-amber-400 text-[#0B0E14] text-[10px] font-bold px-2 py-0.5 rounded-full border border-[#0B0E14] shadow flex items-center gap-0.5" title="Verified Supporter">
+            <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span> PRO
+          </a>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-center gap-1.5">
+            <h2 id="profile-display-name" class="text-lg font-bold text-white">Your Board</h2>
+            <span id="profile-verified-badge" class="hidden material-symbols-outlined text-amber-400 text-[18px]" style="font-variation-settings: 'FILL' 1;" title="Verified Supporter Badge">verified</span>
+          </div>
+          <p id="profile-handle" class="text-xs text-slate-400 font-mono">@yourname • secretmsg.net</p>
+          <div id="badge-unlock-prompt" class="mt-1">
+            <a href="supporters.html?feature=badge" class="text-[11px] text-amber-400 hover:underline inline-flex items-center gap-0.5">
+              <span class="material-symbols-outlined text-[13px]">star</span> Unlock Verified Supporter Badge ($2)
+            </a>
+          </div>
+        </div>
+
+        <!-- Vanity Link Box -->
+        <div class="w-full bg-[#10131A] rounded-2xl p-3 border border-white/10 flex items-center justify-between mt-1">
+          <div class="flex items-center gap-2 truncate">
+            <span class="material-symbols-outlined text-slate-400 text-[18px]">link</span>
+            <span id="profile-vanity-link" class="text-xs font-mono text-slate-200 truncate">secretmsg.net/yourname</span>
+          </div>
+          <span class="text-[10px] text-emerald-400 font-semibold bg-emerald-950/60 px-2 py-0.5 rounded">Live</span>
+        </div>
+
+        <!-- Share Actions -->
+        <div class="flex gap-2 w-full mt-1">
+          <button id="copy-btn" onclick="copyLink()" class="flex-1 py-2.5 bg-white text-[#0B0E14] text-xs font-bold rounded-full flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-md hover:bg-slate-100">
+            <span class="material-symbols-outlined text-[16px]">content_copy</span>
+            Copy Link
+          </button>
+          <button onclick="shareLink()" class="py-2.5 px-3.5 bg-white/10 text-white text-xs font-semibold rounded-full flex items-center justify-center gap-1.5 active:scale-95 transition-all hover:bg-white/15" title="Share via Apps">
+            <span class="material-symbols-outlined text-[16px]">share</span>
+            Share
+          </button>
+          <button onclick="openQrModal()" class="py-2.5 px-3.5 glass-panel text-white text-xs font-semibold rounded-full flex items-center justify-center gap-1.5 active:scale-95 transition-all hover:bg-white/10">
+            <span class="material-symbols-outlined text-[16px]">qr_code_2</span>
+            QR
+          </button>
+        </div>
+      </section>
+
+      <!-- Viewer Hints & Live Board Traffic Analytics -->
+      <section id="viewer-hints-section" class="glass-panel rounded-3xl p-5 border border-white/15 relative overflow-hidden">
+        <!-- 1. Unlocked State (When has_viewer_hints is active) -->
+        <div id="viewer-hints-unlocked" class="hidden flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-xl bg-sky-500/20 text-sky-300 flex items-center justify-center border border-sky-500/30">
+                <span class="material-symbols-outlined text-[20px]">visibility</span>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-white">Viewer Hints & Impressions</h3>
+                <span class="text-[10px] text-slate-400 font-mono">Live Audience Metrics</span>
+              </div>
+            </div>
+            <span class="text-[10px] font-mono font-bold text-sky-300 bg-sky-950/60 px-2.5 py-0.5 rounded-full border border-sky-500/30">Active Perk ✓</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5 mt-1">
+            <div class="bg-[#10131A] p-3 rounded-2xl border border-white/10 flex flex-col">
+              <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Total Viewers</span>
+              <span id="viewer-count-number" class="text-2xl font-bold text-sky-300 mt-1 font-mono">148</span>
+              <span class="text-[10px] text-emerald-400 mt-0.5 flex items-center gap-0.5">
+                <span class="material-symbols-outlined text-[12px]">trending_up</span> +38 this week
+              </span>
+            </div>
+            <div class="bg-[#10131A] p-3 rounded-2xl border border-white/10 flex flex-col">
+              <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Link Impressions</span>
+              <span class="text-2xl font-bold text-white mt-1 font-mono">312</span>
+              <span class="text-[10px] text-slate-400 mt-0.5">from Instagram & Story</span>
+            </div>
+          </div>
+
+          <div class="bg-white/5 p-3 rounded-2xl border border-white/10 flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="text-slate-300">Active visitors right now:</span>
+            </div>
+            <span class="font-mono font-bold text-emerald-300">3 online</span>
+          </div>
+        </div>
+
+        <!-- 2. Locked State (When has_viewer_hints is locked) -->
+        <div id="viewer-hints-locked" class="flex flex-col gap-3">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-xl bg-sky-500/15 text-sky-300 flex items-center justify-center border border-sky-500/25">
+                <span class="material-symbols-outlined text-[20px]">visibility_off</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <h3 class="text-sm font-bold text-white">Viewer Hints</h3>
+                  <span class="text-[10px] font-mono font-bold px-1.5 py-0.2 rounded bg-white/10 text-slate-400">Locked</span>
+                </div>
+                <span class="text-[10px] text-slate-400">Reveal how many friends opened your link</span>
+              </div>
+            </div>
+            <span class="text-xs font-bold text-sky-400 font-mono">$3</span>
+          </div>
+
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Wondering who's checking your Instagram or Snapchat bio link? Unlock <strong>Viewer Hints</strong> to reveal real-time view counts, visitor numbers, and weekly traffic trends.
+          </p>
+
+          <a href="supporters.html?feature=viewer_hints" class="w-full py-2.5 bg-sky-400 hover:bg-sky-300 text-[#0B0E14] text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-md">
+            <span class="material-symbols-outlined text-[16px]">lock_open</span>
+            Unlock Viewer Hints ($3)
+          </a>
+        </div>
+      </section>
+
+      <!-- Activity Metrics -->
+      <section class="grid grid-cols-3 gap-2.5">
+        <div class="glass-panel rounded-2xl p-3 text-center border border-white/10">
+          <span class="text-[10px] font-mono text-slate-400 uppercase block">Messages</span>
+          <span class="text-xl font-bold text-white mt-0.5 block">128</span>
+        </div>
+        <div class="glass-panel rounded-2xl p-3 text-center border border-white/10">
+          <span class="text-[10px] font-mono text-slate-400 uppercase block">Shares</span>
+          <span class="text-xl font-bold text-white mt-0.5 block">42</span>
+        </div>
+        <div class="glass-panel rounded-2xl p-3 text-center border border-white/10">
+          <span class="text-[10px] font-mono text-slate-400 uppercase block">Cheers</span>
+          <span class="text-xl font-bold text-amber-300 mt-0.5 block">96</span>
+        </div>
+      </section>
+
+      <!-- Hub Quick Links Menu -->
+      <section class="flex flex-col gap-2">
+        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider px-1">Creator Tools</span>
+        <div class="glass-panel rounded-2xl divide-y divide-white/10 border border-white/10 overflow-hidden">
+          <a href="sticker-studio.html" class="p-3.5 flex items-center justify-between hover:bg-white/5 transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">
+                <span class="material-symbols-outlined text-[18px]">photo_filter</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">Story Sticker Studio</span>
+                <span class="text-[10px] text-slate-400">Export high-res Instagram & Snapchat cards</span>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-slate-500 text-[18px]">chevron_right</span>
+          </a>
+
+          <a href="supporters.html" class="p-3.5 flex items-center justify-between hover:bg-white/5 transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-amber-400/10 flex items-center justify-center text-amber-300">
+                <span class="material-symbols-outlined text-[18px]">volunteer_activism</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">Supporters Wall & Perks</span>
+                <span class="text-[10px] text-slate-400">Polar.sh tiers, golden badges, and funding goals</span>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-slate-500 text-[18px]">chevron_right</span>
+          </a>
+
+          <a href="settings.html" class="p-3.5 flex items-center justify-between hover:bg-white/5 transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">
+                <span class="material-symbols-outlined text-[18px]">shield</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">Privacy & Security Vault</span>
+                <span class="text-[10px] text-slate-400">Zero-log privacy, wipe messages, secure login</span>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-slate-500 text-[18px]">chevron_right</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Manage Your Secret Msg Board -->
+      <section class="glass-panel rounded-3xl p-5 border border-white/10 space-y-5">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-indigo-400 text-[20px]">manage_accounts</span>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider">Manage Your Board</h3>
+        </div>
+
+        <!-- Update Display Name -->
+        <div class="space-y-1.5">
+          <label class="text-xs font-semibold text-slate-300 block">Change Display Name</label>
+          <div class="flex gap-2">
+            <input
+              id="display-name-input"
+              type="text"
+              minlength="4"
+              maxlength="40"
+              placeholder="Enter your display name (min 4 chars)"
+              class="flex-1 px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white text-xs focus:outline-none focus:border-indigo-500"
+            />
+            <button onclick="saveDisplayName()" class="px-4 py-2.5 bg-white text-[#0B0E14] text-xs font-bold rounded-xl hover:bg-slate-100 active:scale-95 transition-all">
+              Save Name
+            </button>
+          </div>
+          <span class="text-[11px] text-slate-400">Updates the public name shown above your message card (minimum 4 characters).</span>
+        </div>
+
+        <!-- Change Password -->
+        <div class="pt-3 border-t border-white/10 space-y-1.5">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-semibold text-white block">Change Board Password</label>
+            <span class="text-[10px] text-slate-400 font-mono">No current password required</span>
+          </div>
+          <div class="flex gap-2">
+            <input
+              id="new-password-input"
+              type="password"
+              placeholder="Enter new password (min 6 chars)"
+              class="flex-1 px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white text-xs focus:outline-none focus:border-indigo-500"
+            />
+            <button onclick="saveNewPassword()" class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl active:scale-95 transition-all">
+              Change Password
+            </button>
+          </div>
+          <span class="text-[11px] text-slate-400">Used to log in at <a href="/login" class="text-indigo-400 underline font-mono">secretmsg.net/login</a> from any device.</span>
+        </div>
+      </section>
+
+      <!-- Danger Zone -->
+      <section class="glass-panel rounded-3xl p-5 border border-rose-500/20 bg-rose-950/10 space-y-3">
+        <div class="flex items-center gap-2 text-rose-400">
+          <span class="material-symbols-outlined text-[20px]">warning</span>
+          <h3 class="text-xs font-bold uppercase tracking-wider">Danger Zone</h3>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Permanently delete your board and all received anonymous messages. This action cannot be undone.
+        </p>
+        <button onclick="deleteAccount()" class="w-full py-2.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-xl active:scale-95 transition-all shadow-md">
+          Delete My Account
+        </button>
+      </section>
+
+      <!-- Active Pinned Prompts -->
+      <section class="flex flex-col gap-2">
+        <div class="flex justify-between items-center px-1">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Active Prompts on Profile</span>
+          <a href="dice.html" class="text-xs font-semibold text-white/80 hover:text-white flex items-center gap-0.5">
+            + New Prompt
+          </a>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-3.5 flex items-center justify-between border border-white/10">
+          <div class="flex-1 pr-2">
+            <span class="text-[10px] font-bold text-rose-300 uppercase">Featured TBH</span>
+            <p class="text-xs text-white font-medium mt-0.5">"Send me an honest TBH. Don't hold back 🫣"</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer shrink-0">
+            <input checked type="checkbox" class="sr-only peer" onchange="showToast('Prompt visibility updated')"/>
+            <div class="w-9 h-5 bg-[#10131A] border border-white/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-white peer-checked:after:bg-[#0B0E14]"></div>
+          </label>
+        </div>
+      </section>
+    </main>
+
+    <!-- QR Code Modal -->
+    <div id="qr-modal" class="fixed inset-0 z-50 bg-[#0B0E14]/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+      <div class="glass-panel border border-white/20 rounded-3xl p-6 max-w-xs w-full text-center flex flex-col items-center gap-4">
+        <div class="flex justify-between items-center w-full">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Scan to Send Message</span>
+          <button onclick="closeQrModal()" class="text-slate-400 hover:text-white">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+
+        <!-- Clean Scalable Vector QR Code -->
+        <div class="p-4 bg-white rounded-2xl shadow-xl">
+          <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="160" height="160" fill="white"/>
+            <!-- Outer Corner 1 -->
+            <rect x="10" y="10" width="40" height="40" rx="6" fill="#0B0E14"/>
+            <rect x="18" y="18" width="24" height="24" rx="3" fill="white"/>
+            <rect x="24" y="24" width="12" height="12" rx="2" fill="#0B0E14"/>
+            <!-- Outer Corner 2 -->
+            <rect x="110" y="10" width="40" height="40" rx="6" fill="#0B0E14"/>
+            <rect x="118" y="18" width="24" height="24" rx="3" fill="white"/>
+            <rect x="124" y="24" width="12" height="12" rx="2" fill="#0B0E14"/>
+            <!-- Outer Corner 3 -->
+            <rect x="10" y="110" width="40" height="40" rx="6" fill="#0B0E14"/>
+            <rect x="18" y="118" width="24" height="24" rx="3" fill="white"/>
+            <rect x="24" y="124" width="12" height="12" rx="2" fill="#0B0E14"/>
+            <!-- QR Data Matrix Pattern -->
+            <rect x="60" y="20" width="8" height="20" fill="#0B0E14"/>
+            <rect x="80" y="10" width="16" height="8" fill="#0B0E14"/>
+            <rect x="70" y="40" width="12" height="12" fill="#0B0E14"/>
+            <rect x="90" y="30" width="8" height="18" fill="#0B0E14"/>
+            <rect x="20" y="60" width="18" height="8" fill="#0B0E14"/>
+            <rect x="40" y="70" width="8" height="18" fill="#0B0E14"/>
+            <rect x="60" y="60" width="40" height="40" rx="6" fill="#0B0E14"/>
+            <circle cx="80" cy="80" r="8" fill="white"/>
+            <rect x="110" y="60" width="18" height="8" fill="#0B0E14"/>
+            <rect x="130" y="80" width="18" height="18" fill="#0B0E14"/>
+            <rect x="60" y="110" width="20" height="8" fill="#0B0E14"/>
+            <rect x="70" y="130" width="18" height="18" fill="#0B0E14"/>
+            <rect x="100" y="120" width="30" height="8" fill="#0B0E14"/>
+            <rect x="120" y="130" width="18" height="18" fill="#0B0E14"/>
+          </svg>
+        </div>
+
+        <div class="text-center">
+          <span id="qr-modal-link" class="text-xs font-mono text-slate-300 block">secretmsg.net/yourname</span>
+          <p class="text-[10px] text-slate-400 mt-0.5">Scan with phone camera to open instant TBH</p>
+        </div>
+
+        <button onclick="copyLink()" class="w-full py-2.5 bg-white text-[#0B0E14] font-bold text-xs rounded-full">
+          Copy Public Link
+        </button>
+      </div>
+    </div>
+
+    <!-- Persistent Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#0B0E14]/95 backdrop-blur-xl border-t border-white/10 pb-safe">
+      <div class="flex justify-around items-center h-16 max-w-xl mx-auto px-2">
+        <a href="index.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">home</span>
+          <span class="text-[10px] mt-0.5 font-medium">Home</span>
+        </a>
+        <a href="inbox.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">mail</span>
+          <span class="text-[10px] mt-0.5 font-medium">Inbox</span>
+        </a>
+        <a href="dice.html" class="flex flex-col items-center justify-center text-slate-400 hover:text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]">casino</span>
+          <span class="text-[10px] mt-0.5 font-medium">Roulette</span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center justify-center text-white py-1 px-3 transition-colors">
+          <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">person</span>
+          <span class="text-[10px] mt-0.5 font-bold">Profile</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    function getActiveBoard() {
+      const realUser = window.SecretMsgAPI && window.SecretMsgAPI.getSavedUser();
+      if (realUser && realUser.username) return realUser.username;
+      return localStorage.getItem('secretmsg_active_board') || localStorage.getItem('secretmsg_display_name') || 'yourname';
+    }
+
+    async function initProfile() {
+      if (window.SecretMsgAPI && !window.SecretMsgAPI.isLoggedIn()) {
+        window.location.href = '/login.html';
+        return;
+      }
+
+      const active = getActiveBoard();
+      const clean = active.replace(/^@/, '');
+      let realUser = window.SecretMsgAPI && window.SecretMsgAPI.getSavedUser();
+      const dispEl = document.getElementById('profile-display-name');
+      const handleEl = document.getElementById('profile-handle');
+      const vanityEl = document.getElementById('profile-vanity-link');
+      const qrLinkEl = document.getElementById('qr-modal-link');
+      const inputEl = document.getElementById('display-name-input');
+      const avatarChar = document.getElementById('profile-avatar-char');
+
+      const displayName = (realUser && realUser.display_name) || localStorage.getItem('secretmsg_display_name') || clean;
+      if (dispEl) dispEl.textContent = displayName;
+      if (handleEl) handleEl.textContent = `@${clean} • secretmsg.net`;
+      if (vanityEl) vanityEl.textContent = `secretmsg.net/${clean}`;
+      if (qrLinkEl) qrLinkEl.textContent = `secretmsg.net/${clean}`;
+      if (inputEl) inputEl.value = displayName;
+      if (avatarChar) avatarChar.textContent = (displayName[0] || 'A').toUpperCase();
+
+      // Feature State Checks - fetched fresh from the real account, not a local toggle.
+      let hasBadge = false, hasViewer = false, viewCount = 0;
+      try {
+        const me = await window.SecretMsgAPI.getMe();
+        hasBadge = Boolean(me.has_verified_badge);
+        hasViewer = Boolean(me.has_viewer_hints);
+        viewCount = me.views_count || 0;
+      } catch (err) {
+        if (err instanceof window.SecretMsgAPI.UnauthorizedError) {
+          window.SecretMsgAPI.removeToken();
+          window.location.href = '/login.html';
+          return;
+        }
+        console.error('Failed to load profile perk status:', err);
+      }
+
+      const proBadge = document.getElementById('profile-pro-badge');
+      const verifiedBadge = document.getElementById('profile-verified-badge');
+      const badgeUnlockPrompt = document.getElementById('badge-unlock-prompt');
+
+      if (hasBadge) {
+        if (proBadge) proBadge.classList.remove('hidden');
+        if (verifiedBadge) verifiedBadge.classList.remove('hidden');
+        if (badgeUnlockPrompt) badgeUnlockPrompt.classList.add('hidden');
+      } else {
+        if (proBadge) proBadge.classList.add('hidden');
+        if (verifiedBadge) verifiedBadge.classList.add('hidden');
+        if (badgeUnlockPrompt) badgeUnlockPrompt.classList.remove('hidden');
+      }
+
+      const viewerUnlocked = document.getElementById('viewer-hints-unlocked');
+      const viewerLocked = document.getElementById('viewer-hints-locked');
+      if (hasViewer) {
+        if (viewerUnlocked) {
+          viewerUnlocked.classList.remove('hidden');
+          viewerUnlocked.classList.add('flex');
+        }
+        if (viewerLocked) viewerLocked.classList.add('hidden');
+
+        const numEl = document.getElementById('viewer-count-number');
+        if (numEl) numEl.textContent = viewCount.toLocaleString();
+      } else {
+        if (viewerUnlocked) {
+          viewerUnlocked.classList.add('hidden');
+          viewerUnlocked.classList.remove('flex');
+        }
+        if (viewerLocked) viewerLocked.classList.remove('hidden');
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function copyLink() {
+      const active = getActiveBoard().replace(/^@/, '');
+      const url = `https://secretmsg.net/${active}`;
+      if (window.SecretMsgNative) {
+        window.SecretMsgNative.copyToClipboard(url);
+      } else {
+        navigator.clipboard?.writeText(url);
+      }
+      showToast('Public link copied to clipboard!');
+    }
+
+    function shareLink() {
+      const active = getActiveBoard().replace(/^@/, '');
+      const url = `https://secretmsg.net/${active}`;
+      if (window.SecretMsgNative) {
+        window.SecretMsgNative.share({
+          title: `SecretMsg - @${active}`,
+          text: `Send me an anonymous question or confession on SecretMsg!`,
+          url: url
+        });
+      } else if (navigator.share) {
+        navigator.share({
+          title: `SecretMsg - @${active}`,
+          text: `Send me an anonymous question or confession on SecretMsg!`,
+          url: url
+        }).catch(() => {});
+      } else {
+        copyLink();
+      }
+    }
+
+    function openQrModal() {
+      document.getElementById('qr-modal').classList.remove('hidden');
+    }
+
+    function closeQrModal() {
+      document.getElementById('qr-modal').classList.add('hidden');
+    }
+    function saveDisplayName() {
+      const rawInput = document.getElementById('display-name-input').value;
+      const val = window.SecretMsgSanitize ? window.SecretMsgSanitize.validateDisplayName(rawInput) : {
+        isValid: rawInput.trim().length >= 4,
+        error: rawInput.trim().length < 4 ? 'Display name must be at least 4 characters.' : null,
+        value: rawInput.trim()
+      };
+      if (!val.isValid) {
+        showToast(val.error || 'Display name must be at least 4 characters.');
+        return;
+      }
+      localStorage.setItem('secretmsg_display_name', val.value);
+      initProfile();
+      showToast(`Display name updated to "${val.value}"!`);
+    }
+
+    function saveNewPassword() {
+      // SecretMsg has no password login - accounts use passwordless email codes only
+      // (see login.html). There's nothing on the backend for this field to save to.
+      showToast("SecretMsg doesn't use passwords - you always log in with an emailed code.");
+    }
+
+    async function deleteAccount() {
+      if (!confirm('Permanently delete your board and all received anonymous messages? This cannot be undone.')) {
+        return;
+      }
+      try {
+        await window.SecretMsgAPI.deleteAccount();
+        localStorage.clear();
+        showToast('Board & account deleted permanently.');
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 1200);
+      } catch (err) {
+        if (err instanceof window.SecretMsgAPI.UnauthorizedError) {
+          window.SecretMsgAPI.removeToken();
+          window.location.href = '/login.html';
+          return;
+        }
+        showToast(err.message || 'Failed to delete account. Please try again.');
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', initProfile);
+  </script>
+</body>
+</html>

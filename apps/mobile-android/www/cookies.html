@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <title>Cookies & Local Storage Policy - SecretMsg</title>
+  <meta name="description" content="SecretMsg Cookies Policy. We do not use third-party advertising cookies, retargeting pixels, or behavioral cross-site trackers. Learn about our minimal essential storage."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/common.css"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } }
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = (saved === 'dark' || saved === 'light') ? (saved === 'dark') : prefersDark;
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="/js/theme.js"></script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-white selection:text-[#0B0E14]">
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#0B0E14] font-black text-sm shadow-md group-hover:scale-105 transition-transform">
+          S
+        </div>
+        <span class="font-bold text-lg text-white tracking-tight">SecretMsg</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">Cookies</span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme" aria-label="Toggle Theme">
+          <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+        <a href="https://m.secretmsg.net" class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/10 hover:bg-white hover:text-[#0B0E14] transition-all text-slate-200">
+          <span class="material-symbols-outlined text-[16px]">smartphone</span>
+          Open Web App
+        </a>
+        <a href="/" class="px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span> Back
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Legal Container -->
+  <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
+    <div class="mb-10 text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-300 text-xs font-semibold mb-4 shadow-sm">
+        <span class="material-symbols-outlined text-[15px] text-emerald-600 dark:text-emerald-400">cookie</span>
+        <span>Zero Tracking Cookies • Updated September 2026</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+        Cookies & Local Storage Policy
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+        SecretMsg is engineered without invasive trackers. We believe your online activity across other websites is none of our business.
+      </p>
+    </div>
+
+    <!-- Quick Summary Box -->
+    <div class="glass-panel rounded-2xl p-5 border border-emerald-500/30 bg-emerald-950/20 mb-10 space-y-2 text-xs">
+      <h3 class="font-bold text-sm text-emerald-300 flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-[18px]">verified</span>
+        No Cookie Banners Needed — Here's Why
+      </h3>
+      <p class="text-slate-300 leading-relaxed">
+        Under the EU ePrivacy Directive and GDPR guidelines, websites that utilize <strong>only strictly necessary, non-tracking cookies or local storage</strong> do not require intrusive, annoying consent banners. We only store the absolute minimum data required to keep the site functioning and defend against bots.
+      </p>
+    </div>
+
+    <article class="space-y-8 text-slate-300 text-sm leading-relaxed border-t border-white/10 pt-8">
+      <!-- Section 1 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">01</span> What Are Cookies and Local Storage?
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          Cookies are small text files placed on your device (computer, smartphone, or tablet) when you visit a website. They are commonly used to make websites work efficiently, remember your preferences, and maintain secure sessions. Local storage technologies (like HTML5 local storage) provide cookie-equivalent functionality directly within your browser, allowing fast, client-side persistence of your settings without transmitting unnecessary data on every network request.
+        </p>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">02</span> How We Use Cookies & Local Storage
+        </h2>
+        <div class="space-y-3 text-xs sm:text-sm">
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <div class="flex justify-between items-center">
+              <strong class="text-white text-sm">1. Preferences Storage (<code class="text-indigo-300 font-mono">secretmsg_theme</code>, <code class="text-indigo-300 font-mono">active_board</code>)</strong>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 text-slate-300 font-mono">LocalStorage</span>
+            </div>
+            <p class="text-slate-400">Stores whether you selected Dark Mode, Light Mode, or System Mode and your current active board identifier so the application renders in your preferred aesthetic and loads your link instantly without flickering.</p>
+          </div>
+
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <div class="flex justify-between items-center">
+              <strong class="text-white text-sm">2. Human Verification Security Token</strong>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 text-slate-300 font-mono">Essential Security</span>
+            </div>
+            <p class="text-slate-400">Temporary security token used to verify that you are a real person and not an automated spam bot. Does not track your personal identity or activity across third-party websites.</p>
+          </div>
+
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <div class="flex justify-between items-center">
+              <strong class="text-white text-sm">3. Authenticated Session Token (<code class="text-amber-300 font-mono">secretmsg_auth</code>)</strong>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 text-slate-300 font-mono">Secure HttpOnly Cookie</span>
+            </div>
+            <p class="text-slate-400">Only present when you register and log into your board to access your private inbox. Kept encrypted, strictly restricted to secretmsg.net, and permanently discarded upon logout or account deletion.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">03</span> What We NEVER Store or Use
+        </h2>
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2 text-xs sm:text-sm text-slate-300">
+          <p>🚫 <strong>Zero Advertising Cookies:</strong> We do not partner with ad exchanges, data brokers, or retargeting networks.</p>
+          <p>🚫 <strong>Zero Cross-Site Tracking:</strong> We never fingerprint your hardware or monitor your browsing behavior outside of secretmsg.net.</p>
+          <p>🚫 <strong>Zero Commercial Analytics:</strong> No third-party marketing company receives session replay recordings or clickstream heatmaps.</p>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">04</span> Your Choices & Managing Browser Storage
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          You have full control over cookies and local storage. You can withdraw your consent, block, or clear cookies and site data at any time through your browser's settings (such as Chrome Settings → Privacy & Security → Clear Browsing Data). Note that because we only use strictly necessary data, disabling all local storage may prevent you from remaining logged into your inbox or passing automated bot verification.
+        </p>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">05</span> GDPR & International Compliance
+        </h2>
+        <p class="text-slate-400 leading-relaxed text-xs sm:text-sm">
+          This Cookie Policy complies with the General Data Protection Regulation (GDPR) and the EU ePrivacy Directive. Because we use strictly essential, non-tracking technologies for basic security and preferences, we do not require intrusive tracking consent banners while ensuring you have complete transparency and control. For questions, reach out to <a href="mailto:privacy@secretmsg.net" class="text-indigo-400 underline font-mono">privacy@secretmsg.net</a>.
+        </p>
+      </section>
+    </article>
+
+    <!-- Footer Legal Nav -->
+    <div class="mt-14 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-4">
+        <a href="/p/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="/p/terms" class="hover:text-white transition-colors">Terms of Service</a>
+        <a href="/p/safety" class="hover:text-white transition-colors">Safety Hub</a>
+      </div>
+      <span>© 2026 SecretMsg. All rights reserved.</span>
+    </div>
+  </main>
+</body>
+</html>

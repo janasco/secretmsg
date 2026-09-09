@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <title>Interactive Platform Demo & Sandbox - SecretMsg</title>
+  <meta name="description" content="Explore SecretMsg in real-time interactive demo mode. Test anonymous messages, roulette prompts, story stickers, and double-blind inbox replies."/>
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <script src="js/sanitize.js"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = (saved === 'dark' || saved === 'light') ? (saved === 'dark') : prefersDark;
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="js/theme.js"></script>
+  <style>
+    .demo-glow {
+      background: radial-gradient(circle 500px at 50% 10%, rgba(99, 102, 241, 0.15), transparent 70%);
+    }
+    html.light .demo-glow {
+      background: radial-gradient(circle 600px at 50% 0%, rgba(99, 102, 241, 0.10) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 70%) !important;
+    }
+    .sticker-gradient-1 { background: linear-gradient(135deg, #FF6B6B 0%, #556270 100%); }
+    .sticker-gradient-2 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .sticker-gradient-3 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+    .sticker-gradient-4 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+  </style>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen demo-glow selection:bg-indigo-500 selection:text-white pb-28">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#0B0E14] font-black text-sm shadow-md group-hover:scale-105 transition-transform">
+          S
+        </div>
+        <span class="font-bold text-lg text-white tracking-tight">SecretMsg</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-indigo-400 bg-indigo-950/70 px-2 py-0.5 rounded border border-indigo-500/30">Demo Sandbox</span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme" aria-label="Toggle Theme">
+          <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+        <a href="/" class="hidden sm:flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-[14px]">home</span> Landing Page
+        </a>
+        <a href="/#create" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-[#0B0E14] hover:bg-slate-100 transition-all flex items-center gap-1 shadow-md">
+          <span>Create Link</span>
+          <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sandbox Banner -->
+  <div class="demo-sandbox-banner px-4 py-3 border-b bg-indigo-50 border-indigo-200/80 text-indigo-950 dark:bg-indigo-950/40 dark:border-indigo-500/20 dark:text-indigo-200 transition-colors">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+      <div class="flex items-center gap-2 text-indigo-900 dark:text-indigo-200">
+        <span class="material-symbols-outlined text-[18px] text-indigo-600 dark:text-indigo-400 animate-pulse shrink-0">science</span>
+        <span class="leading-relaxed"><strong class="font-bold text-indigo-950 dark:text-white">Interactive Playground:</strong> Send simulated messages, shuffle prompts, and inspect incoming messages. No account needed!</span>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <button onclick="resetDemoData()" class="text-[11px] font-semibold underline text-indigo-700 hover:text-indigo-950 dark:text-indigo-300 dark:hover:text-white transition-colors">
+          Reset Demo Data
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="demo-toast" class="fixed top-20 right-4 z-50 transform translate-y-[-100px] opacity-0 transition-all duration-300 bg-emerald-500 text-white px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2 text-xs font-semibold">
+    <span class="material-symbols-outlined text-[18px]">check_circle</span>
+    <span id="demo-toast-msg">Simulated message encrypted & delivered!</span>
+  </div>
+
+  <!-- Main Container -->
+  <main class="max-w-5xl mx-auto px-4 py-8 space-y-10">
+
+    <!-- Top Grid: Interactive Composer & Live Inbox -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Left Column: Interactive Composer Card (5 Cols) -->
+      <div class="lg:col-span-5 space-y-4">
+        <div>
+          <h2 class="text-base font-bold text-white flex items-center gap-2">
+            <span class="material-symbols-outlined text-indigo-400 text-[20px]">send</span>
+            1. Try Sending a Message
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">
+            This card simulates what your followers see when they click your Instagram story link.
+          </p>
+        </div>
+
+        <!-- Simulated Profile & Composer Card -->
+        <div class="glass-panel rounded-3xl p-5 border border-white/10 space-y-4 shadow-xl">
+          <!-- Card Header -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-500 to-sky-400 p-0.5">
+                <div class="demo-creator-avatar w-full h-full rounded-full bg-[#151B26] flex items-center justify-center font-bold text-white text-base">
+                  D
+                </div>
+              </div>
+              <div>
+                <div class="flex items-center gap-1">
+                  <span class="demo-creator-handle font-bold text-white text-sm">@demo_creator</span>
+                  <span class="material-symbols-outlined text-white text-[15px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                </div>
+                <span class="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  Online Now
+                </span>
+              </div>
+            </div>
+
+            <button onclick="shuffleDemoPrompt()" class="demo-shuffle-btn flex items-center gap-1 px-3 py-1.5 rounded-full glass-panel hover:bg-white/10 text-slate-200 text-xs font-semibold active:scale-95 transition-all" title="Shuffle Roulette Prompt">
+              <span class="material-symbols-outlined text-[15px] text-amber-400">casino</span>
+              Shuffle
+            </button>
+          </div>
+
+          <!-- Active Prompt Display -->
+          <div class="demo-prompt-box bg-[#10131A] rounded-2xl p-3.5 border border-white/10">
+            <div class="flex items-center justify-between text-[10px] text-indigo-400 font-bold uppercase tracking-wider font-mono">
+              <span id="demo-prompt-tag">🤫 Confessions</span>
+              <span class="text-slate-500">Curated Roulette Pool</span>
+            </div>
+            <p id="demo-active-prompt" class="text-sm font-semibold text-white mt-1 italic leading-snug">
+              "Send me an honest TBH. What is something you think about me but would never say out loud? 🫣"
+            </p>
+          </div>
+
+          <!-- Vibe Selector Chips -->
+          <div>
+            <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1.5">Select Message Vibe</label>
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs">
+              <button type="button" onclick="selectDemoVibe(this, '🤫 Confession')" class="demo-vibe-chip px-3 py-1 rounded-full bg-white text-[#0B0E14] font-semibold whitespace-nowrap active:scale-95 transition-all">🤫 Confession</button>
+              <button type="button" onclick="selectDemoVibe(this, '💘 Crush')" class="demo-vibe-chip px-3 py-1 rounded-full glass-panel text-slate-300 font-semibold whitespace-nowrap hover:text-white active:scale-95 transition-all">💘 Crush</button>
+              <button type="button" onclick="selectDemoVibe(this, '🌶️ Roast')" class="demo-vibe-chip px-3 py-1 rounded-full glass-panel text-slate-300 font-semibold whitespace-nowrap hover:text-white active:scale-95 transition-all">🌶️ Roast</button>
+              <button type="button" onclick="selectDemoVibe(this, '✨ Compliment')" class="demo-vibe-chip px-3 py-1 rounded-full glass-panel text-slate-300 font-semibold whitespace-nowrap hover:text-white active:scale-95 transition-all">✨ Compliment</button>
+              <button type="button" onclick="selectDemoVibe(this, '🌊 Deep')" class="demo-vibe-chip px-3 py-1 rounded-full glass-panel text-slate-300 font-semibold whitespace-nowrap hover:text-white active:scale-95 transition-all">🌊 Deep</button>
+            </div>
+          </div>
+
+          <!-- Text Input -->
+          <div class="space-y-1.5">
+            <div class="relative">
+              <textarea
+                id="demo-input-text"
+                rows="3"
+                maxlength="300"
+                placeholder="Type your anonymous message here... (e.g. You always brighten my day!)"
+                class="w-full rounded-2xl bg-white/5 border border-white/10 p-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all resize-none"
+              ></textarea>
+              <div class="absolute bottom-2.5 right-3 text-[10px] text-slate-500 font-mono">
+                <span id="demo-char-count">0</span>/300
+              </div>
+            </div>
+
+            <!-- Quick Emoji Row -->
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-slate-500 font-medium">Quick insert:</span>
+              <div class="flex items-center gap-1 text-sm">
+                <button type="button" onclick="addEmoji('🫣')" class="hover:scale-125 transition-transform">🫣</button>
+                <button type="button" onclick="addEmoji('💕')" class="hover:scale-125 transition-transform">💕</button>
+                <button type="button" onclick="addEmoji('🔥')" class="hover:scale-125 transition-transform">🔥</button>
+                <button type="button" onclick="addEmoji('💀')" class="hover:scale-125 transition-transform">💀</button>
+                <button type="button" onclick="addEmoji('✨')" class="hover:scale-125 transition-transform">✨</button>
+                <button type="button" onclick="addEmoji('🥺')" class="hover:scale-125 transition-transform">🥺</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Send Action Button -->
+          <button
+            id="demo-send-btn"
+            onclick="sendDemoMessage()"
+            class="w-full py-3 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-sky-400 text-white font-bold text-xs flex items-center justify-center gap-2 hover:opacity-95 active:scale-95 transition-all shadow-lg shadow-indigo-500/20"
+          >
+            <span class="material-symbols-outlined text-[16px]">lock</span>
+            <span>Send Privately to Inbox 🚀</span>
+          </button>
+
+          <!-- Security note -->
+          <div class="flex items-center justify-center gap-1.5 text-[10px] text-slate-400 text-center">
+            <span class="material-symbols-outlined text-[14px] text-emerald-400">verified_user</span>
+            <span>Smart Anti-Spam Protection • Zero IP Logging</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Simulated Live Inbox (7 Cols) -->
+      <div class="lg:col-span-7 space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-base font-bold text-white flex items-center gap-2">
+              <span class="material-symbols-outlined text-emerald-400 text-[20px]">mark_email_unread</span>
+              2. Explore the Live Anonymous Inbox
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">
+              Messages received in real-time. Click any card to preview double-blind replies or export story stickers.
+            </p>
+          </div>
+
+          <span id="demo-inbox-count" class="text-xs font-bold px-2.5 py-1 rounded-full bg-white/10 text-white font-mono">
+            6 Messages
+          </span>
+        </div>
+
+        <!-- Filter Chips -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
+          <button onclick="filterDemoInbox('all', this)" class="demo-inbox-filter px-3 py-1 rounded-full bg-white text-[#0B0E14] font-semibold active:scale-95 transition-all">All</button>
+          <button onclick="filterDemoInbox('confession', this)" class="demo-inbox-filter px-3 py-1 rounded-full glass-panel text-slate-300 font-semibold hover:text-white active:scale-95 transition-all">Confessions</button>
+          <button onclick="filterDemoInbox('crush', this)" class="demo-inbox-filter px-3 py-1 rounded-full glass-panel text-slate-300 font-semibold hover:text-white active:scale-95 transition-all">Crush</button>
+          <button onclick="filterDemoInbox('roast', this)" class="demo-inbox-filter px-3 py-1 rounded-full glass-panel text-slate-300 font-semibold hover:text-white active:scale-95 transition-all">Roast</button>
+          <button onclick="filterDemoInbox('compliment', this)" class="demo-inbox-filter px-3 py-1 rounded-full glass-panel text-slate-300 font-semibold hover:text-white active:scale-95 transition-all">Compliments</button>
+        </div>
+
+        <!-- Inbox Messages List -->
+        <div id="demo-messages-container" class="space-y-3">
+          <!-- Dynamically Rendered Via Script -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Story Sticker & Roulette Interactive Section -->
+    <div class="border-t border-white/10 pt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- 3D Roulette Showcase -->
+      <div class="glass-panel rounded-3xl p-6 border border-white/10 flex flex-col justify-between space-y-4">
+        <div class="space-y-3">
+          <div class="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center">
+            <span class="material-symbols-outlined text-[24px]">casino</span>
+          </div>
+          <h3 class="text-base font-bold text-white">3D Dice Roulette Prompt Generator</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Need inspiration for your next Instagram Story? Roll random categories across 14,000+ curated viral prompts.
+          </p>
+
+          <div class="demo-roulette-box p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+            <div class="flex items-center justify-between text-xs">
+              <span id="roulette-dice-vibe" class="font-bold text-amber-400 font-mono">🎲 Rolled: Spicy & Bold</span>
+              <span class="text-slate-500 text-[10px]">Pool #742</span>
+            </div>
+            <p id="roulette-dice-text" class="text-xs text-white italic">
+              "What is the most controversial opinion you hold that you'll defend to the death?"
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 pt-2">
+          <button onclick="rollDemoDice()" class="flex-1 py-2.5 rounded-full bg-amber-400 text-[#0B0E14] font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-amber-300 active:scale-95 transition-all shadow-md">
+            <span class="material-symbols-outlined text-[16px]">shuffle</span>
+            Roll Random Prompt
+          </button>
+          <a href="/dice.html" class="demo-glass-action-btn px-4 py-2.5 rounded-full glass-panel hover:bg-white/10 text-white font-semibold text-xs flex items-center gap-1 transition-all">
+            Full 3D App <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Story Sticker Preview Showcase -->
+      <div class="glass-panel rounded-3xl p-6 border border-white/10 flex flex-col justify-between space-y-4">
+        <div class="space-y-3">
+          <div class="w-10 h-10 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center">
+            <span class="material-symbols-outlined text-[24px]">photo_filter</span>
+          </div>
+          <h3 class="text-base font-bold text-white">Story Sticker Generator</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Export high-definition 9:16 story stickers ready to paste onto Instagram or TikTok stories.
+          </p>
+
+          <!-- Interactive Sticker Preview Box -->
+          <div id="sticker-preview-box" class="sticker-gradient-2 rounded-2xl p-5 text-center shadow-lg transition-all duration-300">
+            <div class="inline-block px-2.5 py-0.5 rounded-full bg-black/30 backdrop-blur-md text-white text-[10px] font-bold mb-2">
+              secretmsg.net/demo
+            </div>
+            <div class="bg-white text-[#0B0E14] rounded-xl p-3 shadow-md max-w-xs mx-auto">
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-indigo-600 block mb-0.5">Send honest TBH</span>
+              <p id="sticker-prompt-text" class="text-xs font-bold leading-tight">
+                "What's one thing you like about me that I might not know?"
+              </p>
+            </div>
+          </div>
+
+          <!-- Color gradient picker -->
+          <div class="flex items-center justify-center gap-2 pt-1">
+            <button onclick="setStickerTheme(1)" class="w-6 h-6 rounded-full sticker-gradient-1 border border-white/40 hover:scale-110 transition-transform" title="Sunset Coral"></button>
+            <button onclick="setStickerTheme(2)" class="w-6 h-6 rounded-full sticker-gradient-2 border border-white/40 hover:scale-110 transition-transform" title="Deep Indigo"></button>
+            <button onclick="setStickerTheme(3)" class="w-6 h-6 rounded-full sticker-gradient-3 border border-white/40 hover:scale-110 transition-transform" title="Neon Berry"></button>
+            <button onclick="setStickerTheme(4)" class="w-6 h-6 rounded-full sticker-gradient-4 border border-white/40 hover:scale-110 transition-transform" title="Electric Ocean"></button>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 pt-2">
+          <button onclick="simulateStickerDownload()" class="flex-1 py-2.5 rounded-full bg-purple-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-purple-600 active:scale-95 transition-all shadow-md">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            Simulate Story Export
+          </button>
+          <a href="/sticker-studio.html" class="demo-glass-action-btn px-4 py-2.5 rounded-full glass-panel hover:bg-white/10 text-white font-semibold text-xs flex items-center gap-1 transition-all">
+            Open Studio <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Message Detail & Double-Blind Reply Modal -->
+  <div id="demo-reply-modal" class="fixed inset-0 z-50 bg-[#0B0E14]/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass-panel border border-white/20 rounded-3xl p-6 max-w-sm w-full space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          <span id="modal-msg-vibe" class="text-xs font-bold text-white uppercase tracking-wider font-mono">Confession</span>
+        </div>
+        <button onclick="closeReplyModal()" class="text-slate-400 hover:text-white p-1">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="demo-modal-msg-box bg-white/5 rounded-2xl p-4 border border-white/10">
+        <p id="modal-msg-content" class="text-xs text-white leading-relaxed italic">
+          Message text goes here...
+        </p>
+        <span id="modal-msg-time" class="text-[10px] text-slate-500 font-mono block mt-2">Just now • Anonymous</span>
+      </div>
+
+      <div class="space-y-2">
+        <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Double-Blind Anonymous Reply</label>
+        <textarea
+          id="modal-reply-input"
+          rows="2"
+          placeholder="Send a private reply without knowing who sent it..."
+          class="w-full rounded-xl bg-white/5 border border-white/10 p-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 resize-none"
+        ></textarea>
+        <div class="text-[10px] text-slate-500 flex items-center gap-1">
+          <span class="material-symbols-outlined text-[12px] text-indigo-400">enhanced_encryption</span>
+          Zero-knowledge cryptographic token delivery.
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 pt-1">
+        <button onclick="sendDemoReply()" class="flex-1 py-2.5 bg-white text-[#0B0E14] font-bold text-xs rounded-full hover:bg-slate-100 transition-colors">
+          Send Blind Reply
+        </button>
+        <button onclick="closeReplyModal()" class="demo-modal-close-btn px-4 py-2.5 glass-panel text-slate-300 font-semibold text-xs rounded-full hover:text-white transition-colors">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persistent Sticky Call-to-Action Bar -->
+  <div class="demo-sticky-bar fixed bottom-0 left-0 right-0 z-40 bg-[#0B0E14]/95 backdrop-blur-xl border-t border-white/10 py-3 px-4">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="text-center sm:text-left">
+        <span class="text-xs font-bold text-white block">Ready to create your own link?</span>
+        <span class="text-[11px] text-slate-400">Get candid TBH messages on Instagram in 10 seconds. Free forever.</span>
+      </div>
+
+      <form onsubmit="handleDemoClaim(event)" class="flex items-center gap-2 w-full sm:w-auto justify-center">
+        <div class="relative">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 font-mono text-xs">@</span>
+          <input
+            id="demo-claim-input"
+            type="text"
+            minlength="4"
+            maxlength="30"
+            pattern="[a-zA-Z0-9_\-\.]{4,30}"
+            title="Username must be at least 4 characters"
+            placeholder="yourusername"
+            class="pl-7 pr-3 py-2 rounded-full bg-white/5 border border-white/15 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-white transition-all font-mono w-40"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          class="px-5 py-2 rounded-full bg-white text-[#0B0E14] font-bold text-xs hover:bg-slate-100 active:scale-95 transition-all shrink-0 shadow-md"
+        >
+          Claim Link
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Comprehensive Legal & Safety Footer -->
+  <footer class="border-t border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-[#07090D] py-12 mt-16 text-xs text-slate-600 dark:text-slate-400 transition-colors">
+    <div class="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="space-y-2">
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded-lg bg-slate-900 text-white dark:bg-white dark:text-[#0B0E14] flex items-center justify-center font-bold text-xs">S</div>
+          <span class="font-bold text-slate-900 dark:text-white">SecretMsg Demo</span>
+        </div>
+        <p class="text-[11px] text-slate-500 leading-relaxed">
+          Zero-knowledge anonymous Q&A platform with 14,000+ templates.
+        </p>
+      </div>
+
+      <div class="space-y-1.5">
+        <h5 class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px]">Trust & Safety</h5>
+        <ul class="space-y-1 text-[11px]">
+          <li><a href="/p/safety" class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-white transition-colors font-semibold">Safety Hub</a></li>
+          <li><a href="/p/child-safety-policy" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Child Safety Policy</a></li>
+          <li><a href="/p/community-guidelines" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Community Guidelines</a></li>
+          <li><a href="/p/resources" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Crisis Resources (988)</a></li>
+          <li><a href="/p/contact-us" class="text-rose-600 dark:text-rose-400 hover:text-rose-900 dark:hover:text-white transition-colors font-semibold">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="space-y-1.5">
+        <h5 class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px]">Legal Policies</h5>
+        <ul class="space-y-1 text-[11px]">
+          <li><a href="/p/privacy" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="/p/terms" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Terms of Service</a></li>
+          <li><a href="/p/cookies" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Cookies Policy</a></li>
+          <li><a href="/p/disclaimer" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <div class="space-y-1.5">
+        <h5 class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px]">Platform Links</h5>
+        <ul class="space-y-1 text-[11px]">
+          <li><a href="/" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Home Landing</a></li>
+          <li><a href="https://m.secretmsg.net" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Mobile Web App</a></li>
+          <li><a href="/dice.html" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">3D Dice Roulette</a></li>
+          <li><a href="/sticker-studio.html" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Sticker Studio</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for Demo Interactions -->
+  <script>
+    const DEMO_PROMPTS = [
+      { tag: "🤫 Confessions", text: "Send me an honest TBH. What is something you think about me but would never say out loud? 🫣" },
+      { tag: "💘 Crush & Flirt", text: "Who has a secret crush on me? Be completely honest 💕" },
+      { tag: "🌶️ Savage Roast", text: "Roast my whole aesthetic in one single sentence. Don't hold back 💀" },
+      { tag: "🌊 Deep & Real", text: "What is one memory with me that you will literally never forget?" },
+      { tag: "✨ Compliment", text: "What was your very first impression when we met for the first time?" },
+      { tag: "🔥 Spicy & Bold", text: "If we went to a party together, what chaotic situation would we end up in? 🌪️" }
+    ];
+
+    const INITIAL_MESSAGES = [
+      {
+        id: 1,
+        vibe: "confession",
+        vibeLabel: "🤫 Confession",
+        text: "I've had feelings for you since that road trip last summer, but never said anything because I didn't want to make things awkward between us.",
+        time: "12m ago",
+        read: false
+      },
+      {
+        id: 2,
+        vibe: "crush",
+        vibeLabel: "💘 Crush",
+        text: "Your laugh is genuinely the best thing about third period every single day. Just wanted you to know ✨",
+        time: "45m ago",
+        read: false
+      },
+      {
+        id: 3,
+        vibe: "roast",
+        vibeLabel: "🌶️ Roast",
+        text: "You spend 45 minutes fixing your hair in the morning just to wear a backwards baseball cap anyway 💀",
+        time: "2h ago",
+        read: true
+      },
+      {
+        id: 4,
+        vibe: "compliment",
+        vibeLabel: "✨ Compliment",
+        text: "You give the best advice in our whole circle. When everyone else is panicking, you always keep everyone grounded.",
+        time: "4h ago",
+        read: true
+      },
+      {
+        id: 5,
+        vibe: "deep",
+        vibeLabel: "🌊 Deep",
+        text: "What is one dream you gave up on that you still secretly think about late at night?",
+        time: "Yesterday",
+        read: true
+      },
+      {
+        id: 6,
+        vibe: "spicy",
+        vibeLabel: "🔥 Spicy",
+        text: "Who was the last person you almost kissed at that party? Don't dodge this one 👀",
+        time: "Yesterday",
+        read: true
+      }
+    ];
+
+    let currentMessages = [];
+    let activeVibe = "🤫 Confession";
+    let activeFilter = "all";
+    let promptIndex = 0;
+    let selectedMessageId = null;
+
+    // Load or initialize
+    function initDemo() {
+      const stored = localStorage.getItem('secretmsg_demo_msgs');
+      if (stored) {
+        try {
+          currentMessages = JSON.parse(stored);
+        } catch (e) {
+          currentMessages = [...INITIAL_MESSAGES];
+        }
+      } else {
+        currentMessages = [...INITIAL_MESSAGES];
+      }
+      renderMessages();
+    }
+
+    function saveDemoMessages() {
+      localStorage.setItem('secretmsg_demo_msgs', JSON.stringify(currentMessages));
+    }
+
+    function renderMessages() {
+      const container = document.getElementById('demo-messages-container');
+      const filtered = activeFilter === 'all' 
+        ? currentMessages 
+        : currentMessages.filter(m => m.vibe === activeFilter);
+
+      document.getElementById('demo-inbox-count').textContent = `${currentMessages.length} Messages`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="glass-panel p-8 rounded-2xl text-center text-slate-400 space-y-2">
+            <span class="material-symbols-outlined text-[32px] text-slate-600">inbox</span>
+            <p class="text-xs">No messages under this vibe filter.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(msg => `
+        <div class="demo-message-card glass-panel rounded-2xl p-4 border border-white/10 hover:border-indigo-500/40 transition-all cursor-pointer group space-y-2.5 ${msg.read ? 'opacity-85' : 'border-indigo-500/30'}" onclick="openReplyModal(${msg.id})">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="demo-msg-pill text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-indigo-300 font-mono">
+                ${msg.vibeLabel}
+              </span>
+              ${!msg.read ? '<span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-ping"></span>' : ''}
+            </div>
+            <div class="flex items-center gap-2 text-[10px] text-slate-500">
+              <span class="demo-msg-time">${msg.time}</span>
+              <button onclick="event.stopPropagation(); deleteDemoMessage(${msg.id})" class="text-slate-500 hover:text-rose-400 p-1" title="Delete Message">
+                <span class="material-symbols-outlined text-[14px]">delete</span>
+              </button>
+            </div>
+          </div>
+          <p class="demo-msg-text text-xs text-white leading-relaxed group-hover:text-indigo-100 transition-colors">
+            "${escapeHtml(msg.text)}"
+          </p>
+          <div class="demo-msg-footer flex items-center justify-between pt-1 border-t border-white/5 text-[10px] text-slate-400">
+            <span class="flex items-center gap-1 text-slate-400 group-hover:text-indigo-300 transition-colors">
+              <span class="material-symbols-outlined text-[12px]">reply</span> Click to reply double-blind
+            </span>
+            <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function shuffleDemoPrompt() {
+      promptIndex = (promptIndex + 1) % DEMO_PROMPTS.length;
+      const p = DEMO_PROMPTS[promptIndex];
+      document.getElementById('demo-prompt-tag').textContent = p.tag;
+      document.getElementById('demo-active-prompt').textContent = `"${p.text}"`;
+      document.getElementById('sticker-prompt-text').textContent = `"${p.text}"`;
+      showToast('Prompt shuffled from 14K roulette pool!');
+    }
+
+    function selectDemoVibe(btn, vibe) {
+      activeVibe = vibe;
+      document.querySelectorAll('.demo-vibe-chip').forEach(c => {
+        c.className = 'demo-vibe-chip px-3 py-1 rounded-full glass-panel text-slate-300 font-semibold whitespace-nowrap hover:text-white active:scale-95 transition-all';
+      });
+      btn.className = 'demo-vibe-chip px-3 py-1 rounded-full bg-white text-[#0B0E14] font-semibold whitespace-nowrap active:scale-95 transition-all';
+    }
+
+    function addEmoji(emoji) {
+      const textarea = document.getElementById('demo-input-text');
+      textarea.value += emoji;
+      document.getElementById('demo-char-count').textContent = textarea.value.length;
+      textarea.focus();
+    }
+
+    document.getElementById('demo-input-text').addEventListener('input', function() {
+      document.getElementById('demo-char-count').textContent = this.value.length;
+    });
+
+    function sendDemoMessage() {
+      const textarea = document.getElementById('demo-input-text');
+      const text = textarea.value.trim();
+      if (!text) {
+        showToast('Please type a message first!');
+        textarea.focus();
+        return;
+      }
+
+      const sendBtn = document.getElementById('demo-send-btn');
+      sendBtn.innerHTML = `<span class="material-symbols-outlined text-[16px] animate-spin">progress_activity</span> Encrypting with zero logs...`;
+      sendBtn.disabled = true;
+
+      setTimeout(() => {
+        const vibeKey = activeVibe.toLowerCase().includes('confession') ? 'confession'
+          : activeVibe.toLowerCase().includes('crush') ? 'crush'
+          : activeVibe.toLowerCase().includes('roast') ? 'roast'
+          : activeVibe.toLowerCase().includes('compliment') ? 'compliment'
+          : 'deep';
+
+        const newMsg = {
+          id: Date.now(),
+          vibe: vibeKey,
+          vibeLabel: activeVibe,
+          text: text,
+          time: 'Just now',
+          read: false
+        };
+
+        currentMessages.unshift(newMsg);
+        saveDemoMessages();
+        renderMessages();
+
+        textarea.value = '';
+        document.getElementById('demo-char-count').textContent = '0';
+        sendBtn.innerHTML = `<span class="material-symbols-outlined text-[16px]">lock</span> Send Privately to Inbox 🚀`;
+        sendBtn.disabled = false;
+
+        showToast('🚀 Delivered to simulated inbox!');
+      }, 500);
+    }
+
+    function filterDemoInbox(filter, btn) {
+      activeFilter = filter;
+      document.querySelectorAll('.demo-inbox-filter').forEach(b => {
+        b.className = 'demo-inbox-filter px-3 py-1 rounded-full glass-panel text-slate-300 font-semibold hover:text-white active:scale-95 transition-all';
+      });
+      btn.className = 'demo-inbox-filter px-3 py-1 rounded-full bg-white text-[#0B0E14] font-semibold active:scale-95 transition-all';
+      renderMessages();
+    }
+
+    function deleteDemoMessage(id) {
+      currentMessages = currentMessages.filter(m => m.id !== id);
+      saveDemoMessages();
+      renderMessages();
+      showToast('Message deleted permanently!');
+    }
+
+    function resetDemoData() {
+      currentMessages = [...INITIAL_MESSAGES];
+      saveDemoMessages();
+      renderMessages();
+      showToast('Demo data reset to default!');
+    }
+
+    function openReplyModal(id) {
+      const msg = currentMessages.find(m => m.id === id);
+      if (!msg) return;
+      msg.read = true;
+      saveDemoMessages();
+      renderMessages();
+
+      selectedMessageId = id;
+      document.getElementById('modal-msg-vibe').textContent = msg.vibeLabel;
+      document.getElementById('modal-msg-content').textContent = `"${msg.text}"`;
+      document.getElementById('modal-msg-time').textContent = `${msg.time} • Anonymous`;
+      document.getElementById('modal-reply-input').value = '';
+      document.getElementById('demo-reply-modal').classList.remove('hidden');
+    }
+
+    function closeReplyModal() {
+      document.getElementById('demo-reply-modal').classList.add('hidden');
+    }
+
+    function sendDemoReply() {
+      const input = document.getElementById('modal-reply-input').value.trim();
+      if (!input) {
+        showToast('Please type a reply first!');
+        return;
+      }
+      closeReplyModal();
+      showToast('🔒 Blind reply dispatched via encrypted token!');
+    }
+
+    function rollDemoDice() {
+      const vibes = [
+        { label: "Spicy & Bold", prompt: "What is the most chaotic rumor that ever spread about you?" },
+        { label: "Crush & Flirt", prompt: "Rate my personality from 1 to 10 and give one honest reason why." },
+        { label: "Savage Roast", prompt: "What is one habit of mine that lowkey annoys everyone around me?" },
+        { label: "Deep & Real", prompt: "If you could change one decision from your past year, what would it be?" },
+        { label: "Confessions", prompt: "Have you ever told a white lie to protect my feelings? What was it?" }
+      ];
+      const pick = vibes[Math.floor(Math.random() * vibes.length)];
+      document.getElementById('roulette-dice-vibe').textContent = `🎲 Rolled: ${pick.label}`;
+      document.getElementById('roulette-dice-text').textContent = `"${pick.prompt}"`;
+      showToast('New prompt rolled from roulette engine!');
+    }
+
+    function setStickerTheme(idx) {
+      const box = document.getElementById('sticker-preview-box');
+      box.className = `sticker-gradient-${idx} rounded-2xl p-5 text-center shadow-lg transition-all duration-300`;
+    }
+
+    function simulateStickerDownload() {
+      showToast('📸 Story sticker generated in 1080x1920 (Demo Simulation)');
+    }
+
+    function handleDemoClaim(e) {
+      e.preventDefault();
+      const rawInput = document.getElementById('demo-claim-input').value;
+      const val = window.SecretMsgSanitize ? window.SecretMsgSanitize.validateUsername(rawInput) : {
+        isValid: rawInput.trim().length >= 4,
+        error: rawInput.trim().length < 4 ? 'Username must be at least 4 characters long.' : null,
+        value: rawInput.trim()
+      };
+      if (!val.isValid) {
+        showToast(val.error || 'Username must be at least 4 characters long.');
+        return;
+      }
+      window.location.href = `/${val.value}`;
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('demo-toast');
+      document.getElementById('demo-toast-msg').textContent = msg;
+      toast.classList.remove('translate-y-[-100px]', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('translate-y-[-100px]', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 2500);
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', initDemo);
+  </script>
+</body>
+</html>

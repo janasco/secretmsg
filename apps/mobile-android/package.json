@@ -1,0 +1,28 @@
+{
+  "name": "@secretmsg/mobile-android",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SecretMsg Android Mobile Application built with Capacitor",
+  "author": "janasco <janasco@duck.com>",
+  "license": "MIT",
+  "scripts": {
+    "sync:content": "node -e \"require('fs').cpSync('../../site/public', './www', { recursive: true })\"",
+    "sync": "npm run sync:content && cap sync android",
+    "build:apk": "npm run sync && cd android && ./gradlew assembleDebug",
+    "open": "cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/app": "^6.0.3",
+    "@capacitor/clipboard": "^6.0.3",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/haptics": "^6.0.3",
+    "@capacitor/push-notifications": "^6.0.5",
+    "@capacitor/share": "^6.0.4",
+    "@capacitor/splash-screen": "^6.0.4",
+    "@capacitor/status-bar": "^6.0.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2"
+  }
+}

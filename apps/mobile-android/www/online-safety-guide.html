@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <title>Our Guide to Online Safety - SecretMsg</title>
+  <meta name="description" content="Comprehensive Guide to Online Safety, digital privacy tips, dealing with uncomfortable messages, and SecretMsg official procedures for law enforcement information requests."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/common.css"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = (saved === 'dark' || saved === 'light') ? (saved === 'dark') : prefersDark;
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="/js/theme.js"></script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-white selection:text-[#0B0E14]">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/p/safety" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#0B0E14] font-black text-sm shadow-md group-hover:scale-105 transition-transform">
+          S
+        </div>
+        <span class="font-bold text-lg text-white tracking-tight">SecretMsg</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">Safety Guide</span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme" aria-label="Toggle Theme">
+          <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+        <a href="https://m.secretmsg.net" class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/10 hover:bg-white hover:text-[#0B0E14] transition-all text-slate-200">
+          <span class="material-symbols-outlined text-[16px]">smartphone</span>
+          Open Web App
+        </a>
+        <a href="/p/safety" class="px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span> Safety Center
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
+    <!-- Header Banner -->
+    <div class="mb-10 text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-300 text-xs font-semibold mb-4 shadow-sm">
+        <span class="material-symbols-outlined text-[15px] text-emerald-600 dark:text-emerald-400">menu_book</span>
+        <span>Practical Guidelines • Community Wellness • Legal Protocols</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+        Our Guide to Online Safety
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
+        SecretMsg is built for authentic, uplifting connections with friends. Here is our complete guide on keeping your anonymous Q&amp;A fun, protecting your personal privacy, and our formal procedures for law enforcement information requests.
+      </p>
+    </div>
+
+    <!-- Quick Actions Banner -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10 text-xs">
+      <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+        <span class="material-symbols-outlined text-rose-400 text-[22px]">block</span>
+        <strong class="text-white block font-semibold">1-Tap Block &amp; Remove</strong>
+        <p class="text-slate-400 text-[11px] leading-relaxed">Remove uncomfortable messages immediately and forbid the sender from contacting you again.</p>
+      </div>
+      <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+        <span class="material-symbols-outlined text-amber-400 text-[22px]">campaign</span>
+        <strong class="text-white block font-semibold">See Something, Say Something</strong>
+        <p class="text-slate-400 text-[11px] leading-relaxed">Help friends by reporting abusive behavior directly to our 24/7 team at safety@secretmsg.net.</p>
+      </div>
+      <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+        <span class="material-symbols-outlined text-sky-400 text-[22px]">gavel</span>
+        <strong class="text-white block font-semibold">Law Enforcement Protocols</strong>
+        <p class="text-slate-400 text-[11px] leading-relaxed">Formal compliance pathways for statutory preservation, emergency disclosure, and warrants.</p>
+      </div>
+    </div>
+
+    <!-- Article Content -->
+    <article class="space-y-10 text-slate-300 text-sm leading-relaxed border-t border-white/10 pt-8">
+      <!-- Section 1 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">01</span> Staying Safe on SecretMsg: We’re Here for You
+        </h2>
+        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+          We created SecretMsg as a place where you can foster authentic connections with friends, ask questions, reply in public or private, and get to be your true self. But attacking, intimidating, or being unkind is never okay. Stopping abuse is a team effort.
+        </p>
+        <div class="space-y-2 text-xs sm:text-sm text-slate-400">
+          <p>
+            <strong class="text-white">Keeping Users Safe:</strong> Keeping our community safe is our number one priority. Our automated pre-delivery moderation filters messages for toxicity before they reach inboxes. Additionally, our dedicated safety team is available 24/7 at <a href="mailto:safety@secretmsg.net" class="text-emerald-400 underline font-mono">safety@secretmsg.net</a> to investigate reports and combat harassment.
+          </p>
+          <p>
+            <strong class="text-white">See Something, Say Something:</strong> If you see a friend receiving abusive comments or see inappropriate prompts, speak up! Report the abuse directly within the app or email our safety team right away. We review every situation and take swift remedial action.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">02</span> What to Do If a Message Makes You Uncomfortable
+        </h2>
+        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+          While we do our best to filter out negativity, an unexpected message may occasionally leave you feeling uneasy or threatened. If that happens, take these steps immediately:
+        </p>
+        <div class="space-y-3 pt-1 text-xs sm:text-sm">
+          <div class="glass-panel p-4 rounded-xl border border-white/10 flex items-start gap-3">
+            <span class="material-symbols-outlined text-rose-400 text-[20px] shrink-0 mt-0.5">delete_forever</span>
+            <div class="space-y-1">
+              <strong class="text-white block">1. Block the Sender &amp; Delete the Message</strong>
+              <p class="text-slate-400 text-xs leading-relaxed">Tap the Report icon (⚠) on the message card and select "Block Sender". The message is instantly expunged from your board, and the sender cannot submit messages to your link again.</p>
+            </div>
+          </div>
+          <div class="glass-panel p-4 rounded-xl border border-white/10 flex items-start gap-3">
+            <span class="material-symbols-outlined text-indigo-400 text-[20px] shrink-0 mt-0.5">flag</span>
+            <div class="space-y-1">
+              <strong class="text-white block">2. Report the Message to Team SecretMsg</strong>
+              <p class="text-slate-400 text-xs leading-relaxed">Reporting the card alerts our moderation team to evaluate the sender's session for platform-wide throttling or bans.</p>
+            </div>
+          </div>
+          <div class="glass-panel p-4 rounded-xl border border-white/10 flex items-start gap-3">
+            <span class="material-symbols-outlined text-sky-400 text-[20px] shrink-0 mt-0.5">volunteer_activism</span>
+            <div class="space-y-1">
+              <strong class="text-white block">3. Access Support &amp; Crisis Resources</strong>
+              <p class="text-slate-400 text-xs leading-relaxed">Visit our <a href="/p/resources" class="text-sky-400 underline">Resources</a> page for free, confidential mental health and anti-bullying hotlines available 24/7.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">03</span> Practical Tips for Staying Safe &amp; Protecting Privacy
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-emerald-400 text-[16px]">visibility_off</span>
+              Protect Personal Information
+            </strong>
+            <p class="text-slate-400 leading-relaxed">Never share your home address, phone number, school location, or private contact details in public prompt cards or replies.</p>
+          </div>
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-indigo-400 text-[16px]">pause_circle</span>
+              Think Before You Share
+            </strong>
+            <p class="text-slate-400 leading-relaxed">Pause and consider whether you are comfortable with everyone seeing what you publish to social media or your public board.</p>
+          </div>
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-amber-400 text-[16px]">favorite</span>
+              Be Kind &amp; Respectful
+            </strong>
+            <p class="text-slate-400 leading-relaxed">Remember there is a real human being reading your message. Keep the energy fun, kind, and uplifting.</p>
+          </div>
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-rose-400 text-[16px]">tune</span>
+              Use Settings &amp; Safety Controls
+            </strong>
+            <p class="text-slate-400 leading-relaxed">Use our Safety Controls in Settings to pause your link, set keyword filters, or execute a 1-tap complete account wipeout at any time.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">04</span> SecretMsg Procedures for Law Enforcement &amp; Information Requests
+        </h2>
+        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+          The safety of our users and community is paramount. SecretMsg cooperates fully with law enforcement agencies in accordance with applicable laws, constitutional standards, and statutory due process.
+        </p>
+
+        <div class="space-y-3 text-xs sm:text-sm text-slate-400">
+          <!-- Item 1 -->
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold">Reporting Witnessed Illegal Activity</strong>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              If you witness or receive content on SecretMsg that constitutes illegal or criminal activity, report it via the in-app Report function and email our safety team immediately at <a href="mailto:safety@secretmsg.net" class="text-emerald-400 underline font-mono">safety@secretmsg.net</a>. Our team evaluates reports, contacts relevant authorities when necessary, bans offending actors, and secures records.
+            </p>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold">Information Release Standards &amp; Search Warrant Requirement</strong>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              SecretMsg maintains limited user content data and discloses such data pursuant to proper legal process in accordance with <strong>18 U.S.C. § 2703(a)</strong> and <em>United States v. Warshak</em>, 631 F.3d 266 (6th Cir. 2010). In order to produce the contents of communications, SecretMsg requires a valid search warrant issued upon a finding of probable cause by a court of competent jurisdiction.
+            </p>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold">Preservation Requests (18 U.S.C. § 2703(f))</strong>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              SecretMsg will honor official preservation requests submitted by law enforcement to <a href="mailto:lawenforcement@secretmsg.net" class="text-emerald-400 underline font-mono">lawenforcement@secretmsg.net</a>. In accordance with 18 U.S.C. § 2703(f), we will preserve temporarily available stored records for an active account for a period of up to 180 days pending issuance of a formal court order or warrant.
+            </p>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold">Emergency Disclosure Requests (18 U.S.C. §§ 2702(b)(8) &amp; 2702(c)(4))</strong>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              Pursuant to 18 U.S.C. §§ 2702(b)(8) and 2702(c)(4), SecretMsg is permitted to disclose information voluntarily to federal, state, or local government authorities when we believe in good faith that an emergency involving imminent danger of death or serious physical injury to any person requires disclosure without delay.
+            </p>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold">User Consent Disclosures (18 U.S.C. § 2703(c)(1)(C))</strong>
+            <p class="text-slate-300 text-xs leading-relaxed">
+              In accordance with 18 U.S.C. § 2703(c)(1)(C), SecretMsg may disclose records based on verified user consent obtained by law enforcement, provided that sufficient corroborating information verifies the person providing consent is the verified creator of the account.
+            </p>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="glass-panel p-4 rounded-xl border border-white/10 space-y-1">
+            <strong class="text-white block font-semibold">Requirements for Law Enforcement Communications</strong>
+            <p class="text-slate-300 text-xs leading-relaxed mb-2">
+              SecretMsg accepts out-of-state legal process (subpoenas, court orders, search warrants, and emergency requests) without requiring domestication. All requests submitted by law enforcement must meet the following criteria:
+            </p>
+            <ul class="list-disc list-inside space-y-1 text-slate-400 text-xs pl-2">
+              <li>Transmitted from an official government email domain to <a href="mailto:lawenforcement@secretmsg.net" class="text-emerald-400 underline font-mono">lawenforcement@secretmsg.net</a>.</li>
+              <li>Include the subject line: <code class="text-slate-200 font-mono text-[11px] bg-white/10 px-1.5 py-0.5 rounded">"Request by Law Enforcement"</code>.</li>
+              <li>Contain the officer's full name, title, badge/serial number, agency, and direct contact details.</li>
+              <li>Identify the specific SecretMsg link (<code class="text-slate-300 font-mono text-[11px]">secretmsg.net/[handle]</code>) and include relevant screenshots or dates.</li>
+              <li>Be drafted in the English language.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="text-slate-500 font-mono text-xs">05</span> Contact Safety &amp; Trust Operations
+        </h2>
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs mt-3">
+          <div>
+            <span class="font-bold text-white block">Dedicated Safety &amp; Law Enforcement Contacts</span>
+            <span class="text-slate-400 font-mono">safety@secretmsg.net • lawenforcement@secretmsg.net</span>
+          </div>
+          <a href="mailto:safety@secretmsg.net" class="px-4 py-2 bg-emerald-600 text-white font-semibold rounded-full hover:bg-emerald-500 transition-colors text-center shrink-0">
+            Contact Safety Team
+          </a>
+        </div>
+      </section>
+    </article>
+
+    <!-- Footer Links -->
+    <div class="mt-14 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-4">
+        <a href="/p/safety" class="hover:text-white transition-colors">Safety Hub</a>
+        <a href="/p/approach-to-safety" class="hover:text-white transition-colors">Approach to Safety</a>
+        <a href="/p/child-safety-policy" class="hover:text-white transition-colors">Child Safety Policy</a>
+        <a href="/p/community-guidelines" class="hover:text-white transition-colors">Community Guidelines</a>
+        <a href="/p/resources" class="hover:text-white transition-colors">Crisis Resources</a>
+      </div>
+      <span>© 2026 SecretMsg. All rights reserved.</span>
+    </div>
+  </main>
+</body>
+</html>

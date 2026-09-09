@@ -1,15 +1,35 @@
 {
   "appId": "net.secretmsg.app",
   "appName": "SecretMsg",
-  "webDir": "../web/dist",
+  "webDir": "www",
   "server": {
-    "url": "https://secretmsg.net",
+    "url": "https://m.secretmsg.net",
     "cleartext": false,
     "androidScheme": "https"
   },
   "android": {
     "allowMixedContent": false,
     "captureInput": true,
-    "webContentsDebuggingEnabled": false
+    "webContentsDebuggingEnabled": false,
+    "backgroundColor": "#0B0E14"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1500,
+      "launchAutoHide": true,
+      "launchFadeOutDuration": 300,
+      "backgroundColor": "#0B0E14",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0B0E14",
+      "overlaysWebView": false
+    },
+    "PushNotifications": {
+      "presentationOptions": ["badge", "sound", "alert"]
+    }
   }
 }

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <title>Frequently Asked Questions & Platform Guide - SecretMsg</title>
+  <meta name="description" content="Learn how to create your anonymous message link, send messages, manage your board, troubleshoot issues, and read our comprehensive FAQ."/>
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = (saved === 'dark' || saved === 'light') ? (saved === 'dark') : prefersDark;
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="js/theme.js"></script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-indigo-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#0B0E14] font-black text-sm shadow-md group-hover:scale-105 transition-transform">
+          S
+        </div>
+        <span class="font-bold text-lg text-white tracking-tight">SecretMsg</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-indigo-400 bg-indigo-950/70 px-2 py-0.5 rounded border border-indigo-500/30">FAQ & Guide</span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme" aria-label="Toggle Theme">
+          <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+        <a href="/login" class="px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors">
+          Log In
+        </a>
+        <a href="/" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-white text-[#0B0E14] hover:bg-slate-100 transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">add</span> Create Link
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-4xl mx-auto px-4 py-10 sm:py-14 space-y-14">
+    
+    <!-- Hero Header -->
+    <div class="text-center sm:text-left space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold">
+        <span class="material-symbols-outlined text-[14px]">help_center</span>
+        Complete Knowledge Base & Concept Guide
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight font-display">
+        Platform Guide & Frequently Asked Questions
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base max-w-2xl leading-relaxed">
+        Everything you need to know about creating your link, sending anonymous messages, managing your board, troubleshooting URLs, and our zero-knowledge privacy guarantee.
+      </p>
+
+      <!-- Quick Anchor Pills -->
+      <div class="flex flex-wrap gap-2 pt-3 text-xs">
+        <a href="#how-to-create" class="px-3 py-1.5 rounded-full glass-panel hover:bg-white/10 text-slate-300 transition-colors">How to Create Link</a>
+        <a href="#how-to-send" class="px-3 py-1.5 rounded-full glass-panel hover:bg-white/10 text-slate-300 transition-colors">How to Send</a>
+        <a href="#creative-ways" class="px-3 py-1.5 rounded-full glass-panel hover:bg-white/10 text-slate-300 transition-colors">Creative Use Cases</a>
+        <a href="#manage-board" class="px-3 py-1.5 rounded-full glass-panel hover:bg-white/10 text-slate-300 transition-colors">Manage Your Board</a>
+        <a href="#troubleshooting" class="px-3 py-1.5 rounded-full glass-panel hover:bg-white/10 text-slate-300 transition-colors">Troubleshooting</a>
+        <a href="#faq" class="px-3 py-1.5 rounded-full bg-white/10 text-white font-bold hover:bg-white/20 transition-colors">11 Core FAQs</a>
+      </div>
+    </div>
+
+    <!-- Section 1: How to Create Your Anonymous Message Link -->
+    <section id="how-to-create" class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold">
+          1
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            How to Create Your Anonymous Message Link
+          </h2>
+          <p class="text-xs text-slate-400">Getting started takes less than a minute:</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2">
+          <div class="flex items-center gap-2 text-white font-bold">
+            <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[11px] font-mono">1</span>
+            Open secretmsg.net
+          </div>
+          <p class="text-slate-400 leading-relaxed">
+            Open <strong class="text-white">secretmsg.net</strong> in your browser (Chrome recommended on all devices).
+          </p>
+        </div>
+
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2">
+          <div class="flex items-center gap-2 text-white font-bold">
+            <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[11px] font-mono">2</span>
+            Enter your display name
+          </div>
+          <p class="text-slate-400 leading-relaxed">
+            Enter your display name so friends and followers know whose link it is.
+          </p>
+        </div>
+
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2">
+          <div class="flex items-center gap-2 text-white font-bold">
+            <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[11px] font-mono">3</span>
+            Set a password
+          </div>
+          <p class="text-slate-400 leading-relaxed">
+            Set a secure password — you will use this to log in and access your private board from any device at any time.
+          </p>
+        </div>
+
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2">
+          <div class="flex items-center gap-2 text-white font-bold">
+            <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[11px] font-mono">4</span>
+            Generate Your Link
+          </div>
+          <p class="text-slate-400 leading-relaxed">
+            Click <strong>Create Your Anonymous Message Link</strong> — your unique secret message URL is generated instantly.
+          </p>
+        </div>
+
+        <div class="sm:col-span-2 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-transparent rounded-2xl p-4 border border-indigo-500/20 space-y-2">
+          <div class="flex items-center gap-2 text-indigo-300 font-bold">
+            <span class="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-[11px] font-mono text-indigo-300">5</span>
+            Share Your Link Everywhere
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            Share your link on Instagram Stories, WhatsApp Status, Facebook, X (Twitter), or anywhere you like. Once your link is live, people can send you anonymous messages at any time. Only you can see them on your private message board!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: How to Send an Anonymous Message -->
+    <section id="how-to-send" class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+          2
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            How to Send an Anonymous Message
+          </h2>
+          <p class="text-xs text-slate-400">Sending an anonymous message is even easier than creating one:</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2">
+          <div class="text-emerald-400 font-bold flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px]">link</span>
+            Step 1: Open Link
+          </div>
+          <p class="text-slate-400 leading-relaxed">
+            Open the secret message link shared by your friend on Instagram, WhatsApp, or Twitter.
+          </p>
+        </div>
+
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2">
+          <div class="text-emerald-400 font-bold flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px]">edit_note</span>
+            Step 2: Type Message
+          </div>
+          <p class="text-slate-400 leading-relaxed">
+            Type your message in the text box (up to 80 words / 300 characters). You can insert emojis or choose vibes.
+          </p>
+        </div>
+
+        <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2">
+          <div class="text-emerald-400 font-bold flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px]">send</span>
+            Step 3: Tap Send
+          </div>
+          <p class="text-slate-400 leading-relaxed">
+            Tap Send — your message is delivered instantly and your identity is never revealed.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-3 bg-emerald-950/30 border border-emerald-500/30 rounded-2xl text-xs text-emerald-300 flex items-center gap-2">
+        <span class="material-symbols-outlined text-[20px]">verified_user</span>
+        <span><strong>No sign-up, no login, no account required.</strong> Just open, type, and send your anonymous message.</span>
+      </div>
+    </section>
+
+    <!-- Section 3: Creative Ways to Use Anonymous Messages -->
+    <section id="creative-ways" class="space-y-4">
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          Creative Ways to Use Anonymous Messages
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">Here are popular ways people use SecretMsg every day:</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
+        <div class="glass-panel p-5 rounded-2xl border border-white/10 space-y-2 hover:border-indigo-500/40 transition-colors">
+          <div class="text-2xl">📸</div>
+          <div class="font-bold text-sm text-white">Instagram Stories</div>
+          <p class="text-slate-400 leading-relaxed">
+            Add your secret message link to your story sticker and let followers send you anonymous questions, hot takes, or compliments.
+          </p>
+        </div>
+
+        <div class="glass-panel p-5 rounded-2xl border border-white/10 space-y-2 hover:border-emerald-500/40 transition-colors">
+          <div class="text-2xl">💬</div>
+          <div class="font-bold text-sm text-white">WhatsApp Status</div>
+          <p class="text-slate-400 leading-relaxed">
+            Share your anonymous message link on your WhatsApp status and discover what your contacts really think about you.
+          </p>
+        </div>
+
+        <div class="glass-panel p-5 rounded-2xl border border-white/10 space-y-2 hover:border-amber-500/40 transition-colors">
+          <div class="text-2xl">🎉</div>
+          <div class="font-bold text-sm text-white">Event Feedback</div>
+          <p class="text-slate-400 leading-relaxed">
+            Collect honest, unfiltered feedback after meetups, community workshops, podcast episodes, or team hackathons.
+          </p>
+        </div>
+
+        <div class="glass-panel p-5 rounded-2xl border border-white/10 space-y-2 hover:border-sky-500/40 transition-colors">
+          <div class="text-2xl">🎓</div>
+          <div class="font-bold text-sm text-white">Classroom Q&A</div>
+          <p class="text-slate-400 leading-relaxed">
+            Teachers, professors, and study leaders can let students ask candid questions without fear of peer social pressure.
+          </p>
+        </div>
+
+        <div class="sm:col-span-2 md:col-span-2 glass-panel p-5 rounded-2xl border border-white/10 space-y-2 hover:border-purple-500/40 transition-colors">
+          <div class="text-2xl">🌱</div>
+          <div class="font-bold text-sm text-white">Self-Improvement & Candid Honest TBHs</div>
+          <p class="text-slate-400 leading-relaxed">
+            Ask your personal and professional network for candid constructive opinions. Anonymity strips away social friction and encourages truthful, empowering answers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Manage Your Secret Msg Board -->
+    <section id="manage-board" class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
+      <div>
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          Manage Your Secret Msg Board
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">
+          Once your board is created, you have full control through your Profile page (<a href="/profile.html" class="text-indigo-400 hover:underline">secretmsg.net/profile</a>). Here is what you can do:
+        </p>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3">
+          <span class="material-symbols-outlined text-indigo-400 text-[20px] shrink-0 mt-0.5">login</span>
+          <div>
+            <strong class="text-white block font-bold">Login:</strong>
+            <span class="text-slate-300">Visit <a href="/login" class="text-indigo-400 font-mono underline">secretmsg.net/login</a>, enter your board link (slug) and password to access your account from any device at any time.</span>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3">
+          <span class="material-symbols-outlined text-indigo-400 text-[20px] shrink-0 mt-0.5">link</span>
+          <div>
+            <strong class="text-white block font-bold">View your board link:</strong>
+            <span class="text-slate-300">Your profile shows your unique anonymous message link (e.g. <code>secretmsg.net/yourname</code>) so you can copy and share it anytime with 1 tap.</span>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3">
+          <span class="material-symbols-outlined text-indigo-400 text-[20px] shrink-0 mt-0.5">badge</span>
+          <div>
+            <strong class="text-white block font-bold">Change your display name:</strong>
+            <span class="text-slate-300">Update the name shown on your public message board directly from your profile settings whenever you like.</span>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3">
+          <span class="material-symbols-outlined text-indigo-400 text-[20px] shrink-0 mt-0.5">key</span>
+          <div>
+            <strong class="text-white block font-bold">Change your password:</strong>
+            <span class="text-slate-300">Set a new password from the Profile page under the Change Password section (minimum 6 characters) — no current password required. Your new password takes effect immediately.</span>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-rose-950/20 border border-rose-500/30 flex items-start gap-3">
+          <span class="material-symbols-outlined text-rose-400 text-[20px] shrink-0 mt-0.5">delete_forever</span>
+          <div>
+            <strong class="text-rose-300 block font-bold">Delete your account (Danger Zone):</strong>
+            <span class="text-slate-300">Permanently delete your board and all received messages from the Danger Zone in your profile. This action cannot be undone.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-xs text-slate-400 pt-1">
+        💡 To access your profile, click <strong>My Profile</strong> in the navigation bar while logged in. If you are logged out, click <a href="/login" class="text-white font-bold underline">Login</a> in the header to sign back in.
+      </div>
+    </section>
+
+    <!-- Section 5: Troubleshooting -->
+    <section id="troubleshooting" class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
+      <div>
+        <div class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 uppercase tracking-wider mb-2">
+          <span class="material-symbols-outlined text-[18px]">build</span>
+          Fix Common Issues
+        </div>
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          Troubleshooting: Why Your Secret Msg URL Might Not Work
+        </h2>
+        <p class="text-xs text-slate-400 mt-1">If your anonymous message link won't open or looks broken, try these simple fixes:</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+          <div class="font-bold text-white flex items-center gap-2">
+            <span class="material-symbols-outlined text-amber-400 text-[18px]">cookie</span>
+            1. Enable cookies
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            In Chrome go to <strong class="text-white">Settings → Site settings → Cookies</strong> and set to <strong>Allow</strong>. Essential cookies are required to authenticate your board and verify bot prevention.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+          <div class="font-bold text-white flex items-center gap-2">
+            <span class="material-symbols-outlined text-sky-400 text-[18px]">browser_updated</span>
+            2. Use Chrome
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            We recommend Chrome on Android and iPhone for the best compatibility and smoothest local message storage.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+          <div class="font-bold text-white flex items-center gap-2">
+            <span class="material-symbols-outlined text-emerald-400 text-[18px]">cached</span>
+            3. Clear your cache
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            A stale browser cache can sometimes break the page. Clear your browser cache and reload the link.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+          <div class="font-bold text-white flex items-center gap-2">
+            <span class="material-symbols-outlined text-purple-400 text-[18px]">link</span>
+            4. Check the URL
+          </div>
+          <p class="text-slate-300 leading-relaxed">
+            Copy the exact link from your secret message board (e.g. <code>secretmsg.net/yourname</code>) rather than typing it manually.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Comprehensive 11 Frequently Asked Questions -->
+    <section id="faq" class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 uppercase tracking-wider mb-2">
+            <span class="material-symbols-outlined text-[18px]">question_answer</span>
+            Knowledge Base
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        <!-- Quick search in FAQs -->
+        <div class="relative w-full sm:w-64">
+          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 material-symbols-outlined text-[16px]">search</span>
+          <input
+            id="faq-search"
+            type="text"
+            oninput="searchFaq(this.value)"
+            placeholder="Search FAQs..."
+            class="w-full pl-9 pr-3 py-2 rounded-full bg-white/5 border border-white/15 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+          />
+        </div>
+      </div>
+
+      <!-- FAQ Accordion List -->
+      <div class="space-y-3" id="faq-list">
+        
+        <!-- Q1 -->
+        <details class="faq-item group glass-panel rounded-2xl border border-white/10 p-4 transition-colors" open>
+          <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+            <span>What is a Secret Msg?</span>
+            <span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <p class="text-xs text-slate-300 leading-relaxed mt-3 pt-3 border-t border-white/10">
+            A secret msg is a unique URL tied to your profile on secretmsg.net. Share it with anyone — they can open it and send you an anonymous message without logging in or creating an account. All messages are delivered privately to your board and only you can read them.
+          </p>
+        </details>
+
+        <!-- Q2 -->
+        <details class="faq-item group glass-panel rounded-2xl border border-white/10 p-4 transition-colors" open>
+          <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+            <span>Is Secret Msg really anonymous?</span>
+            <span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <p class="text-xs text-slate-300 leading-relaxed mt-3 pt-3 border-t border-white/10">
+            Yes, completely. Secret Msg does not collect or store any identifying information about message senders — no IP address, no device fingerprint, no login data. Your anonymous messages are truly private and untraceable.
+          </p>
+        </details>
+
+        <!-- Q3 -->
+        <details class="faq-item group glass-panel rounded-2xl border border-white/10 p-4 transition-colors">
+          <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+            <span>How do I log in to my Secret Msg board?</span>
+            <span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <p class="text-xs text-slate-300 leading-relaxed mt-3 pt-3 border-t border-white/10">
+            Go to <a href="/login" class="text-indigo-400 underline font-mono">secretmsg.net/login</a>, enter your board's unique link (or slug) and the password you set when you created it. You will be redirected to your profile where you can view settings and manage your board.
+          </p>
+        </details>
+
+        <!-- Q4 -->
+        <details class="faq-item group glass-panel rounded-2xl border border-white/10 p-4 transition-colors">
+          <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+            <span>How do I change my Secret Msg password?</span>
+            <span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <p class="text-xs text-slate-300 leading-relaxed mt-3 pt-3 border-t border-white/10">
+            Log in to your account and go to your Profile page. Scroll to the Change Password section, enter your new password (minimum 6 characters), and click Change Password. Your new password takes effect immediately.
+          </p>
+        </details>
+
+        <!-- Q5 -->
+        <details class="faq-item group glass-panel rounded-2xl border border-white/10 p-4 transition-colors">
+          <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+            <span>How do I delete my Secret Msg account?</span>
+            <span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <p class="text-xs text-slate-300 leading-relaxed mt-3 pt-3 border-t border-white/10">
+            Log in and open your Profile page. Scroll to the Delete Account section at the bottom and click Delete My Account. This will permanently remove your board, all received anonymous messages, and your account data. This action cannot be undone.
+          </p>
+        </details>
+
+        <!-- Q6 -->
+        <details class="faq-item group glass-panel rounded-2xl border border-white/10 p-4 transition-colors">
+          <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+            <span>How do I send an anonymous message to someone?</span>
+            <span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <p class="text-xs text-slate-300 leading-relaxed mt-3 pt-3 border-t border-white/10">
+            Open the secret message link shared by your friend, type your message in the text box, and tap Send. No account, no sign-up, and no personal information is required. Your identity is never revealed to the link owner.
+          </p>
+        </details>
+
+        <!-- Q7 -->
+        <details class="faq-item group glass-panel rounded-2xl border border-white/10 p-4 transition-colors">
+          <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+            <span>Why is my Secret Msg link not working?</span>
+            <span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <p class="text-xs text-slate-300 leading-relaxed mt-3 pt-3 border-t border-white/10">
+            The most common cause is cookies being disabled. Open Chrome, go to Settings → Site settings → Cookies, and make sure they are turned on. Then reload your secret message link and try again.
+          </p>
+        </details>
+
+        <!-- Q8 -->
+        <details class="faq-item group glass-panel rounded-2xl border border-white/10 p-4 transition-colors">
+          <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+            <span>Can I use Secret Msg on Instagram?</span>
+            <span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <p class="text-xs text-slate-300 leading-relaxed mt-3 pt-3 border-t border-white/10">
+            Yes! Add your anonymous message link to your Instagram bio or story sticker. Followers can tap the link and send you anonymous messages instantly — no app download needed. You can also export custom 9:16 story stickers from our <a href="/sticker-studio.html" class="text-indigo-400 underline">Sticker Studio</a>.
+          </p>
+        </details>
+
+        <!-- Q9 -->
+        <details class="faq-item group glass-panel rounded-2xl border border-white/10 p-4 transition-colors">
+          <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+            <span>Why should I use Secret Msg?</span>
+            <span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <p class="text-xs text-slate-300 leading-relaxed mt-3 pt-3 border-t border-white/10">
+            Secret Msg is 100% free, takes under a minute to set up, and requires no sign-up for senders. You get a full profile to manage your board — change your name, update your password, view your link, and delete your account any time. It's one of the simplest ways to receive honest, anonymous messages from anyone, anywhere.
+          </p>
+        </details>
+
+        <!-- Q10 -->
+        <details class="faq-item group glass-panel rounded-2xl border border-white/10 p-4 transition-colors">
+          <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+            <span>Is Secret Msg safe to use?</span>
+            <span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <p class="text-xs text-slate-300 leading-relaxed mt-3 pt-3 border-t border-white/10">
+            Yes. You are always in full control — delete individual messages from your board, change your password, or permanently delete your entire account from your Profile page at any time. We continuously improve safety features to keep SecretMessage secure for everyone. Read our full <a href="/p/safety" class="text-emerald-400 underline">Safety Hub</a>.
+          </p>
+        </details>
+
+        <!-- Q11 -->
+        <details class="faq-item group glass-panel rounded-2xl border border-white/10 p-4 transition-colors">
+          <summary class="font-bold text-sm text-white cursor-pointer flex items-center justify-between list-none">
+            <span>What should I do if someone sends abusive anonymous messages?</span>
+            <span class="material-symbols-outlined text-[20px] text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <p class="text-xs text-slate-300 leading-relaxed mt-3 pt-3 border-t border-white/10">
+            Delete the abusive messages directly from your board. If the problem persists, go to your Profile page and use Delete Account to permanently remove your board. Because the service is fully anonymous, individual senders cannot be traced. For serious threats, please contact your local authorities or review our <a href="/p/contact-us" class="text-rose-400 underline">Urgent Abuse Escalations</a>.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Bottom CTA Card -->
+    <div class="glass-panel rounded-3xl p-8 border border-white/10 text-center space-y-4 shadow-2xl">
+      <h3 class="text-2xl font-black text-white tracking-tight font-display">
+        Ready to Receive Candid Anonymous Messages?
+      </h3>
+      <p class="text-xs sm:text-sm text-slate-400 max-w-md mx-auto">
+        Join thousands of creators sharing candid TBH links on Instagram & TikTok today. Takes less than a minute.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        <a href="/#create" class="px-7 py-3 rounded-full bg-white text-[#0B0E14] font-bold text-xs hover:bg-slate-100 active:scale-95 transition-all shadow-lg">
+          Create Your Link Now
+        </a>
+        <a href="/demo" class="px-7 py-3 rounded-full glass-panel hover:bg-white/10 text-white font-semibold text-xs active:scale-95 transition-all">
+          Try Interactive Demo
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Comprehensive Footer -->
+  <footer class="border-t border-white/10 bg-[#07090D] py-12 text-xs text-slate-500">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <a href="/p/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="/p/terms" class="hover:text-white transition-colors">Terms of Service</a>
+        <a href="/p/cookies" class="hover:text-white transition-colors">Cookies Policy</a>
+        <a href="/p/safety" class="hover:text-white transition-colors">Safety Hub</a>
+        <a href="/login" class="hover:text-white transition-colors">Board Login</a>
+      </div>
+      <span>© 2026 SecretMsg (`secretmsg.net`). All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    function searchFaq(query) {
+      const q = query.toLowerCase().trim();
+      const items = document.querySelectorAll('.faq-item');
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          item.style.display = '';
+          if (q) item.open = true;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

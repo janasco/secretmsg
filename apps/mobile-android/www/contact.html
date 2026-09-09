@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport"/>
+  <title>Contact Us & Support - SecretMsg</title>
+  <meta name="description" content="Contact SecretMsg. Direct departmental emails for General Inquiries, Safety & Abuse, Privacy & Data Requests, Law Enforcement, and DMCA notices."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('secretmsg_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = (saved === 'dark' || saved === 'light') ? (saved === 'dark') : prefersDark;
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+  <script src="js/theme.js"></script>
+</head>
+<body class="bg-[#0B0E14] text-white font-sans antialiased min-h-screen selection:bg-white selection:text-[#0B0E14]">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-[#0B0E14]/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-[#0B0E14] font-black text-sm shadow-md group-hover:scale-105 transition-transform">
+          S
+        </div>
+        <span class="font-bold text-lg text-white tracking-tight">SecretMsg</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 bg-white/10 px-2 py-0.5 rounded">Contact</span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button onclick="window.SecretMsgTheme.toggle()" class="w-8 h-8 rounded-full glass-panel hover:bg-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-colors" title="Toggle Theme">
+          <span data-theme-icon class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+        <a href="/" class="px-3 py-1.5 rounded-full text-xs font-semibold glass-panel text-slate-300 hover:text-white transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span> Home
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
+    <div class="mb-10 text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-slate-300 text-xs font-semibold mb-4">
+        <span class="material-symbols-outlined text-[14px]">mail</span>
+        Get in Touch
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+        Contact Us
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+        Have questions, feedback, or need urgent trust & safety assistance? Reach out to our dedicated channels below.
+      </p>
+    </div>
+
+    <!-- Department Channels Grid -->
+    <div class="space-y-4 mb-10">
+      <!-- Abuse / Urgent Safety -->
+      <div class="glass-panel rounded-2xl p-5 border border-rose-500/30 bg-rose-950/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+            <h3 class="font-bold text-white text-base">Trust, Abuse & Harassment</h3>
+          </div>
+          <p class="text-xs text-slate-400">For cyberbullying, harassment, threats, or urgent safety concerns. Monitored with top priority.</p>
+          <div class="text-xs font-mono text-rose-300">abuse@secretmsg.net</div>
+        </div>
+        <a href="mailto:abuse@secretmsg.net" class="px-4 py-2 bg-rose-500 text-white rounded-full text-xs font-bold text-center shrink-0 hover:bg-rose-600 transition-colors">
+          Report Abuse
+        </a>
+      </div>
+
+      <!-- Child Safety -->
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <h3 class="font-bold text-white text-base">Child Protection & Minor Safety</h3>
+          <p class="text-xs text-slate-400">Reports regarding underage users or any child endangerment concern.</p>
+          <div class="text-xs font-mono text-slate-300">safety@secretmsg.net</div>
+        </div>
+        <a href="mailto:safety@secretmsg.net" class="px-4 py-2 bg-white/10 text-white rounded-full text-xs font-bold text-center shrink-0 hover:bg-white/20 transition-colors">
+          Email Safety
+        </a>
+      </div>
+
+      <!-- Privacy & Data -->
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <h3 class="font-bold text-white text-base">Privacy & GDPR Data Requests</h3>
+          <p class="text-xs text-slate-400">Questions about our zero-log architecture or data verification inquiries.</p>
+          <div class="text-xs font-mono text-slate-300">privacy@secretmsg.net</div>
+        </div>
+        <a href="mailto:privacy@secretmsg.net" class="px-4 py-2 bg-white/10 text-white rounded-full text-xs font-bold text-center shrink-0 hover:bg-white/20 transition-colors">
+          Email Privacy
+        </a>
+      </div>
+
+      <!-- Legal & DMCA -->
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <h3 class="font-bold text-white text-base">Legal, DMCA & Law Enforcement</h3>
+          <p class="text-xs text-slate-400">Official court orders, DMCA copyright takedown notices, or regulatory inquiries.</p>
+          <div class="text-xs font-mono text-slate-300">legal@secretmsg.net • dmca@secretmsg.net</div>
+        </div>
+        <a href="mailto:legal@secretmsg.net" class="px-4 py-2 bg-white/10 text-white rounded-full text-xs font-bold text-center shrink-0 hover:bg-white/20 transition-colors">
+          Email Legal
+        </a>
+      </div>
+
+      <!-- General & Maintainer -->
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <h3 class="font-bold text-white text-base">General Inquiries & Feedback</h3>
+          <p class="text-xs text-slate-400">Maintained by the <strong>SecretMsg Team</strong>.</p>
+          <div class="text-xs font-mono text-indigo-300">hello@secretmsg.net</div>
+        </div>
+        <a href="mailto:hello@secretmsg.net" class="px-4 py-2 bg-white text-[#0B0E14] rounded-full text-xs font-bold text-center shrink-0 hover:bg-slate-100 transition-colors">
+          Contact Team
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-4">
+        <a href="/p/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="/p/terms" class="hover:text-white transition-colors">Terms of Service</a>
+        <a href="/p/safety" class="hover:text-white transition-colors">Safety Hub</a>
+      </div>
+      <span>© 2026 SecretMsg. All rights reserved.</span>
+    </div>
+  </main>
+</body>
+</html>
