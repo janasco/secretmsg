@@ -139,6 +139,20 @@ class ApiClient {
     return (user: user, token: token);
   }
 
+  // ---- Google Play billing (POST /api/billing/google/verify) ----
+  /// Hands the Play purchase token to the API, which verifies it with Google
+  /// before unlocking anything. Throws if verification fails so the caller can
+  /// leave the purchase pending and retry on the next launch.
+  static Future<void> verifyGooglePurchase({
+    required String purchaseToken,
+    required String productId,
+  }) async {
+    await _postJson('/api/billing/google/verify', {
+      'purchase_token': purchaseToken,
+      'product_id': productId,
+    }, auth: true);
+  }
+
   // ---- Web pairing (POST /api/auth/pair/create) ----
   /// Requests a short-lived, single-use code the owner types into
   /// secretmsg.net to open a view-only session in a browser.

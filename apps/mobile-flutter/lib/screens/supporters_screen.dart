@@ -1,4 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
+
+import '../api/billing.dart';
 
 import '../api/api_client.dart';
 import '../api/models.dart';
@@ -259,8 +264,91 @@ class _SupporterTile extends StatelessWidget {
   static const _months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 }
 
-class _SupportCta extends StatelessWidget {
+/// Supporter perks, purchased through Google Play Billing.
+///
+/// Nothing is unlocked on this side: [Billing] forwards the purchase token to
+/// the API, which verifies it with Google before granting the perk.
+class _SupportCta extends StatefulWidget {
   const _SupportCta();
+
+  @override
+  State<_SupportCta> createState() => _SupportCtaState();
+}
+
+class _SupportCtaState extends State<_SupportCta> {
+  StreamSubscription<BillingEvent>? _sub;
+  bool _loading = true;
+  String? _busyProductId;
+  String? _notice;
+
+  @override
+  void initState() {
+    super.initState();
+    _sub = Billing.events.listen(_onBillingEvent);
+    _init();
+  }
+
+  @override
+  void dispose() {
+    _sub?.cancel();
+    super.dispose();
+  }
+
+  Future<void> _init() async {
+    await Billing.init();
+    if (!mounted) return;
+    setState(() => _loading = false);
+  }
+
+  void _onBillingEvent(BillingEvent e) {
+    if (!mounted) return;
+    setState(() {
+      switch (e.stage) {
+        case BillingStage.pending:
+          _busyProductId = e.productId;
+          _notice = 'Waiting for Google Play to confirm your payment...';
+          break;
+        case BillingStage.granted:
+          _busyProductId = null;
+          _notice = '${BillingProducts.labelFor(e.productId)} unlocked. Thank you!';
+          break;
+        case BillingStage.cancelled:
+          _busyProductId = null;
+          _notice = null;
+          break;
+        case BillingStage.failed:
+          _busyProductId = null;
+          _notice = e.message ?? 'That purchase could not be completed.';
+          break;
+      }
+    });
+  }
+
+  Future<void> _buy(ProductDetails product) async {
+    setState(() {
+      _busyProductId = product.id;
+      _notice = null;
+    });
+    try {
+      await Billing.buy(product);
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _busyProductId = null;
+        _notice = e.toString();
+      });
+    }
+  }
+
+  Future<void> _restore() async {
+    setState(() => _notice = 'Checking for previous purchases...');
+    try {
+      await Billing.restore();
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _notice = e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -271,19 +359,114 @@ class _SupportCta extends StatelessWidget {
         border: Border.all(color: AppColors.accent.withOpacity(0.25)),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const Text(
             'Want to be on this wall?',
+            textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w800),
           ),
           const SizedBox(height: 4),
           const Text(
-            'Supporting keeps SecretMsg ad-free and fully private. Reach out to support@secretmsg.net to join.',
+            'Supporting keeps SecretMsg ad-free and fully private.',
             textAlign: TextAlign.center,
             style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12, height: 1.5),
           ),
+          const SizedBox(height: 14),
+          ..._buildStore(),
+          if (_notice != null) ...[
+            const SizedBox(height: 10),
+            Text(
+              _notice!,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Color(0xFFA5B4FC), fontSize: 11, height: 1.5),
+            ),
+          ],
         ],
       ),
+    );
+  }
+
+  List<Widget> _buildStore() {
+    if (_loading) {
+      return const [
+        Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 8),
+            child: SizedBox(height: 18, width: 18, child: CircularProgressIndicator(strokeWidth: 2)),
+          ),
+        ),
+      ];
+    }
+
+    // Sideloaded builds and misconfigured Play products both land here.
+    if (!Billing.isAvailable || Billing.products.isEmpty) {
+      return const [
+        Text(
+          'In-app purchases are not available on this device yet. '
+          'Reach out to support@secretmsg.net if you would like to support the project.',
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Color(0xFF64748B), fontSize: 11, height: 1.5),
+        ),
+      ];
+    }
+
+    final sorted = [...Billing.products]..sort((a, b) => a.rawPrice.compareTo(b.rawPrice));
+
+    return [
+      for (final p in sorted) ...[
+        _PerkRow(
+          title: BillingProducts.labelFor(p.id),
+          price: p.price,
+          busy: _busyProductId == p.id,
+          onBuy: _busyProductId == null ? () => _buy(p) : null,
+        ),
+        const SizedBox(height: 8),
+      ],
+      TextButton(
+        onPressed: _busyProductId == null ? _restore : null,
+        child: const Text(
+          'Restore purchases',
+          style: TextStyle(color: Color(0xFFA5B4FC), fontSize: 12),
+        ),
+      ),
+    ];
+  }
+}
+
+class _PerkRow extends StatelessWidget {
+  final String title;
+  final String price;
+  final bool busy;
+  final VoidCallback? onBuy;
+
+  const _PerkRow({
+    required this.title,
+    required this.price,
+    required this.busy,
+    required this.onBuy,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(color: Color(0xFFCBD5E1), fontSize: 13, fontWeight: FontWeight.w600),
+          ),
+        ),
+        SizedBox(
+          height: 34,
+          child: FilledButton(
+            onPressed: busy ? null : onBuy,
+            child: busy
+                ? const SizedBox(height: 14, width: 14, child: CircularProgressIndicator(strokeWidth: 2))
+                : Text(price, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+          ),
+        ),
+      ],
     );
   }
 }
