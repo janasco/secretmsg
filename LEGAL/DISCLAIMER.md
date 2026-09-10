@@ -39,8 +39,7 @@ We maintain a strict zero-tolerance standard against malicious behavior, cyberbu
 
 Every user is equipped with real-time proactive safety controls in **Settings**:
 1. **Pause Submissions**: Instantly freeze your board for 1 hour, 6 hours, 24 hours, or permanently to prevent anyone from submitting messages.
-2. **Filtered Words Blocklist**: Create custom filters for words, phrases, or emojis to block harmful incoming submissions.
-3. **Sender Device Blocking & Report**: Report any message directly from your inbox and block the sender device from ever sending to your board again.
+2. **Filtered Words Blocklist**: Create custom filters for words, phrases, or emojis. These are enforced server-side when a message is submitted, so filtered content is rejected before delivery.
+3. **Report & Delete**: Report any abusive message directly from your inbox for operator review, and delete unwanted messages from your inbox at any time.
 4. **Permanent Account Deletion**: Instant, cascade deletion of your entire account and all received messages.
 5. **Contact & Escalations**: Direct human escalations to `abuse@secretmsg.net` or `janasco@duck.com` with rapid turnaround.
-

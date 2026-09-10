@@ -43,8 +43,8 @@ You agree **NEVER** to use SecretMsg to:
 - You are responsible for keeping your access credentials safe.
 - **Recipient Safety Controls**: Account holders have full access to proactive safety controls in **Settings**:
   - **Pause Submissions**: You may pause your link for 1 hour, 6 hours, 24 hours, or indefinitely to stop receiving messages.
-  - **Filtered Words**: You may define custom blocklists of words, phrases, or emojis to filter incoming submissions.
-  - **Blocked Senders**: You may block abusive sender devices from sending further messages to your board.
+  - **Filtered Words**: You may define custom blocklists of words, phrases, or emojis. These are enforced on the server when a message is submitted, so filtered content is rejected before it can reach your inbox.
+  - **Reporting**: You may report abusive messages directly from your inbox or a message thread for review, and you may delete received messages from your inbox at any time.
 - **Account Deletion**: You retain full ownership and control over your account. You can permanently delete your account and all associated received messages at any time via your account settings. This action is irreversible.
 
 ---
@@ -57,6 +57,7 @@ You agree **NEVER** to use SecretMsg to:
   - **Viewer Hints ($5)**: Live traffic view counters for public boards.
   - **Sender Hints ($5)**: Clues and approximate device signals on received messages.
   - **Complete VIP Pass**: All perks combined (requires donor tier support).
+- On the web, checkout is handled by Polar.sh and perks are granted only after the payment webhook is signature-verified. On Android, perks are purchased through Google Play and granted only after the purchase is verified server-side.
 - Donations are voluntary gifts and do not constitute an investment, stock purchase, or guarantee of uninterrupted uptime.
 - Supporter features remain subject to all community guidelines and terms of conduct.
 

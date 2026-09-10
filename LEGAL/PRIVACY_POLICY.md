@@ -18,8 +18,8 @@ At SecretMsg (`secretmsg.net`), privacy is not an afterthought—it is the core 
 - **Email Address / Account Identifier**: Collected strictly to authenticate your account.
 - **Username / Public Handle**: The unique slug (minimum 4 characters) used to construct your sharing link (e.g. `secretmsg.net/yourname`).
 - **Received Messages**: The sanitized text of messages sent to your link.
-- **Supporter Status & Perks**: Flags indicating whether you have unlocked modular donation perks (Verified Badge, Viewer Hints, Sender Hints, or Complete VIP Pass).
-- **Client Preferences & Safety Controls**: Notification preferences, appearance preferences, custom hidden word blocklists, blocked sender lists, and link pause settings are stored directly in your local browser storage or associated securely with your board session.
+- **Supporter Status & Perks**: Flags indicating whether you have unlocked modular donation perks (Verified Badge, Viewer Hints, Sender Hints, or Complete VIP Pass), and, on Android, records of verified Google Play purchases used for entitlement and replay protection.
+- **Client Preferences & Safety Controls**: Notification preferences, appearance preferences, custom hidden word blocklists, and link pause settings are associated securely with your board session. Sender-hint preferences control whether coarse context clues (e.g. an approximate device type) are shown to you on received messages; they never reveal a sender's identity.
 
 ---
 
@@ -28,7 +28,7 @@ At SecretMsg (`secretmsg.net`), privacy is not an afterthought—it is the core 
 - We **never sell, rent, or trade** user data or email addresses to advertisers, data brokers, or third parties.
 - We **never display advertising tracking pixels** or third-party behavioral trackers.
 - We **never reveal the sender's identity to the recipient**.
-- We **never log or sell custom hidden word lists or blocked user lists**.
+- We **never log or sell custom hidden word lists**.
 
 ---
 
@@ -36,9 +36,9 @@ At SecretMsg (`secretmsg.net`), privacy is not an afterthought—it is the core 
 
 Information is used solely to:
 1. Deliver anonymous messages to the intended recipient's inbox.
-2. Authenticate account holders when logging in via email OTP.
+2. Authenticate account holders — via email one-time codes, or via pairing codes that open a read-only browser session.
 3. Defend the platform against bot floods, spam campaigns, and malicious exploitation.
-4. Process voluntary supporter donations via third-party open-source merchant providers (Polar.sh / Stripe).
+4. Verify supporter payments through signature-checked webhooks (Polar.sh) or server-side purchase verification (Google Play) before granting perks.
 
 ---
 
