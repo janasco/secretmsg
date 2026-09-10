@@ -9,6 +9,7 @@ import 'screens/login_screen.dart';
 import 'screens/send_screen.dart';
 import 'screens/static_screen.dart';
 import 'screens/sticker_studio_screen.dart';
+import 'screens/supporters_screen.dart';
 import 'screens/dice_screen.dart';
 import 'theme.dart';
 
@@ -88,7 +89,7 @@ class DeepLinkRouter {
         return const AppShell(initialTab: AppTab.settings);
       case 'supporters':
       case 'donors':
-        return const AppShell(initialTab: AppTab.supporters);
+        return const SupportersScreen();
       case 'sticker-studio':
       case 'sticker':
         return const StickerStudioScreen();
@@ -163,7 +164,7 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
         '/home': (_) => const LandingScreen(),
         '/inbox': (_) => const AppShell(initialTab: AppTab.inbox),
         '/settings': (_) => const AppShell(initialTab: AppTab.settings),
-        '/supporters': (_) => const AppShell(initialTab: AppTab.supporters),
+        '/supporters': (_) => const SupportersScreen(),
         '/sticker': (_) => const StickerStudioScreen(),
         '/dice': (_) => const DiceScreen(),
         '/login': (_) => const LoginScreen(),
@@ -190,7 +191,7 @@ class _Booting extends StatelessWidget {
         child: SizedBox(
           height: 22,
           width: 22,
-          child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF818CF8)),
+          child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.accentFaint),
         ),
       ),
     );

@@ -6,6 +6,7 @@ import 'package:secretmsg_mobile/screens/dice_screen.dart';
 import 'package:secretmsg_mobile/screens/landing_screen.dart';
 import 'package:secretmsg_mobile/screens/send_screen.dart';
 import 'package:secretmsg_mobile/screens/static_screen.dart';
+import 'package:secretmsg_mobile/screens/supporters_screen.dart';
 
 void main() {
   group('document pages are not mistaken for board handles', () {
@@ -52,13 +53,13 @@ void main() {
     test('inbox', () => expectsTab('https://secretmsg.net/inbox', AppTab.inbox));
     test('inbox on the app subdomain', () => expectsTab('https://app.secretmsg.net/inbox', AppTab.inbox));
     test('settings', () => expectsTab('https://secretmsg.net/settings', AppTab.settings));
-    test('supporters', () => expectsTab('https://secretmsg.net/supporters', AppTab.supporters));
-    test('donors alias', () => expectsTab('https://secretmsg.net/donors', AppTab.supporters));
     test('bare /send is the composer tab', () => expectsTab('https://secretmsg.net/send', AppTab.send));
   });
 
   group('standalone screens', () {
     test('dice', () => expect(DeepLinkRouter.routeFor('https://secretmsg.net/dice'), isA<DiceScreen>()));
+    test('supporters', () => expect(DeepLinkRouter.routeFor('https://secretmsg.net/supporters'), isA<SupportersScreen>()));
+    test('donors alias', () => expect(DeepLinkRouter.routeFor('https://secretmsg.net/donors'), isA<SupportersScreen>()));
   });
 
   group('board handles still reach the composer', () {

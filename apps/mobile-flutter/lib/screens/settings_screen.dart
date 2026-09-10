@@ -156,20 +156,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xFF11131F),
+        backgroundColor: AppColors.surface,
         title: const Text('Delete your account?', style: TextStyle(color: Colors.white, fontSize: 16)),
         content: const Text(
           'This permanently wipes your account, username, inbox, and settings. This cannot be undone.',
-          style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13),
+          style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(false),
-            child: const Text('Cancel', style: TextStyle(color: Color(0xFFA5B4FC))),
+            child: const Text('Cancel', style: TextStyle(color: AppColors.accentSoft)),
           ),
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(true),
-            child: const Text('Delete', style: TextStyle(color: Color(0xFFF87171), fontWeight: FontWeight.w700)),
+            child: const Text('Delete', style: TextStyle(color: AppColors.roseLight, fontWeight: FontWeight.w700)),
           ),
         ],
       ),
@@ -232,7 +232,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return ListView(
       children: [
         const SizedBox(height: 100),
-        Text(_error!, textAlign: TextAlign.center, style: const TextStyle(color: Color(0xFFFCA5A5))),
+        Text(_error!, textAlign: TextAlign.center, style: const TextStyle(color: AppColors.roseLight)),
         const SizedBox(height: 12),
         Center(child: OutlinedButton(onPressed: _load, child: const Text('Retry'))),
       ],
@@ -248,7 +248,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           children: [
             const Text('You are not signed in.', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w800)),
             const SizedBox(height: 8),
-            const Text('Sign in to manage your secret link.', style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13)),
+            const Text('Sign in to manage your secret link.', style: TextStyle(color: AppColors.textSecondary, fontSize: 13)),
             const SizedBox(height: 18),
             FilledButton(
               style: FilledButton.styleFrom(backgroundColor: AppColors.accent, foregroundColor: Colors.white),
@@ -310,7 +310,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       _ActionTile(
                         icon: Icons.emoji_events_outlined,
                         label: 'Supporters wall',
-                        onTap: () => _openTab(AppTab.supporters, const SupportersScreen()),
+                        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SupportersScreen())),
                       ),
                       _ActionTile(
                         icon: Icons.article_outlined,
@@ -326,7 +326,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     children: [
                       const Text(
                         'Read your inbox in a browser. The code lasts 5 minutes, works once, and gives view-only access - replies and settings stay here in the app.',
-                        style: TextStyle(color: Color(0xFF64748B), fontSize: 11, height: 1.5),
+                        style: TextStyle(color: AppColors.textMuted, fontSize: 11, height: 1.5),
                       ),
                       const SizedBox(height: 6),
                       _ActionTile(
@@ -359,7 +359,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   const Text(
                     'All data stays on secure, encrypted infrastructure. You stay anonymous to your senders.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Color(0xFF64748B), fontSize: 11, height: 1.5),
+                    style: TextStyle(color: AppColors.textMuted, fontSize: 11, height: 1.5),
                   ),
                 ],
               ),
@@ -376,7 +376,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       children: [
         const Text('Hide messages containing words', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
         const SizedBox(height: 4),
-        const Text('Messages matching these words are sent straight to moderation, not your inbox.', style: TextStyle(color: Color(0xFF64748B), fontSize: 11, height: 1.5)),
+        const Text('Messages matching these words are sent straight to moderation, not your inbox.', style: TextStyle(color: AppColors.textMuted, fontSize: 11, height: 1.5)),
         const SizedBox(height: 10),
         Wrap(
           spacing: 8,
@@ -385,9 +385,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             for (final w in _hiddenWords)
               InputChip(
                 label: Text(w, style: const TextStyle(color: Colors.white, fontSize: 12)),
-                backgroundColor: const Color(0xFF1E1B4B),
+                backgroundColor: AppColors.accentDeep,
                 side: const BorderSide(color: AppColors.accent),
-                deleteIconColor: const Color(0xFF94A3B8),
+                deleteIconColor: AppColors.textSecondary,
                 onDeleted: () => setState(() => _hiddenWords = _hiddenWords.where((x) => x != w).toList()),
               ),
           ],
@@ -401,7 +401,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 decoration: InputDecoration(
                   hintText: 'Add a word',
                   filled: true,
-                  fillColor: const Color(0xFF090A0F),
+                  fillColor: AppColors.bg,
                   isDense: true,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -467,7 +467,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       children: [
         const Text('Pause submissions', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
         const SizedBox(height: 4),
-        const Text('While paused, senders see your profile but cannot deliver new messages.', style: TextStyle(color: Color(0xFF64748B), fontSize: 11, height: 1.5)),
+        const Text('While paused, senders see your profile but cannot deliver new messages.', style: TextStyle(color: AppColors.textMuted, fontSize: 11, height: 1.5)),
         const SizedBox(height: 10),
         Wrap(
           spacing: 8,
@@ -479,7 +479,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 selected: selectedFor(chip.$2, chip.$3),
                 selectedColor: AppColors.accent.withOpacity(0.2),
                 labelStyle: TextStyle(
-                  color: selectedFor(chip.$2, chip.$3) ? Colors.white : const Color(0xFF94A3B8),
+                  color: selectedFor(chip.$2, chip.$3) ? Colors.white : AppColors.textSecondary,
                   fontWeight: FontWeight.w600,
                 ),
                 side: BorderSide(color: selectedFor(chip.$2, chip.$3) ? AppColors.accent : AppColors.border),
@@ -498,11 +498,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
         FilledButton(
           style: FilledButton.styleFrom(
             backgroundColor:
-                _permanentPause || _pauseUntil != null ? AppColors.accent : const Color(0xFF0F1220),
+                _permanentPause || _pauseUntil != null ? AppColors.accent : AppColors.surface,
             side: BorderSide(
               color: _permanentPause || _pauseUntil != null ? AppColors.accent : AppColors.border,
             ),
-            foregroundColor: _permanentPause || _pauseUntil != null ? Colors.white : const Color(0xFF94A3B8),
+            foregroundColor: _permanentPause || _pauseUntil != null ? Colors.white : AppColors.textSecondary,
           ),
           onPressed: _savingPause ? null : _applyPause,
           child: _savingPause
@@ -524,7 +524,7 @@ class _ProfileCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF0F1220),
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: AppColors.border),
       ),
@@ -558,16 +558,16 @@ class _ProfileCard extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 2),
-                    Text('@${user.username}', style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 12)),
+                    Text('@${user.username}', style: const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
                     if (user.email != null) ...[
                       const SizedBox(height: 2),
-                      Text(user.email!, style: const TextStyle(color: Color(0xFF64748B), fontSize: 12)),
+                      Text(user.email!, style: const TextStyle(color: AppColors.textMuted, fontSize: 12)),
                     ],
                   ],
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.mark_email_read_outlined, color: Color(0xFFA5B4FC), size: 20),
+                icon: const Icon(Icons.mark_email_read_outlined, color: AppColors.accentSoft, size: 20),
                 tooltip: 'Open inbox',
                 onPressed: onOpenInbox,
               ),
@@ -577,7 +577,7 @@ class _ProfileCard extends StatelessWidget {
           if (user.bio != null && user.bio!.isNotEmpty)
             Align(
               alignment: Alignment.centerLeft,
-              child: Text(user.bio!, style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 12, height: 1.5)),
+              child: Text(user.bio!, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12, height: 1.5)),
             ),
         ],
       ),
@@ -596,7 +596,7 @@ class _SectionCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF0F1220),
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: AppColors.border),
       ),
@@ -605,7 +605,7 @@ class _SectionCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(icon, size: 17, color: const Color(0xFF818CF8)),
+              Icon(icon, size: 17, color: AppColors.accentFaint),
               const SizedBox(width: 8),
               Text(title, style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w800)),
             ],
@@ -630,9 +630,9 @@ class _ActionTile extends StatelessWidget {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       dense: true,
-      leading: Icon(icon, size: 20, color: danger ? const Color(0xFFF87171) : const Color(0xFFA5B4FC)),
-      title: Text(label, style: TextStyle(color: danger ? const Color(0xFFF87171) : const Color(0xFFCBD5E1), fontSize: 14)),
-      trailing: const Icon(Icons.chevron_right, size: 18, color: Color(0xFF475569)),
+      leading: Icon(icon, size: 20, color: danger ? AppColors.roseLight : AppColors.accentSoft),
+      title: Text(label, style: TextStyle(color: danger ? AppColors.roseLight : AppColors.textHigh, fontSize: 14)),
+      trailing: const Icon(Icons.chevron_right, size: 18, color: AppColors.textFaint),
       onTap: onTap,
     );
   }
@@ -678,7 +678,7 @@ class _PairCodeDialogState extends State<_PairCodeDialog> {
     final mm = (_left ~/ 60).toString();
     final ss = (_left % 60).toString().padLeft(2, '0');
     return AlertDialog(
-      backgroundColor: const Color(0xFF0F1220),
+      backgroundColor: AppColors.surface,
       title: const Text(
         'Open your inbox on the web',
         style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w800),
@@ -689,13 +689,13 @@ class _PairCodeDialogState extends State<_PairCodeDialog> {
         children: [
           const Text(
             'Go to secretmsg.net/login and enter this code:',
-            style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12, height: 1.5),
+            style: TextStyle(color: AppColors.textSecondary, fontSize: 12, height: 1.5),
           ),
           const SizedBox(height: 14),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 14),
             decoration: BoxDecoration(
-              color: const Color(0xFF0B0E1A),
+              color: AppColors.bg,
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: AppColors.border),
             ),
@@ -703,7 +703,7 @@ class _PairCodeDialogState extends State<_PairCodeDialog> {
               widget.code,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: expired ? const Color(0xFF64748B) : Colors.white,
+                color: expired ? AppColors.textMuted : Colors.white,
                 fontSize: 24,
                 fontWeight: FontWeight.w800,
                 letterSpacing: 4,
@@ -718,7 +718,7 @@ class _PairCodeDialogState extends State<_PairCodeDialog> {
                 : 'Expires in $mm:$ss',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: expired ? const Color(0xFFF87171) : const Color(0xFF64748B),
+              color: expired ? AppColors.roseLight : AppColors.textMuted,
               fontSize: 11,
             ),
           ),
@@ -734,11 +734,11 @@ class _PairCodeDialogState extends State<_PairCodeDialog> {
                     const SnackBar(content: Text('Pairing code copied')),
                   );
                 },
-          child: const Text('Copy', style: TextStyle(color: Color(0xFFA5B4FC))),
+          child: const Text('Copy', style: TextStyle(color: AppColors.accentSoft)),
         ),
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Done', style: TextStyle(color: Color(0xFFA5B4FC))),
+          child: const Text('Done', style: TextStyle(color: AppColors.accentSoft)),
         ),
       ],
     );

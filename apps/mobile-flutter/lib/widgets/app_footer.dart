@@ -25,7 +25,7 @@ class FooterLinks extends StatelessWidget {
       case 'home':
         Navigator.of(context).popUntil((r) => r.isFirst);
       case 'supporters':
-        _go(context, const AppShell(initialTab: AppTab.supporters));
+        _go(context, const SupportersScreen());
       case 'dice':
         _go(context, const DiceScreen());
       case 'sticker':
@@ -144,7 +144,7 @@ class _FooterColumn extends StatelessWidget {
           Text(
             title,
             style: const TextStyle(
-              color: Color(0xFF94A3B8),
+              color: AppColors.textSecondary,
               fontSize: 11,
               fontWeight: FontWeight.w800,
               letterSpacing: 1.1,
@@ -158,7 +158,7 @@ class _FooterColumn extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 2),
                 child: Text(
                   item.label,
-                  style: const TextStyle(color: Color(0xFF64748B), fontSize: 12),
+                  style: const TextStyle(color: AppColors.textMuted, fontSize: 12),
                 ),
               ),
             ),

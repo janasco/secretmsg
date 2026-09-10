@@ -78,10 +78,13 @@ class _InboxScreenState extends State<InboxScreen> {
     }
   }
 
+  int get _unreadCount =>
+      (_messages ?? const []).where((m) => m.isRead == 0).length;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppTopBar(title: 'Inbox'),
+      appBar: const AppTopBar(title: 'Secret Inbox'),
       body: !_isAuthed ? _buildSignIn() : _buildInbox(),
     );
   }
@@ -93,18 +96,18 @@ class _InboxScreenState extends State<InboxScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.drafts_outlined, size: 56, color: Color(0xFF6366F1)),
+            const Icon(Icons.drafts_outlined, size: 56, color: AppColors.accent),
             const SizedBox(height: 16),
-            const Text(
+            Text(
               'Your anonymous inbox awaits',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.w800),
+              style: AppType.titleSm.copyWith(fontWeight: FontWeight.w800),
             ),
             const SizedBox(height: 8),
-            const Text(
+            Text(
               'Sign in with your email to read messages, reply double-blind, and manage your secret link.',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13, height: 1.5),
+              style: AppType.bodySm.copyWith(height: 1.5),
             ),
             const SizedBox(height: 20),
             SizedBox(
@@ -120,7 +123,7 @@ class _InboxScreenState extends State<InboxScreen> {
             const SizedBox(height: 10),
             OutlinedButton(
               onPressed: () => copyToClipboard(context, kPublicBaseUrl, message: 'Copy of share URL'),
-              child: const Text('Create your link', style: TextStyle(color: Color(0xFFA5B4FC))),
+              child: const Text('Create your link', style: TextStyle(color: AppColors.accentSoft)),
             ),
           ],
         ),
@@ -128,36 +131,108 @@ class _InboxScreenState extends State<InboxScreen> {
     );
   }
 
+  /// Stitch header row: headline title with a filled count pill on the right.
+  Widget _buildHeader() {
+    final n = _unreadCount;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+      child: Row(
+        children: [
+          Expanded(child: Text('Secret Inbox', style: AppType.headlineMd)),
+          if (n > 0)
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+              decoration: BoxDecoration(
+                color: AppColors.accent,
+                borderRadius: BorderRadius.circular(999),
+              ),
+              child: Text(
+                '$n New',
+                style: AppType.labelCaps.copyWith(color: Colors.white),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  /// Stitch filter tabs: filled for the active filter, glass pills otherwise,
+  /// each with its live count.
+  Widget _buildFilters() {
+    final all = _messages ?? const [];
+    final unread = all.where((m) => m.isRead == 0).length;
+    final replied =
+        all.where((m) => m.replyContent != null && m.replyContent!.isNotEmpty).length;
+    final pinned = all.where((m) => m.isPinned == 1).length;
+    final filters = [
+      ('all', 'All', all.length),
+      ('unread', 'Unread', unread),
+      ('replied', 'Replies', replied),
+      ('pinned', 'Pinned', pinned),
+    ];
+    return SizedBox(
+      height: 36,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        itemCount: filters.length,
+        separatorBuilder: (_, __) => const SizedBox(width: 8),
+        itemBuilder: (context, i) {
+          final f = filters[i];
+          final active = _filter == f.$1;
+          return GestureDetector(
+            onTap: () => setState(() => _filter = f.$1),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+              decoration: BoxDecoration(
+                color: active ? AppColors.accent : AppColors.surface,
+                borderRadius: BorderRadius.circular(999),
+                border: Border.all(
+                  color: active ? AppColors.accent : AppColors.border,
+                ),
+              ),
+              child: Text(
+                '${f.$2} (${f.$3})',
+                style: TextStyle(
+                  color: active ? Colors.white : AppColors.textSecondary,
+                  fontSize: 12.5,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  /// Stitch KPI row: three stat cards over the message stream.
+  Widget _buildStats() {
+    final all = _messages ?? const [];
+    final unread = all.where((m) => m.isRead == 0).length;
+    final replied =
+        all.where((m) => m.replyContent != null && m.replyContent!.isNotEmpty).length;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+      child: Row(
+        children: [
+          Expanded(child: StatCard(label: 'Total', value: '${all.length}')),
+          const SizedBox(width: 8),
+          Expanded(child: StatCard(label: 'Unread', value: '$unread')),
+          const SizedBox(width: 8),
+          Expanded(child: StatCard(label: 'Replied', value: '$replied')),
+        ],
+      ),
+    );
+  }
+
   Widget _buildInbox() {
     return Column(
       children: [
-        if (_error == null)
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-            child: Row(
-              children: [
-                for (final f in [
-                  ('all', 'All'),
-                  ('unread', 'Unread'),
-                  ('pinned', 'Pinned'),
-                  ('replied', 'Replies'),
-                ]) ...[
-                  ChoiceChip(
-                    label: Text(f.$2, style: const TextStyle(fontSize: 12)),
-                    selected: _filter == f.$1,
-                    selectedColor: AppColors.accent.withOpacity(0.2),
-                    labelStyle: TextStyle(
-                      color: _filter == f.$1 ? Colors.white : const Color(0xFF94A3B8),
-                      fontWeight: FontWeight.w600,
-                    ),
-                    side: BorderSide(color: _filter == f.$1 ? AppColors.accent : AppColors.border),
-                    onSelected: (_) => setState(() => _filter = f.$1),
-                  ),
-                  const SizedBox(width: 8),
-                ],
-              ],
-            ),
-          ),
+        _buildHeader(),
+        const SizedBox(height: 8),
+        _buildFilters(),
+        _buildStats(),
         Expanded(
           child: RefreshIndicator(
             onRefresh: _load,
@@ -176,7 +251,7 @@ class _InboxScreenState extends State<InboxScreen> {
       return ListView(
         children: [
           const SizedBox(height: 80),
-          Text(_error!, textAlign: TextAlign.center, style: const TextStyle(color: Color(0xFFFCA5A5), fontSize: 13)),
+          Text(_error!, textAlign: TextAlign.center, style: const TextStyle(color: AppColors.roseLight, fontSize: 13)),
           const SizedBox(height: 12),
           Center(
             child: OutlinedButton(onPressed: _load, child: const Text('Retry')),
@@ -189,12 +264,12 @@ class _InboxScreenState extends State<InboxScreen> {
       return ListView(
         children: [
           const SizedBox(height: 90),
-          const Icon(Icons.inbox_outlined, size: 52, color: Color(0xFF3B3F52)),
+          const Icon(Icons.inbox_outlined, size: 52, color: AppColors.textFaint),
           const SizedBox(height: 12),
-          const Text(
+          Text(
             'No messages yet',
             textAlign: TextAlign.center,
-            style: TextStyle(color: Color(0xFF94A3B8), fontSize: 14, fontWeight: FontWeight.w700),
+            style: AppType.bodyBase.copyWith(fontWeight: FontWeight.w700, color: AppColors.textSecondary),
           ),
           const SizedBox(height: 6),
           Text(
@@ -202,10 +277,10 @@ class _InboxScreenState extends State<InboxScreen> {
                 ? 'Share your link and wait for the first anonymous message to arrive.'
                 : 'Nothing here in this filter.',
             textAlign: TextAlign.center,
-            style: const TextStyle(color: Color(0xFF64748B), fontSize: 12),
+            style: AppType.bodySm,
           ),
           const SizedBox(height: 20),
-          Center(
+          const Center(
             child: _ShareLinkButton(),
           ),
         ],
@@ -251,6 +326,8 @@ class _InboxScreenState extends State<InboxScreen> {
 }
 
 class _ShareLinkButton extends StatelessWidget {
+  const _ShareLinkButton();
+
   @override
   Widget build(BuildContext context) {
     return FilledButton.icon(
@@ -262,6 +339,8 @@ class _ShareLinkButton extends StatelessWidget {
   }
 }
 
+/// Stitch message card: glass panel, glow dot on unread cards, context pill,
+/// relative time, body-lg text.
 class _MessageCard extends StatelessWidget {
   final AnonymousMessage message;
   final VoidCallback onTap;
@@ -270,70 +349,93 @@ class _MessageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final replied = message.replyContent != null && message.replyContent!.isNotEmpty;
+    final unread = message.isRead == 0;
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(14),
+      borderRadius: BorderRadius.circular(16),
       child: Container(
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: const Color(0xFF0F1220),
-          borderRadius: BorderRadius.circular(14),
+          color: AppColors.surface,
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: message.isRead == 0 ? AppColors.accent.withOpacity(0.45) : AppColors.border,
+            color: unread ? AppColors.accent.withOpacity(0.45) : AppColors.border,
           ),
+          boxShadow: unread
+              ? [
+                  BoxShadow(
+                    color: AppColors.accent.withOpacity(0.12),
+                    blurRadius: 14,
+                    offset: const Offset(0, 0),
+                  ),
+                ]
+              : null,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                if (message.isRead == 0)
+                if (unread) ...[
                   Container(
                     width: 8,
                     height: 8,
-                    decoration: const BoxDecoration(color: AppColors.accent, shape: BoxShape.circle),
-                  )
-                else
-                  const SizedBox(width: 8),
-                const SizedBox(width: 6),
-                Expanded(
-                  child: Text(
-                    _formatTime(message.createdAt),
-                    style: const TextStyle(color: Color(0xFF64748B), fontSize: 11),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.white.withOpacity(0.5),
+                          blurRadius: 8,
+                          spreadRadius: 1,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                if (message.isPinned == 1) const Icon(Icons.push_pin, size: 14, color: Color(0xFFF59E0B)),
-                if (message.deviceHint != null) ...[
+                  const SizedBox(width: 10),
+                ] else
+                  const SizedBox(width: 2),
+                if (message.isPinned == 1) ...[
+                  const Icon(Icons.push_pin, size: 13, color: AppColors.amber),
                   const SizedBox(width: 6),
-                  Text(message.deviceHint!, style: const TextStyle(color: Color(0xFF64748B), fontSize: 10)),
                 ],
+                if (message.deviceHint != null && message.deviceHint!.isNotEmpty) ...[
+                  StitchPill(message.deviceHint!),
+                  const SizedBox(width: 8),
+                ],
+                const Spacer(),
+                Text(
+                  _formatTime(message.createdAt),
+                  style: AppType.bodySm.copyWith(color: AppColors.textMuted),
+                ),
               ],
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 10),
             Text(
               message.content,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(color: Colors.white, fontSize: 14, height: 1.45),
+              style: AppType.bodyBase.copyWith(fontSize: 15, height: 1.5),
             ),
             if (replied) ...[
-              const SizedBox(height: 8),
+              const SizedBox(height: 10),
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF090A0F),
+                  color: AppColors.bg,
                   borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: AppColors.emerald.withOpacity(0.25)),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.reply, size: 14, color: Color(0xFF34D399)),
+                    const Icon(Icons.reply, size: 14, color: AppColors.emeraldSoft),
                     const SizedBox(width: 6),
                     Expanded(
                       child: Text(
                         message.replyContent!,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(color: Color(0xFF6EE7B7), fontSize: 12),
+                        style: const TextStyle(color: AppColors.emeraldLight, fontSize: 12),
                       ),
                     ),
                   ],
@@ -346,13 +448,15 @@ class _MessageCard extends StatelessWidget {
     );
   }
 
+  /// Stitch-style relative time: 10m, 42m, 2d, then a date.
   static String _formatTime(String iso) {
     try {
       final t = DateTime.parse(iso).toLocal();
-      final now = DateTime.now();
-      if (now.difference(t).inHours < 24) {
-        return '${t.hour.toString().padLeft(2, '0')}:${t.minute.toString().padLeft(2, '0')}';
-      }
+      final diff = DateTime.now().difference(t);
+      if (diff.inMinutes < 1) return 'now';
+      if (diff.inMinutes < 60) return '${diff.inMinutes}m ago';
+      if (diff.inHours < 24) return '${diff.inHours}h ago';
+      if (diff.inDays < 7) return '${diff.inDays}d ago';
       return '${t.day.toString().padLeft(2, '0')}/${t.month.toString().padLeft(2, '0')}/${t.year}';
     } catch (_) {
       return iso;
@@ -422,32 +526,28 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF0F1220),
-                    borderRadius: BorderRadius.circular(14),
-                    border: Border.all(color: AppColors.border),
-                  ),
+                GlassCard(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.person_outline, color: Color(0xFF6366F1), size: 18),
+                          const Icon(Icons.person_outline, color: AppColors.accent, size: 18),
                           const SizedBox(width: 8),
-                          const Text('Anonymous Sender', style: TextStyle(color: Color(0xFF64748B), fontSize: 12)),
+                          Text('Anonymous Sender', style: AppType.bodySm),
                           const Spacer(),
-                          if (m.deviceHint != null)
-                            Text(m.deviceHint!, style: const TextStyle(color: Color(0xFF64748B), fontSize: 10)),
-                          const SizedBox(width: 8),
-                          if (m.isPinned == 1) const Icon(Icons.push_pin, color: Color(0xFFF59E0B), size: 15),
+                          if (m.deviceHint != null && m.deviceHint!.isNotEmpty)
+                            StitchPill(m.deviceHint!),
+                          if (m.isPinned == 1) ...[
+                            const SizedBox(width: 8),
+                            const Icon(Icons.push_pin, color: AppColors.amber, size: 15),
+                          ],
                         ],
                       ),
                       const Divider(color: AppColors.border, height: 24),
-                      Text(m.content, style: const TextStyle(color: Colors.white, fontSize: 15, height: 1.5)),
+                      Text(m.content, style: AppType.bodyBase.copyWith(fontSize: 15, height: 1.55)),
                       const SizedBox(height: 12),
-                      Text(_formatTime(m.createdAt), style: const TextStyle(color: Color(0xFF64748B), fontSize: 11)),
+                      Text(_formatTime(m.createdAt), style: AppType.bodySm.copyWith(color: AppColors.textMuted)),
                     ],
                   ),
                 ),
@@ -456,32 +556,32 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF06281D),
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: const Color(0xFF10B981).withOpacity(0.3)),
+                      color: AppColors.emerald.withOpacity(0.08),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: AppColors.emerald.withOpacity(0.3)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Row(
                           children: [
-                            Icon(Icons.reply, color: Color(0xFF34D399), size: 16),
+                            Icon(Icons.reply, color: AppColors.emeraldSoft, size: 16),
                             SizedBox(width: 6),
-                            Text('Your blind reply', style: TextStyle(color: Color(0xFF6EE7B7), fontSize: 12, fontWeight: FontWeight.w700)),
+                            Text('Your blind reply', style: TextStyle(color: AppColors.emeraldLight, fontSize: 12, fontWeight: FontWeight.w700)),
                           ],
                         ),
                         const SizedBox(height: 8),
-                        Text(m.replyContent!, style: const TextStyle(color: Color(0xFFA7F3D0), fontSize: 13, height: 1.5)),
+                        Text(m.replyContent!, style: AppType.bodySm.copyWith(color: AppColors.emeraldLight, height: 1.5)),
                       ],
                     ),
                   ),
                 ] else ...[
                   const SizedBox(height: 16),
-                  const Text('Reply double-blind', style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w800)),
+                  Text('Reply double-blind', style: AppType.titleSm),
                   const SizedBox(height: 4),
-                  const Text(
+                  Text(
                     'Your reply is shown back to the sender anonymously via their private claim link — your identity stays hidden.',
-                    style: TextStyle(color: Color(0xFF64748B), fontSize: 12, height: 1.5),
+                    style: AppType.bodySm.copyWith(height: 1.5),
                   ),
                   const SizedBox(height: 12),
                   TextField(
@@ -491,16 +591,6 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                     onChanged: (_) => setState(() {}),
                     decoration: InputDecoration(
                       hintText: 'Write a blind reply…',
-                      filled: true,
-                      fillColor: const Color(0xFF0F1220),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: AppColors.border),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: AppColors.border),
-                      ),
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -520,7 +610,7 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                       onPressed: _reported ? null : _report,
                       icon: const Icon(Icons.flag_outlined, size: 15),
                       label: Text(_reported ? 'Reporting…' : 'Report this message'),
-                      style: TextButton.styleFrom(foregroundColor: const Color(0xFFF87171)),
+                      style: TextButton.styleFrom(foregroundColor: AppColors.roseLight),
                     ),
                   ],
                 ),

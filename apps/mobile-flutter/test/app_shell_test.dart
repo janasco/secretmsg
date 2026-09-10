@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:secretmsg_mobile/screens/app_shell.dart';
+import 'package:secretmsg_mobile/screens/dice_screen.dart';
 import 'package:secretmsg_mobile/screens/inbox_screen.dart';
 import 'package:secretmsg_mobile/screens/send_screen.dart';
 import 'package:secretmsg_mobile/screens/settings_screen.dart';
-import 'package:secretmsg_mobile/screens/supporters_screen.dart';
+import 'package:secretmsg_mobile/screens/sticker_studio_screen.dart';
 
 import 'secure_storage_mock.dart';
 
@@ -37,12 +38,12 @@ void main() {
 
   tearDown(clearStoredTokenMock);
 
-  testWidgets('shows all four destinations', (tester) async {
+  testWidgets('shows all five destinations', (tester) async {
     await tester.pumpWidget(const MaterialApp(home: AppShell()));
     await _settle(tester);
 
     expect(find.byType(NavigationBar), findsOneWidget);
-    for (final label in ['Inbox', 'Send', 'Supporters', 'My Link']) {
+    for (final label in ['Inbox', 'Send', 'Dice', 'Stickers', 'My Link']) {
       expect(_tabLabel(label), findsOneWidget, reason: 'missing the $label tab');
     }
   });
@@ -59,11 +60,12 @@ void main() {
     await tester.pumpWidget(const MaterialApp(home: AppShell()));
     await _settle(tester);
 
-    // Only the starting tab exists, so a cold start does not fire four
+    // Only the starting tab exists, so a cold start does not fire five
     // screens' worth of loading at once.
     expect(find.byType(InboxScreen), findsOneWidget);
     expect(_anywhere(SendScreen), findsNothing);
-    expect(_anywhere(SupportersScreen), findsNothing);
+    expect(_anywhere(DiceScreen), findsNothing);
+    expect(_anywhere(StickerStudioScreen), findsNothing);
     expect(_anywhere(SettingsScreen), findsNothing);
   });
 
@@ -80,7 +82,7 @@ void main() {
     // The inbox is still mounted, so its scroll position survives the switch.
     expect(_anywhere(InboxScreen), findsOneWidget);
     // A tab that was never opened still has not been built.
-    expect(_anywhere(SupportersScreen), findsNothing);
+    expect(_anywhere(StickerStudioScreen), findsNothing);
   });
 
   testWidgets('back from a secondary tab returns to the inbox', (tester) async {

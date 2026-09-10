@@ -1,22 +1,97 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const bg = Color(0xFF090A0F);
-  static const bgSoft = Color(0xFF0F111A);
-  static const surface = Color(0xFF131622);
-  static const surfaceLight = Color(0xFF1B1F2E);
+  // Backdrop — deep obsidian-titanium (Stitch DESIGN.md)
+  static const bg = Color(0xFF0B0E14);
+  static const bgSoft = Color(0xFF0E131C);
+  static const surface = Color(0xFF151B26);
+  static const surfaceLight = Color(0xFF1D2433);
+
+  // Brand — the app's violet system (kept per product decision).
   static const accent = Color(0xFF6366F1);
   static const accentDark = Color(0xFF4F46E5);
+  static const accentSoft = Color(0xFFA5B4FC);
+  static const accentFaint = Color(0xFF818CF8);
+
+  // Semantic accents (Stitch vibe highlights, harmonised with the brand).
   static const amber = Color(0xFFF59E0B);
   static const amberLight = Color(0xFFFCD34D);
   static const emerald = Color(0xFF10B981);
   static const rose = Color(0xFFF43F5E);
+
+  // Text
   static const textPrimary = Color(0xFFF8FAFC);
+  static const textHigh = Color(0xFFCBD5E1);
   static const textSecondary = Color(0xFF94A3B8);
   static const textMuted = Color(0xFF64748B);
   static const textFaint = Color(0xFF475569);
+
+  // Accent tints for tinted chips and containers.
+  static const accentDeep = Color(0xFF1E1B4B);
+  static const emeraldSoft = Color(0xFF34D399);
+  static const emeraldLight = Color(0xFF6EE7B7);
+  static const roseLight = Color(0xFFF87171);
+  static const roseDeep = Color(0xFF7F1D1D);
+
+  // Hairline borders (Stitch: rgba(255,255,255,0.12) / 0.24)
   static const border = Color(0x1FFFFFFF);
-  static const borderStrong = Color(0x33FFFFFF);
+  static const borderStrong = Color(0x3DFFFFFF);
+}
+
+/// Stitch DESIGN.md type scale: display-lg 28/34 -2%, headline-md 20/28 -1%,
+/// title-sm 16/24 600, body-base 14/20, body-sm 12/18, caption 11/16 +2%.
+class AppType {
+  static const displayLg = TextStyle(
+    fontSize: 28,
+    height: 34 / 28,
+    fontWeight: FontWeight.w700,
+    letterSpacing: -0.02 * 28,
+    color: AppColors.textPrimary,
+  );
+
+  static const headlineMd = TextStyle(
+    fontSize: 20,
+    height: 28 / 20,
+    fontWeight: FontWeight.w600,
+    letterSpacing: -0.01 * 20,
+    color: AppColors.textPrimary,
+  );
+
+  static const titleSm = TextStyle(
+    fontSize: 16,
+    height: 24 / 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textPrimary,
+  );
+
+  static const bodyBase = TextStyle(
+    fontSize: 14,
+    height: 20 / 14,
+    color: AppColors.textPrimary,
+  );
+
+  static const bodySm = TextStyle(
+    fontSize: 12,
+    height: 18 / 12,
+    color: AppColors.textSecondary,
+  );
+
+  static const caption = TextStyle(
+    fontSize: 11,
+    height: 16 / 11,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.02 * 11,
+    color: AppColors.textSecondary,
+  );
+
+  /// Small-caps label used by pills, badges and stat card captions.
+  static const labelCaps = TextStyle(
+    fontSize: 11,
+    height: 16 / 11,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 0.06 * 11,
+    color: AppColors.textSecondary,
+  );
 }
 
 class GlassPainter extends StatelessWidget {
@@ -40,7 +115,7 @@ class GlassPainter extends StatelessWidget {
     return Container(
       padding: padding,
       decoration: BoxDecoration(
-        color: AppColors.bgSoft.withOpacity(0.82),
+        color: AppColors.surface.withOpacity(0.92),
         borderRadius: borderRadius ?? BorderRadius.circular(16),
         border: Border.all(color: borderColor),
         boxShadow: shadows ??
@@ -165,8 +240,11 @@ class AppTheme {
         iconTheme: IconThemeData(color: AppColors.textPrimary),
       ),
       textTheme: const TextTheme(
-        bodyMedium: TextStyle(color: AppColors.textPrimary, fontSize: 14),
-        bodySmall: TextStyle(color: AppColors.textSecondary, fontSize: 12),
+        headlineSmall: AppType.headlineMd,
+        titleMedium: AppType.titleSm,
+        bodyMedium: AppType.bodyBase,
+        bodySmall: AppType.bodySm,
+        labelSmall: AppType.caption,
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,

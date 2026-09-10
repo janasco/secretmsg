@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../theme.dart';
+import 'dice_screen.dart';
 import 'inbox_screen.dart';
 import 'send_screen.dart';
 import 'settings_screen.dart';
-import 'supporters_screen.dart';
+import 'sticker_studio_screen.dart';
 
-enum AppTab { inbox, send, supporters, settings }
+enum AppTab { inbox, send, dice, stickers, settings }
 
 /// Exposes the shell to the screens inside it, so a tab can hand off to a
 /// sibling by switching tabs rather than pushing a second copy of it onto the
@@ -64,8 +65,10 @@ class _AppShellState extends State<AppShell> {
         return const InboxScreen();
       case AppTab.send:
         return const SendScreen();
-      case AppTab.supporters:
-        return const SupportersScreen();
+      case AppTab.dice:
+        return const DiceScreen();
+      case AppTab.stickers:
+        return const StickerStudioScreen();
       case AppTab.settings:
         return const SettingsScreen();
     }
@@ -131,9 +134,14 @@ class _AppShellState extends State<AppShell> {
                   label: 'Send',
                 ),
                 NavigationDestination(
-                  icon: Icon(Icons.favorite_outline),
-                  selectedIcon: Icon(Icons.favorite),
-                  label: 'Supporters',
+                  icon: Icon(Icons.casino_outlined),
+                  selectedIcon: Icon(Icons.casino),
+                  label: 'Dice',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.auto_awesome_outlined),
+                  selectedIcon: Icon(Icons.auto_awesome),
+                  label: 'Stickers',
                 ),
                 NavigationDestination(
                   icon: Icon(Icons.person_outline),

@@ -3,6 +3,142 @@ import 'package:flutter/services.dart';
 
 import '../theme.dart';
 
+/// Stitch vocabulary: glass panel on the obsidian backdrop — surface fill,
+/// hairline border, 16px radius. The default card container for list items,
+/// stat cards and sectioned content.
+class GlassCard extends StatelessWidget {
+  final Widget child;
+  final EdgeInsetsGeometry padding;
+  final BorderRadius? borderRadius;
+  final Color? borderColor;
+  final VoidCallback? onTap;
+
+  const GlassCard({
+    super.key,
+    required this.child,
+    this.padding = const EdgeInsets.all(16),
+    this.borderRadius,
+    this.borderColor,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final card = Container(
+      padding: padding,
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: borderRadius ?? BorderRadius.circular(16),
+        border: Border.all(color: borderColor ?? AppColors.border),
+      ),
+      child: child,
+    );
+    if (onTap == null) return card;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: borderRadius ?? BorderRadius.circular(16),
+        child: card,
+      ),
+    );
+  }
+}
+
+/// Stitch: small-caps pill — label-caps type, 9999px radius, hairline border.
+/// [filled] switches to the brand violet fill for selected/active states.
+class StitchPill extends StatelessWidget {
+  final String label;
+  final bool filled;
+  final Color? color;
+  final IconData? icon;
+
+  const StitchPill(this.label, {super.key, this.filled = false, this.color, this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    final c = color ?? AppColors.accent;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+        color: filled ? c : AppColors.surfaceLight,
+        borderRadius: BorderRadius.circular(999),
+        border: Border.all(color: filled ? c : AppColors.border),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (icon != null) ...[
+            Icon(icon, size: 12, color: filled ? Colors.white : AppColors.textSecondary),
+            const SizedBox(width: 4),
+          ],
+          Text(
+            label,
+            style: AppType.labelCaps.copyWith(
+              color: filled ? Colors.white : AppColors.textSecondary,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Stitch KPI stat card: caption label over a bold value inside a glass card.
+class StatCard extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const StatCard({super.key, required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return GlassCard(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(label.toUpperCase(), style: AppType.labelCaps),
+          const SizedBox(height: 2),
+          Text(value, style: AppType.headlineMd),
+        ],
+      ),
+    );
+  }
+}
+
+/// Stitch in-content section header: headline title with an optional
+/// trailing widget (pill, button) on the same row.
+class StitchSectionHeader extends StatelessWidget {
+  final String title;
+  final Widget? trailing;
+  final EdgeInsetsGeometry padding;
+
+  const StitchSectionHeader(
+    this.title, {
+    super.key,
+    this.trailing,
+    this.padding = const EdgeInsets.fromLTRB(16, 12, 16, 8),
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: padding,
+      child: Row(
+        children: [
+          Expanded(child: Text(title, style: AppType.headlineMd)),
+          if (trailing != null) ...[
+            const SizedBox(width: 12),
+            trailing!,
+          ],
+        ],
+      ),
+    );
+  }
+}
+
 class AvatarBadge extends StatelessWidget {
   final String initials;
   final double size;
@@ -22,7 +158,7 @@ class AvatarBadge extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Color(0xFF6366F1), Color(0xFFF59E0B)],
+          colors: [AppColors.accent, AppColors.amber],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -77,7 +213,7 @@ class SupporterBadge extends StatelessWidget {
       child: Text(
         badgeTitle ?? tier,
         style: const TextStyle(
-          color: Color(0xFFFCD34D),
+          color: AppColors.amberLight,
           fontSize: 10,
           fontWeight: FontWeight.w700,
         ),
@@ -203,7 +339,7 @@ class PublicPageHeader extends StatelessWidget {
                     child: Text(
                       eyebrow!,
                       style: const TextStyle(
-                        color: Color(0xFFA5B4FC),
+                        color: AppColors.accentSoft,
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                       ),
@@ -226,7 +362,7 @@ class PublicPageHeader extends StatelessWidget {
                   description!,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    color: Color(0xFFCBD5E1),
+                    color: AppColors.textHigh,
                     fontSize: 14,
                     height: 1.5,
                   ),
@@ -259,7 +395,7 @@ void showErrorSnack(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text(message),
-      backgroundColor: const Color(0xFF7F1D1D),
+      backgroundColor: AppColors.roseDeep,
     ),
   );
 }
