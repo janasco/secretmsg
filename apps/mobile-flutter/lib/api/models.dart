@@ -150,6 +150,23 @@ class ReplyThread {
   }
 }
 
+class BlockedSender {
+  final String senderFpHash;
+  final String createdAt;
+
+  const BlockedSender({
+    required this.senderFpHash,
+    this.createdAt = '',
+  });
+
+  factory BlockedSender.fromJson(Map<String, dynamic> json) {
+    return BlockedSender(
+      senderFpHash: json['sender_fp_hash']?.toString() ?? '',
+      createdAt: json['created_at']?.toString() ?? '',
+    );
+  }
+}
+
 class Supporter {
   final String id;
   final String alias;

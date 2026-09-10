@@ -16,9 +16,15 @@ class UnauthorizedError implements Exception {
 class ApiClient {
   static const _timeout = Duration(seconds: 30);
 
-  static Future<Map<String, dynamic>> _getJson(String path) async {
+  static Future<Map<String, dynamic>> _getJson(String path, {bool auth = false}) async {
+    final headers = <String, String>{};
+    if (auth) {
+      final token = await Session.getToken();
+      if (token == null) throw UnauthorizedError();
+      headers['Authorization'] = 'Bearer $token';
+    }
     final uri = Uri.parse('$kApiBaseUrl$path');
-    final res = await http.get(uri).timeout(_timeout);
+    final res = await http.get(uri, headers: headers).timeout(_timeout);
     return _decode(res);
   }
 
@@ -112,6 +118,7 @@ class ApiClient {
         'content': content,
         'turnstileToken': turnstileToken,
         'allowClue': allowClue,
+        'deviceFp': await Session.getDeviceFingerprint(),
       },
     );
     return data['replyToken']?.toString();
@@ -166,7 +173,7 @@ class ApiClient {
 
   // ---- Authenticated profile (GET /api/me) ----
   static Future<UserProfile> getMe() async {
-    final data = await _getJson('/api/me');
+    final data = await _getJson('/api/me', auth: true);
     final user = UserProfile.fromJson(data['user'] as Map<String, dynamic>);
     await Session.saveUser(user);
     return user;
@@ -188,7 +195,7 @@ class ApiClient {
 
   // ---- Inbox ----
   static Future<List<AnonymousMessage>> getInbox() async {
-    final data = await _getJson('/api/inbox');
+    final data = await _getJson('/api/inbox', auth: true);
     final list = (data['messages'] as List?)
             ?.map((e) => AnonymousMessage.fromJson(e as Map<String, dynamic>))
             .toList() ??
@@ -215,6 +222,24 @@ class ApiClient {
   // ---- Abuse report ----
   static Future<void> reportMessage(String messageId, String reason) async {
     await _postJson('/api/report', {'messageId': messageId, 'reason': reason});
+  }
+
+  // ---- Blocked Senders (anonymous device fingerprints) ----
+  static Future<List<BlockedSender>> getBlockedSenders() async {
+    final data = await _getJson('/api/me/blocked', auth: true);
+    final list = (data['blocked'] as List?)
+            ?.map((e) => BlockedSender.fromJson(e as Map<String, dynamic>))
+            .toList() ??
+        const [];
+    return list;
+  }
+
+  static Future<void> unblockSender(String fpHash) async {
+    await _deleteJson('/api/me/blocked/${Uri.encodeComponent(fpHash)}');
+  }
+
+  static Future<void> blockSender(String messageId) async {
+    await _postJson('/api/inbox/$messageId/block', const {}, auth: true);
   }
 
   // ---- Supporters ----

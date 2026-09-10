@@ -319,6 +319,11 @@ class _InboxScreenState extends State<InboxScreen> {
               _messages![idx] = updated;
             }
           });
+        }, onBlocked: () {
+          if (!mounted) return;
+          setState(() {
+            _messages?.removeWhere((x) => x.id == m.id);
+          });
         }),
       ),
     );
@@ -467,7 +472,8 @@ class _MessageCard extends StatelessWidget {
 class _MessageDetailScreen extends StatefulWidget {
   final AnonymousMessage message;
   final void Function(String reply) onReplied;
-  const _MessageDetailScreen({required this.message, required this.onReplied});
+  final VoidCallback? onBlocked;
+  const _MessageDetailScreen({required this.message, required this.onReplied, this.onBlocked});
 
   @override
   State<_MessageDetailScreen> createState() => _MessageDetailScreenState();
@@ -477,6 +483,7 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
   final _replyCtrl = TextEditingController();
   bool _sending = false;
   bool _reported = false;
+  bool _blocking = false;
 
   @override
   void dispose() {
@@ -508,6 +515,46 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
     if (!mounted) return;
     showErrorSnack(context, 'Message reported. Our team will review it shortly.');
     setState(() => _reported = false);
+  }
+
+  Future<void> _block() async {
+    if (_blocking) return;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: AppColors.surface,
+        title: const Text('Block this sender?', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800)),
+        content: const Text(
+          'This sender''s device will no longer reach your inbox. Their identity stays anonymous to you — you are blocking the device, not a person. The message will be removed.',
+          style: TextStyle(color: AppColors.textMuted, height: 1.5),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(foregroundColor: AppColors.roseLight),
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: const Text('Block'),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+
+    setState(() => _blocking = true);
+    try {
+      await ApiClient.blockSender(widget.message.id);
+      widget.onBlocked?.call();
+      if (!mounted) return;
+      Navigator.of(context).pop();
+      showSuccessSnack(context, 'Sender blocked and message removed.');
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _blocking = false);
+      showErrorSnack(context, e.toString());
+    }
   }
 
   @override
@@ -610,6 +657,15 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                       onPressed: _reported ? null : _report,
                       icon: const Icon(Icons.flag_outlined, size: 15),
                       label: Text(_reported ? 'Reporting…' : 'Report this message'),
+                      style: TextButton.styleFrom(foregroundColor: AppColors.roseLight),
+                    ),
+                    const SizedBox(width: 8),
+                    TextButton.icon(
+                      onPressed: _blocking ? null : _block,
+                      icon: _blocking
+                          ? const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2))
+                          : const Icon(Icons.block_outlined, size: 15),
+                      label: Text(_blocking ? 'Blocking…' : 'Block sender'),
                       style: TextButton.styleFrom(foregroundColor: AppColors.roseLight),
                     ),
                   ],

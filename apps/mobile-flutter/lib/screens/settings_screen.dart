@@ -11,6 +11,7 @@ import '../api/session.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import 'app_shell.dart';
+import 'blocked_senders_screen.dart';
 import 'inbox_screen.dart';
 import 'landing_screen.dart';
 import 'login_screen.dart';
@@ -300,6 +301,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       _buildWordFilter(),
                       const Divider(color: AppColors.border, height: 24),
                       _buildPause(),
+                      const Divider(color: AppColors.border, height: 24),
+                      _ActionTile(
+                        icon: Icons.block_outlined,
+                        label: 'Blocked senders',
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const BlockedSendersScreen()),
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 16),

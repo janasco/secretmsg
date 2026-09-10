@@ -18,6 +18,23 @@ export const PUBLIC_BASE_URL = (import.meta as any).env?.VITE_PUBLIC_URL || 'htt
 export const ACCOUNT_APP_URL = (import.meta as any).env?.VITE_ACCOUNT_APP_URL || 'https://app.secretmsg.net';
 
 /**
+ * Stable anonymous device fingerprint, persisted per-browser. The server keeps
+ * only its SHA-256, so recipients never see the raw value; it exists solely so
+ * a blocked device cannot keep submitting. Generated once and reused forever.
+ */
+export function getDeviceFingerprint(): string {
+  const KEY = 'secretmsg_device_fingerprint';
+  let fp = localStorage.getItem(KEY);
+  if (fp) return fp;
+  const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const bytes = new Uint8Array(32);
+  crypto.getRandomValues(bytes);
+  fp = Array.from(bytes, (b) => chars[b % chars.length]).join('');
+  localStorage.setItem(KEY, fp);
+  return fp;
+}
+
+/**
  * Returns the public submission link that recipients share with visitors.
  * Always resolves to the public portal (secretmsg.net/{username}) so visitors submit there.
  */
@@ -148,7 +165,7 @@ export class ApiClient {
     const res = await fetch(`${API_BASE_URL}/api/message/${encodeURIComponent(username)}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content, turnstileToken, allowClue }),
+      body: JSON.stringify({ content, turnstileToken, allowClue, deviceFp: getDeviceFingerprint() }),
     });
     const data = await res.json() as { success?: boolean; error?: string; replyToken?: string };
     if (!res.ok) {
