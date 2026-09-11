@@ -225,6 +225,76 @@ class _SettingsScreenState extends State<SettingsScreen> {
     await Share.share('Send me anonymous messages — ${shareUrlFor(u.username)}');
   }
 
+  Future<void> _showChangePinDialog(BuildContext context) async {
+    final currentCtrl = TextEditingController();
+    final newCtrl = TextEditingController();
+    final result = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Change PIN'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(controller: currentCtrl, keyboardType: TextInputType.number, obscureText: true, decoration: const InputDecoration(labelText: 'Current PIN')),
+            const SizedBox(height: 8),
+            TextField(controller: newCtrl, keyboardType: TextInputType.number, obscureText: true, decoration: const InputDecoration(labelText: 'New PIN (4-6 digits)')),
+          ],
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          TextButton(onPressed: () async {
+            try {
+              await ApiClient.authChangePin(currentPin: currentCtrl.text, newPin: newCtrl.text);
+              if (ctx.mounted) Navigator.pop(ctx, true);
+            } catch (e) {
+              if (ctx.mounted) ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(content: Text('Failed: $e')));
+            }
+          }, child: const Text('Save')),
+        ],
+      ),
+    );
+    if (result == true && context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('PIN changed successfully')));
+    }
+  }
+
+  Future<void> _showRefreshCodesDialog(BuildContext context) async {
+    final pinCtrl = TextEditingController();
+    final result = await showDialog<List<String>?>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('New Backup Codes'),
+        content: TextField(controller: pinCtrl, keyboardType: TextInputType.number, obscureText: true, decoration: const InputDecoration(labelText: 'Enter your PIN')),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          TextButton(onPressed: () async {
+            try {
+              final codes = await ApiClient.authRefreshBackupCodes(currentPin: pinCtrl.text);
+              if (ctx.mounted) Navigator.pop(ctx, codes);
+            } catch (e) {
+              if (ctx.mounted) ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(content: Text('Failed: $e')));
+            }
+          }, child: const Text('Generate')),
+        ],
+      ),
+    );
+    if (result != null && result.isNotEmpty && context.mounted) {
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('New Backup Codes'),
+          content: Column(mainAxisSize: MainAxisSize.min, children: [
+            const Text('Save these codes. Old codes are now invalid.', style: TextStyle(fontSize: 12)),
+            const SizedBox(height: 12),
+            for (final code in result)
+              Padding(padding: const EdgeInsets.symmetric(vertical: 2), child: Text(code, style: const TextStyle(fontFamily: 'monospace', fontWeight: FontWeight.w600))),
+          ]),
+          actions: [TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Done'))],
+        ),
+      );
+    }
+  }
+
   Future<void> _signOut() async {
     await Session.clear();
     if (!mounted) return;
