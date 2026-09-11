@@ -102,14 +102,18 @@ export class MockApiClient {
   }
 
   static async verifyOtp(email: string, _otp: string): Promise<{ user: UserProfile; token: string }> {
+    const words = ['lumen', 'ember', 'falcon', 'aurora', 'juniper', 'cobalt', 'nova', 'zephyr', 'oriole', 'maple'];
+    const word = words[Math.floor(Math.random() * words.length)];
+    const handle = `${word}${Math.floor(1000 + Math.random() * 9000)}`;
     const user: UserProfile = {
       id: 'mock_user_id',
-      username: email.split('@')[0] || 'mockuser',
+      username: handle,
       display_name: email.split('@')[0] || 'Mock User',
       email,
       avatar_seed: email,
       is_premium: 1,
       badge_title: 'Developer',
+      custom_slug_unlocked: 1,
     };
     return { user, token: 'mock_jwt_token_for_local_testing' };
   }

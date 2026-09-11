@@ -63,7 +63,7 @@ export const App: React.FC = () => {
           <Route path="/" element={<LandingPage onOpenDonation={() => setIsDonationOpen(true)} />} />
           <Route path="/login" element={<LoginPage onLoginSuccess={(u) => setUser(u)} />} />
           <Route path="/inbox" element={<InboxPage user={user} onOpenDonation={() => setIsDonationOpen(true)} onLogout={handleLogout} />} />
-          <Route path="/settings" element={<SettingsPage user={user} onLogout={handleLogout} onOpenDonation={() => setIsDonationOpen(true)} />} />
+          <Route path="/settings" element={<SettingsPage user={user} setUser={setUser} onLogout={handleLogout} onOpenDonation={() => setIsDonationOpen(true)} />} />
           <Route path="/supporters" element={<SupportersPage onOpenDonation={() => setIsDonationOpen(true)} />} />
           <Route path="/donors" element={<SupportersPage onOpenDonation={() => setIsDonationOpen(true)} />} />
           <Route path="/about" element={<Suspense fallback={<PublicSuspense />}><AboutPage /></Suspense>} />

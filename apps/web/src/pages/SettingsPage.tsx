@@ -2,21 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ViewOnlyNote } from '../components/ViewOnlyBanner';
 import { ApiClient, UnauthorizedError, UserProfile, getShareUrl } from '../lib/api';
-import { ShieldAlert, Trash2, Heart, Check, Copy } from 'lucide-react';
+import { ShieldAlert, Trash2, Heart, Check, Copy, KeyRound } from 'lucide-react';
 
 interface SettingsPageProps {
   user: UserProfile | null;
+  setUser?: (user: UserProfile) => void;
   onLogout: () => void;
   onOpenDonation: () => void;
 }
 
-export const SettingsPage: React.FC<SettingsPageProps> = ({ user, onLogout, onOpenDonation }) => {
+export const SettingsPage: React.FC<SettingsPageProps> = ({ user, setUser, onLogout, onOpenDonation }) => {
   // A browser paired from the app holds a read-only token; every write 403s.
   const isReadOnly = ApiClient.isReadOnly();
   const navigate = useNavigate();
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [usernameInput, setUsernameInput] = useState('');
+  const [claiming, setClaiming] = useState(false);
+  const [claimError, setClaimError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!user) {
@@ -27,6 +31,32 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, onLogout, onOp
   if (!user) return null;
 
   const publicLink = getShareUrl(user.username);
+  const slugUnlocked = user.custom_slug_unlocked === 1;
+
+  const handleClaimUsername = async () => {
+    const name = usernameInput.trim().toLowerCase().replace(/^@/, '');
+    if (!/^[a-z0-9_\-\.]{4,30}$/.test(name)) {
+      setClaimError('Use 4-30 lowercase letters, numbers, dashes, underscores, or dots.');
+      return;
+    }
+    setClaiming(true);
+    setClaimError(null);
+    try {
+      const updated = await ApiClient.setUsername(name);
+      setUsernameInput('');
+      setUser?.(updated);
+      alert(`Your custom link is live: ${getShareUrl(updated.username)}`);
+    } catch (err: any) {
+      if (err instanceof UnauthorizedError) {
+        onLogout();
+        navigate('/login');
+        return;
+      }
+      setClaimError(err.message || 'Could not claim username.');
+    } finally {
+      setClaiming(false);
+    }
+  };
 
   const handleDeleteAccount = async () => {
     setIsDeleting(true);
@@ -120,6 +150,44 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, onLogout, onOp
             </button>
           )}
         </div>
+
+        {slugUnlocked && (
+          <div className="pt-2 border-t border-white/10 space-y-3">
+            <div className="flex items-center space-x-2.5">
+              <div className="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                <KeyRound className="w-4 h-4" />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-white">Claim your custom username</h4>
+                <p className="text-xs text-slate-400">
+                  Your supporter perk. Replace the random handle with a clean name — no numbers required.
+                </p>
+              </div>
+            </div>
+            {isReadOnly ? (
+              <ViewOnlyNote>Username changes happen in the app.</ViewOnlyNote>
+            ) : (
+              <div className="flex items-center space-x-2">
+                <input
+                  type="text"
+                  value={usernameInput}
+                  onChange={(e) => setUsernameInput(e.target.value)}
+                  placeholder={`${user.username}`}
+                  disabled={claiming}
+                  className="flex-1 bg-dark-900 border border-white/10 rounded-xl px-3.5 py-2 text-xs font-mono text-white placeholder-slate-500 outline-none focus:border-indigo-500/50"
+                />
+                <button
+                  onClick={handleClaimUsername}
+                  disabled={claiming}
+                  className="py-2 px-4 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition-colors disabled:opacity-50"
+                >
+                  {claiming ? 'Claiming…' : 'Claim'}
+                </button>
+              </div>
+            )}
+            {claimError && <p className="text-xs text-rose-400">{claimError}</p>}
+          </div>
+        )}
       </div>
 
       {/* Danger Zone: Permanent Account Deletion */}

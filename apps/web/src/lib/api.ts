@@ -62,6 +62,7 @@ export interface UserProfile {
   bio?: string;
   is_premium: number;
   badge_title?: string | null;
+  custom_slug_unlocked?: number;
 }
 
 export interface AnonymousMessage {
@@ -207,6 +208,29 @@ export class ApiClient {
     this.setScope('full');
     this.saveUser(data.user);
     return { user: data.user, token: data.token };
+  }
+
+  static async setUsername(username: string): Promise<UserProfile> {
+    const token = this.getToken();
+    if (!token) throw new Error('Not logged in');
+    const res = await fetch(`${API_BASE_URL}/api/me/username`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username }),
+    });
+    const data = await res.json() as { success?: boolean; username?: string; error?: string };
+    if (res.status === 401) throw new UnauthorizedError();
+    if (!res.ok) throw new Error(data.error || 'Failed to claim username');
+    const saved = this.getSavedUser();
+    if (saved) {
+      const updated = { ...saved, username: data.username || username };
+      this.saveUser(updated);
+      return updated;
+    }
+    throw new Error('Session lost. Please log in again.');
   }
 
   static async getInbox(): Promise<AnonymousMessage[]> {
