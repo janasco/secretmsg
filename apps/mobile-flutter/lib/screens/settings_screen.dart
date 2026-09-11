@@ -448,6 +448,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   const SizedBox(height: 16),
                   _SectionCard(
+                    title: 'Security',
+                    icon: Icons.shield_outlined,
+                    children: [
+                      _ActionTile(
+                        icon: Icons.lock_outline,
+                        label: 'Change PIN',
+                        onTap: () => _showChangePinDialog(context),
+                      ),
+                      _ActionTile(
+                        icon: Icons.refresh,
+                        label: 'Regenerate backup codes',
+                        onTap: () => _showRefreshCodesDialog(context),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  _SectionCard(
                     title: 'Account',
                     icon: Icons.person_outline,
                     children: [

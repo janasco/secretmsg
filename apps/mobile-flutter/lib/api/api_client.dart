@@ -144,6 +144,72 @@ class ApiClient {
     return (user: user, token: token);
   }
 
+
+  // ---- Auth V2: Handle + PIN + Backup Codes ----
+  static Future<({String handle, List<String> backupCodes, String token})> authSignup({
+    String? handle,
+    required String pin,
+  }) async {
+    final data = await _postJson('/api/auth/signup', {
+      if (handle != null && handle.isNotEmpty) 'handle': handle,
+      'pin': pin,
+    });
+    final codes = (data['backupCodes'] as List?)?.map((e) => e.toString()).toList() ?? [];
+    return (
+      handle: data['handle']?.toString() ?? '',
+      backupCodes: codes,
+      token: data['token']?.toString() ?? '',
+    );
+  }
+
+  static Future<({UserProfile user, String token})> authLogin({
+    required String handle,
+    required String pin,
+  }) async {
+    final data = await _postJson('/api/auth/login', {
+      'handle': handle,
+      'pin': pin,
+    });
+    final user = UserProfile.fromJson(data['user'] as Map<String, dynamic>);
+    final token = data['token']?.toString() ?? '';
+    await Session.setToken(token);
+    await Session.saveUser(user);
+    return (user: user, token: token);
+  }
+
+  static Future<({String handle, List<String> backupCodes, String token})> authRecover({
+    required String handle,
+    required String backupCode,
+    required String newPin,
+  }) async {
+    final data = await _postJson('/api/auth/recover', {
+      'handle': handle,
+      'backup_code': backupCode,
+      'new_pin': newPin,
+    });
+    final codes = (data['backupCodes'] as List?)?.map((e) => e.toString()).toList() ?? [];
+    return (
+      handle: data['user']?['username']?.toString() ?? handle,
+      backupCodes: codes,
+      token: data['token']?.toString() ?? '',
+    );
+  }
+
+
+  static Future<void> authChangePin({required String currentPin, required String newPin}) async {
+    await _postJson('/api/auth/change-pin', {
+      'current_pin': currentPin,
+      'new_pin': newPin,
+    }, auth: true);
+  }
+
+  static Future<List<String>> authRefreshBackupCodes({required String currentPin}) async {
+    final data = await _postJson('/api/auth/refresh-backup-codes', {
+      'current_pin': currentPin,
+    }, auth: true);
+    return (data['backupCodes'] as List?)?.map((e) => e.toString()).toList() ?? [];
+  }
+
   // ---- Google Play billing (POST /api/billing/google/verify) ----
   /// Hands the Play purchase token to the API, which verifies it with Google
   /// before unlocking anything. Throws if verification fails so the caller can

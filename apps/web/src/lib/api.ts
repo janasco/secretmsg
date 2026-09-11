@@ -299,6 +299,39 @@ export class ApiClient {
     });
   }
 
+
+  // Auth V2: Handle + PIN + Backup Codes
+  static async authSignup(handle?: string, pin?: string): Promise<{ handle: string; backupCodes: string[]; token: string }> {
+    const data = await this.post('/api/auth/signup', {
+      ...(handle ? { handle } : {}),
+      pin,
+    });
+    return { handle: data.handle, backupCodes: data.backupCodes || [], token: data.token };
+  }
+
+  static async authLogin(handle: string, pin: string): Promise<{ user: UserProfile; token: string }> {
+    const data = await this.post('/api/auth/login', { handle, pin });
+    localStorage.setItem('secretmsg_auth_token', data.token);
+    localStorage.setItem('secretmsg_auth_scope', 'full');
+    return { user: data.user, token: data.token };
+  }
+
+  static async authRecover(handle: string, backupCode: string, newPin: string): Promise<{ user: { username: string }; backupCodes: string[]; token: string }> {
+    const data = await this.post('/api/auth/recover', { handle, backup_code: backupCode, new_pin: newPin });
+    localStorage.setItem('secretmsg_auth_token', data.token);
+    localStorage.setItem('secretmsg_auth_scope', 'full');
+    return { user: data.user, backupCodes: data.backupCodes || [], token: data.token };
+  }
+
+  static async authChangePin(currentPin: string, newPin: string): Promise<void> {
+    await this.post('/api/auth/change-pin', { current_pin: currentPin, new_pin: newPin }, true);
+  }
+
+  static async authRefreshBackupCodes(currentPin: string): Promise<string[]> {
+    const data = await this.post('/api/auth/refresh-backup-codes', { current_pin: currentPin }, true);
+    return data.backupCodes || [];
+  }
+
   static async getSupporters(): Promise<SupportersData> {
     if (USE_MOCK) return MockApiClient.getSupporters();
     try {
