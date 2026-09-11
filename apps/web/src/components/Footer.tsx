@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
             <li><Link to="/dice" className="hover:text-slate-300 transition-colors">3D Dice Roulette</Link></li>
             <li><Link to="/sticker-studio" className="hover:text-slate-300 transition-colors">Sticker Studio</Link></li>
             <li><a href="https://github.com/janasco/secretmsg/releases" className="hover:text-slate-300 transition-colors">Android App (APK)</a></li>
-            <li><a href="https://app.secretmsg.net/inbox" className="hover:text-slate-300 transition-colors">Anonymous Inbox</a></li>
+            <li><a href="https://secretmsg.net/inbox" className="hover:text-slate-300 transition-colors">Anonymous Inbox</a></li>
           </ul>
         </div>
 
