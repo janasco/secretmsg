@@ -15,7 +15,7 @@ export class UnauthorizedError extends Error {
 
 export const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'https://api.secretmsg.net';
 export const PUBLIC_BASE_URL = (import.meta as any).env?.VITE_PUBLIC_URL || 'https://secretmsg.net';
-export const ACCOUNT_APP_URL = (import.meta as any).env?.VITE_ACCOUNT_APP_URL || 'https://app.secretmsg.net';
+export const ACCOUNT_APP_URL = (import.meta as any).env?.VITE_ACCOUNT_APP_URL || 'https://secretmsg.net';
 
 /**
  * Stable anonymous device fingerprint, persisted per-browser. The server keeps

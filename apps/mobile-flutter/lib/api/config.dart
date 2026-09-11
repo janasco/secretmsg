@@ -1,6 +1,6 @@
 const String kApiBaseUrl = 'https://api.secretmsg.net';
 const String kPublicBaseUrl = 'https://secretmsg.net';
-const String kAccountAppUrl = 'https://app.secretmsg.net';
+const String kAccountAppUrl = 'https://secretmsg.net';
 
 /// Public bot-screening site key — safe to embed client-side.
 const String kTurnstileSiteKey = '0x4AAAAAAEsIItNVg9CO0YY9';
