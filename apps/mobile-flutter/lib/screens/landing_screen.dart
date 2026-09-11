@@ -17,17 +17,68 @@ class LandingScreen extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            Container(
+            SizedBox(
               width: 30,
               height: 30,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(9),
-              ),
-              child: const Text(
-                'S',
-                style: TextStyle(color: AppColors.bg, fontWeight: FontWeight.w900, fontSize: 17),
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: 0,
+                    top: 0,
+                    width: 18,
+                    height: 18,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFF8B5CF6), Color(0xFF6366F1)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 3.5,
+                    top: 3.5,
+                    width: 10,
+                    height: 10,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF0B0E14),
+                        borderRadius: BorderRadius.circular(2.5),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: 0,
+                    bottom: 0,
+                    width: 18,
+                    height: 18,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFF8B5CF6), Color(0xFF6366F1)],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: 3.5,
+                    bottom: 3.5,
+                    width: 10,
+                    height: 10,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF0B0E14),
+                        borderRadius: BorderRadius.circular(2.5),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(width: 8),

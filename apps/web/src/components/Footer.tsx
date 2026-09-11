@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Smartphone } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -22,7 +21,7 @@ export const Footer: React.FC = () => {
           <ul className="space-y-2 text-xs text-slate-500">
             <li><Link to="/dice" className="hover:text-slate-300 transition-colors">3D Dice Roulette</Link></li>
             <li><Link to="/sticker-studio" className="hover:text-slate-300 transition-colors">Sticker Studio</Link></li>
-            <li><a href="https://github.com/janasco/secretmsg/releases" className="hover:text-slate-300 transition-colors inline-flex items-center gap-1"><Smartphone className="w-3 h-3" /> Android App (APK)</a></li>
+            <li><a href="https://github.com/janasco/secretmsg/releases" className="hover:text-slate-300 transition-colors">Android App (APK)</a></li>
             <li><a href="https://app.secretmsg.net/inbox" className="hover:text-slate-300 transition-colors">Anonymous Inbox</a></li>
           </ul>
         </div>
@@ -54,14 +53,14 @@ export const Footer: React.FC = () => {
         <div>
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Connect</h4>
           <ul className="space-y-2 text-xs text-slate-500">
-            <li><a href="https://github.com/janasco/secretmsg" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 transition-colors inline-flex items-center gap-1"><Github className="w-3 h-3" /> GitHub Repository</a></li>
+            <li><a href="https://github.com/janasco/secretmsg" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 transition-colors">GitHub Repository</a></li>
             <li><a href="mailto:support@secretmsg.net" className="hover:text-slate-300 transition-colors">support@secretmsg.net</a></li>
           </ul>
         </div>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 gap-2">
-        <span>© 2026 secretmsg.net</span>
+        <span>&copy; 2026 secretmsg.net</span>
         <span>Personal Project by janasco</span>
         <span className="text-slate-600">Deepening authentic connections, safely.</span>
       </div>

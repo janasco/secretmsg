@@ -8,9 +8,7 @@ import {
   Share2,
   Heart,
   ArrowRight,
-  Github,
   Dices,
-  Smartphone,
   Download
 } from 'lucide-react';
 import { Footer } from '../components/Footer';
@@ -96,9 +94,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
         </div>
 
         <div className="pt-2">
-          <span className="inline-flex items-center space-x-1.5 text-xs text-slate-400">
-            <Smartphone className="w-3.5 h-3.5" />
-            <span>Android app available on GitHub Releases — or use the full mobile-friendly site on any phone.</span>
+          <span className="text-xs text-slate-400">
+            Android app available on GitHub Releases — or use the full mobile-friendly site on any phone.
           </span>
         </div>
       </div>
@@ -268,7 +265,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
       <div className="glass-panel p-8 rounded-2xl border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-2 text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start space-x-2 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
-            <Github className="w-4 h-4" />
             <span>Open Source & Transparent</span>
           </div>
           <h3 className="text-xl font-bold text-white">Built for Privacy, Not for Profit</h3>
@@ -281,10 +277,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
             href="https://github.com/janasco"
             target="_blank"
             rel="noopener noreferrer"
-            className="py-2.5 px-4 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/15 text-white border border-white/10 transition-colors flex items-center space-x-2"
+            className="py-2.5 px-4 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/15 text-white border border-white/10 transition-colors"
           >
-            <Github className="w-4 h-4" />
-            <span>View on GitHub</span>
+            View on GitHub
           </a>
         </div>
       </div>
