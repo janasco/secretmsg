@@ -36,6 +36,69 @@ class AppColors {
   // Hairline borders (Stitch: rgba(255,255,255,0.12) / 0.24)
   static const border = Color(0x1FFFFFFF);
   static const borderStrong = Color(0x3DFFFFFF);
+
+  static ThemeData light() {
+    return ThemeData(
+      useMaterial3: true,
+      brightness: Brightness.light,
+      scaffoldBackgroundColor: const Color(0xFFF8FAFC),
+      colorScheme: const ColorScheme.light(
+        primary: AppColors.accent,
+        secondary: AppColors.accent,
+        surface: Colors.white,
+        error: AppColors.rose,
+      ),
+      fontFamily: 'Inter',
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Color(0xFFF8FAFC),
+        elevation: 0,
+        centerTitle: false,
+        titleTextStyle: TextStyle(
+          color: Color(0xFF0F172A),
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+        ),
+        iconTheme: IconThemeData(color: Color(0xFF0F172A)),
+      ),
+      textTheme: const TextTheme(
+        headlineSmall: TextStyle(fontSize: 20, height: 28/20, fontWeight: FontWeight.w600, letterSpacing: -0.01*20, color: Color(0xFF0F172A)),
+        titleMedium: TextStyle(fontSize: 16, height: 24/16, fontWeight: FontWeight.w600, color: Color(0xFF0F172A)),
+        bodyMedium: TextStyle(fontSize: 14, height: 20/14, color: Color(0xFF0F172A)),
+        bodySmall: TextStyle(fontSize: 12, height: 18/12, color: Color(0xFF64748B)),
+        labelSmall: TextStyle(fontSize: 11, height: 16/11, fontWeight: FontWeight.w500, letterSpacing: 0.02*11, color: Color(0xFF64748B)),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Color(0xFFE2E8F0)),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Color(0xFFE2E8F0)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.accent, width: 1.4),
+        ),
+        hintStyle: const TextStyle(color: Color(0xFF94A3B8)),
+        labelStyle: const TextStyle(color: Color(0xFF64748B)),
+      ),
+      snackBarTheme: SnackBarThemeData(
+        backgroundColor: Colors.white,
+        contentTextStyle: const TextStyle(color: Color(0xFF0F172A)),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+      chipTheme: const ChipThemeData(
+        backgroundColor: Color(0xFFF1F5F9),
+        labelStyle: TextStyle(color: Color(0xFF64748B), fontSize: 12),
+      ),
+      dividerTheme: const DividerThemeData(color: Color(0xFFE2E8F0)),
+    );
+  }
 }
 
 /// Stitch DESIGN.md type scale: display-lg 28/34 -2%, headline-md 20/28 -1%,

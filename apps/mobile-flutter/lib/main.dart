@@ -18,9 +18,9 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: AppColors.bg,
-      statusBarIconBrightness: Brightness.light,
+      statusBarIconBrightness: WidgetsBinding.instance.platformDispatcher.platformBrightness == Brightness.dark ? Brightness.light : Brightness.dark,
       systemNavigationBarColor: AppColors.bg,
-      systemNavigationBarIconBrightness: Brightness.light,
+      systemNavigationBarIconBrightness: WidgetsBinding.instance.platformDispatcher.platformBrightness == Brightness.dark ? Brightness.light : Brightness.dark,
     ),
   );
   const isDiag = bool.fromEnvironment('SMS_TURNSTILE_TEST');
@@ -159,6 +159,8 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
       title: 'SecretMsg',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.dark(),
+      darkTheme: AppTheme.dark(),
+      themeMode: ThemeMode.system,
       home: isDiag ? const TurnstileDiagScreen() : (_home ?? const _Booting()),
       routes: {
         '/home': (_) => const LandingScreen(),
