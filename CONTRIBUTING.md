@@ -66,4 +66,16 @@ Run `flutter test` and `flutter analyze` before opening a PR. See `apps/mobile-f
 3. Push to your fork: `git push origin feat/my-improvement`
 4. Open a Pull Request against `main`.
 
-Keep commits attributed to personal contributor identities.
+
+---
+
+## Git Commit Identity
+
+All commits across every repo are authored as `janasco <janasco@duck.com>`.
+
+- **No AI co-author attribution**: never add `Co-authored-by` trailers or any other machine attribution.
+- **No other committers**: the sole author identity is `janasco <janasco@duck.com>`.
+- **Global git config** is pre-configured with this identity and a commit template.
+- Use `git commit -m "type(scope): description"` with the conventional format.
+
+This rule applies to all repositories: `secretmsg`, `secretmsg-private`, and any future repos under the `janasco` account.
