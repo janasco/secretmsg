@@ -15,6 +15,7 @@ class UserProfile {
   final int? pausedUntil;
   final List<String> hiddenWords;
   final int? allowHints;
+  final int customSlugUnlocked;
 
   const UserProfile({
     required this.id,
@@ -33,6 +34,7 @@ class UserProfile {
     this.pausedUntil,
     this.hiddenWords = const [],
     this.allowHints,
+    this.customSlugUnlocked = 0,
   });
 
   factory UserProfile.fromJson(Map<String, dynamic> json) {
@@ -58,6 +60,7 @@ class UserProfile {
       pausedUntil: (json['paused_until'] as num?)?.toInt(),
       hiddenWords: hidden,
       allowHints: (json['allow_hints'] as num?)?.toInt(),
+      customSlugUnlocked: (json['custom_slug_unlocked'] as num?)?.toInt() ?? 0,
     );
   }
 
@@ -78,6 +81,7 @@ class UserProfile {
         'paused_until': pausedUntil,
         'hidden_words': hiddenWords,
         'allow_hints': allowHints,
+        'custom_slug_unlocked': customSlugUnlocked,
       };
 
   bool get isSupporter => isPremium == 1;

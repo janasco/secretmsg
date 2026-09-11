@@ -36,6 +36,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   int? _pauseUntil;
   bool _savingPause = false;
   bool _permanentPause = false;
+  bool _claimingUsername = false;
 
   @override
   void initState() {
@@ -136,6 +137,86 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final u = _user;
     if (u == null) return;
     copyToClipboard(context, shareUrlFor(u.username), message: 'Your secret link copied');
+  }
+
+  Future<void> _claimUsername() async {
+    final u = _user;
+    if (u == null) return;
+    final ctrl = TextEditingController(text: u.username);
+    final claimed = await showDialog<String>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: AppColors.surface,
+        title: const Text('Pick your custom username', style: TextStyle(color: Colors.white, fontSize: 16)),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Your supporter perk. Choose a clean handle without numbers — this replaces your link.',
+              style: TextStyle(color: AppColors.textSecondary, fontSize: 13, height: 1.5),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: ctrl,
+              autocorrect: false,
+              textCapitalization: TextCapitalization.none,
+              decoration: InputDecoration(
+                labelText: 'Username',
+                hintText: 'yourname',
+                prefixText: '@ ',
+                filled: true,
+                fillColor: AppColors.bg,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: AppColors.border),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: AppColors.border),
+                ),
+              ),
+            ),
+            const SizedBox(height: 6),
+            const Text(
+              '4–30 lowercase letters, numbers, dashes, underscores, or dots.',
+              style: TextStyle(color: AppColors.textMuted, fontSize: 11),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text('Cancel', style: TextStyle(color: AppColors.accentSoft)),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(ctrl.text.trim().toLowerCase()),
+            child: const Text('Claim', style: TextStyle(color: AppColors.accent, fontWeight: FontWeight.w700)),
+          ),
+        ],
+      ),
+    );
+    if (claimed == null || claimed.isEmpty) return;
+    if (!RegExp(r'^[a-z0-9_\-\.]{4,30}$').hasMatch(claimed)) {
+      if (!mounted) return;
+      showErrorSnack(context, 'Use 4–30 lowercase letters, numbers, dashes, underscores, or dots.');
+      return;
+    }
+    setState(() => _claimingUsername = true);
+    try {
+      await ApiClient.setUsername(claimed);
+      await _load();
+      if (!mounted) return;
+      showErrorSnack(context, 'Your custom link is live: secretmsg.net/$claimed');
+    } on ApiException catch (e) {
+      if (!mounted) return;
+      setState(() => _claimingUsername = false);
+      showErrorSnack(context, e.message);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _claimingUsername = false);
+      showErrorSnack(context, 'Could not update your username. Try again.');
+    }
   }
 
   Future<void> _shareLink() async {
@@ -291,6 +372,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         label: 'Share my link',
                         onTap: _shareLink,
                       ),
+                      if (u.customSlugUnlocked == 1) ...[
+                        const Divider(color: AppColors.border, height: 24),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Supporter perk — your username',
+                              style: TextStyle(color: AppColors.textMuted, fontSize: 11),
+                            ),
+                            const SizedBox(height: 6),
+                            _ActionTile(
+                              icon: Icons.badge_outlined,
+                              label: _claimingUsername
+                                  ? 'Claiming…'
+                                  : 'Custom username: ${u.username}',
+                              onTap: _claimingUsername ? null : _claimUsername,
+                            ),
+                          ],
+                        ),
+                      ],
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -630,7 +731,7 @@ class _SectionCard extends StatelessWidget {
 class _ActionTile extends StatelessWidget {
   final IconData icon;
   final String label;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final bool danger;
   const _ActionTile({required this.icon, required this.label, required this.onTap, this.danger = false});
 

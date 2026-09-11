@@ -586,7 +586,7 @@ class _SendScreenState extends State<SendScreen> {
               TextButton(
                 onPressed: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                    builder: (_) => LoginScreen(prefillUsername: _usernameCtrl.text),
+                    builder: (_) => const LoginScreen(),
                   ),
                 ),
                 child: const Text('Create your own SecretMsg link', style: TextStyle(color: Color(0xFFA5B4FC), fontWeight: FontWeight.w700)),

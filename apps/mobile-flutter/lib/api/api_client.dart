@@ -131,13 +131,11 @@ class ApiClient {
 
   static Future<({UserProfile user, String token})> verifyOtp(
     String email,
-    String otp, {
-    String? username,
-  }) async {
+    String otp,
+  ) async {
     final data = await _postJson('/api/auth/otp-verify', {
       'email': email,
       'otp': otp,
-      'username': username,
     });
     final user = UserProfile.fromJson(data['user'] as Map<String, dynamic>);
     final token = data['token']?.toString() ?? '';
@@ -191,6 +189,11 @@ class ApiClient {
     if (clearPause) body['paused_until'] = null;
     if (body.isEmpty) return;
     await _patchJson('/api/me', body);
+  }
+
+  // ---- Claim Custom Username (Supporter Perk, POST /api/me/username) ----
+  static Future<void> setUsername(String username) async {
+    await _postJson('/api/me/username', {'username': username}, auth: true);
   }
 
   // ---- Inbox ----

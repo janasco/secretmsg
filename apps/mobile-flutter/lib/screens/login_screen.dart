@@ -6,8 +6,7 @@ import '../widgets/common.dart';
 import 'app_shell.dart';
 
 class LoginScreen extends StatefulWidget {
-  final String? prefillUsername;
-  const LoginScreen({super.key, this.prefillUsername});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -16,7 +15,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _emailCtrl = TextEditingController();
   final _otpCtrl = TextEditingController();
-  final _usernameCtrl = TextEditingController();
 
   bool _requesting = false;
   bool _verifying = false;
@@ -25,16 +23,9 @@ class _LoginScreenState extends State<LoginScreen> {
   String? _info;
 
   @override
-  void initState() {
-    super.initState();
-    _usernameCtrl.text = widget.prefillUsername ?? '';
-  }
-
-  @override
   void dispose() {
     _emailCtrl.dispose();
     _otpCtrl.dispose();
-    _usernameCtrl.dispose();
     super.dispose();
   }
 
@@ -86,8 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
       _error = null;
     });
     try {
-      final username = _usernameCtrl.text.trim();
-      await ApiClient.verifyOtp(email, otp, username: username.isEmpty ? null : username.toLowerCase());
+      await ApiClient.verifyOtp(email, otp);
       if (!mounted) return;
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (_) => const AppShell(initialTab: AppTab.settings)),
@@ -153,30 +143,26 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                TextField(
-                  controller: _usernameCtrl,
-                  autocorrect: false,
-                  enabled: !_requesting && !_verifying,
-                  decoration: InputDecoration(
-                    labelText: 'Username (choose your link)',
-                    hintText: 'janasco',
-                    prefixText: '@ ',
-                    filled: true,
-                    fillColor: const Color(0xFF0F1220),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: AppColors.border),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: AppColors.border),
-                    ),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF101A2E),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: const Color(0xFF1E293B)),
                   ),
-                ),
-                const SizedBox(height: 6),
-                const Text(
-                  '4–30 characters: lowercase letters, numbers, dashes, underscores, or dots. This becomes your public link.',
-                  style: TextStyle(color: Color(0xFF64748B), fontSize: 11, height: 1.45),
+                  child: const Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(Icons.auto_awesome, color: Color(0xFFA5B4FC), size: 18),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          'Your link gets a random handle, like secretmsg.net/ember4821 — created automatically. Prefer your own name? Supporters can pick a custom username.',
+                          style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12, height: 1.5),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 16),
                 FilledButton(
