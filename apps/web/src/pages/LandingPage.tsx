@@ -10,7 +10,8 @@ import {
   ArrowRight,
   Github,
   Dices,
-  Smartphone
+  Smartphone,
+  Download
 } from 'lucide-react';
 import { Footer } from '../components/Footer';
 
@@ -99,6 +100,72 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
             <Smartphone className="w-3.5 h-3.5" />
             <span>Android app available on GitHub Releases — or use the full mobile-friendly site on any phone.</span>
           </span>
+        </div>
+      </div>
+
+      {/* App Download Cards */}
+      <div className="space-y-5">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-white">Get SecretMsg for Your Phone</h2>
+          <p className="text-sm text-slate-400 mt-1">Download the native app or use the mobile-friendly site</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          {/* Direct APK Download */}
+          <a
+            href="https://secretmsg.net/downloads/secretmsg-android-v1.2.0.apk"
+            className="group glass-panel p-5 rounded-2xl border-emerald-500/20 hover:border-emerald-500/40 transition-all hover:shadow-lg hover:shadow-emerald-500/10 flex flex-col items-center text-center gap-3"
+          >
+            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500/20 transition-colors">
+              <Download className="w-5 h-5" />
+            </div>
+            <div className="space-y-1">
+              <h3 className="text-sm font-bold text-emerald-300">Direct Download</h3>
+              <p className="text-xs text-slate-400">Android APK — no store required</p>
+            </div>
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/20 uppercase tracking-wider">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              APK Ready
+            </span>
+          </a>
+
+          {/* Google Play (Coming Soon) */}
+          <div className="glass-panel p-5 rounded-2xl border-white/5 opacity-70 flex flex-col items-center text-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302L15.396 12l2.302-2.492zM5.864 2.658L16.8 8.991l-2.302 2.302L5.864 2.658z" />
+              </svg>
+            </div>
+            <div className="space-y-1">
+              <h3 className="text-sm font-bold text-slate-300">Google Play</h3>
+              <p className="text-xs text-slate-500">The official Android store</p>
+            </div>
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/5 text-slate-500 border border-white/5 uppercase tracking-wider">
+              Coming Soon
+            </span>
+          </div>
+
+          {/* App Store (Coming Soon) */}
+          <div className="glass-panel p-5 rounded-2xl border-white/5 opacity-70 flex flex-col items-center text-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+              </svg>
+            </div>
+            <div className="space-y-1">
+              <h3 className="text-sm font-bold text-slate-300">App Store</h3>
+              <p className="text-xs text-slate-500">For iPhone & iPad users</p>
+            </div>
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/5 text-slate-500 border border-white/5 uppercase tracking-wider">
+              Coming Soon
+            </span>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-xs text-slate-500">
+          <span>Version: <span className="text-slate-300 font-mono">v1.2.0</span></span>
+          <span>Size: <span className="text-slate-300 font-mono">~23 MB</span></span>
+          <span>Platform: <span className="text-slate-300">Android 8.0+</span></span>
         </div>
       </div>
 
