@@ -1,0 +1,45 @@
+name: android
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/mobile-flutter/**'
+      - '.github/workflows/android.yml'
+  pull_request:
+    paths:
+      - 'apps/mobile-flutter/**'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/mobile-flutter
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
+
+      - name: Debug APK (compile gate, unsigned)
+        run: flutter build apk --debug
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: secretmsg-debug-apk
+          path: apps/mobile-flutter/build/app/outputs/flutter-apk/app-debug.apk
+          retention-days: 14

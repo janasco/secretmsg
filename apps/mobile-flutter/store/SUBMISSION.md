@@ -7,60 +7,36 @@ Blockers first, because four of them will stop a submission dead.
 
 ## 1. Blockers
 
-### 1.1 targetSdk is 34 — Play will reject this
+### 1.1 targetSdk floor — resolved by the Flutter 3.47 upgrade
 
-Flutter 3.24.5 defaults to `targetSdkVersion 34`, confirmed in the built
-manifest. Play requires new apps to target a recent API level (35 for
-submissions from Aug 2025, and it advances every August). 34 is below the floor.
+Flutter 3.47 defaults to `compileSdkVersion 36`, which tracks past Play's
+target-API floor (35 for submissions since Aug 2025; it advances every
+August). `android/app/build.gradle` intentionally follows
+`flutter.compileSdkVersion` / `flutter.targetSdkVersion`, so no pin is
+needed. Still check the Console for the current number before each release —
+a floor bump changes real runtime behaviour and needs a rebuild + retest.
 
-Fix in `android/app/build.gradle` — replace the Flutter default:
+### 1.2 Reviewer sign-in — solved with a provisioned account
 
-```gradle
-    defaultConfig {
-        applicationId = "net.secretmsg.android_app"
-        minSdk = flutter.minSdkVersion
-        targetSdk = 35          // was flutter.targetSdkVersion (34)
-        ...
-    }
+Sign-in is handle + PIN (Auth V2), so no mailbox access is needed at all.
+Before submission, create a dedicated reviewer account and hand over the
+credentials under **App content → App access** (*All or some functionality
+is restricted*):
 
-    android {
-        compileSdk = 35         // must be >= targetSdk
-```
+1. Sign up handle `playreviewer` (or similar) with a known PIN.
+2. Save its 10 backup codes somewhere safe — they are the recovery path if
+   the reviewer locks the account.
+3. Seed the inbox with a few tame messages and one reply so every tab has
+   content.
 
-Check the current requirement in the Console before picking the number, then
-rebuild and re-test — a targetSdk bump changes real runtime behaviour
-(notification permission, foreground service rules, intent filtering).
+Pairing codes expire in 5 minutes and are not suitable for reviewers.
 
-### 1.2 A reviewer cannot sign in
+### 1.3 Sender blocking — shipped
 
-Sign-in is an emailed one-time code. A Play reviewer has no access to your
-mailbox, so they cannot get past the login screen, and "we couldn't access the
-app" is one of the most common rejection reasons.
-
-Under **App content → App access**, choose *All or some functionality is
-restricted* and supply working credentials. You need one of:
-
-- a demo account whose OTP is fixed and does not expire, or
-- a bypass code the API accepts for one nominated demo address, or
-- a pairing code path documented for the reviewer (note that codes expire in
-  5 minutes, so this only works if you also relax the TTL for that account).
-
-None of these exist yet. This needs building before submission.
-
-### 1.3 "Blocked Senders" is advertised but not implemented
-
-There is no blocks table and no block endpoint in the API — the schema holds
-`users`, `messages`, `auth_sessions`, `reports`, `donations`, `rate_limits`,
-`pair_codes` and `purchases`, and nothing handles blocking.
-
-The feature is nonetheless named in the README, in the settings UI, and in
-`LEGAL/TERMS_OF_SERVICE.md` ("You may block abusive sender devices"). Shipping
-a store listing or Terms that promise a safety control which does not work is a
-policy and consumer-protection problem, and Play's user-generated content
-expectations lean on blocking specifically.
-
-Either build it or strike the claim from the Terms and the UI before shipping.
-The store copy in `listing/full_description.txt` already omits it deliberately.
+Was a blocker (advertised, not implemented). Now done: `blocked_senders`
+table, `POST /api/inbox/:id/block`, block sender buttons in the inbox, and
+Blocked Senders management in Settings (app) and on web. Terms, README, and
+store copy are consistent.
 
 ### 1.4 Account deletion needs a web URL
 
@@ -170,13 +146,26 @@ First review of a brand-new developer account commonly takes several days.
 ## 7. Order of operations
 
 1. Play Console account and identity verification (slowest — start now)
-2. Fix targetSdk, rebuild, retest
-3. Resolve the reviewer sign-in problem
-4. Decide on Blocked Senders: build it or remove the claim
-5. Add the web account-deletion page
-6. Generate the keystore, fill in `key.properties`
-7. Create the app, upload an internal-testing build
-8. Fill in the listing with the assets and copy in this directory
-9. Complete App content, Data safety and the content rating
-10. Create the in-app products, link the service account, test a purchase
-11. Promote to production
+2. Confirm the current target-API floor, rebuild, retest
+3. Provision the reviewer handle + PIN account
+4. Add the web account-deletion page (§1.4, still open)
+5. Generate the keystore, fill in `key.properties`
+6. Create the app, upload an internal-testing build
+7. Fill in the listing with the assets and copy in this directory
+8. Complete App content, Data safety and the content rating
+9. Create the in-app products, link the service account, test a purchase
+10. Promote to production
+
+---
+
+## 8. Release runbook (every version)
+
+1. Bump `version:` in `pubspec.yaml` (`1.2.0+3` → name+code; code must rise).
+2. `flutter analyze` clean, `flutter test` green.
+3. `flutter build appbundle --release --obfuscate --split-debug-info=build/symbols`
+   — archive `build/symbols` with the version number or crash traces die with it.
+4. Upload to **Internal testing**, verify on a real device: signup, PIN login,
+   send with bot check, reply, pairing code, purchase sandbox.
+5. Smoke the API the build talks to: `/api/health`, one public profile lookup.
+6. Promote closed → open/production in stages; watch for the first review wave
+   (brand-new developer accounts commonly wait several days).

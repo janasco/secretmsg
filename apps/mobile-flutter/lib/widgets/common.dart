@@ -457,3 +457,107 @@ void showSuccessSnack(BuildContext context, String message) {
     ),
   );
 }
+
+/// Auth shell: branded top bar + centered 480-wide scroll column.
+/// Used by login, recovery, and backup-codes so auth screens share one shape.
+class AuthScaffold extends StatelessWidget {
+  final String title;
+  final String heading;
+  final String subheading;
+  final List<Widget> children;
+
+  const AuthScaffold({
+    super.key,
+    required this.title,
+    required this.heading,
+    required this.subheading,
+    required this.children,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppTopBar(title: title),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 40),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 480),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(heading, style: AppType.headlineMd),
+                const SizedBox(height: 8),
+                Text(subheading, style: AppType.bodySm.copyWith(height: 1.55)),
+                const SizedBox(height: 20),
+                ...children,
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// System text field: surface fill, hairline border, 12px radius.
+class AppTextField extends StatelessWidget {
+  final TextEditingController controller;
+  final String label;
+  final String? hint;
+  final bool enabled;
+  final bool obscureText;
+  final TextInputType keyboardType;
+  final int? maxLength;
+  final List<TextInputFormatter>? inputFormatters;
+  final ValueChanged<String>? onSubmitted;
+
+  const AppTextField({
+    super.key,
+    required this.controller,
+    required this.label,
+    this.hint,
+    this.enabled = true,
+    this.obscureText = false,
+    this.keyboardType = TextInputType.text,
+    this.maxLength,
+    this.inputFormatters,
+    this.onSubmitted,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      autocorrect: false,
+      enabled: enabled,
+      obscureText: obscureText,
+      keyboardType: keyboardType,
+      maxLength: maxLength,
+      inputFormatters: inputFormatters,
+      onSubmitted: onSubmitted,
+      style: AppType.bodyBase,
+      decoration: InputDecoration(
+        labelText: label,
+        hintText: hint,
+        labelStyle: const TextStyle(color: AppColors.textSecondary),
+        hintStyle: const TextStyle(color: AppColors.textMuted),
+        filled: true,
+        fillColor: AppColors.surface,
+        counterText: '',
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.border),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.border),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.accent),
+        ),
+      ),
+    );
+  }
+}

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ViewOnlyNote } from '../components/ViewOnlyBanner';
 import { ApiClient, UnauthorizedError, UserProfile, BlockedSender, getShareUrl } from '../lib/api';
+import { tierMeta, rankTierOf, rankDetailOf } from '../lib/rank';
 import { getInitialTheme, applyAppTheme, getResolvedTheme, ThemeMode, ResolvedTheme } from '../lib/theme';
-import { ShieldAlert, Trash2, Heart, Check, Copy, KeyRound, Pause, Play, EyeOff, Smartphone, Palette, ShieldCheck } from 'lucide-react';
+import { ShieldAlert, Trash2, Heart, Check, Copy, KeyRound, Pause, Play, EyeOff, Smartphone, Palette, ShieldCheck, Share2 } from 'lucide-react';
 
 interface SettingsPageProps {
   user: UserProfile | null;
@@ -103,6 +104,26 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, setUser, onLog
       setClaimError(err.message || 'Could not claim username.');
     } finally {
       setClaiming(false);
+    }
+  };
+
+  const handleShareRank = async () => {
+    const meta = tierMeta(rankTierOf(user));
+    const text = `I'm ${meta.emoji} ${meta.name} on SecretMsg — ask me anything anonymously: ${publicLink}`;
+    try {
+      const nav = navigator as Navigator & { share?: (data: { title: string; text: string; url: string }) => Promise<void> };
+      if (nav.share) {
+        await nav.share({ title: 'SecretMsg', text, url: publicLink });
+        return;
+      }
+      throw new Error('no-share');
+    } catch {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('Rank share text copied — paste it to your story.');
+      } catch {
+        showToast('Could not share right now.', true);
+      }
     }
   };
 
@@ -235,6 +256,14 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, setUser, onLog
                   {user.badge_title || 'Supporter'}
                 </span>
               )}
+              {(() => {
+                const meta = tierMeta(rankTierOf(user));
+                return (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">
+                    {meta.emoji} {meta.name}
+                  </span>
+                );
+              })()}
             </div>
             <p className="text-xs text-slate-400 font-mono">@{user.username}</p>
           </div>
@@ -259,6 +288,52 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, setUser, onLog
           </button>
         </div>
       </div>
+
+      {/* Rank progress (server-computed activity tier) */}
+      {(() => {
+        const detail = rankDetailOf(user);
+        const meta = tierMeta(rankTierOf(user));
+        const pct = detail && typeof detail.progress === 'number'
+          ? Math.min(100, Math.max(0, detail.progress * 100))
+          : null;
+        const toNext = detail && typeof detail.nextScore === 'number' && typeof detail.score === 'number'
+          ? Math.max(0, detail.nextScore - detail.score)
+          : null;
+        return (
+          <div className="glass-panel p-6 rounded-2xl space-y-3">
+            <div className="flex items-center space-x-2.5">
+              <div className="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-lg">
+                {meta.emoji}
+              </div>
+              <div className="flex-1">
+                <h4 className="text-sm font-bold text-white">Rank: {detail?.name || meta.name}</h4>
+                <p className="text-xs text-slate-400">
+                  {typeof detail?.score === 'number'
+                    ? `${detail.score} activity points (messages + 2× replies${user.is_premium === 1 ? ', supporter bonus' : ''})`
+                    : 'Activity rank from messages and replies'}
+                </p>
+              </div>
+              <button
+                onClick={handleShareRank}
+                title="Share your rank"
+                className="p-2 bg-white/10 hover:bg-white/15 text-white rounded-xl border border-white/10 transition-colors"
+              >
+                <Share2 className="w-4 h-4" />
+              </button>
+            </div>
+            {pct !== null && (
+              <div className="space-y-1.5">
+                <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
+                  <div className="h-full rounded-full bg-indigo-500 transition-all" style={{ width: `${pct}%` }} />
+                </div>
+                <p className="text-[11px] text-slate-500">
+                  {toNext !== null && detail?.nextName ? `${toNext} points to ${detail.nextName}` : 'Max rank reached.'}
+                </p>
+              </div>
+            )}
+          </div>
+        );
+      })()}
 
       {/* Safety: pause + hidden words */}
       <div className="glass-panel p-6 rounded-2xl space-y-4">

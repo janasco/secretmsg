@@ -2,6 +2,17 @@
  * SecretMsg shared API types (imported by api.ts + mockApi.ts).
  */
 
+export interface RankInfo {
+  tier: string;
+  name?: string;
+  emoji?: string;
+  score?: number;
+  nextTier?: string | null;
+  nextName?: string | null;
+  nextScore?: number | null;
+  progress?: number;
+}
+
 export interface UserProfile {
   id: string;
   username: string;
@@ -16,6 +27,8 @@ export interface UserProfile {
   paused_until?: number | null;
   hidden_words?: string[];
   allow_hints?: number;
+  /** Full breakdown on /api/me, bare tier string on public profiles. */
+  rank?: RankInfo | string | null;
 }
 
 export interface AnonymousMessage {

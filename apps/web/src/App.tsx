@@ -1,5 +1,5 @@
 import React, { useState, Suspense, lazy, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { ApiClient, UserProfile } from './lib/api';
 import { initTheme } from './lib/theme';
 import { ViewOnlyBanner } from './components/ViewOnlyBanner';
@@ -39,6 +39,42 @@ const PublicSuspense: React.FC = () => (
   </div>
 );
 
+const ROUTE_TITLES: Array<[RegExp, string]> = [
+  [/^\/inbox/, 'Inbox - SecretMsg'],
+  [/^\/settings/, 'Settings - SecretMsg'],
+  [/^\/login/, 'Log In - SecretMsg'],
+  [/^\/supporters/, 'Supporters - SecretMsg'],
+  [/^\/donors/, 'Supporters - SecretMsg'],
+  [/^\/dice/, 'Dice Roulette - SecretMsg'],
+  [/^\/sticker-studio/, 'Sticker Studio - SecretMsg'],
+  [/^\/demo/, 'Demo - SecretMsg'],
+  [/^\/faq/, 'FAQ - SecretMsg'],
+  [/^\/contact/, 'Contact - SecretMsg'],
+  [/^\/about/, 'About - SecretMsg'],
+  [/^\/reply\//, 'Anonymous Reply - SecretMsg'],
+  [/^\/(p|legal)\//, 'SecretMsg'],
+];
+
+/** Keeps document.title in sync with the route (helps JS-aware scrapers + UX). */
+const RouteTitle: React.FC = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    if (pathname === '/') {
+      document.title = 'SecretMsg - Send & Receive Anonymous Messages';
+      return;
+    }
+    for (const [re, title] of ROUTE_TITLES) {
+      if (re.test(pathname)) {
+        document.title = title;
+        return;
+      }
+    }
+    const handle = decodeURIComponent(pathname.slice(1)).replace(/\/.*$/, '');
+    document.title = handle ? `Send an anonymous message to @${handle} - SecretMsg` : 'SecretMsg';
+  }, [pathname]);
+  return null;
+};
+
 export const App: React.FC = () => {
   const [user, setUser] = useState<UserProfile | null>(() => ApiClient.getSavedUser());
   const [isDonationOpen, setIsDonationOpen] = useState(false);
@@ -65,6 +101,7 @@ export const App: React.FC = () => {
 
       <ViewOnlyBanner />
 
+      <RouteTitle />
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<LandingPage onOpenDonation={() => setIsDonationOpen(true)} />} />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ViewOnlyNote } from '../components/ViewOnlyBanner';
 import { ApiClient, UnauthorizedError, UserProfile, AnonymousMessage, getShareUrl } from '../lib/api';
+import { tierMeta, rankTierOf } from '../lib/rank';
 import { StoryCardModal } from '../components/StoryCardModal';
 import { MessageSquare, Reply, Flag, Copy, Check, Share2, Heart, Smartphone, Clock, Ban } from 'lucide-react';
 
@@ -139,6 +140,14 @@ export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLo
                   {user.badge_title || 'Supporter'}
                 </span>
               )}
+              {(() => {
+                const meta = tierMeta(rankTierOf(user));
+                return (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">
+                    {meta.emoji} {meta.name}
+                  </span>
+                );
+              })()}
             </h2>
             <p className="text-xs text-slate-400">
               Copy your personal link or generate a social story card to share with friends.
