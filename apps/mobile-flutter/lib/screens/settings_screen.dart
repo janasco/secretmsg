@@ -8,6 +8,10 @@ import '../api/api_client.dart';
 import '../api/config.dart';
 import '../api/models.dart';
 import '../api/session.dart';
+import '../gamification/badges.dart';
+import '../gamification/celebration.dart';
+import '../gamification/challenges.dart';
+import '../gamification/progress.dart';
 import '../gamification/rank_up.dart';
 import '../gamification/ranks.dart';
 import '../theme.dart';
@@ -39,6 +43,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _savingPause = false;
   bool _permanentPause = false;
   bool _claimingUsername = false;
+  ProgressUpdate? _progress;
 
   @override
   void initState() {
@@ -76,6 +81,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
         _loading = false;
       });
       await RankUp.maybeShow(context, user);
+      if (!mounted) return;
+      try {
+        final progress = await refreshProgress(user);
+        if (!mounted) return;
+        setState(() => _progress = progress);
+        await maybeShowUnlocks(
+          context,
+          badges: progress.freshBadges,
+          challenges: progress.freshChallenges,
+        );
+      } catch (_) {
+        // Gamification is best-effort; the profile already loaded.
+      }
     } on UnauthorizedError {
       if (!mounted) return;
       setState(() => _loading = false);
@@ -433,6 +451,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   const SizedBox(height: 16),
                   _RankCard(rank: u.rank),
                   const SizedBox(height: 16),
+                  if (_progress != null) ...[
+                    _ChallengesCard(
+                      challenges: _progress!.todaysChallenges,
+                      metrics: _progress!.metrics,
+                      streak: _progress!.streak,
+                    ),
+                    const SizedBox(height: 16),
+                    _BadgeShelf(unlockedIds: _progress!.unlockedBadgeIds),
+                    const SizedBox(height: 16),
+                  ],
                   _SectionCard(
                     title: 'Your SecretLink',
                     icon: Icons.link,
@@ -838,6 +866,208 @@ class _RankCard extends StatelessWidget {
                 ? 'Max rank reached — icon status.'
                 : '$toNext points to ${rank.nextName ?? 'the next rank'}',
             style: const TextStyle(color: AppColors.textMuted, fontSize: 11),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Today's rotating challenges with live progress. Completing one fires a
+/// one-time celebration via the unlocks dialog in _load.
+class _ChallengesCard extends StatelessWidget {
+  final List<ChallengeDef> challenges;
+  final DayMetrics metrics;
+  final int streak;
+
+  const _ChallengesCard({
+    required this.challenges,
+    required this.metrics,
+    required this.streak,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.border),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Text('🎯', style: TextStyle(fontSize: 20)),
+              const SizedBox(width: 10),
+              const Expanded(
+                child: Text(
+                  "Today's Challenges",
+                  style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w800),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                decoration: BoxDecoration(
+                  color: AppColors.accent.withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(999),
+                ),
+                child: Text(
+                  '🔥 $streak day${streak == 1 ? '' : 's'}',
+                  style: const TextStyle(color: AppColors.accentSoft, fontSize: 10, fontWeight: FontWeight.w700),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          for (final c in challenges) ...[
+            _ChallengeRow(def: c, metrics: metrics),
+            const SizedBox(height: 10),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _ChallengeRow extends StatelessWidget {
+  final ChallengeDef def;
+  final DayMetrics metrics;
+
+  const _ChallengeRow({required this.def, required this.metrics});
+
+  @override
+  Widget build(BuildContext context) {
+    final done = challengeDone(def, metrics);
+    final have = metricValue(def, metrics);
+    return Row(
+      children: [
+        Text(def.emoji, style: const TextStyle(fontSize: 20)),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      def.title,
+                      style: const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                  Text(
+                    done ? '✓' : '$have/${def.goal}',
+                    style: TextStyle(
+                      color: done ? AppColors.accentSoft : AppColors.textMuted,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 2),
+              Text(def.hint, style: const TextStyle(color: AppColors.textSecondary, fontSize: 11)),
+              const SizedBox(height: 6),
+              RankProgressBar(progress: challengeProgress(def, metrics)),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// Full badge shelf: unlocked badges in color, locked ones dimmed.
+class _BadgeShelf extends StatelessWidget {
+  final Set<String> unlockedIds;
+
+  const _BadgeShelf({required this.unlockedIds});
+
+  @override
+  Widget build(BuildContext context) {
+    final catalog = badgeCatalog;
+    final unlockedCount = catalog.where((b) => unlockedIds.contains(b.id)).length;
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.border),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Text('🏆', style: TextStyle(fontSize: 20)),
+              const SizedBox(width: 10),
+              const Expanded(
+                child: Text(
+                  'Badge Shelf',
+                  style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w800),
+                ),
+              ),
+              Text(
+                '$unlockedCount/${catalog.length}',
+                style: const TextStyle(color: AppColors.textSecondary, fontSize: 11, fontWeight: FontWeight.w700),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              childAspectRatio: 0.72,
+            ),
+            itemCount: catalog.length,
+            itemBuilder: (context, i) {
+              final b = catalog[i];
+              final unlocked = unlockedIds.contains(b.id);
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    width: 52,
+                    height: 52,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: unlocked
+                          ? AppColors.amber.withValues(alpha: 0.15)
+                          : AppColors.surface,
+                      border: Border.all(
+                        color: unlocked
+                            ? AppColors.amber.withValues(alpha: 0.4)
+                            : AppColors.border,
+                      ),
+                    ),
+                    child: Text(
+                      unlocked ? b.emoji : '🔒',
+                      style: const TextStyle(fontSize: 24),
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    b.name,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: unlocked ? Colors.white : AppColors.textMuted,
+                      fontSize: 9,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
         ],
       ),

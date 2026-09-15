@@ -132,6 +132,7 @@ See [`apps/mobile-flutter/README.md`](apps/mobile-flutter/README.md) for release
 - **Web Pairing**: Settings can mint a 5-minute code that pairs a browser to the inbox with read-only scope.
 - **Google Play Billing**: Supporter perks purchased in-app, verified server-side before granting.
 - **Deep Links**: `https://secretmsg.net/{username}` opens the public send screen; `https://secretmsg.net/inbox` opens the inbox.
+- **Ranks, Challenges & Badges**: server-computed activity tiers (Newcomer → Icon from messages, replies, and supporter status) with a progress card, rotating daily challenges, check-in streaks, a 14-badge shelf, and one-time celebrations — all anonymous, no leaderboards, no public counts.
 - **Native Haptics & Share Sheet**: Haptic feedback on rolls/sends plus the system share drawer for story stickers and links.
 
 ---

@@ -9,6 +9,10 @@ const _kTokenKey = 'secretmsg_auth_token';
 const _kProfileKey = 'secretmsg_user_profile';
 const _kDeviceFpKey = 'secretmsg_device_fingerprint';
 const _kLastRankKey = 'secretmsg_last_seen_rank';
+const _kStreakKey = 'secretmsg_streak';
+const _kDayKey = 'secretmsg_day_snapshot';
+const _kBadgesKey = 'secretmsg_badges';
+const _kDonePrefix = 'secretmsg_chdone_';
 
 const _fpChars =
     'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -56,6 +60,45 @@ class Session {
 
   static Future<void> setLastSeenRank(String userId, String tier) async {
     await _storage.write(key: _kLastRankKey, value: '$userId|$tier');
+  }
+
+  // ---- Gamification stores (all scoped per account where relevant) ----
+  static Future<Map<String, dynamic>?> _readJson(String key) async {
+    try {
+      final raw = await _storage.read(key: key);
+      if (raw == null || raw.isEmpty) return null;
+      final decoded = jsonDecode(raw);
+      return decoded is Map<String, dynamic> ? decoded : null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  static Future<void> _writeJson(String key, Map<String, dynamic> value) async {
+    await _storage.write(key: key, value: jsonEncode(value));
+  }
+
+  static Future<Map<String, dynamic>?> getStreak() => _readJson(_kStreakKey);
+  static Future<void> setStreak(Map<String, dynamic> value) =>
+      _writeJson(_kStreakKey, value);
+
+  static Future<Map<String, dynamic>?> getDaySnapshot() => _readJson(_kDayKey);
+  static Future<void> setDaySnapshot(Map<String, dynamic> value) =>
+      _writeJson(_kDayKey, value);
+
+  static Future<Map<String, dynamic>?> getBadges() => _readJson(_kBadgesKey);
+  static Future<void> setBadges(Map<String, dynamic> value) =>
+      _writeJson(_kBadgesKey, value);
+
+  static Future<List<String>> getDoneChallenges(String date) async {
+    final doc = await _readJson('$_kDonePrefix$date');
+    final list = doc?['ids'];
+    if (list is List) return list.map((e) => e.toString()).toList();
+    return <String>[];
+  }
+
+  static Future<void> setDoneChallenges(String date, List<String> ids) async {
+    await _writeJson('$_kDonePrefix$date', {'ids': ids});
   }
 
   static Future<void> updateSavedUser(UserProfile user) async {

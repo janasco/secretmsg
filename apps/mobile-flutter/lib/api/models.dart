@@ -19,6 +19,8 @@ class UserProfile {
   final int? allowHints;
   final int customSlugUnlocked;
   final RankInfo rank;
+  final int receivedCount;
+  final int repliesCount;
 
   const UserProfile({
     required this.id,
@@ -39,6 +41,8 @@ class UserProfile {
     this.allowHints,
     this.customSlugUnlocked = 0,
     this.rank = const RankInfo(tier: 'newcomer', name: 'Newcomer', emoji: '🌱', score: 0),
+    this.receivedCount = 0,
+    this.repliesCount = 0,
   });
 
   factory UserProfile.fromJson(Map<String, dynamic> json) {
@@ -66,6 +70,8 @@ class UserProfile {
       allowHints: (json['allow_hints'] as num?)?.toInt(),
       customSlugUnlocked: (json['custom_slug_unlocked'] as num?)?.toInt() ?? 0,
       rank: RankInfo.parse(json['rank']),
+      receivedCount: (json['received_count'] as num?)?.toInt() ?? 0,
+      repliesCount: (json['replies_count'] as num?)?.toInt() ?? 0,
     );
   }
 
@@ -87,6 +93,8 @@ class UserProfile {
       'hidden_words': hiddenWords,
       'allow_hints': allowHints,
       'custom_slug_unlocked': customSlugUnlocked,
+      'received_count': receivedCount,
+      'replies_count': repliesCount,
       'rank': {
         'tier': rank.tier,
         'name': rank.name,
