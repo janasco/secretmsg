@@ -1,3 +1,5 @@
+import '../gamification/ranks.dart';
+
 class UserProfile {
   final String id;
   final String username;
@@ -16,6 +18,7 @@ class UserProfile {
   final List<String> hiddenWords;
   final int? allowHints;
   final int customSlugUnlocked;
+  final RankInfo rank;
 
   const UserProfile({
     required this.id,
@@ -35,6 +38,7 @@ class UserProfile {
     this.hiddenWords = const [],
     this.allowHints,
     this.customSlugUnlocked = 0,
+    this.rank = const RankInfo(tier: 'newcomer', name: 'Newcomer', emoji: '🌱', score: 0),
   });
 
   factory UserProfile.fromJson(Map<String, dynamic> json) {
@@ -61,6 +65,7 @@ class UserProfile {
       hiddenWords: hidden,
       allowHints: (json['allow_hints'] as num?)?.toInt(),
       customSlugUnlocked: (json['custom_slug_unlocked'] as num?)?.toInt() ?? 0,
+      rank: RankInfo.parse(json['rank']),
     );
   }
 
@@ -79,10 +84,20 @@ class UserProfile {
         'views_count': viewsCount,
         'is_paused': isPaused,
         'paused_until': pausedUntil,
-        'hidden_words': hiddenWords,
-        'allow_hints': allowHints,
-        'custom_slug_unlocked': customSlugUnlocked,
-      };
+      'hidden_words': hiddenWords,
+      'allow_hints': allowHints,
+      'custom_slug_unlocked': customSlugUnlocked,
+      'rank': {
+        'tier': rank.tier,
+        'name': rank.name,
+        'emoji': rank.emoji,
+        'score': rank.score,
+        'nextTier': rank.nextTier,
+        'nextName': rank.nextName,
+        'nextScore': rank.nextScore,
+        'progress': rank.progress,
+      },
+    };
 
   bool get isSupporter => isPremium == 1;
 

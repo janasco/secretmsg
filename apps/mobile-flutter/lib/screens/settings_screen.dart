@@ -8,6 +8,8 @@ import '../api/api_client.dart';
 import '../api/config.dart';
 import '../api/models.dart';
 import '../api/session.dart';
+import '../gamification/rank_up.dart';
+import '../gamification/ranks.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import 'app_shell.dart';
@@ -73,6 +75,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         }
         _loading = false;
       });
+      await RankUp.maybeShow(context, user);
     } on UnauthorizedError {
       if (!mounted) return;
       setState(() => _loading = false);
@@ -428,6 +431,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 children: [
                   _ProfileCard(user: u, onOpenInbox: () => _openTab(AppTab.inbox, const InboxScreen())),
                   const SizedBox(height: 16),
+                  _RankCard(rank: u.rank),
+                  const SizedBox(height: 16),
                   _SectionCard(
                     title: 'Your SecretLink',
                     icon: Icons.link,
@@ -752,6 +757,8 @@ class _ProfileCard extends StatelessWidget {
                           const SizedBox(width: 6),
                           SupporterBadge(tier: user.badgeTitle ?? 'Supporter'),
                         ],
+                        const SizedBox(width: 6),
+                        RankBadge(emoji: user.rank.emoji, name: user.rank.name),
                       ],
                     ),
                     const SizedBox(height: 2),
@@ -782,8 +789,63 @@ class _ProfileCard extends StatelessWidget {
   }
 }
 
-class _SectionCard extends StatelessWidget {
-  final String title;
+/// Activity rank with progress toward the next tier. Score = messages
+/// received + 2 per reply (+25 supporter bonus), computed server-side.
+class _RankCard extends StatelessWidget {
+  final RankInfo rank;
+
+  const _RankCard({required this.rank});
+
+  @override
+  Widget build(BuildContext context) {
+    final toNext = rank.pointsToNext;
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.border),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Text(rank.emoji, style: const TextStyle(fontSize: 22)),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Rank: ${rank.name}',
+                      style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w800),
+                    ),
+                    Text(
+                      '${rank.score} activity points',
+                      style: const TextStyle(color: AppColors.textSecondary, fontSize: 11),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          RankProgressBar(progress: rank.progress),
+          const SizedBox(height: 6),
+          Text(
+            toNext == null
+                ? 'Max rank reached — icon status.'
+                : '$toNext points to ${rank.nextName ?? 'the next rank'}',
+            style: const TextStyle(color: AppColors.textMuted, fontSize: 11),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SectionCard extends StatelessWidget {  final String title;
   final IconData icon;
   final List<Widget> children;
   const _SectionCard({required this.title, required this.icon, required this.children});

@@ -4,6 +4,7 @@ import '../api/api_client.dart';
 import '../api/config.dart';
 import '../api/models.dart';
 import '../api/session.dart';
+import '../gamification/rank_up.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import 'login_screen.dart';
@@ -48,6 +49,15 @@ class _InboxScreenState extends State<InboxScreen> {
         _messages = messages;
         _loading = false;
       });
+      // Rank-up check rides the inbox refresh: a fresh profile carries the
+      // server-computed rank, celebrated at most once per tier per account.
+      try {
+        final me = await ApiClient.getMe();
+        if (!mounted) return;
+        await RankUp.maybeShow(context, me);
+      } catch (_) {
+        // Celebration is best-effort; the inbox already loaded.
+      }
     } on UnauthorizedError catch (_) {
       if (!mounted) return;
       setState(() {

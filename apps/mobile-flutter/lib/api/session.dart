@@ -8,6 +8,7 @@ import 'models.dart';
 const _kTokenKey = 'secretmsg_auth_token';
 const _kProfileKey = 'secretmsg_user_profile';
 const _kDeviceFpKey = 'secretmsg_device_fingerprint';
+const _kLastRankKey = 'secretmsg_last_seen_rank';
 
 const _fpChars =
     'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -45,6 +46,16 @@ class Session {
   static Future<void> clear() async {
     await _storage.delete(key: _kTokenKey);
     await _storage.delete(key: _kProfileKey);
+  }
+
+  /// Last rank tier celebrated for an account, stored as "userId|tier" so a
+  /// different login never triggers a bogus rank-up celebration.
+  static Future<String?> getLastSeenRank() async {
+    return _storage.read(key: _kLastRankKey);
+  }
+
+  static Future<void> setLastSeenRank(String userId, String tier) async {
+    await _storage.write(key: _kLastRankKey, value: '$userId|$tier');
   }
 
   static Future<void> updateSavedUser(UserProfile user) async {

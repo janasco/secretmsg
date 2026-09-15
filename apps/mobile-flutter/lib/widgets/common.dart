@@ -222,6 +222,55 @@ class SupporterBadge extends StatelessWidget {
   }
 }
 
+/// Activity-rank pill (emoji + tier name). Mirrors SupporterBadge sizing so
+/// the two sit side by side in profile headers.
+class RankBadge extends StatelessWidget {
+  final String emoji;
+  final String name;
+
+  const RankBadge({super.key, required this.emoji, required this.name});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+      decoration: BoxDecoration(
+        color: AppColors.accent.withValues(alpha: 0.15),
+        borderRadius: BorderRadius.circular(999),
+        border: Border.all(color: AppColors.accent.withValues(alpha: 0.35)),
+      ),
+      child: Text(
+        '$emoji $name',
+        style: const TextStyle(
+          color: AppColors.accentSoft,
+          fontSize: 10,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+    );
+  }
+}
+
+/// Thin progress track toward the next rank tier.
+class RankProgressBar extends StatelessWidget {
+  final double progress;
+
+  const RankProgressBar({super.key, required this.progress});
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(999),
+      child: LinearProgressIndicator(
+        value: progress.clamp(0.0, 1.0),
+        minHeight: 6,
+        backgroundColor: AppColors.border,
+        valueColor: const AlwaysStoppedAnimation<Color>(AppColors.accent),
+      ),
+    );
+  }
+}
+
 class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool showLogo;
