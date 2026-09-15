@@ -158,7 +158,7 @@ class _DiceScreenState extends State<DiceScreen> {
                     child: ChoiceChip(
                       label: Text(c.label, style: const TextStyle(fontSize: 12)),
                       selected: _category == c.key,
-                      selectedColor: AppColors.accent.withOpacity(0.2),
+                      selectedColor: AppColors.accent.withValues(alpha: 0.2),
                       labelStyle: TextStyle(
                         color: _category == c.key ? Colors.white : const Color(0xFF94A3B8),
                         fontWeight: FontWeight.w600,
@@ -218,7 +218,7 @@ class _DiceButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: AppColors.accent.withOpacity(0.25),
+              color: AppColors.accent.withValues(alpha: 0.25),
               blurRadius: 22,
               offset: const Offset(0, 8),
             ),
@@ -257,7 +257,7 @@ class _PromptCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0xFF0F1220),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.accent.withOpacity(0.4)),
+        border: Border.all(color: AppColors.accent.withValues(alpha: 0.4)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

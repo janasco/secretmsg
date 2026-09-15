@@ -100,7 +100,7 @@ class _AppShellState extends State<AppShell> {
           bottomNavigationBar: NavigationBarTheme(
             data: NavigationBarThemeData(
               backgroundColor: AppColors.bgSoft,
-              indicatorColor: AppColors.accent.withOpacity(0.18),
+              indicatorColor: AppColors.accent.withValues(alpha: 0.18),
               labelTextStyle: WidgetStateProperty.resolveWith((states) {
                 final selected = states.contains(WidgetState.selected);
                 return TextStyle(

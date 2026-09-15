@@ -138,7 +138,7 @@ class _InboxScreenState extends State<InboxScreen> {
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
       child: Row(
         children: [
-          Expanded(child: Text('Secret Inbox', style: AppType.headlineMd)),
+          const Expanded(child: Text('Secret Inbox', style: AppType.headlineMd)),
           if (n > 0)
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -364,12 +364,12 @@ class _MessageCard extends StatelessWidget {
           color: AppColors.surface,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: unread ? AppColors.accent.withOpacity(0.45) : AppColors.border,
+            color: unread ? AppColors.accent.withValues(alpha: 0.45) : AppColors.border,
           ),
           boxShadow: unread
               ? [
                   BoxShadow(
-                    color: AppColors.accent.withOpacity(0.12),
+                    color: AppColors.accent.withValues(alpha: 0.12),
                     blurRadius: 14,
                     offset: const Offset(0, 0),
                   ),
@@ -390,7 +390,7 @@ class _MessageCard extends StatelessWidget {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.white.withOpacity(0.5),
+                          color: Colors.white.withValues(alpha: 0.5),
                           blurRadius: 8,
                           spreadRadius: 1,
                         ),
@@ -429,7 +429,7 @@ class _MessageCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: AppColors.bg,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: AppColors.emerald.withOpacity(0.25)),
+                  border: Border.all(color: AppColors.emerald.withValues(alpha: 0.25)),
                 ),
                 child: Row(
                   children: [
@@ -581,7 +581,7 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                         children: [
                           const Icon(Icons.person_outline, color: AppColors.accent, size: 18),
                           const SizedBox(width: 8),
-                          Text('Anonymous Sender', style: AppType.bodySm),
+                          const Text('Anonymous Sender', style: AppType.bodySm),
                           const Spacer(),
                           if (m.deviceHint != null && m.deviceHint!.isNotEmpty)
                             StitchPill(m.deviceHint!),
@@ -603,9 +603,9 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: AppColors.emerald.withOpacity(0.08),
+                      color: AppColors.emerald.withValues(alpha: 0.08),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppColors.emerald.withOpacity(0.3)),
+                      border: Border.all(color: AppColors.emerald.withValues(alpha: 0.3)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -624,7 +624,7 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                   ),
                 ] else ...[
                   const SizedBox(height: 16),
-                  Text('Reply double-blind', style: AppType.titleSm),
+                  const Text('Reply double-blind', style: AppType.titleSm),
                   const SizedBox(height: 4),
                   Text(
                     'Your reply is shown back to the sender anonymously via their private claim link — your identity stays hidden.',
@@ -636,7 +636,7 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                     maxLines: 5,
                     maxLength: 500,
                     onChanged: (_) => setState(() {}),
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Write a blind reply…',
                     ),
                   ),

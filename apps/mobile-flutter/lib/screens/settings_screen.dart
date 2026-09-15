@@ -495,7 +495,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       _ActionTile(
                         icon: Icons.article_outlined,
                         label: 'Terms & safety center',
-                        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => StaticScreen(keyOf: 'about'))),
+                        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const StaticScreen(keyOf: 'about'))),
                       ),
                     ],
                   ),
@@ -674,7 +674,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ChoiceChip(
                 label: Text(chip.$1, style: const TextStyle(fontSize: 12)),
                 selected: selectedFor(chip.$2, chip.$3),
-                selectedColor: AppColors.accent.withOpacity(0.2),
+                selectedColor: AppColors.accent.withValues(alpha: 0.2),
                 labelStyle: TextStyle(
                   color: selectedFor(chip.$2, chip.$3) ? Colors.white : AppColors.textSecondary,
                   fontWeight: FontWeight.w600,

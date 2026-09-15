@@ -136,10 +136,10 @@ class _Hero extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w900),
               ),
               const SizedBox(height: 10),
-              Text(
+              const Text(
                 'Friends, family, fans, and followers can send you honest anonymous questions and messages — no identity defense mechanisms needed.',
                 textAlign: TextAlign.center,
-                style: const TextStyle(color: Color(0xFFCBD5E1), fontSize: 14, height: 1.55),
+                style: TextStyle(color: Color(0xFFCBD5E1), fontSize: 14, height: 1.55),
               ),
               const SizedBox(height: 24),
               Row(
@@ -196,7 +196,7 @@ class _Hero extends StatelessWidget {
         height: 26,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: c.withOpacity(0.18),
+          color: c.withValues(alpha: 0.18),
           borderRadius: BorderRadius.circular(7),
         ),
         child: Text(l, style: TextStyle(color: c, fontSize: 9, fontWeight: FontWeight.w900)),
@@ -211,41 +211,41 @@ class _FeatureGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = [
-      (_Feature(
+      (const _Feature(
         icon: Icons.filter_tilt_shift,
         title: 'Be REAL',
         body: 'Share what’s authentic. Sincerity builds trust.',
-        color: const Color(0xFF818CF8),
+        color: Color(0xFF818CF8),
       )),
-      (_Feature(
+      (const _Feature(
         icon: Icons.favorite_border,
         title: 'Be KIND',
         body: 'Lift each other up and keep every message positive.',
-        color: const Color(0xFFF472B6),
+        color: Color(0xFFF472B6),
       )),
-      (_Feature(
+      (const _Feature(
         icon: Icons.public,
         title: 'Be YOU',
         body: 'Embrace your unique personality, quirks and all.',
-        color: const Color(0xFFFBBF24),
+        color: Color(0xFFFBBF24),
       )),
-      (_Feature(
+      (const _Feature(
         icon: Icons.visibility_off,
         title: 'Zero Tracking',
         body: 'No IP logs, no ad surveillance, no profile mining.',
-        color: const Color(0xFF34D399),
+        color: Color(0xFF34D399),
       )),
-      (_Feature(
+      (const _Feature(
         icon: Icons.pause_circle_outline,
         title: 'Recipient Control',
         body: 'Pause your link, filter words, wipe data in one tap.',
-        color: const Color(0xFF60A5FA),
+        color: Color(0xFF60A5FA),
       )),
-      (_Feature(
+      (const _Feature(
         icon: Icons.double_arrow,
         title: 'Blind Replies',
         body: 'Reply to anonymous messages without revealing IDs.',
-        color: const Color(0xFFC084FC),
+        color: Color(0xFFC084FC),
       )),
     ];
     return Center(
@@ -313,7 +313,7 @@ class _VibeTeaser extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: const LinearGradient(colors: [Color(0xFF1E1B4B), Color(0xFF0F1220)]),
             borderRadius: BorderRadius.circular(18),
-            border: Border.all(color: AppColors.accent.withOpacity(0.25)),
+            border: Border.all(color: AppColors.accent.withValues(alpha: 0.25)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

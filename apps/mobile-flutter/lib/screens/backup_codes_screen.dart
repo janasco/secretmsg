@@ -26,7 +26,7 @@ class BackupCodesScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: const Color(0xFF101A2E),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: const Color(0xFFEF4444).withOpacity(0.3)),
+                    border: Border.all(color: const Color(0xFFEF4444).withValues(alpha: 0.3)),
                   ),
                   child: const Row(
                     crossAxisAlignment: CrossAxisAlignment.start,

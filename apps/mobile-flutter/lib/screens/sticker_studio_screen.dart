@@ -36,7 +36,7 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
   }
 
   Future<void> _shareImage() async {
-    final ok = await sharePng(_previewKey, subject: '${_caption}\n\n${shareUrlFor(_linkCtrl.text.trim().isNotEmpty ? _linkCtrl.text.trim() : 'yourname')}');
+    final ok = await sharePng(_previewKey, subject: '$_caption\n\n${shareUrlFor(_linkCtrl.text.trim().isNotEmpty ? _linkCtrl.text.trim() : 'yourname')}');
     if (!ok && mounted) showErrorSnack(context, 'Could not capture sticker');
   }
 
@@ -139,7 +139,7 @@ for (final p in STORY_PRESETS)
           ChoiceChip(
             label: Text(p.label, style: const TextStyle(fontSize: 12)),
             selected: _presetId == p.id,
-            selectedColor: AppColors.accent.withOpacity(0.2),
+            selectedColor: AppColors.accent.withValues(alpha: 0.2),
             labelStyle: TextStyle(
               color: _presetId == p.id ? Colors.white : const Color(0xFF94A3B8),
               fontWeight: FontWeight.w600,
@@ -272,7 +272,7 @@ class _StickerPreview extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: colors, begin: Alignment.topLeft, end: Alignment.bottomRight),
           borderRadius: BorderRadius.circular(22),
-          border: Border.all(color: border.withOpacity(0.6), width: 1.4),
+          border: Border.all(color: border.withValues(alpha: 0.6), width: 1.4),
         ),
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -288,7 +288,7 @@ class _StickerPreview extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(14),
                     boxShadow: [
-                      BoxShadow(color: Colors.black.withOpacity(0.35), blurRadius: 12, offset: const Offset(0, 5)),
+                      BoxShadow(color: Colors.black.withValues(alpha: 0.35), blurRadius: 12, offset: const Offset(0, 5)),
                     ],
                   ),
                   child: Text('S', style: TextStyle(color: _parseHex('#090A0F'), fontWeight: FontWeight.w900, fontSize: 20)),
@@ -297,7 +297,7 @@ class _StickerPreview extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.3),
+                    color: Colors.black.withValues(alpha: 0.3),
                     borderRadius: BorderRadius.circular(999),
                   ),
                   child: const Text(
@@ -312,19 +312,19 @@ class _StickerPreview extends StatelessWidget {
               caption,
               maxLines: 4,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w900, height: 1.1),
+              style: const TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w900, height: 1.1),
             ),
             const SizedBox(height: 12),
             Text(
               'Tap here to send me an anonymous message',
-              style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 13, fontWeight: FontWeight.w600),
+              style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 18),
             Container(
               width: double.infinity,
               height: 3,
               decoration: BoxDecoration(
-                color: accent.withOpacity(0.7),
+                color: accent.withValues(alpha: 0.7),
                 borderRadius: BorderRadius.circular(999),
               ),
             ),

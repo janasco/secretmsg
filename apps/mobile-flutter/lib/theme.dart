@@ -178,13 +178,13 @@ class GlassPainter extends StatelessWidget {
     return Container(
       padding: padding,
       decoration: BoxDecoration(
-        color: AppColors.surface.withOpacity(0.92),
+        color: AppColors.surface.withValues(alpha: 0.92),
         borderRadius: borderRadius ?? BorderRadius.circular(16),
         border: Border.all(color: borderColor),
         boxShadow: shadows ??
             [
               BoxShadow(
-                color: Colors.black.withOpacity(0.30),
+                color: Colors.black.withValues(alpha: 0.30),
                 blurRadius: 20,
                 offset: const Offset(0, 8),
               ),
@@ -261,7 +261,7 @@ class GradientButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: AppColors.accent.withOpacity(0.25),
+              color: AppColors.accent.withValues(alpha: 0.25),
               blurRadius: 16,
               offset: const Offset(0, 6),
             ),

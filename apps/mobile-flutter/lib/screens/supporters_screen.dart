@@ -114,16 +114,16 @@ class _HeroCard extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: const LinearGradient(colors: [Color(0xFF1E1B4B), Color(0xFF0F1220)]),
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: AppColors.accent.withOpacity(0.3)),
+        border: Border.all(color: AppColors.accent.withValues(alpha: 0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             children: [
-              const Icon(Icons.emoji_events, color: Color(0xFFF59E0B), size: 22),
-              const SizedBox(width: 8),
-              const Text(
+              Icon(Icons.emoji_events, color: Color(0xFFF59E0B), size: 22),
+              SizedBox(width: 8),
+              Text(
                 'Powering an anonymous, independent internet',
                 style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w900),
               ),
@@ -206,7 +206,7 @@ class _SupporterTile extends StatelessWidget {
         color: const Color(0xFF0F1220),
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: color.withOpacity(0.25),
+          color: color.withValues(alpha: 0.25),
         ),
       ),
       child: Column(
@@ -232,11 +232,11 @@ class _SupporterTile extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.12),
+                  color: color.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(999),
-                  border: Border.all(color: color.withOpacity(0.3)),
+                  border: Border.all(color: color.withValues(alpha: 0.3)),
                 ),
-                child: Text('$icon ${supporter.tier}', style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w700)),
+                child: Text('$icon ${supporter.tier}', style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w700)),
               ),
             ],
           ),
@@ -356,7 +356,7 @@ class _SupportCtaState extends State<_SupportCta> {
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.accent.withOpacity(0.25)),
+        border: Border.all(color: AppColors.accent.withValues(alpha: 0.25)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -378,7 +378,7 @@ class _SendScreenState extends State<SendScreen> {
             backgroundColor: AppColors.accent,
             foregroundColor: Colors.white,
             padding: const EdgeInsets.symmetric(vertical: 15),
-            disabledBackgroundColor: AppColors.accent.withOpacity(0.3),
+            disabledBackgroundColor: AppColors.accent.withValues(alpha: 0.3),
           ),
           onPressed: _sending || _turnstileToken == null ? null : _send,
           child: _sending
@@ -419,7 +419,7 @@ class _SendScreenState extends State<SendScreen> {
                 ChoiceChip(
                   label: Text('${t.icon} ${t.label}', style: const TextStyle(fontSize: 11)),
                   selected: _activeTarget == t.id,
-                  selectedColor: AppColors.accent.withOpacity(0.2),
+                  selectedColor: AppColors.accent.withValues(alpha: 0.2),
                   labelStyle: TextStyle(
                     color: _activeTarget == t.id ? Colors.white : const Color(0xFF94A3B8),
                     fontWeight: FontWeight.w600,
@@ -442,7 +442,7 @@ class _SendScreenState extends State<SendScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       decoration: BoxDecoration(
                         color: _activeCategory == c.id
-                            ? AppColors.accent.withOpacity(0.18)
+                            ? AppColors.accent.withValues(alpha: 0.18)
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -502,8 +502,8 @@ class _SendScreenState extends State<SendScreen> {
                 height: 88,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: const Color(0xFF10B981).withOpacity(0.12),
-                  border: Border.all(color: const Color(0xFF10B981).withOpacity(0.3)),
+                  color: const Color(0xFF10B981).withValues(alpha: 0.12),
+                  border: Border.all(color: const Color(0xFF10B981).withValues(alpha: 0.3)),
                 ),
                 child: const Icon(Icons.check_circle, color: Color(0xFF34D399), size: 40),
               ),
@@ -522,7 +522,7 @@ class _SendScreenState extends State<SendScreen> {
                   decoration: BoxDecoration(
                     color: const Color(0xFF0F1220),
                     borderRadius: BorderRadius.circular(14),
-                    border: Border.all(color: AppColors.accent.withOpacity(0.3)),
+                    border: Border.all(color: AppColors.accent.withValues(alpha: 0.3)),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -614,7 +614,7 @@ class _TemplateTile extends StatelessWidget {
         decoration: BoxDecoration(
           color: const Color(0xFF090A0F),
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: AppColors.border.withOpacity(0.5)),
+          border: Border.all(color: AppColors.border.withValues(alpha: 0.5)),
         ),
         child: Text(text, style: const TextStyle(color: Color(0xFFCBD5E1), fontSize: 12, height: 1.4)),
       ),
@@ -625,9 +625,9 @@ class _TemplateTile extends StatelessWidget {
 class _SafeNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         Text('Built for safe, honest connection', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w800)),
         SizedBox(height: 8),
         _Bullet(icon: Icons.visibility_off, text: 'Zero IP tracking, zero ad surveillance, zero profile mining.'),

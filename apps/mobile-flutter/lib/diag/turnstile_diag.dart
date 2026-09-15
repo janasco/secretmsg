@@ -34,7 +34,7 @@ class _TurnstileDiagScreenState extends State<TurnstileDiagScreen> {
       final f = File(
         '/data/data/net.secretmsg.secretmsg_mobile/files/smsturnstile_diag.txt',
       );
-      await f.writeAsString('${line}\n', mode: FileMode.append);
+      await f.writeAsString('$line\n', mode: FileMode.append);
     } catch (_) {}
     // ignore: avoid_print
     print(line);

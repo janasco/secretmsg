@@ -165,7 +165,7 @@ class AvatarBadge extends StatelessWidget {
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.4),
+            color: Colors.black.withValues(alpha: 0.4),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -206,9 +206,9 @@ class SupporterBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
-        color: AppColors.amber.withOpacity(0.15),
+        color: AppColors.amber.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: AppColors.amber.withOpacity(0.35)),
+        border: Border.all(color: AppColors.amber.withValues(alpha: 0.35)),
       ),
       child: Text(
         badgeTitle ?? tier,
@@ -332,9 +332,9 @@ class PublicPageHeader extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 14),
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
-                      color: AppColors.accent.withOpacity(0.1),
+                      color: AppColors.accent.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(999),
-                      border: Border.all(color: AppColors.accent.withOpacity(0.25)),
+                      border: Border.all(color: AppColors.accent.withValues(alpha: 0.25)),
                     ),
                     child: Text(
                       eyebrow!,

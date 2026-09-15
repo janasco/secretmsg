@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 
 import '../api/api_client.dart';
 import '../theme.dart';
-import 'app_shell.dart';
 import 'backup_codes_screen.dart';
 
 class RecoveryScreen extends StatefulWidget {
