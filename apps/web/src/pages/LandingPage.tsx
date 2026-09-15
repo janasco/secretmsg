@@ -95,7 +95,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
 
         <div className="pt-2">
           <span className="text-xs text-slate-400">
-            Android app available on GitHub Releases — or use the full mobile-friendly site on any phone.
+            <Link to="/download" className="text-indigo-400 hover:text-indigo-300 font-medium">Get the Android app</Link>
+            {' '}— or use the full mobile-friendly site on any phone.
           </span>
         </div>
       </div>
@@ -109,8 +110,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
           {/* Direct APK Download */}
-          <a
-            href="https://secretmsg.net/downloads/secretmsg-android-v1.2.0.apk"
+          <Link
+            to="/download"
             className="group glass-panel p-5 rounded-2xl border-emerald-500/20 hover:border-emerald-500/40 transition-all hover:shadow-lg hover:shadow-emerald-500/10 flex flex-col items-center text-center gap-3"
           >
             <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500/20 transition-colors">
@@ -124,7 +125,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               APK Ready
             </span>
-          </a>
+          </Link>
 
           {/* Google Play (Coming Soon) */}
           <div className="glass-panel p-5 rounded-2xl border-white/5 opacity-70 flex flex-col items-center text-center gap-3">

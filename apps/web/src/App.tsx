@@ -19,6 +19,7 @@ const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m
 const DicePage = lazy(() => import('./pages/DicePage').then(m => ({ default: m.DicePage })));
 const StickerStudioPage = lazy(() => import('./pages/StickerStudioPage').then(m => ({ default: m.StickerStudioPage })));
 const DemoPage = lazy(() => import('./pages/DemoPage').then(m => ({ default: m.DemoPage })));
+const DownloadPage = lazy(() => import('./pages/DownloadPage').then(m => ({ default: m.DownloadPage })));
 const FaqPage = lazy(() => import('./pages/FaqPage').then(m => ({ default: m.FaqPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const SafetyPage = lazy(() => import('./pages/SafetyPage').then(m => ({ default: m.SafetyPage })));
@@ -48,6 +49,7 @@ const ROUTE_TITLES: Array<[RegExp, string]> = [
   [/^\/dice/, 'Dice Roulette - SecretMsg'],
   [/^\/sticker-studio/, 'Sticker Studio - SecretMsg'],
   [/^\/demo/, 'Demo - SecretMsg'],
+  [/^\/download/, 'Download - SecretMsg'],
   [/^\/faq/, 'FAQ - SecretMsg'],
   [/^\/contact/, 'Contact - SecretMsg'],
   [/^\/about/, 'About - SecretMsg'],
@@ -114,6 +116,7 @@ export const App: React.FC = () => {
           <Route path="/dice" element={<Suspense fallback={<PublicSuspense />}><DicePage /></Suspense>} />
           <Route path="/sticker-studio" element={<Suspense fallback={<PublicSuspense />}><StickerStudioPage /></Suspense>} />
           <Route path="/demo" element={<Suspense fallback={<PublicSuspense />}><DemoPage /></Suspense>} />
+          <Route path="/download" element={<Suspense fallback={<PublicSuspense />}><DownloadPage /></Suspense>} />
           <Route path="/faq" element={<Suspense fallback={<PublicSuspense />}><FaqPage /></Suspense>} />
           <Route path="/contact" element={<Suspense fallback={<PublicSuspense />}><ContactPage /></Suspense>} />
           <Route path="/p/safety" element={<Suspense fallback={<PublicSuspense />}><SafetyPage /></Suspense>} />
