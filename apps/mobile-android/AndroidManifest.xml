@@ -25,13 +25,12 @@
             </intent-filter>
 
             <!-- Android App Links Deep Linking -->
-            <!-- Whenever user taps secretmsg.net/handle or m.secretmsg.net/handle, opens app -->
+            <!-- Whenever user taps secretmsg.net/handle, opens app -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https" android:host="secretmsg.net" />
-                <data android:scheme="https" android:host="m.secretmsg.net" />
             </intent-filter>
 
             <!-- Custom URI Scheme: secretmsg:// -->

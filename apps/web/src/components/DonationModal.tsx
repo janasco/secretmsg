@@ -35,7 +35,7 @@ const PERKS = [
 ];
 
 export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose }) => {
-  const donationUrl = (import.meta as any).env?.VITE_DONATION_URL || 'https://polar.sh/janasco/secretmsg';
+  const donationUrl = import.meta.env?.VITE_DONATION_URL || 'https://polar.sh/janasco/secretmsg';
 
   if (!isOpen) return null;
 

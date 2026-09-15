@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ApiClient, UserProfile } from '../lib/api';
-import { ArrowRight, Shield, KeyRound } from 'lucide-react';
+import { ArrowRight, Shield, Smartphone, Mail } from 'lucide-react';
 
 interface LoginPageProps {
   onLoginSuccess: (user: UserProfile) => void;
 }
 
-type Mode = 'login' | 'signup' | 'recover';
+type Mode = 'login' | 'signup' | 'recover' | 'pair' | 'otp';
 
 export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
   const navigate = useNavigate();
@@ -19,6 +19,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
   const [error, setError] = useState<string | null>(null);
   const [backupCodes, setBackupCodes] = useState<string[]>([]);
   const [signupHandle, setSignupHandle] = useState('');
+  const [pairCode, setPairCode] = useState('');
+  const [email, setEmail] = useState('');
+  const [otp, setOtp] = useState('');
+  const [otpSent, setOtpSent] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -68,6 +72,63 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
     }
   };
 
+  const handlePair = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!pairCode || loading) return;
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await ApiClient.redeemPairCode(pairCode);
+      onLoginSuccess(res.user);
+      navigate('/inbox');
+    } catch (err: any) {
+      setError(err.message || 'That code is invalid or has expired.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleOtpRequest = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || loading) return;
+    setError(null);
+    setLoading(true);
+    try {
+      await ApiClient.requestOtp(email);
+      setOtpSent(true);
+    } catch (err: any) {
+      setError(err.message || 'Failed to send code');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleOtpVerify = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !otp || loading) return;
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await ApiClient.verifyOtp(email, otp);
+      onLoginSuccess(res.user);
+      navigate('/inbox');
+    } catch (err: any) {
+      setError(err.message || 'Invalid or expired code');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const resetMode = (m: Mode) => {
+    setMode(m);
+    setError(null);
+    setPin('');
+    setBackupCode('');
+    setPairCode('');
+    setOtp('');
+    setOtpSent(false);
+  };
+
   // Show backup codes after signup
   if (backupCodes.length > 0) {
     return (
@@ -108,17 +169,16 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
     );
   }
 
+  const title = mode === 'login' ? 'Welcome Back' : mode === 'signup' ? 'Create Account' : mode === 'recover' ? 'Recover Account' : mode === 'pair' ? 'Pair a Browser' : 'Email Login';
+  const subtitle = mode === 'login' ? 'Log in with your handle and PIN' : mode === 'signup' ? 'Choose a handle, set a PIN, save your codes' : mode === 'recover' ? 'Use a backup code to reset your PIN' : mode === 'pair' ? 'Enter the 8-character code from the app (view-only)' : 'Legacy email accounts: get a 6-digit code';
+
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4">
       <div className="w-full max-w-md space-y-6">
         <div className="text-center space-y-2">
           <Shield className="w-10 h-10 text-indigo-400 mx-auto" />
-          <h1 className="text-2xl font-bold text-white">
-            {mode === 'login' ? 'Welcome Back' : mode === 'signup' ? 'Create Account' : 'Recover Account'}
-          </h1>
-          <p className="text-sm text-slate-400">
-            {mode === 'login' ? 'Log in with your handle and PIN' : mode === 'signup' ? 'Choose a handle, set a PIN, save your codes' : 'Use a backup code to reset your PIN'}
-          </p>
+          <h1 className="text-2xl font-bold text-white">{title}</h1>
+          <p className="text-sm text-slate-400">{subtitle}</p>
         </div>
 
         <div className="glass-panel p-6 rounded-2xl space-y-4">
@@ -146,6 +206,40 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
                 {loading ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <>Create Account <ArrowRight className="w-4 h-4" /></>}
               </button>
             </form>
+          ) : mode === 'pair' ? (
+            <form onSubmit={handlePair} className="space-y-3">
+              <input type="text" placeholder="XXXX-XXXX" value={pairCode} onChange={e => setPairCode(e.target.value.toUpperCase())}
+                className="w-full px-4 py-3 rounded-xl bg-dark-900 border border-white/10 text-white text-sm font-mono text-center tracking-widest placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+              <button type="submit" disabled={loading}
+                className="w-full py-3 rounded-xl font-semibold text-sm bg-cyan-600 hover:bg-cyan-500 text-white transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
+                {loading ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <><Smartphone className="w-4 h-4" /> Pair View-Only</>}
+              </button>
+              <p className="text-[11px] text-slate-500 text-center">Single-use, expires in 5 minutes. Paired browsers can read but not change anything.</p>
+            </form>
+          ) : mode === 'otp' ? (
+            <div className="space-y-3">
+              {!otpSent ? (
+                <form onSubmit={handleOtpRequest} className="space-y-3">
+                  <input type="email" placeholder="you@example.com" value={email} onChange={e => setEmail(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl bg-dark-900 border border-white/10 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                  <button type="submit" disabled={loading}
+                    className="w-full py-3 rounded-xl font-semibold text-sm bg-white/10 hover:bg-white/15 text-white border border-white/10 transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
+                    {loading ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <><Mail className="w-4 h-4" /> Send Login Code</>}
+                  </button>
+                </form>
+              ) : (
+                <form onSubmit={handleOtpVerify} className="space-y-3">
+                  <p className="text-xs text-slate-400">Code sent to <span className="text-white font-medium">{email}</span></p>
+                  <input type="text" placeholder="6-digit code" value={otp} onChange={e => setOtp(e.target.value)} maxLength={6} inputMode="numeric"
+                    className="w-full px-4 py-3 rounded-xl bg-dark-900 border border-white/10 text-white text-sm font-mono text-center tracking-widest placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                  <button type="submit" disabled={loading}
+                    className="w-full py-3 rounded-xl font-semibold text-sm bg-indigo-600 hover:bg-indigo-500 text-white transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
+                    {loading ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <>Verify & Log In <ArrowRight className="w-4 h-4" /></>}
+                  </button>
+                  <button type="button" onClick={() => setOtpSent(false)} className="w-full text-xs text-slate-400 hover:text-white">Use a different email</button>
+                </form>
+              )}
+            </div>
           ) : (
             <form onSubmit={handleLogin} className="space-y-3">
               <input type="text" placeholder="Handle" value={handle} onChange={e => setHandle(e.target.value)}
@@ -163,17 +257,26 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
         </div>
 
         <div className="text-center space-y-2">
+          {(mode === 'login' || mode === 'pair' || mode === 'otp') && (
+            <div className="flex items-center justify-center gap-2 flex-wrap">
+              <button onClick={() => resetMode('login')} className={`text-sm ${mode === 'login' ? 'text-white font-semibold' : 'text-slate-400 hover:text-slate-300'}`}>Handle + PIN</button>
+              <span className="text-slate-600">·</span>
+              <button onClick={() => resetMode('pair')} className={`text-sm ${mode === 'pair' ? 'text-white font-semibold' : 'text-slate-400 hover:text-slate-300'}`}>Pair code</button>
+              <span className="text-slate-600">·</span>
+              <button onClick={() => resetMode('otp')} className={`text-sm ${mode === 'otp' ? 'text-white font-semibold' : 'text-slate-400 hover:text-slate-300'}`}>Email code</button>
+            </div>
+          )}
           {mode === 'login' && (
             <>
-              <button onClick={() => { setMode('signup'); setError(null); setPin(''); }}
+              <button onClick={() => resetMode('signup')}
                 className="text-sm text-indigo-400 hover:text-indigo-300">Create new account</button>
               <span className="text-slate-600 mx-2">|</span>
-              <button onClick={() => { setMode('recover'); setError(null); setPin(''); }}
+              <button onClick={() => resetMode('recover')}
                 className="text-sm text-slate-400 hover:text-slate-300">Forgot PIN?</button>
             </>
           )}
-          {mode !== 'login' && (
-            <button onClick={() => { setMode('login'); setError(null); setPin(''); setBackupCode(''); }}
+          {(mode === 'signup' || mode === 'recover') && (
+            <button onClick={() => resetMode('login')}
               className="text-sm text-indigo-400 hover:text-indigo-300">Back to login</button>
           )}
         </div>

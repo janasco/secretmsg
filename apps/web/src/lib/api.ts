@@ -3,6 +3,20 @@
  */
 
 import { MockApiClient } from './mockApi';
+import { offlineSupportersFallback } from './fallbacks';
+import { API_BASE_URL, USE_MOCK } from './config';
+import { getDeviceFingerprint } from './links';
+import type {
+  UserProfile,
+  AnonymousMessage,
+  SupportersData,
+  BlockedSender,
+} from './types';
+
+export type { UserProfile, AnonymousMessage, SupportersData, BlockedSender };
+export { API_BASE_URL, USE_MOCK, getDeviceFingerprint };
+export { PUBLIC_BASE_URL } from './config';
+export { getShareUrl } from './links';
 
 // Thrown when a Bearer-authed request comes back 401 — the session token is missing,
 // expired, or invalid. Callers should treat this as "log the user out", not a generic error.
@@ -11,86 +25,6 @@ export class UnauthorizedError extends Error {
     super(message);
     this.name = 'UnauthorizedError';
   }
-}
-
-export const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'https://api.secretmsg.net';
-export const PUBLIC_BASE_URL = (import.meta as any).env?.VITE_PUBLIC_URL || 'https://secretmsg.net';
-export const ACCOUNT_APP_URL = (import.meta as any).env?.VITE_ACCOUNT_APP_URL || 'https://secretmsg.net';
-
-/**
- * Stable anonymous device fingerprint, persisted per-browser. The server keeps
- * only its SHA-256, so recipients never see the raw value; it exists solely so
- * a blocked device cannot keep submitting. Generated once and reused forever.
- */
-export function getDeviceFingerprint(): string {
-  const KEY = 'secretmsg_device_fingerprint';
-  let fp = localStorage.getItem(KEY);
-  if (fp) return fp;
-  const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  const bytes = new Uint8Array(32);
-  crypto.getRandomValues(bytes);
-  fp = Array.from(bytes, (b) => chars[b % chars.length]).join('');
-  localStorage.setItem(KEY, fp);
-  return fp;
-}
-
-/**
- * Returns the public submission link that recipients share with visitors.
- * Always resolves to the public portal (secretmsg.net/{username}) so visitors submit there.
- */
-export function getShareUrl(username: string): string {
-  return `${PUBLIC_BASE_URL}/${encodeURIComponent(username)}`;
-}
-
-/**
- * Returns the account management app URL for dashboard/inbox/settings.
- */
-export function getAccountAppUrl(path = '/'): string {
-  const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  return `${ACCOUNT_APP_URL}${cleanPath}`;
-}
-
-// Strictly disabled - always connect to the production real database
-const USE_MOCK = false;
-
-export interface UserProfile {
-  id: string;
-  username: string;
-  display_name: string;
-  email?: string;
-  avatar_seed: string;
-  bio?: string;
-  is_premium: number;
-  badge_title?: string | null;
-  custom_slug_unlocked?: number;
-}
-
-export interface AnonymousMessage {
-  id: string;
-  content: string;
-  reply_content?: string | null;
-  reply_at?: string | null;
-  is_pinned: number;
-  is_read: number;
-  device_hint?: string | null;
-  created_at: string;
-}
-
-export interface AnonymousSupporter {
-  id: string;
-  alias: string;
-  tier: string;
-  note: string | null;
-  createdAt: string;
-}
-
-export interface SupportersData {
-  supporters: AnonymousSupporter[];
-  stats: {
-    totalSupporters: number;
-    monthlyServerGoalPercent: number;
-    currentMonth: string;
-  };
 }
 
 export class ApiClient {
@@ -299,6 +233,23 @@ export class ApiClient {
     });
   }
 
+  private static async post(path: string, body: unknown, auth = false): Promise<any> {
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+    if (auth) {
+      const token = this.getToken();
+      if (!token) throw new Error('Not logged in');
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+    const res = await fetch(`${API_BASE_URL}${path}`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(body),
+    });
+    const data = await res.json().catch(() => ({})) as { error?: string; [k: string]: any };
+    if (res.status === 401) throw new UnauthorizedError(data.error);
+    if (!res.ok) throw new Error(data.error || 'Request failed');
+    return data;
+  }
 
   // Auth V2: Handle + PIN + Backup Codes
   static async authSignup(handle?: string, pin?: string): Promise<{ handle: string; backupCodes: string[]; token: string }> {
@@ -306,6 +257,10 @@ export class ApiClient {
       ...(handle ? { handle } : {}),
       pin,
     });
+    if (data.token) {
+      this.setToken(data.token);
+      this.setScope('full');
+    }
     return { handle: data.handle, backupCodes: data.backupCodes || [], token: data.token };
   }
 
@@ -313,6 +268,7 @@ export class ApiClient {
     const data = await this.post('/api/auth/login', { handle, pin });
     localStorage.setItem('secretmsg_auth_token', data.token);
     localStorage.setItem('secretmsg_auth_scope', 'full');
+    if (data.user) this.saveUser(data.user);
     return { user: data.user, token: data.token };
   }
 
@@ -332,6 +288,78 @@ export class ApiClient {
     return data.backupCodes || [];
   }
 
+  static async createPairCode(): Promise<{ code: string; expires_at: number; expires_in: number }> {
+    return this.post('/api/auth/pair/create', {}, true);
+  }
+
+  static async getMe(): Promise<UserProfile> {
+    const token = this.getToken();
+    if (!token) throw new Error('Not logged in');
+    const res = await fetch(`${API_BASE_URL}/api/me`, {
+      headers: { 'Authorization': `Bearer ${token}` },
+    });
+    if (res.status === 401) throw new UnauthorizedError();
+    if (!res.ok) throw new Error('Failed to load profile');
+    const data = await res.json() as { user: UserProfile };
+    this.saveUser(data.user);
+    return data.user;
+  }
+
+  static async updateSafety(patch: { paused_until?: number | null; hidden_words?: string[] }): Promise<void> {
+    const token = this.getToken();
+    if (!token) throw new Error('Not logged in');
+    const res = await fetch(`${API_BASE_URL}/api/me`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(patch),
+    });
+    if (res.status === 401) throw new UnauthorizedError();
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({})) as { error?: string };
+      throw new Error(err.error || 'Failed to update safety settings');
+    }
+  }
+
+  static async getBlockedSenders(): Promise<BlockedSender[]> {
+    const token = this.getToken();
+    if (!token) throw new Error('Not logged in');
+    const res = await fetch(`${API_BASE_URL}/api/me/blocked`, {
+      headers: { 'Authorization': `Bearer ${token}` },
+    });
+    if (res.status === 401) throw new UnauthorizedError();
+    if (!res.ok) throw new Error('Failed to load blocked senders');
+    const data = await res.json() as { blocked: BlockedSender[] };
+    return data.blocked || [];
+  }
+
+  static async unblockSender(fpHash: string): Promise<void> {
+    const token = this.getToken();
+    if (!token) throw new Error('Not logged in');
+    const res = await fetch(`${API_BASE_URL}/api/me/blocked/${encodeURIComponent(fpHash)}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${token}` },
+    });
+    if (res.status === 401) throw new UnauthorizedError();
+    if (!res.ok) throw new Error('Failed to unblock sender');
+  }
+
+  static async blockSender(messageId: string): Promise<void> {
+    const token = this.getToken();
+    if (!token) throw new Error('Not logged in');
+    const res = await fetch(`${API_BASE_URL}/api/inbox/${encodeURIComponent(messageId)}/block`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${token}` },
+    });
+    if (res.status === 401) throw new UnauthorizedError();
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({})) as { error?: string };
+      throw new Error(err.error || 'Failed to block sender');
+    }
+  }
+
   static async getSupporters(): Promise<SupportersData> {
     if (USE_MOCK) return MockApiClient.getSupporters();
     try {
@@ -340,43 +368,7 @@ export class ApiClient {
       return await res.json() as SupportersData;
     } catch {
       // Graceful fallback for offline / disconnected environments
-      return {
-        supporters: [
-          {
-            id: 'demo-1',
-            alias: 'Anonymous Guardian',
-            tier: 'Golden Guardian',
-            note: 'Love the true zero-tracking privacy on SecretMsg. Keep it open!',
-            createdAt: new Date(Date.now() - 3600000 * 4).toISOString(),
-          },
-          {
-            id: 'demo-2',
-            alias: 'Coffee Lover #42',
-            tier: 'Coffee Backer',
-            note: 'Super smooth UI. Coffee on me for server hosting ☕',
-            createdAt: new Date(Date.now() - 3600000 * 26).toISOString(),
-          },
-          {
-            id: 'demo-3',
-            alias: 'Secret Admirer 🤫',
-            tier: 'Silver Patron',
-            note: 'Sent this to my crush and they replied! Thank you!',
-            createdAt: new Date(Date.now() - 3600000 * 48).toISOString(),
-          },
-          {
-            id: 'demo-4',
-            alias: 'Anonymous Supporter',
-            tier: 'Bronze Supporter',
-            note: 'Supporting independent open-source web platforms.',
-            createdAt: new Date(Date.now() - 3600000 * 72).toISOString(),
-          },
-        ],
-        stats: {
-          totalSupporters: 4,
-          monthlyServerGoalPercent: 100,
-          currentMonth: 'September 2026',
-        },
-      };
+      return offlineSupportersFallback();
     }
   }
 }

@@ -51,7 +51,6 @@ void main() {
     }
 
     test('inbox', () => expectsTab('https://secretmsg.net/inbox', AppTab.inbox));
-    test('inbox on the app subdomain', () => expectsTab('https://app.secretmsg.net/inbox', AppTab.inbox));
     test('settings', () => expectsTab('https://secretmsg.net/settings', AppTab.settings));
     test('bare /send is the composer tab', () => expectsTab('https://secretmsg.net/send', AppTab.send));
   });

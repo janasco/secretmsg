@@ -329,7 +329,7 @@
         }
       }
 
-      // Handle https://secretmsg.net or https://m.secretmsg.net
+      // Handle https://secretmsg.net or https://secretmsg.net
       var segments = pathname.replace(/^\/+/, '').split('/');
       var firstSegment = segments[0] || '';
 

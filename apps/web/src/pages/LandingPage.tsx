@@ -199,8 +199,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
           </div>
         </div>
 
-        {/* Live Vibe Sample Card */}
-        <div className={`p-6 sm:p-8 rounded-2xl bg-gradient-to-br ${SAMPLE_VIBES[selectedVibeIndex].color} border ${SAMPLE_VIBES[selectedVibeIndex].border} shadow-2xl transition-all duration-300`}>
+        {/* Live Vibe Sample Card (intentionally dark in both modes) */}
+        <div className={`dark-island p-6 sm:p-8 rounded-2xl bg-gradient-to-br ${SAMPLE_VIBES[selectedVibeIndex].color} border ${SAMPLE_VIBES[selectedVibeIndex].border} shadow-2xl transition-all duration-300`}>
           <div className="flex items-center justify-between mb-4">
             <span className="px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 text-white backdrop-blur-md">
               {SAMPLE_VIBES[selectedVibeIndex].badge}

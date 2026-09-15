@@ -1,0 +1,35 @@
+name: slop-gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  slop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install antislop
+        run: |
+          curl -sL -o /tmp/antislop.tar.gz https://github.com/skew202/antislop/releases/download/v0.3.0/antislop-x86_64-unknown-linux-gnu.tar.gz
+          tar -xzf /tmp/antislop.tar.gz -C /tmp
+          sudo mv /tmp/antislop /usr/local/bin/antislop
+
+      - name: antislop (core, zero-false-positive)
+        run: antislop apps/web/src
+        working-directory: secretmsg
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: aislop quality gate
+        run: npx -y aislop@latest ci src --human
+        working-directory: secretmsg/apps/web
+
+      - name: Typecheck web
+        run: npm run typecheck
+        working-directory: secretmsg/apps/web

@@ -3,7 +3,20 @@ import { Link } from 'react-router-dom';
 import { Send, Shield, Sparkles, CheckCircle2, Lock, ArrowRight, Dices, Heart, Flame, Smile, Coffee } from 'lucide-react';
 import { ApiClient, UserProfile, PUBLIC_BASE_URL } from '../lib/api';
 
-const TURNSTILE_SITE_KEY = (import.meta as any).env?.VITE_TURNSTILE_SITE_KEY || '';
+const TURNSTILE_SITE_KEY = import.meta.env?.VITE_TURNSTILE_SITE_KEY || '';
+const TURNSTILE_CONFIGURED = TURNSTILE_SITE_KEY.length > 0;
+
+interface TurnstileApi {
+  render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+  reset: (id: string) => void;
+  remove: (id: string) => void;
+}
+
+declare global {
+  interface Window {
+    turnstile?: TurnstileApi;
+  }
+}
 
 interface ComposeModalProps {
   recipient: UserProfile;
@@ -143,16 +156,21 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
   const turnstileWidgetIdRef = useRef<string | null>(null);
 
+  const getTurnstile = (): TurnstileApi | null => window.turnstile ?? null;
+
   // The bot-check widget is loaded via <script render=explicit> in index.html, so we
   // mount the widget ourselves once it is ready (script tag is async/defer).
+  // Fail CLOSED: when no site key is configured the backend rejects every
+  // submission (503), so the form stays disabled instead of letting users
+  // compose a message that can never be delivered.
   useEffect(() => {
-    if (!TURNSTILE_SITE_KEY) return;
+    if (!TURNSTILE_CONFIGURED) return;
 
     let cancelled = false;
     let pollId: ReturnType<typeof setInterval> | null = null;
 
     const renderWidget = () => {
-      const ts = (window as any).turnstile;
+      const ts = getTurnstile();
       if (!ts || !turnstileContainerRef.current || cancelled) return;
       turnstileWidgetIdRef.current = ts.render(turnstileContainerRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
@@ -163,11 +181,11 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
       });
     };
 
-    if ((window as any).turnstile) {
+    if (getTurnstile()) {
       renderWidget();
     } else {
       pollId = setInterval(() => {
-        if ((window as any).turnstile) {
+        if (getTurnstile()) {
           if (pollId) clearInterval(pollId);
           renderWidget();
         }
@@ -177,10 +195,12 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
     return () => {
       cancelled = true;
       if (pollId) clearInterval(pollId);
-      if (turnstileWidgetIdRef.current && (window as any).turnstile) {
-        (window as any).turnstile.remove(turnstileWidgetIdRef.current);
+      const ts = getTurnstile();
+      if (turnstileWidgetIdRef.current && ts) {
+        ts.remove(turnstileWidgetIdRef.current);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const maxLength = 500;
@@ -210,7 +230,11 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!content.trim() || isSending) return;
-    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+    if (!TURNSTILE_CONFIGURED) {
+      setError('Spam verification is unavailable right now. Please try again later.');
+      return;
+    }
+    if (!turnstileToken) {
       setError('Please complete the verification challenge before sending.');
       return;
     }
@@ -229,12 +253,13 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
       if (res.replyToken) {
         setReplyToken(res.replyToken);
       }
-    } catch (err: any) {
-      setError(err.message || 'Failed to send message. Please try again.');
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Failed to send message. Please try again.');
       // Bot-check tokens are single-use; reset the widget so the user can retry.
       setTurnstileToken(null);
-      if (turnstileWidgetIdRef.current && (window as any).turnstile) {
-        (window as any).turnstile.reset(turnstileWidgetIdRef.current);
+      const ts = getTurnstile();
+      if (turnstileWidgetIdRef.current && ts) {
+        ts.reset(turnstileWidgetIdRef.current);
       }
     } finally {
       setIsSending(false);
@@ -482,14 +507,18 @@ export const ComposeModal: React.FC<ComposeModalProps> = ({ recipient }) => {
         </label>
 
         {/* Bot-Check Widget */}
-        {TURNSTILE_SITE_KEY && (
+        {!TURNSTILE_CONFIGURED ? (
+          <div className="p-3.5 bg-amber-500/10 border border-amber-500/20 rounded-xl text-xs text-amber-300">
+            Spam verification is not configured. Sending is temporarily disabled — please try again later.
+          </div>
+        ) : (
           <div ref={turnstileContainerRef} className="flex justify-center" />
         )}
 
         {/* Submission Button */}
         <button
           type="submit"
-          disabled={!content.trim() || isSending || (!!TURNSTILE_SITE_KEY && !turnstileToken)}
+          disabled={!content.trim() || isSending || !TURNSTILE_CONFIGURED || !turnstileToken}
           className="w-full py-3.5 px-4 rounded-xl font-medium text-sm bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-600 hover:opacity-95 text-white shadow-lg shadow-indigo-500/25 flex items-center justify-center space-x-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSending ? (

@@ -1,8 +1,10 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useState, Suspense, lazy, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { ApiClient, UserProfile } from './lib/api';
+import { initTheme } from './lib/theme';
 import { ViewOnlyBanner } from './components/ViewOnlyBanner';
 import { Navbar } from './components/Navbar';
+import { Footer } from './components/Footer';
 import { DonationModal } from './components/DonationModal';
 import { LandingPage } from './pages/LandingPage';
 import { SendMessagePage } from './pages/SendMessagePage';
@@ -41,6 +43,11 @@ export const App: React.FC = () => {
   const [user, setUser] = useState<UserProfile | null>(() => ApiClient.getSavedUser());
   const [isDonationOpen, setIsDonationOpen] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Paint stored-or-system theme and follow OS changes while in System mode.
+    return initTheme();
+  }, []);
 
   const handleLogout = () => {
     ApiClient.removeToken();
@@ -98,6 +105,8 @@ export const App: React.FC = () => {
         isOpen={isDonationOpen}
         onClose={() => setIsDonationOpen(false)}
       />
+
+      <Footer />
     </div>
   );
 };

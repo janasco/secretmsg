@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -41,10 +42,26 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
   String _status = 'Preparing verification…';
   bool _errored = false;
   bool _ready = false;
+  bool _misconfigured = false;
+  Timer? _watchdog;
 
   @override
   void initState() {
     super.initState();
+    // Fail CLOSED: without a site key the backend rejects every submission,
+    // so surface the outage instead of rendering a widget that can never mint.
+    if (kTurnstileSiteKey.isEmpty) {
+      _misconfigured = true;
+      _errored = true;
+      _status = 'Verification unavailable';
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        widget.onError?.call('turnstile-misconfigured');
+      });
+      _controller = WebViewController()
+        ..setJavaScriptMode(JavaScriptMode.disabled)
+        ..setBackgroundColor(const Color(0xFF101322));
+      return;
+    }
     if (defaultTargetPlatform == TargetPlatform.android) {
       AndroidWebViewController.enableDebugging(kDebugMode);
     }
@@ -95,6 +112,23 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
         },
       );
     _controller.loadRequest(Uri.parse('$kPublicBaseUrl/'));
+    // Watchdog: the backend fails closed without a token, so a widget that
+    // never becomes ready must surface an error instead of hanging forever
+    // (offline WebView, blocked challenges API, slow network).
+    _watchdog = Timer(const Duration(seconds: 20), () {
+      if (!mounted || _ready || _errored || _misconfigured) return;
+      setState(() {
+        _errored = true;
+        _status = 'Verification timed out — check connection and retry';
+      });
+      widget.onError?.call('timeout');
+    });
+  }
+
+  @override
+  void dispose() {
+    _watchdog?.cancel();
+    super.dispose();
   }
 
   @override
@@ -119,6 +153,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
   }
 
   void _inject() async {
+    if (_misconfigured) return;
     try {
       const sitekey = kTurnstileSiteKey;
       final autoExecute = widget.autoExecuteFallback ? 'true' : 'false';
@@ -272,13 +307,15 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            WebViewWidget(controller: _controller),
+            if (!_misconfigured) WebViewWidget(controller: _controller),
             if (!_ready)
               Positioned(
                 bottom: 6,
                 child: IgnorePointer(
                   child: Text(
-                    _status,
+                    _misconfigured
+                        ? 'Verification unavailable — sending is disabled'
+                        : _status,
                     style: const TextStyle(
                       color: Color(0xFF94A3B8),
                       fontSize: 10,

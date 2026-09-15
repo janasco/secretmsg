@@ -1,0 +1,5 @@
+# AntiSlop — AI-slop linter (skew202/antislop v0.3.0)
+# Default core profile: critical stubs & placeholders only (zero false positives).
+# Known LOW noise in this repo: `return null` in React guards + token verify
+# null-returns are legitimate control flow, not stubs — keep core, don't escalate.
+file_extensions = [".ts", ".tsx", ".js", ".dart"]

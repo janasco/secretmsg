@@ -7,7 +7,9 @@ import 'app_shell.dart';
 import 'backup_codes_screen.dart';
 
 class RecoveryScreen extends StatefulWidget {
-  const RecoveryScreen({super.key});
+  final String initialHandle;
+  final String initialCode;
+  const RecoveryScreen({super.key, this.initialHandle = '', this.initialCode = ''});
 
   @override
   State<RecoveryScreen> createState() => _RecoveryScreenState();
@@ -19,6 +21,13 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
   final _pinCtrl = TextEditingController();
   bool _loading = false;
   String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _handleCtrl.text = widget.initialHandle;
+    _codeCtrl.text = widget.initialCode;
+  }
 
   @override
   void dispose() {

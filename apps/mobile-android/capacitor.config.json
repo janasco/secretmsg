@@ -2,11 +2,6 @@
   "appId": "net.secretmsg.app",
   "appName": "SecretMsg",
   "webDir": "www",
-  "server": {
-    "url": "https://m.secretmsg.net",
-    "cleartext": false,
-    "androidScheme": "https"
-  },
   "android": {
     "allowMixedContent": false,
     "captureInput": true,

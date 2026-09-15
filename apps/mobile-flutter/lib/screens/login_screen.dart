@@ -87,8 +87,15 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _handleRecovery() async {
+    // Forward whatever the user already typed so RecoveryScreen starts
+    // prefilled instead of discarding the input (recovery needs handle +
+    // backup code + new PIN, while this screen only holds handle + PIN).
+    final handle = _handleCtrl.text.trim();
+    final code = _pinCtrl.text.trim();
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => const RecoveryScreen()),
+      MaterialPageRoute(
+        builder: (_) => RecoveryScreen(initialHandle: handle, initialCode: code),
+      ),
     );
   }
 
@@ -136,30 +143,41 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 12),
-                TextField(
-                  controller: _pinCtrl,
-                  keyboardType: TextInputType.number,
-                  maxLength: 6,
-                  obscureText: true,
-                  enabled: !_loading,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  decoration: InputDecoration(
-                    labelText: _isRecovery ? 'Backup Code' : 'PIN',
-                    hintText: _isRecovery ? 'XXXX-XXXX' : '4-6 digits',
-                    filled: true,
-                    fillColor: const Color(0xFF0F1220),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: AppColors.border),
+                // Recovery needs handle + backup code + new PIN (3 fields on the
+                // next screen). Only the handle is collected here; the PIN field
+                // below is login-only so backup codes are never typed into a
+                // digits-only obscured field.
+                if (!_isRecovery) ...[
+                  TextField(
+                    controller: _pinCtrl,
+                    keyboardType: TextInputType.number,
+                    maxLength: 6,
+                    obscureText: true,
+                    enabled: !_loading,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    decoration: InputDecoration(
+                      labelText: 'PIN',
+                      hintText: '4-6 digits',
+                      filled: true,
+                      fillColor: const Color(0xFF0F1220),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(color: AppColors.border),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(color: AppColors.border),
+                      ),
+                      counterText: '',
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: AppColors.border),
-                    ),
-                    counterText: '',
+                    onSubmitted: (_) => _handleLogin(),
                   ),
-                  onSubmitted: (_) => _isRecovery ? _handleRecovery() : _handleLogin(),
-                ),
+                ] else ...[
+                  const Text(
+                    'You only need your handle here — the backup code and new PIN go on the next screen.',
+                    style: TextStyle(color: Color(0xFF64748B), fontSize: 12, height: 1.5),
+                  ),
+                ],
                 const SizedBox(height: 16),
                 FilledButton(
                   style: FilledButton.styleFrom(

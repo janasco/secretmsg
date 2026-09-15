@@ -30,7 +30,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https" android:host="secretmsg.net" />
-                <data android:scheme="https" android:host="m.secretmsg.net" />
             </intent-filter>
 
             <!-- Custom URI Scheme: secretmsg:// -->

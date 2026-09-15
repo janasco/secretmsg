@@ -60,8 +60,8 @@ export const StoryCardModal: React.FC<StoryCardModalProps> = ({ user, isOpen, on
           </p>
         </div>
 
-        {/* Live Preview Card */}
-        <div className={`p-6 rounded-2xl bg-gradient-to-b ${selectedTheme.bg} border ${selectedTheme.border} shadow-2xl text-center space-y-4 transition-all duration-300 relative overflow-hidden`}>
+        {/* Live Preview Card (intentionally dark in both modes) */}
+        <div className={`dark-island p-6 rounded-2xl bg-gradient-to-b ${selectedTheme.bg} border ${selectedTheme.border} shadow-2xl text-center space-y-4 transition-all duration-300 relative overflow-hidden`}>
           {/* Subtle glow background */}
           <div className="absolute -top-12 -left-12 w-32 h-32 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
 

@@ -29,6 +29,7 @@ export const StickerStudioPage: React.FC = () => {
   const [username, setUsername] = useState('');
   const [copied, setCopied] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [showSaveTip, setShowSaveTip] = useState(false);
 
   const publicUrl = username ? `https://secretmsg.net/${encodeURIComponent(username)}` : 'secretmsg.net/yourname';
 
@@ -46,7 +47,8 @@ export const StickerStudioPage: React.FC = () => {
   };
 
   const handleSave = () => {
-    alert('Tip: Screenshot or save this card, add it to your Instagram/Snapchat Story, and paste your SecretMsg link into the story link sticker!');
+    setShowSaveTip(true);
+    setTimeout(() => setShowSaveTip(false), 6000);
   };
 
   return (
@@ -58,7 +60,7 @@ export const StickerStudioPage: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
         {/* Live preview */}
         <div className="space-y-3 md:sticky md:top-24">
-          <div className={`p-6 rounded-3xl bg-gradient-to-b ${theme.bg} border ${theme.border} shadow-2xl text-center space-y-4 transition-all duration-300 relative overflow-hidden`}>
+          <div className={`dark-island p-6 rounded-3xl bg-gradient-to-b ${theme.bg} border ${theme.border} shadow-2xl text-center space-y-4 transition-all duration-300 relative overflow-hidden`}>
             <div className="absolute -top-12 -left-12 w-32 h-32 bg-white/5 rounded-full blur-2xl pointer-events-none" />
             <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-500 via-purple-500 to-amber-500 p-0.5 mx-auto shadow-lg">
               <div className="w-full h-full bg-dark-900 rounded-full flex items-center justify-center text-xl font-bold text-white uppercase">
@@ -161,7 +163,7 @@ export const StickerStudioPage: React.FC = () => {
               <input
                 type="text"
                 value={username}
-                onChange={(e) => setUsername(e.target.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase())}
+                onChange={(e) => setUsername(e.target.value.replace(/[^a-zA-Z0-9_.-]/g, '').toLowerCase())}
                 maxLength={30}
                 className="w-full bg-dark-900 border border-white/15 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-lg px-3 py-2 text-xs text-white outline-none"
               />
@@ -190,6 +192,11 @@ export const StickerStudioPage: React.FC = () => {
               ))}
             </div>
           </div>
+          {showSaveTip && (
+            <div className="p-3 bg-indigo-500/10 border border-indigo-500/30 rounded-xl text-xs text-indigo-200">
+              Tip: screenshot or save this card, add it to your Instagram/Snapchat Story, and paste your SecretMsg link into the story link sticker!
+            </div>
+          )}
         </div>
       </div>
     </PublicPage>

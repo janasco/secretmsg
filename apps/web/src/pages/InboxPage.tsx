@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ViewOnlyNote } from '../components/ViewOnlyBanner';
 import { ApiClient, UnauthorizedError, UserProfile, AnonymousMessage, getShareUrl } from '../lib/api';
 import { StoryCardModal } from '../components/StoryCardModal';
-import { MessageSquare, Reply, Flag, Copy, Check, Share2, Heart, Smartphone, Clock } from 'lucide-react';
+import { MessageSquare, Reply, Flag, Copy, Check, Share2, Heart, Smartphone, Clock, Ban } from 'lucide-react';
 
 interface InboxPageProps {
   user: UserProfile | null;
@@ -22,6 +22,19 @@ export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLo
   const [isReplying, setIsReplying] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
   const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
+  const [toastError, setToastError] = useState(false);
+  const [reportId, setReportId] = useState<string | null>(null);
+  const [reportReason, setReportReason] = useState('');
+  const [reporting, setReporting] = useState(false);
+  const [blockId, setBlockId] = useState<string | null>(null);
+  const [blocking, setBlocking] = useState(false);
+
+  const showToast = (msg: string, isErr = false) => {
+    setToast(msg);
+    setToastError(isErr);
+    setTimeout(() => setToast(null), 4000);
+  };
 
   useEffect(() => {
     if (!user) {
@@ -64,32 +77,57 @@ export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLo
       );
       setReplyOpenId(null);
       setReplyText('');
+      showToast('Reply posted anonymously.');
     } catch (err: any) {
       if (err instanceof UnauthorizedError) {
         onLogout();
         navigate('/login');
         return;
       }
-      alert(err.message || 'Failed to submit reply');
+      showToast(err.message || 'Failed to submit reply', true);
     } finally {
       setIsReplying(false);
     }
   };
 
-  const handleReport = async (messageId: string) => {
-    const reason = prompt('Reason for reporting this message (harassment, spam, illegal content):');
-    if (!reason) return;
+  const submitReport = async () => {
+    if (!reportId || !reportReason.trim() || reporting) return;
+    setReporting(true);
     try {
-      await ApiClient.reportMessage(messageId, reason);
-      alert('Message reported. It has been quarantined.');
-      setMessages((prev) => prev.filter((m) => m.id !== messageId));
+      await ApiClient.reportMessage(reportId, reportReason.trim().slice(0, 200));
+      showToast('Message reported. It has been quarantined.');
+      setMessages((prev) => prev.filter((m) => m.id !== reportId));
+      setReportId(null);
+      setReportReason('');
     } catch {
-      alert('Failed to submit report');
+      showToast('Failed to submit report', true);
+    } finally {
+      setReporting(false);
+    }
+  };
+
+  const submitBlock = async () => {
+    if (!blockId || blocking) return;
+    setBlocking(true);
+    try {
+      await ApiClient.blockSender(blockId);
+      showToast('Sender blocked and message removed.');
+      setMessages((prev) => prev.filter((m) => m.id !== blockId));
+      setBlockId(null);
+    } catch (err: any) {
+      showToast(err.message || 'Failed to block sender', true);
+    } finally {
+      setBlocking(false);
     }
   };
 
   return (
     <div className="max-w-4xl mx-auto py-8 sm:py-12 px-4 space-y-8">
+      {toast && (
+        <div className={`p-3 rounded-xl text-xs border ${toastError ? 'bg-rose-500/10 border-rose-500/30 text-rose-300' : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'}`}>
+          {toast}
+        </div>
+      )}
       {/* Share Link Banner */}
       <div className="glass-panel p-6 sm:p-8 rounded-2xl space-y-4 border-indigo-500/30">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -206,12 +244,21 @@ export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLo
 
                 <div className="flex items-center space-x-1 shrink-0">
                   <button
-                    onClick={() => handleReport(msg.id)}
+                    onClick={() => { setReportId(msg.id); setReportReason(''); }}
                     title="Report Message"
                     className="p-1.5 text-slate-500 hover:text-rose-400 rounded-lg hover:bg-white/5 transition-colors"
                   >
                     <Flag className="w-3.5 h-3.5" />
                   </button>
+                  {!isReadOnly && (
+                    <button
+                      onClick={() => setBlockId(msg.id)}
+                      title="Block sender"
+                      className="p-1.5 text-slate-500 hover:text-amber-400 rounded-lg hover:bg-white/5 transition-colors"
+                    >
+                      <Ban className="w-3.5 h-3.5" />
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -282,6 +329,46 @@ export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLo
         isOpen={isStoryModalOpen}
         onClose={() => setIsStoryModalOpen(false)}
       />
+
+      {/* Report modal (replaces prompt()/alert()) */}
+      {reportId && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60" onClick={() => setReportId(null)}>
+          <div className="glass-panel w-full max-w-md p-6 rounded-2xl space-y-4" onClick={(e) => e.stopPropagation()}>
+            <h4 className="text-sm font-bold text-white">Report message</h4>
+            <p className="text-xs text-slate-400">Harassment, spam, illegal content? Reports are quarantined for moderation.</p>
+            <textarea
+              value={reportReason}
+              onChange={(e) => setReportReason(e.target.value)}
+              rows={3}
+              maxLength={200}
+              placeholder="Reason (1-200 characters)"
+              className="w-full bg-dark-900 border border-white/10 rounded-xl p-3 text-xs text-white placeholder-slate-500 outline-none focus:border-rose-500/50 resize-none"
+            />
+            <div className="flex justify-end gap-2">
+              <button onClick={() => setReportId(null)} className="px-3 py-2 rounded-lg text-xs text-slate-400 hover:text-white">Cancel</button>
+              <button onClick={submitReport} disabled={!reportReason.trim() || reporting} className="px-4 py-2 rounded-lg text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white disabled:opacity-50">
+                {reporting ? 'Sending…' : 'Submit Report'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Block modal */}
+      {blockId && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60" onClick={() => setBlockId(null)}>
+          <div className="glass-panel w-full max-w-md p-6 rounded-2xl space-y-4" onClick={(e) => e.stopPropagation()}>
+            <h4 className="text-sm font-bold text-white">Block this sender?</h4>
+            <p className="text-xs text-slate-400">Their anonymous fingerprint is blocked (hash only, they stay anonymous) and this message is deleted. Manage the list in Settings.</p>
+            <div className="flex justify-end gap-2">
+              <button onClick={() => setBlockId(null)} className="px-3 py-2 rounded-lg text-xs text-slate-400 hover:text-white">Cancel</button>
+              <button onClick={submitBlock} disabled={blocking} className="px-4 py-2 rounded-lg text-xs font-semibold bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-500/30 disabled:opacity-50">
+                {blocking ? 'Blocking…' : 'Block Sender'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -7,28 +7,26 @@
 [![Open Source](https://img.shields.io/badge/Open%20Source-Transparent%20%26%20Private-black.svg)]()
 [![Polar.sh: Issue Funding](https://img.shields.io/badge/Fund%20Issues-Polar.sh-blueviolet.svg)](https://polar.sh/janasco/secretmsg)
 
-**SecretMsg** is an open-source, privacy-first anonymous messaging and viral TBH platform running on [`secretmsg.net`](https://secretmsg.net) with a dedicated account hub at [`app.secretmsg.net`](https://app.secretmsg.net) and a native Flutter Android client in this repository. Anyone can receive candid questions, compliments, and social feedback via a personalized public link without revealing sender identity.
+**SecretMsg** is an open-source, privacy-first anonymous messaging and viral TBH platform running on [`secretmsg.net`](https://secretmsg.net) — public boards and the account hub (`/login`, `/inbox`, `/settings`) on one host — with a native Flutter Android client in this repository. Anyone can receive candid questions, compliments, and social feedback via a personalized public link without revealing sender identity.
 
 ---
 
 ## Key Features
 
 ### 1. Profile & Safety Controls
-- **Theme & Display**: a 3-choice theme engine that switches between:
-  - *Always Light Mode*
-  - *Always Dark Mode*
-  - *Follow System Settings (Default)*
-- **Alerts & Notifications**: opt-in alerts covering link-sharing reminders, incoming-message pings, occasional team prompts, and Daily Question of the Day (QOTD) nudges.
+- **Theme & Display**: System / Dark / Light appearance (default: follow the OS, live-switching via `prefers-color-scheme`; explicit choice stored per-device in Settings).
+- **Inbox & Sharing**: share-link banner with copy button, social story-card generator, and live inbox with timestamps, sender-hint chips (supporter perk), and double-blind replies. No push notifications, no email digests — the inbox is pull-only by design.
 - **Filtered Words**: build custom blocklists of words, phrases, and emojis. The API enforces them server-side at compose time — the rejection happens even if the sender bypasses the client — so filtered content never reaches the inbox.
-- **Pause Submissions**: suspend incoming submissions for 1 hour, 6 hours, 24 hours, or indefinitely, with a friendly public notice shown while paused.
+- **Pause Submissions**: suspend incoming submissions — timed pauses (30 min, 1 hour, 24 hours, 1 week) and permanent pause in the Android app; pause/resume toggle on web (`PATCH /api/me`). While paused, visitors see a friendly notice and submissions are rejected server-side.
 - **Report**: flag abusive messages straight from the thread for operator review via `POST /api/report`.
 
 > [!NOTE]
-> **Sender blocking is not currently implemented.** Safety controls today are filtered words, pause, and reporting. There is no per-sender block list: anonymous messages arrive without a persistent sender identifier to block. See the Safety Center for the controls that exist.
+> **Sender blocking:** block the sender from any message (`POST /api/inbox/:id/block`) or manage the list in **Settings → Blocked Senders** / `GET /api/me/blocked`. Only the SHA-256 of the sender's anonymous device fingerprint is stored — senders stay anonymous to recipients. Blocked fingerprints are rejected server-side at compose time, alongside filtered words, pause, and reporting.
 
 ### 2. Owner Sign-In & Device Pairing
-- **Email OTP**: passwordless sign-in with a 6-digit one-time code; the session token is stored in the Android Keystore via `flutter_secure_storage` on mobile.
-- **Web Pairing**: the app can mint a short-lived (5-minute, single-use) pairing code — shown in **Settings → Pair a browser** — that `app.secretmsg.net` redeems for a **read-only** session. Paired browsers can read the inbox and report messages, but replying, purchases, settings changes, and account deletion stay on the signed-in device, enforced by scope checks in the API and reflected in the web UI.
+- **Handle + PIN (default)**: passwordless Auth V2 — pick a handle, set a 4–6 digit PIN, save 10 single-use backup codes. PIN changes and code refreshes live in Settings; recovery uses a backup code plus a new PIN.
+- **Web Pairing**: the app can mint a short-lived (5-minute, single-use) pairing code — shown in **Settings → Pair a browser** — that the web login redeems for a **read-only** session. Paired browsers can read the inbox and report messages, but replying, purchases, settings changes, and account deletion stay on the signed-in device, enforced by scope checks in the API and reflected in the web UI.
+- **Email code (legacy)**: 6-digit one-time code for pre-V2 email accounts; on mobile the JWT is stored in the Android Keystore via `flutter_secure_storage`.
 
 ### 3. Modular Supporter Perks
 Supporters can purchase standalone perks individually or bundle them into the full VIP pass:
@@ -45,7 +43,7 @@ Two verified grant paths exist; there is no client-side unlock path:
 - **Android**: Google Play Billing purchases, verified server-side against the Play Developer API (`POST /api/billing/google/verify`) with idempotency and replay protection before a perk is granted.
 
 ### 4. Platform Sanitization & Handle Validation
-- Strict handle requirements: board links and usernames must be **at least 4 characters** (alphanumeric, underscores, hyphens, dots).
+- Strict handle requirements: board links and usernames must be **4–30 characters** (lowercase letters, numbers, underscores, hyphens, dots).
 - Edge and client-side sanitization against XSS, script injection, and malformed inputs.
 - Server-side rejection of recipient word filters, enforced regardless of sender.
 - Automated bot screening is **required** before any message is accepted.
@@ -56,7 +54,7 @@ Two verified grant paths exist; there is no client-side unlock path:
 - **Double-blind replies**: reply to a message without ever learning the sender's identity; each party sees only the exchange they belong to.
 - **Report controls**: flag abusive messages straight from the thread for review.
 - **Safety Center**: a dedicated hub plus child safety policy, community guidelines, and an online safety guide — all reachable from the footer.
-- **Streamlined navigation**: a clean 2-item top nav (`Explore Demo` + `Safety`) that stays stable and wraps cleanly on mobile, tablet, and desktop.
+- **Streamlined navigation**: icon-based top nav (Donate, Inbox/Settings when signed in, Get-Your-Link when not) plus a view-only banner for paired browsers; wraps cleanly on mobile, tablet, and desktop.
 - **Comprehensive footer directories** list every platform tool, guideline, and legal disclosure in one place.
 
 ---
@@ -65,15 +63,16 @@ Two verified grant paths exist; there is no client-side unlock path:
 
 This repository contains the **open-source client applications and frontend packages**:
 
-- **Web Platform** (`apps/web`): React 18 + Vite + Tailwind CSS single-page application serving **both** public sites. The same build is deployed to:
-  - **`https://secretmsg.net`** — landing page, public message submission `/:username`, the dice roulette, sticker studio, and legal/safety pages.
-  - **`https://app.secretmsg.net`** — the authenticated account hub: login (pairing code or email OTP), inbox, double-blind replies, and settings.
-  Configuration comes from `VITE_API_URL`, `VITE_PUBLIC_URL`, and `VITE_ACCOUNT_APP_URL` (sane production defaults baked in; see `apps/web/README.md`).
+- **Web Platform** (`apps/web`): React 18 + Vite + Tailwind CSS single-page application, served from **`https://secretmsg.net`**: landing page, public message submission `/:username`, the dice roulette, sticker studio, legal/safety pages, plus the account hub (`/login`, `/inbox`, `/settings`, `/supporters`). Single-host app — there are no subdomain deployments.
+  Configuration comes from `VITE_API_URL` and `VITE_PUBLIC_URL` (sane production defaults baked in; see `apps/web/README.md`).
 - **Flutter Android App** (`apps/mobile-flutter`): Native Flutter (Dart) Android application — the primary mobile client — shipped as release **APK & AAB** builds (application id `net.secretmsg.android_app`). Implements the full mobile experience: public send pages with automated bot screening, story sticker studio, dice prompt roulette, email-OTP sign-in, inbox & double-blind replies, settings with browser-pairing codes, Google Play Billing perks, supporters wall, and all legal/safety screens, with deep links and native haptics/share.
-- **Legacy Prototypes & Wrappers** (`site/public`, `apps/mobile-android`): Earlier touch-optimized static HTML prototype and its legacy Android wrapper. No longer deployed (the `m.secretmsg.net` hostname has been decommissioned); kept for reference.
+- **Legacy Prototypes & Wrappers** (`site/public`, `apps/mobile-android`): Earlier touch-optimized static HTML prototype and its legacy Android wrapper, kept for reference. The `m.` mobile hostname is removed; legacy links now point at the canonical host.
 
 > [!NOTE]
 > To protect platform stability, user data privacy, and prevent abuse, backend services, database storage, and design-system prototypes are maintained in an isolated private repository. Client apps interact with services strictly via standard REST API contracts (`https://api.secretmsg.net`).
+
+> [!NOTE]
+> Retired hostnames: the former `app.` (account hub) and `m.` (mobile web) subdomains are removed. Everything is served from `secretmsg.net` — account routes live at `/login`, `/inbox`, `/settings`. The API allowlist no longer includes the retired hosts.
 
 ---
 
@@ -129,10 +128,10 @@ See [`apps/mobile-flutter/README.md`](apps/mobile-flutter/README.md) for release
 
 **Key Native Mobile Capabilities**:
 - **Bot screening**: A native widget produces a verified human-check token before any message send (fail-closed at the API).
-- **OTP Authentication**: Email one-time-password sign-in; the JWT is stored in the Android Keystore via `flutter_secure_storage`.
+- **OTP Authentication**: legacy email one-time-code sign-in is still supported API-side; the JWT is stored in the Android Keystore via `flutter_secure_storage`. New accounts use handle + PIN.
 - **Web Pairing**: Settings can mint a 5-minute code that pairs a browser to the inbox with read-only scope.
 - **Google Play Billing**: Supporter perks purchased in-app, verified server-side before granting.
-- **Deep Links**: `https://secretmsg.net/{username}` opens the public send screen; `https://app.secretmsg.net/inbox` opens the inbox.
+- **Deep Links**: `https://secretmsg.net/{username}` opens the public send screen; `https://secretmsg.net/inbox` opens the inbox.
 - **Native Haptics & Share Sheet**: Haptic feedback on rolls/sends plus the system share drawer for story stickers and links.
 
 ---

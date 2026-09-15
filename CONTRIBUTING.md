@@ -8,7 +8,7 @@ Thank you for your interest in improving SecretMsg! We welcome contributions to 
 
 | Path | What it is |
 |---|---|
-| `apps/web` | React 18 + Vite + Tailwind CSS SPA serving both `secretmsg.net` (public) and `app.secretmsg.net` (account hub) |
+| `apps/web` | React 18 + Vite + Tailwind CSS SPA served from `secretmsg.net` (public boards + account hub, single host) |
 | `apps/mobile-flutter` | Native Flutter Android client (the primary mobile app) |
 | `site/public`, `apps/mobile-android` | Legacy static prototype and its old Capacitor wrapper — kept for reference, no longer deployed |
 | `LEGAL/` | Terms of Service, Privacy Policy, Disclaimer |
@@ -26,9 +26,11 @@ npm install          # workspace root; apps/web is a workspace member
 npm run dev          # Vite dev server (default http://localhost:5173)
 npm run build        # tsc + vite build — run this before opening a PR
 npm run preview      # serve the production build locally
+npm run typecheck    # tsc only
+npm test             # vitest unit tests
 ```
 
-- The app calls the production API by default. Override with `VITE_API_URL` (plus `VITE_PUBLIC_URL`, `VITE_ACCOUNT_APP_URL`) to target another environment.
+- The app calls the production API by default. Override with `VITE_API_URL` (plus `VITE_PUBLIC_URL`) to target another environment.
 - A mock API mode exists for offline UI work in `apps/web/src/lib/mockApi.ts`.
 - Code changes go through TypeScript: keep `npm run build` (which runs `tsc`) clean.
 

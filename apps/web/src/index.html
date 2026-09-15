@@ -13,11 +13,15 @@
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
     <script>
       (function(){
-        var s=localStorage.getItem("theme");
+        // Must match lib/theme.ts (THEME_KEY + values) or first paint flashes.
+        // Default when unset/unknown: follow the OS (prefers-color-scheme).
+        var s=null;
+        try { s=localStorage.getItem("secretmsg_theme"); } catch(e) {}
         var d=window.matchMedia("(prefers-color-scheme:dark)").matches;
-        var dark=s?s==="dark":d;
+        var dark=s==="dark"||(!s||s==="system"?d:s==="light"?false:d);
         document.documentElement.classList.toggle("dark",dark);
         document.documentElement.classList.toggle("light",!dark);
+        document.documentElement.style.colorScheme=dark?"dark":"light";
         var m=document.querySelector('meta[name="theme-color"]');
         if(m) m.content=dark?"#0f111a":"#f8fafc";
       })();

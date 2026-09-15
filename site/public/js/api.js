@@ -17,7 +17,7 @@
 
   var API_BASE_URL = 'https://api.secretmsg.net';
   var PUBLIC_DOMAIN = 'https://secretmsg.net';
-  var APP_DOMAIN = 'https://app.secretmsg.net';
+  var APP_DOMAIN = 'https://secretmsg.net';
   var TOKEN_KEY = 'secretmsg_auth_token';
   var USER_KEY = 'secretmsg_user_profile';
 

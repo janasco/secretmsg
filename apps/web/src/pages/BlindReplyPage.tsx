@@ -83,7 +83,7 @@ export const BlindReplyPage: React.FC = () => {
               <Reply className="w-3.5 h-3.5" />
               <span>Recipient's Reply:</span>
             </div>
-            <div className="p-4 bg-indigo-950/40 border border-indigo-500/30 rounded-xl text-sm text-indigo-100">
+            <div className="dark-island p-4 bg-indigo-950/40 border border-indigo-500/30 rounded-xl text-sm text-indigo-100">
               {thread.reply_content}
             </div>
           </div>
