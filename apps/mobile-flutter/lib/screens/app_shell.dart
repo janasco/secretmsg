@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme.dart';
+import '../widgets/notch_nav_bar.dart';
 import 'dice_screen.dart';
 import 'inbox_screen.dart';
 import 'send_screen.dart';
@@ -97,59 +98,36 @@ class _AppShellState extends State<AppShell> {
                 if (_visited.contains(tab)) _screenFor(tab) else const SizedBox.shrink(),
             ],
           ),
-          bottomNavigationBar: NavigationBarTheme(
-            data: NavigationBarThemeData(
-              backgroundColor: context.colors.bgSoft,
-              indicatorColor: context.colors.accent.withValues(alpha: 0.18),
-              labelTextStyle: WidgetStateProperty.resolveWith((states) {
-                final selected = states.contains(WidgetState.selected);
-                return TextStyle(
-                  fontSize: 11,
-                  fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
-                  color: selected ? context.colors.textPrimary : context.colors.textMuted,
-                );
-              }),
-              iconTheme: WidgetStateProperty.resolveWith((states) {
-                final selected = states.contains(WidgetState.selected);
-                return IconThemeData(
-                  size: 22,
-                  color: selected ? context.colors.textPrimary : context.colors.textMuted,
-                );
-              }),
-            ),
-            child: NavigationBar(
-              height: 64,
-              selectedIndex: index,
-              onDestinationSelected: (i) => _switchTo(order[i]),
-              labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-              destinations: const [
-                NavigationDestination(
-                  icon: Icon(Icons.inbox_outlined),
-                  selectedIcon: Icon(Icons.inbox),
-                  label: 'Inbox',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.edit_outlined),
-                  selectedIcon: Icon(Icons.edit),
-                  label: 'Send',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.casino_outlined),
-                  selectedIcon: Icon(Icons.casino),
-                  label: 'Dice',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.auto_awesome_outlined),
-                  selectedIcon: Icon(Icons.auto_awesome),
-                  label: 'Stickers',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.person_outline),
-                  selectedIcon: Icon(Icons.person),
-                  label: 'My Link',
-                ),
-              ],
-            ),
+          bottomNavigationBar: NotchNavBar(
+            selectedIndex: index,
+            onTap: (i) => _switchTo(order[i]),
+            destinations: const [
+              NotchDestination(
+                icon: Icons.inbox_outlined,
+                selectedIcon: Icons.inbox,
+                label: 'Inbox',
+              ),
+              NotchDestination(
+                icon: Icons.edit_outlined,
+                selectedIcon: Icons.edit,
+                label: 'Send',
+              ),
+              NotchDestination(
+                icon: Icons.casino_outlined,
+                selectedIcon: Icons.casino,
+                label: 'Dice',
+              ),
+              NotchDestination(
+                icon: Icons.auto_awesome_outlined,
+                selectedIcon: Icons.auto_awesome,
+                label: 'Stickers',
+              ),
+              NotchDestination(
+                icon: Icons.person_outline,
+                selectedIcon: Icons.person,
+                label: 'My Link',
+              ),
+            ],
           ),
         ),
       ),

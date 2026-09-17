@@ -7,6 +7,7 @@ import 'package:secretmsg_mobile/screens/inbox_screen.dart';
 import 'package:secretmsg_mobile/screens/send_screen.dart';
 import 'package:secretmsg_mobile/screens/settings_screen.dart';
 import 'package:secretmsg_mobile/screens/sticker_studio_screen.dart';
+import 'package:secretmsg_mobile/widgets/notch_nav_bar.dart';
 
 import 'secure_storage_mock.dart';
 
@@ -16,11 +17,11 @@ Future<void> _settle(WidgetTester tester) async {
   }
 }
 
-/// A tab label, matched only inside the navigation bar. Several screens use
-/// the same word in their own app bar title.
+/// A tab, matched by its tooltip inside the notch nav bar. The bar is
+/// icons-only, so tooltips (plus semantics labels) carry the names.
 Finder _tabLabel(String label) => find.descendant(
-      of: find.byType(NavigationBar),
-      matching: find.text(label),
+      of: find.byType(NotchNavBar),
+      matching: find.byTooltip(label),
     );
 
 /// Inactive IndexedStack children are offstage, so the default finders report
@@ -42,7 +43,7 @@ void main() {
     await tester.pumpWidget(const MaterialApp(home: AppShell()));
     await _settle(tester);
 
-    expect(find.byType(NavigationBar), findsOneWidget);
+    expect(find.byType(NotchNavBar), findsOneWidget);
     for (final label in ['Inbox', 'Send', 'Dice', 'Stickers', 'My Link']) {
       expect(_tabLabel(label), findsOneWidget, reason: 'missing the $label tab');
     }
