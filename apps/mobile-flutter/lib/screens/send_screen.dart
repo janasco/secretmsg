@@ -201,7 +201,7 @@ class _SendScreenState extends State<SendScreen> {
           enabled: !_lookingUp,
           autocorrect: false,
           decoration: InputDecoration(
-            hintText: 'e.g. janasco',
+            hintText: 'e.g. alex',
             prefixIcon: const Icon(Icons.alternate_email, size: 18),
             filled: true,
             fillColor: const Color(0xFF0F1220),

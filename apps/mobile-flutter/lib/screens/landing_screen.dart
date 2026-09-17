@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../theme.dart';
 import 'screens.dart';
+import 'send_lookup_screen.dart';
 
 /// First-run welcome: three swipeable cards, then exactly one decision —
 /// create an inbox or log in. No marketing grid, no footer, no dead-end
@@ -119,7 +120,7 @@ class _LandingScreenState extends State<LandingScreen> {
                   minimumSize: const Size.fromHeight(54),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                 ),
-                onPressed: () => _go(const LoginScreen()),
+                onPressed: () => _go(const LoginScreen(signup: true)),
                 child: const Text('Create my inbox — free', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
               ),
               const SizedBox(height: 8),
@@ -129,7 +130,7 @@ class _LandingScreenState extends State<LandingScreen> {
                     style: TextStyle(color: AppColors.accentSoft, fontWeight: FontWeight.w700, fontSize: 15)),
               ),
               TextButton(
-                onPressed: () => _go(const AppShell(initialTab: AppTab.send)),
+                onPressed: () => _go(const SendLookupScreen()),
                 child: const Text('Just sending to a friend?',
                     style: TextStyle(color: AppColors.textMuted, fontSize: 13)),
               ),

@@ -6,10 +6,15 @@ import '../theme.dart';
 import 'app_shell.dart';
 import 'backup_codes_screen.dart';
 import 'recovery_screen.dart';
+import 'supporters_screen.dart';
 
+/// Auth entry: signup-first when [signup] is true (welcome flow), login
+/// otherwise. Handles are optional at signup — empty means the server
+/// auto-generates one (e.g. lumen4821); custom names are a supporter perk.
 class LoginScreen extends StatefulWidget {
   final bool showRecovery;
-  const LoginScreen({super.key, this.showRecovery = false});
+  final bool signup;
+  const LoginScreen({super.key, this.showRecovery = false, this.signup = false});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -21,11 +26,15 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _loading = false;
   String? _error;
   bool _isRecovery = false;
+  late bool _isSignup;
+
+  static final _handleRe = RegExp(r'^[a-z0-9_\-\.]{4,30}$');
 
   @override
   void initState() {
     super.initState();
     _isRecovery = widget.showRecovery;
+    _isSignup = widget.signup && !widget.showRecovery;
   }
 
   @override
@@ -35,16 +44,26 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  String _cleanHandle() =>
+      _handleCtrl.text.trim().toLowerCase().replaceFirst(RegExp(r'^@'), '');
+
   Future<void> _handleSignup() async {
-    final handle = _handleCtrl.text.trim();
+    final handle = _cleanHandle();
     final pin = _pinCtrl.text.trim();
     if (!RegExp(r'^\d{4,6}$').hasMatch(pin)) {
       setState(() => _error = 'PIN must be 4-6 digits');
       return;
     }
+    if (handle.isNotEmpty && !_handleRe.hasMatch(handle)) {
+      setState(() => _error = 'Handles are 4-30 characters: lowercase letters, numbers, _ - .');
+      return;
+    }
     setState(() { _loading = true; _error = null; });
     try {
-      final result = await ApiClient.authSignup(handle: handle, pin: pin);
+      final result = await ApiClient.authSignup(
+        handle: handle.isEmpty ? null : handle,
+        pin: pin,
+      );
       if (!mounted) return;
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (_) => BackupCodesScreen(
@@ -99,6 +118,14 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  void _switchMode({required bool signup}) {
+    setState(() {
+      _isSignup = signup;
+      _isRecovery = false;
+      _error = null;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,24 +139,31 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  _isRecovery ? 'Recover with backup code' : 'Your secret link, protected by PIN',
-                  style: const TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.w900, height: 1.25),
+                  _isRecovery
+                      ? 'Recover with backup code'
+                      : _isSignup
+                          ? 'Create your inbox'
+                          : 'Welcome back',
+                  style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900, height: 1.25),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   _isRecovery
                       ? 'Enter your handle and one of your backup codes to set a new PIN.'
-                      : 'No email needed. Choose a handle, set a PIN, and save your backup codes.',
+                      : _isSignup
+                          ? 'Set a PIN — no email needed. Your link is auto-generated; custom names are a supporter perk.'
+                          : 'Your secret link, protected by PIN.',
                   style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 13, height: 1.55),
                 ),
                 const SizedBox(height: 20),
+                if (_isSignup) _pinField(login: false),
                 TextField(
                   controller: _handleCtrl,
                   autocorrect: false,
                   enabled: !_loading,
                   decoration: InputDecoration(
-                    labelText: 'Handle',
-                    hintText: 'lumen4821',
+                    labelText: _isSignup ? 'Handle (optional)' : 'Handle',
+                    hintText: _isSignup ? 'Leave blank — we make you one' : 'lumen4821',
                     filled: true,
                     fillColor: const Color(0xFF0F1220),
                     border: OutlineInputBorder(
@@ -142,37 +176,27 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 12),
+                if (_isSignup) ...[
+                  const SizedBox(height: 8),
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const SupportersScreen()),
+                    ),
+                    child: const Text(
+                      'Want your own name instead? Custom handles are a supporter perk — learn more.',
+                      style: TextStyle(color: Color(0xFFA5B4FC), fontSize: 12, height: 1.5),
+                    ),
+                  ),
+                ],
                 // Recovery needs handle + backup code + new PIN (3 fields on the
                 // next screen). Only the handle is collected here; the PIN field
                 // below is login-only so backup codes are never typed into a
                 // digits-only obscured field.
-                if (!_isRecovery) ...[
-                  TextField(
-                    controller: _pinCtrl,
-                    keyboardType: TextInputType.number,
-                    maxLength: 6,
-                    obscureText: true,
-                    enabled: !_loading,
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                    decoration: InputDecoration(
-                      labelText: 'PIN',
-                      hintText: '4-6 digits',
-                      filled: true,
-                      fillColor: const Color(0xFF0F1220),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: AppColors.border),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: AppColors.border),
-                      ),
-                      counterText: '',
-                    ),
-                    onSubmitted: (_) => _handleLogin(),
-                  ),
-                ] else ...[
+                if (!_isRecovery && !_isSignup) ...[
+                  const SizedBox(height: 12),
+                  _pinField(login: true),
+                ] else if (_isRecovery) ...[
+                  const SizedBox(height: 8),
                   const Text(
                     'You only need your handle here — the backup code and new PIN go on the next screen.',
                     style: TextStyle(color: Color(0xFF64748B), fontSize: 12, height: 1.5),
@@ -185,16 +209,30 @@ class _LoginScreenState extends State<LoginScreen> {
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                   ),
-                  onPressed: _loading ? null : (_isRecovery ? _handleRecovery : _handleLogin),
+                  onPressed: _loading
+                      ? null
+                      : (_isRecovery ? _handleRecovery : (_isSignup ? _handleSignup : _handleLogin)),
                   child: _loading
                       ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
-                      : Text(_isRecovery ? 'Recover Account' : 'Log In', style: const TextStyle(fontWeight: FontWeight.w800)),
+                      : Text(
+                          _isRecovery ? 'Recover Account' : (_isSignup ? 'Create my inbox' : 'Log In'),
+                          style: const TextStyle(fontWeight: FontWeight.w800),
+                        ),
                 ),
                 if (_error != null) ...[
                   const SizedBox(height: 12),
                   Text(_error!, style: const TextStyle(color: Color(0xFFFCA5A5), fontSize: 12, height: 1.5)),
                 ],
-                const SizedBox(height: 24),
+                const SizedBox(height: 16),
+                if (!_isRecovery) ...[
+                  TextButton(
+                    onPressed: () => _switchMode(signup: !_isSignup),
+                    child: Text(
+                      _isSignup ? 'I already have an inbox — log in' : 'New here? Create an inbox',
+                      style: const TextStyle(color: Color(0xFFA5B4FC), fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                ],
                 TextButton(
                   onPressed: () => setState(() { _isRecovery = !_isRecovery; _error = null; }),
                   child: Text(
@@ -202,19 +240,38 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: const TextStyle(color: Color(0xFFA5B4FC)),
                   ),
                 ),
-                const SizedBox(height: 12),
-                const Divider(color: Color(0xFF1E293B)),
-                const SizedBox(height: 12),
-                TextButton.icon(
-                  onPressed: _loading ? null : _handleSignup,
-                  icon: const Icon(Icons.add_circle_outline, color: Color(0xFF10B981), size: 18),
-                  label: const Text('Create new account', style: TextStyle(color: Color(0xFF10B981))),
-                ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _pinField({required bool login}) {
+    return TextField(
+      controller: _pinCtrl,
+      keyboardType: TextInputType.number,
+      maxLength: 6,
+      obscureText: true,
+      enabled: !_loading,
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+      decoration: InputDecoration(
+        labelText: 'PIN',
+        hintText: '4-6 digits',
+        filled: true,
+        fillColor: const Color(0xFF0F1220),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.border),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppColors.border),
+        ),
+        counterText: '',
+      ),
+      onSubmitted: (_) => login ? _handleLogin() : _handleSignup(),
     );
   }
 }
