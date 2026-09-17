@@ -3,17 +3,21 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/api_client.dart';
 import '../api/config.dart';
 import '../api/models.dart';
 import '../api/session.dart';
+import '../data/vibe_templates.dart';
 import '../gamification/badges.dart';
 import '../gamification/celebration.dart';
 import '../gamification/challenges.dart';
 import '../gamification/progress.dart';
 import '../gamification/rank_up.dart';
 import '../gamification/ranks.dart';
+import '../ritual/daily_drop.dart';
+import '../ritual/reminders.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import 'app_shell.dart';
@@ -44,6 +48,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _permanentPause = false;
   bool _claimingUsername = false;
   ProgressUpdate? _progress;
+  bool _remDrop = true;
+  bool _remStreak = true;
+  bool _remMilestone = true;
 
   @override
   void initState() {
@@ -62,6 +69,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
       _loading = true;
       _error = null;
     });
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      if (!mounted) return;
+      setState(() {
+        _remDrop = prefs.getBool(prefDropEnabled) ?? true;
+        _remStreak = prefs.getBool(prefStreakEnabled) ?? true;
+        _remMilestone = prefs.getBool(prefMilestoneEnabled) ?? true;
+      });
+    } catch (_) {
+      // Toggles fall back to on; the API load below is what matters.
+    }
     try {
       final user = await ApiClient.getMe();
       if (!mounted) return;
@@ -316,8 +334,75 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
+  Widget _buildReminderToggle({
+    required bool value,
+    required String title,
+    required String subtitle,
+    required ValueChanged<bool> onChanged,
+  }) {
+    return SwitchListTile(
+      value: value,
+      onChanged: onChanged,
+      activeThumbColor: AppColors.accent,
+      contentPadding: EdgeInsets.zero,
+      title: Text(title,
+          style: const TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, color: AppColors.textPrimary)),
+      subtitle: Text(subtitle, style: const TextStyle(fontSize: 11.5, color: AppColors.textMuted)),
+    );
+  }
+
+  Future<void> _setReminderToggle(String key, bool value, void Function(bool) apply) async {
+    setState(() => apply(value));
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool(key, value);
+      final now = DateTime.now();
+      final dropOn = key == prefDropEnabled ? value : _remDrop;
+      final streakOn = key == prefStreakEnabled ? value : _remStreak;
+      if (!dropOn && !streakOn) {
+        await cancelAllReminders();
+        return;
+      }
+      final prompt = VIBE_TEMPLATES[dropIndexForDay(now, VIBE_TEMPLATES.length)].text;
+      await rescheduleAll(
+        now: now,
+        dropAnswered: false,
+        checkedInToday: false,
+        streakCount: 0,
+        dropPrompt: prompt,
+      );
+    } catch (_) {
+      if (!mounted) return;
+      showErrorSnack(context, 'Could not update reminder setting.');
+    }
+  }
+
+  Future<void> _requestReminderAccess() async {
+    try {
+      final granted = await requestReminderPermission();
+      final exact = await exactAlarmAllowed();
+      if (!mounted) return;
+      if (granted && exact) {
+        showSuccessSnack(context, 'Notifications on — reminders scheduled.');
+      } else if (granted) {
+        showSuccessSnack(context, 'Notifications on. For exact timing, allow alarms in system settings.');
+      } else {
+        showErrorSnack(context, 'Notifications blocked. Enable them in system settings to get reminders.');
+      }
+    } catch (_) {
+      if (!mounted) return;
+      showErrorSnack(context, 'Could not open notification settings.');
+    }
+  }
+
   Future<void> _signOut() async {
+    try {
+      await ApiClient.unregisterPushToken();
+    } catch (_) {}
     await Session.clear();
+    try {
+      await cancelAllReminders();
+    } catch (_) {}
     if (!mounted) return;
     Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(builder: (_) => const LandingScreen()),
@@ -512,6 +597,37 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(builder: (_) => const BlockedSendersScreen()),
                         ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  _SectionCard(
+                    title: 'Ritual & notifications',
+                    icon: Icons.notifications_outlined,
+                    children: [
+                      _buildReminderToggle(
+                        value: _remDrop,
+                        title: 'Daily Drop reminders',
+                        subtitle: 'Morning card + evening expiry nudge',
+                        onChanged: (v) => _setReminderToggle(prefDropEnabled, v, (x) => _remDrop = x),
+                      ),
+                      _buildReminderToggle(
+                        value: _remStreak,
+                        title: 'Streak reminder',
+                        subtitle: 'Nightly nudge to keep your flame alive',
+                        onChanged: (v) => _setReminderToggle(prefStreakEnabled, v, (x) => _remStreak = x),
+                      ),
+                      _buildReminderToggle(
+                        value: _remMilestone,
+                        title: 'Milestones',
+                        subtitle: 'Rank-ups and streak records',
+                        onChanged: (v) => _setReminderToggle(prefMilestoneEnabled, v, (x) => _remMilestone = x),
+                      ),
+                      const Divider(color: AppColors.border, height: 24),
+                      _ActionTile(
+                        icon: Icons.notification_important_outlined,
+                        label: 'Allow notifications',
+                        onTap: _requestReminderAccess,
                       ),
                     ],
                   ),

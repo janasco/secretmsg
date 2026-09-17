@@ -3,6 +3,11 @@ import 'package:flutter/services.dart';
 
 import 'api/session.dart';
 import 'diag/turnstile_diag.dart';
+import 'ritual/daily_drop.dart';
+import 'ritual/drop_store.dart';
+import 'ritual/push.dart';
+import 'ritual/reminders.dart';
+import 'data/vibe_templates.dart';
 import 'screens/app_shell.dart';
 import 'screens/landing_screen.dart';
 import 'screens/login_screen.dart';
@@ -13,7 +18,7 @@ import 'screens/supporters_screen.dart';
 import 'screens/dice_screen.dart';
 import 'theme.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
@@ -23,6 +28,15 @@ void main() {
       systemNavigationBarIconBrightness: WidgetsBinding.instance.platformDispatcher.platformBrightness == Brightness.dark ? Brightness.light : Brightness.dark,
     ),
   );
+  // Reminders init before runApp so a notification-tap cold start captures
+  // its payload route. Best-effort: never let this crash boot.
+  try {
+    await initReminders();
+  } catch (_) {}
+  // Push init is separate: Firebase misconfiguration must not take down boot.
+  try {
+    await initPush();
+  } catch (_) {}
   const isDiag = bool.fromEnvironment('SMS_TURNSTILE_TEST');
   runApp(SecretMsgApp(
     initialRoute: isDiag ? '/diag' : WidgetsBinding.instance.platformDispatcher.defaultRouteName,
@@ -133,7 +147,17 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
 
   /// A shared link always wins. On a plain launch we check for a stored session
   /// so a signed-in owner opens on their inbox instead of the marketing page.
+  /// A notification tap wins over both, and a signed-in cold start refreshes
+  /// today's ritual reminders from current state.
   Future<void> _resolveHome() async {
+    final tapRoute = pendingRoute;
+    pendingRoute = null;
+    if (tapRoute == '/drop' || tapRoute == '/inbox') {
+      if (!mounted) return;
+      setState(() => _home = const AppShell(initialTab: AppTab.inbox));
+      return;
+    }
+
     final linked = DeepLinkRouter.routeFor(widget.initialRoute);
     if (linked is! LandingScreen) {
       if (!mounted) return;
@@ -144,12 +168,38 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
     Widget next = const LandingScreen();
     try {
       final token = await Session.getToken();
-      if (token != null && token.isNotEmpty) next = const AppShell(initialTab: AppTab.inbox);
+      if (token != null && token.isNotEmpty) {
+        next = const AppShell(initialTab: AppTab.inbox);
+        await _refreshRitualReminders();
+        // Push token self-heals on every signed-in cold start.
+        try {
+          await registerPushToken();
+        } catch (_) {}
+      }
     } catch (_) {
       // Unreadable secure storage just means we show the landing screen.
     }
     if (!mounted) return;
     setState(() => _home = next);
+  }
+
+  /// Derives today's reminders from ritual state. Signed-out users get none;
+  /// signed-in users get the Drop reminders until answered (the inbox owns
+  /// check-ins and streak counts once it loads).
+  Future<void> _refreshRitualReminders() async {
+    try {
+      final now = DateTime.now();
+      final prompt = VIBE_TEMPLATES[dropIndexForDay(now, VIBE_TEMPLATES.length)].text;
+      await rescheduleAll(
+        now: now,
+        dropAnswered: await DropStore.isDone(now),
+        checkedInToday: false,
+        streakCount: 0,
+        dropPrompt: prompt,
+      );
+    } catch (_) {
+      // Reminders are best-effort; never break sign-in.
+    }
   }
 
   @override

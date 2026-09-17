@@ -3,6 +3,9 @@ plugins {
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
+    // Firebase config (google-services.json is gitignored; builds without it
+    // fail — that file must come from the Firebase console).
+    id "com.google.gms.google-services"
 }
 
 // Release signing is configured in android/key.properties, which is gitignored
@@ -23,6 +26,8 @@ android {
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
+        // Required by flutter_local_notifications (Java 8+ APIs on older runtimes).
+        coreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -59,4 +64,9 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    // Desugared Java 8+ core libs (see compileOptions above).
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 }

@@ -276,6 +276,15 @@ class ApiClient {
     await _postJson('/api/inbox/$messageId/reply', {'reply': reply}, auth: true);
   }
 
+  // ---- Push registration (FCM token, best-effort) ----
+  static Future<void> registerPushToken(String fcmToken) async {
+    await _postJson('/api/push/register', {'fcm_token': fcmToken}, auth: true);
+  }
+
+  static Future<void> unregisterPushToken() async {
+    await _postJson('/api/push/register', {'fcm_token': ''}, auth: true);
+  }
+
   // ---- Blind reply check ----
   static Future<ReplyThread> checkReply(String token) async {
     final data = await _getJson('/api/reply/${Uri.encodeComponent(token)}');

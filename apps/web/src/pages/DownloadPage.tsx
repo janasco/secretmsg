@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Download, Check, Copy, ShieldCheck, BellRing, Play } from 'lucide-react';
 import { PublicPage } from '@/components/PublicPage';
-import { APK_VERSION, APK_FILE, APK_SIZE, APK_SHA256 } from '@/lib/appVersion';
+import { APK_VERSION, APK_VARIANTS, APK_PRIMARY } from '@/lib/appVersion';
 
 const STEPS = [
   {
@@ -25,7 +25,7 @@ export const DownloadPage: React.FC = () => {
   const [copiedHash, setCopiedHash] = useState(false);
 
   const copyHash = () => {
-    navigator.clipboard?.writeText(APK_SHA256);
+    navigator.clipboard?.writeText(APK_PRIMARY.sha256);
     setCopiedHash(true);
     setTimeout(() => setCopiedHash(false), 2000);
   };
@@ -51,19 +51,33 @@ export const DownloadPage: React.FC = () => {
                 </span>
               </div>
               <p className="text-xs text-slate-400 font-mono">
-                {APK_FILE} • {APK_SIZE} • Android 8.0+
+                {APK_PRIMARY.file} • {APK_PRIMARY.size} • Android 8.0+
               </p>
             </div>
           </div>
 
           <a
-            href={`/downloads/${APK_FILE}`}
-            download={APK_FILE}
+            href={`/downloads/${APK_PRIMARY.file}`}
+            download={APK_PRIMARY.file}
             className="w-full py-3.5 px-4 rounded-xl font-semibold text-sm bg-gradient-to-r from-emerald-600 to-emerald-500 hover:opacity-95 text-white shadow-lg shadow-emerald-500/25 flex items-center justify-center space-x-2 transition-all"
           >
             <Download className="w-4 h-4" />
-            <span>Download APK ({APK_SIZE})</span>
+            <span>Download APK ({APK_PRIMARY.size})</span>
           </a>
+
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-slate-500">
+            <span>Other architectures:</span>
+            {APK_VARIANTS.slice(1).map((v) => (
+              <a
+                key={v.file}
+                href={`/downloads/${v.file}`}
+                download={v.file}
+                className="text-indigo-400 hover:text-indigo-300 font-mono"
+              >
+                {v.label} ({v.size})
+              </a>
+            ))}
+          </div>
 
           <div className="bg-dark-900 border border-white/10 rounded-xl p-3.5 space-y-2">
             <div className="flex items-center justify-between gap-2">
@@ -79,7 +93,7 @@ export const DownloadPage: React.FC = () => {
                 {copiedHash ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
               </button>
             </div>
-            <p className="text-[11px] font-mono text-slate-500 break-all select-all">{APK_SHA256}</p>
+            <p className="text-[11px] font-mono text-slate-500 break-all select-all">{APK_PRIMARY.sha256}</p>
             <p className="text-[11px] text-slate-500">
               After downloading, compare the file's hash to verify it wasn't tampered with in transit.
             </p>

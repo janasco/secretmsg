@@ -46,3 +46,41 @@ String dayKey(DateTime date) {
   }
   return (count: 1, lastDay: today);
 }
+
+/// Applies a missed day to a streak that supports freezes.
+///
+/// A freeze pauses the count instead of resetting it (the missed day is not
+/// counted, and `lastDay` is left for the caller to advance on next
+/// check-in). Without a freeze the streak resets to 1, matching [rollStreak].
+/// Pure: the caller persists the returned count/freezes.
+({int count, int freezes, bool froze}) applyMiss({
+  required int storedCount,
+  required int freezes,
+}) {
+  final safe = storedCount < 1 ? 1 : storedCount;
+  if (freezes > 0) {
+    return (count: safe, freezes: freezes - 1, froze: true);
+  }
+  return (count: 1, freezes: freezes, froze: false);
+}
+
+/// Streaks earn one freeze, holding at most [maxFreezes]. Call on every
+/// 7-day milestone (caller tracks the milestone, this just caps).
+int earnFreeze(int freezes, {int maxFreezes = 1}) =>
+    freezes >= maxFreezes ? maxFreezes : freezes + 1;
+
+/// Whether a broken streak may be repaired (supporter perk): within 48 h of
+/// the break and at most once per 30 days. Pure: the caller persists the
+/// restored count and the repair timestamp.
+bool canRepair({
+  required DateTime brokenAt,
+  required DateTime now,
+  required DateTime? lastRepairAt,
+}) {
+  if (now.isBefore(brokenAt)) return false;
+  if (now.difference(brokenAt) > const Duration(hours: 48)) return false;
+  if (lastRepairAt != null && now.difference(lastRepairAt) < const Duration(days: 30)) {
+    return false;
+  }
+  return true;
+}

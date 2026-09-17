@@ -1,12 +1,22 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../api/api_client.dart';
 import '../api/config.dart';
 import '../api/models.dart';
 import '../api/session.dart';
+import '../data/vibe_templates.dart';
+import '../ritual/daily_drop.dart';
+import '../ritual/drop_store.dart';
+import '../ritual/push.dart';
+import '../ritual/reminders.dart';
+import '../ritual/streak_store.dart';
 import '../gamification/rank_up.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
+import '../widgets/drop_countdown.dart';
+import 'daily_drop_screen.dart';
 import 'login_screen.dart';
 
 class InboxScreen extends StatefulWidget {
@@ -22,6 +32,9 @@ class _InboxScreenState extends State<InboxScreen> {
   String? _error;
   String _filter = 'all';
   bool _isAuthed = false;
+  StreakState? _streak;
+  bool _dropDone = true; // Hidden until ritual state loads.
+  bool _vibePrompted = false;
 
   @override
   void initState() {
@@ -49,6 +62,9 @@ class _InboxScreenState extends State<InboxScreen> {
         _messages = messages;
         _loading = false;
       });
+      // Ritual check-in rides the inbox refresh: streak rolls, tonight's
+      // reminders refresh from real state, vibe prompt shows once per day.
+      unawaited(_ritualCheckIn());
       // Rank-up check rides the inbox refresh: a fresh profile carries the
       // server-computed rank, celebrated at most once per tier per account.
       try {
@@ -74,6 +90,99 @@ class _InboxScreenState extends State<InboxScreen> {
     }
   }
 
+  String _todayPrompt() {
+    final now = DateTime.now();
+    return VIBE_TEMPLATES[dropIndexForDay(now, VIBE_TEMPLATES.length)].text;
+  }
+
+  /// Ritual check-in after a successful inbox load: rolls the streak
+  /// (freeze/repair handled in the store), refreshes tonight's reminders
+  /// from real state, and prompts the once-daily vibe check-in.
+  Future<void> _ritualCheckIn() async {
+    try {
+      final now = DateTime.now();
+      // Push token self-heals here too: fresh logins land on the inbox
+      // without passing through cold-start routing.
+      await registerPushTokenOnce();
+      final checkIn = await StreakStore.checkIn(now);
+      final done = await DropStore.isDone(now);
+      if (!mounted) return;
+      setState(() {
+        _streak = checkIn.state;
+        _dropDone = done;
+      });
+      if (checkIn.froze) {
+        if (mounted) {
+          showSuccessSnack(context,
+              '🧊 Streak freeze saved your ${checkIn.state.count}-day streak');
+        }
+      } else if (checkIn.earnedFreeze) {
+        if (mounted) showSuccessSnack(context, '🛡️ Milestone! Earned a streak freeze');
+      }
+      await rescheduleAll(
+        now: now,
+        dropAnswered: done,
+        checkedInToday: true,
+        streakCount: checkIn.state.count,
+        dropPrompt: _todayPrompt(),
+      );
+      if (!mounted || _vibePrompted) return;
+      if (!await VibeStore.isCheckedIn(now)) {
+        _vibePrompted = true;
+        _promptVibe();
+      }
+    } catch (_) {
+      // Ritual is best-effort; the inbox already loaded.
+    }
+  }
+
+  void _promptVibe() {
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: AppColors.surface,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: const Text('How are you vibing today?',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.textPrimary)),
+        content: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            for (final mood in vibeMoods)
+              IconButton(
+                onPressed: () async {
+                  try {
+                    await VibeStore.checkIn(DateTime.now(), mood);
+                  } catch (_) {}
+                  if (ctx.mounted) Navigator.of(ctx).pop();
+                  if (mounted) showSuccessSnack(context, 'Vibe saved $mood');
+                },
+                icon: Text(mood, style: const TextStyle(fontSize: 28)),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _openDrop() async {
+    final answered = await Navigator.of(context).push<bool>(
+      MaterialPageRoute(builder: (_) => const DailyDropScreen()),
+    );
+    if (answered == true && mounted) {
+      setState(() => _dropDone = true);
+      try {
+        final now = DateTime.now();
+        await rescheduleAll(
+          now: now,
+          dropAnswered: true,
+          checkedInToday: true,
+          streakCount: _streak?.count ?? 0,
+          dropPrompt: _todayPrompt(),
+        );
+      } catch (_) {}
+    }
+  }
+
   List<AnonymousMessage> get _filtered {
     final all = _messages ?? const [];
     switch (_filter) {
@@ -93,8 +202,26 @@ class _InboxScreenState extends State<InboxScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final streak = _streak;
     return Scaffold(
-      appBar: const AppTopBar(title: 'Secret Inbox'),
+      appBar: AppTopBar(
+        title: 'Secret Inbox',
+        actions: [
+          if (streak != null && streak.count > 0)
+            Padding(
+              padding: const EdgeInsets.only(right: 12),
+              child: Chip(
+                avatar: const Text('🔥', style: TextStyle(fontSize: 13)),
+                label: Text('${streak.count}',
+                    style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: AppColors.textPrimary)),
+                backgroundColor: AppColors.amber.withValues(alpha: 0.15),
+                side: BorderSide(color: AppColors.amber.withValues(alpha: 0.4)),
+                padding: EdgeInsets.zero,
+                visualDensity: VisualDensity.compact,
+              ),
+            ),
+        ],
+      ),
       body: !_isAuthed ? _buildSignIn() : _buildInbox(),
     );
   }
@@ -217,6 +344,47 @@ class _InboxScreenState extends State<InboxScreen> {
   }
 
   /// Stitch KPI row: three stat cards over the message stream.
+  /// Today's Drop banner: tappable card with live expiry countdown.
+  Widget _buildDropBanner() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
+      child: InkWell(
+        onTap: _openDrop,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+                colors: [Color(0xFF2A2356), Color(0xFF151B26)],
+            ),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: AppColors.accent.withValues(alpha: 0.35)),
+          ),
+          child: const Row(
+            children: [
+              Text('🔥', style: TextStyle(fontSize: 22)),
+              SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Today's Drop is live",
+                        style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w800, color: AppColors.textPrimary)),
+                    SizedBox(height: 2),
+                    DropCountdown(),
+                  ],
+                ),
+              ),
+              Icon(Icons.chevron_right, color: AppColors.textMuted),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildStats() {
     final all = _messages ?? const [];
     final unread = all.where((m) => m.isRead == 0).length;
@@ -240,6 +408,7 @@ class _InboxScreenState extends State<InboxScreen> {
     return Column(
       children: [
         _buildHeader(),
+        if (!_dropDone) _buildDropBanner(),
         const SizedBox(height: 8),
         _buildFilters(),
         _buildStats(),
