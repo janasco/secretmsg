@@ -19,10 +19,12 @@ import 'package:timezone/timezone.dart' as tz;
 const String _channelDrop = 'ritual_drop';
 const String _channelStreak = 'ritual_streak';
 const String _channelMilestone = 'ritual_milestone';
+const String _channelDigest = 'ritual_digest';
 
 const int _idDropMorning = 1001;
 const int _idDropEvening = 1002;
 const int _idStreakNight = 1003;
+const int _idDigestWeekly = 1004;
 
 /// Max pushes per calendar day (guide §2.4).
 const int maxPushesPerDay = 2;
@@ -30,6 +32,7 @@ const int maxPushesPerDay = 2;
 const String prefDropEnabled = 'rem_drop';
 const String prefStreakEnabled = 'rem_streak';
 const String prefMilestoneEnabled = 'rem_milestone';
+const String prefDigestEnabled = 'rem_digest';
 
 /// Route payload the app should open when launched from a notification tap.
 /// Written by the tap handler, consumed once by `main()` after init.
@@ -49,6 +52,14 @@ List<({int id, int hour, int minute, String channel})> reminderSlots() => const 
 
 /// Quiet hours 22:00–08:00: no reminder may fire inside.
 bool inQuietHours(DateTime t) => t.hour >= 22 || t.hour < 8;
+
+/// Next Saturday 10:00 local (today if still ahead). Weekly digest day.
+DateTime nextSaturday10(DateTime now) {
+  var d = DateTime(now.year, now.month, now.day, 10, 0);
+  var delta = (DateTime.saturday - d.weekday) % 7;
+  if (delta == 0 && !d.isAfter(now)) delta = 7;
+  return d.add(Duration(days: delta));
+}
 
 /// Next local wall-clock occurrence of [hour]:[minute] strictly after [now].
 DateTime nextOccurrence(DateTime now, int hour, int minute) {
@@ -87,6 +98,11 @@ Future<void> initReminders() async {
     description: 'Nightly nudge to keep your check-in streak alive',
     importance: Importance.defaultImportance,
   );
+  const digestChannel = AndroidNotificationChannel(
+    _channelDigest, 'Weekly review',
+    description: 'Saturday roundup of held messages waiting for review',
+    importance: Importance.defaultImportance,
+  );
   const milestoneChannel = AndroidNotificationChannel(
     _channelMilestone, 'Milestones',
     description: 'Rank-ups and streak milestones',
@@ -96,6 +112,7 @@ Future<void> initReminders() async {
       AndroidFlutterLocalNotificationsPlugin>();
   await android?.createNotificationChannel(dropChannel);
   await android?.createNotificationChannel(streakChannel);
+  await android?.createNotificationChannel(digestChannel);
   await android?.createNotificationChannel(milestoneChannel);
 
   // Cold start from a notification tap: capture the payload route.
@@ -135,15 +152,18 @@ Future<void> rescheduleAll({
   required bool checkedInToday,
   required int streakCount,
   required String dropPrompt,
+  int filteredWeekCount = 0,
 }) async {
   if (!_ready) return;
   final prefs = await SharedPreferences.getInstance();
   final dropOn = prefs.getBool(prefDropEnabled) ?? true;
   final streakOn = prefs.getBool(prefStreakEnabled) ?? true;
+  final digestOn = prefs.getBool(prefDigestEnabled) ?? true;
 
   await _plugin.cancel(_idDropMorning);
   await _plugin.cancel(_idDropEvening);
   await _plugin.cancel(_idStreakNight);
+  await _plugin.cancel(_idDigestWeekly);
 
   final exact = await exactAlarmAllowed();
   final mode = exact
@@ -180,6 +200,27 @@ Future<void> rescheduleAll({
     ));
   }
 
+  // Weekly moderation digest: only when something actually waits, outside
+  // the daily cap (at most one per week by construction).
+  if (digestOn && filteredWeekCount > 0) {
+    final at = nextSaturday10(now);
+    await _plugin.zonedSchedule(
+      _idDigestWeekly,
+      'Your filtered tray is waiting 🛡️',
+      '$filteredWeekCount ${filteredWeekCount == 1 ? 'message needs' : 'messages need'} your review.',
+      tz.TZDateTime.from(at, tz.local),
+      const NotificationDetails(
+        android: AndroidNotificationDetails(_channelDigest, _channelDigest,
+            importance: Importance.defaultImportance,
+            priority: Priority.defaultPriority),
+      ),
+      androidScheduleMode: mode,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
+      payload: '/inbox',
+    );
+  }
+
   // Only today's occurrences count; cap at [maxPushesPerDay], earliest first.
   final tomorrow = DateTime(now.year, now.month, now.day).add(const Duration(days: 1));
   candidates.retainWhere((c) => c.at.isBefore(tomorrow) && !inQuietHours(c.at));
@@ -210,6 +251,7 @@ Future<void> cancelAllReminders() async {
   await _plugin.cancel(_idDropMorning);
   await _plugin.cancel(_idDropEvening);
   await _plugin.cancel(_idStreakNight);
+  await _plugin.cancel(_idDigestWeekly);
 }
 
 /// Immediate milestone push (rank-up). Respects its toggle.

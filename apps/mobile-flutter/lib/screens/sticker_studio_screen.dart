@@ -1,10 +1,19 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:gal/gal.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../api/config.dart';
+import '../api/session.dart';
 import '../data/vibe_templates.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import '../widgets/share_export.dart';
+import '../widgets/user_avatar.dart';
 
 class StickerStudioScreen extends StatefulWidget {
   const StickerStudioScreen({super.key});
@@ -20,6 +29,50 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
 
   String _presetId = 'tbh';
   String _themeId = 'neon';
+  String _layout = 'bottom'; // top | center | bottom
+  String? _identityHandle;
+  String? _identitySeed;
+  List<File> _recents = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadIdentity();
+    _loadRecents();
+  }
+
+  /// Prefills the board link (and avatar) for signed-in owners so the
+  /// studio is one-tap: pick vibe, share. Signed-out senders type a handle.
+  Future<void> _loadIdentity() async {
+    try {
+      final user = await Session.getSavedUser();
+      if (!mounted || user == null || user.username.isEmpty) return;
+      setState(() {
+        _identityHandle = user.username;
+        _identitySeed = (user.avatarSeed == null || user.avatarSeed!.isEmpty)
+            ? user.username
+            : user.avatarSeed!;
+        _linkCtrl.text = user.username;
+      });
+    } catch (_) {}
+  }
+
+  String get _boardHandle {
+    final typed = _linkCtrl.text.trim();
+    if (typed.isNotEmpty) return typed;
+    return _identityHandle ?? 'yourname';
+  }
+
+  String get _avatarSeed {
+    final typed = _linkCtrl.text.trim();
+    if (typed.isNotEmpty &&
+        _identityHandle != null &&
+        typed.toLowerCase() == _identityHandle!.toLowerCase() &&
+        _identitySeed != null) {
+      return _identitySeed!;
+    }
+    return typed.isNotEmpty ? typed : 'secretmsg';
+  }
 
   String get _caption {
     final custom = _captionCtrl.text.trim().replaceAll('\n', ' ').trim();
@@ -36,14 +89,87 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
   }
 
   Future<void> _shareImage() async {
-    final ok = await sharePng(_previewKey, subject: '$_caption\n\n${shareUrlFor(_linkCtrl.text.trim().isNotEmpty ? _linkCtrl.text.trim() : 'yourname')}');
-    if (!ok && mounted) showErrorSnack(context, 'Could not capture sticker');
+    final path = await capturePng(_previewKey);
+    if (path == null) {
+      if (mounted) showErrorSnack(context, 'Could not capture sticker');
+      return;
+    }
+    unawaited(_keepRecent(path));
+    await Share.shareXFiles(
+      [XFile(path)],
+      text: '$_caption\n\n${shareUrlFor(_boardHandle)}',
+      subject: '$_caption\n\n${shareUrlFor(_boardHandle)}',
+    );
+  }
+
+  /// Recents tray: last 6 shared/saved stickers on-device for one-tap reshare.
+  Future<Directory> _recentsDir() async {
+    final docs = await getApplicationDocumentsDirectory();
+    final dir = Directory('${docs.path}${Platform.pathSeparator}recents');
+    if (!await dir.exists()) await dir.create(recursive: true);
+    return dir;
+  }
+
+  Future<void> _loadRecents() async {
+    try {
+      final dir = await _recentsDir();
+      final files = dir
+          .listSync()
+          .whereType<File>()
+          .where((f) => f.path.endsWith('.png'))
+          .toList()
+        ..sort((a, b) => b.path.compareTo(a.path));
+      if (!mounted) return;
+      setState(() => _recents = files.take(6).toList());
+    } catch (_) {}
+  }
+
+  Future<void> _keepRecent(String pngPath) async {
+    try {
+      final dir = await _recentsDir();
+      final name = 'sticker_${DateTime.now().millisecondsSinceEpoch}.png';
+      await File(pngPath).copy('${dir.path}${Platform.pathSeparator}$name');
+      final files = dir
+          .listSync()
+          .whereType<File>()
+          .where((f) => f.path.endsWith('.png'))
+          .toList()
+        ..sort((a, b) => b.path.compareTo(a.path));
+      for (final extra in files.skip(6)) {
+        try {
+          await extra.delete();
+        } catch (_) {}
+      }
+      if (!mounted) return;
+      setState(() => _recents = files.take(6).toList());
+    } catch (_) {}
+  }
+
+  Future<void> _reshareRecent(File file) async {
+    try {
+      await Share.shareXFiles([XFile(file.path)], text: shareUrlFor(_boardHandle));
+    } catch (_) {
+      if (mounted) showErrorSnack(context, 'Could not share sticker');
+    }
   }
 
   Future<void> _saveImage() async {
-    showErrorSnack(context, 'Saving to gallery…');
-    final ok = await sharePng(_previewKey, subject: 'Story sticker — $kPublicBaseUrl');
-    if (!ok && mounted) showErrorSnack(context, 'Could not capture sticker');
+    try {
+      final hasAccess = await Gal.requestAccess();
+      if (!hasAccess) {
+        if (mounted) showErrorSnack(context, 'Gallery access denied — use Share instead.');
+        return;
+      }
+      final path = await capturePng(_previewKey);
+      if (path == null) {
+        if (mounted) showErrorSnack(context, 'Could not capture sticker');
+        return;
+      }
+      await Gal.putImageBytes(File(path).readAsBytesSync(), name: 'secretmsg-sticker');
+      if (mounted) showSuccessSnack(context, 'Sticker saved to gallery');
+    } catch (_) {
+      if (mounted) showErrorSnack(context, 'Could not save sticker');
+    }
   }
 
   void _copyLink() {
@@ -80,8 +206,18 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
                 const SizedBox(height: 20),
                 RepaintBoundary(
                   key: _previewKey,
-                  child: _StickerPreview(caption: _caption, theme: _STICKER_THEME_BY_ID[_themeId]!),
+                  child: _StickerPreview(
+                    caption: _caption,
+                    theme: _STICKER_THEME_BY_ID[_themeId]!,
+                    handle: _boardHandle,
+                    seed: _avatarSeed,
+                    layout: _layout,
+                  ),
                 ),
+                if (_recents.isNotEmpty) ...[
+                  const SizedBox(height: 14),
+                  _buildRecents(),
+                ],
                 const SizedBox(height: 16),
                 _buildPresets(),
                 const SizedBox(height: 16),
@@ -130,23 +266,77 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
     );
   }
 
-  Widget _buildPresets() {
-    return Wrap(
-      spacing: 8,
-      runSpacing: 8,
+  Widget _buildRecents() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-for (final p in STORY_PRESETS)
-          ChoiceChip(
-            label: Text(p.label, style: const TextStyle(fontSize: 12)),
-            selected: _presetId == p.id,
-            selectedColor: context.colors.accent.withValues(alpha: 0.2),
-            labelStyle: TextStyle(
-              color: _presetId == p.id ? context.colors.textPrimary : context.colors.textSecondary,
-              fontWeight: FontWeight.w600,
-            ),
-            side: BorderSide(color: _presetId == p.id ? context.colors.accent : context.colors.border),
-            onSelected: (_) => _pickPreset(p.id),
+        Text('Recent stickers — tap to reshare',
+            style: TextStyle(color: context.colors.textSecondary, fontSize: 12, fontWeight: FontWeight.w700)),
+        const SizedBox(height: 8),
+        SizedBox(
+          height: 96,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: _recents.length,
+            separatorBuilder: (_, __) => const SizedBox(width: 8),
+            itemBuilder: (_, i) {
+              final f = _recents[i];
+              return GestureDetector(
+                onTap: () => _reshareRecent(f),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.file(f, width: 54, height: 96, fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) => const SizedBox(width: 54, height: 96)),
+                ),
+              );
+            },
           ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPresets() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text('Caption', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w800)),
+            const Spacer(),
+            TextButton.icon(
+              style: TextButton.styleFrom(visualDensity: VisualDensity.compact),
+              onPressed: () {
+                final pick = STORY_PRESETS[DateTime.now().millisecondsSinceEpoch % STORY_PRESETS.length];
+                setState(() {
+                  _presetId = pick.id;
+                  _captionCtrl.text = pick.text;
+                });
+              },
+              icon: const Icon(Icons.casino, size: 15),
+              label: const Text('Ideas', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+            ),
+          ],
+        ),
+        const SizedBox(height: 4),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            for (final p in STORY_PRESETS)
+              ChoiceChip(
+                label: Text(p.label, style: const TextStyle(fontSize: 12)),
+                selected: _presetId == p.id,
+                selectedColor: context.colors.accent.withValues(alpha: 0.2),
+                labelStyle: TextStyle(
+                  color: _presetId == p.id ? context.colors.textPrimary : context.colors.textSecondary,
+                  fontWeight: FontWeight.w600,
+                ),
+                side: BorderSide(color: _presetId == p.id ? context.colors.accent : context.colors.border),
+                onSelected: (_) => _pickPreset(p.id),
+              ),
+          ],
+        ),
       ],
     );
   }
@@ -167,6 +357,46 @@ for (final p in STORY_PRESETS)
               ),
               const SizedBox(width: 10),
             ],
+          ],
+        ),
+        const SizedBox(height: 16),
+        Text('Layout', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w800)),
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            for (final l in const [
+              ('top', Icons.vertical_align_top, 'Top'),
+              ('center', Icons.vertical_align_center, 'Center'),
+              ('bottom', Icons.vertical_align_bottom, 'Bottom'),
+            ])
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: InkWell(
+                    onTap: () => setState(() => _layout = l.$1),
+                    borderRadius: BorderRadius.circular(12),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      decoration: BoxDecoration(
+                        color: _layout == l.$1
+                            ? context.colors.accent.withValues(alpha: 0.18)
+                            : Colors.transparent,
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: _layout == l.$1 ? context.colors.accent : context.colors.border,
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          Icon(l.$2, size: 18, color: _layout == l.$1 ? context.colors.textPrimary : context.colors.textSecondary),
+                          const SizedBox(height: 2),
+                          Text(l.$3, style: TextStyle(fontSize: 10, color: _layout == l.$1 ? context.colors.textPrimary : context.colors.textSecondary)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
           ],
         ),
         const SizedBox(height: 16),
@@ -193,24 +423,32 @@ for (final p in STORY_PRESETS)
         const SizedBox(height: 12),
         Text('Your board link', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w800)),
         const SizedBox(height: 8),
-        TextField(
-          controller: _linkCtrl,
-          autocorrect: false,
-          onChanged: (_) => setState(() {}),
-          decoration: InputDecoration(
-            prefixText: '$kPublicBaseUrl/',
-            filled: true,
-            fillColor: context.colors.surface,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: context.colors.border),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: context.colors.border),
+        if (_identityHandle != null)
+          _AccountHandleCard(
+            handle: _identityHandle!,
+            seed: _identitySeed ?? _identityHandle!,
+            onCopy: _copyLink,
+            onShare: () => Share.share('Send me anonymous messages — ${shareUrlFor(_boardHandle)}'),
+          )
+        else
+          TextField(
+            controller: _linkCtrl,
+            autocorrect: false,
+            onChanged: (_) => setState(() {}),
+            decoration: InputDecoration(
+              prefixText: '$kPublicBaseUrl/',
+              filled: true,
+              fillColor: context.colors.surface,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: context.colors.border),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: context.colors.border),
+              ),
             ),
           ),
-        ),
       ],
     );
   }
@@ -226,6 +464,8 @@ const _STICKER_THEME_BY_ID = {
   'sunset': StickerTheme('sunset', 'Amber Sunset', ['#78350F', '#1E1B4B', '#090A0F'], '#F59E0B', '#FBBF24'),
   'emerald': StickerTheme('emerald', 'Emerald Velvet', ['#022C22', '#042F2E', '#090A0F'], '#10B981', '#34D399'),
   'candy': StickerTheme('candy', 'Cotton Candy', ['#831843', '#3B0764', '#090A0F'], '#EC4899', '#F9A8D4'),
+  'brand': StickerTheme('brand', 'SecretMsg Violet', ['#4F46E5', '#6366F1', '#1E1B4B'], '#A5B4FC', '#C7D2FE'),
+  'paper': StickerTheme('paper', 'Clean Paper', ['#FFFFFF', '#F1F5F9'], '#CBD5E1', '#6366F1', isLight: true),
   'obsidian': StickerTheme('obsidian', 'Pure Obsidian', ['#0F111A', '#090A0F'], '#FFFFFF', '#FFFFFF'),
 };
 
@@ -256,16 +496,112 @@ class _ThemeSwatch extends StatelessWidget {
   }
 }
 
+/// Signed-in owner's handle card: avatar + @handle + link, with copy and
+/// share actions right where the sticker is built.
+class _AccountHandleCard extends StatelessWidget {
+  final String handle;
+  final String seed;
+  final VoidCallback onCopy;
+  final VoidCallback onShare;
+  const _AccountHandleCard({
+    required this.handle,
+    required this.seed,
+    required this.onCopy,
+    required this.onShare,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: context.colors.surface,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: context.colors.border),
+      ),
+      child: Row(
+        children: [
+          UserAvatar(seed: seed, fallbackInitials: handle, size: 40),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('@$handle',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: context.colors.textPrimary)),
+                const SizedBox(height: 2),
+                Text(shareUrlFor(handle).replaceFirst('https://', ''),
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 11.5, color: context.colors.textMuted)),
+              ],
+            ),
+          ),
+          IconButton(
+            tooltip: 'Copy link',
+            onPressed: onCopy,
+            icon: Icon(Icons.copy, size: 18, color: context.colors.accentSoft),
+          ),
+          IconButton(
+            tooltip: 'Share link',
+            onPressed: onShare,
+            icon: Icon(Icons.ios_share, size: 18, color: context.colors.accentSoft),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _StickerPreview extends StatelessWidget {
   final String caption;
   final StickerTheme theme;
-  const _StickerPreview({required this.caption, required this.theme});
+  final String handle;
+  final String seed;
+  final String layout; // top | center | bottom
+  const _StickerPreview({
+    required this.caption,
+    required this.theme,
+    this.handle = 'yourname',
+    this.seed = 'secretmsg',
+    this.layout = 'bottom',
+  });
 
   @override
   Widget build(BuildContext context) {
     final colors = [for (final c in theme.gradient) _parseHex(c)];
     final accent = _parseHex(theme.accent);
     final border = _parseHex(theme.border);
+    // Paper theme carries dark ink; every other theme carries white ink.
+    final ink = theme.isLight ? const Color(0xFF0F172A) : Colors.white;
+    final inkSoft = theme.isLight
+        ? const Color(0xFF475569)
+        : Colors.white.withValues(alpha: 0.8);
+    final captionBlock = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          caption,
+          maxLines: 4,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(color: ink, fontSize: 30, fontWeight: FontWeight.w900, height: 1.1),
+        ),
+        const SizedBox(height: 12),
+        Text(
+          'Tap here to send me an anonymous message',
+          style: TextStyle(color: inkSoft, fontSize: 13, fontWeight: FontWeight.w600),
+        ),
+        const SizedBox(height: 18),
+        Container(
+          width: double.infinity,
+          height: 3,
+          decoration: BoxDecoration(
+            color: accent.withValues(alpha: 0.7),
+            borderRadius: BorderRadius.circular(999),
+          ),
+        ),
+      ],
+    );
     return AspectRatio(
       aspectRatio: 9 / 16,
       child: Container(
@@ -280,62 +616,44 @@ class _StickerPreview extends StatelessWidget {
           children: [
             Row(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(14),
-                  child: Image.asset(
-                    'assets/app-icon.png',
-                    width: 44,
-                    height: 44,
-                    errorBuilder: (_, __, ___) => Container(
-                      width: 44,
-                      height: 44,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: context.colors.textPrimary,
-                        borderRadius: BorderRadius.circular(14),
-                        boxShadow: [
-                          BoxShadow(color: Colors.black.withValues(alpha: 0.35), blurRadius: 12, offset: const Offset(0, 5)),
-                        ],
-                      ),
-                      child: Text('S', style: TextStyle(color: _parseHex('#090A0F'), fontWeight: FontWeight.w900, fontSize: 20)),
-                    ),
-                  ),
-                ),
+                UserAvatar(seed: seed, fallbackInitials: handle, size: 44),
                 const Spacer(),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: Colors.black.withValues(alpha: 0.3),
-                    borderRadius: BorderRadius.circular(999),
-                  ),
-                  child: const Text(
-                    'secretmsg.net',
-                    style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w800, letterSpacing: 0.3),
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.3),
+                        borderRadius: BorderRadius.circular(999),
+                      ),
+                      child: Text(
+                        'secretmsg.net/$handle',
+                        style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w800, letterSpacing: 0.3),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Container(
+                        color: Colors.white,
+                        padding: const EdgeInsets.all(4),
+                        child: QrImageView(
+                          data: 'https://secretmsg.net/$handle',
+                          size: 56,
+                          backgroundColor: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-            const Spacer(),
-            Text(
-              caption,
-              maxLines: 4,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w900, height: 1.1),
-            ),
-            const SizedBox(height: 12),
-            Text(
-              'Tap here to send me an anonymous message',
-              style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(height: 18),
-            Container(
-              width: double.infinity,
-              height: 3,
-              decoration: BoxDecoration(
-                color: accent.withValues(alpha: 0.7),
-                borderRadius: BorderRadius.circular(999),
-              ),
-            ),
+            if (layout == 'bottom') const Spacer(),
+            if (layout == 'center') const Spacer(),
+            captionBlock,
+            if (layout == 'center') const Spacer(),
+            if (layout == 'top') const Spacer(),
           ],
         ),
       ),

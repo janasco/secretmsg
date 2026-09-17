@@ -32,6 +32,7 @@ class _InboxScreenState extends State<InboxScreen> {
   String? _error;
   String _filter = 'all';
   bool _isAuthed = false;
+  List<AnonymousMessage> _tray = const [];
   StreakState? _streak;
   bool _dropDone = true; // Hidden until ritual state loads.
   bool _vibePrompted = false;
@@ -62,6 +63,8 @@ class _InboxScreenState extends State<InboxScreen> {
         _messages = messages;
         _loading = false;
       });
+      // Tray loads alongside; failures stay silent (badge just hides).
+      unawaited(_loadTray());
       // Ritual check-in rides the inbox refresh: streak rolls, tonight's
       // reminders refresh from real state, vibe prompt shows once per day.
       unawaited(_ritualCheckIn());
@@ -125,6 +128,7 @@ class _InboxScreenState extends State<InboxScreen> {
         checkedInToday: true,
         streakCount: checkIn.state.count,
         dropPrompt: _todayPrompt(),
+        filteredWeekCount: _trayWeekCount,
       );
       if (!mounted || _vibePrompted) return;
       if (!await VibeStore.isCheckedIn(now)) {
@@ -178,6 +182,7 @@ class _InboxScreenState extends State<InboxScreen> {
           checkedInToday: true,
           streakCount: _streak?.count ?? 0,
           dropPrompt: _todayPrompt(),
+          filteredWeekCount: _trayWeekCount,
         );
       } catch (_) {}
     }
@@ -192,8 +197,29 @@ class _InboxScreenState extends State<InboxScreen> {
         return all.where((m) => m.replyContent != null && m.replyContent!.isNotEmpty).toList();
       case 'pinned':
         return all.where((m) => m.isPinned == 1).toList();
+      case 'filtered':
+        return _tray;
       default:
         return all;
+    }
+  }
+
+  /// Tray holds from the last 7 days (digest scope).
+  int get _trayWeekCount {
+    final cutoff = DateTime.now().subtract(const Duration(days: 7));
+    return _tray.where((m) {
+      final at = DateTime.tryParse(m.createdAt);
+      return at != null && !at.isBefore(cutoff);
+    }).length;
+  }
+
+  Future<void> _loadTray() async {
+    try {
+      final tray = await ApiClient.getFilteredTray();
+      if (!mounted) return;
+      setState(() => _tray = tray);
+    } catch (_) {
+      // Tray is additive; the inbox already loaded.
     }
   }
 
@@ -271,23 +297,25 @@ class _InboxScreenState extends State<InboxScreen> {
   /// Stitch header row: headline title with a filled count pill on the right.
   Widget _buildHeader() {
     final n = _unreadCount;
+    // The app bar already says "Secret Inbox" — this row only renders the
+    // unread pill, and collapses entirely when there is nothing new.
+    if (n <= 0) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
       child: Row(
         children: [
-          Expanded(child: Text('Secret Inbox', style: context.type.headlineMd)),
-          if (n > 0)
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-              decoration: BoxDecoration(
-                color: context.colors.accent,
-                borderRadius: BorderRadius.circular(999),
-              ),
-              child: Text(
-                '$n New',
-                style: context.type.labelCaps.copyWith(color: Colors.white),
-              ),
+          const Spacer(),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            decoration: BoxDecoration(
+              color: context.colors.accent,
+              borderRadius: BorderRadius.circular(999),
             ),
+            child: Text(
+              '$n New',
+              style: context.type.labelCaps.copyWith(color: Colors.white),
+            ),
+          ),
         ],
       ),
     );
@@ -306,6 +334,7 @@ class _InboxScreenState extends State<InboxScreen> {
       ('unread', 'Unread', unread),
       ('replied', 'Replies', replied),
       ('pinned', 'Pinned', pinned),
+      ('filtered', 'Filtered', _tray.length),
     ];
     return SizedBox(
       height: 36,
@@ -343,7 +372,37 @@ class _InboxScreenState extends State<InboxScreen> {
     );
   }
 
-  /// Stitch KPI row: three stat cards over the message stream.
+  /// Moderation digest: nudges review when held mail piles up.
+  Widget _buildDigestChip() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
+      child: InkWell(
+        onTap: () => setState(() => _filter = 'filtered'),
+        borderRadius: BorderRadius.circular(12),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+          decoration: BoxDecoration(
+            color: context.colors.amber.withValues(alpha: 0.12),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: context.colors.amber.withValues(alpha: 0.35)),
+          ),
+          child: Row(
+            children: [
+              Icon(Icons.shield_outlined, size: 15, color: context.colors.amberLight),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  '$_trayWeekCount ${_trayWeekCount == 1 ? 'message' : 'messages'} held this week — review',
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: context.colors.textPrimary),
+                ),
+              ),
+              Icon(Icons.chevron_right, size: 16, color: context.colors.textMuted),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
   /// Today's Drop banner: tappable card with live expiry countdown.
   Widget _buildDropBanner() {
     return Padding(
@@ -381,6 +440,7 @@ class _InboxScreenState extends State<InboxScreen> {
     );
   }
 
+  /// Stitch KPI row: three stat cards over the message stream.
   Widget _buildStats() {
     final all = _messages ?? const [];
     final unread = all.where((m) => m.isRead == 0).length;
@@ -405,6 +465,7 @@ class _InboxScreenState extends State<InboxScreen> {
       children: [
         _buildHeader(),
         if (!_dropDone) _buildDropBanner(),
+        if (_trayWeekCount > 0 && _filter != 'filtered') _buildDigestChip(),
         const SizedBox(height: 8),
         _buildFilters(),
         _buildStats(),
@@ -435,29 +496,35 @@ class _InboxScreenState extends State<InboxScreen> {
       );
     }
     final items = _filtered;
+    final isTray = _filter == 'filtered';
     if (items.isEmpty) {
       return ListView(
         children: [
           const SizedBox(height: 90),
-          Icon(Icons.inbox_outlined, size: 52, color: context.colors.textFaint),
+          Icon(isTray ? Icons.shield_outlined : Icons.inbox_outlined,
+              size: 52, color: context.colors.textFaint),
           const SizedBox(height: 12),
           Text(
-            'No messages yet',
+            isTray ? 'Nothing held' : 'No messages yet',
             textAlign: TextAlign.center,
             style: context.type.bodyBase.copyWith(fontWeight: FontWeight.w700, color: context.colors.textSecondary),
           ),
           const SizedBox(height: 6),
           Text(
-            _filter == 'all'
-                ? 'Share your link and wait for the first anonymous message to arrive.'
-                : 'Nothing here in this filter.',
+            isTray
+                ? 'Messages your filters catch will wait here for review.'
+                : (_filter == 'all'
+                    ? 'Share your link and wait for the first anonymous message to arrive.'
+                    : 'Nothing here in this filter.'),
             textAlign: TextAlign.center,
             style: context.type.bodySm,
           ),
-          const SizedBox(height: 20),
-          const Center(
-            child: _ShareLinkButton(),
-          ),
+          if (!isTray) ...[
+            const SizedBox(height: 20),
+            const Center(
+              child: _ShareLinkButton(),
+            ),
+          ],
         ],
       );
     }
@@ -468,9 +535,62 @@ class _InboxScreenState extends State<InboxScreen> {
       separatorBuilder: (_, __) => const SizedBox(height: 10),
       itemBuilder: (context, i) {
         final m = items[i];
+        if (isTray) {
+          return _TrayCard(
+            message: m,
+            onApprove: () => _approveHeld(m),
+            onDiscard: () => _discardHeld(m),
+          );
+        }
         return _MessageCard(message: m, onTap: () => _openMessage(m));
       },
     );
+  }
+
+  Future<void> _approveHeld(AnonymousMessage m) async {
+    try {
+      await ApiClient.approveMessage(m.id);
+      if (!mounted) return;
+      setState(() => _tray = _tray.where((x) => x.id != m.id).toList());
+      showSuccessSnack(context, 'Released to your inbox');
+      unawaited(_load());
+    } catch (_) {
+      if (!mounted) return;
+      showErrorSnack(context, 'Could not release message');
+    }
+  }
+
+  Future<void> _discardHeld(AnonymousMessage m) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: context.colors.surface,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: Text('Delete this message?',
+            style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w700)),
+        content: Text('It will be permanently removed. The sender is never told.',
+            style: TextStyle(color: context.colors.textSecondary, fontSize: 13, height: 1.5)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: Text('Keep', style: TextStyle(color: context.colors.accentSoft)),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: Text('Delete', style: TextStyle(color: context.colors.roseLight, fontWeight: FontWeight.w700)),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+    try {
+      await ApiClient.discardMessage(m.id);
+      if (!mounted) return;
+      setState(() => _tray = _tray.where((x) => x.id != m.id).toList());
+    } catch (_) {
+      if (!mounted) return;
+      showErrorSnack(context, 'Could not delete message');
+    }
   }
 
   void _openMessage(AnonymousMessage m) {
@@ -505,8 +625,86 @@ class _InboxScreenState extends State<InboxScreen> {
   }
 }
 
-class _ShareLinkButton extends StatelessWidget {
-  const _ShareLinkButton();
+/// A held message awaiting review: content + reason, approve or discard.
+/// The sender is never told either way.
+class _TrayCard extends StatelessWidget {
+  final AnonymousMessage message;
+  final VoidCallback onApprove;
+  final VoidCallback onDiscard;
+  const _TrayCard({required this.message, required this.onApprove, required this.onDiscard});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: context.colors.surface,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: context.colors.amber.withValues(alpha: 0.35)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                decoration: BoxDecoration(
+                  color: context.colors.amber.withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(999),
+                ),
+                child: Text(
+                  message.quarantineReason == 'hidden-word' ? 'Held: filtered word' : 'Held for review',
+                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: context.colors.amberLight),
+                ),
+              ),
+              const Spacer(),
+              Text(
+                message.createdAt.length >= 10 ? message.createdAt.substring(0, 10) : message.createdAt,
+                style: TextStyle(fontSize: 10.5, color: context.colors.textFaint),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Text(message.content,
+              style: TextStyle(fontSize: 13.5, height: 1.5, color: context.colors.textPrimary)),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: onDiscard,
+                  icon: const Icon(Icons.delete_outline, size: 15),
+                  label: const Text('Delete', style: TextStyle(fontSize: 12)),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: context.colors.roseLight,
+                    side: BorderSide(color: context.colors.border),
+                    visualDensity: VisualDensity.compact,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: FilledButton.icon(
+                  onPressed: onApprove,
+                  icon: const Icon(Icons.check, size: 15),
+                  label: const Text('Approve', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+                  style: FilledButton.styleFrom(
+                    backgroundColor: context.colors.emerald,
+                    foregroundColor: Colors.white,
+                    visualDensity: VisualDensity.compact,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ShareLinkButton extends StatelessWidget {  const _ShareLinkButton();
 
   @override
   Widget build(BuildContext context) {

@@ -29,6 +29,7 @@ import 'blocked_senders_screen.dart';
 import 'inbox_screen.dart';
 import 'landing_screen.dart';
 import 'login_screen.dart';
+import 'my_reports_screen.dart';
 import 'static_screen.dart';
 import 'supporters_screen.dart';
 
@@ -55,6 +56,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _remDrop = true;
   bool _remStreak = true;
   bool _remMilestone = true;
+  bool _remDigest = true;
   String _appVersion = '';
 
   @override
@@ -82,6 +84,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         _remDrop = prefs.getBool(prefDropEnabled) ?? true;
         _remStreak = prefs.getBool(prefStreakEnabled) ?? true;
         _remMilestone = prefs.getBool(prefMilestoneEnabled) ?? true;
+        _remDigest = prefs.getBool(prefDigestEnabled) ?? true;
         _appVersion = 'v${pkg.version} (${pkg.buildNumber})';
       });
     } catch (_) {
@@ -551,7 +554,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppTopBar(title: 'My SecretLink'),
+      appBar: const AppTopBar(title: 'My Profile'),
       body: _loading
           ? Center(child: CircularProgressIndicator(color: context.colors.accent))
           : _error != null
@@ -652,7 +655,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     const SizedBox(height: 16),
                   ],
                   _SectionCard(
-                    title: 'Your SecretLink',
+                    title: 'Your secret link',
                     icon: Icons.link,
                     children: [
                       _ActionTile(
@@ -694,6 +697,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     children: [
                       _buildWordFilter(),
                       Divider(color: context.colors.border, height: 24),
+                      _buildSensitivity(),
+                      Divider(color: context.colors.border, height: 24),
                       _buildPause(),
                       Divider(color: context.colors.border, height: 24),
                       _ActionTile(
@@ -701,6 +706,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         label: 'Blocked senders',
                         onTap: () => Navigator.of(context).push(
                           MaterialPageRoute(builder: (_) => const BlockedSendersScreen()),
+                        ),
+                      ),
+                      _ActionTile(
+                        icon: Icons.flag_outlined,
+                        label: 'My reports',
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => const MyReportsScreen()),
                         ),
                       ),
                     ],
@@ -727,6 +739,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         title: 'Milestones',
                         subtitle: 'Rank-ups and streak records',
                         onChanged: (v) => _setReminderToggle(prefMilestoneEnabled, v, (x) => _remMilestone = x),
+                      ),
+                      _buildReminderToggle(
+                        value: _remDigest,
+                        title: 'Weekly review',
+                        subtitle: 'Saturday roundup of held messages',
+                        onChanged: (v) => _setReminderToggle(prefDigestEnabled, v, (x) => _remDigest = x),
                       ),
                       Divider(color: context.colors.border, height: 24),
                       _ActionTile(
@@ -840,8 +858,62 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _buildWordFilter() {
+  /// Strictness dial: off skips the hidden-words check, standard holds hits
+  /// for tray review, strict rejects them outright (still stored for review).
+  Widget _buildSensitivity() {
+    const levels = [
+      ('off', 'Off', 'Filtered words are ignored'),
+      ('standard', 'Standard', 'Hits wait in your filtered tray'),
+      ('strict', 'Strict', 'Hits are rejected at send time'),
+    ];
+    final current = _user?.modSensitivity ?? 'standard';
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Filter strictness', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w700)),
+        const SizedBox(height: 4),
+        Text('How your word filter treats matches.', style: TextStyle(color: context.colors.textMuted, fontSize: 11, height: 1.5)),
+        const SizedBox(height: 10),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            for (final l in levels)
+              ChoiceChip(
+                label: Text(l.$2, style: const TextStyle(fontSize: 12)),
+                selected: current == l.$1,
+                selectedColor: context.colors.accent.withValues(alpha: 0.2),
+                labelStyle: TextStyle(
+                  color: current == l.$1 ? context.colors.textPrimary : context.colors.textSecondary,
+                  fontWeight: FontWeight.w600,
+                ),
+                side: BorderSide(color: current == l.$1 ? context.colors.accent : context.colors.border),
+                onSelected: (_) => _setSensitivity(l.$1),
+              ),
+          ],
+        ),
+        const SizedBox(height: 6),
+        Text(levels.firstWhere((l) => l.$1 == current, orElse: () => levels[1]).$3,
+            style: TextStyle(color: context.colors.textMuted, fontSize: 11)),
+      ],
+    );
+  }
+
+  Future<void> _setSensitivity(String level) async {
+    if ((_user?.modSensitivity ?? 'standard') == level) return;
+    try {
+      await ApiClient.setSensitivity(level);
+      final me = await ApiClient.getMe();
+      if (!mounted) return;
+      setState(() => _user = me);
+      showSuccessSnack(context, 'Filter strictness updated');
+    } catch (_) {
+      if (!mounted) return;
+      showErrorSnack(context, 'Could not update strictness');
+    }
+  }
+
+  Widget _buildWordFilter() {    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('Hide messages containing words', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w700)),

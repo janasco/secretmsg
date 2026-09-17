@@ -44,7 +44,7 @@ void main() {
     await _settle(tester);
 
     expect(find.byType(NotchNavBar), findsOneWidget);
-    for (final label in ['Inbox', 'Send', 'Dice', 'Stickers', 'My Link']) {
+    for (final label in ['Inbox', 'Send', 'Dice', 'Stickers', 'Profile']) {
       expect(_tabLabel(label), findsOneWidget, reason: 'missing the $label tab');
     }
   });

@@ -1,12 +1,19 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:math';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/roulette_data.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
+import 'send_screen.dart';
 
+/// Dice Prompt Roulette: pick a vibe, roll, get one question. No browsing —
+/// the pool (9k prompts) stays behind the button.
 class DiceScreen extends StatefulWidget {
   const DiceScreen({super.key});
 
@@ -15,19 +22,94 @@ class DiceScreen extends StatefulWidget {
 }
 
 class _DiceScreenState extends State<DiceScreen> {
-  String _category = 'all';
+  String _category = RouletteData.allKey;
   String? _current;
   bool _rolling = false;
-  int _visible = 30;
   static final _rand = Random();
 
   List<RouletteCategory>? _categories;
   Object? _loadError;
+  List<String> _history = [];
+  bool _soundOn = true;
+  final _sfx = AudioPlayer();
+
+  static const _historyKey = 'dice_history';
+
+  static const _categoryIcons = {
+    'all': '🎲',
+    'crush': '💘',
+    'spicy': '🌶️',
+    'secrets': '🤫',
+    'chaotic': '🌪️',
+    'realtalk': '💬',
+    'latenight': '🌙',
+  };
 
   @override
   void initState() {
     super.initState();
     _loadPrompts();
+    _loadHistory();
+    _loadSoundPref();
+  }
+
+  @override
+  void dispose() {
+    _sfx.dispose();
+    super.dispose();
+  }
+
+  Future<void> _loadSoundPref() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      if (!mounted) return;
+      setState(() => _soundOn = prefs.getBool('dice_sound') ?? true);
+    } catch (_) {}
+  }
+
+  Future<void> _toggleSound() async {
+    setState(() => _soundOn = !_soundOn);
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('dice_sound', _soundOn);
+    } catch (_) {}
+  }
+
+  Future<void> _loadHistory() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final raw = prefs.getString(_historyKey);
+      if (raw == null || raw.isEmpty) return;
+      final list = (jsonDecode(raw) as List).map((e) => e.toString()).toList();
+      if (!mounted) return;
+      setState(() => _history = list.take(8).toList());
+    } catch (_) {}
+  }
+
+  Future<void> _pushHistory(String text) async {
+    final next = [text, ..._history.where((h) => h != text)].take(8).toList();
+    setState(() => _history = next);
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(_historyKey, jsonEncode(next));
+    } catch (_) {}
+  }
+
+  Future<void> _tick() async {
+    if (!_soundOn) return;
+    try {
+      await _sfx.play(AssetSource('sounds/tick.wav'));
+    } catch (_) {}
+  }
+
+  Future<void> _chime() async {
+    try {
+      HapticFeedback.heavyImpact();
+    } catch (_) {}
+    if (!_soundOn) return;
+    try {
+      await _sfx.play(AssetSource('sounds/chime.wav'));
+    } catch (_) {}
   }
 
   Future<void> _loadPrompts() async {
@@ -67,6 +149,7 @@ class _DiceScreenState extends State<DiceScreen> {
           return;
         }
         setState(() => _current = _pool[_rand.nextInt(_pool.length)]);
+        unawaited(_tick());
         spins++;
         if (spins >= 12) {
           t.cancel();
@@ -74,8 +157,19 @@ class _DiceScreenState extends State<DiceScreen> {
             _current = _pool[target];
             _rolling = false;
           });
+          unawaited(_chime());
+          unawaited(_pushHistory(_pool[target]));
         }
       },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final categories = _categories;
+    return Scaffold(
+      appBar: const AppTopBar(title: 'Dice Prompt Roulette'),
+      body: categories == null ? _buildPlaceholder() : _buildGame(categories),
     );
   }
 
@@ -99,99 +193,167 @@ class _DiceScreenState extends State<DiceScreen> {
         ),
       );
     }
-    return const Center(
+    return Center(
       child: SizedBox(
         height: 22,
         width: 22,
-        child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF818CF8)),
+        child: CircularProgressIndicator(strokeWidth: 2, color: context.colors.accentFaint),
       ),
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final categories = _categories;
-    if (categories == null) {
-      return Scaffold(
-        appBar: const AppTopBar(title: 'Dice Prompt Roulette'),
-        body: _buildPlaceholder(),
-      );
-    }
-    return Scaffold(
-      appBar: const AppTopBar(title: 'Dice Prompt Roulette'),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 40),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 560),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  'Spin the dice, drop the question',
-                  style: TextStyle(color: context.colors.textPrimary, fontSize: 19, fontWeight: FontWeight.w900),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  'One roll summons a random question from the pool. Copy it, tweak it, or send it straight to the composer.',
-                  style: TextStyle(color: context.colors.textSecondary, fontSize: 12.5, height: 1.5),
-                ),
-                const SizedBox(height: 18),
-                _DiceButton(rolling: _rolling, onRoll: _roll),
-                const SizedBox(height: 20),
-                if (_current != null) ...[
-                  _PromptCard(text: _current!),
-                  const SizedBox(height: 12),
-                ],
-                const SizedBox(height: 8),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Browse the pool — ${_formatCount(_pool.length)}',
-                    style: TextStyle(color: context.colors.textSecondary, fontSize: 13, fontWeight: FontWeight.w700),
+  Widget _buildGame(List<RouletteCategory> categories) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.fromLTRB(16, 8, 16, 40),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 560),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Spin the dice, drop the question',
+                      style: TextStyle(color: context.colors.textPrimary, fontSize: 19, fontWeight: FontWeight.w900),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 10),
-                for (final c in categories)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: ChoiceChip(
-                      label: Text(c.label, style: const TextStyle(fontSize: 12)),
+                  IconButton(
+                    tooltip: _soundOn ? 'Mute sounds' : 'Unmute sounds',
+                    onPressed: _toggleSound,
+                    icon: Icon(
+                      _soundOn ? Icons.volume_up_outlined : Icons.volume_off_outlined,
+                      size: 20,
+                      color: context.colors.textMuted,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 6),
+              Text(
+                'Pick a vibe, roll, and send the question it lands on.',
+                style: TextStyle(color: context.colors.textSecondary, fontSize: 12.5, height: 1.5),
+              ),
+              const SizedBox(height: 18),
+              // Vibe picker: icons only.
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  for (final c in categories)
+                    _VibeIcon(
+                      emoji: _categoryIcons[c.key] ?? '🎲',
+                      label: c.label,
                       selected: _category == c.key,
-                      selectedColor: context.colors.accent.withValues(alpha: 0.2),
-                      labelStyle: TextStyle(
-                        color: _category == c.key ? context.colors.textPrimary : context.colors.textSecondary,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      side: BorderSide(color: _category == c.key ? context.colors.accent : context.colors.border),
-                      onSelected: (_) => setState(() {
+                      onTap: () => setState(() {
                         _category = c.key;
-                        _visible = 30;
                         _current = null;
                       }),
                     ),
-                  ),
-                const SizedBox(height: 6),
-                for (final p in _pool.take(_visible)) ...[
-                  _PoolTile(text: p),
-                  const SizedBox(height: 8),
                 ],
-                if (_visible < _pool.length) ...[
-                  const SizedBox(height: 4),
-                  OutlinedButton(
-                    onPressed: () => setState(() => _visible += 30),
-                    child: const Text('Load more', style: TextStyle(color: Color(0xFFA5B4FC))),
+              ),
+              const SizedBox(height: 20),
+              _DiceButton(rolling: _rolling, onRoll: _roll),
+              const SizedBox(height: 20),
+              AnimatedSwitcher(
+                duration: const Duration(milliseconds: 350),
+                transitionBuilder: (child, anim) => ScaleTransition(
+                  scale: Tween<double>(begin: 0.85, end: 1).animate(
+                    CurvedAnimation(parent: anim, curve: Curves.easeOutBack),
                   ),
-                ],
+                  child: FadeTransition(opacity: anim, child: child),
+                ),
+                child: _current != null
+                    ? _PromptCard(
+                        key: ValueKey(_current),
+                        text: _current!,
+                        onSend: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => SendScreen(initialMessage: _current),
+                          ),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+              ),
+              if (_history.isNotEmpty) ...[
+                const SizedBox(height: 18),
+                _buildHistory(),
               ],
-            ),
+            ],
           ),
         ),
       ),
     );
   }
+  Widget _buildHistory() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Recent rolls — tap to reuse',
+            style: TextStyle(color: context.colors.textSecondary, fontSize: 12, fontWeight: FontWeight.w700)),
+        const SizedBox(height: 8),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            for (final h in _history)
+              ActionChip(
+                label: Text(
+                  h.length > 28 ? '${h.substring(0, 28)}…' : h,
+                  style: const TextStyle(fontSize: 11.5),
+                ),
+                onPressed: () => setState(() => _current = h),
+                backgroundColor: context.colors.surface,
+                side: BorderSide(color: context.colors.border),
+                labelStyle: TextStyle(color: context.colors.textSecondary),
+              ),
+          ],
+        ),
+      ],
+    );
+  }
 
-  String _formatCount(int n) => n >= 1000 ? '${(n / 1000).toStringAsFixed(1)}k+ prompts' : '$n prompts';
+}
+
+class _VibeIcon extends StatelessWidget {
+  final String emoji;
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+  const _VibeIcon({
+    required this.emoji,
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: label,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          width: 46,
+          height: 46,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: selected
+                ? context.colors.accent.withValues(alpha: 0.2)
+                : Colors.transparent,
+            border: Border.all(
+              color: selected ? context.colors.accent : context.colors.border,
+              width: selected ? 2 : 1,
+            ),
+          ),
+          child: Text(emoji, style: const TextStyle(fontSize: 22)),
+        ),
+      ),
+    );
+  }
 }
 
 class _DiceButton extends StatelessWidget {
@@ -248,7 +410,8 @@ class _DiceButton extends StatelessWidget {
 
 class _PromptCard extends StatelessWidget {
   final String text;
-  const _PromptCard({required this.text});
+  final VoidCallback onSend;
+  const _PromptCard({super.key, required this.text, required this.onSend});
 
   @override
   Widget build(BuildContext context) {
@@ -262,7 +425,7 @@ class _PromptCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(text, style: const TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w800, height: 1.4)),
+          Text(text, style: TextStyle(color: context.colors.textPrimary, fontSize: 17, fontWeight: FontWeight.w800, height: 1.4)),
           const SizedBox(height: 12),
           Row(
             children: [
@@ -272,41 +435,17 @@ class _PromptCard extends StatelessWidget {
                 label: const Text('Copy'),
               ),
               const Spacer(),
-              const Text('cleared', style: TextStyle(color: Color(0xFF10B981), fontSize: 10)),
+              FilledButton.icon(
+                onPressed: onSend,
+                icon: const Icon(Icons.send, size: 15),
+                label: const Text('Use in composer', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+                style: FilledButton.styleFrom(
+                  backgroundColor: context.colors.accent,
+                  foregroundColor: Colors.white,
+                  visualDensity: VisualDensity.compact,
+                ),
+              ),
             ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _PoolTile extends StatelessWidget {
-  final String text;
-  const _PoolTile({required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: context.colors.surface,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: context.colors.border),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(text, style: TextStyle(color: context.colors.textHigh, fontSize: 13, height: 1.45)),
-          ),
-          const SizedBox(height: 8),
-          TextButton.icon(
-            style: TextButton.styleFrom(visualDensity: VisualDensity.compact),
-            onPressed: () => copyToClipboard(context, text, message: 'Prompt copied'),
-            icon: const Icon(Icons.copy, size: 13),
-            label: const Text('Copy', style: TextStyle(fontSize: 11)),
           ),
         ],
       ),

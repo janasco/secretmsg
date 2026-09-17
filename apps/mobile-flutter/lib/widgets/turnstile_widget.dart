@@ -116,6 +116,11 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
     // Watchdog: the backend fails closed without a token, so a widget that
     // never becomes ready must surface an error instead of hanging forever
     // (offline WebView, blocked challenges API, slow network).
+    _armWatchdog();
+  }
+
+  void _armWatchdog() {
+    _watchdog?.cancel();
     _watchdog = Timer(const Duration(seconds: 20), () {
       if (!mounted || _ready || _errored || _misconfigured) return;
       setState(() {
@@ -124,6 +129,20 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
       });
       widget.onError?.call('timeout');
     });
+  }
+
+  /// Full recovery: reload the page and start over. Called from the Retry
+  /// button — without this, one failure permanently disables sending.
+  void _retry() {
+    if (_misconfigured) return;
+    setState(() {
+      _ready = false;
+      _errored = false;
+      _status = 'Retrying verification…';
+    });
+    widget.onError?.call(null);
+    _controller.loadRequest(Uri.parse('$kPublicBaseUrl/'));
+    _armWatchdog();
   }
 
   @override
@@ -323,6 +342,20 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
+                ),
+              ),
+            if (_errored && !_misconfigured)
+              Positioned(
+                right: 6,
+                top: 6,
+                child: TextButton.icon(
+                  style: TextButton.styleFrom(
+                    visualDensity: VisualDensity.compact,
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  ),
+                  onPressed: _retry,
+                  icon: const Icon(Icons.refresh, size: 14),
+                  label: const Text('Retry', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700)),
                 ),
               ),
           ],

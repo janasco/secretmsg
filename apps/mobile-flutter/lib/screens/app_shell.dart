@@ -125,7 +125,7 @@ class _AppShellState extends State<AppShell> {
               NotchDestination(
                 icon: Icons.person_outline,
                 selectedIcon: Icons.person,
-                label: 'My Link',
+                label: 'Profile',
               ),
             ],
           ),

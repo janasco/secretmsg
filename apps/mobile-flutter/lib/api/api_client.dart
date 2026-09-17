@@ -293,6 +293,38 @@ class ApiClient {
     return list;
   }
 
+  // ---- Filtered tray (quarantined moderation holds) ----
+  static Future<List<AnonymousMessage>> getFilteredTray() async {
+    final data = await _getJson('/api/inbox?filter=quarantined', auth: true);
+    final list = (data['messages'] as List?)
+            ?.map((e) => AnonymousMessage.fromJson(e as Map<String, dynamic>))
+            .toList() ??
+        const [];
+    return list;
+  }
+
+  static Future<void> approveMessage(String messageId) async {
+    await _postJson('/api/inbox/$messageId/approve', const {}, auth: true);
+  }
+
+  static Future<void> discardMessage(String messageId) async {
+    await _deleteJson('/api/inbox/$messageId');
+  }
+
+  static Future<void> setSensitivity(String level) async {
+    await _patchJson('/api/me', {'mod_sensitivity': level});
+  }
+
+  // ---- My reports + outcomes ----
+  static Future<List<FiledReport>> getMyReports() async {
+    final data = await _getJson('/api/reports/mine', auth: true);
+    final list = (data['reports'] as List?)
+            ?.map((e) => FiledReport.fromJson(e as Map<String, dynamic>))
+            .toList() ??
+        const [];
+    return list;
+  }
+
   static Future<void> replyMessage(String messageId, String reply) async {
     await _postJson('/api/inbox/$messageId/reply', {'reply': reply}, auth: true);
   }

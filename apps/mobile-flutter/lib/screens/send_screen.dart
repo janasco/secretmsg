@@ -12,7 +12,8 @@ import 'login_screen.dart';
 
 class SendScreen extends StatefulWidget {
   final String? initialUsername;
-  const SendScreen({super.key, this.initialUsername});
+  final String? initialMessage;
+  const SendScreen({super.key, this.initialUsername, this.initialMessage});
 
   @override
   State<SendScreen> createState() => _SendScreenState();
@@ -47,6 +48,11 @@ class _SendScreenState extends State<SendScreen> {
     if (widget.initialUsername != null && widget.initialUsername!.isNotEmpty) {
       _usernameCtrl.text = widget.initialUsername!;
       _performLookup();
+    }
+    // Dice/studio handoff: prefill the composer so the rolled idea survives
+    // the address step (lookup never clears the message field).
+    if (widget.initialMessage != null && widget.initialMessage!.isNotEmpty) {
+      _contentCtrl.text = widget.initialMessage!;
     }
   }
 
@@ -130,9 +136,14 @@ class _SendScreenState extends State<SendScreen> {
       });
     } on ApiException catch (e) {
       if (!mounted) return;
+      // Server errors are already sender-safe (never name the rule, the
+      // word, or the block status), so 400s pass through verbatim while
+      // verification and lookup failures get actionable copy.
       String msg = e.message;
-      if (e.statusCode == 403 || e.statusCode == 400) {
-        msg = 'Verification or content check failed. Please retry.';
+      if (e.statusCode == 403 && msg.contains('Spam verification')) {
+        msg = 'Spam check failed — complete the verification above and retry.';
+      } else if (e.statusCode == 403) {
+        msg = "This couldn't be delivered right now. Try rewording, or come back later.";
       } else if (e.statusCode == 404) {
         msg = "This user doesn't have a SecretMsg inbox yet, or the link is currently paused.";
       }

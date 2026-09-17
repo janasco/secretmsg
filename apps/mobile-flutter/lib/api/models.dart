@@ -16,6 +16,7 @@ class UserProfile {
   final bool isPaused;
   final int? pausedUntil;
   final List<String> hiddenWords;
+  final String modSensitivity;
   final int? allowHints;
   final int customSlugUnlocked;
   final RankInfo rank;
@@ -38,6 +39,7 @@ class UserProfile {
     this.isPaused = false,
     this.pausedUntil,
     this.hiddenWords = const [],
+    this.modSensitivity = 'standard',
     this.allowHints,
     this.customSlugUnlocked = 0,
     this.rank = const RankInfo(tier: 'newcomer', name: 'Newcomer', emoji: '🌱', score: 0),
@@ -67,6 +69,7 @@ class UserProfile {
       isPaused: json['is_paused'] == true,
       pausedUntil: (json['paused_until'] as num?)?.toInt(),
       hiddenWords: hidden,
+      modSensitivity: json['mod_sensitivity']?.toString() ?? 'standard',
       allowHints: (json['allow_hints'] as num?)?.toInt(),
       customSlugUnlocked: (json['custom_slug_unlocked'] as num?)?.toInt() ?? 0,
       rank: RankInfo.parse(json['rank']),
@@ -91,6 +94,7 @@ class UserProfile {
         'is_paused': isPaused,
         'paused_until': pausedUntil,
       'hidden_words': hiddenWords,
+      'mod_sensitivity': modSensitivity,
       'allow_hints': allowHints,
       'custom_slug_unlocked': customSlugUnlocked,
       'received_count': receivedCount,
@@ -126,6 +130,7 @@ class AnonymousMessage {
   final String? deviceHint;
   final String createdAt;
   final bool? senderHintsLocked;
+  final String? quarantineReason;
 
   const AnonymousMessage({
     required this.id,
@@ -137,6 +142,7 @@ class AnonymousMessage {
     this.deviceHint,
     required this.createdAt,
     this.senderHintsLocked,
+    this.quarantineReason,
   });
 
   factory AnonymousMessage.fromJson(Map<String, dynamic> json) {
@@ -150,6 +156,34 @@ class AnonymousMessage {
       deviceHint: json['device_hint']?.toString(),
       createdAt: json['created_at']?.toString() ?? '',
       senderHintsLocked: json['sender_hints_locked'] as bool?,
+      quarantineReason: json['quarantine_reason']?.toString(),
+    );
+  }
+}
+
+class FiledReport {
+  final String id;
+  final String messageId;
+  final String reason;
+  final bool resolved;
+  final String createdAt;
+
+  const FiledReport({
+    required this.id,
+    required this.messageId,
+    required this.reason,
+    required this.resolved,
+    required this.createdAt,
+  });
+
+  factory FiledReport.fromJson(Map<String, dynamic> json) {
+    final resolved = json['resolved'];
+    return FiledReport(
+      id: json['id']?.toString() ?? '',
+      messageId: json['message_id']?.toString() ?? '',
+      reason: json['reason']?.toString() ?? '',
+      resolved: resolved == 1 || resolved == true,
+      createdAt: json['created_at']?.toString() ?? '',
     );
   }
 }

@@ -95,8 +95,9 @@ class StickerTheme {
   final List<String> gradient;
   final String border;
   final String accent;
+  final bool isLight;
 
-  const StickerTheme(this.id, this.name, this.gradient, this.border, this.accent);
+  const StickerTheme(this.id, this.name, this.gradient, this.border, this.accent, {this.isLight = false});
 }
 
 const List<StickerTheme> STICKER_THEMES = [
@@ -104,5 +105,7 @@ const List<StickerTheme> STICKER_THEMES = [
   StickerTheme('sunset', 'Amber Sunset', ['#78350F', '#1E1B4B', '#090A0F'], '#F59E0B', '#FBBF24'),
   StickerTheme('emerald', 'Emerald Velvet', ['#022C22', '#042F2E', '#090A0F'], '#10B981', '#34D399'),
   StickerTheme('candy', 'Cotton Candy', ['#831843', '#3B0764', '#090A0F'], '#EC4899', '#F9A8D4'),
+  StickerTheme('brand', 'SecretMsg Violet', ['#4F46E5', '#6366F1', '#1E1B4B'], '#A5B4FC', '#C7D2FE'),
+  StickerTheme('paper', 'Clean Paper', ['#FFFFFF', '#F1F5F9'], '#CBD5E1', '#6366F1', isLight: true),
   StickerTheme('obsidian', 'Pure Obsidian', ['#0F111A', '#090A0F'], '#FFFFFF', '#FFFFFF'),
 ];
