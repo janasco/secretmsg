@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { APK_VERSION, APK_SIZE } from '@/lib/appVersion';
 import {
   Lock,
   ShieldCheck,
@@ -160,8 +161,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-xs text-slate-500">
-          <span>Version: <span className="text-slate-300 font-mono">v1.2.0</span></span>
-          <span>Size: <span className="text-slate-300 font-mono">~23 MB</span></span>
+          <span>Version: <span className="text-slate-300 font-mono">{APK_VERSION}</span></span>
+          <span>Size: <span className="text-slate-300 font-mono">~{APK_SIZE}</span></span>
           <span>Platform: <span className="text-slate-300">Android 8.0+</span></span>
         </div>
       </div>
