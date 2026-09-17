@@ -44,6 +44,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
   bool _errored = false;
   bool _ready = false;
   bool _misconfigured = false;
+  bool _turnstileTokenReady = false;
   Timer? _watchdog;
 
   @override
@@ -96,6 +97,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
                 _status = 'Verification passed';
                 _errored = false;
                 _ready = true;
+                _turnstileTokenReady = true;
               });
             }
             widget.onToken?.call(value);
@@ -106,6 +108,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
                     ? 'Challenge expired — reloading…'
                     : 'Verification unavailable';
                 _errored = true;
+                _turnstileTokenReady = false;
               });
             }
             widget.onError?.call(value ?? kind);
@@ -138,6 +141,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
     setState(() {
       _ready = false;
       _errored = false;
+      _turnstileTokenReady = false;
       _status = 'Retrying verification…';
     });
     widget.onError?.call(null);
@@ -164,6 +168,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
       setState(() {
         _ready = false;
         _errored = false;
+        _turnstileTokenReady = false;
         _status = 'Completing verification…';
       });
       _controller.runJavaScript(
@@ -311,55 +316,80 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
     } catch (_) {}
   }
 
+  /// The minting WebView, kept offstage: it must exist and stay alive to
+  /// receive the token, but must never be visible.
+  Widget _buildWebView() {
+    if (_misconfigured) return const SizedBox.shrink();
+    return Offstage(
+      offstage: true,
+      child: SizedBox(
+        width: 1,
+        height: 1,
+        child: WebViewWidget(controller: _controller),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    // The WebView is intentionally invisible: it only mints the token.
+    // Users see a native status row — never a sliver of a webpage. The page
+    // loaded stays the real origin so verification semantics don't change.
     return Container(
-      constraints: BoxConstraints(minHeight: widget.height),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
         color: context.colors.bg,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: _errored ? const Color(0xFFF43F5E) : const Color(0x336366F1),
+          color: _errored
+              ? const Color(0xFFF43F5E)
+              : _turnstileTokenReady
+                  ? context.colors.emerald
+                  : const Color(0x336366F1),
         ),
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            if (!_misconfigured) WebViewWidget(controller: _controller),
-            if (!_ready)
-              Positioned(
-                bottom: 6,
-                child: IgnorePointer(
-                  child: Text(
-                    _misconfigured
-                        ? 'Verification unavailable — sending is disabled'
-                        : _status,
-                    style: TextStyle(
-                      color: context.colors.textSecondary,
-                      fontSize: 10,
-                      fontWeight: FontWeight.w500,
-                    ),
+      child: Stack(
+        children: [
+          _buildWebView(),
+          Row(
+            children: [
+              if (_errored)
+                const Icon(Icons.error_outline, size: 18, color: Color(0xFFF43F5E))
+              else if (_turnstileTokenReady)
+                Icon(Icons.verified_user_outlined, size: 18, color: context.colors.emerald)
+              else
+                SizedBox(
+                  width: 18,
+                  height: 18,
+                  child: CircularProgressIndicator(
+                      strokeWidth: 2, color: context.colors.accentFaint),
+                ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  _misconfigured
+                      ? 'Verification unavailable — sending is disabled'
+                      : _status,
+                  style: TextStyle(
+                    color: context.colors.textSecondary,
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
-            if (_errored && !_misconfigured)
-              Positioned(
-                right: 6,
-                top: 6,
-                child: TextButton.icon(
+              if (_errored && !_misconfigured)
+                TextButton.icon(
                   style: TextButton.styleFrom(
                     visualDensity: VisualDensity.compact,
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   ),
                   onPressed: _retry,
                   icon: const Icon(Icons.refresh, size: 14),
-                  label: const Text('Retry', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700)),
+                  label: const Text('Retry', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
                 ),
-              ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }

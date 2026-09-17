@@ -475,29 +475,29 @@ class _SendScreenState extends State<SendScreen> {
           const SizedBox(height: 10),
           Row(
             children: [
-              for (final c in VIBE_CATEGORIES) ...[
+              for (var ci = 0; ci < VIBE_CATEGORIES.length; ci++) ...[
                 Expanded(
                   child: InkWell(
-                    onTap: () => setState(() => _activeCategory = c.id),
+                    onTap: () => setState(() => _activeCategory = VIBE_CATEGORIES[ci].id),
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       decoration: BoxDecoration(
-                        color: _activeCategory == c.id
+                        color: _activeCategory == VIBE_CATEGORIES[ci].id
                             ? context.colors.accent.withValues(alpha: 0.18)
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Column(
                         children: [
-                          Text(c.icon, style: const TextStyle(fontSize: 16)),
+                          Text(VIBE_CATEGORIES[ci].icon, style: const TextStyle(fontSize: 16)),
                           const SizedBox(height: 2),
-                          Text(c.label, style: TextStyle(fontSize: 9, color: context.colors.textSecondary)),
+                          Text(VIBE_CATEGORIES[ci].label, style: TextStyle(fontSize: 9, color: context.colors.textSecondary)),
                         ],
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(width: 4),
+                if (ci < VIBE_CATEGORIES.length - 1) const SizedBox(width: 4),
               ],
             ],
           ),
