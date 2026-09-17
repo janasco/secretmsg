@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -7,6 +9,7 @@ import 'ritual/daily_drop.dart';
 import 'ritual/drop_store.dart';
 import 'ritual/push.dart';
 import 'ritual/reminders.dart';
+import 'ritual/update_check.dart';
 import 'data/vibe_templates.dart';
 import 'screens/app_shell.dart';
 import 'screens/landing_screen.dart';
@@ -17,6 +20,7 @@ import 'screens/sticker_studio_screen.dart';
 import 'screens/supporters_screen.dart';
 import 'screens/dice_screen.dart';
 import 'theme.dart';
+import 'widgets/update_dialog.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -138,6 +142,8 @@ class SecretMsgApp extends StatefulWidget {
 
 class _SecretMsgAppState extends State<SecretMsgApp> {
   Widget? _home;
+  final _navKey = GlobalKey<NavigatorState>();
+  bool _updateChecked = false;
 
   @override
   void initState() {
@@ -155,6 +161,7 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
     if (tapRoute == '/drop' || tapRoute == '/inbox') {
       if (!mounted) return;
       setState(() => _home = const AppShell(initialTab: AppTab.inbox));
+      unawaited(_maybePromptUpdate());
       return;
     }
 
@@ -162,6 +169,7 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
     if (linked is! LandingScreen) {
       if (!mounted) return;
       setState(() => _home = linked);
+      unawaited(_maybePromptUpdate());
       return;
     }
 
@@ -181,6 +189,21 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
     }
     if (!mounted) return;
     setState(() => _home = next);
+    unawaited(_maybePromptUpdate());
+  }
+
+  /// Cold-start update prompt: once per launch, skippable (Later snoozes
+  /// until the next cold start). Best-effort — never blocks or breaks boot.
+  Future<void> _maybePromptUpdate() async {
+    if (_updateChecked) return;
+    _updateChecked = true;
+    try {
+      final info = await checkForUpdate();
+      if (info == null || !info.behind) return;
+      final ctx = _navKey.currentContext;
+      if (ctx == null || !ctx.mounted || !mounted) return;
+      await showUpdateDialog(ctx, info);
+    } catch (_) {}
   }
 
   /// Derives today's reminders from ritual state. Signed-out users get none;
@@ -211,6 +234,7 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
       theme: AppTheme.dark(),
       darkTheme: AppTheme.dark(),
       themeMode: ThemeMode.system,
+      navigatorKey: _navKey,
       home: isDiag ? const TurnstileDiagScreen() : (_home ?? const _Booting()),
       routes: {
         '/home': (_) => const LandingScreen(),

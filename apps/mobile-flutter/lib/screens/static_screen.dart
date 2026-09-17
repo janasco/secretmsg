@@ -3,7 +3,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../data/static_content.dart';
 import '../theme.dart';
-import '../widgets/app_footer.dart';
 import '../widgets/common.dart';
 
 /// Renders a static legal/safety/info page from [STATIC_PAGES].
@@ -41,11 +40,13 @@ class StaticScreen extends StatelessWidget {
                   ],
                   const SizedBox(height: 12),
                   _ContactCta(keyOf: keyOf),
+                  // No website footer: legal pages end here. Cross-links to
+                  // sibling documents live in the safety center entry point.
+                  const SizedBox(height: 24),
                 ],
               ),
             ),
           ),
-          const SliverToBoxAdapter(child: FooterLinks()),
         ],
       ),
     );

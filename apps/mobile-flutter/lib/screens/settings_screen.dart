@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,8 +19,10 @@ import '../gamification/rank_up.dart';
 import '../gamification/ranks.dart';
 import '../ritual/daily_drop.dart';
 import '../ritual/reminders.dart';
+import '../ritual/update_check.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
+import '../widgets/update_dialog.dart';
 import 'app_shell.dart';
 import 'blocked_senders_screen.dart';
 import 'inbox_screen.dart';
@@ -51,6 +54,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _remDrop = true;
   bool _remStreak = true;
   bool _remMilestone = true;
+  String _appVersion = '';
 
   @override
   void initState() {
@@ -71,11 +75,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
     });
     try {
       final prefs = await SharedPreferences.getInstance();
+      final pkg = await PackageInfo.fromPlatform();
       if (!mounted) return;
       setState(() {
         _remDrop = prefs.getBool(prefDropEnabled) ?? true;
         _remStreak = prefs.getBool(prefStreakEnabled) ?? true;
         _remMilestone = prefs.getBool(prefMilestoneEnabled) ?? true;
+        _appVersion = 'v${pkg.version} (${pkg.buildNumber})';
       });
     } catch (_) {
       // Toggles fall back to on; the API load below is what matters.
@@ -377,6 +383,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
+  Future<void> _checkUpdates() async {
+    try {
+      final info = await checkForUpdate();
+      if (!mounted) return;
+      if (info == null) {
+        showErrorSnack(context, 'Could not reach the update server. Try again later.');
+      } else if (!info.behind) {
+        showSuccessSnack(context, 'You are on the latest version (v${info.current}).');
+      } else {
+        await showUpdateDialog(context, info);
+      }
+    } catch (_) {
+      if (!mounted) return;
+      showErrorSnack(context, 'Could not check for updates.');
+    }
+  }
+
   Future<void> _requestReminderAccess() async {
     try {
       final granted = await requestReminderPermission();
@@ -396,6 +419,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _signOut() async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: AppColors.surface,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: const Text('Sign out?',
+            style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700)),
+        content: const Text(
+          'You will need your handle, PIN or a backup code to get back in. Reminders on this device stop.',
+          style: TextStyle(color: AppColors.textSecondary, fontSize: 13, height: 1.5),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: const Text('Stay', style: TextStyle(color: AppColors.accentSoft)),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: const Text('Sign out', style: TextStyle(color: AppColors.roseLight, fontWeight: FontWeight.w700)),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
     try {
       await ApiClient.unregisterPushToken();
     } catch (_) {}
@@ -679,6 +726,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         icon: Icons.refresh,
                         label: 'Regenerate backup codes',
                         onTap: () => _showRefreshCodesDialog(context),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  _SectionCard(
+                    title: 'App',
+                    icon: Icons.smartphone_outlined,
+                    children: [
+                      _ActionTile(
+                        icon: Icons.info_outline,
+                        label: _appVersion.isEmpty ? 'Version…' : 'Version $_appVersion',
+                        onTap: null,
+                      ),
+                      _ActionTile(
+                        icon: Icons.system_update_outlined,
+                        label: 'Check for updates',
+                        onTap: _checkUpdates,
                       ),
                     ],
                   ),
