@@ -23,6 +23,7 @@ import '../ritual/update_check.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import '../widgets/update_dialog.dart';
+import '../widgets/user_avatar.dart';
 import 'app_shell.dart';
 import 'blocked_senders_screen.dart';
 import 'inbox_screen.dart';
@@ -632,7 +633,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _ProfileCard(user: u, onOpenInbox: () => _openTab(AppTab.inbox, const InboxScreen())),
+                  _ProfileCard(
+                    user: u,
+                    onOpenInbox: () => _openTab(AppTab.inbox, const InboxScreen()),
+                    onAvatarSaved: (_) => _load(),
+                  ),
                   const SizedBox(height: 16),
                   _RankCard(rank: u.rank),
                   const SizedBox(height: 16),
@@ -982,10 +987,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
 class _ProfileCard extends StatelessWidget {
   final UserProfile user;
   final VoidCallback onOpenInbox;
-  const _ProfileCard({required this.user, required this.onOpenInbox});
+  final ValueChanged<String> onAvatarSaved;
+  const _ProfileCard({required this.user, required this.onOpenInbox, required this.onAvatarSaved});
 
   @override
   Widget build(BuildContext context) {
+    final link = shareUrlFor(user.username);
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -997,7 +1004,34 @@ class _ProfileCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              AvatarBadge(initials: user.initials, size: 54),
+              GestureDetector(
+                onTap: () => _showAvatarPicker(context, user, onAvatarSaved),
+                child: Stack(
+                  children: [
+                    UserAvatar(
+                      seed: (user.avatarSeed == null || user.avatarSeed!.isEmpty)
+                          ? user.username
+                          : user.avatarSeed!,
+                      fallbackInitials: user.initials,
+                      size: 54,
+                    ),
+                    Positioned(
+                      right: 0,
+                      bottom: 0,
+                      child: Container(
+                        width: 20,
+                        height: 20,
+                        decoration: BoxDecoration(
+                          color: context.colors.accent,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: context.colors.surface, width: 2),
+                        ),
+                        child: const Icon(Icons.edit, size: 11, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(width: 14),
               Expanded(
                 child: Column(
@@ -1026,10 +1060,24 @@ class _ProfileCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text('@${user.username}', style: TextStyle(color: context.colors.textSecondary, fontSize: 12)),
-                    if (user.email != null) ...[
-                      const SizedBox(height: 2),
-                      Text(user.email!, style: TextStyle(color: context.colors.textMuted, fontSize: 12)),
-                    ],
+                    const SizedBox(height: 4),
+                    GestureDetector(
+                      onTap: () => copyToClipboard(context, link, message: 'Secret link copied'),
+                      child: Row(
+                        children: [
+                          Icon(Icons.link, size: 13, color: context.colors.accentSoft),
+                          const SizedBox(width: 4),
+                          Expanded(
+                            child: Text(
+                              link.replaceFirst('https://', ''),
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(color: context.colors.accentSoft, fontSize: 12, fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                          Icon(Icons.copy, size: 13, color: context.colors.textMuted),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -1050,6 +1098,89 @@ class _ProfileCard extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Avatar studio: live multiavatar preview, shuffle for a new random face,
+/// save persists the seed to the profile (auto-generated until changed).
+Future<void> _showAvatarPicker(
+  BuildContext context,
+  UserProfile user,
+  ValueChanged<String> onSaved,
+) async {
+  var seed = (user.avatarSeed == null || user.avatarSeed!.isEmpty)
+      ? user.username
+      : user.avatarSeed!;
+  var saving = false;
+  await showModalBottomSheet<void>(
+    context: context,
+    backgroundColor: context.colors.surface,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    ),
+    builder: (ctx) => StatefulBuilder(
+      builder: (ctx, setSheet) => Padding(
+        padding: const EdgeInsets.fromLTRB(20, 16, 20, 28),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('Your avatar', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: context.colors.textPrimary)),
+            const SizedBox(height: 4),
+            Text('Auto-generated from your account — shuffle for a new face.',
+                style: TextStyle(fontSize: 12, color: context.colors.textMuted)),
+            const SizedBox(height: 16),
+            UserAvatar(seed: seed, fallbackInitials: user.initials, size: 120),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      final r = DateTime.now().microsecondsSinceEpoch;
+                      setSheet(() => seed = 'u${(r % 899999 + 100000).toString()}');
+                    },
+                    icon: const Icon(Icons.shuffle, size: 17),
+                    label: const Text('Shuffle'),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: context.colors.textPrimary,
+                      side: BorderSide(color: context.colors.borderStrong),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: FilledButton(
+                    style: FilledButton.styleFrom(
+                      backgroundColor: context.colors.accent,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    ),
+                    onPressed: saving
+                        ? null
+                        : () async {
+                            setSheet(() => saving = true);
+                            try {
+                              await ApiClient.updateAvatarSeed(seed);
+                              if (ctx.mounted) Navigator.of(ctx).pop();
+                              onSaved(seed);
+                            } catch (_) {
+                              setSheet(() => saving = false);
+                              if (ctx.mounted) {
+                                showErrorSnack(ctx, 'Could not save avatar. Try again.');
+                              }
+                            }
+                          },
+                    child: Text(saving ? 'Saving…' : 'Save avatar',
+                        style: const TextStyle(fontWeight: FontWeight.w800)),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
 }
 
 /// Activity rank with progress toward the next tier. Score = messages

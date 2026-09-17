@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme.dart';
+import '../widgets/user_avatar.dart';
 import 'screens.dart';
 import 'send_lookup_screen.dart';
 
@@ -47,10 +48,7 @@ class _LandingScreenState extends State<LandingScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset('assets/app-icon.png', width: 44, height: 44),
-                  ),
+                  const AppMark(size: 44, radius: 12),
                   const SizedBox(width: 10),
                   Text('SecretMsg',
                       style: TextStyle(color: context.colors.textPrimary, fontWeight: FontWeight.w800, fontSize: 22)),

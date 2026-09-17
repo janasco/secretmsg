@@ -7,6 +7,7 @@ import '../data/vibe_templates.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import '../widgets/turnstile_widget.dart';
+import '../widgets/user_avatar.dart';
 import 'login_screen.dart';
 
 class SendScreen extends StatefulWidget {
@@ -257,7 +258,11 @@ class _SendScreenState extends State<SendScreen> {
       ),
       child: Row(
         children: [
-          AvatarBadge(initials: p.initials, size: 46),
+          UserAvatar(
+            seed: (p.avatarSeed == null || p.avatarSeed!.isEmpty) ? p.username : p.avatarSeed!,
+            fallbackInitials: p.initials,
+            size: 46,
+          ),
           const SizedBox(width: 12),
           Expanded(
             child: Column(

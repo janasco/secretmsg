@@ -354,11 +354,7 @@ class _InboxScreenState extends State<InboxScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
           decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-                colors: [Color(0xFF2A2356), Color(0xFF151B26)],
-            ),
+            color: context.colors.accentDeep,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(color: context.colors.accent.withValues(alpha: 0.35)),
           ),

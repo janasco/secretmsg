@@ -257,6 +257,11 @@ class ApiClient {
     await _patchJson('/api/me', body);
   }
 
+  // ---- Avatar seed (generative multiavatar, PATCH /api/me) ----
+  static Future<void> updateAvatarSeed(String seed) async {
+    await _patchJson('/api/me', {'avatar_seed': seed});
+  }
+
   // ---- Claim Custom Username (Supporter Perk, POST /api/me/username) ----
   static Future<void> setUsername(String username) async {
     await _postJson('/api/me/username', {'username': username}, auth: true);

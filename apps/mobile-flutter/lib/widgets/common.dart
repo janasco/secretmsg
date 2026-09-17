@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme.dart';
+import 'user_avatar.dart';
 
 /// Stitch vocabulary: glass panel on the obsidian backdrop — surface fill,
 /// hairline border, 16px radius. The default card container for list items,
@@ -287,31 +288,7 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
       title: showLogo
           ? Row(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    'assets/app-icon.png',
-                    width: 28,
-                    height: 28,
-                    errorBuilder: (_, __, ___) => Container(
-                      width: 28,
-                      height: 28,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: context.colors.textPrimary,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        'S',
-                        style: TextStyle(
-                          color: context.colors.bg,
-                          fontWeight: FontWeight.w900,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                const AppMark(size: 28, radius: 8),
                 const SizedBox(width: 10),
                 if (title.isEmpty)
                   Text(
