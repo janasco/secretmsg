@@ -50,4 +50,4 @@ local.properties
 google-services.json
 
 # Capacitor legacy wrapper: www/ is generated from site/public via `npm run sync:content`
-apps/mobile-android/www/
+apps/mobile-android-archived/www/

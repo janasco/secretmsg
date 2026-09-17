@@ -12,8 +12,8 @@
     "dev": "npm --prefix apps/web run dev",
     "build": "npm --prefix apps/web run build",
     "preview": "npm --prefix apps/web run preview",
-    "android:sync": "npm --prefix apps/mobile-android run sync",
-    "android:build": "npm --prefix apps/mobile-android run build:apk",
-    "android:open": "npm --prefix apps/mobile-android run open"
+    "android:sync": "npm --prefix apps/mobile-android-archived run sync",
+    "android:build": "npm --prefix apps/mobile-android-archived run build:apk",
+    "android:open": "npm --prefix apps/mobile-android-archived run open"
   }
 }

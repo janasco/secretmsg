@@ -10,7 +10,7 @@ Thank you for your interest in improving SecretMsg! We welcome contributions to 
 |---|---|
 | `apps/web` | React 18 + Vite + Tailwind CSS SPA served from `secretmsg.net` (public boards + account hub, single host) |
 | `apps/mobile-flutter` | Native Flutter Android client (the primary mobile app) |
-| `site/public`, `apps/mobile-android` | Legacy static prototype and its old Capacitor wrapper — kept for reference, no longer deployed |
+| `site/public`, `apps/mobile-android-archived` | Archived static prototype and old Capacitor wrapper — reference only, do not build on it |
 | `LEGAL/` | Terms of Service, Privacy Policy, Disclaimer |
 
 The backend API lives in a separate private repository. Client apps talk to it over REST at `https://api.secretmsg.net`.
