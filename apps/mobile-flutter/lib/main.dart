@@ -10,6 +10,7 @@ import 'ritual/drop_store.dart';
 import 'ritual/push.dart';
 import 'ritual/reminders.dart';
 import 'ritual/update_check.dart';
+import 'sync/connectivity.dart';
 import 'data/vibe_templates.dart';
 import 'screens/app_shell.dart';
 import 'screens/landing_screen.dart';
@@ -45,6 +46,10 @@ Future<void> main() async {
   // Push init is separate: Firebase misconfiguration must not take down boot.
   try {
     await initPush();
+  } catch (_) {}
+  // Sync engine: outbox drain on reconnect. Never blocks boot.
+  try {
+    await SyncService.init();
   } catch (_) {}
   const isDiag = bool.fromEnvironment('SMS_TURNSTILE_TEST');
   runApp(SecretMsgApp(

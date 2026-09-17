@@ -111,6 +111,7 @@ class ApiClient {
     required String content,
     String? turnstileToken,
     bool allowClue = false,
+    String? clientMsgId,
   }) async {
     final data = await _postJson(
       '/api/message/${Uri.encodeComponent(username)}',
@@ -119,6 +120,7 @@ class ApiClient {
         'turnstileToken': turnstileToken,
         'allowClue': allowClue,
         'deviceFp': await Session.getDeviceFingerprint(),
+        if (clientMsgId != null && clientMsgId.isNotEmpty) 'client_msg_id': clientMsgId,
       },
     );
     return data['replyToken']?.toString();

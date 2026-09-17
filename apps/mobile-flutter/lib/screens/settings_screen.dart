@@ -20,6 +20,7 @@ import '../gamification/ranks.dart';
 import '../ritual/daily_drop.dart';
 import '../ritual/reminders.dart';
 import '../ritual/update_check.dart';
+import '../sync/outbox.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import '../widgets/update_dialog.dart';
@@ -902,11 +903,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Future<void> _setSensitivity(String level) async {
     if ((_user?.modSensitivity ?? 'standard') == level) return;
     try {
-      await ApiClient.setSensitivity(level);
-      final me = await ApiClient.getMe();
+      final online = await Outbox.runOrEnqueue(
+        OutboxKind.sensitivity,
+        {'level': level},
+        () => ApiClient.setSensitivity(level),
+      );
+      final me = online ? await ApiClient.getMe() : null;
       if (!mounted) return;
-      setState(() => _user = me);
-      showSuccessSnack(context, 'Filter strictness updated');
+      if (me != null) {
+        setState(() => _user = me);
+        showSuccessSnack(context, 'Filter strictness updated');
+      } else {
+        showSuccessSnack(context, 'Strictness will apply when online');
+      }
     } catch (_) {
       if (!mounted) return;
       showErrorSnack(context, 'Could not update strictness');

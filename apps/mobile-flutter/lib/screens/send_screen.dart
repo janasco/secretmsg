@@ -4,6 +4,7 @@ import '../api/api_client.dart';
 import '../api/config.dart';
 import '../api/models.dart';
 import '../data/vibe_templates.dart';
+import '../sync/outbox.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import '../widgets/turnstile_widget.dart';
@@ -38,6 +39,7 @@ class _SendScreenState extends State<SendScreen> {
   String? _sendError;
 
   bool _sent = false;
+  bool _queued = false;
   String? _replyToken;
 
   static final _usernameRe = RegExp(r'^[a-z0-9_\-\.]{4,30}$');
@@ -121,12 +123,16 @@ class _SendScreenState extends State<SendScreen> {
       _sending = true;
       _sendError = null;
     });
+    // ONE idempotency key for the attempt AND the parked fallback: if the
+    // response is lost in transit, the drain resolves to the same row.
+    final clientMsgId = newClientMsgId();
     try {
       final replyToken = await ApiClient.sendAnonymousMessage(
         username: profile.username,
         content: content,
         turnstileToken: _turnstileToken,
         allowClue: _allowClue,
+        clientMsgId: clientMsgId,
       );
       if (!mounted) return;
       setState(() {
@@ -155,12 +161,31 @@ class _SendScreenState extends State<SendScreen> {
       });
     } catch (_) {
       if (!mounted) return;
-      setState(() {
-        _sending = false;
-        _sendError = 'Failed to send. Check your connection and try again.';
-        _turnstileToken = null;
-        _tsReset++;
-      });
+      // Network failure (not a server rejection): park in the outbox with a
+      // fresh idempotency key. Drain sends it when online; the key prevents
+      // double-posting if this attempt actually reached the server.
+      try {
+        await Outbox.enqueue(OutboxKind.send, {
+          'username': profile.username,
+          'content': content,
+          'allowClue': _allowClue ? '1' : '0',
+          'clientMsgId': clientMsgId,
+          if (_turnstileToken != null) 'turnstileToken': _turnstileToken!,
+        });
+        if (!mounted) return;
+        setState(() {
+          _sending = false;
+          _queued = true;
+        });
+      } catch (_) {
+        if (!mounted) return;
+        setState(() {
+          _sending = false;
+          _sendError = 'Failed to send. Check your connection and try again.';
+          _turnstileToken = null;
+          _tsReset++;
+        });
+      }
     }
   }
 
@@ -505,6 +530,7 @@ class _SendScreenState extends State<SendScreen> {
 
   Widget _buildSuccess() {
     final username = _profile!.username;
+    final queued = _queued;
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
       child: Center(
@@ -521,13 +547,17 @@ class _SendScreenState extends State<SendScreen> {
                   color: const Color(0xFF10B981).withValues(alpha: 0.12),
                   border: Border.all(color: const Color(0xFF10B981).withValues(alpha: 0.3)),
                 ),
-                child: const Icon(Icons.check_circle, color: Color(0xFF34D399), size: 40),
+                child: Icon(queued ? Icons.cloud_upload_outlined : Icons.check_circle,
+                    color: const Color(0xFF34D399), size: 40),
               ),
               const SizedBox(height: 18),
-              Text('Sent Anonymously!', style: TextStyle(color: context.colors.textPrimary, fontSize: 22, fontWeight: FontWeight.w900)),
+              Text(queued ? 'Queued for sending' : 'Sent Anonymously!',
+                  style: TextStyle(color: context.colors.textPrimary, fontSize: 22, fontWeight: FontWeight.w900)),
               const SizedBox(height: 8),
               Text(
-                'Your message was delivered safely to @$username without any trace of your identity.',
+                queued
+                    ? 'No connection right now — your message to @$username will send automatically when you are back online.'
+                    : 'Your message was delivered safely to @$username without any trace of your identity.',
                 textAlign: TextAlign.center,
                 style: TextStyle(color: context.colors.textSecondary, fontSize: 13, height: 1.5),
               ),

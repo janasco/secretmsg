@@ -12,12 +12,16 @@ import '../ritual/drop_store.dart';
 import '../ritual/push.dart';
 import '../ritual/reminders.dart';
 import '../ritual/streak_store.dart';
+import '../sync/cache.dart';
+import '../sync/connectivity.dart';
+import '../sync/outbox.dart';
 import '../gamification/rank_up.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import '../widgets/drop_countdown.dart';
 import 'daily_drop_screen.dart';
 import 'login_screen.dart';
+import 'send_screen.dart';
 
 class InboxScreen extends StatefulWidget {
   const InboxScreen({super.key});
@@ -33,6 +37,8 @@ class _InboxScreenState extends State<InboxScreen> {
   String _filter = 'all';
   bool _isAuthed = false;
   List<AnonymousMessage> _tray = const [];
+  DateTime? _cacheSavedAt;
+  bool _offline = false;
   StreakState? _streak;
   bool _dropDone = true; // Hidden until ritual state loads.
   bool _vibePrompted = false;
@@ -41,6 +47,19 @@ class _InboxScreenState extends State<InboxScreen> {
   void initState() {
     super.initState();
     _bootstrap();
+    // Reconnect refresh: when the network returns, reload so the snapshot
+    // comparison pulls whatever arrived while offline.
+    SyncService.online.addListener(_onOnlineChanged);
+  }
+
+  @override
+  void dispose() {
+    SyncService.online.removeListener(_onOnlineChanged);
+    super.dispose();
+  }
+
+  void _onOnlineChanged() {
+    if (SyncService.online.value && _isAuthed && mounted) _load();
   }
 
   Future<void> _bootstrap() async {
@@ -48,6 +67,17 @@ class _InboxScreenState extends State<InboxScreen> {
     if (!mounted) return;
     setState(() => _isAuthed = token != null);
     if (token == null) return;
+    // Cache first: instant render + offline survival. Fresh fetch replaces.
+    try {
+      final snap = await InboxCache.load();
+      if (mounted && snap != null) {
+        setState(() {
+          _messages = snap.messages;
+          _tray = snap.tray;
+          _cacheSavedAt = snap.savedAt;
+        });
+      }
+    } catch (_) {}
     await _load();
   }
 
@@ -62,9 +92,11 @@ class _InboxScreenState extends State<InboxScreen> {
       setState(() {
         _messages = messages;
         _loading = false;
+        _offline = false;
+        _cacheSavedAt = null; // Fresh: no staleness to show.
       });
-      // Tray loads alongside; failures stay silent (badge just hides).
-      unawaited(_loadTray());
+      // Snapshot the fresh state for instant/offline boots.
+      unawaited(_loadTray(saveSnapshot: true));
       // Ritual check-in rides the inbox refresh: streak rolls, tonight's
       // reminders refresh from real state, vibe prompt shows once per day.
       unawaited(_ritualCheckIn());
@@ -88,7 +120,14 @@ class _InboxScreenState extends State<InboxScreen> {
       if (!mounted) return;
       setState(() {
         _loading = false;
-        _error = 'Could not load your inbox.';
+        // Offline with a snapshot: keep the cache, say so. Offline with
+        // nothing: the usual error. Either way the outbox keeps working.
+        if (_messages != null) {
+          _offline = true;
+          _error = null;
+        } else {
+          _error = 'Could not load your inbox.';
+        }
       });
     }
   }
@@ -213,11 +252,14 @@ class _InboxScreenState extends State<InboxScreen> {
     }).length;
   }
 
-  Future<void> _loadTray() async {
+  Future<void> _loadTray({bool saveSnapshot = false}) async {
     try {
       final tray = await ApiClient.getFilteredTray();
       if (!mounted) return;
       setState(() => _tray = tray);
+      if (saveSnapshot && _messages != null) {
+        unawaited(InboxCache.save(_messages!, tray));
+      }
     } catch (_) {
       // Tray is additive; the inbox already loaded.
     }
@@ -372,6 +414,94 @@ class _InboxScreenState extends State<InboxScreen> {
     );
   }
 
+  /// Sync + staleness row: outbox depth with retry/handoff, offline flag,
+  /// and snapshot age. Hidden when everything is fresh and empty.
+  Widget _buildSyncRow() {
+    return ValueListenableBuilder<OutboxStatus>(
+      valueListenable: Outbox.status,
+      builder: (context, status, _) {
+        final stale = _cacheSavedAt != null
+            ? InboxCache.stalenessLabel(_cacheSavedAt!, DateTime.now())
+            : null;
+        if (status.pending == 0 && !_offline && stale == null) {
+          return const SizedBox.shrink();
+        }
+        String text;
+        IconData icon;
+        VoidCallback? onTap;
+        if (status.blocked != null) {
+          final n = status.pending;
+          text = n > 1
+              ? '$n queued — 1 needs verification'
+              : 'Queued message needs verification';
+          icon = Icons.mark_email_unread_outlined;
+          onTap = () => _handoffBlocked(status.blocked!);
+        } else if (status.pending > 0) {
+          text = status.draining
+              ? 'Syncing ${status.pending}…'
+              : '${status.pending} queued — tap to sync';
+          icon = Icons.cloud_upload_outlined;
+          onTap = status.draining
+              ? null
+              : () {
+                  Outbox.drain(onChanged: () async {
+                    if (mounted) await _load();
+                  });
+                };
+        } else if (_offline) {
+          text = 'Offline — showing saved inbox';
+          icon = Icons.cloud_off_outlined;
+        } else {
+          text = 'Updated $stale';
+          icon = Icons.history_outlined;
+        }
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(12),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+              decoration: BoxDecoration(
+                color: context.colors.surface,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: context.colors.border),
+              ),
+              child: Row(
+                children: [
+                  Icon(icon, size: 15, color: context.colors.textMuted),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(text,
+                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: context.colors.textSecondary)),
+                  ),
+                  if (onTap != null)
+                    Icon(Icons.chevron_right, size: 16, color: context.colors.textFaint),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  /// A parked send can't re-verify headlessly (Turnstile needs its WebView),
+  /// so hand the text back to the composer prefilled and drop the op — the
+  /// user taps Send once with a fresh challenge.
+  Future<void> _handoffBlocked(OutboxOp op) async {
+    if (op.kind != OutboxKind.send) return;
+    final username = (op.params['username'] ?? '').trim();
+    final content = (op.params['content'] ?? '').trim();
+    await Outbox.remove(op.id);
+    if (!mounted) return;
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) => SendScreen(
+        initialUsername: username.isEmpty ? null : username,
+        initialMessage: content.isEmpty ? null : content,
+      ),
+    ));
+  }
   /// Moderation digest: nudges review when held mail piles up.
   Widget _buildDigestChip() {
     return Padding(
@@ -464,6 +594,7 @@ class _InboxScreenState extends State<InboxScreen> {
     return Column(
       children: [
         _buildHeader(),
+        _buildSyncRow(),
         if (!_dropDone) _buildDropBanner(),
         if (_trayWeekCount > 0 && _filter != 'filtered') _buildDigestChip(),
         const SizedBox(height: 8),
@@ -549,11 +680,19 @@ class _InboxScreenState extends State<InboxScreen> {
 
   Future<void> _approveHeld(AnonymousMessage m) async {
     try {
-      await ApiClient.approveMessage(m.id);
+      final online = await Outbox.runOrEnqueue(
+        OutboxKind.approve,
+        {'messageId': m.id},
+        () => ApiClient.approveMessage(m.id),
+      );
       if (!mounted) return;
-      setState(() => _tray = _tray.where((x) => x.id != m.id).toList());
-      showSuccessSnack(context, 'Released to your inbox');
-      unawaited(_load());
+      if (online) {
+        setState(() => _tray = _tray.where((x) => x.id != m.id).toList());
+        showSuccessSnack(context, 'Released to your inbox');
+        unawaited(_load());
+      } else {
+        showSuccessSnack(context, 'Approval queued — applies when online');
+      }
     } catch (_) {
       if (!mounted) return;
       showErrorSnack(context, 'Could not release message');
@@ -584,9 +723,17 @@ class _InboxScreenState extends State<InboxScreen> {
     );
     if (confirmed != true) return;
     try {
-      await ApiClient.discardMessage(m.id);
+      final online = await Outbox.runOrEnqueue(
+        OutboxKind.discard,
+        {'messageId': m.id},
+        () => ApiClient.discardMessage(m.id),
+      );
       if (!mounted) return;
-      setState(() => _tray = _tray.where((x) => x.id != m.id).toList());
+      if (online) {
+        setState(() => _tray = _tray.where((x) => x.id != m.id).toList());
+      } else {
+        showSuccessSnack(context, 'Delete queued — applies when online');
+      }
     } catch (_) {
       if (!mounted) return;
       showErrorSnack(context, 'Could not delete message');
@@ -869,10 +1016,19 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
     if (text.isEmpty || text.length > 500 || _sending) return;
     setState(() => _sending = true);
     try {
-      await ApiClient.replyMessage(widget.message.id, text);
+      final online = await Outbox.runOrEnqueue(
+        OutboxKind.reply,
+        {'messageId': widget.message.id, 'reply': text},
+        () => ApiClient.replyMessage(widget.message.id, text),
+      );
       if (!mounted) return;
-      widget.onReplied(text);
-      Navigator.of(context).pop();
+      if (online) {
+        widget.onReplied(text);
+        Navigator.of(context).pop();
+      } else {
+        Navigator.of(context).pop();
+        showSuccessSnack(context, 'Reply queued — sends automatically when online');
+      }
     } catch (e) {
       if (!mounted) return;
       setState(() => _sending = false);
@@ -883,10 +1039,20 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
   Future<void> _report() async {
     setState(() => _reported = true);
     try {
-      await ApiClient.reportMessage(widget.message.id, 'Reported by recipient from Android app');
-    } catch (_) {}
+      final online = await Outbox.runOrEnqueue(
+        OutboxKind.report,
+        {'messageId': widget.message.id, 'reason': 'Reported by recipient from Android app'},
+        () => ApiClient.reportMessage(widget.message.id, 'Reported by recipient from Android app'),
+      );
+      if (!mounted) return;
+      showErrorSnack(context, online
+          ? 'Message reported. Our team will review it shortly.'
+          : 'Report queued — files automatically when online.');
+    } catch (_) {
+      if (!mounted) return;
+      showErrorSnack(context, 'Could not file report.');
+    }
     if (!mounted) return;
-    showErrorSnack(context, 'Message reported. Our team will review it shortly.');
     setState(() => _reported = false);
   }
 

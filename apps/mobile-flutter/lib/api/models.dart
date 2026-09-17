@@ -159,6 +159,19 @@ class AnonymousMessage {
       quarantineReason: json['quarantine_reason']?.toString(),
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'content': content,
+        'reply_content': replyContent,
+        'reply_at': replyAt,
+        'is_pinned': isPinned,
+        'is_read': isRead,
+        'device_hint': deviceHint,
+        'created_at': createdAt,
+        'sender_hints_locked': senderHintsLocked,
+        'quarantine_reason': quarantineReason,
+      };
 }
 
 class FiledReport {
