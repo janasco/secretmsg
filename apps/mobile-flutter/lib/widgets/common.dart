@@ -181,7 +181,7 @@ class AvatarBadge extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              initials.isEmpty ? 'S' : initials,
+              initials.isEmpty ? '?' : initials,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: size * 0.32,
@@ -287,20 +287,28 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
       title: showLogo
           ? Row(
               children: [
-                Container(
-                  width: 28,
-                  height: 28,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Text(
-                    'S',
-                    style: TextStyle(
-                      color: AppColors.bg,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 16,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.asset(
+                    'assets/app-icon.png',
+                    width: 28,
+                    height: 28,
+                    errorBuilder: (_, __, ___) => Container(
+                      width: 28,
+                      height: 28,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Text(
+                        'S',
+                        style: TextStyle(
+                          color: AppColors.bg,
+                          fontWeight: FontWeight.w900,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                   ),
                 ),

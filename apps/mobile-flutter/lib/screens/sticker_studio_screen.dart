@@ -280,18 +280,26 @@ class _StickerPreview extends StatelessWidget {
           children: [
             Row(
               children: [
-                Container(
-                  width: 44,
-                  height: 44,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(14),
-                    boxShadow: [
-                      BoxShadow(color: Colors.black.withValues(alpha: 0.35), blurRadius: 12, offset: const Offset(0, 5)),
-                    ],
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(14),
+                  child: Image.asset(
+                    'assets/app-icon.png',
+                    width: 44,
+                    height: 44,
+                    errorBuilder: (_, __, ___) => Container(
+                      width: 44,
+                      height: 44,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(14),
+                        boxShadow: [
+                          BoxShadow(color: Colors.black.withValues(alpha: 0.35), blurRadius: 12, offset: const Offset(0, 5)),
+                        ],
+                      ),
+                      child: Text('S', style: TextStyle(color: _parseHex('#090A0F'), fontWeight: FontWeight.w900, fontSize: 20)),
+                    ),
                   ),
-                  child: Text('S', style: TextStyle(color: _parseHex('#090A0F'), fontWeight: FontWeight.w900, fontSize: 20)),
                 ),
                 const Spacer(),
                 Container(

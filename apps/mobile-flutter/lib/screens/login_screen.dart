@@ -28,8 +28,6 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isRecovery = false;
   late bool _isSignup;
 
-  static final _handleRe = RegExp(r'^[a-z0-9_\-\.]{4,30}$');
-
   @override
   void initState() {
     super.initState();
@@ -44,26 +42,17 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  String _cleanHandle() =>
-      _handleCtrl.text.trim().toLowerCase().replaceFirst(RegExp(r'^@'), '');
-
   Future<void> _handleSignup() async {
-    final handle = _cleanHandle();
     final pin = _pinCtrl.text.trim();
     if (!RegExp(r'^\d{4,6}$').hasMatch(pin)) {
       setState(() => _error = 'PIN must be 4-6 digits');
       return;
     }
-    if (handle.isNotEmpty && !_handleRe.hasMatch(handle)) {
-      setState(() => _error = 'Handles are 4-30 characters: lowercase letters, numbers, _ - .');
-      return;
-    }
     setState(() { _loading = true; _error = null; });
     try {
-      final result = await ApiClient.authSignup(
-        handle: handle.isEmpty ? null : handle,
-        pin: pin,
-      );
+      // No handle field: every account gets an auto-generated link.
+      // Custom names are claimed later as a supporter perk in settings.
+      final result = await ApiClient.authSignup(pin: pin);
       if (!mounted) return;
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (_) => BackupCodesScreen(
@@ -157,27 +146,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 20),
                 if (_isSignup) _pinField(login: false),
-                TextField(
-                  controller: _handleCtrl,
-                  autocorrect: false,
-                  enabled: !_loading,
-                  decoration: InputDecoration(
-                    labelText: _isSignup ? 'Handle (optional)' : 'Handle',
-                    hintText: _isSignup ? 'Leave blank — we make you one' : 'lumen4821',
-                    filled: true,
-                    fillColor: const Color(0xFF0F1220),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: AppColors.border),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: AppColors.border),
-                    ),
-                  ),
-                ),
                 if (_isSignup) ...[
                   const SizedBox(height: 8),
+                  const Text(
+                    'Your link (like secretmsg.net/lumen4821) is created for you automatically.',
+                    style: TextStyle(color: Color(0xFF64748B), fontSize: 12, height: 1.5),
+                  ),
+                  const SizedBox(height: 4),
                   GestureDetector(
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => const SupportersScreen()),
@@ -187,6 +162,28 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(color: Color(0xFFA5B4FC), fontSize: 12, height: 1.5),
                     ),
                   ),
+                  const SizedBox(height: 12),
+                ] else ...[
+                  TextField(
+                    controller: _handleCtrl,
+                    autocorrect: false,
+                    enabled: !_loading,
+                    decoration: InputDecoration(
+                      labelText: 'Handle',
+                      hintText: 'lumen4821',
+                      filled: true,
+                      fillColor: const Color(0xFF0F1220),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(color: AppColors.border),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(color: AppColors.border),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
                 ],
                 // Recovery needs handle + backup code + new PIN (3 fields on the
                 // next screen). Only the handle is collected here; the PIN field
