@@ -34,7 +34,7 @@ export const DownloadPage: React.FC = () => {
     <PublicPage
       title="Get the Android App"
       eyebrow="Free • Open Source"
-      description="The native SecretMsg experience: bot-checked sending, inbox with double-blind replies, ranks, challenges, badges, and Play-verified supporter perks."
+      description="The native SecretMsg experience: Daily Drop ritual, streaks, bot-checked sending, inbox with double-blind replies, ranks, challenges, badges, and Play-verified supporter perks."
     >
       <div className="space-y-6">
         {/* Current build */}
