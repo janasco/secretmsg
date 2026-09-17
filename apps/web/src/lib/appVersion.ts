@@ -19,29 +19,29 @@ export interface ApkVariant {
   sha256: string;
 }
 
-export const APK_VERSION = 'v1.4.7';
+export const APK_VERSION = 'v1.4.8';
 
 export const APK_VARIANTS: ApkVariant[] = [
   {
     label: '64-bit (recommended, most phones)',
-    file: 'secretmsg-android-v1.4.7-arm64.apk',
+    file: 'secretmsg-android-v1.4.8-arm64.apk',
     size: '21.2 MB',
     sha256:
-      '9d9dea14aebd96769c34841c65b7cf5fe40610b9a6aa4e53267ec4832b5065f0',
+      'e590475d6bcfd521fc7c6118e4bc40d553c70a6113061fa396af9b5c934df9b5',
   },
   {
     label: '32-bit (older phones)',
-    file: 'secretmsg-android-v1.4.7-arm32.apk',
+    file: 'secretmsg-android-v1.4.8-arm32.apk',
     size: '19.0 MB',
     sha256:
-      '775f0373e7919be0b84f0f307b27f00caab6111c9101e2d3a7810f92f378ad5f',
+      'fe10e0d8edc786f3cf12d85afaa9c70323078ee3ec081a2b1f35e57a4e46bd0c',
   },
   {
     label: 'x86 64-bit (emulators, Chromebooks)',
-    file: 'secretmsg-android-v1.4.7-x64.apk',
+    file: 'secretmsg-android-v1.4.8-x64.apk',
     size: '22.7 MB',
     sha256:
-      '966abbfe2fe7a7a7845df8ffa84885e11923725716322e40d8034a9e8f398e5c',
+      'ad2dabb0b68c6aafceed6fc31390a64b5bf231012a056bb3aa0d4a16a5ca79ee',
   },
 ];
 

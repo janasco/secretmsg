@@ -53,13 +53,19 @@ class _NotchNavBarState extends State<NotchNavBar>
       begin: widget.selectedIndex.toDouble(),
       end: widget.selectedIndex.toDouble(),
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOutCubic));
+    // The bubble icon swaps when the glide lands — swapping at tap time
+    // briefly shows the new icon riding at the old tab.
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed && mounted) {
+        setState(() => _iconIndex = widget.selectedIndex);
+      }
+    });
   }
 
   @override
   void didUpdateWidget(NotchNavBar oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.selectedIndex != widget.selectedIndex) {
-      _iconIndex = widget.selectedIndex;
       _position = Tween<double>(
         begin: _position.value,
         end: widget.selectedIndex.toDouble(),
@@ -226,13 +232,16 @@ class _NotchPainter extends CustomPainter {
   });
 
   static const _radius = 26.0;
-  static const _halfWidth = 38.0;
+  static const _halfWidth = 30.0;
   static const _depth = 26.0;
 
   Path _path(Size size) {
     final w = size.width;
     final h = size.height;
-    final cx = notchCenterX.clamp(_halfWidth + _radius, w - _halfWidth - _radius);
+    // Clamp only against the valley's own half-width: over-clamping (e.g. by
+    // the corner radius) visibly detached the valley from the bubble on the
+    // first and last tabs.
+    final cx = notchCenterX.clamp(_halfWidth, w - _halfWidth);
     const hw = _halfWidth;
     const d = _depth;
     final p = Path()

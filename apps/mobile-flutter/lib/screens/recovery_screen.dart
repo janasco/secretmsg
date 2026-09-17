@@ -151,6 +151,12 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                   const SizedBox(height: 12),
                   Text(_error!, style: const TextStyle(color: Color(0xFFFCA5A5), fontSize: 12, height: 1.5)),
                 ],
+                const SizedBox(height: 16),
+                Text(
+                  'Lost your backup codes as well? Without them — and without your PIN — an account cannot be recovered by anyone, including us. You can always create a fresh inbox.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: context.colors.textMuted, fontSize: 12, height: 1.5),
+                ),
               ],
             ),
           ),

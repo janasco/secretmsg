@@ -155,10 +155,19 @@ class ApiClient {
       'pin': pin,
     });
     final codes = (data['backupCodes'] as List?)?.map((e) => e.toString()).toList() ?? [];
+    final token = data['token']?.toString() ?? '';
+    // Persist immediately: without this the new account is signed out on the
+    // next screen (account exists server-side, app holds nothing).
+    await Session.setToken(token);
+    try {
+      await getMe();
+    } catch (_) {
+      // Profile fetch is best-effort; the token alone keeps the session.
+    }
     return (
       handle: data['handle']?.toString() ?? '',
       backupCodes: codes,
-      token: data['token']?.toString() ?? '',
+      token: token,
     );
   }
 
@@ -188,10 +197,17 @@ class ApiClient {
       'new_pin': newPin,
     });
     final codes = (data['backupCodes'] as List?)?.map((e) => e.toString()).toList() ?? [];
+    final recoverToken = data['token']?.toString() ?? '';
+    // Same session bug as signup once had: persist before navigating, or the
+    // recovered account lands signed out on the next screen.
+    await Session.setToken(recoverToken);
+    try {
+      await getMe();
+    } catch (_) {}
     return (
       handle: data['user']?['username']?.toString() ?? handle,
       backupCodes: codes,
-      token: data['token']?.toString() ?? '',
+      token: recoverToken,
     );
   }
 
