@@ -38,7 +38,9 @@ android {
 
     defaultConfig {
         applicationId = "net.secretmsg.android_app"
-        minSdk = flutter.minSdkVersion
+        // Floor: Android 7.0 (API 24). All plugins (FCM, notifications,
+        // secure storage) support 24+; runtime permissions gate newer APIs.
+        minSdk = 24
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
