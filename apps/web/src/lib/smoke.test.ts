@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { getShareUrl } from './links';
-import { API_BASE_URL, PUBLIC_BASE_URL, USE_MOCK } from './config';
-import { offlineSupportersFallback } from './fallbacks';
+import { getShareUrl } from '@/lib/links';
+import { API_BASE_URL, PUBLIC_BASE_URL, USE_MOCK } from '@/lib/config';
+import { offlineSupportersFallback } from '@/lib/fallbacks';
 
 describe('config', () => {
   it('exposes production URL defaults', () => {

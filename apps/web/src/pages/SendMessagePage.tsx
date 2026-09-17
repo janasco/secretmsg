@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ApiClient, UserProfile } from '../lib/api';
-import { ComposeModal } from '../components/ComposeModal';
+import { ApiClient, UserProfile } from '@/lib/api';
+import { ComposeModal } from '@/components/ComposeModal';
 import { AlertCircle, ArrowLeft } from 'lucide-react';
 
 export const SendMessagePage: React.FC = () => {

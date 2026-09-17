@@ -1,6 +1,6 @@
 import React from 'react';
 import { Eye, Smartphone } from 'lucide-react';
-import { ApiClient } from '../lib/api';
+import { ApiClient } from '@/lib/api';
 
 /**
  * Shown while this browser is paired from the Android app.

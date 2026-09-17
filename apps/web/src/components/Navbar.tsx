@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Sparkles, LogOut, User } from 'lucide-react';
-import { UserProfile } from '../lib/api';
+import { UserProfile } from '@/lib/api';
 
 const LogoIcon = ({ className = 'w-8 h-8' }: { className?: string }) => (
   <svg viewBox="0 0 64 64" className={className}>

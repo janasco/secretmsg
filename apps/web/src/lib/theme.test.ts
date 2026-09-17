@@ -6,7 +6,7 @@ import {
   applyAppTheme,
   initTheme,
   THEME_KEY,
-} from './theme';
+} from '@/lib/theme';
 
 describe('resolveTheme', () => {
   it('explicit choice wins over the OS', () => {

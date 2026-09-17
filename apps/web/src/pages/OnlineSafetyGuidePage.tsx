@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Ban, Flag, EyeOff, Sliders, Heart, AlertTriangle, Scale } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
+import { PublicPage } from '@/components/PublicPage';
 
 export const OnlineSafetyGuidePage: React.FC = () => {
   return (

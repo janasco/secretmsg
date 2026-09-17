@@ -9,7 +9,7 @@ import {
   Filter,
   Users
 } from 'lucide-react';
-import { ApiClient, SupportersData } from '../lib/api';
+import { ApiClient, SupportersData } from '@/lib/api';
 
 interface SupportersPageProps {
   onOpenDonation: () => void;

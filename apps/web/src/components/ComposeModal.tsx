@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Send, Shield, Sparkles, CheckCircle2, Lock, ArrowRight, Dices, Heart, Flame, Smile, Coffee } from 'lucide-react';
-import { ApiClient, UserProfile, PUBLIC_BASE_URL } from '../lib/api';
+import { ApiClient, UserProfile, PUBLIC_BASE_URL } from '@/lib/api';
 
 const TURNSTILE_SITE_KEY = import.meta.env?.VITE_TURNSTILE_SITE_KEY || '';
 const TURNSTILE_CONFIGURED = TURNSTILE_SITE_KEY.length > 0;

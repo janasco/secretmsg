@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ApiClient } from '../lib/api';
+import { ApiClient } from '@/lib/api';
 import { Reply, Sparkles, Clock, AlertCircle, ArrowLeft } from 'lucide-react';
 
 export const BlindReplyPage: React.FC = () => {

@@ -11,7 +11,6 @@ import {
   Dices,
   Download
 } from 'lucide-react';
-import { Footer } from '../components/Footer';
 
 interface LandingPageProps {
   onOpenDonation: () => void;
@@ -284,9 +283,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
           </a>
         </div>
       </div>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 };

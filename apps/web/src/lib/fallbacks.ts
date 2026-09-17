@@ -4,7 +4,7 @@
  * small demo wall so the Supporters page still renders offline.
  */
 
-import type { SupportersData } from './types';
+import type { SupportersData } from '@/lib/types';
 
 export function offlineSupportersFallback(): SupportersData {
   return {

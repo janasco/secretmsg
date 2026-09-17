@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ApiClient, UserProfile } from '../lib/api';
+import { ApiClient, UserProfile } from '@/lib/api';
 import { ArrowRight, Shield, Smartphone, Mail } from 'lucide-react';
 
 interface LoginPageProps {

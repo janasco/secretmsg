@@ -1,6 +1,6 @@
 import React from 'react';
 import { BadgeCheck } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
+import { PublicPage } from '@/components/PublicPage';
 
 export const CookiesPage: React.FC = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Copy, Check, Download, Wand2, Share2, Palette } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
+import { PublicPage } from '@/components/PublicPage';
 
 const THEMES = [
   { id: 'neon', name: 'Cyber Neon', bg: 'from-violet-900 via-indigo-950 to-dark-950', border: 'border-indigo-500/40', accent: 'text-indigo-400' },

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { ViewOnlyNote } from '../components/ViewOnlyBanner';
-import { ApiClient, UnauthorizedError, UserProfile, BlockedSender, getShareUrl } from '../lib/api';
-import { tierMeta, rankTierOf, rankDetailOf } from '../lib/rank';
-import { getInitialTheme, applyAppTheme, getResolvedTheme, ThemeMode, ResolvedTheme } from '../lib/theme';
+import { ViewOnlyNote } from '@/components/ViewOnlyBanner';
+import { ApiClient, UnauthorizedError, UserProfile, BlockedSender, getShareUrl } from '@/lib/api';
+import { tierMeta, rankTierOf, rankDetailOf } from '@/lib/rank';
+import { getInitialTheme, applyAppTheme, getResolvedTheme, ThemeMode, ResolvedTheme } from '@/lib/theme';
 import { ShieldAlert, Trash2, Heart, Check, Copy, KeyRound, Pause, Play, EyeOff, Smartphone, Palette, ShieldCheck, Share2 } from 'lucide-react';
 
 interface SettingsPageProps {

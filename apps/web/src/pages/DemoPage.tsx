@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Send, RotateCcw, Sparkles, Mail, Wand2, RefreshCw, MessageSquare } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
-import { ROULETTE_POOL } from '../lib/data/rouletteData';
+import { PublicPage } from '@/components/PublicPage';
+import { ROULETTE_POOL } from '@/lib/data/rouletteData';
 
 interface DemoMessage {
   id: number;

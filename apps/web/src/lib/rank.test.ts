@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { tierMeta, rankTierOf, rankDetailOf } from './rank';
-import type { UserProfile } from './types';
+import { tierMeta, rankTierOf, rankDetailOf } from '@/lib/rank';
+import type { UserProfile } from '@/lib/types';
 
 const base = {
   id: 'u1',

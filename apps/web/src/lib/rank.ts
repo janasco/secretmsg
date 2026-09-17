@@ -4,7 +4,7 @@
  * Unknown tiers fall back to Newcomer — never crash on new server tiers.
  */
 
-import type { RankInfo, UserProfile } from './types';
+import type { RankInfo, UserProfile } from '@/lib/types';
 
 export interface RankMeta {
   tier: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Ban, Flag, AlertTriangle, Mail } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
+import { PublicPage } from '@/components/PublicPage';
 
 export const CommunityGuidelinesPage: React.FC = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Users, Repeat, ShieldCheck, Sliders, Reply, Lock, Dices } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
+import { PublicPage } from '@/components/PublicPage';
 
 const valueColors = {
   real: { icon: 'bg-emerald-500/10 text-emerald-400' },

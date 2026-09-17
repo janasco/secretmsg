@@ -19,7 +19,6 @@ jobs:
 
       - name: antislop (core, zero-false-positive)
         run: antislop apps/web/src
-        working-directory: secretmsg
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -28,8 +27,8 @@ jobs:
 
       - name: aislop quality gate
         run: npx -y aislop@latest ci src --human
-        working-directory: secretmsg/apps/web
+        working-directory: apps/web
 
       - name: Typecheck web
         run: npm run typecheck
-        working-directory: secretmsg/apps/web
+        working-directory: apps/web

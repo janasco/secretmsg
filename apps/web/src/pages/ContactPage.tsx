@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Shield, AlertTriangle, Lock, Scale, Phone, type LucideIcon } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
+import { PublicPage } from '@/components/PublicPage';
 
 const contactChannels: {
   title: string;

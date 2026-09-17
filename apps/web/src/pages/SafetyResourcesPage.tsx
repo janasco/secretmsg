@@ -1,6 +1,6 @@
 import React from 'react';
 import { Phone, Mail, AlertTriangle } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
+import { PublicPage } from '@/components/PublicPage';
 
 interface Resource {
   name: string;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronRight, MessageSquare, Info, Globe, Share2, Cookie, ShieldCheck } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
+import { PublicPage } from '@/components/PublicPage';
 
 const faqItems: { question: string; answer: string }[] = [
   {

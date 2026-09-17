@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Download, Check, Copy, ShieldCheck, BellRing, Play } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
+import { PublicPage } from '@/components/PublicPage';
 
 const APK_VERSION = 'v1.2.0';
 const APK_FILE = 'secretmsg-android-v1.2.0.apk';

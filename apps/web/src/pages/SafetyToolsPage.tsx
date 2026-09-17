@@ -1,6 +1,6 @@
 import React from 'react';
 import { ShieldCheck, Ban, EyeOff, Eye, Lock, Trash2, AlertTriangle, Fingerprint } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
+import { PublicPage } from '@/components/PublicPage';
 
 export const SafetyToolsPage: React.FC = () => {
   return (

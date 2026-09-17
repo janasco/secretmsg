@@ -2,21 +2,21 @@
  * SecretMsg Frontend API Client
  */
 
-import { MockApiClient } from './mockApi';
-import { offlineSupportersFallback } from './fallbacks';
-import { API_BASE_URL, USE_MOCK } from './config';
-import { getDeviceFingerprint } from './links';
+import { MockApiClient } from '@/lib/mockApi';
+import { offlineSupportersFallback } from '@/lib/fallbacks';
+import { API_BASE_URL, USE_MOCK } from '@/lib/config';
+import { getDeviceFingerprint } from '@/lib/links';
 import type {
   UserProfile,
   AnonymousMessage,
   SupportersData,
   BlockedSender,
-} from './types';
+} from '@/lib/types';
 
 export type { UserProfile, AnonymousMessage, SupportersData, BlockedSender };
 export { API_BASE_URL, USE_MOCK, getDeviceFingerprint };
-export { PUBLIC_BASE_URL } from './config';
-export { getShareUrl } from './links';
+export { PUBLIC_BASE_URL } from '@/lib/config';
+export { getShareUrl } from '@/lib/links';
 
 // Thrown when a Bearer-authed request comes back 401 — the session token is missing,
 // expired, or invalid. Callers should treat this as "log the user out", not a generic error.

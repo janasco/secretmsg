@@ -4,7 +4,7 @@
  * without needing a live backend or production credentials.
  */
 
-import { UserProfile, AnonymousMessage, SupportersData } from './api';
+import { UserProfile, AnonymousMessage, SupportersData } from '@/lib/api';
 
 const MOCK_STORAGE_KEY_MESSAGES = 'secretmsg_mock_messages';
 const MOCK_STORAGE_KEY_REPLIES = 'secretmsg_mock_replies';

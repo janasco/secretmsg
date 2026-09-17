@@ -1,5 +1,5 @@
 import React from 'react';
-import { PublicPage } from '../components/PublicPage';
+import { PublicPage } from '@/components/PublicPage';
 
 export const DisclaimerPage: React.FC = () => {
   return (

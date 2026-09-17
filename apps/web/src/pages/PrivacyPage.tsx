@@ -1,6 +1,6 @@
 import React from 'react';
 import { Eye, Ban, Minus, ShieldCheck } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
+import { PublicPage } from '@/components/PublicPage';
 
 export const PrivacyPage: React.FC = () => {
   return (

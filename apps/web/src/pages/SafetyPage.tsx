@@ -1,6 +1,6 @@
 import React from 'react';
 import { ShieldCheck, Flag, LifeBuoy, Heart } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
+import { PublicPage } from '@/components/PublicPage';
 
 export const SafetyPage: React.FC = () => {
   return (

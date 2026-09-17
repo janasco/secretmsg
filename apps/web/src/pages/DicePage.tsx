@@ -1,8 +1,8 @@
 ﻿import React, { useMemo, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Dices, Send, Copy, Check, Wand2, Sparkles } from 'lucide-react';
-import { PublicPage } from '../components/PublicPage';
-import { ROULETTE_POOL } from '../lib/data/rouletteData';
+import { PublicPage } from '@/components/PublicPage';
+import { ROULETTE_POOL } from '@/lib/data/rouletteData';
 
 type CatKey = keyof typeof ROULETTE_POOL;
 

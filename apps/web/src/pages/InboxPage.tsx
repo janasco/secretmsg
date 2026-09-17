@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ViewOnlyNote } from '../components/ViewOnlyBanner';
-import { ApiClient, UnauthorizedError, UserProfile, AnonymousMessage, getShareUrl } from '../lib/api';
-import { tierMeta, rankTierOf } from '../lib/rank';
-import { StoryCardModal } from '../components/StoryCardModal';
+import { ViewOnlyNote } from '@/components/ViewOnlyBanner';
+import { ApiClient, UnauthorizedError, UserProfile, AnonymousMessage, getShareUrl } from '@/lib/api';
+import { tierMeta, rankTierOf } from '@/lib/rank';
+import { StoryCardModal } from '@/components/StoryCardModal';
 import { MessageSquare, Reply, Flag, Copy, Check, Share2, Heart, Smartphone, Clock, Ban } from 'lucide-react';
 
 interface InboxPageProps {

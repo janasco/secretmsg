@@ -5,7 +5,7 @@
  * same public host — there is no separate account subdomain.
  */
 
-import { PUBLIC_BASE_URL } from './config';
+import { PUBLIC_BASE_URL } from '@/lib/config';
 
 /**
  * Stable anonymous device fingerprint, persisted per-browser. The server keeps

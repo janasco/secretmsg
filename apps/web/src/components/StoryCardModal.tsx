@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Copy, Check, Download, X, Share2, Wand2 } from 'lucide-react';
-import { UserProfile, getShareUrl } from '../lib/api';
+import { UserProfile, getShareUrl } from '@/lib/api';
 
 interface StoryCardModalProps {
   user: UserProfile;
