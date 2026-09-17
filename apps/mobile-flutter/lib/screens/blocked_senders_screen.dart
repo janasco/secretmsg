@@ -91,16 +91,16 @@ class _BlockedSendersScreenState extends State<BlockedSendersScreen> {
 
   Widget _buildBody() {
     if (_loading) {
-      return const Padding(
-        padding: EdgeInsets.only(top: 80),
-        child: Center(child: CircularProgressIndicator(color: AppColors.accent)),
+      return Padding(
+        padding: const EdgeInsets.only(top: 80),
+        child: Center(child: CircularProgressIndicator(color: context.colors.accent)),
       );
     }
     if (_error != null) {
       return Column(
         children: [
           const SizedBox(height: 80),
-          Text(_error!, textAlign: TextAlign.center, style: const TextStyle(color: AppColors.roseLight)),
+          Text(_error!, textAlign: TextAlign.center, style: TextStyle(color: context.colors.roseLight)),
           const SizedBox(height: 12),
           OutlinedButton(onPressed: _load, child: const Text('Retry')),
         ],
@@ -109,17 +109,17 @@ class _BlockedSendersScreenState extends State<BlockedSendersScreen> {
 
     final blocked = _blocked ?? const [];
     if (blocked.isEmpty) {
-      return const Column(
+      return Column(
         children: [
-          SizedBox(height: 80),
-          Icon(Icons.block_outlined, size: 52, color: AppColors.textFaint),
-          SizedBox(height: 12),
-          Text('No blocked senders', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w800)),
-          SizedBox(height: 6),
+          const SizedBox(height: 80),
+          Icon(Icons.block_outlined, size: 52, color: context.colors.textFaint),
+          const SizedBox(height: 12),
+          Text('No blocked senders', style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w800)),
+          const SizedBox(height: 6),
           Text(
             'Blocked devices stay anonymous to you. They are simply prevented from sending you new messages.',
             textAlign: TextAlign.center,
-            style: TextStyle(color: AppColors.textMuted, fontSize: 12, height: 1.5),
+            style: TextStyle(color: context.colors.textMuted, fontSize: 12, height: 1.5),
           ),
         ],
       );
@@ -128,9 +128,9 @@ class _BlockedSendersScreenState extends State<BlockedSendersScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Text(
+        Text(
           'Blocked devices cannot deliver messages to your inbox. Senders remain anonymous to you — you are blocking a device, not a person.',
-          style: TextStyle(color: AppColors.textMuted, fontSize: 12, height: 1.5),
+          style: TextStyle(color: context.colors.textMuted, fontSize: 12, height: 1.5),
         ),
         const SizedBox(height: 12),
         ...blocked.map((s) => _BlockedSenderTile(
@@ -176,9 +176,9 @@ class _BlockedSenderTile extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.fromLTRB(14, 6, 6, 6),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: context.colors.border),
       ),
       child: Row(
         children: [
@@ -187,21 +187,21 @@ class _BlockedSenderTile extends StatelessWidget {
             height: 38,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: AppColors.accentDeep,
+              color: context.colors.accentDeep,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: const Icon(Icons.devices_other, size: 19, color: AppColors.accentSoft),
+            child: Icon(Icons.devices_other, size: 19, color: context.colors.accentSoft),
           ),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(_label, style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
+                Text(_label, style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w700)),
                 const SizedBox(height: 2),
-                const Text(
+                Text(
                   'Anonymous device',
-                  style: TextStyle(color: AppColors.textMuted, fontSize: 11),
+                  style: TextStyle(color: context.colors.textMuted, fontSize: 11),
                 ),
               ],
             ),
@@ -210,7 +210,7 @@ class _BlockedSenderTile extends StatelessWidget {
             onPressed: unblocking ? null : onUnblock,
             child: unblocking
                 ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2))
-                : const Text('Unblock', style: TextStyle(color: AppColors.accentSoft)),
+                : Text('Unblock', style: TextStyle(color: context.colors.accentSoft)),
           ),
         ],
       ),

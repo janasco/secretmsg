@@ -87,10 +87,10 @@ class _DiceScreenState extends State<DiceScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
+              Text(
                 'Could not load the prompt pool.',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Color(0xFFCBD5E1), fontSize: 14, fontWeight: FontWeight.w700),
+                style: TextStyle(color: context.colors.textHigh, fontSize: 14, fontWeight: FontWeight.w700),
               ),
               const SizedBox(height: 12),
               OutlinedButton(onPressed: _loadPrompts, child: const Text('Retry')),
@@ -127,14 +127,14 @@ class _DiceScreenState extends State<DiceScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Text(
+                Text(
                   'Spin the dice, drop the question',
-                  style: TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.w900),
+                  style: TextStyle(color: context.colors.textPrimary, fontSize: 19, fontWeight: FontWeight.w900),
                 ),
                 const SizedBox(height: 6),
-                const Text(
+                Text(
                   'One roll summons a random question from the pool. Copy it, tweak it, or send it straight to the composer.',
-                  style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12.5, height: 1.5),
+                  style: TextStyle(color: context.colors.textSecondary, fontSize: 12.5, height: 1.5),
                 ),
                 const SizedBox(height: 18),
                 _DiceButton(rolling: _rolling, onRoll: _roll),
@@ -148,7 +148,7 @@ class _DiceScreenState extends State<DiceScreen> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Browse the pool — ${_formatCount(_pool.length)}',
-                    style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 13, fontWeight: FontWeight.w700),
+                    style: TextStyle(color: context.colors.textSecondary, fontSize: 13, fontWeight: FontWeight.w700),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -158,12 +158,12 @@ class _DiceScreenState extends State<DiceScreen> {
                     child: ChoiceChip(
                       label: Text(c.label, style: const TextStyle(fontSize: 12)),
                       selected: _category == c.key,
-                      selectedColor: AppColors.accent.withValues(alpha: 0.2),
+                      selectedColor: context.colors.accent.withValues(alpha: 0.2),
                       labelStyle: TextStyle(
-                        color: _category == c.key ? Colors.white : const Color(0xFF94A3B8),
+                        color: _category == c.key ? context.colors.textPrimary : context.colors.textSecondary,
                         fontWeight: FontWeight.w600,
                       ),
-                      side: BorderSide(color: _category == c.key ? AppColors.accent : AppColors.border),
+                      side: BorderSide(color: _category == c.key ? context.colors.accent : context.colors.border),
                       onSelected: (_) => setState(() {
                         _category = c.key;
                         _visible = 30;
@@ -218,7 +218,7 @@ class _DiceButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: AppColors.accent.withValues(alpha: 0.25),
+              color: context.colors.accent.withValues(alpha: 0.25),
               blurRadius: 22,
               offset: const Offset(0, 8),
             ),
@@ -255,9 +255,9 @@ class _PromptCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: const Color(0xFF0F1220),
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.accent.withValues(alpha: 0.4)),
+        border: Border.all(color: context.colors.accent.withValues(alpha: 0.4)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -290,16 +290,16 @@ class _PoolTile extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: const Color(0xFF0F1220),
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: context.colors.border),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Align(
             alignment: Alignment.centerLeft,
-            child: Text(text, style: const TextStyle(color: Color(0xFFCBD5E1), fontSize: 13, height: 1.45)),
+            child: Text(text, style: TextStyle(color: context.colors.textHigh, fontSize: 13, height: 1.45)),
           ),
           const SizedBox(height: 8),
           TextButton.icon(

@@ -96,15 +96,15 @@ class _BackupCodesScreenState extends State<BackupCodesScreen> {
                 const SizedBox(height: 16),
                 Text(
                   'Your link: secretmsg.net/${widget.handle}',
-                  style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700),
+                  style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 16),
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF0F1220),
+                    color: context.colors.surface,
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: AppColors.border),
+                    border: Border.all(color: context.colors.border),
                   ),
                   child: Column(
                     children: [
@@ -116,7 +116,7 @@ class _BackupCodesScreenState extends State<BackupCodesScreen> {
                               Expanded(
                                 child: Text(
                                   widget.backupCodes[i],
-                                  style: const TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'monospace', fontWeight: FontWeight.w600),
+                                  style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontFamily: 'monospace', fontWeight: FontWeight.w600),
                                   textAlign: TextAlign.center,
                                 ),
                               ),
@@ -124,7 +124,7 @@ class _BackupCodesScreenState extends State<BackupCodesScreen> {
                                 Expanded(
                                   child: Text(
                                     widget.backupCodes[i + 1],
-                                    style: const TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'monospace', fontWeight: FontWeight.w600),
+                                    style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontFamily: 'monospace', fontWeight: FontWeight.w600),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
@@ -147,7 +147,7 @@ class _BackupCodesScreenState extends State<BackupCodesScreen> {
                         },
                         icon: const Icon(Icons.copy, size: 16),
                         label: const Text('Copy all'),
-                        style: OutlinedButton.styleFrom(side: const BorderSide(color: AppColors.accent)),
+                        style: OutlinedButton.styleFrom(side: BorderSide(color: context.colors.accent)),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -156,7 +156,7 @@ class _BackupCodesScreenState extends State<BackupCodesScreen> {
                         onPressed: _saving ? null : _saveTxt,
                         icon: const Icon(Icons.save_alt, size: 16),
                         label: Text(_saving ? 'Saving…' : 'Save .txt'),
-                        style: OutlinedButton.styleFrom(side: const BorderSide(color: AppColors.accent)),
+                        style: OutlinedButton.styleFrom(side: BorderSide(color: context.colors.accent)),
                       ),
                     ),
                   ],
@@ -167,16 +167,16 @@ class _BackupCodesScreenState extends State<BackupCodesScreen> {
                   onChanged: (v) => setState(() => _saved = v ?? false),
                   controlAffinity: ListTileControlAffinity.leading,
                   contentPadding: EdgeInsets.zero,
-                  activeColor: AppColors.accent,
-                  title: const Text(
+                  activeColor: context.colors.accent,
+                  title: Text(
                     'I saved my codes (screenshot or file)',
-                    style: TextStyle(color: AppColors.textPrimary, fontSize: 13.5, fontWeight: FontWeight.w600),
+                    style: TextStyle(color: context.colors.textPrimary, fontSize: 13.5, fontWeight: FontWeight.w600),
                   ),
                 ),
                 const SizedBox(height: 8),
                 FilledButton(
                   style: FilledButton.styleFrom(
-                    backgroundColor: AppColors.accent,
+                    backgroundColor: context.colors.accent,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                   ),

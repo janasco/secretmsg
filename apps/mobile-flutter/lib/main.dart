@@ -32,6 +32,11 @@ Future<void> main() async {
       systemNavigationBarIconBrightness: WidgetsBinding.instance.platformDispatcher.platformBrightness == Brightness.dark ? Brightness.light : Brightness.dark,
     ),
   );
+  // Theme choice loads before runApp so the first frame already matches
+  // (system default unless the user overrode it in settings).
+  try {
+    await ThemeController.load();
+  } catch (_) {}
   // Reminders init before runApp so a notification-tap cold start captures
   // its payload route. Best-effort: never let this crash boot.
   try {
@@ -228,12 +233,31 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
   @override
   Widget build(BuildContext context) {
     const isDiag = bool.fromEnvironment('SMS_TURNSTILE_TEST');
-    return MaterialApp(
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: ThemeController.instance,
+      builder: (_, mode, __) {
+        // Keep the system chrome in sync with the effective brightness.
+        final platformBrightness =
+            WidgetsBinding.instance.platformDispatcher.platformBrightness;
+        final effectiveDark = mode == ThemeMode.dark ||
+            (mode == ThemeMode.system && platformBrightness == Brightness.dark);
+        final chromeBg = effectiveDark ? context.colors.bg : context.colors.textPrimary;
+        final chromeIcons =
+            effectiveDark ? Brightness.light : Brightness.dark;
+        SystemChrome.setSystemUIOverlayStyle(
+          SystemUiOverlayStyle(
+            statusBarColor: chromeBg,
+            statusBarIconBrightness: chromeIcons,
+            systemNavigationBarColor: chromeBg,
+            systemNavigationBarIconBrightness: chromeIcons,
+          ),
+        );
+        return MaterialApp(
       title: 'SecretMsg',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.dark(),
+      theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
-      themeMode: ThemeMode.system,
+      themeMode: mode,
       navigatorKey: _navKey,
       home: isDiag ? const TurnstileDiagScreen() : (_home ?? const _Booting()),
       routes: {
@@ -251,6 +275,8 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
         '/terms': (_) => const StaticScreen(keyOf: 'terms'),
         '/safety': (_) => const StaticScreen(keyOf: 'safety'),
       },
+        );
+      },
     );
   }
 }
@@ -261,13 +287,13 @@ class _Booting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColors.bg,
+    return Scaffold(
+      backgroundColor: context.colors.bg,
       body: Center(
         child: SizedBox(
           height: 22,
           width: 22,
-          child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.accentFaint),
+          child: CircularProgressIndicator(strokeWidth: 2, color: context.colors.accentFaint),
         ),
       ),
     );

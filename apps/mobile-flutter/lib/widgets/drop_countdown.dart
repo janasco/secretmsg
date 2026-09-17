@@ -42,15 +42,15 @@ class _DropCountdownState extends State<DropCountdown> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const Icon(Icons.timer_outlined, size: 13, color: AppColors.amberLight),
+        Icon(Icons.timer_outlined, size: 13, color: context.colors.amberLight),
         const SizedBox(width: 4),
         Text(
           'expires in ${dropCountdownLabel(_left)}',
           style: widget.style ??
-              const TextStyle(
+              TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
-                color: AppColors.amberLight,
+                color: context.colors.amberLight,
               ),
         ),
       ],

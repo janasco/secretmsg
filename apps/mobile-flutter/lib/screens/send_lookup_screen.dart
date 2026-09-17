@@ -42,19 +42,19 @@ class _SendLookupScreenState extends State<SendLookupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.bg,
+      backgroundColor: context.colors.bg,
       appBar: const AppTopBar(title: 'Send a message'),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
         children: [
           const Text('💌', style: TextStyle(fontSize: 48)),
           const SizedBox(height: 16),
-          const Text("Who's it for?",
-              style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900)),
+          Text("Who's it for?",
+              style: TextStyle(color: context.colors.textPrimary, fontSize: 22, fontWeight: FontWeight.w900)),
           const SizedBox(height: 8),
-          const Text(
+          Text(
             'Type their SecretMsg link name — no account needed to send.',
-            style: TextStyle(color: AppColors.textSecondary, fontSize: 14, height: 1.5),
+            style: TextStyle(color: context.colors.textSecondary, fontSize: 14, height: 1.5),
           ),
           const SizedBox(height: 20),
           TextField(
@@ -67,14 +67,14 @@ class _SendLookupScreenState extends State<SendLookupScreen> {
               hintText: 'e.g. alex',
               prefixText: 'secretmsg.net/',
               filled: true,
-              fillColor: const Color(0xFF0F1220),
+              fillColor: context.colors.surface,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: AppColors.border),
+                borderSide: BorderSide(color: context.colors.border),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: AppColors.border),
+                borderSide: BorderSide(color: context.colors.border),
               ),
             ),
           ),
@@ -86,7 +86,7 @@ class _SendLookupScreenState extends State<SendLookupScreen> {
           const SizedBox(height: 16),
           FilledButton(
             style: FilledButton.styleFrom(
-              backgroundColor: AppColors.accent,
+              backgroundColor: context.colors.accent,
               foregroundColor: Colors.white,
               minimumSize: const Size.fromHeight(52),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),

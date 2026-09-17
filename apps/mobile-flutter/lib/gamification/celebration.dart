@@ -17,31 +17,31 @@ class UnlocksDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: AppColors.surface,
+      backgroundColor: context.colors.surface,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
-        side: const BorderSide(color: AppColors.border),
+        side: BorderSide(color: context.colors.border),
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           const Text('🎉', style: TextStyle(fontSize: 48)),
           const SizedBox(height: 12),
-          const Text(
+          Text(
             'Unlocked!',
-            style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w900),
+            style: TextStyle(color: context.colors.textPrimary, fontSize: 20, fontWeight: FontWeight.w900),
           ),
           const SizedBox(height: 8),
           for (final b in badges) ...[
             Text(
               '${b.emoji} ${b.name}',
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700),
+              style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w700),
             ),
             Text(
               b.hint,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: AppColors.textSecondary, fontSize: 12),
+              style: TextStyle(color: context.colors.textSecondary, fontSize: 12),
             ),
             const SizedBox(height: 6),
           ],
@@ -49,12 +49,12 @@ class UnlocksDialog extends StatelessWidget {
             Text(
               '${c.emoji} Challenge: ${c.title}',
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700),
+              style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w700),
             ),
             Text(
               c.hint,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: AppColors.textSecondary, fontSize: 12),
+              style: TextStyle(color: context.colors.textSecondary, fontSize: 12),
             ),
             const SizedBox(height: 6),
           ],
@@ -63,7 +63,7 @@ class UnlocksDialog extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Sweet', style: TextStyle(color: AppColors.accent)),
+          child: Text('Sweet', style: TextStyle(color: context.colors.accent)),
         ),
       ],
     );

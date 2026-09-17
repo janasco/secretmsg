@@ -191,15 +191,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final claimed = await showDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.surface,
-        title: const Text('Pick your custom username', style: TextStyle(color: Colors.white, fontSize: 16)),
+        backgroundColor: context.colors.surface,
+        title: Text('Pick your custom username', style: TextStyle(color: context.colors.textPrimary, fontSize: 16)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Your supporter perk. Choose a clean handle without numbers — this replaces your link.',
-              style: TextStyle(color: AppColors.textSecondary, fontSize: 13, height: 1.5),
+              style: TextStyle(color: context.colors.textSecondary, fontSize: 13, height: 1.5),
             ),
             const SizedBox(height: 12),
             TextField(
@@ -211,32 +211,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 hintText: 'yourname',
                 prefixText: '@ ',
                 filled: true,
-                fillColor: AppColors.bg,
+                fillColor: context.colors.bg,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(color: AppColors.border),
+                  borderSide: BorderSide(color: context.colors.border),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(color: AppColors.border),
+                  borderSide: BorderSide(color: context.colors.border),
                 ),
               ),
             ),
             const SizedBox(height: 6),
-            const Text(
+            Text(
               '4–30 lowercase letters, numbers, dashes, underscores, or dots.',
-              style: TextStyle(color: AppColors.textMuted, fontSize: 11),
+              style: TextStyle(color: context.colors.textMuted, fontSize: 11),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
-            child: const Text('Cancel', style: TextStyle(color: AppColors.accentSoft)),
+            child: Text('Cancel', style: TextStyle(color: context.colors.accentSoft)),
           ),
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(ctrl.text.trim().toLowerCase()),
-            child: const Text('Claim', style: TextStyle(color: AppColors.accent, fontWeight: FontWeight.w700)),
+            child: Text('Claim', style: TextStyle(color: context.colors.accent, fontWeight: FontWeight.w700)),
           ),
         ],
       ),
@@ -349,11 +349,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return SwitchListTile(
       value: value,
       onChanged: onChanged,
-      activeThumbColor: AppColors.accent,
+      activeThumbColor: context.colors.accent,
       contentPadding: EdgeInsets.zero,
       title: Text(title,
-          style: const TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, color: AppColors.textPrimary)),
-      subtitle: Text(subtitle, style: const TextStyle(fontSize: 11.5, color: AppColors.textMuted)),
+          style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, color: context.colors.textPrimary)),
+      subtitle: Text(subtitle, style: TextStyle(fontSize: 11.5, color: context.colors.textMuted)),
     );
   }
 
@@ -381,6 +381,59 @@ class _SettingsScreenState extends State<SettingsScreen> {
       if (!mounted) return;
       showErrorSnack(context, 'Could not update reminder setting.');
     }
+  }
+
+  Widget _buildThemeSelector() {
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: ThemeController.instance,
+      builder: (context, mode, _) {
+        Widget chip(ThemeMode m, IconData icon, String label) {
+          final selected = mode == m;
+          return ChoiceChip(
+            label: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(icon, size: 15, color: selected ? Colors.white : context.colors.textSecondary),
+                const SizedBox(width: 6),
+                Text(label,
+                    style: TextStyle(
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w700,
+                      color: selected ? Colors.white : context.colors.textSecondary,
+                    )),
+              ],
+            ),
+            selected: selected,
+            onSelected: (_) => ThemeController.instance.setMode(m),
+            selectedColor: context.colors.accent,
+            backgroundColor: context.colors.surfaceLight,
+            side: BorderSide(color: selected ? context.colors.accent : context.colors.border),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            showCheckmark: false,
+          );
+        }
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Appearance',
+                style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, color: context.colors.textPrimary)),
+            const SizedBox(height: 4),
+            Text('System follows your phone (default).',
+                style: TextStyle(fontSize: 11.5, color: context.colors.textMuted)),
+            const SizedBox(height: 10),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                chip(ThemeMode.system, Icons.settings_suggest_outlined, 'System'),
+                chip(ThemeMode.light, Icons.light_mode_outlined, 'Light'),
+                chip(ThemeMode.dark, Icons.dark_mode_outlined, 'Dark'),
+              ],
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Future<void> _checkUpdates() async {
@@ -422,22 +475,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.surface,
+        backgroundColor: context.colors.surface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Text('Sign out?',
-            style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700)),
-        content: const Text(
+        title: Text('Sign out?',
+            style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w700)),
+        content: Text(
           'You will need your handle, PIN or a backup code to get back in. Reminders on this device stop.',
-          style: TextStyle(color: AppColors.textSecondary, fontSize: 13, height: 1.5),
+          style: TextStyle(color: context.colors.textSecondary, fontSize: 13, height: 1.5),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(false),
-            child: const Text('Stay', style: TextStyle(color: AppColors.accentSoft)),
+            child: Text('Stay', style: TextStyle(color: context.colors.accentSoft)),
           ),
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(true),
-            child: const Text('Sign out', style: TextStyle(color: AppColors.roseLight, fontWeight: FontWeight.w700)),
+            child: Text('Sign out', style: TextStyle(color: context.colors.roseLight, fontWeight: FontWeight.w700)),
           ),
         ],
       ),
@@ -461,20 +514,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.surface,
-        title: const Text('Delete your account?', style: TextStyle(color: Colors.white, fontSize: 16)),
-        content: const Text(
+        backgroundColor: context.colors.surface,
+        title: Text('Delete your account?', style: TextStyle(color: context.colors.textPrimary, fontSize: 16)),
+        content: Text(
           'This permanently wipes your account, username, inbox, and settings. This cannot be undone.',
-          style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
+          style: TextStyle(color: context.colors.textSecondary, fontSize: 13),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(false),
-            child: const Text('Cancel', style: TextStyle(color: AppColors.accentSoft)),
+            child: Text('Cancel', style: TextStyle(color: context.colors.accentSoft)),
           ),
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(true),
-            child: const Text('Delete', style: TextStyle(color: AppColors.roseLight, fontWeight: FontWeight.w700)),
+            child: Text('Delete', style: TextStyle(color: context.colors.roseLight, fontWeight: FontWeight.w700)),
           ),
         ],
       ),
@@ -499,7 +552,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: const AppTopBar(title: 'My SecretLink'),
       body: _loading
-          ? const Center(child: CircularProgressIndicator(color: AppColors.accent))
+          ? Center(child: CircularProgressIndicator(color: context.colors.accent))
           : _error != null
               ? _buildError()
               : _user == null
@@ -537,7 +590,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return ListView(
       children: [
         const SizedBox(height: 100),
-        Text(_error!, textAlign: TextAlign.center, style: const TextStyle(color: AppColors.roseLight)),
+        Text(_error!, textAlign: TextAlign.center, style: TextStyle(color: context.colors.roseLight)),
         const SizedBox(height: 12),
         Center(child: OutlinedButton(onPressed: _load, child: const Text('Retry'))),
       ],
@@ -551,12 +604,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text('You are not signed in.', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w800)),
+            Text('You are not signed in.', style: TextStyle(color: context.colors.textPrimary, fontSize: 18, fontWeight: FontWeight.w800)),
             const SizedBox(height: 8),
-            const Text('Sign in to manage your secret link.', style: TextStyle(color: AppColors.textSecondary, fontSize: 13)),
+            Text('Sign in to manage your secret link.', style: TextStyle(color: context.colors.textSecondary, fontSize: 13)),
             const SizedBox(height: 18),
             FilledButton(
-              style: FilledButton.styleFrom(backgroundColor: AppColors.accent, foregroundColor: Colors.white),
+              style: FilledButton.styleFrom(backgroundColor: context.colors.accent, foregroundColor: Colors.white),
               onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const LoginScreen())),
               child: const Text('Sign in'),
             ),
@@ -608,13 +661,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         onTap: _shareLink,
                       ),
                       if (u.customSlugUnlocked == 1) ...[
-                        const Divider(color: AppColors.border, height: 24),
+                        Divider(color: context.colors.border, height: 24),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               'Supporter perk — your username',
-                              style: TextStyle(color: AppColors.textMuted, fontSize: 11),
+                              style: TextStyle(color: context.colors.textMuted, fontSize: 11),
                             ),
                             const SizedBox(height: 6),
                             _ActionTile(
@@ -635,9 +688,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     icon: Icons.filter_alt_outlined,
                     children: [
                       _buildWordFilter(),
-                      const Divider(color: AppColors.border, height: 24),
+                      Divider(color: context.colors.border, height: 24),
                       _buildPause(),
-                      const Divider(color: AppColors.border, height: 24),
+                      Divider(color: context.colors.border, height: 24),
                       _ActionTile(
                         icon: Icons.block_outlined,
                         label: 'Blocked senders',
@@ -670,7 +723,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         subtitle: 'Rank-ups and streak records',
                         onChanged: (v) => _setReminderToggle(prefMilestoneEnabled, v, (x) => _remMilestone = x),
                       ),
-                      const Divider(color: AppColors.border, height: 24),
+                      Divider(color: context.colors.border, height: 24),
                       _ActionTile(
                         icon: Icons.notification_important_outlined,
                         label: 'Allow notifications',
@@ -700,9 +753,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     title: 'View on web',
                     icon: Icons.devices_outlined,
                     children: [
-                      const Text(
+                      Text(
                         'Read your inbox in a browser. The code lasts 5 minutes, works once, and gives view-only access - replies and settings stay here in the app.',
-                        style: TextStyle(color: AppColors.textMuted, fontSize: 11, height: 1.5),
+                        style: TextStyle(color: context.colors.textMuted, fontSize: 11, height: 1.5),
                       ),
                       const SizedBox(height: 6),
                       _ActionTile(
@@ -744,6 +797,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         label: 'Check for updates',
                         onTap: _checkUpdates,
                       ),
+                      Divider(color: context.colors.border, height: 24),
+                      _buildThemeSelector(),
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -766,10 +821,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ],
                   ),
                   const SizedBox(height: 12),
-                  const Text(
+                  Text(
                     'All data stays on secure, encrypted infrastructure. You stay anonymous to your senders.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: AppColors.textMuted, fontSize: 11, height: 1.5),
+                    style: TextStyle(color: context.colors.textMuted, fontSize: 11, height: 1.5),
                   ),
                 ],
               ),
@@ -784,9 +839,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Hide messages containing words', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
+        Text('Hide messages containing words', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w700)),
         const SizedBox(height: 4),
-        const Text('Messages matching these words are sent straight to moderation, not your inbox.', style: TextStyle(color: AppColors.textMuted, fontSize: 11, height: 1.5)),
+        Text('Messages matching these words are sent straight to moderation, not your inbox.', style: TextStyle(color: context.colors.textMuted, fontSize: 11, height: 1.5)),
         const SizedBox(height: 10),
         Wrap(
           spacing: 8,
@@ -794,10 +849,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
           children: [
             for (final w in _hiddenWords)
               InputChip(
-                label: Text(w, style: const TextStyle(color: Colors.white, fontSize: 12)),
-                backgroundColor: AppColors.accentDeep,
-                side: const BorderSide(color: AppColors.accent),
-                deleteIconColor: AppColors.textSecondary,
+                label: Text(w, style: TextStyle(color: context.colors.accentSoft, fontSize: 12)),
+                backgroundColor: context.colors.accentDeep,
+                side: BorderSide(color: context.colors.accent),
+                deleteIconColor: context.colors.textSecondary,
                 onDeleted: () => setState(() => _hiddenWords = _hiddenWords.where((x) => x != w).toList()),
               ),
           ],
@@ -811,15 +866,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 decoration: InputDecoration(
                   hintText: 'Add a word',
                   filled: true,
-                  fillColor: AppColors.bg,
+                  fillColor: context.colors.bg,
                   isDense: true,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: AppColors.border),
+                    borderSide: BorderSide(color: context.colors.border),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: AppColors.border),
+                    borderSide: BorderSide(color: context.colors.border),
                   ),
                 ),
                 onSubmitted: (v) {
@@ -846,10 +901,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
         const SizedBox(height: 10),
         FilledButton(
-          style: FilledButton.styleFrom(backgroundColor: AppColors.accent, foregroundColor: Colors.white),
+          style: FilledButton.styleFrom(backgroundColor: context.colors.accent, foregroundColor: Colors.white),
           onPressed: _savingWords ? null : _saveWords,
           child: _savingWords
-              ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+              ? SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2, color: context.colors.textPrimary))
               : const Text('Save filter', style: TextStyle(fontWeight: FontWeight.w700)),
         ),
       ],
@@ -875,9 +930,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Pause submissions', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
+        Text('Pause submissions', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w700)),
         const SizedBox(height: 4),
-        const Text('While paused, senders see your profile but cannot deliver new messages.', style: TextStyle(color: AppColors.textMuted, fontSize: 11, height: 1.5)),
+        Text('While paused, senders see your profile but cannot deliver new messages.', style: TextStyle(color: context.colors.textMuted, fontSize: 11, height: 1.5)),
         const SizedBox(height: 10),
         Wrap(
           spacing: 8,
@@ -887,12 +942,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ChoiceChip(
                 label: Text(chip.$1, style: const TextStyle(fontSize: 12)),
                 selected: selectedFor(chip.$2, chip.$3),
-                selectedColor: AppColors.accent.withValues(alpha: 0.2),
+                selectedColor: context.colors.accent.withValues(alpha: 0.2),
                 labelStyle: TextStyle(
-                  color: selectedFor(chip.$2, chip.$3) ? Colors.white : AppColors.textSecondary,
+                  color: selectedFor(chip.$2, chip.$3) ? context.colors.textPrimary : context.colors.textSecondary,
                   fontWeight: FontWeight.w600,
                 ),
-                side: BorderSide(color: selectedFor(chip.$2, chip.$3) ? AppColors.accent : AppColors.border),
+                side: BorderSide(color: selectedFor(chip.$2, chip.$3) ? context.colors.accent : context.colors.border),
                 onSelected: (_) => setState(() {
                   if (chip.$3) {
                     _permanentPause = true;
@@ -908,15 +963,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
         FilledButton(
           style: FilledButton.styleFrom(
             backgroundColor:
-                _permanentPause || _pauseUntil != null ? AppColors.accent : AppColors.surface,
+                _permanentPause || _pauseUntil != null ? context.colors.accent : context.colors.surface,
             side: BorderSide(
-              color: _permanentPause || _pauseUntil != null ? AppColors.accent : AppColors.border,
+              color: _permanentPause || _pauseUntil != null ? context.colors.accent : context.colors.border,
             ),
-            foregroundColor: _permanentPause || _pauseUntil != null ? Colors.white : AppColors.textSecondary,
+            foregroundColor: _permanentPause || _pauseUntil != null ? Colors.white : context.colors.textSecondary,
           ),
           onPressed: _savingPause ? null : _applyPause,
           child: _savingPause
-              ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+              ? SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2, color: context.colors.textPrimary))
               : Text(_permanentPause || _pauseUntil != null ? 'Apply pause' : 'Link is active'),
         ),
       ],
@@ -934,9 +989,9 @@ class _ProfileCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: context.colors.border),
       ),
       child: Column(
         children: [
@@ -954,12 +1009,12 @@ class _ProfileCard extends StatelessWidget {
                           child: Text(
                             user.displayName,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 17),
+                            style: TextStyle(color: context.colors.textPrimary, fontWeight: FontWeight.w900, fontSize: 17),
                           ),
                         ),
                         if (user.hasVerifiedBadge == 1) ...[
                           const SizedBox(width: 6),
-                          const Icon(Icons.verified, color: AppColors.accent, size: 16),
+                          Icon(Icons.verified, color: context.colors.accent, size: 16),
                         ],
                         if (user.isSupporter) ...[
                           const SizedBox(width: 6),
@@ -970,16 +1025,16 @@ class _ProfileCard extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 2),
-                    Text('@${user.username}', style: const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
+                    Text('@${user.username}', style: TextStyle(color: context.colors.textSecondary, fontSize: 12)),
                     if (user.email != null) ...[
                       const SizedBox(height: 2),
-                      Text(user.email!, style: const TextStyle(color: AppColors.textMuted, fontSize: 12)),
+                      Text(user.email!, style: TextStyle(color: context.colors.textMuted, fontSize: 12)),
                     ],
                   ],
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.mark_email_read_outlined, color: AppColors.accentSoft, size: 20),
+                icon: Icon(Icons.mark_email_read_outlined, color: context.colors.accentSoft, size: 20),
                 tooltip: 'Open inbox',
                 onPressed: onOpenInbox,
               ),
@@ -989,7 +1044,7 @@ class _ProfileCard extends StatelessWidget {
           if (user.bio != null && user.bio!.isNotEmpty)
             Align(
               alignment: Alignment.centerLeft,
-              child: Text(user.bio!, style: const TextStyle(color: AppColors.textSecondary, fontSize: 12, height: 1.5)),
+              child: Text(user.bio!, style: TextStyle(color: context.colors.textSecondary, fontSize: 12, height: 1.5)),
             ),
         ],
       ),
@@ -1010,9 +1065,9 @@ class _RankCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: context.colors.border),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1027,11 +1082,11 @@ class _RankCard extends StatelessWidget {
                   children: [
                     Text(
                       'Rank: ${rank.name}',
-                      style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w800),
+                      style: TextStyle(color: context.colors.textPrimary, fontSize: 15, fontWeight: FontWeight.w800),
                     ),
                     Text(
                       '${rank.score} activity points',
-                      style: const TextStyle(color: AppColors.textSecondary, fontSize: 11),
+                      style: TextStyle(color: context.colors.textSecondary, fontSize: 11),
                     ),
                   ],
                 ),
@@ -1045,7 +1100,7 @@ class _RankCard extends StatelessWidget {
             toNext == null
                 ? 'Max rank reached — icon status.'
                 : '$toNext points to ${rank.nextName ?? 'the next rank'}',
-            style: const TextStyle(color: AppColors.textMuted, fontSize: 11),
+            style: TextStyle(color: context.colors.textMuted, fontSize: 11),
           ),
         ],
       ),
@@ -1071,9 +1126,9 @@ class _ChallengesCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: context.colors.border),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1082,21 +1137,21 @@ class _ChallengesCard extends StatelessWidget {
             children: [
               const Text('🎯', style: TextStyle(fontSize: 20)),
               const SizedBox(width: 10),
-              const Expanded(
+              Expanded(
                 child: Text(
                   "Today's Challenges",
-                  style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w800),
+                  style: TextStyle(color: context.colors.textPrimary, fontSize: 15, fontWeight: FontWeight.w800),
                 ),
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: AppColors.accent.withValues(alpha: 0.15),
+                  color: context.colors.accent.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(999),
                 ),
                 child: Text(
                   '🔥 $streak day${streak == 1 ? '' : 's'}',
-                  style: const TextStyle(color: AppColors.accentSoft, fontSize: 10, fontWeight: FontWeight.w700),
+                  style: TextStyle(color: context.colors.accentSoft, fontSize: 10, fontWeight: FontWeight.w700),
                 ),
               ),
             ],
@@ -1135,13 +1190,13 @@ class _ChallengeRow extends StatelessWidget {
                   Expanded(
                     child: Text(
                       def.title,
-                      style: const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700),
+                      style: TextStyle(color: context.colors.textPrimary, fontSize: 13, fontWeight: FontWeight.w700),
                     ),
                   ),
                   Text(
                     done ? '✓' : '$have/${def.goal}',
                     style: TextStyle(
-                      color: done ? AppColors.accentSoft : AppColors.textMuted,
+                      color: done ? context.colors.accentSoft : context.colors.textMuted,
                       fontSize: 11,
                       fontWeight: FontWeight.w700,
                     ),
@@ -1149,7 +1204,7 @@ class _ChallengeRow extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 2),
-              Text(def.hint, style: const TextStyle(color: AppColors.textSecondary, fontSize: 11)),
+              Text(def.hint, style: TextStyle(color: context.colors.textSecondary, fontSize: 11)),
               const SizedBox(height: 6),
               RankProgressBar(progress: challengeProgress(def, metrics)),
             ],
@@ -1173,9 +1228,9 @@ class _BadgeShelf extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: context.colors.border),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1184,15 +1239,15 @@ class _BadgeShelf extends StatelessWidget {
             children: [
               const Text('🏆', style: TextStyle(fontSize: 20)),
               const SizedBox(width: 10),
-              const Expanded(
+              Expanded(
                 child: Text(
                   'Badge Shelf',
-                  style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w800),
+                  style: TextStyle(color: context.colors.textPrimary, fontSize: 15, fontWeight: FontWeight.w800),
                 ),
               ),
               Text(
                 '$unlockedCount/${catalog.length}',
-                style: const TextStyle(color: AppColors.textSecondary, fontSize: 11, fontWeight: FontWeight.w700),
+                style: TextStyle(color: context.colors.textSecondary, fontSize: 11, fontWeight: FontWeight.w700),
               ),
             ],
           ),
@@ -1220,12 +1275,12 @@ class _BadgeShelf extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: unlocked
-                          ? AppColors.amber.withValues(alpha: 0.15)
-                          : AppColors.surface,
+                          ? context.colors.amber.withValues(alpha: 0.15)
+                          : context.colors.surface,
                       border: Border.all(
                         color: unlocked
-                            ? AppColors.amber.withValues(alpha: 0.4)
-                            : AppColors.border,
+                            ? context.colors.amber.withValues(alpha: 0.4)
+                            : context.colors.border,
                       ),
                     ),
                     child: Text(
@@ -1240,7 +1295,7 @@ class _BadgeShelf extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      color: unlocked ? Colors.white : AppColors.textMuted,
+                      color: unlocked ? context.colors.textPrimary : context.colors.textMuted,
                       fontSize: 9,
                       fontWeight: FontWeight.w600,
                     ),
@@ -1265,18 +1320,18 @@ class _SectionCard extends StatelessWidget {  final String title;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: context.colors.border),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Icon(icon, size: 17, color: AppColors.accentFaint),
+              Icon(icon, size: 17, color: context.colors.accentFaint),
               const SizedBox(width: 8),
-              Text(title, style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w800)),
+              Text(title, style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w800)),
             ],
           ),
           const SizedBox(height: 12),
@@ -1299,9 +1354,9 @@ class _ActionTile extends StatelessWidget {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       dense: true,
-      leading: Icon(icon, size: 20, color: danger ? AppColors.roseLight : AppColors.accentSoft),
-      title: Text(label, style: TextStyle(color: danger ? AppColors.roseLight : AppColors.textHigh, fontSize: 14)),
-      trailing: const Icon(Icons.chevron_right, size: 18, color: AppColors.textFaint),
+      leading: Icon(icon, size: 20, color: danger ? context.colors.roseLight : context.colors.accentSoft),
+      title: Text(label, style: TextStyle(color: danger ? context.colors.roseLight : context.colors.textHigh, fontSize: 14)),
+      trailing: Icon(Icons.chevron_right, size: 18, color: context.colors.textFaint),
       onTap: onTap,
     );
   }
@@ -1347,32 +1402,32 @@ class _PairCodeDialogState extends State<_PairCodeDialog> {
     final mm = (_left ~/ 60).toString();
     final ss = (_left % 60).toString().padLeft(2, '0');
     return AlertDialog(
-      backgroundColor: AppColors.surface,
-      title: const Text(
+      backgroundColor: context.colors.surface,
+      title: Text(
         'Open your inbox on the web',
-        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w800),
+        style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w800),
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text(
+          Text(
             'Go to secretmsg.net/login and enter this code:',
-            style: TextStyle(color: AppColors.textSecondary, fontSize: 12, height: 1.5),
+            style: TextStyle(color: context.colors.textSecondary, fontSize: 12, height: 1.5),
           ),
           const SizedBox(height: 14),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 14),
             decoration: BoxDecoration(
-              color: AppColors.bg,
+              color: context.colors.bg,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: AppColors.border),
+              border: Border.all(color: context.colors.border),
             ),
             child: SelectableText(
               widget.code,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: expired ? AppColors.textMuted : Colors.white,
+                color: expired ? context.colors.textMuted : context.colors.textPrimary,
                 fontSize: 24,
                 fontWeight: FontWeight.w800,
                 letterSpacing: 4,
@@ -1387,7 +1442,7 @@ class _PairCodeDialogState extends State<_PairCodeDialog> {
                 : 'Expires in $mm:$ss',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: expired ? AppColors.roseLight : AppColors.textMuted,
+              color: expired ? context.colors.roseLight : context.colors.textMuted,
               fontSize: 11,
             ),
           ),
@@ -1403,11 +1458,11 @@ class _PairCodeDialogState extends State<_PairCodeDialog> {
                     const SnackBar(content: Text('Pairing code copied')),
                   );
                 },
-          child: const Text('Copy', style: TextStyle(color: AppColors.accentSoft)),
+          child: Text('Copy', style: TextStyle(color: context.colors.accentSoft)),
         ),
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Done', style: TextStyle(color: AppColors.accentSoft)),
+          child: Text('Done', style: TextStyle(color: context.colors.accentSoft)),
         ),
       ],
     );

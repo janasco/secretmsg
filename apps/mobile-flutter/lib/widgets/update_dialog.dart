@@ -11,30 +11,30 @@ Future<void> showUpdateDialog(BuildContext context, UpdateInfo info) async {
     context: context,
     barrierDismissible: true,
     builder: (ctx) => AlertDialog(
-      backgroundColor: AppColors.surface,
+      backgroundColor: context.colors.surface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      title: const Row(
+      title: Row(
         children: [
-          Text('🎉', style: TextStyle(fontSize: 20)),
-          SizedBox(width: 8),
+          const Text('🎉', style: TextStyle(fontSize: 20)),
+          const SizedBox(width: 8),
           Expanded(
             child: Text('Update available',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: AppColors.textPrimary)),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: context.colors.textPrimary)),
           ),
         ],
       ),
       content: Text(
         'v${info.latest} is out — you have v${info.current}.\nUpdate for the latest Drops, streaks and fixes.',
-        style: const TextStyle(fontSize: 13.5, height: 1.55, color: AppColors.textSecondary),
+        style: TextStyle(fontSize: 13.5, height: 1.55, color: context.colors.textSecondary),
       ),
       actions: [
         TextButton(
           onPressed: () => Navigator.of(ctx).pop(),
-          child: const Text('Later', style: TextStyle(color: AppColors.textMuted, fontWeight: FontWeight.w700)),
+          child: Text('Later', style: TextStyle(color: context.colors.textMuted, fontWeight: FontWeight.w700)),
         ),
         FilledButton(
           style: FilledButton.styleFrom(
-            backgroundColor: AppColors.emerald,
+            backgroundColor: context.colors.emerald,
             foregroundColor: Colors.white,
           ),
           onPressed: () async {

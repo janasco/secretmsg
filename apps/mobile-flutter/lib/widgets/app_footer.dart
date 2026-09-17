@@ -44,8 +44,8 @@ class FooterLinks extends StatelessWidget {
         return Container(
           margin: const EdgeInsets.only(top: 40),
           padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
-          decoration: const BoxDecoration(
-            border: Border(top: BorderSide(color: AppColors.border)),
+          decoration: BoxDecoration(
+            border: Border(top: BorderSide(color: context.colors.border)),
           ),
           child: Column(
             children: [
@@ -103,14 +103,14 @@ class FooterLinks extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-              const Divider(color: AppColors.border, height: 1),
+              Divider(color: context.colors.border, height: 1),
               const SizedBox(height: 14),
-              const Text(
+              Text(
                 '© 2026 secretmsg.net   ·   Personal Project by janasco\n'
                 'Deepening authentic connections, safely.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: AppColors.textFaint,
+                  color: context.colors.textFaint,
                   fontSize: 11,
                   height: 1.6,
                 ),
@@ -143,8 +143,8 @@ class _FooterColumn extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(
-              color: AppColors.textSecondary,
+            style: TextStyle(
+              color: context.colors.textSecondary,
               fontSize: 11,
               fontWeight: FontWeight.w800,
               letterSpacing: 1.1,
@@ -158,7 +158,7 @@ class _FooterColumn extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 2),
                 child: Text(
                   item.label,
-                  style: const TextStyle(color: AppColors.textMuted, fontSize: 12),
+                  style: TextStyle(color: context.colors.textMuted, fontSize: 12),
                 ),
               ),
             ),

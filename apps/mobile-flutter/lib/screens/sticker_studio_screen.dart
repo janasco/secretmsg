@@ -68,14 +68,14 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Text(
+                Text(
                   'Build a story-worthy sticker in seconds',
-                  style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w900),
+                  style: TextStyle(color: context.colors.textPrimary, fontSize: 18, fontWeight: FontWeight.w900),
                 ),
                 const SizedBox(height: 6),
-                const Text(
+                Text(
                   'Pick a vibe, add your board link, and share it to your story. 9:16, ready to post.',
-                  style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12.5, height: 1.5),
+                  style: TextStyle(color: context.colors.textSecondary, fontSize: 12.5, height: 1.5),
                 ),
                 const SizedBox(height: 20),
                 RepaintBoundary(
@@ -109,7 +109,7 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
                 const SizedBox(height: 10),
                 FilledButton.icon(
                   style: FilledButton.styleFrom(
-                    backgroundColor: AppColors.accent,
+                    backgroundColor: context.colors.accent,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                   ),
@@ -139,12 +139,12 @@ for (final p in STORY_PRESETS)
           ChoiceChip(
             label: Text(p.label, style: const TextStyle(fontSize: 12)),
             selected: _presetId == p.id,
-            selectedColor: AppColors.accent.withValues(alpha: 0.2),
+            selectedColor: context.colors.accent.withValues(alpha: 0.2),
             labelStyle: TextStyle(
-              color: _presetId == p.id ? Colors.white : const Color(0xFF94A3B8),
+              color: _presetId == p.id ? context.colors.textPrimary : context.colors.textSecondary,
               fontWeight: FontWeight.w600,
             ),
-            side: BorderSide(color: _presetId == p.id ? AppColors.accent : AppColors.border),
+            side: BorderSide(color: _presetId == p.id ? context.colors.accent : context.colors.border),
             onSelected: (_) => _pickPreset(p.id),
           ),
       ],
@@ -155,7 +155,7 @@ for (final p in STORY_PRESETS)
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Theme', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w800)),
+        Text('Theme', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w800)),
         const SizedBox(height: 10),
         Row(
           children: [
@@ -170,7 +170,7 @@ for (final p in STORY_PRESETS)
           ],
         ),
         const SizedBox(height: 16),
-        const Text('Your caption (optional)', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w800)),
+        Text('Your caption (optional)', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w800)),
         const SizedBox(height: 8),
         TextField(
           controller: _captionCtrl,
@@ -179,19 +179,19 @@ for (final p in STORY_PRESETS)
           decoration: InputDecoration(
             hintText: 'Custom caption… (clears to the preset if blank)',
             filled: true,
-            fillColor: const Color(0xFF0F1220),
+            fillColor: context.colors.surface,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.border),
+              borderSide: BorderSide(color: context.colors.border),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.border),
+              borderSide: BorderSide(color: context.colors.border),
             ),
           ),
         ),
         const SizedBox(height: 12),
-        const Text('Your board link', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w800)),
+        Text('Your board link', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w800)),
         const SizedBox(height: 8),
         TextField(
           controller: _linkCtrl,
@@ -200,14 +200,14 @@ for (final p in STORY_PRESETS)
           decoration: InputDecoration(
             prefixText: '$kPublicBaseUrl/',
             filled: true,
-            fillColor: const Color(0xFF0F1220),
+            fillColor: context.colors.surface,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.border),
+              borderSide: BorderSide(color: context.colors.border),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.border),
+              borderSide: BorderSide(color: context.colors.border),
             ),
           ),
         ),
@@ -247,7 +247,7 @@ class _ThemeSwatch extends StatelessWidget {
           gradient: LinearGradient(colors: gradient, begin: Alignment.topLeft, end: Alignment.bottomRight),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: selected ? Colors.white : const Color(0xFF334155),
+            color: selected ? context.colors.textPrimary : const Color(0xFF334155),
             width: selected ? 2 : 1,
           ),
         ),
@@ -291,7 +291,7 @@ class _StickerPreview extends StatelessWidget {
                       height: 44,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: context.colors.textPrimary,
                         borderRadius: BorderRadius.circular(14),
                         boxShadow: [
                           BoxShadow(color: Colors.black.withValues(alpha: 0.35), blurRadius: 12, offset: const Offset(0, 5)),

@@ -134,7 +134,7 @@ class _TurnstileDiagScreenState extends State<TurnstileDiagScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Turnstile Diag', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800)),
+        title: Text('Turnstile Diag', style: TextStyle(color: context.colors.textPrimary, fontWeight: FontWeight.w800)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -144,14 +144,14 @@ class _TurnstileDiagScreenState extends State<TurnstileDiagScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Text(
+                Text(
                   'This build was compiled with SMS_TURNSTILE_TEST=true.',
-                  style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12),
+                  style: TextStyle(color: context.colors.textSecondary, fontSize: 12),
                 ),
                 const SizedBox(height: 12),
-                const Text(
+                Text(
                   'Step 1: mint a Turnstile token inside the real secretmsg.net origin.',
-                  style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700),
+                  style: TextStyle(color: context.colors.textPrimary, fontSize: 13, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 8),
                 Container(
@@ -169,24 +169,24 @@ class _TurnstileDiagScreenState extends State<TurnstileDiagScreen> {
                   ),
                 ),
                 const SizedBox(height: 12),
-                const Text(
+                Text(
                   'Step 2: send the token to /api/message/qax9tnonexist using the real siteverify secret.',
-                  style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700),
+                  style: TextStyle(color: context.colors.textPrimary, fontSize: 13, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 10),
                 Container(
                   padding: const EdgeInsets.all(14),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF0F1220),
+                    color: context.colors.surface,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: _token == null ? AppColors.border : AppColors.accent,
+                      color: _token == null ? context.colors.border : context.colors.accent,
                     ),
                   ),
                   child: Text(
                     _status,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700, height: 1.4),
+                    style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w700, height: 1.4),
                   ),
                 ),
                 if (_result.isNotEmpty) ...[
@@ -198,12 +198,12 @@ class _TurnstileDiagScreenState extends State<TurnstileDiagScreen> {
                           ? const Color(0xFF06281D)
                           : const Color(0xFF330F13),
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: AppColors.border),
+                      border: Border.all(color: context.colors.border),
                     ),
                     child: Text(
                       _result,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.white, fontSize: 13, height: 1.4),
+                      style: TextStyle(color: context.colors.textPrimary, fontSize: 13, height: 1.4),
                     ),
                   ),
                 ],

@@ -133,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       : _isSignup
                           ? 'Create your inbox'
                           : 'Welcome back',
-                  style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900, height: 1.25),
+                  style: TextStyle(color: context.colors.textPrimary, fontSize: 22, fontWeight: FontWeight.w900, height: 1.25),
                 ),
                 const SizedBox(height: 8),
                 Text(
@@ -142,15 +142,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       : _isSignup
                           ? 'Set a PIN — no email needed. Your link is auto-generated; custom names are a supporter perk.'
                           : 'Your secret link, protected by PIN.',
-                  style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 13, height: 1.55),
+                  style: TextStyle(color: context.colors.textSecondary, fontSize: 13, height: 1.55),
                 ),
                 const SizedBox(height: 20),
                 if (_isSignup) _pinField(login: false),
                 if (_isSignup) ...[
                   const SizedBox(height: 8),
-                  const Text(
+                  Text(
                     'Your link (like secretmsg.net/lumen4821) is created for you automatically.',
-                    style: TextStyle(color: Color(0xFF64748B), fontSize: 12, height: 1.5),
+                    style: TextStyle(color: context.colors.textMuted, fontSize: 12, height: 1.5),
                   ),
                   const SizedBox(height: 4),
                   GestureDetector(
@@ -172,14 +172,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       labelText: 'Handle',
                       hintText: 'lumen4821',
                       filled: true,
-                      fillColor: const Color(0xFF0F1220),
+                      fillColor: context.colors.surface,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: AppColors.border),
+                        borderSide: BorderSide(color: context.colors.border),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: AppColors.border),
+                        borderSide: BorderSide(color: context.colors.border),
                       ),
                     ),
                   ),
@@ -194,15 +194,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   _pinField(login: true),
                 ] else if (_isRecovery) ...[
                   const SizedBox(height: 8),
-                  const Text(
+                  Text(
                     'You only need your handle here — the backup code and new PIN go on the next screen.',
-                    style: TextStyle(color: Color(0xFF64748B), fontSize: 12, height: 1.5),
+                    style: TextStyle(color: context.colors.textMuted, fontSize: 12, height: 1.5),
                   ),
                 ],
                 const SizedBox(height: 16),
                 FilledButton(
                   style: FilledButton.styleFrom(
-                    backgroundColor: AppColors.accent,
+                    backgroundColor: context.colors.accent,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                   ),
@@ -210,7 +210,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ? null
                       : (_isRecovery ? _handleRecovery : (_isSignup ? _handleSignup : _handleLogin)),
                   child: _loading
-                      ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+                      ? SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: context.colors.textPrimary))
                       : Text(
                           _isRecovery ? 'Recover Account' : (_isSignup ? 'Create my inbox' : 'Log In'),
                           style: const TextStyle(fontWeight: FontWeight.w800),
@@ -257,14 +257,14 @@ class _LoginScreenState extends State<LoginScreen> {
         labelText: 'PIN',
         hintText: '4-6 digits',
         filled: true,
-        fillColor: const Color(0xFF0F1220),
+        fillColor: context.colors.surface,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.border),
+          borderSide: BorderSide(color: context.colors.border),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.border),
+          borderSide: BorderSide(color: context.colors.border),
         ),
         counterText: '',
       ),

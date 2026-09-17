@@ -186,14 +186,14 @@ class _SendScreenState extends State<SendScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Text(
+        Text(
           'Send it to a friend',
-          style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900),
+          style: TextStyle(color: context.colors.textPrimary, fontSize: 22, fontWeight: FontWeight.w900),
         ),
         const SizedBox(height: 6),
-        const Text(
+        Text(
           'Type their username to start composing an anonymous message.',
-          style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13, height: 1.5),
+          style: TextStyle(color: context.colors.textSecondary, fontSize: 13, height: 1.5),
         ),
         const SizedBox(height: 18),
         TextField(
@@ -204,15 +204,15 @@ class _SendScreenState extends State<SendScreen> {
             hintText: 'e.g. alex',
             prefixIcon: const Icon(Icons.alternate_email, size: 18),
             filled: true,
-            fillColor: const Color(0xFF0F1220),
+            fillColor: context.colors.surface,
             contentPadding: const EdgeInsets.symmetric(vertical: 14),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.border),
+              borderSide: BorderSide(color: context.colors.border),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.border),
+              borderSide: BorderSide(color: context.colors.border),
             ),
           ),
           onSubmitted: (_) => _performLookup(),
@@ -220,16 +220,16 @@ class _SendScreenState extends State<SendScreen> {
         const SizedBox(height: 12),
         FilledButton(
           style: FilledButton.styleFrom(
-            backgroundColor: AppColors.accent,
+            backgroundColor: context.colors.accent,
             foregroundColor: Colors.white,
             padding: const EdgeInsets.symmetric(vertical: 14),
           ),
           onPressed: _lookingUp ? null : _performLookup,
           child: _lookingUp
-              ? const SizedBox(
+              ? SizedBox(
                   width: 20,
                   height: 20,
-                  child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                  child: CircularProgressIndicator(strokeWidth: 2, color: context.colors.textPrimary),
                 )
               : const Text('Continue', style: TextStyle(fontWeight: FontWeight.w800)),
         ),
@@ -251,9 +251,9 @@ class _SendScreenState extends State<SendScreen> {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: const Color(0xFF0F1220),
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: context.colors.border),
       ),
       child: Row(
         children: [
@@ -269,12 +269,12 @@ class _SendScreenState extends State<SendScreen> {
                       child: Text(
                         p.displayName,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 15),
+                        style: TextStyle(color: context.colors.textPrimary, fontWeight: FontWeight.w800, fontSize: 15),
                       ),
                     ),
                     const SizedBox(width: 6),
                     if (p.hasVerifiedBadge == 1)
-                      const Icon(Icons.verified, size: 15, color: AppColors.accent),
+                      Icon(Icons.verified, size: 15, color: context.colors.accent),
                     if (p.isSupporter) ...[
                       const SizedBox(width: 6),
                       SupporterBadge(tier: p.badgeTitle ?? 'Supporter'),
@@ -282,10 +282,10 @@ class _SendScreenState extends State<SendScreen> {
                   ],
                 ),
                 const SizedBox(height: 2),
-                Text('@${p.username}', style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 12)),
+                Text('@${p.username}', style: TextStyle(color: context.colors.textSecondary, fontSize: 12)),
                 if (p.bio != null && p.bio!.isNotEmpty) ...[
                   const SizedBox(height: 6),
-                  Text(p.bio!, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(color: Color(0xFF64748B), fontSize: 12, height: 1.4)),
+                  Text(p.bio!, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(color: context.colors.textMuted, fontSize: 12, height: 1.4)),
                 ],
               ],
             ),
@@ -316,14 +316,14 @@ class _SendScreenState extends State<SendScreen> {
           decoration: InputDecoration(
             hintText: 'Write something real…',
             filled: true,
-            fillColor: const Color(0xFF0F1220),
+            fillColor: context.colors.surface,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: const BorderSide(color: AppColors.border),
+              borderSide: BorderSide(color: context.colors.border),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: const BorderSide(color: AppColors.border),
+              borderSide: BorderSide(color: context.colors.border),
             ),
             counterText: remaining <= 20 ? '$remaining left' : null,
           ),
@@ -340,7 +340,7 @@ class _SendScreenState extends State<SendScreen> {
               ),
             ),
             const Spacer(),
-            Text('$remaining', style: const TextStyle(color: Color(0xFF64748B), fontSize: 12)),
+            Text('$remaining', style: TextStyle(color: context.colors.textMuted, fontSize: 12)),
           ],
         ),
         if (_showInspiration) _buildInspiration(),
@@ -348,15 +348,15 @@ class _SendScreenState extends State<SendScreen> {
         SwitchListTile(
           value: _allowClue,
           contentPadding: EdgeInsets.zero,
-          title: const Text(
+          title: Text(
             'Allow device hint',
-            style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
+            style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w600),
           ),
-          subtitle: const Text(
+          subtitle: Text(
             'Lets the recipient see an anonymous device hint (e.g. Mobile / Android).',
-            style: TextStyle(color: Color(0xFF64748B), fontSize: 11, height: 1.4),
+            style: TextStyle(color: context.colors.textMuted, fontSize: 11, height: 1.4),
           ),
-          activeTrackColor: AppColors.accent,
+          activeTrackColor: context.colors.accent,
           onChanged: (v) => setState(() => _allowClue = v),
         ),
         const SizedBox(height: 4),
@@ -375,25 +375,25 @@ class _SendScreenState extends State<SendScreen> {
         const SizedBox(height: 14),
         FilledButton(
           style: FilledButton.styleFrom(
-            backgroundColor: AppColors.accent,
+            backgroundColor: context.colors.accent,
             foregroundColor: Colors.white,
             padding: const EdgeInsets.symmetric(vertical: 15),
-            disabledBackgroundColor: AppColors.accent.withValues(alpha: 0.3),
+            disabledBackgroundColor: context.colors.accent.withValues(alpha: 0.3),
           ),
           onPressed: _sending || _turnstileToken == null ? null : _send,
           child: _sending
-              ? const SizedBox(
+              ? SizedBox(
                   width: 20,
                   height: 20,
-                  child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                  child: CircularProgressIndicator(strokeWidth: 2, color: context.colors.textPrimary),
                 )
               : const Text('Send Anonymously', style: TextStyle(fontWeight: FontWeight.w800)),
         ),
         const SizedBox(height: 10),
-        const Center(
+        Center(
           child: Text(
             'Your identity is never shared with the recipient.',
-            style: TextStyle(color: Color(0xFF64748B), fontSize: 11),
+            style: TextStyle(color: context.colors.textMuted, fontSize: 11),
           ),
         ),
       ],
@@ -404,9 +404,9 @@ class _SendScreenState extends State<SendScreen> {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: const Color(0xFF0F1220),
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: context.colors.border),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -419,13 +419,13 @@ class _SendScreenState extends State<SendScreen> {
                 ChoiceChip(
                   label: Text('${t.icon} ${t.label}', style: const TextStyle(fontSize: 11)),
                   selected: _activeTarget == t.id,
-                  selectedColor: AppColors.accent.withValues(alpha: 0.2),
+                  selectedColor: context.colors.accent.withValues(alpha: 0.2),
                   labelStyle: TextStyle(
-                    color: _activeTarget == t.id ? Colors.white : const Color(0xFF94A3B8),
+                    color: _activeTarget == t.id ? context.colors.textPrimary : context.colors.textSecondary,
                     fontWeight: FontWeight.w600,
                   ),
                   side: BorderSide(
-                    color: _activeTarget == t.id ? AppColors.accent : AppColors.border,
+                    color: _activeTarget == t.id ? context.colors.accent : context.colors.border,
                   ),
                   onSelected: (_) => setState(() => _activeTarget = _activeTarget == t.id ? 'all' : t.id),
                 ),
@@ -442,7 +442,7 @@ class _SendScreenState extends State<SendScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       decoration: BoxDecoration(
                         color: _activeCategory == c.id
-                            ? AppColors.accent.withValues(alpha: 0.18)
+                            ? context.colors.accent.withValues(alpha: 0.18)
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -450,7 +450,7 @@ class _SendScreenState extends State<SendScreen> {
                         children: [
                           Text(c.icon, style: const TextStyle(fontSize: 16)),
                           const SizedBox(height: 2),
-                          Text(c.label, style: const TextStyle(fontSize: 9, color: Color(0xFF94A3B8))),
+                          Text(c.label, style: TextStyle(fontSize: 9, color: context.colors.textSecondary)),
                         ],
                       ),
                     ),
@@ -462,7 +462,7 @@ class _SendScreenState extends State<SendScreen> {
           ),
           const SizedBox(height: 10),
           OutlinedButton.icon(
-            style: OutlinedButton.styleFrom(side: const BorderSide(color: AppColors.accent)),
+            style: OutlinedButton.styleFrom(side: BorderSide(color: context.colors.accent)),
             onPressed: () {
               final pool = _activeTarget == 'all'
                   ? VIBE_TEMPLATES
@@ -508,21 +508,21 @@ class _SendScreenState extends State<SendScreen> {
                 child: const Icon(Icons.check_circle, color: Color(0xFF34D399), size: 40),
               ),
               const SizedBox(height: 18),
-              const Text('Sent Anonymously!', style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w900)),
+              Text('Sent Anonymously!', style: TextStyle(color: context.colors.textPrimary, fontSize: 22, fontWeight: FontWeight.w900)),
               const SizedBox(height: 8),
               Text(
                 'Your message was delivered safely to @$username without any trace of your identity.',
                 textAlign: TextAlign.center,
-                style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 13, height: 1.5),
+                style: TextStyle(color: context.colors.textSecondary, fontSize: 13, height: 1.5),
               ),
               if (_replyToken != null) ...[
                 const SizedBox(height: 18),
                 Container(
                   padding: const EdgeInsets.all(14),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF0F1220),
+                    color: context.colors.surface,
                     borderRadius: BorderRadius.circular(14),
-                    border: Border.all(color: AppColors.accent.withValues(alpha: 0.3)),
+                    border: Border.all(color: context.colors.accent.withValues(alpha: 0.3)),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -532,9 +532,9 @@ class _SendScreenState extends State<SendScreen> {
                         style: TextStyle(color: Color(0xFF818CF8), fontSize: 12, fontWeight: FontWeight.w800),
                       ),
                       const SizedBox(height: 6),
-                      const Text(
+                      Text(
                         'If they reply, you can view their response anonymously using this private link:',
-                        style: TextStyle(color: Color(0xFF94A3B8), fontSize: 11, height: 1.5),
+                        style: TextStyle(color: context.colors.textSecondary, fontSize: 11, height: 1.5),
                       ),
                       const SizedBox(height: 8),
                       InkWell(
@@ -566,7 +566,7 @@ class _SendScreenState extends State<SendScreen> {
               const SizedBox(height: 22),
               FilledButton(
                 style: FilledButton.styleFrom(
-                  backgroundColor: AppColors.accent,
+                  backgroundColor: context.colors.accent,
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                 ),
@@ -614,9 +614,9 @@ class _TemplateTile extends StatelessWidget {
         decoration: BoxDecoration(
           color: const Color(0xFF090A0F),
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: AppColors.border.withValues(alpha: 0.5)),
+          border: Border.all(color: context.colors.border.withValues(alpha: 0.5)),
         ),
-        child: Text(text, style: const TextStyle(color: Color(0xFFCBD5E1), fontSize: 12, height: 1.4)),
+        child: Text(text, style: TextStyle(color: context.colors.textHigh, fontSize: 12, height: 1.4)),
       ),
     );
   }
@@ -625,15 +625,15 @@ class _TemplateTile extends StatelessWidget {
 class _SafeNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Built for safe, honest connection', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w800)),
-        SizedBox(height: 8),
-        _Bullet(icon: Icons.visibility_off, text: 'Zero IP tracking, zero ad surveillance, zero profile mining.'),
-        _Bullet(icon: Icons.filter_list, text: 'Automated moderation scans every message before it reaches the inbox.'),
-        _Bullet(icon: Icons.auto_awesome, text: 'Blind reply link keeps identities private on both ends.'),
-        _Bullet(icon: Icons.pause_circle_outline, text: 'Recipients can pause, filter, or wipe their inbox anytime.'),
+        Text('Built for safe, honest connection', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w800)),
+        const SizedBox(height: 8),
+        const _Bullet(icon: Icons.visibility_off, text: 'Zero IP tracking, zero ad surveillance, zero profile mining.'),
+        const _Bullet(icon: Icons.filter_list, text: 'Automated moderation scans every message before it reaches the inbox.'),
+        const _Bullet(icon: Icons.auto_awesome, text: 'Blind reply link keeps identities private on both ends.'),
+        const _Bullet(icon: Icons.pause_circle_outline, text: 'Recipients can pause, filter, or wipe their inbox anytime.'),
       ],
     );
   }
@@ -654,7 +654,7 @@ class _Bullet extends StatelessWidget {
           Icon(icon, size: 15, color: const Color(0xFF818CF8)),
           const SizedBox(width: 8),
           Expanded(
-            child: Text(text, style: const TextStyle(color: Color(0xFF64748B), fontSize: 12, height: 1.45)),
+            child: Text(text, style: TextStyle(color: context.colors.textMuted, fontSize: 12, height: 1.45)),
           ),
         ],
       ),

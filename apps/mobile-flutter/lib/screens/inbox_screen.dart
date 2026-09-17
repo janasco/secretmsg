@@ -140,10 +140,10 @@ class _InboxScreenState extends State<InboxScreen> {
     showDialog<void>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.surface,
+        backgroundColor: context.colors.surface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Text('How are you vibing today?',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.textPrimary)),
+        title: Text('How are you vibing today?',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: context.colors.textPrimary)),
         content: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -213,9 +213,9 @@ class _InboxScreenState extends State<InboxScreen> {
               child: Chip(
                 avatar: const Text('🔥', style: TextStyle(fontSize: 13)),
                 label: Text('${streak.count}',
-                    style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: AppColors.textPrimary)),
-                backgroundColor: AppColors.amber.withValues(alpha: 0.15),
-                side: BorderSide(color: AppColors.amber.withValues(alpha: 0.4)),
+                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: context.colors.textPrimary)),
+                backgroundColor: context.colors.amber.withValues(alpha: 0.15),
+                side: BorderSide(color: context.colors.amber.withValues(alpha: 0.4)),
                 padding: EdgeInsets.zero,
                 visualDensity: VisualDensity.compact,
               ),
@@ -233,24 +233,24 @@ class _InboxScreenState extends State<InboxScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.drafts_outlined, size: 56, color: AppColors.accent),
+            Icon(Icons.drafts_outlined, size: 56, color: context.colors.accent),
             const SizedBox(height: 16),
             Text(
               'Your anonymous inbox awaits',
               textAlign: TextAlign.center,
-              style: AppType.titleSm.copyWith(fontWeight: FontWeight.w800),
+              style: context.type.titleSm.copyWith(fontWeight: FontWeight.w800),
             ),
             const SizedBox(height: 8),
             Text(
               'Sign in with your email to read messages, reply double-blind, and manage your secret link.',
               textAlign: TextAlign.center,
-              style: AppType.bodySm.copyWith(height: 1.5),
+              style: context.type.bodySm.copyWith(height: 1.5),
             ),
             const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
               child: FilledButton(
-                style: FilledButton.styleFrom(backgroundColor: AppColors.accent, foregroundColor: Colors.white, padding: const EdgeInsets.symmetric(vertical: 14)),
+                style: FilledButton.styleFrom(backgroundColor: context.colors.accent, foregroundColor: Colors.white, padding: const EdgeInsets.symmetric(vertical: 14)),
                 onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => const LoginScreen()),
                 ),
@@ -260,7 +260,7 @@ class _InboxScreenState extends State<InboxScreen> {
             const SizedBox(height: 10),
             OutlinedButton(
               onPressed: () => copyToClipboard(context, kPublicBaseUrl, message: 'Copy of share URL'),
-              child: const Text('Create your link', style: TextStyle(color: AppColors.accentSoft)),
+              child: Text('Create your link', style: TextStyle(color: context.colors.accentSoft)),
             ),
           ],
         ),
@@ -275,17 +275,17 @@ class _InboxScreenState extends State<InboxScreen> {
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
       child: Row(
         children: [
-          const Expanded(child: Text('Secret Inbox', style: AppType.headlineMd)),
+          Expanded(child: Text('Secret Inbox', style: context.type.headlineMd)),
           if (n > 0)
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
               decoration: BoxDecoration(
-                color: AppColors.accent,
+                color: context.colors.accent,
                 borderRadius: BorderRadius.circular(999),
               ),
               child: Text(
                 '$n New',
-                style: AppType.labelCaps.copyWith(color: Colors.white),
+                style: context.type.labelCaps.copyWith(color: Colors.white),
               ),
             ),
         ],
@@ -322,16 +322,16 @@ class _InboxScreenState extends State<InboxScreen> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
               decoration: BoxDecoration(
-                color: active ? AppColors.accent : AppColors.surface,
+                color: active ? context.colors.accent : context.colors.surface,
                 borderRadius: BorderRadius.circular(999),
                 border: Border.all(
-                  color: active ? AppColors.accent : AppColors.border,
+                  color: active ? context.colors.accent : context.colors.border,
                 ),
               ),
               child: Text(
                 '${f.$2} (${f.$3})',
                 style: TextStyle(
-                  color: active ? Colors.white : AppColors.textSecondary,
+                  color: active ? context.colors.textPrimary : context.colors.textSecondary,
                   fontSize: 12.5,
                   fontWeight: FontWeight.w600,
                 ),
@@ -360,24 +360,24 @@ class _InboxScreenState extends State<InboxScreen> {
                 colors: [Color(0xFF2A2356), Color(0xFF151B26)],
             ),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColors.accent.withValues(alpha: 0.35)),
+            border: Border.all(color: context.colors.accent.withValues(alpha: 0.35)),
           ),
-          child: const Row(
+          child: Row(
             children: [
-              Text('🔥', style: TextStyle(fontSize: 22)),
-              SizedBox(width: 10),
+              const Text('🔥', style: TextStyle(fontSize: 22)),
+              const SizedBox(width: 10),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text("Today's Drop is live",
-                        style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w800, color: AppColors.textPrimary)),
-                    SizedBox(height: 2),
-                    DropCountdown(),
+                        style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w800, color: context.colors.textPrimary)),
+                    const SizedBox(height: 2),
+                    const DropCountdown(),
                   ],
                 ),
               ),
-              Icon(Icons.chevron_right, color: AppColors.textMuted),
+              Icon(Icons.chevron_right, color: context.colors.textMuted),
             ],
           ),
         ),
@@ -424,13 +424,13 @@ class _InboxScreenState extends State<InboxScreen> {
 
   Widget _buildBody() {
     if (_loading && _messages == null) {
-      return const Center(child: CircularProgressIndicator(color: AppColors.accent));
+      return Center(child: CircularProgressIndicator(color: context.colors.accent));
     }
     if (_error != null) {
       return ListView(
         children: [
           const SizedBox(height: 80),
-          Text(_error!, textAlign: TextAlign.center, style: const TextStyle(color: AppColors.roseLight, fontSize: 13)),
+          Text(_error!, textAlign: TextAlign.center, style: TextStyle(color: context.colors.roseLight, fontSize: 13)),
           const SizedBox(height: 12),
           Center(
             child: OutlinedButton(onPressed: _load, child: const Text('Retry')),
@@ -443,12 +443,12 @@ class _InboxScreenState extends State<InboxScreen> {
       return ListView(
         children: [
           const SizedBox(height: 90),
-          const Icon(Icons.inbox_outlined, size: 52, color: AppColors.textFaint),
+          Icon(Icons.inbox_outlined, size: 52, color: context.colors.textFaint),
           const SizedBox(height: 12),
           Text(
             'No messages yet',
             textAlign: TextAlign.center,
-            style: AppType.bodyBase.copyWith(fontWeight: FontWeight.w700, color: AppColors.textSecondary),
+            style: context.type.bodyBase.copyWith(fontWeight: FontWeight.w700, color: context.colors.textSecondary),
           ),
           const SizedBox(height: 6),
           Text(
@@ -456,7 +456,7 @@ class _InboxScreenState extends State<InboxScreen> {
                 ? 'Share your link and wait for the first anonymous message to arrive.'
                 : 'Nothing here in this filter.',
             textAlign: TextAlign.center,
-            style: AppType.bodySm,
+            style: context.type.bodySm,
           ),
           const SizedBox(height: 20),
           const Center(
@@ -515,7 +515,7 @@ class _ShareLinkButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilledButton.icon(
-      style: FilledButton.styleFrom(backgroundColor: AppColors.accent, foregroundColor: Colors.white),
+      style: FilledButton.styleFrom(backgroundColor: context.colors.accent, foregroundColor: Colors.white),
       onPressed: () => copyToClipboard(context, kPublicBaseUrl, message: 'Link copied'),
       icon: const Icon(Icons.link, size: 17),
       label: const Text('Copy my link'),
@@ -540,15 +540,15 @@ class _MessageCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.colors.surface,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: unread ? AppColors.accent.withValues(alpha: 0.45) : AppColors.border,
+            color: unread ? context.colors.accent.withValues(alpha: 0.45) : context.colors.border,
           ),
           boxShadow: unread
               ? [
                   BoxShadow(
-                    color: AppColors.accent.withValues(alpha: 0.12),
+                    color: context.colors.accent.withValues(alpha: 0.12),
                     blurRadius: 14,
                     offset: const Offset(0, 0),
                   ),
@@ -565,11 +565,11 @@ class _MessageCard extends StatelessWidget {
                     width: 8,
                     height: 8,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: context.colors.textPrimary,
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.white.withValues(alpha: 0.5),
+                          color: context.colors.accent.withValues(alpha: 0.5),
                           blurRadius: 8,
                           spreadRadius: 1,
                         ),
@@ -580,7 +580,7 @@ class _MessageCard extends StatelessWidget {
                 ] else
                   const SizedBox(width: 2),
                 if (message.isPinned == 1) ...[
-                  const Icon(Icons.push_pin, size: 13, color: AppColors.amber),
+                  Icon(Icons.push_pin, size: 13, color: context.colors.amber),
                   const SizedBox(width: 6),
                 ],
                 if (message.deviceHint != null && message.deviceHint!.isNotEmpty) ...[
@@ -590,7 +590,7 @@ class _MessageCard extends StatelessWidget {
                 const Spacer(),
                 Text(
                   _formatTime(message.createdAt),
-                  style: AppType.bodySm.copyWith(color: AppColors.textMuted),
+                  style: context.type.bodySm.copyWith(color: context.colors.textMuted),
                 ),
               ],
             ),
@@ -599,27 +599,27 @@ class _MessageCard extends StatelessWidget {
               message.content,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
-              style: AppType.bodyBase.copyWith(fontSize: 15, height: 1.5),
+              style: context.type.bodyBase.copyWith(fontSize: 15, height: 1.5),
             ),
             if (replied) ...[
               const SizedBox(height: 10),
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: AppColors.bg,
+                  color: context.colors.bg,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: AppColors.emerald.withValues(alpha: 0.25)),
+                  border: Border.all(color: context.colors.emerald.withValues(alpha: 0.25)),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.reply, size: 14, color: AppColors.emeraldSoft),
+                    Icon(Icons.reply, size: 14, color: context.colors.emeraldSoft),
                     const SizedBox(width: 6),
                     Expanded(
                       child: Text(
                         message.replyContent!,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(color: AppColors.emeraldLight, fontSize: 12),
+                        style: TextStyle(color: context.colors.emeraldLight, fontSize: 12),
                       ),
                     ),
                   ],
@@ -701,11 +701,11 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.surface,
-        title: const Text('Block this sender?', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800)),
-        content: const Text(
+        backgroundColor: context.colors.surface,
+        title: Text('Block this sender?', style: TextStyle(color: context.colors.textPrimary, fontWeight: FontWeight.w800)),
+        content: Text(
           'This sender''s device will no longer reach your inbox. Their identity stays anonymous to you — you are blocking the device, not a person. The message will be removed.',
-          style: TextStyle(color: AppColors.textMuted, height: 1.5),
+          style: TextStyle(color: context.colors.textMuted, height: 1.5),
         ),
         actions: [
           TextButton(
@@ -713,7 +713,7 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
             child: const Text('Cancel'),
           ),
           TextButton(
-            style: TextButton.styleFrom(foregroundColor: AppColors.roseLight),
+            style: TextButton.styleFrom(foregroundColor: context.colors.roseLight),
             onPressed: () => Navigator.of(ctx).pop(true),
             child: const Text('Block'),
           ),
@@ -742,7 +742,7 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
     final replied = m.replyContent != null && m.replyContent!.isNotEmpty;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Message', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 17)),
+        title: Text('Message', style: TextStyle(color: context.colors.textPrimary, fontWeight: FontWeight.w800, fontSize: 17)),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(18),
@@ -758,22 +758,22 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                     children: [
                       Row(
                         children: [
-                          const Icon(Icons.person_outline, color: AppColors.accent, size: 18),
+                          Icon(Icons.person_outline, color: context.colors.accent, size: 18),
                           const SizedBox(width: 8),
-                          const Text('Anonymous Sender', style: AppType.bodySm),
+                          Text('Anonymous Sender', style: context.type.bodySm),
                           const Spacer(),
                           if (m.deviceHint != null && m.deviceHint!.isNotEmpty)
                             StitchPill(m.deviceHint!),
                           if (m.isPinned == 1) ...[
                             const SizedBox(width: 8),
-                            const Icon(Icons.push_pin, color: AppColors.amber, size: 15),
+                            Icon(Icons.push_pin, color: context.colors.amber, size: 15),
                           ],
                         ],
                       ),
-                      const Divider(color: AppColors.border, height: 24),
-                      Text(m.content, style: AppType.bodyBase.copyWith(fontSize: 15, height: 1.55)),
+                      Divider(color: context.colors.border, height: 24),
+                      Text(m.content, style: context.type.bodyBase.copyWith(fontSize: 15, height: 1.55)),
                       const SizedBox(height: 12),
-                      Text(_formatTime(m.createdAt), style: AppType.bodySm.copyWith(color: AppColors.textMuted)),
+                      Text(_formatTime(m.createdAt), style: context.type.bodySm.copyWith(color: context.colors.textMuted)),
                     ],
                   ),
                 ),
@@ -782,32 +782,32 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: AppColors.emerald.withValues(alpha: 0.08),
+                      color: context.colors.emerald.withValues(alpha: 0.08),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppColors.emerald.withValues(alpha: 0.3)),
+                      border: Border.all(color: context.colors.emerald.withValues(alpha: 0.3)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Row(
+                        Row(
                           children: [
-                            Icon(Icons.reply, color: AppColors.emeraldSoft, size: 16),
-                            SizedBox(width: 6),
-                            Text('Your blind reply', style: TextStyle(color: AppColors.emeraldLight, fontSize: 12, fontWeight: FontWeight.w700)),
+                            Icon(Icons.reply, color: context.colors.emeraldSoft, size: 16),
+                            const SizedBox(width: 6),
+                            Text('Your blind reply', style: TextStyle(color: context.colors.emeraldLight, fontSize: 12, fontWeight: FontWeight.w700)),
                           ],
                         ),
                         const SizedBox(height: 8),
-                        Text(m.replyContent!, style: AppType.bodySm.copyWith(color: AppColors.emeraldLight, height: 1.5)),
+                        Text(m.replyContent!, style: context.type.bodySm.copyWith(color: context.colors.emeraldLight, height: 1.5)),
                       ],
                     ),
                   ),
                 ] else ...[
                   const SizedBox(height: 16),
-                  const Text('Reply double-blind', style: AppType.titleSm),
+                  Text('Reply double-blind', style: context.type.titleSm),
                   const SizedBox(height: 4),
                   Text(
                     'Your reply is shown back to the sender anonymously via their private claim link — your identity stays hidden.',
-                    style: AppType.bodySm.copyWith(height: 1.5),
+                    style: context.type.bodySm.copyWith(height: 1.5),
                   ),
                   const SizedBox(height: 12),
                   TextField(
@@ -821,10 +821,10 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                   ),
                   const SizedBox(height: 10),
                   FilledButton(
-                    style: FilledButton.styleFrom(backgroundColor: AppColors.accent, foregroundColor: Colors.white, padding: const EdgeInsets.symmetric(vertical: 14)),
+                    style: FilledButton.styleFrom(backgroundColor: context.colors.accent, foregroundColor: Colors.white, padding: const EdgeInsets.symmetric(vertical: 14)),
                     onPressed: _sending || _replyCtrl.text.trim().isEmpty ? null : _sendReply,
                     child: _sending
-                        ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+                        ? SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2, color: context.colors.textPrimary))
                         : const Text('Send Blind Reply', style: TextStyle(fontWeight: FontWeight.w800)),
                   ),
                 ],
@@ -836,7 +836,7 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                       onPressed: _reported ? null : _report,
                       icon: const Icon(Icons.flag_outlined, size: 15),
                       label: Text(_reported ? 'Reporting…' : 'Report this message'),
-                      style: TextButton.styleFrom(foregroundColor: AppColors.roseLight),
+                      style: TextButton.styleFrom(foregroundColor: context.colors.roseLight),
                     ),
                     const SizedBox(width: 8),
                     TextButton.icon(
@@ -845,7 +845,7 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                           ? const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2))
                           : const Icon(Icons.block_outlined, size: 15),
                       label: Text(_blocking ? 'Blocking…' : 'Block sender'),
-                      style: TextButton.styleFrom(foregroundColor: AppColors.roseLight),
+                      style: TextButton.styleFrom(foregroundColor: context.colors.roseLight),
                     ),
                   ],
                 ),

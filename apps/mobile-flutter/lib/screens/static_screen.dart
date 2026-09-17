@@ -14,13 +14,13 @@ class StaticScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final page = STATIC_PAGES[keyOf];
     if (page == null) {
-      return const Scaffold(
-        body: Center(child: Text('Page not found', style: TextStyle(color: AppColors.textSecondary))),
+      return Scaffold(
+        body: Center(child: Text('Page not found', style: TextStyle(color: context.colors.textSecondary))),
       );
     }
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SecretMsg', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 17)),
+        title: Text('SecretMsg', style: TextStyle(color: context.colors.textPrimary, fontWeight: FontWeight.w800, fontSize: 17)),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, size: 16),
           onPressed: () => Navigator.of(context).maybePop(),
@@ -78,17 +78,17 @@ class _StaticSectionCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF0F1220),
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: context.colors.border),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             cleanHeading,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: context.colors.textPrimary,
               fontSize: 15,
               fontWeight: FontWeight.w800,
             ),
@@ -99,8 +99,8 @@ class _StaticSectionCard extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 8),
               child: Text(
                 para,
-                style: const TextStyle(
-                  color: Color(0xFF94A3B8),
+                style: TextStyle(
+                  color: context.colors.textSecondary,
                   fontSize: 13,
                   height: 1.55,
                 ),
@@ -133,32 +133,32 @@ class _EmailCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFF1E1B4B), Color(0xFF0F1220)],
+        gradient: LinearGradient(
+          colors: [context.colors.accentDeep, context.colors.surface],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppColors.accent.withValues(alpha: 0.3)),
+        border: Border.all(color: context.colors.accent.withValues(alpha: 0.3)),
       ),
       child: Column(
         children: [
-          const Text(
+          Text(
             'Need help or have concerns?',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 15),
+            style: TextStyle(color: context.colors.textPrimary, fontWeight: FontWeight.w800, fontSize: 15),
           ),
           const SizedBox(height: 4),
-          const Text(
+          Text(
             'Our team reads every note. For safety emergencies, reach out immediately.',
             textAlign: TextAlign.center,
-            style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12, height: 1.5),
+            style: TextStyle(color: context.colors.textSecondary, fontSize: 12, height: 1.5),
           ),
           const SizedBox(height: 12),
           SizedBox(
             width: double.infinity,
             child: FilledButton.icon(
               style: FilledButton.styleFrom(
-                backgroundColor: AppColors.accent,
+                backgroundColor: context.colors.accent,
                 foregroundColor: Colors.white,
               ),
               onPressed: () async {

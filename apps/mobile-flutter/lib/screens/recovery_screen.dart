@@ -80,14 +80,14 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Text(
+                Text(
                   'Use a backup code to recover your account',
-                  style: TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.w900, height: 1.25),
+                  style: TextStyle(color: context.colors.textPrimary, fontSize: 19, fontWeight: FontWeight.w900, height: 1.25),
                 ),
                 const SizedBox(height: 8),
-                const Text(
+                Text(
                   'Enter your handle, one of your backup codes, and set a new PIN.',
-                  style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13, height: 1.55),
+                  style: TextStyle(color: context.colors.textSecondary, fontSize: 13, height: 1.55),
                 ),
                 const SizedBox(height: 20),
                 TextField(
@@ -98,9 +98,9 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                     labelText: 'Handle',
                     hintText: 'lumen4821',
                     filled: true,
-                    fillColor: const Color(0xFF0F1220),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppColors.border)),
-                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppColors.border)),
+                    fillColor: context.colors.surface,
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: context.colors.border)),
+                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: context.colors.border)),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -112,9 +112,9 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                     labelText: 'Backup Code',
                     hintText: 'XXXX-XXXX',
                     filled: true,
-                    fillColor: const Color(0xFF0F1220),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppColors.border)),
-                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppColors.border)),
+                    fillColor: context.colors.surface,
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: context.colors.border)),
+                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: context.colors.border)),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -129,22 +129,22 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                     labelText: 'New PIN',
                     hintText: '4-6 digits',
                     filled: true,
-                    fillColor: const Color(0xFF0F1220),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppColors.border)),
-                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppColors.border)),
+                    fillColor: context.colors.surface,
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: context.colors.border)),
+                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: context.colors.border)),
                     counterText: '',
                   ),
                 ),
                 const SizedBox(height: 16),
                 FilledButton(
                   style: FilledButton.styleFrom(
-                    backgroundColor: AppColors.accent,
+                    backgroundColor: context.colors.accent,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                   ),
                   onPressed: _loading ? null : _recover,
                   child: _loading
-                      ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+                      ? SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: context.colors.textPrimary))
                       : const Text('Recover Account', style: TextStyle(fontWeight: FontWeight.w800)),
                 ),
                 if (_error != null) ...[

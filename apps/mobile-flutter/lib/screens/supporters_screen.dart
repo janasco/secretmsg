@@ -54,7 +54,7 @@ class _SupportersScreenState extends State<SupportersScreen> {
     return Scaffold(
       appBar: const AppTopBar(title: 'Supporters Wall'),
       body: _loading
-          ? const Center(child: CircularProgressIndicator(color: AppColors.accent))
+          ? Center(child: CircularProgressIndicator(color: context.colors.accent))
           : _error != null
               ? ListView(
                   children: [
@@ -78,9 +78,9 @@ class _SupportersScreenState extends State<SupportersScreen> {
                               _HeroCard(data: _data!),
                               const SizedBox(height: 18),
                               if (_data!.supporters.isNotEmpty)
-                                const Text(
+                                Text(
                                   'Recent supporters',
-                                  style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w800),
+                                  style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w800),
                                 ),
                               const SizedBox(height: 10),
                               for (final s in _data!.supporters) ...[
@@ -112,27 +112,27 @@ class _HeroCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(colors: [Color(0xFF1E1B4B), Color(0xFF0F1220)]),
+        gradient: LinearGradient(colors: [context.colors.accentDeep, context.colors.surface]),
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: AppColors.accent.withValues(alpha: 0.3)),
+        border: Border.all(color: context.colors.accent.withValues(alpha: 0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
-              Icon(Icons.emoji_events, color: Color(0xFFF59E0B), size: 22),
-              SizedBox(width: 8),
+              const Icon(Icons.emoji_events, color: Color(0xFFF59E0B), size: 22),
+              const SizedBox(width: 8),
               Text(
                 'Powering an anonymous, independent internet',
-                style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w900),
+                style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w900),
               ),
             ],
           ),
           const SizedBox(height: 8),
-          const Text(
+          Text(
             'SecretMsg is a personal project with zero ad trackers and zero data selling. Running secure, always-on infrastructure costs real money — every supporter keeps the lights on.',
-            style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12.5, height: 1.55),
+            style: TextStyle(color: context.colors.textSecondary, fontSize: 12.5, height: 1.55),
           ),
           const SizedBox(height: 18),
           Row(
@@ -167,13 +167,13 @@ class _StatBox extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0xFF090A0F),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.border),
+        border: Border.all(color: context.colors.border),
       ),
       child: Column(
         children: [
-          Text(value, style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w900)),
+          Text(value, style: TextStyle(color: context.colors.textPrimary, fontSize: 20, fontWeight: FontWeight.w900)),
           const SizedBox(height: 4),
-          Text(label, textAlign: TextAlign.center, style: const TextStyle(color: Color(0xFF64748B), fontSize: 10)),
+          Text(label, textAlign: TextAlign.center, style: TextStyle(color: context.colors.textMuted, fontSize: 10)),
         ],
       ),
     );
@@ -184,12 +184,12 @@ class _SupporterTile extends StatelessWidget {
   final Supporter supporter;
   const _SupporterTile({required this.supporter});
 
-  (String, Color) tierStyle(String tier) {
+  (String, Color) tierStyle(BuildContext context, String tier) {
     switch (tier) {
       case 'Golden Guardian':
         return ('👑', const Color(0xFFF59E0B));
       case 'Silver Patron':
-        return ('🥈', const Color(0xFF94A3B8));
+        return ('🥈', context.colors.textSecondary);
       case 'Coffee Backer':
         return ('☕', const Color(0xFFC084FC));
       default:
@@ -199,11 +199,11 @@ class _SupporterTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final (icon, color) = tierStyle(supporter.tier);
+    final (icon, color) = tierStyle(context, supporter.tier);
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: const Color(0xFF0F1220),
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
           color: color.withValues(alpha: 0.25),
@@ -223,9 +223,9 @@ class _SupporterTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(supporter.alias, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 14)),
+                    Text(supporter.alias, style: TextStyle(color: context.colors.textPrimary, fontWeight: FontWeight.w700, fontSize: 14)),
                     const SizedBox(height: 2),
-                    Text(_formatTime(supporter.createdAt), style: const TextStyle(color: Color(0xFF64748B), fontSize: 10)),
+                    Text(_formatTime(supporter.createdAt), style: TextStyle(color: context.colors.textMuted, fontSize: 10)),
                   ],
                 ),
               ),
@@ -244,7 +244,7 @@ class _SupporterTile extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               '“${supporter.note}”',
-              style: const TextStyle(color: Color(0xFFCBD5E1), fontSize: 12.5, height: 1.5),
+              style: TextStyle(color: context.colors.textHigh, fontSize: 12.5, height: 1.5),
             ),
           ],
         ],
@@ -356,21 +356,21 @@ class _SupportCtaState extends State<_SupportCta> {
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.accent.withValues(alpha: 0.25)),
+        border: Border.all(color: context.colors.accent.withValues(alpha: 0.25)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text(
+          Text(
             'Want to be on this wall?',
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w800),
+            style: TextStyle(color: context.colors.textPrimary, fontSize: 15, fontWeight: FontWeight.w800),
           ),
           const SizedBox(height: 4),
-          const Text(
+          Text(
             'Supporting keeps SecretMsg ad-free and fully private.',
             textAlign: TextAlign.center,
-            style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12, height: 1.5),
+            style: TextStyle(color: context.colors.textSecondary, fontSize: 12, height: 1.5),
           ),
           const SizedBox(height: 14),
           ..._buildStore(),
@@ -401,12 +401,12 @@ class _SupportCtaState extends State<_SupportCta> {
 
     // Sideloaded builds and misconfigured Play products both land here.
     if (!Billing.isAvailable || Billing.products.isEmpty) {
-      return const [
+      return [
         Text(
           'In-app purchases are not available on this device yet. '
           'Reach out to support@secretmsg.net if you would like to support the project.',
           textAlign: TextAlign.center,
-          style: TextStyle(color: Color(0xFF64748B), fontSize: 11, height: 1.5),
+          style: TextStyle(color: context.colors.textMuted, fontSize: 11, height: 1.5),
         ),
       ];
     }
@@ -454,7 +454,7 @@ class _PerkRow extends StatelessWidget {
         Expanded(
           child: Text(
             title,
-            style: const TextStyle(color: Color(0xFFCBD5E1), fontSize: 13, fontWeight: FontWeight.w600),
+            style: TextStyle(color: context.colors.textHigh, fontSize: 13, fontWeight: FontWeight.w600),
           ),
         ),
         SizedBox(

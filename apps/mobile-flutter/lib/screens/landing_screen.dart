@@ -37,7 +37,7 @@ class _LandingScreenState extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.bg,
+      backgroundColor: context.colors.bg,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
@@ -52,8 +52,8 @@ class _LandingScreenState extends State<LandingScreen> {
                     child: Image.asset('assets/app-icon.png', width: 44, height: 44),
                   ),
                   const SizedBox(width: 10),
-                  const Text('SecretMsg',
-                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 22)),
+                  Text('SecretMsg',
+                      style: TextStyle(color: context.colors.textPrimary, fontWeight: FontWeight.w800, fontSize: 22)),
                 ],
               ),
               const SizedBox(height: 8),
@@ -72,12 +72,12 @@ class _LandingScreenState extends State<LandingScreen> {
                         const SizedBox(height: 20),
                         Text(c.title,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                color: Colors.white, fontSize: 24, fontWeight: FontWeight.w900, height: 1.25)),
+                            style: TextStyle(
+                                color: context.colors.textPrimary, fontSize: 24, fontWeight: FontWeight.w900, height: 1.25)),
                         const SizedBox(height: 12),
                         Text(c.body,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(color: AppColors.textSecondary, fontSize: 15, height: 1.55)),
+                            style: TextStyle(color: context.colors.textSecondary, fontSize: 15, height: 1.55)),
                       ],
                     );
                   },
@@ -94,7 +94,7 @@ class _LandingScreenState extends State<LandingScreen> {
                       width: _page == i ? 22 : 8,
                       height: 8,
                       decoration: BoxDecoration(
-                        color: _page == i ? AppColors.accent : AppColors.surfaceLight,
+                        color: _page == i ? context.colors.accent : context.colors.surfaceLight,
                         borderRadius: BorderRadius.circular(999),
                       ),
                     ),
@@ -104,7 +104,7 @@ class _LandingScreenState extends State<LandingScreen> {
               // The one decision.
               FilledButton(
                 style: FilledButton.styleFrom(
-                  backgroundColor: AppColors.accent,
+                  backgroundColor: context.colors.accent,
                   foregroundColor: Colors.white,
                   minimumSize: const Size.fromHeight(54),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -115,13 +115,13 @@ class _LandingScreenState extends State<LandingScreen> {
               const SizedBox(height: 8),
               TextButton(
                 onPressed: () => _go(const LoginScreen()),
-                child: const Text('I already have one — log in',
-                    style: TextStyle(color: AppColors.accentSoft, fontWeight: FontWeight.w700, fontSize: 15)),
+                child: Text('I already have one — log in',
+                    style: TextStyle(color: context.colors.accentSoft, fontWeight: FontWeight.w700, fontSize: 15)),
               ),
               TextButton(
                 onPressed: () => _go(const SendLookupScreen()),
-                child: const Text('Just sending to a friend?',
-                    style: TextStyle(color: AppColors.textMuted, fontSize: 13)),
+                child: Text('Just sending to a friend?',
+                    style: TextStyle(color: context.colors.textMuted, fontSize: 13)),
               ),
             ],
           ),

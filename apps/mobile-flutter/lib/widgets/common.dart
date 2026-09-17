@@ -27,9 +27,9 @@ class GlassCard extends StatelessWidget {
     final card = Container(
       padding: padding,
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.colors.surface,
         borderRadius: borderRadius ?? BorderRadius.circular(16),
-        border: Border.all(color: borderColor ?? AppColors.border),
+        border: Border.all(color: borderColor ?? context.colors.border),
       ),
       child: child,
     );
@@ -57,25 +57,25 @@ class StitchPill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = color ?? AppColors.accent;
+    final c = color ?? context.colors.accent;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: filled ? c : AppColors.surfaceLight,
+        color: filled ? c : context.colors.surfaceLight,
         borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: filled ? c : AppColors.border),
+        border: Border.all(color: filled ? c : context.colors.border),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           if (icon != null) ...[
-            Icon(icon, size: 12, color: filled ? Colors.white : AppColors.textSecondary),
+            Icon(icon, size: 12, color: filled ? context.colors.textPrimary : context.colors.textSecondary),
             const SizedBox(width: 4),
           ],
           Text(
             label,
-            style: AppType.labelCaps.copyWith(
-              color: filled ? Colors.white : AppColors.textSecondary,
+            style: context.type.labelCaps.copyWith(
+              color: filled ? context.colors.textPrimary : context.colors.textSecondary,
             ),
           ),
         ],
@@ -99,9 +99,9 @@ class StatCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(label.toUpperCase(), style: AppType.labelCaps),
+          Text(label.toUpperCase(), style: context.type.labelCaps),
           const SizedBox(height: 2),
-          Text(value, style: AppType.headlineMd),
+          Text(value, style: context.type.headlineMd),
         ],
       ),
     );
@@ -128,7 +128,7 @@ class StitchSectionHeader extends StatelessWidget {
       padding: padding,
       child: Row(
         children: [
-          Expanded(child: Text(title, style: AppType.headlineMd)),
+          Expanded(child: Text(title, style: context.type.headlineMd)),
           if (trailing != null) ...[
             const SizedBox(width: 12),
             trailing!,
@@ -157,8 +157,8 @@ class AvatarBadge extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [AppColors.accent, AppColors.amber],
+        gradient: LinearGradient(
+          colors: [context.colors.accent, context.colors.amber],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -175,15 +175,15 @@ class AvatarBadge extends StatelessWidget {
         child: Container(
           width: size - (showRing ? size * 0.08 : 0),
           height: size - (showRing ? size * 0.08 : 0),
-          decoration: const BoxDecoration(
-            color: AppColors.bgSoft,
+          decoration: BoxDecoration(
+            color: context.colors.bgSoft,
             shape: BoxShape.circle,
           ),
           child: Center(
             child: Text(
               initials.isEmpty ? '?' : initials,
               style: TextStyle(
-                color: Colors.white,
+                color: context.colors.textPrimary,
                 fontSize: size * 0.32,
                 fontWeight: FontWeight.w800,
               ),
@@ -206,14 +206,14 @@ class SupporterBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
-        color: AppColors.amber.withValues(alpha: 0.15),
+        color: context.colors.amber.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: AppColors.amber.withValues(alpha: 0.35)),
+        border: Border.all(color: context.colors.amber.withValues(alpha: 0.35)),
       ),
       child: Text(
         badgeTitle ?? tier,
-        style: const TextStyle(
-          color: AppColors.amberLight,
+        style: TextStyle(
+          color: context.colors.amberLight,
           fontSize: 10,
           fontWeight: FontWeight.w700,
         ),
@@ -235,14 +235,14 @@ class RankBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
-        color: AppColors.accent.withValues(alpha: 0.15),
+        color: context.colors.accent.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: AppColors.accent.withValues(alpha: 0.35)),
+        border: Border.all(color: context.colors.accent.withValues(alpha: 0.35)),
       ),
       child: Text(
         '$emoji $name',
-        style: const TextStyle(
-          color: AppColors.accentSoft,
+        style: TextStyle(
+          color: context.colors.accentSoft,
           fontSize: 10,
           fontWeight: FontWeight.w700,
         ),
@@ -264,8 +264,8 @@ class RankProgressBar extends StatelessWidget {
       child: LinearProgressIndicator(
         value: progress.clamp(0.0, 1.0),
         minHeight: 6,
-        backgroundColor: AppColors.border,
-        valueColor: const AlwaysStoppedAnimation<Color>(AppColors.accent),
+        backgroundColor: context.colors.border,
+        valueColor: AlwaysStoppedAnimation<Color>(context.colors.accent),
       ),
     );
   }
@@ -298,13 +298,13 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
                       height: 28,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: context.colors.textPrimary,
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Text(
+                      child: Text(
                         'S',
                         style: TextStyle(
-                          color: AppColors.bg,
+                          color: context.colors.bg,
                           fontWeight: FontWeight.w900,
                           fontSize: 16,
                         ),
@@ -314,10 +314,10 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 const SizedBox(width: 10),
                 if (title.isEmpty)
-                  const Text(
+                  Text(
                     'SecretMsg',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: context.colors.textPrimary,
                       fontSize: 17,
                       fontWeight: FontWeight.w800,
                     ),
@@ -325,8 +325,8 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
                 else
                   Text(
                     title,
-                    style: const TextStyle(
-                      color: Colors.white,
+                    style: TextStyle(
+                      color: context.colors.textPrimary,
                       fontSize: 17,
                       fontWeight: FontWeight.w800,
                     ),
@@ -369,15 +369,15 @@ class PublicPageHeader extends StatelessWidget {
                   IconButton(
                     onPressed: () => Navigator.of(context).maybePop(),
                     icon: const Icon(Icons.arrow_back_ios_new, size: 16),
-                    color: AppColors.textSecondary,
+                    color: context.colors.textSecondary,
                     visualDensity: VisualDensity.compact,
                   ),
                   const SizedBox(width: 4),
                   TextButton(
                     onPressed: () => Navigator.of(context).popUntil((r) => r.isFirst),
-                    child: const Text(
+                    child: Text(
                       'Back to secretmsg.net',
-                      style: TextStyle(color: AppColors.textSecondary, fontSize: 12),
+                      style: TextStyle(color: context.colors.textSecondary, fontSize: 12),
                     ),
                   ),
                 ],
@@ -389,14 +389,14 @@ class PublicPageHeader extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 14),
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
-                      color: AppColors.accent.withValues(alpha: 0.1),
+                      color: context.colors.accent.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(999),
-                      border: Border.all(color: AppColors.accent.withValues(alpha: 0.25)),
+                      border: Border.all(color: context.colors.accent.withValues(alpha: 0.25)),
                     ),
                     child: Text(
                       eyebrow!,
-                      style: const TextStyle(
-                        color: AppColors.accentSoft,
+                      style: TextStyle(
+                        color: context.colors.accentSoft,
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                       ),
@@ -406,8 +406,8 @@ class PublicPageHeader extends StatelessWidget {
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  color: context.colors.textPrimary,
                   fontSize: 28,
                   fontWeight: FontWeight.w900,
                   height: 1.2,
@@ -418,8 +418,8 @@ class PublicPageHeader extends StatelessWidget {
                 Text(
                   description!,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: AppColors.textHigh,
+                  style: TextStyle(
+                    color: context.colors.textHigh,
                     fontSize: 14,
                     height: 1.5,
                   ),
@@ -452,7 +452,7 @@ void showErrorSnack(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text(message),
-      backgroundColor: AppColors.roseDeep,
+      backgroundColor: context.colors.roseDeep,
     ),
   );
 }
@@ -461,7 +461,7 @@ void showSuccessSnack(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text(message),
-      backgroundColor: AppColors.emerald,
+      backgroundColor: context.colors.emerald,
     ),
   );
 }
@@ -494,9 +494,9 @@ class AuthScaffold extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(heading, style: AppType.headlineMd),
+                Text(heading, style: context.type.headlineMd),
                 const SizedBox(height: 8),
-                Text(subheading, style: AppType.bodySm.copyWith(height: 1.55)),
+                Text(subheading, style: context.type.bodySm.copyWith(height: 1.55)),
                 const SizedBox(height: 20),
                 ...children,
               ],
@@ -544,26 +544,26 @@ class AppTextField extends StatelessWidget {
       maxLength: maxLength,
       inputFormatters: inputFormatters,
       onSubmitted: onSubmitted,
-      style: AppType.bodyBase,
+      style: context.type.bodyBase,
       decoration: InputDecoration(
         labelText: label,
         hintText: hint,
-        labelStyle: const TextStyle(color: AppColors.textSecondary),
-        hintStyle: const TextStyle(color: AppColors.textMuted),
+        labelStyle: TextStyle(color: context.colors.textSecondary),
+        hintStyle: TextStyle(color: context.colors.textMuted),
         filled: true,
-        fillColor: AppColors.surface,
+        fillColor: context.colors.surface,
         counterText: '',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.border),
+          borderSide: BorderSide(color: context.colors.border),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.border),
+          borderSide: BorderSide(color: context.colors.border),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.accent),
+          borderSide: BorderSide(color: context.colors.accent),
         ),
       ),
     );

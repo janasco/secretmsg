@@ -89,7 +89,7 @@ class _AppShellState extends State<AppShell> {
           if (!didPop) _switchTo(AppTab.inbox);
         },
         child: Scaffold(
-          backgroundColor: AppColors.bg,
+          backgroundColor: context.colors.bg,
           body: IndexedStack(
             index: index,
             children: [
@@ -99,21 +99,21 @@ class _AppShellState extends State<AppShell> {
           ),
           bottomNavigationBar: NavigationBarTheme(
             data: NavigationBarThemeData(
-              backgroundColor: AppColors.bgSoft,
-              indicatorColor: AppColors.accent.withValues(alpha: 0.18),
+              backgroundColor: context.colors.bgSoft,
+              indicatorColor: context.colors.accent.withValues(alpha: 0.18),
               labelTextStyle: WidgetStateProperty.resolveWith((states) {
                 final selected = states.contains(WidgetState.selected);
                 return TextStyle(
                   fontSize: 11,
                   fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
-                  color: selected ? AppColors.textPrimary : AppColors.textMuted,
+                  color: selected ? context.colors.textPrimary : context.colors.textMuted,
                 );
               }),
               iconTheme: WidgetStateProperty.resolveWith((states) {
                 final selected = states.contains(WidgetState.selected);
                 return IconThemeData(
                   size: 22,
-                  color: selected ? AppColors.textPrimary : AppColors.textMuted,
+                  color: selected ? context.colors.textPrimary : context.colors.textMuted,
                 );
               }),
             ),

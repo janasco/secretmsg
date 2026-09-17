@@ -73,7 +73,7 @@ class _DailyDropScreenState extends State<DailyDropScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.bg,
+      backgroundColor: context.colors.bg,
       appBar: const AppTopBar(title: "Today's Drop"),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
@@ -87,7 +87,7 @@ class _DailyDropScreenState extends State<DailyDropScreen> {
                 colors: [Color(0xFF2A2356), Color(0xFF151B26)],
               ),
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: AppColors.accent.withValues(alpha: 0.35)),
+              border: Border.all(color: context.colors.accent.withValues(alpha: 0.35)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,17 +97,17 @@ class _DailyDropScreenState extends State<DailyDropScreen> {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
-                        color: AppColors.amber.withValues(alpha: 0.15),
+                        color: context.colors.amber.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(999),
-                        border: Border.all(color: AppColors.amber.withValues(alpha: 0.4)),
+                        border: Border.all(color: context.colors.amber.withValues(alpha: 0.4)),
                       ),
-                      child: const Text(
+                      child: Text(
                         '🔥 DAILY DROP',
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w800,
                           letterSpacing: 0.6,
-                          color: AppColors.amberLight,
+                          color: context.colors.amberLight,
                         ),
                       ),
                     ),
@@ -118,12 +118,12 @@ class _DailyDropScreenState extends State<DailyDropScreen> {
                 const SizedBox(height: 16),
                 Text(
                   _prompt,
-                  style: AppType.titleSm.copyWith(height: 1.45, fontWeight: FontWeight.w700),
+                  style: context.type.titleSm.copyWith(height: 1.45, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 8),
-                const Text(
+                Text(
                   'Share it out and collect anonymous answers — or answer it yourself. Gone at midnight.',
-                  style: TextStyle(fontSize: 12.5, height: 1.5, color: AppColors.textSecondary),
+                  style: TextStyle(fontSize: 12.5, height: 1.5, color: context.colors.textSecondary),
                 ),
               ],
             ),
@@ -131,25 +131,25 @@ class _DailyDropScreenState extends State<DailyDropScreen> {
           const SizedBox(height: 16),
           FilledButton.icon(
             style: FilledButton.styleFrom(
-              backgroundColor: AppColors.accent,
+              backgroundColor: context.colors.accent,
               foregroundColor: Colors.white,
               minimumSize: const Size.fromHeight(50),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
             ),
             onPressed: _answering ? null : _answer,
             icon: _answering
-                ? const SizedBox(
+                ? SizedBox(
                     width: 16, height: 16,
-                    child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+                    child: CircularProgressIndicator(strokeWidth: 2, color: context.colors.textPrimary))
                 : const Icon(Icons.check, size: 18),
             label: Text(_answering ? 'Saving…' : 'I answered it'),
           ),
           const SizedBox(height: 10),
           OutlinedButton.icon(
             style: OutlinedButton.styleFrom(
-              foregroundColor: AppColors.textPrimary,
+              foregroundColor: context.colors.textPrimary,
               minimumSize: const Size.fromHeight(50),
-              side: const BorderSide(color: AppColors.borderStrong),
+              side: BorderSide(color: context.colors.borderStrong),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
             ),
             onPressed: _shareLink,

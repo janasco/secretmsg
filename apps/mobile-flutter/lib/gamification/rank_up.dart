@@ -43,32 +43,32 @@ class RankUpDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: AppColors.surface,
+      backgroundColor: context.colors.surface,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
-        side: const BorderSide(color: AppColors.border),
+        side: BorderSide(color: context.colors.border),
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(rank.emoji, style: const TextStyle(fontSize: 48)),
           const SizedBox(height: 12),
-          const Text(
+          Text(
             'Rank up!',
-            style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w900),
+            style: TextStyle(color: context.colors.textPrimary, fontSize: 20, fontWeight: FontWeight.w900),
           ),
           const SizedBox(height: 4),
           Text(
             'You reached ${rank.name} with ${rank.score} activity points.',
             textAlign: TextAlign.center,
-            style: const TextStyle(color: AppColors.textSecondary, fontSize: 13, height: 1.5),
+            style: TextStyle(color: context.colors.textSecondary, fontSize: 13, height: 1.5),
           ),
         ],
       ),
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Nice', style: TextStyle(color: AppColors.accent)),
+          child: Text('Nice', style: TextStyle(color: context.colors.accent)),
         ),
       ],
     );

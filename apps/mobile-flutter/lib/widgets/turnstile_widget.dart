@@ -7,6 +7,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 
 import '../api/config.dart';
+import '../theme.dart';
 
 /// Bot-check widget rendered inside a WebView.
 ///
@@ -59,7 +60,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
       });
       _controller = WebViewController()
         ..setJavaScriptMode(JavaScriptMode.disabled)
-        ..setBackgroundColor(const Color(0xFF101322));
+        ..setBackgroundColor(context.colors.bg);
       return;
     }
     if (defaultTargetPlatform == TargetPlatform.android) {
@@ -67,7 +68,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
     }
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(const Color(0xFF101322))
+      ..setBackgroundColor(context.colors.bg)
       ..setNavigationDelegate(
         NavigationDelegate(onPageFinished: (_) => _inject()),
       )
@@ -296,7 +297,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
     return Container(
       constraints: BoxConstraints(minHeight: widget.height),
       decoration: BoxDecoration(
-        color: const Color(0xFF101322),
+        color: context.colors.bg,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: _errored ? const Color(0xFFF43F5E) : const Color(0x336366F1),
@@ -316,8 +317,8 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
                     _misconfigured
                         ? 'Verification unavailable — sending is disabled'
                         : _status,
-                    style: const TextStyle(
-                      color: Color(0xFF94A3B8),
+                    style: TextStyle(
+                      color: context.colors.textSecondary,
                       fontSize: 10,
                       fontWeight: FontWeight.w500,
                     ),
