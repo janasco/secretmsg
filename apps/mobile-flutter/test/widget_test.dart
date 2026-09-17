@@ -9,7 +9,7 @@ void main() {
 
   tearDown(clearStoredTokenMock);
 
-  testWidgets('signed-out launch lands on the marketing screen', (tester) async {
+  testWidgets('signed-out launch lands on the welcome screen', (tester) async {
     mockStoredToken(null);
 
     await tester.pumpWidget(const SecretMsgApp());
@@ -19,6 +19,7 @@ void main() {
     }
 
     expect(find.text('SecretMsg'), findsOneWidget);
-    expect(find.text('The messenger that keeps your secrets'), findsOneWidget);
+    expect(find.text('Create my inbox — free'), findsOneWidget);
+    expect(find.text('I already have one — log in'), findsOneWidget);
   });
 }
