@@ -1,23 +1,58 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, Clock, Link2, Check } from 'lucide-react';
+import { ArrowLeft, Clock, Link2, Check, Camera } from 'lucide-react';
 import { PublicPage } from '@/components/PublicPage';
-import { getPost, formatPostDate } from '@/lib/blog';
+import { formatPostDate } from '@/pages/BlogPage';
 import { useSeo } from '@/lib/seo';
+
+interface FullPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readMinutes: number;
+  tags: string[];
+  image: string;
+  credit: string;
+  credit_url: string;
+  html: string;
+}
 
 export const PostPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
+  const [post, setPost] = useState<FullPost | null>(null);
+  const [missing, setMissing] = useState(false);
   const [copied, setCopied] = useState(false);
-  const post = slug ? getPost(slug) : undefined;
+
+  const ogImage = post?.image
+    ? post.image.startsWith('http')
+      ? post.image
+      : `https://secretmsg.net${post.image}`
+    : undefined;
 
   useSeo({
-    title: post ? `${post.title} - SecretMsg Blog` : 'Post not found - SecretMsg',
-    description: post?.excerpt ?? 'This story does not exist (yet).',
-    url: `https://secretmsg.net/post/${post?.slug ?? slug ?? ''}`,
+    title: post ? `${post.title} - SecretMsg Blog` : 'Post - SecretMsg Blog',
+    description: post?.excerpt ?? 'Notes on honest messaging, privacy, and anonymous culture.',
+    url: `https://secretmsg.net/post/${slug ?? ''}`,
+    image: ogImage,
     ...(post ? { publishedTime: `${post.date}T12:00:00Z` } : {}),
   });
 
-  if (!post) {
+  useEffect(() => {
+    if (!slug || !/^[a-z0-9-]+$/.test(slug)) {
+      setMissing(true);
+      return;
+    }
+    fetch(`/posts/${slug}.json`)
+      .then((r) => {
+        if (!r.ok) throw new Error('missing');
+        return r.json();
+      })
+      .then((d) => setPost(d))
+      .catch(() => setMissing(true));
+  }, [slug]);
+
+  if (missing) {
     return (
       <PublicPage title="Post not found" description="This story doesn't exist (yet).">
         <div className="text-center space-y-4 py-10">
@@ -31,6 +66,16 @@ export const PostPage: React.FC = () => {
             <ArrowLeft className="w-3.5 h-3.5" />
             Back to the blog
           </Link>
+        </div>
+      </PublicPage>
+    );
+  }
+
+  if (!post) {
+    return (
+      <PublicPage title="Loading…" description="">
+        <div className="flex justify-center py-16">
+          <div className="w-8 h-8 rounded-full border-2 border-indigo-500 border-t-transparent animate-spin" />
         </div>
       </PublicPage>
     );
@@ -52,7 +97,7 @@ export const PostPage: React.FC = () => {
       eyebrow={`${formatPostDate(post.date)} • ${post.readMinutes} min read`}
       description={post.excerpt}
     >
-      <div className="flex flex-wrap items-center gap-2 mb-8">
+      <div className="flex flex-wrap items-center gap-2 mb-6">
         {post.tags.map((t) => (
           <span
             key={t}
@@ -75,25 +120,32 @@ export const PostPage: React.FC = () => {
         </button>
       </div>
 
-      <article className="space-y-8">
-        {post.sections.map((section, i) => (
-          <section key={i} className="space-y-3">
-            {section.heading && (
-              <h2 className="text-xl font-bold text-white tracking-tight">{section.heading}</h2>
-            )}
-            {section.body.map((para, j) => (
-              <p key={j} className="text-sm sm:text-[15px] text-slate-300 leading-relaxed">
-                {para}
-              </p>
-            ))}
-            {section.quote && (
-              <blockquote className="border-l-2 border-amber-400/60 pl-4 py-1 text-base sm:text-lg font-medium italic text-white/90">
-                “{section.quote}”
-              </blockquote>
-            )}
-          </section>
-        ))}
-      </article>
+      {post.image && (
+        <figure className="mb-8">
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full rounded-2xl border border-white/10 object-cover max-h-[420px]"
+          />
+          {post.credit && (
+            <figcaption className="mt-2 flex items-center gap-1.5 text-[11px] text-slate-500">
+              <Camera className="w-3 h-3 shrink-0" />
+              {post.credit_url ? (
+                <>
+                  <a href={post.credit_url} target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 underline underline-offset-2">
+                    {post.credit}
+                  </a>
+                  <span>· via Pixabay</span>
+                </>
+              ) : (
+                <span>{post.credit}</span>
+              )}
+            </figcaption>
+          )}
+        </figure>
+      )}
+
+      <article className="blog-body" dangerouslySetInnerHTML={{ __html: post.html }} />
 
       <div className="mt-12 glass-panel p-6 rounded-2xl border-indigo-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
