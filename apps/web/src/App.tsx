@@ -33,6 +33,8 @@ const PrivacyPage = lazy(() => import('@//pages/PrivacyPage').then(m => ({ defau
 const TermsPage = lazy(() => import('@//pages/TermsPage').then(m => ({ default: m.TermsPage })));
 const CookiesPage = lazy(() => import('@//pages/CookiesPage').then(m => ({ default: m.CookiesPage })));
 const DisclaimerPage = lazy(() => import('@//pages/DisclaimerPage').then(m => ({ default: m.DisclaimerPage })));
+const BlogPage = lazy(() => import('@//pages/BlogPage').then(m => ({ default: m.BlogPage })));
+const PostPage = lazy(() => import('@//pages/PostPage').then(m => ({ default: m.PostPage })));
 
 const PublicSuspense: React.FC = () => (
   <div className="min-h-[40vh] flex items-center justify-center">
@@ -53,7 +55,8 @@ const ROUTE_TITLES: Array<[RegExp, string]> = [
   [/^\/faq/, 'FAQ - SecretMsg'],
   [/^\/contact/, 'Contact - SecretMsg'],
   [/^\/about/, 'About - SecretMsg'],
-  [/^\/reply\//, 'Anonymous Reply - SecretMsg'],
+  [/^\/blog/, 'Blog - SecretMsg'],
+  [/^\/post\//, 'SecretMsg Blog'],
   [/^\/(p|legal)\//, 'SecretMsg'],
 ];
 
@@ -137,6 +140,8 @@ export const App: React.FC = () => {
           <Route path="/p/disclaimer" element={<Suspense fallback={<PublicSuspense />}><DisclaimerPage /></Suspense>} />
           <Route path="/reply/:token" element={<BlindReplyPage />} />
           <Route path="/legal/:doc" element={<LegalPage />} />
+          <Route path="/blog" element={<Suspense fallback={<PublicSuspense />}><BlogPage /></Suspense>} />
+          <Route path="/post/:slug" element={<Suspense fallback={<PublicSuspense />}><PostPage /></Suspense>} />
           <Route path="/:username" element={<SendMessagePage />} />
         </Routes>
       </main>
