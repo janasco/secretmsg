@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, Clock, Link2, Check } from 'lucide-react';
 import { PublicPage } from '@/components/PublicPage';
 import { getPost, formatPostDate } from '@/lib/blog';
+import { useSeo } from '@/lib/seo';
 
 export const PostPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [copied, setCopied] = useState(false);
   const post = slug ? getPost(slug) : undefined;
 
-  useEffect(() => {
-    if (post) {
-      document.title = `${post.title} - SecretMsg Blog`;
-    }
-  }, [post]);
+  useSeo({
+    title: post ? `${post.title} - SecretMsg Blog` : 'Post not found - SecretMsg',
+    description: post?.excerpt ?? 'This story does not exist (yet).',
+    url: `https://secretmsg.net/post/${post?.slug ?? slug ?? ''}`,
+    ...(post ? { publishedTime: `${post.date}T12:00:00Z` } : {}),
+  });
 
   if (!post) {
     return (

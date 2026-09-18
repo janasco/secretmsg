@@ -3,8 +3,15 @@ import { Link } from 'react-router-dom';
 import { Newspaper, Clock, ArrowRight } from 'lucide-react';
 import { PublicPage } from '@/components/PublicPage';
 import { BLOG_POSTS, formatPostDate } from '@/lib/blog';
+import { useSeo } from '@/lib/seo';
 
 export const BlogPage: React.FC = () => {
+  useSeo({
+    title: 'Blog - SecretMsg',
+    description:
+      'Essays on privacy, anonymous culture, and getting the most out of your SecretMsg inbox.',
+    url: 'https://secretmsg.net/blog',
+  });
   return (
     <PublicPage
       title="SecretMsg Blog"
