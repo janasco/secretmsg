@@ -75,19 +75,19 @@ class _BackupCodesScreenState extends State<BackupCodesScreen> {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF101A2E),
+                    color: const Color(0xFFEF4444).withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: const Color(0xFFEF4444).withValues(alpha: 0.3)),
                   ),
-                  child: const Row(
+                  child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(Icons.warning_amber_rounded, color: Color(0xFFEF4444), size: 20),
-                      SizedBox(width: 10),
+                      const Icon(Icons.warning_amber_rounded, color: Color(0xFFEF4444), size: 20),
+                      const SizedBox(width: 10),
                       Expanded(
                         child: Text(
                           'These codes will NEVER be shown again. Without them and without your PIN, your account is gone forever. Each code works once.',
-                          style: TextStyle(color: Color(0xFFFCA5A5), fontSize: 12, height: 1.5),
+                          style: TextStyle(color: context.colors.roseLight, fontSize: 12, height: 1.5),
                         ),
                       ),
                     ],

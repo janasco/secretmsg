@@ -157,9 +157,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(builder: (_) => const SupportersScreen()),
                     ),
-                    child: const Text(
+                    child: Text(
                       'Want your own name instead? Custom handles are a supporter perk — learn more.',
-                      style: TextStyle(color: Color(0xFFA5B4FC), fontSize: 12, height: 1.5),
+                      style: TextStyle(color: context.colors.accentSoft, fontSize: 12, height: 1.5),
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -218,7 +218,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 if (_error != null) ...[
                   const SizedBox(height: 12),
-                  Text(_error!, style: const TextStyle(color: Color(0xFFFCA5A5), fontSize: 12, height: 1.5)),
+                  Text(_error!, style: TextStyle(color: context.colors.roseLight, fontSize: 12, height: 1.5)),
                 ],
                 const SizedBox(height: 16),
                 if (!_isRecovery) ...[
@@ -226,7 +226,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () => _switchMode(signup: !_isSignup),
                     child: Text(
                       _isSignup ? 'I already have an inbox — log in' : 'New here? Create an inbox',
-                      style: const TextStyle(color: Color(0xFFA5B4FC), fontWeight: FontWeight.w700),
+                      style: TextStyle(color: context.colors.accentSoft, fontWeight: FontWeight.w700),
                     ),
                   ),
                 ],
@@ -234,7 +234,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () => setState(() { _isRecovery = !_isRecovery; _error = null; }),
                   child: Text(
                     _isRecovery ? 'Back to login' : 'Forgot PIN? Recover account',
-                    style: const TextStyle(color: Color(0xFFA5B4FC)),
+                    style: TextStyle(color: context.colors.accentSoft),
                   ),
                 ),
               ],

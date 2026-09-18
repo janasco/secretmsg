@@ -149,7 +149,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
                 ),
                 if (_error != null) ...[
                   const SizedBox(height: 12),
-                  Text(_error!, style: const TextStyle(color: Color(0xFFFCA5A5), fontSize: 12, height: 1.5)),
+                  Text(_error!, style: TextStyle(color: context.colors.roseLight, fontSize: 12, height: 1.5)),
                 ],
                 const SizedBox(height: 16),
                 Text(

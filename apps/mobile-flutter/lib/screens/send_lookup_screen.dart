@@ -81,7 +81,7 @@ class _SendLookupScreenState extends State<SendLookupScreen> {
           if (_error != null) ...[
             const SizedBox(height: 10),
             Text(_error!,
-                style: const TextStyle(color: Color(0xFFFCA5A5), fontSize: 12, height: 1.5)),
+                style: TextStyle(color: context.colors.roseLight, fontSize: 12, height: 1.5)),
           ],
           const SizedBox(height: 16),
           FilledButton(

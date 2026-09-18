@@ -59,7 +59,7 @@ class _SupportersScreenState extends State<SupportersScreen> {
               ? ListView(
                   children: [
                     const SizedBox(height: 100),
-                    Text(_error!, textAlign: TextAlign.center, style: const TextStyle(color: Color(0xFFFCA5A5))),
+                    Text(_error!, textAlign: TextAlign.center, style: TextStyle(color: context.colors.roseLight)),
                     const SizedBox(height: 12),
                     Center(child: OutlinedButton(onPressed: _load, child: const Text('Retry'))),
                   ],
@@ -165,7 +165,7 @@ class _StatBox extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
-        color: const Color(0xFF090A0F),
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: context.colors.border),
       ),
@@ -379,7 +379,7 @@ class _SupportCtaState extends State<_SupportCta> {
             Text(
               _notice!,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Color(0xFFA5B4FC), fontSize: 11, height: 1.5),
+              style: TextStyle(color: context.colors.accentSoft, fontSize: 11, height: 1.5),
             ),
           ],
         ],
@@ -425,9 +425,9 @@ class _SupportCtaState extends State<_SupportCta> {
       ],
       TextButton(
         onPressed: _busyProductId == null ? _restore : null,
-        child: const Text(
+        child: Text(
           'Restore purchases',
-          style: TextStyle(color: Color(0xFFA5B4FC), fontSize: 12),
+          style: TextStyle(color: context.colors.accentSoft, fontSize: 12),
         ),
       ),
     ];

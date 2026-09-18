@@ -165,6 +165,11 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
       _turnstileTokenReady = false;
       _status = 'Preparing verification…';
       widget.onError?.call(null);
+      try {
+        _controller.setBackgroundColor(
+          want == 'light' ? const Color(0xFFFFFFFF) : const Color(0xFF101322),
+        );
+      } catch (_) {}
       _controller.loadRequest(Uri.parse('$kPublicBaseUrl/'));
       _armWatchdog();
     }
@@ -211,6 +216,8 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
   try {
     if (!document.body) throw new Error('no body');
     document.body.innerHTML = '';
+    document.body.style.margin = '0';
+    document.body.style.background = '$_tsTheme' === 'light' ? '#ffffff' : '#101322';
     var d = document.createElement('div');
     d.id = 'sm-ts-widget';
     d.style.cssText = 'display:flex;align-items:center;justify-content:center;min-height:64px;';

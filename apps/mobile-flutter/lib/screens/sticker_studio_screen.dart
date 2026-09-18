@@ -296,7 +296,7 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
                 const SizedBox(height: 8),
                 TextButton(
                   onPressed: _saveImage,
-                  child: const Text('Save image', style: TextStyle(color: Color(0xFFA5B4FC))),
+                  child: Text('Save image', style: TextStyle(color: context.colors.accentSoft)),
                 ),
               ],
             ),
@@ -637,7 +637,7 @@ class _ThemeSwatch extends StatelessWidget {
           gradient: LinearGradient(colors: gradient, begin: Alignment.topLeft, end: Alignment.bottomRight),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: selected ? context.colors.textPrimary : const Color(0xFF334155),
+            color: selected ? context.colors.textPrimary : context.colors.borderStrong,
             width: selected ? 2 : 1,
           ),
         ),

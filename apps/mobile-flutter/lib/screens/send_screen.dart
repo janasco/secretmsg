@@ -284,7 +284,7 @@ class _SendScreenState extends State<SendScreen> {
           const SizedBox(height: 12),
           Text(
             _lookupError!,
-            style: const TextStyle(color: Color(0xFFFCA5A5), fontSize: 12, height: 1.45),
+            style: TextStyle(color: context.colors.roseLight, fontSize: 12, height: 1.45),
           ),
         ],
         const SizedBox(height: 24),
@@ -384,10 +384,10 @@ class _SendScreenState extends State<SendScreen> {
           children: [
             TextButton.icon(
               onPressed: () => setState(() => _showInspiration = !_showInspiration),
-              icon: const Icon(Icons.auto_awesome, size: 15, color: Color(0xFFA5B4FC)),
+              icon: Icon(Icons.auto_awesome, size: 15, color: context.colors.accentSoft),
               label: Text(
                 _showInspiration ? 'Hide ideas' : 'Get inspired',
-                style: const TextStyle(color: Color(0xFFA5B4FC), fontWeight: FontWeight.w700),
+                style: TextStyle(color: context.colors.accentSoft, fontWeight: FontWeight.w700),
               ),
             ),
             const Spacer(),
@@ -421,7 +421,7 @@ class _SendScreenState extends State<SendScreen> {
         ),
         if (_sendError != null) ...[
           const SizedBox(height: 10),
-          Text(_sendError!, style: const TextStyle(color: Color(0xFFFCA5A5), fontSize: 12, height: 1.4)),
+          Text(_sendError!, style: TextStyle(color: context.colors.roseLight, fontSize: 12, height: 1.4)),
         ],
         const SizedBox(height: 14),
         FilledButton(
@@ -608,7 +608,7 @@ class _SendScreenState extends State<SendScreen> {
                         child: Container(
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF090A0F),
+                            color: context.colors.surface,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Row(
@@ -617,10 +617,10 @@ class _SendScreenState extends State<SendScreen> {
                                 child: Text(
                                   '$kPublicBaseUrl/reply/$_replyToken',
                                   overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(color: Color(0xFFA5B4FC), fontSize: 11, fontFamily: 'monospace'),
+                                  style: TextStyle(color: context.colors.accentSoft, fontSize: 11, fontFamily: 'monospace'),
                                 ),
                               ),
-                              const Icon(Icons.copy, size: 15, color: Color(0xFFA5B4FC)),
+                              Icon(Icons.copy, size: 15, color: context.colors.accentSoft),
                             ],
                           ),
                         ),
@@ -655,7 +655,7 @@ class _SendScreenState extends State<SendScreen> {
                     builder: (_) => const LoginScreen(),
                   ),
                 ),
-                child: const Text('Create your own SecretMsg link', style: TextStyle(color: Color(0xFFA5B4FC), fontWeight: FontWeight.w700)),
+                child: Text('Create your own SecretMsg link', style: TextStyle(color: context.colors.accentSoft, fontWeight: FontWeight.w700)),
               ),
             ],
           ),
