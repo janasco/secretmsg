@@ -4,6 +4,7 @@ import { ViewOnlyNote } from '@/components/ViewOnlyBanner';
 import { ApiClient, UnauthorizedError, UserProfile, AnonymousMessage, getShareUrl } from '@/lib/api';
 import { tierMeta, rankTierOf } from '@/lib/rank';
 import { StoryCardModal } from '@/components/StoryCardModal';
+import { TurnstileWidget, TURNSTILE_CONFIGURED } from '@/components/TurnstileWidget';
 import { MessageSquare, Reply, Flag, Copy, Check, Share2, Heart, Smartphone, Clock, Ban } from 'lucide-react';
 
 interface InboxPageProps {
@@ -28,6 +29,7 @@ export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLo
   const [reportId, setReportId] = useState<string | null>(null);
   const [reportReason, setReportReason] = useState('');
   const [reporting, setReporting] = useState(false);
+  const [reportToken, setReportToken] = useState<string | null>(null);
   const [blockId, setBlockId] = useState<string | null>(null);
   const [blocking, setBlocking] = useState(false);
 
@@ -93,13 +95,18 @@ export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLo
 
   const submitReport = async () => {
     if (!reportId || !reportReason.trim() || reporting) return;
+    if (TURNSTILE_CONFIGURED && !reportToken) {
+      showToast('Please complete the verification first.', true);
+      return;
+    }
     setReporting(true);
     try {
-      await ApiClient.reportMessage(reportId, reportReason.trim().slice(0, 200));
+      await ApiClient.reportMessage(reportId, reportReason.trim().slice(0, 200), reportToken || undefined);
       showToast('Message reported. It has been quarantined.');
       setMessages((prev) => prev.filter((m) => m.id !== reportId));
       setReportId(null);
       setReportReason('');
+      setReportToken(null);
     } catch {
       showToast('Failed to submit report', true);
     } finally {
@@ -353,8 +360,9 @@ export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLo
               placeholder="Reason (1-200 characters)"
               className="w-full bg-dark-900 border border-white/10 rounded-xl p-3 text-xs text-white placeholder-slate-500 outline-none focus:border-rose-500/50 resize-none"
             />
+            <TurnstileWidget onToken={setReportToken} />
             <div className="flex justify-end gap-2">
-              <button onClick={() => setReportId(null)} className="px-3 py-2 rounded-lg text-xs text-slate-400 hover:text-white">Cancel</button>
+              <button onClick={() => { setReportId(null); setReportToken(null); }} className="px-3 py-2 rounded-lg text-xs text-slate-400 hover:text-white">Cancel</button>
               <button onClick={submitReport} disabled={!reportReason.trim() || reporting} className="px-4 py-2 rounded-lg text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white disabled:opacity-50">
                 {reporting ? 'Sending…' : 'Submit Report'}
               </button>

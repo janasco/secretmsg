@@ -19,6 +19,7 @@ import '../gamification/rank_up.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import '../widgets/drop_countdown.dart';
+import '../widgets/turnstile_widget.dart';
 import 'daily_drop_screen.dart';
 import 'login_screen.dart';
 import 'send_screen.dart';
@@ -1040,12 +1041,82 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
   }
 
   Future<void> _report() async {
+    final reasonCtrl = TextEditingController();
+    String? token;
+    var confirmToken = 0;
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setDlg) => AlertDialog(
+          backgroundColor: context.colors.surface,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          title: Text('Report message',
+              style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w800)),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Harassment, spam, illegal content? Reports are quarantined for moderation.',
+                    style: TextStyle(color: context.colors.textSecondary, fontSize: 12.5, height: 1.5)),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: reasonCtrl,
+                  maxLength: 200,
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    hintText: 'Reason (1-200 characters)',
+                    filled: true,
+                    fillColor: context.colors.bg,
+                    counterText: '',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: context.colors.border),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: context.colors.border),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                TurnstileWidget(
+                  resetCount: confirmToken,
+                  onToken: (t) => setDlg(() => token = t),
+                  onError: (_) => setDlg(() => token = null),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(ctx).pop(false),
+              child: Text('Cancel', style: TextStyle(color: context.colors.accentSoft)),
+            ),
+            FilledButton(
+              style: FilledButton.styleFrom(
+                backgroundColor: context.colors.rose,
+                foregroundColor: Colors.white,
+              ),
+              onPressed: () {
+                if (reasonCtrl.text.trim().isEmpty || token == null) return;
+                Navigator.of(ctx).pop(true);
+              },
+              child: const Text('Submit report', style: TextStyle(fontWeight: FontWeight.w800)),
+            ),
+          ],
+        ),
+      ),
+    );
+    final reason = reasonCtrl.text.trim();
+    reasonCtrl.dispose();
+    if (ok != true || !mounted) return;
     setState(() => _reported = true);
     try {
       final online = await Outbox.runOrEnqueue(
         OutboxKind.report,
-        {'messageId': widget.message.id, 'reason': 'Reported by recipient from Android app'},
-        () => ApiClient.reportMessage(widget.message.id, 'Reported by recipient from Android app'),
+        {'messageId': widget.message.id, 'reason': reason},
+        () => ApiClient.reportMessage(widget.message.id, reason, turnstileToken: token),
       );
       if (!mounted) return;
       showErrorSnack(context, online

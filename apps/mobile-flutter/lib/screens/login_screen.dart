@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../api/api_client.dart';
 import '../theme.dart';
+import '../widgets/turnstile_widget.dart';
 import 'app_shell.dart';
 import 'backup_codes_screen.dart';
 import 'recovery_screen.dart';
@@ -27,6 +28,8 @@ class _LoginScreenState extends State<LoginScreen> {
   String? _error;
   bool _isRecovery = false;
   late bool _isSignup;
+  String? _turnstileToken;
+  int _tsReset = 0;
 
   @override
   void initState() {
@@ -48,11 +51,15 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() => _error = 'PIN must be 4-6 digits');
       return;
     }
+    if (_turnstileToken == null) {
+      setState(() => _error = 'Please complete the verification first.');
+      return;
+    }
     setState(() { _loading = true; _error = null; });
     try {
       // No handle field: every account gets an auto-generated link.
       // Custom names are claimed later as a supporter perk in settings.
-      final result = await ApiClient.authSignup(pin: pin);
+      final result = await ApiClient.authSignup(pin: pin, turnstileToken: _turnstileToken);
       if (!mounted) return;
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (_) => BackupCodesScreen(
@@ -63,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     } on ApiException catch (e) {
       if (!mounted) return;
-      setState(() { _loading = false; _error = e.message; });
+      setState(() { _loading = false; _error = e.message; _turnstileToken = null; _tsReset++; });
     } catch (_) {
       if (!mounted) return;
       setState(() { _loading = false; _error = 'Could not reach SecretMsg. Check your connection.'; });
@@ -112,6 +119,8 @@ class _LoginScreenState extends State<LoginScreen> {
       _isSignup = signup;
       _isRecovery = false;
       _error = null;
+      _turnstileToken = null;
+      _tsReset++;
     });
   }
 
@@ -147,6 +156,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 20),
                 if (_isSignup) _pinField(login: false),
                 if (_isSignup) ...[
+                  const SizedBox(height: 12),
+                  TurnstileWidget(
+                    resetCount: _tsReset,
+                    onToken: (t) => setState(() {
+                      _turnstileToken = t;
+                      _error = null;
+                    }),
+                    onError: (_) => setState(() => _turnstileToken = null),
+                  ),
                   const SizedBox(height: 8),
                   Text(
                     'Your link (like secretmsg.net/lumen4821) is created for you automatically.',

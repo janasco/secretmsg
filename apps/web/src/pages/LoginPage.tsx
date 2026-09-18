@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ApiClient, UserProfile } from '@/lib/api';
 import { ArrowRight, Shield, Smartphone, Mail } from 'lucide-react';
+import { TurnstileWidget, TURNSTILE_CONFIGURED } from '@/components/TurnstileWidget';
 
 interface LoginPageProps {
   onLoginSuccess: (user: UserProfile) => void;
@@ -23,6 +24,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
   const [otpSent, setOtpSent] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,9 +46,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
     e.preventDefault();
     if (!pin || loading) return;
     setError(null);
+    if (TURNSTILE_CONFIGURED && !turnstileToken) {
+      setError('Please complete the verification first.');
+      return;
+    }
     setLoading(true);
     try {
-      const res = await ApiClient.authSignup(handle || undefined, pin);
+      const res = await ApiClient.authSignup(handle || undefined, pin, turnstileToken || undefined);
       setBackupCodes(res.backupCodes);
       setSignupHandle(res.handle);
     } catch (err: any) {
@@ -92,9 +98,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
     e.preventDefault();
     if (!email || loading) return;
     setError(null);
+    if (TURNSTILE_CONFIGURED && !turnstileToken) {
+      setError('Please complete the verification first.');
+      return;
+    }
     setLoading(true);
     try {
-      await ApiClient.requestOtp(email);
+      await ApiClient.requestOtp(email, turnstileToken || undefined);
       setOtpSent(true);
     } catch (err: any) {
       setError(err.message || 'Failed to send code');
@@ -127,6 +137,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
     setPairCode('');
     setOtp('');
     setOtpSent(false);
+    setTurnstileToken(null);
   };
 
   // Show backup codes after signup
@@ -201,6 +212,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
                 className="w-full px-4 py-3 rounded-xl bg-dark-900 border border-white/10 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
               <input type="password" placeholder="Set a PIN (4-6 digits)" value={pin} onChange={e => setPin(e.target.value)} maxLength={6}
                 className="w-full px-4 py-3 rounded-xl bg-dark-900 border border-white/10 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+              <TurnstileWidget onToken={setTurnstileToken} />
               <button type="submit" disabled={loading}
                 className="w-full py-3 rounded-xl font-semibold text-sm bg-indigo-600 hover:bg-indigo-500 text-white transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
                 {loading ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <>Create Account <ArrowRight className="w-4 h-4" /></>}
@@ -222,6 +234,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
                 <form onSubmit={handleOtpRequest} className="space-y-3">
                   <input type="email" placeholder="you@example.com" value={email} onChange={e => setEmail(e.target.value)}
                     className="w-full px-4 py-3 rounded-xl bg-dark-900 border border-white/10 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                  <TurnstileWidget onToken={setTurnstileToken} />
                   <button type="submit" disabled={loading}
                     className="w-full py-3 rounded-xl font-semibold text-sm bg-white/10 hover:bg-white/15 text-white border border-white/10 transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
                     {loading ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <><Mail className="w-4 h-4" /> Send Login Code</>}

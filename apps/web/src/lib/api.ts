@@ -109,12 +109,12 @@ export class ApiClient {
     return { success: true, replyToken: data.replyToken };
   }
 
-  static async requestOtp(email: string): Promise<void> {
+  static async requestOtp(email: string, turnstileToken?: string): Promise<void> {
     if (USE_MOCK) return MockApiClient.requestOtp(email);
     const res = await fetch(`${API_BASE_URL}/api/auth/otp-request`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, ...(turnstileToken ? { turnstileToken } : {}) }),
     });
     if (!res.ok) {
       const err = await res.json() as { error?: string };
@@ -224,12 +224,12 @@ export class ApiClient {
     this.removeToken();
   }
 
-  static async reportMessage(messageId: string, reason: string): Promise<void> {
+  static async reportMessage(messageId: string, reason: string, turnstileToken?: string): Promise<void> {
     if (USE_MOCK) return MockApiClient.reportMessage(messageId, reason);
     await fetch(`${API_BASE_URL}/api/report`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messageId, reason }),
+      body: JSON.stringify({ messageId, reason, ...(turnstileToken ? { turnstileToken } : {}) }),
     });
   }
 
@@ -252,10 +252,11 @@ export class ApiClient {
   }
 
   // Auth V2: Handle + PIN + Backup Codes
-  static async authSignup(handle?: string, pin?: string): Promise<{ handle: string; backupCodes: string[]; token: string }> {
+  static async authSignup(handle?: string, pin?: string, turnstileToken?: string): Promise<{ handle: string; backupCodes: string[]; token: string }> {
     const data = await this.post('/api/auth/signup', {
       ...(handle ? { handle } : {}),
       pin,
+      ...(turnstileToken ? { turnstileToken } : {}),
     });
     if (data.token) {
       this.setToken(data.token);

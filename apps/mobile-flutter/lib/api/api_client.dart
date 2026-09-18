@@ -154,10 +154,12 @@ class ApiClient {
   static Future<({String handle, List<String> backupCodes, String token})> authSignup({
     String? handle,
     required String pin,
+    String? turnstileToken,
   }) async {
     final data = await _postJson('/api/auth/signup', {
       if (handle != null && handle.isNotEmpty) 'handle': handle,
       'pin': pin,
+      if (turnstileToken != null && turnstileToken.isNotEmpty) 'turnstileToken': turnstileToken,
     });
     final codes = (data['backupCodes'] as List?)?.map((e) => e.toString()).toList() ?? [];
     final token = data['token']?.toString() ?? '';
@@ -370,8 +372,12 @@ class ApiClient {
   }
 
   // ---- Abuse report ----
-  static Future<void> reportMessage(String messageId, String reason) async {
-    await _postJson('/api/report', {'messageId': messageId, 'reason': reason});
+  static Future<void> reportMessage(String messageId, String reason, {String? turnstileToken}) async {
+    await _postJson('/api/report', {
+      'messageId': messageId,
+      'reason': reason,
+      if (turnstileToken != null && turnstileToken.isNotEmpty) 'turnstileToken': turnstileToken,
+    });
   }
 
   // ---- Blocked Senders (anonymous device fingerprints) ----
