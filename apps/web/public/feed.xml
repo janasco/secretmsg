@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>SecretMsg Blog</title>
+    <link>https://secretmsg.net/blog</link>
+    <description>Notes on honest messaging, privacy, and anonymous culture.</description>
+    <language>en-us</language>
+    <item>
+      <title>Staying Safe While Staying Anonymous</title>
+      <link>https://secretmsg.net/post/stay-safe-anonymous</link>
+      <guid isPermaLink="true">https://secretmsg.net/post/stay-safe-anonymous</guid>
+      <pubDate>Sun, 13 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Filters, pauses, blocks, reports, and streaks of common sense: the full safety toolkit.</description>
+    </item>
+    <item>
+      <title>How to Get TBHs Worth Reading</title>
+      <link>https://secretmsg.net/post/get-better-tbhs</link>
+      <guid isPermaLink="true">https://secretmsg.net/post/get-better-tbhs</guid>
+      <pubDate>Wed, 09 Sep 2026 12:00:00 GMT</pubDate>
+      <description>The prompt is the message: story stickers, vibe templates, and timing that triple reply quality.</description>
+    </item>
+    <item>
+      <title>What &quot;Zero Tracking&quot; Actually Means Here</title>
+      <link>https://secretmsg.net/post/zero-tracking-architecture</link>
+      <guid isPermaLink="true">https://secretmsg.net/post/zero-tracking-architecture</guid>
+      <pubDate>Sat, 05 Sep 2026 12:00:00 GMT</pubDate>
+      <description>A tour of what we store, what we never touch, and why anonymous can still be safe.</description>
+    </item>
+    <item>
+      <title>Welcome to SecretMsg: Honest Messages, Zero Tracking</title>
+      <link>https://secretmsg.net/post/welcome-to-secretmsg</link>
+      <guid isPermaLink="true">https://secretmsg.net/post/welcome-to-secretmsg</guid>
+      <pubDate>Tue, 01 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Why we built an anonymous messaging platform that refuses to track you — and how your first secret link works.</description>
+    </item>
+  </channel>
+</rss>
