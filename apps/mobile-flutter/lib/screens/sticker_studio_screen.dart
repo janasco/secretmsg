@@ -29,7 +29,10 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
 
   String _presetId = 'tbh';
   String _themeId = 'neon';
-  String _layout = 'bottom'; // top | center | bottom
+  String _layout = 'bottom'; // top | center | bottom | card
+  double _fontSize = 38;
+  String _platform = 'generic'; // generic | instagram | tiktok | snapchat
+  bool _showGuides = false;
   String? _identityHandle;
   String? _identitySeed;
   List<File> _recents = [];
@@ -86,6 +89,18 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
 
   void _pickTheme(String id) {
     setState(() => _themeId = id);
+  }
+
+  /// Content insets for the active platform preset, derived from the
+  /// rendered 9:16 box so fractions stay exact at any screen size.
+  EdgeInsets _insetsFor(Size box) {
+    final f = _platformInsets[_platform] ?? _platformInsets['generic']!;
+    return EdgeInsets.only(
+      top: box.height * f[0],
+      bottom: box.height * f[1],
+      left: box.width * f[2],
+      right: box.width * f[3],
+    );
   }
 
   Future<void> _shareImage() async {
@@ -204,15 +219,40 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
                   style: TextStyle(color: context.colors.textSecondary, fontSize: 12.5, height: 1.5),
                 ),
                 const SizedBox(height: 20),
-                RepaintBoundary(
-                  key: _previewKey,
-                  child: _StickerPreview(
-                    caption: _caption,
-                    theme: _STICKER_THEME_BY_ID[_themeId]!,
-                    handle: _boardHandle,
-                    seed: _avatarSeed,
-                    layout: _layout,
-                  ),
+                LayoutBuilder(
+                  builder: (_, cons) {
+                    final box = Size(cons.maxWidth, cons.maxWidth * 16 / 9);
+                    return AspectRatio(
+                      aspectRatio: 9 / 16,
+                      child: Stack(
+                        children: [
+                          RepaintBoundary(
+                            key: _previewKey,
+                            child: _StickerPreview(
+                              caption: _caption,
+                              theme: _STICKER_THEME_BY_ID[_themeId]!,
+                              handle: _boardHandle,
+                              seed: _avatarSeed,
+                              layout: _layout,
+                              fontSize: _fontSize,
+                              insets: _insetsFor(box),
+                            ),
+                          ),
+                          // Guides overlay: editor-only danger bands, never
+                          // exported (the capture boundary above excludes it).
+                          if (_showGuides)
+                            Positioned.fill(
+                              child: IgnorePointer(
+                                child: _GuidesOverlay(
+                                  fractions: _platformInsets[_platform] ??
+                                      _platformInsets['generic']!,
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
                 if (_recents.isNotEmpty) ...[
                   const SizedBox(height: 14),
@@ -401,6 +441,95 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
           ],
         ),
         const SizedBox(height: 16),
+        Row(
+          children: [
+            Text('Text size', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w800)),
+            const Spacer(),
+            for (var i = 0; i < _fontSizes.length; i++)
+              Padding(
+                padding: EdgeInsets.only(left: i == 0 ? 0 : 8),
+                child: InkWell(
+                  onTap: () => setState(() => _fontSize = _fontSizes[i]),
+                  borderRadius: BorderRadius.circular(10),
+                  child: Container(
+                    width: 40,
+                    height: 36,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: _fontSize == _fontSizes[i]
+                          ? context.colors.accent.withValues(alpha: 0.18)
+                          : Colors.transparent,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: _fontSize == _fontSizes[i] ? context.colors.accent : context.colors.border,
+                      ),
+                    ),
+                    child: Text(_fontLabels[i],
+                        style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w800,
+                            color: _fontSize == _fontSizes[i]
+                                ? context.colors.textPrimary
+                                : context.colors.textSecondary)),
+                  ),
+                ),
+              ),
+          ],
+        ),
+        const SizedBox(height: 16),
+        Row(
+          children: [
+            Text('Fits', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w800)),
+            const Spacer(),
+            InkWell(
+              onTap: () => setState(() => _showGuides = !_showGuides),
+              borderRadius: BorderRadius.circular(10),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: _showGuides ? context.colors.accent : context.colors.border,
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.grid_on_outlined, size: 14,
+                        color: _showGuides ? context.colors.textPrimary : context.colors.textSecondary),
+                    const SizedBox(width: 4),
+                    Text('Guides',
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            color: _showGuides ? context.colors.textPrimary : context.colors.textSecondary)),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            for (final entry in _platformLabels.entries)
+              ChoiceChip(
+                label: Text(entry.value, style: const TextStyle(fontSize: 12)),
+                selected: _platform == entry.key,
+                selectedColor: context.colors.accent.withValues(alpha: 0.2),
+                labelStyle: TextStyle(
+                  color: _platform == entry.key ? context.colors.textPrimary : context.colors.textSecondary,
+                  fontWeight: FontWeight.w600,
+                ),
+                side: BorderSide(
+                    color: _platform == entry.key ? context.colors.accent : context.colors.border),
+                onSelected: (_) => setState(() => _platform = entry.key),
+              ),
+          ],
+        ),
+        const SizedBox(height: 16),
         Text('Your caption (optional)', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w800)),
         const SizedBox(height: 8),
         TextField(
@@ -454,6 +583,26 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
     );
   }
 }
+
+/// Platform safe-area insets as fractions of the 9:16 canvas. Backgrounds
+/// bleed full-bleed; only content respects these, so stickers look native
+/// under each app's profile bars, rails, and input rows.
+const _platformInsets = {
+  'generic': [0.05, 0.05, 0.05, 0.05], // top, bottom, left, right
+  'instagram': [0.14, 0.18, 0.05, 0.08],
+  'tiktok': [0.08, 0.25, 0.05, 0.14],
+  'snapchat': [0.12, 0.16, 0.05, 0.05],
+};
+
+const _platformLabels = {
+  'generic': 'Generic',
+  'instagram': 'Instagram',
+  'tiktok': 'TikTok',
+  'snapchat': 'Snapchat',
+};
+
+const _fontSizes = [32.0, 38.0, 46.0];
+const _fontLabels = ['S', 'M', 'L'];
 
 Color _parseHex(String hex) {
   final value = int.parse(hex.replaceFirst('#', ''), radix: 16);
@@ -554,18 +703,65 @@ class _AccountHandleCard extends StatelessWidget {
   }
 }
 
+/// Editor-only safe-area guides: striped danger bands for the active
+/// platform preset. Never captured (lives outside the RepaintBoundary).
+class _GuidesOverlay extends StatelessWidget {
+  final List<double> fractions; // top, bottom, left, right
+  const _GuidesOverlay({required this.fractions});
+
+  @override
+  Widget build(BuildContext context) {
+    Widget band(String label) => Container(
+          alignment: Alignment.center,
+          color: const Color(0xFFE11D48).withValues(alpha: 0.22),
+          child: Text(label,
+              style: const TextStyle(
+                  color: Colors.white, fontSize: 9, fontWeight: FontWeight.w800, letterSpacing: 0.5)),
+        );
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(22),
+      child: LayoutBuilder(
+        builder: (_, cons) {
+          final w = cons.maxWidth;
+          final h = cons.maxHeight;
+          return Stack(
+            children: [
+              Positioned(
+                  left: 0, right: 0, top: 0, height: h * fractions[0],
+                  child: band('KEEP CLEAR')),
+              Positioned(
+                  left: 0, right: 0, bottom: 0, height: h * fractions[1],
+                  child: band('KEEP CLEAR')),
+              Positioned(
+                  left: 0, top: h * fractions[0], bottom: h * fractions[1], width: w * fractions[2],
+                  child: band('')),
+              Positioned(
+                  right: 0, top: h * fractions[0], bottom: h * fractions[1], width: w * fractions[3],
+                  child: band('')),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
+
 class _StickerPreview extends StatelessWidget {
   final String caption;
   final StickerTheme theme;
   final String handle;
   final String seed;
   final String layout; // top | center | bottom | card
+  final double fontSize;
+  final EdgeInsets insets;
   const _StickerPreview({
     required this.caption,
     required this.theme,
     this.handle = 'yourname',
     this.seed = 'secretmsg',
     this.layout = 'bottom',
+    this.fontSize = 38,
+    this.insets = const EdgeInsets.all(20),
   });
 
   @override
@@ -585,7 +781,7 @@ class _StickerPreview extends StatelessWidget {
           caption,
           maxLines: 4,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(color: ink, fontSize: 30, fontWeight: FontWeight.w900, height: 1.1),
+          style: TextStyle(color: ink, fontSize: fontSize, fontWeight: FontWeight.w900, height: 1.1),
         ),
         const SizedBox(height: 12),
         Text(
@@ -624,23 +820,21 @@ class _StickerPreview extends StatelessWidget {
                     caption,
                     maxLines: 5,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: ink, fontSize: 24, fontWeight: FontWeight.w800, height: 1.25),
+                    style: TextStyle(color: ink, fontSize: fontSize * 0.68, fontWeight: FontWeight.w800, height: 1.25),
                   ),
                 ],
               ),
             ),
           )
         : captionBlock;
-    return AspectRatio(
-      aspectRatio: 9 / 16,
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(colors: colors, begin: Alignment.topLeft, end: Alignment.bottomRight),
-          borderRadius: BorderRadius.circular(22),
-          border: Border.all(color: border.withValues(alpha: 0.6), width: 1.4),
-        ),
-        padding: const EdgeInsets.all(20),
-        child: Column(
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(colors: colors, begin: Alignment.topLeft, end: Alignment.bottomRight),
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: border.withValues(alpha: 0.6), width: 1.4),
+      ),
+      padding: insets,
+      child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
@@ -685,7 +879,6 @@ class _StickerPreview extends StatelessWidget {
             if (layout == 'top') const Spacer(),
           ],
         ),
-      ),
-    );
+      );
   }
 }
