@@ -368,6 +368,7 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
               ('top', Icons.vertical_align_top, 'Top'),
               ('center', Icons.vertical_align_center, 'Center'),
               ('bottom', Icons.vertical_align_bottom, 'Bottom'),
+              ('card', Icons.format_quote_outlined, 'Card'),
             ])
               Expanded(
                 child: Padding(
@@ -558,7 +559,7 @@ class _StickerPreview extends StatelessWidget {
   final StickerTheme theme;
   final String handle;
   final String seed;
-  final String layout; // top | center | bottom
+  final String layout; // top | center | bottom | card
   const _StickerPreview({
     required this.caption,
     required this.theme,
@@ -602,6 +603,34 @@ class _StickerPreview extends StatelessWidget {
         ),
       ],
     );
+    // Card layout wraps the caption in a quote card so no layout leaves a
+    // void: the middle band is always composed.
+    final Widget body = layout == 'card'
+        ? Center(
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(18),
+              decoration: BoxDecoration(
+                color: (theme.isLight ? Colors.white : Colors.black).withValues(alpha: 0.28),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: border.withValues(alpha: 0.5)),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('“', style: TextStyle(color: accent, fontSize: 34, fontWeight: FontWeight.w900, height: 1)),
+                  Text(
+                    caption,
+                    maxLines: 5,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: ink, fontSize: 24, fontWeight: FontWeight.w800, height: 1.25),
+                  ),
+                ],
+              ),
+            ),
+          )
+        : captionBlock;
     return AspectRatio(
       aspectRatio: 9 / 16,
       child: Container(
@@ -650,9 +679,9 @@ class _StickerPreview extends StatelessWidget {
               ],
             ),
             if (layout == 'bottom') const Spacer(),
-            if (layout == 'center') const Spacer(),
-            captionBlock,
-            if (layout == 'center') const Spacer(),
+            if (layout == 'center' || layout == 'card') const Spacer(),
+            body,
+            if (layout == 'center' || layout == 'card') const Spacer(),
             if (layout == 'top') const Spacer(),
           ],
         ),

@@ -555,17 +555,20 @@ class _SendScreenState extends State<SendScreen> {
           constraints: const BoxConstraints(maxWidth: 480),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                width: 88,
-                height: 88,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: const Color(0xFF10B981).withValues(alpha: 0.12),
-                  border: Border.all(color: const Color(0xFF10B981).withValues(alpha: 0.3)),
+              Center(
+                child: Container(
+                  width: 88,
+                  height: 88,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: const Color(0xFF10B981).withValues(alpha: 0.12),
+                    border: Border.all(color: const Color(0xFF10B981).withValues(alpha: 0.3)),
+                  ),
+                  child: Icon(queued ? Icons.cloud_upload_outlined : Icons.check_circle,
+                      color: const Color(0xFF34D399), size: 40),
                 ),
-                child: Icon(queued ? Icons.cloud_upload_outlined : Icons.check_circle,
-                    color: const Color(0xFF34D399), size: 40),
               ),
               const SizedBox(height: 18),
               Text(queued ? 'Queued for sending' : 'Sent Anonymously!',

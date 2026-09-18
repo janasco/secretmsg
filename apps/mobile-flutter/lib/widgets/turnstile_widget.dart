@@ -46,6 +46,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
   bool _misconfigured = false;
   bool _turnstileTokenReady = false;
   Timer? _watchdog;
+  String _tsTheme = 'dark';
 
   @override
   void initState() {
@@ -150,6 +151,26 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // The Cloudflare widget paints its own theme: follow the app so the
+    // checkbox is never a dark slab in light mode (or vice versa). A change
+    // reloads the page so the new theme actually renders.
+    final want =
+        Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
+    if (want != _tsTheme && !_misconfigured) {
+      _tsTheme = want;
+      _ready = false;
+      _errored = false;
+      _turnstileTokenReady = false;
+      _status = 'Preparing verification…';
+      widget.onError?.call(null);
+      _controller.loadRequest(Uri.parse('$kPublicBaseUrl/'));
+      _armWatchdog();
+    }
+  }
+
+  @override
   void dispose() {
     _watchdog?.cancel();
     super.dispose();
@@ -207,7 +228,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
       try {
         var w2 = window.turnstile.render(d2, {
           sitekey: '$sitekey',
-          theme: 'dark',
+          theme: '$_tsTheme',
           execution: 'execute',
           appearance: 'execute',
           callback: function(token){
@@ -246,7 +267,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
       try {
         w = window.turnstile.render(d, {
           sitekey: '$sitekey',
-          theme: 'dark',
+          theme: '$_tsTheme',
           size: 'flexible',
           callback: function(token){
             log('CB_TOKEN_LEN=' + (token ? token.length : 0));
@@ -330,11 +351,10 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // The WebView is intentionally invisible: it only mints the token.
-    // Users see a native status row — never a sliver of a webpage. The page
-    // loaded stays the real origin so verification semantics don't change.
+    // Checkbox on top, status row beneath with real spacing — never
+    // overlapping. The box shows only the widget itself, never webpage chrome.
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: context.colors.bg,
         borderRadius: BorderRadius.circular(12),
@@ -346,9 +366,11 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
                   : const Color(0x336366F1),
         ),
       ),
-      child: Stack(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          _buildWebView(),
+          Center(child: _buildWebView()),
+          const SizedBox(height: 10),
           Row(
             children: [
               if (_errored)
