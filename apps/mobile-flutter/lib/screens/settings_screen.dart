@@ -1127,6 +1127,14 @@ class _ProfileCard extends StatelessWidget {
                             style: TextStyle(color: context.colors.textPrimary, fontWeight: FontWeight.w900, fontSize: 17),
                           ),
                         ),
+                        IconButton(
+                          tooltip: 'Edit display name',
+                          visualDensity: VisualDensity.compact,
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                          onPressed: () => _editDisplayName(context, user, onAvatarSaved),
+                          icon: Icon(Icons.edit_outlined, size: 15, color: context.colors.textMuted),
+                        ),
                         if (user.hasVerifiedBadge == 1) ...[
                           const SizedBox(width: 6),
                           Icon(Icons.verified, color: context.colors.accent, size: 16),
@@ -1179,6 +1187,100 @@ class _ProfileCard extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Display-name editor: 1-30 chars, markup stripped server-side. Usernames
+/// stay immutable (supporter custom-slug perk); the display name is free.
+Future<void> _editDisplayName(
+  BuildContext context,
+  UserProfile user,
+  ValueChanged<String> onSaved,
+) async {
+  final ctrl = TextEditingController(text: user.displayName);
+  var saving = false;
+  String? error;
+  await showDialog<void>(
+    context: context,
+    builder: (ctx) => StatefulBuilder(
+      builder: (ctx, setDlg) => AlertDialog(
+        backgroundColor: context.colors.surface,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: Text('Display name',
+            style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w800)),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Shown on your profile and link card. Your @handle never changes.',
+                style: TextStyle(color: context.colors.textMuted, fontSize: 12)),
+            const SizedBox(height: 12),
+            TextField(
+              controller: ctrl,
+              maxLength: 30,
+              autofocus: true,
+              textCapitalization: TextCapitalization.words,
+              decoration: InputDecoration(
+                hintText: user.username,
+                filled: true,
+                fillColor: context.colors.bg,
+                counterText: '',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(color: context.colors.border),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(color: context.colors.border),
+                ),
+              ),
+            ),
+            if (error != null) ...[
+              const SizedBox(height: 8),
+              Text(error!, style: TextStyle(color: context.colors.roseLight, fontSize: 12)),
+            ],
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: Text('Cancel', style: TextStyle(color: context.colors.accentSoft)),
+          ),
+          FilledButton(
+            style: FilledButton.styleFrom(
+              backgroundColor: context.colors.accent,
+              foregroundColor: Colors.white,
+            ),
+            onPressed: saving
+                ? null
+                : () async {
+                    final name = ctrl.text.trim();
+                    if (name.isEmpty || name.length > 30) {
+                      setDlg(() => error = 'Use 1-30 characters.');
+                      return;
+                    }
+                    setDlg(() {
+                      saving = true;
+                      error = null;
+                    });
+                    try {
+                      await ApiClient.updateDisplayName(name);
+                      if (ctx.mounted) Navigator.of(ctx).pop();
+                      onSaved(name);
+                    } catch (_) {
+                      setDlg(() {
+                        saving = false;
+                        error = 'Could not save name.';
+                      });
+                    }
+                  },
+            child: Text(saving ? 'Saving…' : 'Save',
+                style: const TextStyle(fontWeight: FontWeight.w800)),
+          ),
+        ],
+      ),
+    ),
+  );
+  ctrl.dispose();
 }
 
 /// Avatar studio: live multiavatar preview, shuffle for a new random face,

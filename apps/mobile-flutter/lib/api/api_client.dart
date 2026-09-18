@@ -280,6 +280,11 @@ class ApiClient {
     await _patchJson('/api/me', {'avatar_seed': seed});
   }
 
+  // ---- Display name (PATCH /api/me) ----
+  static Future<void> updateDisplayName(String name) async {
+    await _patchJson('/api/me', {'display_name': name});
+  }
+
   // ---- Claim Custom Username (Supporter Perk, POST /api/me/username) ----
   static Future<void> setUsername(String username) async {
     await _postJson('/api/me/username', {'username': username}, auth: true);

@@ -44,6 +44,16 @@ class _SendScreenState extends State<SendScreen> {
 
   static final _usernameRe = RegExp(r'^[a-z0-9_\-\.]{4,30}$');
 
+  /// Short single-line labels keep the category cells a fixed height so
+  /// selection never reflows the row (id, icon, short label).
+  static const _shortCategories = [
+    ('friendly', '🌟', 'Friendly'),
+    ('chill', '☕', 'Chill'),
+    ('wholesome', '💖', 'Wholesome'),
+    ('crush', '💘', 'Crush'),
+    ('confession', '🔥', 'Confessions'),
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -475,29 +485,36 @@ class _SendScreenState extends State<SendScreen> {
           const SizedBox(height: 10),
           Row(
             children: [
-              for (var ci = 0; ci < VIBE_CATEGORIES.length; ci++) ...[
+              for (var ci = 0; ci < _shortCategories.length; ci++) ...[
                 Expanded(
                   child: InkWell(
-                    onTap: () => setState(() => _activeCategory = VIBE_CATEGORIES[ci].id),
+                    onTap: () => setState(() => _activeCategory = _shortCategories[ci].$1),
                     child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      height: 52,
+                      padding: const EdgeInsets.symmetric(vertical: 6),
                       decoration: BoxDecoration(
-                        color: _activeCategory == VIBE_CATEGORIES[ci].id
+                        color: _activeCategory == _shortCategories[ci].$1
                             ? context.colors.accent.withValues(alpha: 0.18)
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(VIBE_CATEGORIES[ci].icon, style: const TextStyle(fontSize: 16)),
+                          Text(_shortCategories[ci].$2, style: const TextStyle(fontSize: 16)),
                           const SizedBox(height: 2),
-                          Text(VIBE_CATEGORIES[ci].label, style: TextStyle(fontSize: 9, color: context.colors.textSecondary)),
+                          Text(
+                            _shortCategories[ci].$3,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(fontSize: 9, color: context.colors.textSecondary),
+                          ),
                         ],
                       ),
                     ),
                   ),
                 ),
-                if (ci < VIBE_CATEGORIES.length - 1) const SizedBox(width: 4),
+                if (ci < _shortCategories.length - 1) const SizedBox(width: 4),
               ],
             ],
           ),
@@ -658,7 +675,7 @@ class _TemplateTile extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: const Color(0xFF090A0F),
+          color: context.colors.surface,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: context.colors.border.withValues(alpha: 0.5)),
         ),

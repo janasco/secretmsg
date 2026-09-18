@@ -88,7 +88,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
             if (mounted) {
               setState(() {
                 _ready = true;
-                _status = 'Completing verification…';
+                _status = 'Tick the box above, then send';
               });
             }
           } else if (kind == 'token' && value != null && value.isNotEmpty) {
@@ -316,17 +316,15 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
     } catch (_) {}
   }
 
-  /// The minting WebView, kept offstage: it must exist and stay alive to
-  /// receive the token, but must never be visible.
+  /// The minting WebView, visible at checkbox size. Interactive challenges
+  /// cannot complete in a hidden widget (the stuck "Completing verification"
+  /// state), so the box shows only the widget itself on a cleared page —
+  /// never webpage chrome.
   Widget _buildWebView() {
     if (_misconfigured) return const SizedBox.shrink();
-    return Offstage(
-      offstage: true,
-      child: SizedBox(
-        width: 1,
-        height: 1,
-        child: WebViewWidget(controller: _controller),
-      ),
+    return SizedBox(
+      height: 72,
+      child: WebViewWidget(controller: _controller),
     );
   }
 
