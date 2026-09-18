@@ -32,6 +32,7 @@ class _DiceScreenState extends State<DiceScreen> {
   List<String> _history = [];
   bool _soundOn = true;
   final _sfx = AudioPlayer();
+  Timer? _rollTimer;
 
   static const _historyKey = 'dice_history';
 
@@ -55,6 +56,10 @@ class _DiceScreenState extends State<DiceScreen> {
 
   @override
   void dispose() {
+    _rollTimer?.cancel();
+    try {
+      _sfx.stop();
+    } catch (_) {}
     _sfx.dispose();
     super.dispose();
   }
@@ -141,7 +146,8 @@ class _DiceScreenState extends State<DiceScreen> {
     });
     var spins = 0;
     final target = _rand.nextInt(_pool.length);
-    Timer.periodic(
+    _rollTimer?.cancel();
+    _rollTimer = Timer.periodic(
       const Duration(milliseconds: 110),
       (t) {
         if (!mounted) {

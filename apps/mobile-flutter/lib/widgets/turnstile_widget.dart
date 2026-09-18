@@ -158,7 +158,9 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
     // reloads the page so the new theme actually renders.
     final want =
         Theme.of(context).brightness == Brightness.light ? 'light' : 'dark';
-    if (want != _tsTheme && !_misconfigured) {
+    // Never yank the page while holding a valid token: the reload would
+    // discard it and force the user through the challenge again.
+    if (want != _tsTheme && !_misconfigured && !_turnstileTokenReady) {
       _tsTheme = want;
       _ready = false;
       _errored = false;

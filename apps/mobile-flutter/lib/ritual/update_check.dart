@@ -48,7 +48,7 @@ Future<UpdateInfo?> checkForUpdate() async {
     final current = pkg.version;
     final res = await http
         .get(Uri.parse('$kApiBaseUrl/api/app-version'))
-        .timeout(const Duration(seconds: 10));
+        .timeout(const Duration(seconds: 3));
     if (res.statusCode != 200) return null;
     final data = jsonDecode(res.body) as Map<String, dynamic>;
     final latest = (data['android_latest'] ?? '').toString();

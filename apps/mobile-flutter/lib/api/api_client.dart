@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -84,6 +85,9 @@ class ApiClient {
       data = <String, dynamic>{};
     }
     if (res.statusCode == 401) {
+      // Dead session (expired, revoked, or account gone): drop it now so a
+      // stale token can't loop the user back into authed screens.
+      unawaited(Session.clear());
       throw UnauthorizedError(
         data['error']?.toString() ?? 'Session expired. Please log in again.',
       );
@@ -145,7 +149,6 @@ class ApiClient {
     await Session.saveUser(user);
     return (user: user, token: token);
   }
-
 
   // ---- Auth V2: Handle + PIN + Backup Codes ----
   static Future<({String handle, List<String> backupCodes, String token})> authSignup({
@@ -213,18 +216,27 @@ class ApiClient {
     );
   }
 
-
   static Future<void> authChangePin({required String currentPin, required String newPin}) async {
-    await _postJson('/api/auth/change-pin', {
+    // Rotation: the server bumps the session epoch, so it returns a fresh
+    // token — save it or every later call 401s.
+    final data = await _postJson('/api/auth/change-pin', {
       'current_pin': currentPin,
       'new_pin': newPin,
     }, auth: true);
+    final token = data['token']?.toString();
+    if (token != null && token.isNotEmpty) {
+      await Session.setToken(token);
+    }
   }
 
   static Future<List<String>> authRefreshBackupCodes({required String currentPin}) async {
     final data = await _postJson('/api/auth/refresh-backup-codes', {
       'current_pin': currentPin,
     }, auth: true);
+    final token = data['token']?.toString();
+    if (token != null && token.isNotEmpty) {
+      await Session.setToken(token);
+    }
     return (data['backupCodes'] as List?)?.map((e) => e.toString()).toList() ?? [];
   }
 
@@ -382,55 +394,10 @@ class ApiClient {
 
   // ---- Supporters ----
   static Future<SupportersData> getSupporters() async {
-    try {
-      final data = await _getJson('/api/supporters');
-      return SupportersData.fromJson(data);
-    } catch (_) {
-      return _seedSupporters();
-    }
+    final data = await _getJson('/api/supporters');
+    return SupportersData.fromJson(data);
   }
 
-  static SupportersData _seedSupporters() {
-    final now = DateTime.now();
-    final seed = [
-      Supporter(
-        id: 'demo-1',
-        alias: 'Anonymous Guardian',
-        tier: 'Golden Guardian',
-        note: 'Love the true zero-tracking privacy on SecretMsg. Keep it open!',
-        createdAt: now.subtract(const Duration(hours: 4)).toIso8601String(),
-      ),
-      Supporter(
-        id: 'demo-2',
-        alias: 'Coffee Lover #42',
-        tier: 'Coffee Backer',
-        note: 'Super smooth UI. Coffee on me for server hosting.',
-        createdAt: now.subtract(const Duration(hours: 26)).toIso8601String(),
-      ),
-      Supporter(
-        id: 'demo-3',
-        alias: 'Secret Admirer',
-        tier: 'Silver Patron',
-        note: 'Sent this to my crush and they replied! Thank you!',
-        createdAt: now.subtract(const Duration(hours: 48)).toIso8601String(),
-      ),
-      Supporter(
-        id: 'demo-4',
-        alias: 'Anonymous Supporter',
-        tier: 'Bronze Supporter',
-        note: 'Supporting independent open-source web platforms.',
-        createdAt: now.subtract(const Duration(hours: 72)).toIso8601String(),
-      ),
-    ];
-    return SupportersData(
-      supporters: seed,
-      stats: const {
-        'totalSupporters': 4,
-        'monthlyServerGoalPercent': 100,
-        'currentMonth': 'September 2026',
-      },
-    );
-  }
 }
 
 class ApiException implements Exception {

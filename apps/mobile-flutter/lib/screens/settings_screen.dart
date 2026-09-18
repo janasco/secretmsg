@@ -20,6 +20,7 @@ import '../gamification/ranks.dart';
 import '../ritual/daily_drop.dart';
 import '../ritual/reminders.dart';
 import '../ritual/update_check.dart';
+import '../sync/cache.dart';
 import '../sync/outbox.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
@@ -503,6 +504,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (confirmed != true) return;
     try {
       await ApiClient.unregisterPushToken();
+    } catch (_) {}
+    try {
+      await Outbox.clearAll();
+      await InboxCache.clear();
     } catch (_) {}
     await Session.clear();
     try {

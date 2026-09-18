@@ -47,6 +47,11 @@ class UserAvatar extends StatelessWidget {
   final String seed;
   final double size;
   final String? fallbackInitials;
+
+  /// Memoized SVG per seed: parsing once, not on every build (avatar lists
+  /// rebuild constantly while scrolling).
+  static final Map<String, String> _svgCache = {};
+
   const UserAvatar({
     super.key,
     required this.seed,
@@ -54,13 +59,18 @@ class UserAvatar extends StatelessWidget {
     this.fallbackInitials,
   });
 
+  static String _svgFor(String key) => _svgCache.putIfAbsent(key, () {
+        if (_svgCache.length > 100) _svgCache.clear();
+        return multiavatar(key);
+      });
+
   @override
   Widget build(BuildContext context) {
     final key = seed.trim().isEmpty ? 'secretmsg' : seed.trim();
     Widget face;
     try {
       face = SvgPicture.string(
-        multiavatar(key),
+        _svgFor(key),
         width: size,
         height: size,
         fit: BoxFit.cover,

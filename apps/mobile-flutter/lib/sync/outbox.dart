@@ -15,6 +15,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/api_client.dart';
@@ -145,7 +146,11 @@ class Outbox {
   }
 
   static bool _isNetworkError(Object e) =>
-      e is SocketException || e is TimeoutException || e is HttpException;
+      e is SocketException ||
+      e is TimeoutException ||
+      e is HttpException ||
+      e is http.ClientException ||
+      e is TlsException;
 
   /// Drains the queue in order. Returns true when fully drained.
   /// [onChanged] fires when server state may have moved (caller refreshes).
@@ -256,6 +261,12 @@ class Outbox {
       rethrow;
     }
   }
+  /// Drops the whole queue (logout: parked ops are authed as the previous
+  /// owner and could never succeed — the drain drops them on 401 anyway).
+  static Future<void> clearAll() async {
+    await _write([]);
+  }
+
   /// Removes a parked op (user chose the manual composer handoff instead).
   static Future<void> remove(String id) async {
     final ops = await _read();

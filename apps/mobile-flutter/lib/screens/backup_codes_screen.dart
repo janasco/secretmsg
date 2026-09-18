@@ -41,6 +41,10 @@ class _BackupCodesScreenState extends State<BackupCodesScreen> {
         subject: 'SecretMsg backup codes',
         text: 'My SecretMsg backup codes — keep these safe.',
       );
+      // Don't leave secrets in temp: the shared copy is the user's now.
+      try {
+        await file.delete();
+      } catch (_) {}
       if (mounted) setState(() => _saved = true);
     } catch (_) {
       if (mounted) {

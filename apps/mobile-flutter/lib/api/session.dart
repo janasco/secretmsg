@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'models.dart';
 
@@ -22,11 +23,20 @@ class Session {
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
   );
 
+  // In-memory caches: secure-storage reads are slow IPC; the token and
+  // fingerprint are read on nearly every request. Cleared with the session.
+  static String? _memToken;
+  static String? _memFp;
+
   static Future<String?> getToken() async {
-    return _storage.read(key: _kTokenKey);
+    if (_memToken != null && _memToken!.isNotEmpty) return _memToken;
+    final token = await _storage.read(key: _kTokenKey);
+    if (token != null && token.isNotEmpty) _memToken = token;
+    return token;
   }
 
   static Future<void> setToken(String token) async {
+    _memToken = token;
     await _storage.write(key: _kTokenKey, value: token);
   }
 
@@ -48,6 +58,8 @@ class Session {
   }
 
   static Future<void> clear() async {
+    _memToken = null;
+    _memFp = null;
     await _storage.delete(key: _kTokenKey);
     await _storage.delete(key: _kProfileKey);
   }
@@ -63,9 +75,14 @@ class Session {
   }
 
   // ---- Gamification stores (all scoped per account where relevant) ----
+  // Plain preferences, not secure storage: game progress is neither secret
+  // nor worth the encrypted IPC cost on every inbox load.
+  static Future<SharedPreferences> get _prefs async =>
+      SharedPreferences.getInstance();
+
   static Future<Map<String, dynamic>?> _readJson(String key) async {
     try {
-      final raw = await _storage.read(key: key);
+      final raw = (await _prefs).getString(key);
       if (raw == null || raw.isEmpty) return null;
       final decoded = jsonDecode(raw);
       return decoded is Map<String, dynamic> ? decoded : null;
@@ -75,7 +92,9 @@ class Session {
   }
 
   static Future<void> _writeJson(String key, Map<String, dynamic> value) async {
-    await _storage.write(key: key, value: jsonEncode(value));
+    try {
+      await (await _prefs).setString(key, jsonEncode(value));
+    } catch (_) {}
   }
 
   static Future<Map<String, dynamic>?> getStreak() => _readJson(_kStreakKey);
@@ -109,12 +128,17 @@ class Session {
   // per install, stored in secure storage, never shared with or revealed to
   // recipients - the server keeps only its SHA-256.
   static Future<String> getDeviceFingerprint() async {
+    if (_memFp != null && _memFp!.isNotEmpty) return _memFp!;
     final existing = await _storage.read(key: _kDeviceFpKey);
-    if (existing != null && existing.isNotEmpty) return existing;
+    if (existing != null && existing.isNotEmpty) {
+      _memFp = existing;
+      return existing;
+    }
 
     final rand = Random.secure();
     final fp = List.generate(32, (_) => _fpChars[rand.nextInt(_fpChars.length)]).join();
     await _storage.write(key: _kDeviceFpKey, value: fp);
+    _memFp = fp;
     return fp;
   }
 

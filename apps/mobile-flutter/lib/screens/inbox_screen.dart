@@ -42,6 +42,7 @@ class _InboxScreenState extends State<InboxScreen> {
   StreakState? _streak;
   bool _dropDone = true; // Hidden until ritual state loads.
   bool _vibePrompted = false;
+  bool _vibeDialogOpen = false;
 
   @override
   void initState() {
@@ -87,27 +88,38 @@ class _InboxScreenState extends State<InboxScreen> {
       _error = null;
     });
     try {
-      final messages = await ApiClient.getInbox();
+      // One round trip instead of three waterfalls: inbox is authoritative
+      // (its 401 still signs out below); tray and profile are best-effort.
+      final fetched = await Future.wait([
+        ApiClient.getInbox(),
+        ApiClient.getFilteredTray().then((v) => v, onError: (_) => const <AnonymousMessage>[]),
+        ApiClient.getMe().then<UserProfile?>((v) => v, onError: (_) => null),
+      ]);
       if (!mounted) return;
+      final messages = fetched[0] as List<AnonymousMessage>;
+      final tray = fetched[1] as List<AnonymousMessage>;
+      final me = fetched[2] as UserProfile?;
       setState(() {
         _messages = messages;
+        _tray = tray;
         _loading = false;
         _offline = false;
         _cacheSavedAt = null; // Fresh: no staleness to show.
       });
       // Snapshot the fresh state for instant/offline boots.
-      unawaited(_loadTray(saveSnapshot: true));
+      unawaited(InboxCache.save(messages, tray));
       // Ritual check-in rides the inbox refresh: streak rolls, tonight's
       // reminders refresh from real state, vibe prompt shows once per day.
       unawaited(_ritualCheckIn());
-      // Rank-up check rides the inbox refresh: a fresh profile carries the
-      // server-computed rank, celebrated at most once per tier per account.
-      try {
-        final me = await ApiClient.getMe();
-        if (!mounted) return;
-        await RankUp.maybeShow(context, me);
-      } catch (_) {
-        // Celebration is best-effort; the inbox already loaded.
+      // Rank-up check rides the inbox refresh: the fetched profile carries
+      // the server-computed rank, celebrated at most once per tier.
+      if (me != null) {
+        try {
+          if (!mounted) return;
+          await RankUp.maybeShow(context, me);
+        } catch (_) {
+          // Celebration is best-effort; the inbox already loaded.
+        }
       }
     } on UnauthorizedError catch (_) {
       if (!mounted) return;
@@ -180,8 +192,11 @@ class _InboxScreenState extends State<InboxScreen> {
   }
 
   void _promptVibe() {
+    if (_vibeDialogOpen) return;
+    _vibeDialogOpen = true;
     showDialog<void>(
       context: context,
+      barrierDismissible: true,
       builder: (ctx) => AlertDialog(
         backgroundColor: context.colors.surface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -196,6 +211,7 @@ class _InboxScreenState extends State<InboxScreen> {
                   try {
                     await VibeStore.checkIn(DateTime.now(), mood);
                   } catch (_) {}
+                  _vibeDialogOpen = false;
                   if (ctx.mounted) Navigator.of(ctx).pop();
                   if (mounted) showSuccessSnack(context, 'Vibe saved $mood');
                 },
@@ -204,7 +220,7 @@ class _InboxScreenState extends State<InboxScreen> {
           ],
         ),
       ),
-    );
+    ).then((_) => _vibeDialogOpen = false);
   }
 
   Future<void> _openDrop() async {
@@ -250,19 +266,6 @@ class _InboxScreenState extends State<InboxScreen> {
       final at = DateTime.tryParse(m.createdAt);
       return at != null && !at.isBefore(cutoff);
     }).length;
-  }
-
-  Future<void> _loadTray({bool saveSnapshot = false}) async {
-    try {
-      final tray = await ApiClient.getFilteredTray();
-      if (!mounted) return;
-      setState(() => _tray = tray);
-      if (saveSnapshot && _messages != null) {
-        unawaited(InboxCache.save(_messages!, tray));
-      }
-    } catch (_) {
-      // Tray is additive; the inbox already loaded.
-    }
   }
 
   int get _unreadCount =>

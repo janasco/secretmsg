@@ -43,8 +43,18 @@ class InboxCache {
     } catch (_) {}
   }
 
-  static Future<InboxSnapshot?> load() async {
+  /// Drops snapshots (logout / account switch: cached mail belongs to the
+  /// previous owner and must never leak across accounts).
+  static Future<void> clear() async {
     try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove(_kInboxKey);
+      await prefs.remove(_kTrayKey);
+      await prefs.remove(_kSavedAtKey);
+    } catch (_) {}
+  }
+
+  static Future<InboxSnapshot?> load() async {    try {
       final prefs = await SharedPreferences.getInstance();
       final rawInbox = prefs.getString(_kInboxKey);
       final savedAtMs = prefs.getInt(_kSavedAtKey);
@@ -71,8 +81,7 @@ class InboxCache {
   }
 
   /// Human staleness label: "just now", "5m ago", "3h ago", "2d ago".
-  static String stalenessLabel(DateTime savedAt, DateTime now) {
-    final diff = now.difference(savedAt);
+  static String stalenessLabel(DateTime savedAt, DateTime now) {    final diff = now.difference(savedAt);
     if (diff.isNegative || diff.inMinutes < 1) return 'just now';
     if (diff.inMinutes < 60) return '${diff.inMinutes}m ago';
     if (diff.inHours < 24) return '${diff.inHours}h ago';

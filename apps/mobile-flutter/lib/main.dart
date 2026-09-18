@@ -33,23 +33,17 @@ Future<void> main() async {
       systemNavigationBarIconBrightness: WidgetsBinding.instance.platformDispatcher.platformBrightness == Brightness.dark ? Brightness.light : Brightness.dark,
     ),
   );
-  // Theme choice loads before runApp so the first frame already matches
-  // (system default unless the user overrode it in settings).
+  // Boot inits run concurrently: ThemeController first is unnecessary —
+  // the MaterialApp rebuilds on load() anyway, and nothing below depends
+  // on the others. Best-effort throughout: boot must never crash.
+  // (Reminders init captures notification-tap routes; keep it in the set.)
   try {
-    await ThemeController.load();
-  } catch (_) {}
-  // Reminders init before runApp so a notification-tap cold start captures
-  // its payload route. Best-effort: never let this crash boot.
-  try {
-    await initReminders();
-  } catch (_) {}
-  // Push init is separate: Firebase misconfiguration must not take down boot.
-  try {
-    await initPush();
-  } catch (_) {}
-  // Sync engine: outbox drain on reconnect. Never blocks boot.
-  try {
-    await SyncService.init();
+    await Future.wait([
+      ThemeController.load(),
+      initReminders(),
+      initPush(),
+      SyncService.init(),
+    ]);
   } catch (_) {}
   const isDiag = bool.fromEnvironment('SMS_TURNSTILE_TEST');
   runApp(SecretMsgApp(
@@ -154,6 +148,8 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
   Widget? _home;
   final _navKey = GlobalKey<NavigatorState>();
   bool _updateChecked = false;
+  Brightness? _lastChromeBrightness;
+  ThemeMode? _lastChromeMode;
 
   @override
   void initState() {
@@ -241,22 +237,26 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
     return ValueListenableBuilder<ThemeMode>(
       valueListenable: ThemeController.instance,
       builder: (_, mode, __) {
-        // Keep the system chrome in sync with the effective brightness.
+        // Keep the system chrome in sync with the effective brightness, but
+        // only on change: this builder reruns on every theme tick.
         final platformBrightness =
             WidgetsBinding.instance.platformDispatcher.platformBrightness;
         final effectiveDark = mode == ThemeMode.dark ||
             (mode == ThemeMode.system && platformBrightness == Brightness.dark);
-        final chromeBg = effectiveDark ? context.colors.bg : context.colors.textPrimary;
-        final chromeIcons =
-            effectiveDark ? Brightness.light : Brightness.dark;
-        SystemChrome.setSystemUIOverlayStyle(
-          SystemUiOverlayStyle(
-            statusBarColor: chromeBg,
-            statusBarIconBrightness: chromeIcons,
-            systemNavigationBarColor: chromeBg,
-            systemNavigationBarIconBrightness: chromeIcons,
-          ),
-        );
+        if (_lastChromeBrightness != platformBrightness || _lastChromeMode != mode) {
+          _lastChromeBrightness = platformBrightness;
+          _lastChromeMode = mode;
+          final chromeBg = effectiveDark ? AppColors.bg : const Color(0xFFF8FAFC);
+          final chromeIcons = effectiveDark ? Brightness.light : Brightness.dark;
+          SystemChrome.setSystemUIOverlayStyle(
+            SystemUiOverlayStyle(
+              statusBarColor: chromeBg,
+              statusBarIconBrightness: chromeIcons,
+              systemNavigationBarColor: chromeBg,
+              systemNavigationBarIconBrightness: chromeIcons,
+            ),
+          );
+        }
         return MaterialApp(
       title: 'SecretMsg',
       debugShowCheckedModeBanner: false,
