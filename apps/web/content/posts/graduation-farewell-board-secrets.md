@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Graduation & Farewell Boards"
+title: What Nobody Tells You About Graduation & Farewell Boards
 slug: graduation-farewell-board-secrets
 date: 2026-09-18
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Milestones"]
-excerpt: "The insider truths about graduation & farewell boards nobody puts in the onboarding."
-pixabay: "graduation caps celebration"
+excerpt: The insider truths about graduation & farewell boards nobody puts in the onboarding.
+pixabay: graduation caps celebration
 readMinutes: 4
-image: "/blog-images/graduation-farewell-board-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/graduation-farewell-board-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/graduation-farewell-board-secrets.jpg"
+credit: HuyNgan
+credit_url: "https://pixabay.com/photos/yearbook-vietnamese-students-10168363/"
 ---
 # What Nobody Tells You About Graduation & Farewell Boards
 

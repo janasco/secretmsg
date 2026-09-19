@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Wedding & Party Boards"
+title: The Psychology Behind Wedding & Party Boards
 slug: wedding-party-board-psychology
 date: 2027-01-24
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Events"]
-excerpt: "Why wedding & party boards works on human brains — the behavioral science plus what to do with it."
-pixabay: "wedding celebration dance"
+excerpt: Why wedding & party boards works on human brains — the behavioral science plus what to do with it.
+pixabay: wedding celebration dance
 readMinutes: 4
-image: "/blog-images/wedding-party-board-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/wedding-party-board-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/wedding-party-board-psychology.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/woman-dance-dress-wedding-hindu-2178480/"
 ---
 # The Psychology Behind Wedding & Party Boards
 

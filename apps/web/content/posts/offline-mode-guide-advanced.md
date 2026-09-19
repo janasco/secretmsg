@@ -5,12 +5,12 @@ date: 2026-04-24
 status: published
 tags: ["Product & Features", "Offline", "App"]
 excerpt: "Beyond the basics of the offline outbox, explained: power tactics for boards that already hum."
-pixabay: "airplane travel phone"
+pixabay: airplane travel phone
 readMinutes: 4
-image: "/blog-images/offline-mode-guide-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/offline-mode-guide-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/offline-mode-guide-advanced.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/still-items-things-passes-boarding-2609682/"
 ---
 # Advanced Offline Outbox, Explained: Level Up
 

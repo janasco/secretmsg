@@ -4,13 +4,13 @@ slug: notification-zen-mistakes
 date: 2026-08-16
 status: published
 tags: ["Product & Features", "Notifications", "Balance"]
-excerpt: "The seven ways people fumble notification zen, each with its fix. Learn them here, not the hard way."
-pixabay: "phone notification calm"
+excerpt: The seven ways people fumble notification zen, each with its fix. Learn them here, not the hard way.
+pixabay: phone notification calm
 readMinutes: 4
-image: "/blog-images/notification-zen-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/notification-zen-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/notification-zen-mistakes.jpg"
+credit: PatrickLFC93
+credit_url: "https://pixabay.com/photos/phone-booth-phone-english-uk-7728783/"
 ---
 # Notification Zen: 7 Mistakes Everyone Makes
 

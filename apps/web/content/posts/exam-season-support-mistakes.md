@@ -4,13 +4,13 @@ slug: exam-season-support-mistakes
 date: 2026-11-21
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Support"]
-excerpt: "The seven ways people fumble exam season support boards, each with its fix. Learn them here, not the hard way."
-pixabay: "students studying library"
+excerpt: The seven ways people fumble exam season support boards, each with its fix. Learn them here, not the hard way.
+pixabay: students studying library
 readMinutes: 4
-image: "/blog-images/exam-season-support-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/exam-season-support-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/exam-season-support-mistakes.jpg"
+credit: wal_172619
+credit_url: "https://pixabay.com/photos/library-books-reading-knowledge-7408106/"
 ---
 # Exam Season Support Boards: 7 Mistakes Everyone Makes
 

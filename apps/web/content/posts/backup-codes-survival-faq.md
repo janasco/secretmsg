@@ -4,13 +4,13 @@ slug: backup-codes-survival-faq
 date: 2026-08-01
 status: published
 tags: ["Guides & How-To", "Guide", "Account"]
-excerpt: "Every question people actually ask about backup codes survival guide, answered straight."
-pixabay: "safe lock security"
+excerpt: Every question people actually ask about backup codes survival guide, answered straight.
+pixabay: safe lock security
 readMinutes: 4
-image: "/blog-images/backup-codes-survival-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/backup-codes-survival-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/backup-codes-survival-faq.jpg"
+credit: 12019
+credit_url: "https://pixabay.com/photos/padlock-door-lock-key-hole-macro-172770/"
 ---
 # Backup Codes Survival Guide: Questions, Answered
 

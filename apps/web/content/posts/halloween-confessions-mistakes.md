@@ -4,13 +4,13 @@ slug: halloween-confessions-mistakes
 date: 2026-06-30
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Fun"]
-excerpt: "The seven ways people fumble halloween confessions season, each with its fix. Learn them here, not the hard way."
-pixabay: "halloween spooky night"
+excerpt: The seven ways people fumble halloween confessions season, each with its fix. Learn them here, not the hard way.
+pixabay: halloween spooky night
 readMinutes: 4
-image: "/blog-images/halloween-confessions-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/halloween-confessions-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/halloween-confessions-mistakes.jpg"
+credit: Bessi
+credit_url: "https://pixabay.com/photos/tree-cat-silhouette-moon-full-moon-736877/"
 ---
 # Halloween Confessions Season: 7 Mistakes Everyone Makes
 

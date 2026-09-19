@@ -1,16 +1,16 @@
 ---
-title: "Every Supporter Perk, Explained for Beginners"
+title: Every Supporter Perk, Explained for Beginners
 slug: supporter-perks-tour-beginners
 date: 2026-04-12
 status: published
 tags: ["Product & Features", "Supporters", "Perks"]
 excerpt: "New to every supporter perk, explained? Start here: zero jargon, first win in under ten minutes."
-pixabay: "golden badge premium"
+pixabay: golden badge premium
 readMinutes: 4
-image: "/blog-images/supporter-perks-tour-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/supporter-perks-tour-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/supporter-perks-tour-beginners.jpg"
+credit: rolfvandewal
+credit_url: "https://pixabay.com/photos/bmw-gearstick-4-series-premium-car-4993779/"
 ---
 # Every Supporter Perk, Explained for Beginners
 

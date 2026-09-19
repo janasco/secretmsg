@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Word Filters, Mastered"
+title: 5 Myths About Word Filters, Mastered
 slug: word-filters-mastery-myths
 date: 2026-02-04
 status: published
 tags: ["Safety & Moderation", "Safety", "Moderation"]
-excerpt: "Five myths about word filters, mastered, busted with evidence and better defaults."
-pixabay: "shield protection security"
+excerpt: Five myths about word filters, mastered, busted with evidence and better defaults.
+pixabay: shield protection security
 readMinutes: 5
-image: "/blog-images/word-filters-mastery-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/word-filters-mastery-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/word-filters-mastery-myths.jpg"
+credit: PublicDomainPictures
+credit_url: "https://pixabay.com/photos/close-isolated-key-keys-lock-2204/"
 ---
 # 5 Myths About Word Filters, Mastered
 

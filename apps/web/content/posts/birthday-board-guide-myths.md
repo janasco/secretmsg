@@ -5,12 +5,12 @@ date: 2026-06-01
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Celebration"]
 excerpt: "Five myths about the birthday board: a month of proof, busted with evidence and better defaults."
-pixabay: "birthday party confetti"
+pixabay: birthday party confetti
 readMinutes: 4
-image: "/blog-images/birthday-board-guide-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/birthday-board-guide-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/birthday-board-guide-myths.jpg"
+credit: RosZie
+credit_url: "https://pixabay.com/photos/birthday-cake-cakes-celebration-7381735/"
 ---
 # 5 Myths About Birthday Board: A Month of Proof
 

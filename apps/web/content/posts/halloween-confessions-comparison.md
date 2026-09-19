@@ -1,16 +1,16 @@
 ---
-title: "Halloween Confessions Season vs the Alternatives"
+title: Halloween Confessions Season vs the Alternatives
 slug: halloween-confessions-comparison
 date: 2026-07-05
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Fun"]
-excerpt: "How halloween confessions season stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "halloween spooky night"
+excerpt: How halloween confessions season stacks against the alternatives — honest verdict, no tribalism.
+pixabay: halloween spooky night
 readMinutes: 4
-image: "/blog-images/halloween-confessions-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/halloween-confessions-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/halloween-confessions-comparison.jpg"
+credit: Bessi
+credit_url: "https://pixabay.com/photos/tree-cat-silhouette-moon-full-moon-736877/"
 ---
 # Halloween Confessions Season vs the Alternatives
 

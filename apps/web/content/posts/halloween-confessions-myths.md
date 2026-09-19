@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Halloween Confessions Season"
+title: 5 Myths About Halloween Confessions Season
 slug: halloween-confessions-myths
 date: 2026-07-06
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Fun"]
-excerpt: "Five myths about halloween confessions season, busted with evidence and better defaults."
-pixabay: "halloween spooky night"
+excerpt: Five myths about halloween confessions season, busted with evidence and better defaults.
+pixabay: halloween spooky night
 readMinutes: 4
-image: "/blog-images/halloween-confessions-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/halloween-confessions-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/halloween-confessions-myths.jpg"
+credit: Bessi
+credit_url: "https://pixabay.com/photos/tree-cat-silhouette-moon-full-moon-736877/"
 ---
 # 5 Myths About Halloween Confessions Season
 

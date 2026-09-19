@@ -4,13 +4,13 @@ slug: block-without-drama-mistakes
 date: 2026-08-27
 status: published
 tags: ["Safety & Moderation", "Safety", "Blocking"]
-excerpt: "The seven ways people fumble blocking without drama, each with its fix. Learn them here, not the hard way."
-pixabay: "calm boundary fence"
+excerpt: The seven ways people fumble blocking without drama, each with its fix. Learn them here, not the hard way.
+pixabay: calm boundary fence
 readMinutes: 4
-image: "/blog-images/block-without-drama-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/block-without-drama-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/block-without-drama-mistakes.jpg"
+credit: manfredrichter
+credit_url: "https://pixabay.com/photos/barbed-wire-jail-fence-security-9906199/"
 ---
 # Blocking Without Drama: 7 Mistakes Everyone Makes
 

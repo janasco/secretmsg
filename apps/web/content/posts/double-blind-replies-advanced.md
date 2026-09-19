@@ -5,12 +5,12 @@ date: 2026-02-25
 status: published
 tags: ["Product & Features", "Replies", "Privacy"]
 excerpt: "Beyond the basics of double-blind replies, demystified: power tactics for boards that already hum."
-pixabay: "secret letter envelope"
+pixabay: secret letter envelope
 readMinutes: 5
-image: "/blog-images/double-blind-replies-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/double-blind-replies-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/double-blind-replies-advanced.jpg"
+credit: Ylanite
+credit_url: "https://pixabay.com/photos/flowers-rose-nature-bloom-letter-6943134/"
 ---
 # Advanced Double-Blind Replies, Demystified: Level Up
 

@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Story Stickers That Actually Convert"
+title: What Nobody Tells You About Story Stickers That Actually Convert
 slug: story-stickers-that-convert-secrets
 date: 2026-03-14
 status: draft
 tags: ["Growth & Sharing", "Growth", "Stickers"]
-excerpt: "The insider truths about story stickers that actually convert nobody puts in the onboarding."
-pixabay: "phone social media story"
+excerpt: The insider truths about story stickers that actually convert nobody puts in the onboarding.
+pixabay: phone social media story
 readMinutes: 5
-image: "/blog-images/story-stickers-that-convert-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/story-stickers-that-convert-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/story-stickers-that-convert-secrets.jpg"
+credit: LoboStudioHamburg
+credit_url: "https://pixabay.com/photos/internet-whatsapp-smartphone-3113279/"
 ---
 # What Nobody Tells You About Story Stickers That Actually Convert
 

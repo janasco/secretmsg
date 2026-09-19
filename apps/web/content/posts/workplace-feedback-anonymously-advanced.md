@@ -5,12 +5,12 @@ date: 2026-05-18
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Work"]
 excerpt: "Beyond the basics of workplace feedback without the fallout: power tactics for boards that already hum."
-pixabay: "office team meeting"
+pixabay: office team meeting
 readMinutes: 4
-image: "/blog-images/workplace-feedback-anonymously-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/workplace-feedback-anonymously-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/workplace-feedback-anonymously-advanced.jpg"
+credit: RonaldCandonga
+credit_url: "https://pixabay.com/photos/job-office-team-business-internet-5382501/"
 ---
 # Advanced Workplace Feedback Without the Fallout: Level Up
 

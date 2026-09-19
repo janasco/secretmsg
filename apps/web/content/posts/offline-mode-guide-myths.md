@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Offline Outbox, Explained"
+title: 5 Myths About Offline Outbox, Explained
 slug: offline-mode-guide-myths
 date: 2026-04-27
 status: published
 tags: ["Product & Features", "Offline", "App"]
-excerpt: "Five myths about the offline outbox, explained, busted with evidence and better defaults."
-pixabay: "airplane travel phone"
+excerpt: Five myths about the offline outbox, explained, busted with evidence and better defaults.
+pixabay: airplane travel phone
 readMinutes: 4
-image: "/blog-images/offline-mode-guide-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/offline-mode-guide-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/offline-mode-guide-myths.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/still-items-things-passes-boarding-2609682/"
 ---
 # 5 Myths About Offline Outbox, Explained
 

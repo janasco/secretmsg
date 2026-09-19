@@ -4,13 +4,13 @@ slug: valentines-tbh-guide-faq
 date: 2026-06-27
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Crush"]
-excerpt: "Every question people actually ask about valentine's week tbh guide, answered straight."
-pixabay: "valentine hearts romance"
+excerpt: Every question people actually ask about valentine's week tbh guide, answered straight.
+pixabay: valentine hearts romance
 readMinutes: 4
-image: "/blog-images/valentines-tbh-guide-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/valentines-tbh-guide-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/valentines-tbh-guide-faq.jpg"
+credit: beasternchen
+credit_url: "https://pixabay.com/photos/heart-valentines-day-love-romance-8559831/"
 ---
 # Valentine's Week TBH Guide: Questions, Answered
 

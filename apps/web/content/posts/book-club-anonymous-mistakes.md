@@ -4,13 +4,13 @@ slug: book-club-anonymous-mistakes
 date: 2027-05-14
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Community"]
-excerpt: "The seven ways people fumble anonymous book club boards, each with its fix. Learn them here, not the hard way."
-pixabay: "books reading cozy"
+excerpt: The seven ways people fumble anonymous book club boards, each with its fix. Learn them here, not the hard way.
+pixabay: books reading cozy
 readMinutes: 4
-image: "/blog-images/book-club-anonymous-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/book-club-anonymous-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/book-club-anonymous-mistakes.jpg"
+credit: fotografierende
+credit_url: "https://pixabay.com/photos/camera-book-candle-read-cozy-bed-4597415/"
 ---
 # Anonymous Book Club Boards: 7 Mistakes Everyone Makes
 

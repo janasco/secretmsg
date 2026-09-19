@@ -4,13 +4,13 @@ slug: backup-codes-survival-mistakes
 date: 2026-07-23
 status: published
 tags: ["Guides & How-To", "Guide", "Account"]
-excerpt: "The seven ways people fumble backup codes survival guide, each with its fix. Learn them here, not the hard way."
-pixabay: "safe lock security"
+excerpt: The seven ways people fumble backup codes survival guide, each with its fix. Learn them here, not the hard way.
+pixabay: safe lock security
 readMinutes: 5
-image: "/blog-images/backup-codes-survival-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/backup-codes-survival-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/backup-codes-survival-mistakes.jpg"
+credit: 12019
+credit_url: "https://pixabay.com/photos/padlock-door-lock-key-hole-macro-172770/"
 ---
 # Backup Codes Survival Guide: 7 Mistakes Everyone Makes
 

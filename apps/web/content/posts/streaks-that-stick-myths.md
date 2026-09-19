@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Streaks That Actually Stick"
+title: 5 Myths About Streaks That Actually Stick
 slug: streaks-that-stick-myths
 date: 2026-02-16
 status: published
 tags: ["Product & Features", "Streaks", "Ritual"]
-excerpt: "Five myths about streaks that actually stick, busted with evidence and better defaults."
-pixabay: "fire flame energy"
+excerpt: Five myths about streaks that actually stick, busted with evidence and better defaults.
+pixabay: fire flame energy
 readMinutes: 5
-image: "/blog-images/streaks-that-stick-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/streaks-that-stick-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/streaks-that-stick-myths.jpg"
+credit: raedon
+credit_url: "https://pixabay.com/photos/flame-matchsticks-match-171732/"
 ---
 # 5 Myths About Streaks That Actually Stick
 

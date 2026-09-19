@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Pause Like a Pro"
+title: The Ultimate Guide to Pause Like a Pro
 slug: pause-like-a-pro-ultimate-guide
 date: 2026-03-27
 status: published
 tags: ["Safety & Moderation", "Safety", "Boundaries"]
-excerpt: "Everything about pause like a pro — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "peaceful break relax"
+excerpt: Everything about pause like a pro — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: peaceful break relax
 readMinutes: 5
-image: "/blog-images/pause-like-a-pro-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/pause-like-a-pro-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/pause-like-a-pro-ultimate-guide.jpg"
+credit: ahuanzuishuai111
+credit_url: "https://pixabay.com/photos/coffee-cup-spoon-reading-book-10283354/"
 ---
 # The Ultimate Guide to Pause Like a Pro
 

@@ -1,16 +1,16 @@
 ---
-title: "Every Supporter Perk, Explained vs the Alternatives"
+title: Every Supporter Perk, Explained vs the Alternatives
 slug: supporter-perks-tour-comparison
 date: 2026-04-14
 status: published
 tags: ["Product & Features", "Supporters", "Perks"]
-excerpt: "How every supporter perk, explained stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "golden badge premium"
+excerpt: How every supporter perk, explained stacks against the alternatives — honest verdict, no tribalism.
+pixabay: golden badge premium
 readMinutes: 4
-image: "/blog-images/supporter-perks-tour-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/supporter-perks-tour-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/supporter-perks-tour-comparison.jpg"
+credit: rolfvandewal
+credit_url: "https://pixabay.com/photos/bmw-gearstick-4-series-premium-car-4993779/"
 ---
 # Every Supporter Perk, Explained vs the Alternatives
 

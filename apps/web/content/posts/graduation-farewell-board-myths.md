@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Graduation & Farewell Boards"
+title: 5 Myths About Graduation & Farewell Boards
 slug: graduation-farewell-board-myths
 date: 2026-09-14
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Milestones"]
-excerpt: "Five myths about graduation & farewell boards, busted with evidence and better defaults."
-pixabay: "graduation caps celebration"
+excerpt: Five myths about graduation & farewell boards, busted with evidence and better defaults.
+pixabay: graduation caps celebration
 readMinutes: 4
-image: "/blog-images/graduation-farewell-board-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/graduation-farewell-board-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/graduation-farewell-board-myths.jpg"
+credit: HuyNgan
+credit_url: "https://pixabay.com/photos/yearbook-vietnamese-students-10168363/"
 ---
 # 5 Myths About Graduation & Farewell Boards
 

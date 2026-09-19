@@ -1,16 +1,16 @@
 ---
-title: "TBH Culture, Explained for Beginners"
+title: TBH Culture, Explained for Beginners
 slug: tbh-culture-beginners
 date: 2026-01-20
 status: published
 tags: ["Culture & Psychology", "Culture", "TBH"]
 excerpt: "New to tbh culture, explained? Start here: zero jargon, first win in under ten minutes."
-pixabay: "teen friends laughing"
+pixabay: teen friends laughing
 readMinutes: 5
-image: "/blog-images/tbh-culture-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/tbh-culture-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/tbh-culture-beginners.jpg"
+credit: 46173
+credit_url: "https://pixabay.com/photos/joy-fun-friends-happy-family-4196370/"
 ---
 # TBH Culture, Explained for Beginners
 

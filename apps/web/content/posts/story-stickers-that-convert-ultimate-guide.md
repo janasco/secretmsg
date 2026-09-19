@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Story Stickers That Actually Convert"
+title: The Ultimate Guide to Story Stickers That Actually Convert
 slug: story-stickers-that-convert-ultimate-guide
 date: 2026-03-04
 status: published
 tags: ["Growth & Sharing", "Growth", "Stickers"]
-excerpt: "Everything about story stickers that actually convert — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "phone social media story"
+excerpt: Everything about story stickers that actually convert — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: phone social media story
 readMinutes: 5
-image: "/blog-images/story-stickers-that-convert-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/story-stickers-that-convert-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/story-stickers-that-convert-ultimate-guide.jpg"
+credit: LoboStudioHamburg
+credit_url: "https://pixabay.com/photos/phone-display-apps-applications-292994/"
 ---
 # The Ultimate Guide to Story Stickers That Actually Convert
 

@@ -4,13 +4,13 @@ slug: story-stickers-that-convert-mistakes
 date: 2026-03-05
 status: published
 tags: ["Growth & Sharing", "Growth", "Stickers"]
-excerpt: "The seven ways people fumble story stickers that actually convert, each with its fix. Learn them here, not the hard way."
-pixabay: "phone social media story"
+excerpt: The seven ways people fumble story stickers that actually convert, each with its fix. Learn them here, not the hard way.
+pixabay: phone social media story
 readMinutes: 4
-image: "/blog-images/story-stickers-that-convert-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/story-stickers-that-convert-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/story-stickers-that-convert-mistakes.jpg"
+credit: LoboStudioHamburg
+credit_url: "https://pixabay.com/photos/phone-display-apps-applications-292994/"
 ---
 # Story Stickers That Actually Convert: 7 Mistakes Everyone Makes
 

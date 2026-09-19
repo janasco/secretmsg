@@ -4,13 +4,13 @@ slug: pause-like-a-pro-mistakes
 date: 2026-03-28
 status: published
 tags: ["Safety & Moderation", "Safety", "Boundaries"]
-excerpt: "The seven ways people fumble pause like a pro, each with its fix. Learn them here, not the hard way."
-pixabay: "peaceful break relax"
+excerpt: The seven ways people fumble pause like a pro, each with its fix. Learn them here, not the hard way.
+pixabay: peaceful break relax
 readMinutes: 4
-image: "/blog-images/pause-like-a-pro-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/pause-like-a-pro-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/pause-like-a-pro-mistakes.jpg"
+credit: ahuanzuishuai111
+credit_url: "https://pixabay.com/photos/coffee-cup-spoon-reading-book-10283354/"
 ---
 # Pause Like a Pro: 7 Mistakes Everyone Makes
 

@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Halloween Confessions Season"
+title: What Nobody Tells You About Halloween Confessions Season
 slug: halloween-confessions-secrets
 date: 2026-07-09
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Fun"]
-excerpt: "The insider truths about halloween confessions season nobody puts in the onboarding."
-pixabay: "halloween spooky night"
+excerpt: The insider truths about halloween confessions season nobody puts in the onboarding.
+pixabay: halloween spooky night
 readMinutes: 4
-image: "/blog-images/halloween-confessions-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/halloween-confessions-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/halloween-confessions-secrets.jpg"
+credit: Bessi
+credit_url: "https://pixabay.com/photos/tree-cat-silhouette-moon-full-moon-736877/"
 ---
 # What Nobody Tells You About Halloween Confessions Season
 

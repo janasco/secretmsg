@@ -1,16 +1,16 @@
 ---
-title: "Valentine's Week TBH Guide for Beginners"
+title: Valentine's Week TBH Guide for Beginners
 slug: valentines-tbh-guide-beginners
 date: 2026-06-21
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Crush"]
 excerpt: "New to valentine's week tbh guide? Start here: zero jargon, first win in under ten minutes."
-pixabay: "valentine hearts romance"
+pixabay: valentine hearts romance
 readMinutes: 4
-image: "/blog-images/valentines-tbh-guide-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/valentines-tbh-guide-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/valentines-tbh-guide-beginners.jpg"
+credit: beasternchen
+credit_url: "https://pixabay.com/photos/heart-valentines-day-love-romance-8559831/"
 ---
 # Valentine's Week TBH Guide for Beginners
 

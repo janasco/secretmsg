@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to The Crush Confessions Playbook"
+title: The Ultimate Guide to The Crush Confessions Playbook
 slug: crush-confessions-playbook-ultimate-guide
 date: 2026-05-01
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Crush"]
-excerpt: "Everything about the crush confessions playbook — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "romantic couple silhouette"
+excerpt: Everything about the crush confessions playbook — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: romantic couple silhouette
 readMinutes: 4
-image: "/blog-images/crush-confessions-playbook-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/crush-confessions-playbook-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/crush-confessions-playbook-ultimate-guide.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/couple-kissing-sunset-man-woman-2585328/"
 ---
 # The Ultimate Guide to The Crush Confessions Playbook
 

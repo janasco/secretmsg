@@ -4,13 +4,13 @@ slug: crush-confessions-playbook-faq
 date: 2026-05-11
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Crush"]
-excerpt: "Every question people actually ask about the crush confessions playbook, answered straight."
-pixabay: "romantic couple silhouette"
+excerpt: Every question people actually ask about the crush confessions playbook, answered straight.
+pixabay: romantic couple silhouette
 readMinutes: 4
-image: "/blog-images/crush-confessions-playbook-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/crush-confessions-playbook-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/crush-confessions-playbook-faq.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/couple-kissing-sunset-man-woman-2585328/"
 ---
 # Crush Confessions Playbook: Questions, Answered
 

@@ -4,13 +4,13 @@ slug: exam-season-support-faq
 date: 2027-01-01
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Support"]
-excerpt: "Every question people actually ask about exam season support boards, answered straight."
-pixabay: "students studying library"
+excerpt: Every question people actually ask about exam season support boards, answered straight.
+pixabay: students studying library
 readMinutes: 4
-image: "/blog-images/exam-season-support-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/exam-season-support-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/exam-season-support-faq.jpg"
+credit: wal_172619
+credit_url: "https://pixabay.com/photos/library-books-reading-knowledge-7408106/"
 ---
 # Exam Season Support Boards: Questions, Answered
 

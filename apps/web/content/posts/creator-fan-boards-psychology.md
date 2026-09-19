@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Creator & Fan Boards"
+title: The Psychology Behind Creator & Fan Boards
 slug: creator-fan-boards-psychology
 date: 2027-07-16
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Creators"]
-excerpt: "Why creator & fan boards works on human brains — the behavioral science plus what to do with it."
-pixabay: "creator camera content"
+excerpt: Why creator & fan boards works on human brains — the behavioral science plus what to do with it.
+pixabay: creator camera content
 readMinutes: 4
-image: "/blog-images/creator-fan-boards-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/creator-fan-boards-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/creator-fan-boards-psychology.jpg"
+credit: LadyQuester
+credit_url: "https://pixabay.com/photos/film-studio-chomakey-studio-5366454/"
 ---
 # The Psychology Behind Creator & Fan Boards
 

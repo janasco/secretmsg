@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Psychology of Handles"
+title: What Nobody Tells You About Psychology of Handles
 slug: handle-psychology-secrets
 date: 2026-08-13
 status: published
 tags: ["Culture & Psychology", "Culture", "Identity"]
-excerpt: "The insider truths about the psychology of handles nobody puts in the onboarding."
-pixabay: "neon name sign"
+excerpt: The insider truths about the psychology of handles nobody puts in the onboarding.
+pixabay: neon name sign
 readMinutes: 4
-image: "/blog-images/handle-psychology-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/handle-psychology-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/handle-psychology-secrets.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/open-sign-neon-lights-illuminated-1836961/"
 ---
 # What Nobody Tells You About Psychology of Handles
 

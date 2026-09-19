@@ -5,12 +5,12 @@ date: 2027-04-03
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Habits"]
 excerpt: "Beyond the basics of fitness accountability, anonymously: power tactics for boards that already hum."
-pixabay: "running fitness sunrise"
+pixabay: running fitness sunrise
 readMinutes: 4
-image: "/blog-images/fitness-accountability-board-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/fitness-accountability-board-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/fitness-accountability-board-advanced.jpg"
+credit: kinkate
+credit_url: "https://pixabay.com/photos/jogging-run-sport-jog-sporty-race-2343558/"
 ---
 # Advanced Fitness Accountability, Anonymously: Level Up
 

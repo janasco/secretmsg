@@ -4,13 +4,13 @@ slug: wedding-party-board-faq
 date: 2027-02-27
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Events"]
-excerpt: "Every question people actually ask about wedding & party boards, answered straight."
-pixabay: "wedding celebration dance"
+excerpt: Every question people actually ask about wedding & party boards, answered straight.
+pixabay: wedding celebration dance
 readMinutes: 4
-image: "/blog-images/wedding-party-board-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/wedding-party-board-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/wedding-party-board-faq.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/woman-dance-dress-wedding-hindu-2178480/"
 ---
 # Wedding & Party Boards: Questions, Answered
 

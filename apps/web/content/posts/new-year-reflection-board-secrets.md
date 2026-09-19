@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About New Year, Honest Answers"
+title: What Nobody Tells You About New Year, Honest Answers
 slug: new-year-reflection-board-secrets
 date: 2026-06-16
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Reflection"]
-excerpt: "The insider truths about new year, honest answers nobody puts in the onboarding."
-pixabay: "new year fireworks night"
+excerpt: The insider truths about new year, honest answers nobody puts in the onboarding.
+pixabay: new year fireworks night
 readMinutes: 4
-image: "/blog-images/new-year-reflection-board-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/new-year-reflection-board-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/new-year-reflection-board-secrets.jpg"
+credit: Ri_Lens
+credit_url: "https://pixabay.com/photos/fireworks-night-celebration-festive-10444646/"
 ---
 # What Nobody Tells You About New Year, Honest Answers
 

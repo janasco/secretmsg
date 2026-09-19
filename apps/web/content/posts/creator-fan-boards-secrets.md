@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Creator & Fan Boards"
+title: What Nobody Tells You About Creator & Fan Boards
 slug: creator-fan-boards-secrets
 date: 2027-08-26
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Creators"]
-excerpt: "The insider truths about creator & fan boards nobody puts in the onboarding."
-pixabay: "creator camera content"
+excerpt: The insider truths about creator & fan boards nobody puts in the onboarding.
+pixabay: creator camera content
 readMinutes: 4
-image: "/blog-images/creator-fan-boards-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/creator-fan-boards-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/creator-fan-boards-secrets.jpg"
+credit: LadyQuester
+credit_url: "https://pixabay.com/photos/film-studio-chomakey-studio-5366454/"
 ---
 # What Nobody Tells You About Creator & Fan Boards
 

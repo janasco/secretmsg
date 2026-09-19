@@ -5,12 +5,12 @@ date: 2026-10-12
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Summer"]
 excerpt: "Beyond the basics of summer break boards: power tactics for boards that already hum."
-pixabay: "summer beach friends"
+pixabay: summer beach friends
 readMinutes: 4
-image: "/blog-images/summer-break-boards-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/summer-break-boards-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/summer-break-boards-advanced.jpg"
+credit: FotografieLink
+credit_url: "https://pixabay.com/photos/women-friends-beach-sea-summer-3266211/"
 ---
 # Advanced Summer Break Boards: Level Up
 

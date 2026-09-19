@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Double-Blind Replies, Demystified"
+title: The Psychology Behind Double-Blind Replies, Demystified
 slug: double-blind-replies-psychology
 date: 2026-02-23
 status: published
 tags: ["Product & Features", "Replies", "Privacy"]
-excerpt: "Why double-blind replies, demystified works on human brains — the behavioral science plus what to do with it."
-pixabay: "secret letter envelope"
+excerpt: Why double-blind replies, demystified works on human brains — the behavioral science plus what to do with it.
+pixabay: secret letter envelope
 readMinutes: 5
-image: "/blog-images/double-blind-replies-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/double-blind-replies-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/double-blind-replies-psychology.jpg"
+credit: Ylanite
+credit_url: "https://pixabay.com/photos/flowers-rose-nature-bloom-letter-6943134/"
 ---
 # The Psychology Behind Double-Blind Replies, Demystified
 

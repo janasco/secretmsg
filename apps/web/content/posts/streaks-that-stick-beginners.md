@@ -1,16 +1,16 @@
 ---
-title: "Streaks That Actually Stick for Beginners"
+title: Streaks That Actually Stick for Beginners
 slug: streaks-that-stick-beginners
 date: 2026-02-12
 status: published
 tags: ["Product & Features", "Streaks", "Ritual"]
 excerpt: "New to streaks that actually stick? Start here: zero jargon, first win in under ten minutes."
-pixabay: "fire flame energy"
+pixabay: fire flame energy
 readMinutes: 5
-image: "/blog-images/streaks-that-stick-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/streaks-that-stick-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/streaks-that-stick-beginners.jpg"
+credit: raedon
+credit_url: "https://pixabay.com/photos/flame-matchsticks-match-171732/"
 ---
 # Streaks That Actually Stick for Beginners
 

@@ -4,13 +4,13 @@ slug: streaks-that-stick-faq
 date: 2026-02-18
 status: published
 tags: ["Product & Features", "Streaks", "Ritual"]
-excerpt: "Every question people actually ask about streaks that actually stick, answered straight."
-pixabay: "fire flame energy"
+excerpt: Every question people actually ask about streaks that actually stick, answered straight.
+pixabay: fire flame energy
 readMinutes: 5
-image: "/blog-images/streaks-that-stick-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/streaks-that-stick-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/streaks-that-stick-faq.jpg"
+credit: raedon
+credit_url: "https://pixabay.com/photos/flame-matchsticks-match-171732/"
 ---
 # Streaks That Actually Stick: Questions, Answered
 

@@ -1,16 +1,16 @@
 ---
-title: "Mastering the Android App vs the Alternatives"
+title: Mastering the Android App vs the Alternatives
 slug: android-app-mastery-comparison
 date: 2027-11-26
 status: scheduled
 tags: ["Product & Features", "App", "Guide"]
-excerpt: "How mastering the android app stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "android phone apps"
+excerpt: How mastering the android app stacks against the alternatives — honest verdict, no tribalism.
+pixabay: android phone apps
 readMinutes: 4
-image: "/blog-images/android-app-mastery-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/android-app-mastery-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/android-app-mastery-comparison.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/phone-android-apps-world-map-1869510/"
 ---
 # Mastering the Android App vs the Alternatives
 

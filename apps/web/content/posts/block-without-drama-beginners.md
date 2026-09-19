@@ -1,16 +1,16 @@
 ---
-title: "Blocking Without Drama for Beginners"
+title: Blocking Without Drama for Beginners
 slug: block-without-drama-beginners
 date: 2026-08-30
 status: published
 tags: ["Safety & Moderation", "Safety", "Blocking"]
 excerpt: "New to blocking without drama? Start here: zero jargon, first win in under ten minutes."
-pixabay: "calm boundary fence"
+pixabay: calm boundary fence
 readMinutes: 4
-image: "/blog-images/block-without-drama-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/block-without-drama-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/block-without-drama-beginners.jpg"
+credit: manfredrichter
+credit_url: "https://pixabay.com/photos/barbed-wire-jail-fence-security-9906199/"
 ---
 # Blocking Without Drama for Beginners
 

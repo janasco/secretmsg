@@ -4,13 +4,13 @@ slug: android-app-mastery-mistakes
 date: 2027-11-03
 status: scheduled
 tags: ["Product & Features", "App", "Guide"]
-excerpt: "The seven ways people fumble mastering the android app, each with its fix. Learn them here, not the hard way."
-pixabay: "android phone apps"
+excerpt: The seven ways people fumble mastering the android app, each with its fix. Learn them here, not the hard way.
+pixabay: android phone apps
 readMinutes: 4
-image: "/blog-images/android-app-mastery-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/android-app-mastery-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/android-app-mastery-mistakes.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/phone-android-apps-world-map-1869510/"
 ---
 # Mastering the Android App: 7 Mistakes Everyone Makes
 

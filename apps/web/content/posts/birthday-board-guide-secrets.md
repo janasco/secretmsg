@@ -5,12 +5,12 @@ date: 2026-06-04
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Celebration"]
 excerpt: "The insider truths about the birthday board: a month of proof nobody puts in the onboarding."
-pixabay: "birthday party confetti"
+pixabay: birthday party confetti
 readMinutes: 4
-image: "/blog-images/birthday-board-guide-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/birthday-board-guide-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/birthday-board-guide-secrets.jpg"
+credit: RosZie
+credit_url: "https://pixabay.com/photos/birthday-cake-cakes-celebration-7381735/"
 ---
 # What Nobody Tells You About Birthday Board: A Month of Proof
 

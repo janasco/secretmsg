@@ -1,16 +1,16 @@
 ---
-title: "Word Filters, Mastered for Beginners"
+title: Word Filters, Mastered for Beginners
 slug: word-filters-mastery-beginners
 date: 2026-01-31
 status: published
 tags: ["Safety & Moderation", "Safety", "Moderation"]
 excerpt: "New to word filters, mastered? Start here: zero jargon, first win in under ten minutes."
-pixabay: "shield protection security"
+pixabay: shield protection security
 readMinutes: 5
-image: "/blog-images/word-filters-mastery-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/word-filters-mastery-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/word-filters-mastery-beginners.jpg"
+credit: PublicDomainPictures
+credit_url: "https://pixabay.com/photos/close-isolated-key-keys-lock-2204/"
 ---
 # Word Filters, Mastered for Beginners
 

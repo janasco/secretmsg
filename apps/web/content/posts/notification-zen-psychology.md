@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Notification Zen"
+title: The Psychology Behind Notification Zen
 slug: notification-zen-psychology
 date: 2026-08-17
 status: published
 tags: ["Product & Features", "Notifications", "Balance"]
-excerpt: "Why notification zen works on human brains — the behavioral science plus what to do with it."
-pixabay: "phone notification calm"
+excerpt: Why notification zen works on human brains — the behavioral science plus what to do with it.
+pixabay: phone notification calm
 readMinutes: 4
-image: "/blog-images/notification-zen-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/notification-zen-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/notification-zen-psychology.jpg"
+credit: PatrickLFC93
+credit_url: "https://pixabay.com/photos/phone-booth-phone-english-uk-7728783/"
 ---
 # The Psychology Behind Notification Zen
 

@@ -5,12 +5,12 @@ date: 2027-09-01
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Stickers"]
 excerpt: "Everything about qr codes: screenshots into taps — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "qr code phone scan"
+pixabay: qr code phone scan
 readMinutes: 4
-image: "/blog-images/qr-codes-on-stickers-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/qr-codes-on-stickers-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/qr-codes-on-stickers-ultimate-guide.jpg"
+credit: geralt
+credit_url: "https://pixabay.com/photos/qr-code-quick-response-code-to-scan-1903447/"
 ---
 # The Ultimate Guide to QR Codes: Screenshots Into Taps
 

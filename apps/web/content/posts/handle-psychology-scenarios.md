@@ -1,16 +1,16 @@
 ---
-title: "Psychology of Handles in Real Life"
+title: Psychology of Handles in Real Life
 slug: handle-psychology-scenarios
 date: 2026-08-11
 status: published
 tags: ["Culture & Psychology", "Culture", "Identity"]
-excerpt: "The Psychology of Handles played out in real scenes — watch the loop work, then steal it."
-pixabay: "neon name sign"
+excerpt: The Psychology of Handles played out in real scenes — watch the loop work, then steal it.
+pixabay: neon name sign
 readMinutes: 4
-image: "/blog-images/handle-psychology-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/handle-psychology-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/handle-psychology-scenarios.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/open-sign-neon-lights-illuminated-1836961/"
 ---
 # Psychology of Handles in Real Life
 

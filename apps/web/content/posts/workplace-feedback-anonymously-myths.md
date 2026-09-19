@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Workplace Feedback Without the Fallout"
+title: 5 Myths About Workplace Feedback Without the Fallout
 slug: workplace-feedback-anonymously-myths
 date: 2026-05-20
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Work"]
-excerpt: "Five myths about workplace feedback without the fallout, busted with evidence and better defaults."
-pixabay: "office team meeting"
+excerpt: Five myths about workplace feedback without the fallout, busted with evidence and better defaults.
+pixabay: office team meeting
 readMinutes: 4
-image: "/blog-images/workplace-feedback-anonymously-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/workplace-feedback-anonymously-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/workplace-feedback-anonymously-myths.jpg"
+credit: RonaldCandonga
+credit_url: "https://pixabay.com/photos/job-office-team-business-internet-5382501/"
 ---
 # 5 Myths About Workplace Feedback Without the Fallout
 

@@ -5,12 +5,12 @@ date: 2026-06-22
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Crush"]
 excerpt: "Beyond the basics of valentine's week tbh guide: power tactics for boards that already hum."
-pixabay: "valentine hearts romance"
+pixabay: valentine hearts romance
 readMinutes: 4
-image: "/blog-images/valentines-tbh-guide-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/valentines-tbh-guide-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/valentines-tbh-guide-advanced.jpg"
+credit: beasternchen
+credit_url: "https://pixabay.com/photos/heart-valentines-day-love-romance-8559831/"
 ---
 # Advanced Valentine's Week TBH Guide: Level Up
 

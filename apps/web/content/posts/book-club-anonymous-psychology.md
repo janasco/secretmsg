@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Anonymous Book Club Boards"
+title: The Psychology Behind Anonymous Book Club Boards
 slug: book-club-anonymous-psychology
 date: 2027-05-19
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Community"]
-excerpt: "Why anonymous book club boards works on human brains — the behavioral science plus what to do with it."
-pixabay: "books reading cozy"
+excerpt: Why anonymous book club boards works on human brains — the behavioral science plus what to do with it.
+pixabay: books reading cozy
 readMinutes: 4
-image: "/blog-images/book-club-anonymous-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/book-club-anonymous-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/book-club-anonymous-psychology.jpg"
+credit: fotografierende
+credit_url: "https://pixabay.com/photos/camera-book-candle-read-cozy-bed-4597415/"
 ---
 # The Psychology Behind Anonymous Book Club Boards
 

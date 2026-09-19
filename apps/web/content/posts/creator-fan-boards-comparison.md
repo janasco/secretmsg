@@ -1,16 +1,16 @@
 ---
-title: "Creator & Fan Boards vs the Alternatives"
+title: Creator & Fan Boards vs the Alternatives
 slug: creator-fan-boards-comparison
 date: 2027-08-03
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Creators"]
-excerpt: "How creator & fan boards stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "creator camera content"
+excerpt: How creator & fan boards stacks against the alternatives — honest verdict, no tribalism.
+pixabay: creator camera content
 readMinutes: 4
-image: "/blog-images/creator-fan-boards-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/creator-fan-boards-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/creator-fan-boards-comparison.jpg"
+credit: LadyQuester
+credit_url: "https://pixabay.com/photos/film-studio-chomakey-studio-5366454/"
 ---
 # Creator & Fan Boards vs the Alternatives
 

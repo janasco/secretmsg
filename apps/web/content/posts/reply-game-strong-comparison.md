@@ -1,16 +1,16 @@
 ---
-title: "A Strong Reply Game vs the Alternatives"
+title: A Strong Reply Game vs the Alternatives
 slug: reply-game-strong-comparison
 date: 2026-07-16
 status: published
 tags: ["Guides & How-To", "Replies", "Guide"]
-excerpt: "How a strong reply game stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "typing message chat"
+excerpt: How a strong reply game stacks against the alternatives — honest verdict, no tribalism.
+pixabay: typing message chat
 readMinutes: 4
-image: "/blog-images/reply-game-strong-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/reply-game-strong-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/reply-game-strong-comparison.jpg"
+credit: truyentranhmoi123
+credit_url: "https://pixabay.com/photos/smartphone-phone-iphone-5551318/"
 ---
 # A Strong Reply Game vs the Alternatives
 

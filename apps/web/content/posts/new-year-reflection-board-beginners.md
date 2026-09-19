@@ -1,16 +1,16 @@
 ---
-title: "New Year, Honest Answers for Beginners"
+title: New Year, Honest Answers for Beginners
 slug: new-year-reflection-board-beginners
 date: 2026-06-09
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Reflection"]
 excerpt: "New to new year, honest answers? Start here: zero jargon, first win in under ten minutes."
-pixabay: "new year fireworks night"
+pixabay: new year fireworks night
 readMinutes: 4
-image: "/blog-images/new-year-reflection-board-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/new-year-reflection-board-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/new-year-reflection-board-beginners.jpg"
+credit: Ri_Lens
+credit_url: "https://pixabay.com/photos/fireworks-night-celebration-festive-10444646/"
 ---
 # New Year, Honest Answers for Beginners
 

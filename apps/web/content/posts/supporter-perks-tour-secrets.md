@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Every Supporter Perk, Explained"
+title: What Nobody Tells You About Every Supporter Perk, Explained
 slug: supporter-perks-tour-secrets
 date: 2026-04-19
 status: draft
 tags: ["Product & Features", "Supporters", "Perks"]
-excerpt: "The insider truths about every supporter perk, explained nobody puts in the onboarding."
-pixabay: "golden badge premium"
+excerpt: The insider truths about every supporter perk, explained nobody puts in the onboarding.
+pixabay: golden badge premium
 readMinutes: 4
-image: "/blog-images/supporter-perks-tour-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/supporter-perks-tour-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/supporter-perks-tour-secrets.jpg"
+credit: rolfvandewal
+credit_url: "https://pixabay.com/photos/bmw-gearstick-4-series-premium-car-4993779/"
 ---
 # What Nobody Tells You About Every Supporter Perk, Explained
 

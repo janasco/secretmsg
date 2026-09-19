@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Pause Like a Pro"
+title: The Psychology Behind Pause Like a Pro
 slug: pause-like-a-pro-psychology
 date: 2026-03-30
 status: published
 tags: ["Safety & Moderation", "Safety", "Boundaries"]
-excerpt: "Why pause like a pro works on human brains — the behavioral science plus what to do with it."
-pixabay: "peaceful break relax"
+excerpt: Why pause like a pro works on human brains — the behavioral science plus what to do with it.
+pixabay: peaceful break relax
 readMinutes: 4
-image: "/blog-images/pause-like-a-pro-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/pause-like-a-pro-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/pause-like-a-pro-psychology.jpg"
+credit: ahuanzuishuai111
+credit_url: "https://pixabay.com/photos/coffee-cup-spoon-reading-book-10283354/"
 ---
 # The Psychology Behind Pause Like a Pro
 

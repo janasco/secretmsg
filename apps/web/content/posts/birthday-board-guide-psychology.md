@@ -5,12 +5,12 @@ date: 2026-05-27
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Celebration"]
 excerpt: "Why the birthday board: a month of proof works on human brains — the behavioral science plus what to do with it."
-pixabay: "birthday party confetti"
+pixabay: birthday party confetti
 readMinutes: 4
-image: "/blog-images/birthday-board-guide-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/birthday-board-guide-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/birthday-board-guide-psychology.jpg"
+credit: RosZie
+credit_url: "https://pixabay.com/photos/birthday-cake-cakes-celebration-7381735/"
 ---
 # The Psychology Behind Birthday Board: A Month of Proof
 

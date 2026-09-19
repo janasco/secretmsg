@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Fitness Accountability, Anonymously"
+title: The Ultimate Guide to Fitness Accountability, Anonymously
 slug: fitness-accountability-board-ultimate-guide
 date: 2027-03-11
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Habits"]
-excerpt: "Everything about fitness accountability, anonymously — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "running fitness sunrise"
+excerpt: Everything about fitness accountability, anonymously — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: running fitness sunrise
 readMinutes: 4
-image: "/blog-images/fitness-accountability-board-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/fitness-accountability-board-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/fitness-accountability-board-ultimate-guide.jpg"
+credit: kinkate
+credit_url: "https://pixabay.com/photos/jogging-run-sport-jog-sporty-race-2343558/"
 ---
 # The Ultimate Guide to Fitness Accountability, Anonymously
 

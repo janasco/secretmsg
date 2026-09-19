@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About TBH Culture, Explained"
+title: What Nobody Tells You About TBH Culture, Explained
 slug: tbh-culture-secrets
 date: 2026-01-27
 status: published
 tags: ["Culture & Psychology", "Culture", "TBH"]
-excerpt: "The insider truths about tbh culture, explained nobody puts in the onboarding."
-pixabay: "teen friends laughing"
+excerpt: The insider truths about tbh culture, explained nobody puts in the onboarding.
+pixabay: teen friends laughing
 readMinutes: 5
-image: "/blog-images/tbh-culture-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/tbh-culture-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/tbh-culture-secrets.jpg"
+credit: 46173
+credit_url: "https://pixabay.com/photos/joy-fun-friends-happy-family-4196370/"
 ---
 # What Nobody Tells You About TBH Culture, Explained
 

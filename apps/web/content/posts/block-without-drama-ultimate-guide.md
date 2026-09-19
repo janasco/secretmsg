@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Blocking Without Drama"
+title: The Ultimate Guide to Blocking Without Drama
 slug: block-without-drama-ultimate-guide
 date: 2026-08-26
 status: published
 tags: ["Safety & Moderation", "Safety", "Blocking"]
-excerpt: "Everything about blocking without drama — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "calm boundary fence"
+excerpt: Everything about blocking without drama — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: calm boundary fence
 readMinutes: 4
-image: "/blog-images/block-without-drama-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/block-without-drama-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/block-without-drama-ultimate-guide.jpg"
+credit: manfredrichter
+credit_url: "https://pixabay.com/photos/barbed-wire-jail-fence-security-9906199/"
 ---
 # The Ultimate Guide to Blocking Without Drama
 

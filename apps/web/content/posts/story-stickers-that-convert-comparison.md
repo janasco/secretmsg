@@ -1,16 +1,16 @@
 ---
-title: "Story Stickers That Actually Convert vs the Alternatives"
+title: Story Stickers That Actually Convert vs the Alternatives
 slug: story-stickers-that-convert-comparison
 date: 2026-03-10
 status: published
 tags: ["Growth & Sharing", "Growth", "Stickers"]
-excerpt: "How story stickers that actually convert stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "phone social media story"
+excerpt: How story stickers that actually convert stacks against the alternatives — honest verdict, no tribalism.
+pixabay: phone social media story
 readMinutes: 5
-image: "/blog-images/story-stickers-that-convert-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/story-stickers-that-convert-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/story-stickers-that-convert-comparison.jpg"
+credit: LoboStudioHamburg
+credit_url: "https://pixabay.com/photos/internet-whatsapp-smartphone-3113279/"
 ---
 # Story Stickers That Actually Convert vs the Alternatives
 

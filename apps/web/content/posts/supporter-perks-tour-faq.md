@@ -4,13 +4,13 @@ slug: supporter-perks-tour-faq
 date: 2026-04-17
 status: published
 tags: ["Product & Features", "Supporters", "Perks"]
-excerpt: "Every question people actually ask about every supporter perk, explained, answered straight."
-pixabay: "golden badge premium"
+excerpt: Every question people actually ask about every supporter perk, explained, answered straight.
+pixabay: golden badge premium
 readMinutes: 4
-image: "/blog-images/supporter-perks-tour-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/supporter-perks-tour-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/supporter-perks-tour-faq.jpg"
+credit: rolfvandewal
+credit_url: "https://pixabay.com/photos/bmw-gearstick-4-series-premium-car-4993779/"
 ---
 # Every Supporter Perk, Explained: Questions, Answered
 

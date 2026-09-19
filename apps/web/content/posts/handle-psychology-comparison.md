@@ -1,16 +1,16 @@
 ---
-title: "Psychology of Handles vs the Alternatives"
+title: Psychology of Handles vs the Alternatives
 slug: handle-psychology-comparison
 date: 2026-08-09
 status: published
 tags: ["Culture & Psychology", "Culture", "Identity"]
-excerpt: "How the psychology of handles stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "neon name sign"
+excerpt: How the psychology of handles stacks against the alternatives — honest verdict, no tribalism.
+pixabay: neon name sign
 readMinutes: 4
-image: "/blog-images/handle-psychology-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/handle-psychology-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/handle-psychology-comparison.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/open-sign-neon-lights-illuminated-1836961/"
 ---
 # Psychology of Handles vs the Alternatives
 

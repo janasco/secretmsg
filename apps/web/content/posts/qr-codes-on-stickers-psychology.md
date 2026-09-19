@@ -5,12 +5,12 @@ date: 2027-09-12
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Stickers"]
 excerpt: "Why qr codes: screenshots into taps works on human brains — the behavioral science plus what to do with it."
-pixabay: "qr code phone scan"
+pixabay: qr code phone scan
 readMinutes: 4
-image: "/blog-images/qr-codes-on-stickers-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/qr-codes-on-stickers-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/qr-codes-on-stickers-psychology.jpg"
+credit: geralt
+credit_url: "https://pixabay.com/photos/qr-code-quick-response-code-to-scan-1903447/"
 ---
 # The Psychology Behind QR Codes: Screenshots Into Taps
 

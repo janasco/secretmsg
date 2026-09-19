@@ -1,16 +1,16 @@
 ---
-title: "Wedding & Party Boards vs the Alternatives"
+title: Wedding & Party Boards vs the Alternatives
 slug: wedding-party-board-comparison
 date: 2027-02-10
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Events"]
-excerpt: "How wedding & party boards stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "wedding celebration dance"
+excerpt: How wedding & party boards stacks against the alternatives — honest verdict, no tribalism.
+pixabay: wedding celebration dance
 readMinutes: 4
-image: "/blog-images/wedding-party-board-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/wedding-party-board-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/wedding-party-board-comparison.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/woman-dance-dress-wedding-hindu-2178480/"
 ---
 # Wedding & Party Boards vs the Alternatives
 

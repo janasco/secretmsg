@@ -4,13 +4,13 @@ slug: summer-break-boards-mistakes
 date: 2026-09-24
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Summer"]
-excerpt: "The seven ways people fumble summer break boards, each with its fix. Learn them here, not the hard way."
-pixabay: "summer beach friends"
+excerpt: The seven ways people fumble summer break boards, each with its fix. Learn them here, not the hard way.
+pixabay: summer beach friends
 readMinutes: 4
-image: "/blog-images/summer-break-boards-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/summer-break-boards-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/summer-break-boards-mistakes.jpg"
+credit: FotografieLink
+credit_url: "https://pixabay.com/photos/women-friends-beach-sea-summer-3266211/"
 ---
 # Summer Break Boards: 7 Mistakes Everyone Makes
 

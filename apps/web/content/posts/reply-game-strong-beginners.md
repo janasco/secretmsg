@@ -1,16 +1,16 @@
 ---
-title: "A Strong Reply Game for Beginners"
+title: A Strong Reply Game for Beginners
 slug: reply-game-strong-beginners
 date: 2026-07-14
 status: published
 tags: ["Guides & How-To", "Replies", "Guide"]
 excerpt: "New to a strong reply game? Start here: zero jargon, first win in under ten minutes."
-pixabay: "typing message chat"
+pixabay: typing message chat
 readMinutes: 5
-image: "/blog-images/reply-game-strong-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/reply-game-strong-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/reply-game-strong-beginners.jpg"
+credit: truyentranhmoi123
+credit_url: "https://pixabay.com/photos/smartphone-phone-iphone-5551318/"
 ---
 # A Strong Reply Game for Beginners
 

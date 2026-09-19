@@ -1,16 +1,16 @@
 ---
-title: "Streaks That Actually Stick vs the Alternatives"
+title: Streaks That Actually Stick vs the Alternatives
 slug: streaks-that-stick-comparison
 date: 2026-02-14
 status: published
 tags: ["Product & Features", "Streaks", "Ritual"]
-excerpt: "How streaks that actually stick stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "fire flame energy"
+excerpt: How streaks that actually stick stacks against the alternatives — honest verdict, no tribalism.
+pixabay: fire flame energy
 readMinutes: 4
-image: "/blog-images/streaks-that-stick-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/streaks-that-stick-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/streaks-that-stick-comparison.jpg"
+credit: raedon
+credit_url: "https://pixabay.com/photos/flame-matchsticks-match-171732/"
 ---
 # Streaks That Actually Stick vs the Alternatives
 

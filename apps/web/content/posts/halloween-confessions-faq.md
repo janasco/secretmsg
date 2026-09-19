@@ -4,13 +4,13 @@ slug: halloween-confessions-faq
 date: 2026-07-08
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Fun"]
-excerpt: "Every question people actually ask about halloween confessions season, answered straight."
-pixabay: "halloween spooky night"
+excerpt: Every question people actually ask about halloween confessions season, answered straight.
+pixabay: halloween spooky night
 readMinutes: 4
-image: "/blog-images/halloween-confessions-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/halloween-confessions-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/halloween-confessions-faq.jpg"
+credit: Bessi
+credit_url: "https://pixabay.com/photos/tree-cat-silhouette-moon-full-moon-736877/"
 ---
 # Halloween Confessions Season: Questions, Answered
 

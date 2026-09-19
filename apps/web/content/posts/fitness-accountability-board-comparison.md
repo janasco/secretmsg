@@ -1,16 +1,16 @@
 ---
-title: "Fitness Accountability, Anonymously vs the Alternatives"
+title: Fitness Accountability, Anonymously vs the Alternatives
 slug: fitness-accountability-board-comparison
 date: 2027-04-09
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Habits"]
-excerpt: "How fitness accountability, anonymously stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "running fitness sunrise"
+excerpt: How fitness accountability, anonymously stacks against the alternatives — honest verdict, no tribalism.
+pixabay: running fitness sunrise
 readMinutes: 4
-image: "/blog-images/fitness-accountability-board-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/fitness-accountability-board-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/fitness-accountability-board-comparison.jpg"
+credit: kinkate
+credit_url: "https://pixabay.com/photos/jogging-run-sport-jog-sporty-race-2343558/"
 ---
 # Fitness Accountability, Anonymously vs the Alternatives
 

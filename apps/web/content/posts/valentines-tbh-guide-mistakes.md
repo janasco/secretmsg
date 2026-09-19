@@ -4,13 +4,13 @@ slug: valentines-tbh-guide-mistakes
 date: 2026-06-18
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Crush"]
-excerpt: "The seven ways people fumble valentine's week tbh guide, each with its fix. Learn them here, not the hard way."
-pixabay: "valentine hearts romance"
+excerpt: The seven ways people fumble valentine's week tbh guide, each with its fix. Learn them here, not the hard way.
+pixabay: valentine hearts romance
 readMinutes: 4
-image: "/blog-images/valentines-tbh-guide-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/valentines-tbh-guide-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/valentines-tbh-guide-mistakes.jpg"
+credit: beasternchen
+credit_url: "https://pixabay.com/photos/heart-valentines-day-love-romance-8559831/"
 ---
 # Valentine's Week TBH Guide: 7 Mistakes Everyone Makes
 

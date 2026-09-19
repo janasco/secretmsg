@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Anonymous Messaging 101"
+title: The Ultimate Guide to Anonymous Messaging 101
 slug: anonymous-messaging-101-ultimate-guide
 date: 2026-01-05
 status: published
 tags: ["Guides & How-To", "Guide", "Beginners"]
-excerpt: "Everything about anonymous messaging 101 — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "friends messaging phone"
+excerpt: Everything about anonymous messaging 101 — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: friends messaging phone
 readMinutes: 5
-image: "/blog-images/anonymous-messaging-101-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/anonymous-messaging-101-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/anonymous-messaging-101-ultimate-guide.jpg"
+credit: terimakasih0
+credit_url: "https://pixabay.com/photos/new-year-mobile-phones-texting-1490691/"
 ---
 # The Ultimate Guide to Anonymous Messaging 101
 

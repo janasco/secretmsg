@@ -1,16 +1,16 @@
 ---
-title: "Backup Codes Survival Guide for Beginners"
+title: Backup Codes Survival Guide for Beginners
 slug: backup-codes-survival-beginners
 date: 2026-07-26
 status: published
 tags: ["Guides & How-To", "Guide", "Account"]
 excerpt: "New to backup codes survival guide? Start here: zero jargon, first win in under ten minutes."
-pixabay: "safe lock security"
+pixabay: safe lock security
 readMinutes: 5
-image: "/blog-images/backup-codes-survival-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/backup-codes-survival-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/backup-codes-survival-beginners.jpg"
+credit: 12019
+credit_url: "https://pixabay.com/photos/padlock-door-lock-key-hole-macro-172770/"
 ---
 # Backup Codes Survival Guide for Beginners
 

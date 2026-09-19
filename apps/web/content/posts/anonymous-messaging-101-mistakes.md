@@ -4,13 +4,13 @@ slug: anonymous-messaging-101-mistakes
 date: 2026-01-06
 status: published
 tags: ["Guides & How-To", "Guide", "Beginners"]
-excerpt: "The seven ways people fumble anonymous messaging 101, each with its fix. Learn them here, not the hard way."
-pixabay: "friends messaging phone"
+excerpt: The seven ways people fumble anonymous messaging 101, each with its fix. Learn them here, not the hard way.
+pixabay: friends messaging phone
 readMinutes: 5
-image: "/blog-images/anonymous-messaging-101-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/anonymous-messaging-101-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/anonymous-messaging-101-mistakes.jpg"
+credit: terimakasih0
+credit_url: "https://pixabay.com/photos/new-year-mobile-phones-texting-1490691/"
 ---
 # Anonymous Messaging 101: 7 Mistakes Everyone Makes
 

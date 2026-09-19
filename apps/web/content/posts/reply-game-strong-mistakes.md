@@ -4,13 +4,13 @@ slug: reply-game-strong-mistakes
 date: 2026-07-12
 status: published
 tags: ["Guides & How-To", "Replies", "Guide"]
-excerpt: "The seven ways people fumble a strong reply game, each with its fix. Learn them here, not the hard way."
-pixabay: "typing message chat"
+excerpt: The seven ways people fumble a strong reply game, each with its fix. Learn them here, not the hard way.
+pixabay: typing message chat
 readMinutes: 4
-image: "/blog-images/reply-game-strong-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/reply-game-strong-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/reply-game-strong-mistakes.jpg"
+credit: truyentranhmoi123
+credit_url: "https://pixabay.com/photos/smartphone-phone-iphone-5551318/"
 ---
 # A Strong Reply Game: 7 Mistakes Everyone Makes
 

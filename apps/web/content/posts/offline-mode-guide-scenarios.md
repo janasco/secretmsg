@@ -1,16 +1,16 @@
 ---
-title: "Offline Outbox, Explained in Real Life"
+title: Offline Outbox, Explained in Real Life
 slug: offline-mode-guide-scenarios
 date: 2026-04-28
 status: published
 tags: ["Product & Features", "Offline", "App"]
-excerpt: "The Offline Outbox, Explained played out in real scenes — watch the loop work, then steal it."
-pixabay: "airplane travel phone"
+excerpt: The Offline Outbox, Explained played out in real scenes — watch the loop work, then steal it.
+pixabay: airplane travel phone
 readMinutes: 4
-image: "/blog-images/offline-mode-guide-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/offline-mode-guide-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/offline-mode-guide-scenarios.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/still-items-things-passes-boarding-2609682/"
 ---
 # Offline Outbox, Explained in Real Life
 

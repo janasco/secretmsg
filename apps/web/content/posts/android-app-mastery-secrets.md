@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Mastering the Android App"
+title: What Nobody Tells You About Mastering the Android App
 slug: android-app-mastery-secrets
 date: 2027-12-20
 status: draft
 tags: ["Product & Features", "App", "Guide"]
-excerpt: "The insider truths about mastering the android app nobody puts in the onboarding."
-pixabay: "android phone apps"
+excerpt: The insider truths about mastering the android app nobody puts in the onboarding.
+pixabay: android phone apps
 readMinutes: 4
-image: "/blog-images/android-app-mastery-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/android-app-mastery-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/android-app-mastery-secrets.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/phone-android-apps-world-map-1869510/"
 ---
 # What Nobody Tells You About Mastering the Android App
 

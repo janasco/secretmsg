@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to The Dice Roulette Playbook"
+title: The Ultimate Guide to The Dice Roulette Playbook
 slug: dice-roulette-guide-ultimate-guide
 date: 2026-03-16
 status: published
 tags: ["Product & Features", "Dice", "Prompts"]
-excerpt: "Everything about the dice roulette playbook — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "dice game neon"
+excerpt: Everything about the dice roulette playbook — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: dice game neon
 readMinutes: 5
-image: "/blog-images/dice-roulette-guide-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/dice-roulette-guide-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/dice-roulette-guide-ultimate-guide.jpg"
+credit: PIRO4D
+credit_url: "https://pixabay.com/photos/dice-game-random-gambling-1963036/"
 ---
 # The Ultimate Guide to The Dice Roulette Playbook
 

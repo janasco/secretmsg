@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Halloween Confessions Season"
+title: The Psychology Behind Halloween Confessions Season
 slug: halloween-confessions-psychology
 date: 2026-07-01
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Fun"]
-excerpt: "Why halloween confessions season works on human brains — the behavioral science plus what to do with it."
-pixabay: "halloween spooky night"
+excerpt: Why halloween confessions season works on human brains — the behavioral science plus what to do with it.
+pixabay: halloween spooky night
 readMinutes: 4
-image: "/blog-images/halloween-confessions-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/halloween-confessions-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/halloween-confessions-psychology.jpg"
+credit: Bessi
+credit_url: "https://pixabay.com/photos/tree-cat-silhouette-moon-full-moon-736877/"
 ---
 # The Psychology Behind Halloween Confessions Season
 

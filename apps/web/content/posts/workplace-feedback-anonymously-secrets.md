@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Workplace Feedback Without the Fallout"
+title: What Nobody Tells You About Workplace Feedback Without the Fallout
 slug: workplace-feedback-anonymously-secrets
 date: 2026-05-24
 status: draft
 tags: ["Scenarios & Stories", "Scenarios", "Work"]
-excerpt: "The insider truths about workplace feedback without the fallout nobody puts in the onboarding."
-pixabay: "office team meeting"
+excerpt: The insider truths about workplace feedback without the fallout nobody puts in the onboarding.
+pixabay: office team meeting
 readMinutes: 4
-image: "/blog-images/workplace-feedback-anonymously-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/workplace-feedback-anonymously-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/workplace-feedback-anonymously-secrets.jpg"
+credit: RonaldCandonga
+credit_url: "https://pixabay.com/photos/job-office-team-business-internet-5382501/"
 ---
 # What Nobody Tells You About Workplace Feedback Without the Fallout
 

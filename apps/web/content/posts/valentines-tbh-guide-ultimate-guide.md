@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Valentine's Week TBH Guide"
+title: The Ultimate Guide to Valentine's Week TBH Guide
 slug: valentines-tbh-guide-ultimate-guide
 date: 2026-06-17
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Crush"]
-excerpt: "Everything about valentine's week tbh guide — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "valentine hearts romance"
+excerpt: Everything about valentine's week tbh guide — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: valentine hearts romance
 readMinutes: 4
-image: "/blog-images/valentines-tbh-guide-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/valentines-tbh-guide-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/valentines-tbh-guide-ultimate-guide.jpg"
+credit: beasternchen
+credit_url: "https://pixabay.com/photos/heart-valentines-day-love-romance-8559831/"
 ---
 # The Ultimate Guide to Valentine's Week TBH Guide
 

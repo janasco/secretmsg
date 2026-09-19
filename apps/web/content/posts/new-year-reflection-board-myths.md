@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About New Year, Honest Answers"
+title: 5 Myths About New Year, Honest Answers
 slug: new-year-reflection-board-myths
 date: 2026-06-12
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Reflection"]
-excerpt: "Five myths about new year, honest answers, busted with evidence and better defaults."
-pixabay: "new year fireworks night"
+excerpt: Five myths about new year, honest answers, busted with evidence and better defaults.
+pixabay: new year fireworks night
 readMinutes: 4
-image: "/blog-images/new-year-reflection-board-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/new-year-reflection-board-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/new-year-reflection-board-myths.jpg"
+credit: Ri_Lens
+credit_url: "https://pixabay.com/photos/fireworks-night-celebration-festive-10444646/"
 ---
 # 5 Myths About New Year, Honest Answers
 

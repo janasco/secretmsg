@@ -4,13 +4,13 @@ slug: new-year-reflection-board-faq
 date: 2026-06-15
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Reflection"]
-excerpt: "Every question people actually ask about new year, honest answers, answered straight."
-pixabay: "new year fireworks night"
+excerpt: Every question people actually ask about new year, honest answers, answered straight.
+pixabay: new year fireworks night
 readMinutes: 4
-image: "/blog-images/new-year-reflection-board-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/new-year-reflection-board-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/new-year-reflection-board-faq.jpg"
+credit: Ri_Lens
+credit_url: "https://pixabay.com/photos/fireworks-night-celebration-festive-10444646/"
 ---
 # New Year, Honest Answers: Questions, Answered
 

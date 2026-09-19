@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Word Filters, Mastered"
+title: The Psychology Behind Word Filters, Mastered
 slug: word-filters-mastery-psychology
 date: 2026-01-30
 status: published
 tags: ["Safety & Moderation", "Safety", "Moderation"]
-excerpt: "Why word filters, mastered works on human brains — the behavioral science plus what to do with it."
-pixabay: "shield protection security"
+excerpt: Why word filters, mastered works on human brains — the behavioral science plus what to do with it.
+pixabay: shield protection security
 readMinutes: 5
-image: "/blog-images/word-filters-mastery-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/word-filters-mastery-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/word-filters-mastery-psychology.jpg"
+credit: PublicDomainPictures
+credit_url: "https://pixabay.com/photos/close-isolated-key-keys-lock-2204/"
 ---
 # The Psychology Behind Word Filters, Mastered
 

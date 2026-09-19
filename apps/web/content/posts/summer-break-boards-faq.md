@@ -4,13 +4,13 @@ slug: summer-break-boards-faq
 date: 2026-11-04
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Summer"]
-excerpt: "Every question people actually ask about summer break boards, answered straight."
-pixabay: "summer beach friends"
+excerpt: Every question people actually ask about summer break boards, answered straight.
+pixabay: summer beach friends
 readMinutes: 4
-image: "/blog-images/summer-break-boards-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/summer-break-boards-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/summer-break-boards-faq.jpg"
+credit: FotografieLink
+credit_url: "https://pixabay.com/photos/women-friends-beach-sea-summer-3266211/"
 ---
 # Summer Break Boards: Questions, Answered
 

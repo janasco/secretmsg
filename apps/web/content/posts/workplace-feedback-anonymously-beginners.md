@@ -1,16 +1,16 @@
 ---
-title: "Workplace Feedback Without the Fallout for Beginners"
+title: Workplace Feedback Without the Fallout for Beginners
 slug: workplace-feedback-anonymously-beginners
 date: 2026-05-17
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Work"]
 excerpt: "New to workplace feedback without the fallout? Start here: zero jargon, first win in under ten minutes."
-pixabay: "office team meeting"
+pixabay: office team meeting
 readMinutes: 4
-image: "/blog-images/workplace-feedback-anonymously-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/workplace-feedback-anonymously-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/workplace-feedback-anonymously-beginners.jpg"
+credit: RonaldCandonga
+credit_url: "https://pixabay.com/photos/job-office-team-business-internet-5382501/"
 ---
 # Workplace Feedback Without the Fallout for Beginners
 

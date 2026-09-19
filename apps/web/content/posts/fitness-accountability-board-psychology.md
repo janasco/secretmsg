@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Fitness Accountability, Anonymously"
+title: The Psychology Behind Fitness Accountability, Anonymously
 slug: fitness-accountability-board-psychology
 date: 2027-03-23
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Habits"]
-excerpt: "Why fitness accountability, anonymously works on human brains — the behavioral science plus what to do with it."
-pixabay: "running fitness sunrise"
+excerpt: Why fitness accountability, anonymously works on human brains — the behavioral science plus what to do with it.
+pixabay: running fitness sunrise
 readMinutes: 4
-image: "/blog-images/fitness-accountability-board-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/fitness-accountability-board-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/fitness-accountability-board-psychology.jpg"
+credit: kinkate
+credit_url: "https://pixabay.com/photos/jogging-run-sport-jog-sporty-race-2343558/"
 ---
 # The Psychology Behind Fitness Accountability, Anonymously
 

@@ -4,13 +4,13 @@ slug: dice-roulette-guide-mistakes
 date: 2026-03-17
 status: published
 tags: ["Product & Features", "Dice", "Prompts"]
-excerpt: "The seven ways people fumble the dice roulette playbook, each with its fix. Learn them here, not the hard way."
-pixabay: "dice game neon"
+excerpt: The seven ways people fumble the dice roulette playbook, each with its fix. Learn them here, not the hard way.
+pixabay: dice game neon
 readMinutes: 5
-image: "/blog-images/dice-roulette-guide-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/dice-roulette-guide-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/dice-roulette-guide-mistakes.jpg"
+credit: PIRO4D
+credit_url: "https://pixabay.com/photos/dice-game-random-gambling-1963036/"
 ---
 # Dice Roulette Playbook: 7 Mistakes Everyone Makes
 

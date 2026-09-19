@@ -1,16 +1,16 @@
 ---
-title: "Workplace Feedback Without the Fallout in Real Life"
+title: Workplace Feedback Without the Fallout in Real Life
 slug: workplace-feedback-anonymously-scenarios
 date: 2026-05-21
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Work"]
-excerpt: "Workplace Feedback Without the Fallout played out in real scenes — watch the loop work, then steal it."
-pixabay: "office team meeting"
+excerpt: Workplace Feedback Without the Fallout played out in real scenes — watch the loop work, then steal it.
+pixabay: office team meeting
 readMinutes: 4
-image: "/blog-images/workplace-feedback-anonymously-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/workplace-feedback-anonymously-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/workplace-feedback-anonymously-scenarios.jpg"
+credit: RonaldCandonga
+credit_url: "https://pixabay.com/photos/job-office-team-business-internet-5382501/"
 ---
 # Workplace Feedback Without the Fallout in Real Life
 

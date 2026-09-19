@@ -1,16 +1,16 @@
 ---
-title: "Notification Zen in Real Life"
+title: Notification Zen in Real Life
 slug: notification-zen-scenarios
 date: 2026-08-23
 status: published
 tags: ["Product & Features", "Notifications", "Balance"]
-excerpt: "Notification Zen played out in real scenes — watch the loop work, then steal it."
-pixabay: "phone notification calm"
+excerpt: Notification Zen played out in real scenes — watch the loop work, then steal it.
+pixabay: phone notification calm
 readMinutes: 4
-image: "/blog-images/notification-zen-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/notification-zen-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/notification-zen-scenarios.jpg"
+credit: PatrickLFC93
+credit_url: "https://pixabay.com/photos/phone-booth-phone-english-uk-7728783/"
 ---
 # Notification Zen in Real Life
 

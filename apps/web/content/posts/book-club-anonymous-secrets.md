@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Anonymous Book Club Boards"
+title: What Nobody Tells You About Anonymous Book Club Boards
 slug: book-club-anonymous-secrets
 date: 2027-06-29
 status: draft
 tags: ["Scenarios & Stories", "Scenarios", "Community"]
-excerpt: "The insider truths about anonymous book club boards nobody puts in the onboarding."
-pixabay: "books reading cozy"
+excerpt: The insider truths about anonymous book club boards nobody puts in the onboarding.
+pixabay: books reading cozy
 readMinutes: 4
-image: "/blog-images/book-club-anonymous-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/book-club-anonymous-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/book-club-anonymous-secrets.jpg"
+credit: fotografierende
+credit_url: "https://pixabay.com/photos/camera-book-candle-read-cozy-bed-4597415/"
 ---
 # What Nobody Tells You About Anonymous Book Club Boards
 

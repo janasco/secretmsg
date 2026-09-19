@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Dice Roulette Playbook"
+title: 5 Myths About Dice Roulette Playbook
 slug: dice-roulette-guide-myths
 date: 2026-03-23
 status: published
 tags: ["Product & Features", "Dice", "Prompts"]
-excerpt: "Five myths about the dice roulette playbook, busted with evidence and better defaults."
-pixabay: "dice game neon"
+excerpt: Five myths about the dice roulette playbook, busted with evidence and better defaults.
+pixabay: dice game neon
 readMinutes: 5
-image: "/blog-images/dice-roulette-guide-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/dice-roulette-guide-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/dice-roulette-guide-myths.jpg"
+credit: PIRO4D
+credit_url: "https://pixabay.com/photos/dice-game-random-gambling-1963036/"
 ---
 # 5 Myths About Dice Roulette Playbook
 

@@ -5,12 +5,12 @@ date: 2026-08-08
 status: published
 tags: ["Culture & Psychology", "Culture", "Identity"]
 excerpt: "Beyond the basics of the psychology of handles: power tactics for boards that already hum."
-pixabay: "neon name sign"
+pixabay: neon name sign
 readMinutes: 4
-image: "/blog-images/handle-psychology-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/handle-psychology-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/handle-psychology-advanced.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/open-sign-neon-lights-illuminated-1836961/"
 ---
 # Advanced Psychology of Handles: Level Up
 

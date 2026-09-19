@@ -1,16 +1,16 @@
 ---
-title: "Dice Roulette Playbook in Real Life"
+title: Dice Roulette Playbook in Real Life
 slug: dice-roulette-guide-scenarios
 date: 2026-03-24
 status: published
 tags: ["Product & Features", "Dice", "Prompts"]
-excerpt: "The Dice Roulette Playbook played out in real scenes — watch the loop work, then steal it."
-pixabay: "dice game neon"
+excerpt: The Dice Roulette Playbook played out in real scenes — watch the loop work, then steal it.
+pixabay: dice game neon
 readMinutes: 5
-image: "/blog-images/dice-roulette-guide-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/dice-roulette-guide-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/dice-roulette-guide-scenarios.jpg"
+credit: PIRO4D
+credit_url: "https://pixabay.com/photos/dice-game-random-gambling-1963036/"
 ---
 # Dice Roulette Playbook in Real Life
 

@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Anonymous Messaging 101"
+title: 5 Myths About Anonymous Messaging 101
 slug: anonymous-messaging-101-myths
 date: 2026-01-12
 status: published
 tags: ["Guides & How-To", "Guide", "Beginners"]
-excerpt: "Five myths about anonymous messaging 101, busted with evidence and better defaults."
-pixabay: "friends messaging phone"
+excerpt: Five myths about anonymous messaging 101, busted with evidence and better defaults.
+pixabay: friends messaging phone
 readMinutes: 5
-image: "/blog-images/anonymous-messaging-101-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/anonymous-messaging-101-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/anonymous-messaging-101-myths.jpg"
+credit: terimakasih0
+credit_url: "https://pixabay.com/photos/new-year-mobile-phones-texting-1490691/"
 ---
 # 5 Myths About Anonymous Messaging 101
 

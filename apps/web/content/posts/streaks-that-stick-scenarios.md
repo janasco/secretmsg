@@ -1,16 +1,16 @@
 ---
-title: "Streaks That Actually Stick in Real Life"
+title: Streaks That Actually Stick in Real Life
 slug: streaks-that-stick-scenarios
 date: 2026-02-17
 status: published
 tags: ["Product & Features", "Streaks", "Ritual"]
-excerpt: "Streaks That Actually Stick played out in real scenes — watch the loop work, then steal it."
-pixabay: "fire flame energy"
+excerpt: Streaks That Actually Stick played out in real scenes — watch the loop work, then steal it.
+pixabay: fire flame energy
 readMinutes: 5
-image: "/blog-images/streaks-that-stick-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/streaks-that-stick-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/streaks-that-stick-scenarios.jpg"
+credit: raedon
+credit_url: "https://pixabay.com/photos/flame-matchsticks-match-171732/"
 ---
 # Streaks That Actually Stick in Real Life
 

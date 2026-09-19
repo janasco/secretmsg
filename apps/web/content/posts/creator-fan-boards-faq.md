@@ -4,13 +4,13 @@ slug: creator-fan-boards-faq
 date: 2027-08-20
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Creators"]
-excerpt: "Every question people actually ask about creator & fan boards, answered straight."
-pixabay: "creator camera content"
+excerpt: Every question people actually ask about creator & fan boards, answered straight.
+pixabay: creator camera content
 readMinutes: 4
-image: "/blog-images/creator-fan-boards-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/creator-fan-boards-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/creator-fan-boards-faq.jpg"
+credit: LadyQuester
+credit_url: "https://pixabay.com/photos/film-studio-chomakey-studio-5366454/"
 ---
 # Creator & Fan Boards: Questions, Answered
 

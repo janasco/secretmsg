@@ -1,16 +1,16 @@
 ---
-title: "Word Filters, Mastered vs the Alternatives"
+title: Word Filters, Mastered vs the Alternatives
 slug: word-filters-mastery-comparison
 date: 2026-02-03
 status: published
 tags: ["Safety & Moderation", "Safety", "Moderation"]
-excerpt: "How word filters, mastered stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "shield protection security"
+excerpt: How word filters, mastered stacks against the alternatives — honest verdict, no tribalism.
+pixabay: shield protection security
 readMinutes: 5
-image: "/blog-images/word-filters-mastery-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/word-filters-mastery-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/word-filters-mastery-comparison.jpg"
+credit: PublicDomainPictures
+credit_url: "https://pixabay.com/photos/close-isolated-key-keys-lock-2204/"
 ---
 # Word Filters, Mastered vs the Alternatives
 

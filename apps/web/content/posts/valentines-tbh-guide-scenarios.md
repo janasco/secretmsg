@@ -1,16 +1,16 @@
 ---
-title: "Valentine's Week TBH Guide in Real Life"
+title: Valentine's Week TBH Guide in Real Life
 slug: valentines-tbh-guide-scenarios
 date: 2026-06-25
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Crush"]
-excerpt: "Valentine's Week TBH Guide played out in real scenes — watch the loop work, then steal it."
-pixabay: "valentine hearts romance"
+excerpt: Valentine's Week TBH Guide played out in real scenes — watch the loop work, then steal it.
+pixabay: valentine hearts romance
 readMinutes: 4
-image: "/blog-images/valentines-tbh-guide-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/valentines-tbh-guide-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/valentines-tbh-guide-scenarios.jpg"
+credit: beasternchen
+credit_url: "https://pixabay.com/photos/heart-valentines-day-love-romance-8559831/"
 ---
 # Valentine's Week TBH Guide in Real Life
 

@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Pause Like a Pro"
+title: What Nobody Tells You About Pause Like a Pro
 slug: pause-like-a-pro-secrets
 date: 2026-04-07
 status: published
 tags: ["Safety & Moderation", "Safety", "Boundaries"]
-excerpt: "The insider truths about pause like a pro nobody puts in the onboarding."
-pixabay: "peaceful break relax"
+excerpt: The insider truths about pause like a pro nobody puts in the onboarding.
+pixabay: peaceful break relax
 readMinutes: 4
-image: "/blog-images/pause-like-a-pro-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/pause-like-a-pro-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/pause-like-a-pro-secrets.jpg"
+credit: ahuanzuishuai111
+credit_url: "https://pixabay.com/photos/coffee-cup-spoon-reading-book-10283354/"
 ---
 # What Nobody Tells You About Pause Like a Pro
 

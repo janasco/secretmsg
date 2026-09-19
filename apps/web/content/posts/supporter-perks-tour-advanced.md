@@ -5,12 +5,12 @@ date: 2026-04-13
 status: published
 tags: ["Product & Features", "Supporters", "Perks"]
 excerpt: "Beyond the basics of every supporter perk, explained: power tactics for boards that already hum."
-pixabay: "golden badge premium"
+pixabay: golden badge premium
 readMinutes: 4
-image: "/blog-images/supporter-perks-tour-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/supporter-perks-tour-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/supporter-perks-tour-advanced.jpg"
+credit: rolfvandewal
+credit_url: "https://pixabay.com/photos/bmw-gearstick-4-series-premium-car-4993779/"
 ---
 # Advanced Every Supporter Perk, Explained: Level Up
 

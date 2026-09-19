@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Streaks That Actually Stick"
+title: What Nobody Tells You About Streaks That Actually Stick
 slug: streaks-that-stick-secrets
 date: 2026-02-19
 status: published
 tags: ["Product & Features", "Streaks", "Ritual"]
-excerpt: "The insider truths about streaks that actually stick nobody puts in the onboarding."
-pixabay: "fire flame energy"
+excerpt: The insider truths about streaks that actually stick nobody puts in the onboarding.
+pixabay: fire flame energy
 readMinutes: 5
-image: "/blog-images/streaks-that-stick-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/streaks-that-stick-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/streaks-that-stick-secrets.jpg"
+credit: raedon
+credit_url: "https://pixabay.com/photos/flame-matchsticks-match-171732/"
 ---
 # What Nobody Tells You About Streaks That Actually Stick
 

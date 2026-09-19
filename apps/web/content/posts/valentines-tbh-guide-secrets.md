@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Valentine's Week TBH Guide"
+title: What Nobody Tells You About Valentine's Week TBH Guide
 slug: valentines-tbh-guide-secrets
 date: 2026-06-28
 status: draft
 tags: ["Moments & Seasons", "Seasonal", "Crush"]
-excerpt: "The insider truths about valentine's week tbh guide nobody puts in the onboarding."
-pixabay: "valentine hearts romance"
+excerpt: The insider truths about valentine's week tbh guide nobody puts in the onboarding.
+pixabay: valentine hearts romance
 readMinutes: 4
-image: "/blog-images/valentines-tbh-guide-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/valentines-tbh-guide-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/valentines-tbh-guide-secrets.jpg"
+credit: beasternchen
+credit_url: "https://pixabay.com/photos/heart-valentines-day-love-romance-8559831/"
 ---
 # What Nobody Tells You About Valentine's Week TBH Guide
 

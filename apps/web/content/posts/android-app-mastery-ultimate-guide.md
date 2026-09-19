@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Mastering the Android App"
+title: The Ultimate Guide to Mastering the Android App
 slug: android-app-mastery-ultimate-guide
 date: 2027-10-28
 status: scheduled
 tags: ["Product & Features", "App", "Guide"]
-excerpt: "Everything about mastering the android app — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "android phone apps"
+excerpt: Everything about mastering the android app — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: android phone apps
 readMinutes: 4
-image: "/blog-images/android-app-mastery-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/android-app-mastery-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/android-app-mastery-ultimate-guide.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/phone-android-apps-world-map-1869510/"
 ---
 # The Ultimate Guide to Mastering the Android App
 

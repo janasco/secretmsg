@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Double-Blind Replies, Demystified"
+title: The Ultimate Guide to Double-Blind Replies, Demystified
 slug: double-blind-replies-ultimate-guide
 date: 2026-02-20
 status: published
 tags: ["Product & Features", "Replies", "Privacy"]
-excerpt: "Everything about double-blind replies, demystified — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "secret letter envelope"
+excerpt: Everything about double-blind replies, demystified — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: secret letter envelope
 readMinutes: 5
-image: "/blog-images/double-blind-replies-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/double-blind-replies-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/double-blind-replies-ultimate-guide.jpg"
+credit: Ylanite
+credit_url: "https://pixabay.com/photos/flowers-rose-nature-bloom-letter-6943134/"
 ---
 # The Ultimate Guide to Double-Blind Replies, Demystified
 

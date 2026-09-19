@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to A Strong Reply Game"
+title: The Ultimate Guide to A Strong Reply Game
 slug: reply-game-strong-ultimate-guide
 date: 2026-07-11
 status: published
 tags: ["Guides & How-To", "Replies", "Guide"]
-excerpt: "Everything about a strong reply game — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "typing message chat"
+excerpt: Everything about a strong reply game — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: typing message chat
 readMinutes: 4
-image: "/blog-images/reply-game-strong-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/reply-game-strong-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/reply-game-strong-ultimate-guide.jpg"
+credit: truyentranhmoi123
+credit_url: "https://pixabay.com/photos/smartphone-phone-iphone-5551318/"
 ---
 # The Ultimate Guide to A Strong Reply Game
 

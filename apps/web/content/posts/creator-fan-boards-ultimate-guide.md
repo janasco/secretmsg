@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Creator & Fan Boards"
+title: The Ultimate Guide to Creator & Fan Boards
 slug: creator-fan-boards-ultimate-guide
 date: 2027-07-05
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Creators"]
-excerpt: "Everything about creator & fan boards — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "creator camera content"
+excerpt: Everything about creator & fan boards — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: creator camera content
 readMinutes: 4
-image: "/blog-images/creator-fan-boards-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/creator-fan-boards-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/creator-fan-boards-ultimate-guide.jpg"
+credit: LadyQuester
+credit_url: "https://pixabay.com/photos/film-studio-chomakey-studio-5366454/"
 ---
 # The Ultimate Guide to Creator & Fan Boards
 

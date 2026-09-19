@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Summer Break Boards"
+title: 5 Myths About Summer Break Boards
 slug: summer-break-boards-myths
 date: 2026-10-23
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Summer"]
-excerpt: "Five myths about summer break boards, busted with evidence and better defaults."
-pixabay: "summer beach friends"
+excerpt: Five myths about summer break boards, busted with evidence and better defaults.
+pixabay: summer beach friends
 readMinutes: 4
-image: "/blog-images/summer-break-boards-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/summer-break-boards-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/summer-break-boards-myths.jpg"
+credit: FotografieLink
+credit_url: "https://pixabay.com/photos/women-friends-beach-sea-summer-3266211/"
 ---
 # 5 Myths About Summer Break Boards
 

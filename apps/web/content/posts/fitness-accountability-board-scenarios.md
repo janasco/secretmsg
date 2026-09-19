@@ -1,16 +1,16 @@
 ---
-title: "Fitness Accountability, Anonymously in Real Life"
+title: Fitness Accountability, Anonymously in Real Life
 slug: fitness-accountability-board-scenarios
 date: 2027-04-21
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Habits"]
-excerpt: "Fitness Accountability, Anonymously played out in real scenes — watch the loop work, then steal it."
-pixabay: "running fitness sunrise"
+excerpt: Fitness Accountability, Anonymously played out in real scenes — watch the loop work, then steal it.
+pixabay: running fitness sunrise
 readMinutes: 4
-image: "/blog-images/fitness-accountability-board-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/fitness-accountability-board-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/fitness-accountability-board-scenarios.jpg"
+credit: kinkate
+credit_url: "https://pixabay.com/photos/jogging-run-sport-jog-sporty-race-2343558/"
 ---
 # Fitness Accountability, Anonymously in Real Life
 

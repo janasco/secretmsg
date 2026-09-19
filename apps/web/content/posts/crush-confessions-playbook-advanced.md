@@ -5,12 +5,12 @@ date: 2026-05-06
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Crush"]
 excerpt: "Beyond the basics of the crush confessions playbook: power tactics for boards that already hum."
-pixabay: "romantic couple silhouette"
+pixabay: romantic couple silhouette
 readMinutes: 4
-image: "/blog-images/crush-confessions-playbook-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/crush-confessions-playbook-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/crush-confessions-playbook-advanced.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/couple-kissing-sunset-man-woman-2585328/"
 ---
 # Advanced Crush Confessions Playbook: Level Up
 

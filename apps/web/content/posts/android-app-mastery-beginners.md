@@ -1,16 +1,16 @@
 ---
-title: "Mastering the Android App for Beginners"
+title: Mastering the Android App for Beginners
 slug: android-app-mastery-beginners
 date: 2027-11-15
 status: scheduled
 tags: ["Product & Features", "App", "Guide"]
 excerpt: "New to mastering the android app? Start here: zero jargon, first win in under ten minutes."
-pixabay: "android phone apps"
+pixabay: android phone apps
 readMinutes: 4
-image: "/blog-images/android-app-mastery-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/android-app-mastery-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/android-app-mastery-beginners.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/phone-android-apps-world-map-1869510/"
 ---
 # Mastering the Android App for Beginners
 

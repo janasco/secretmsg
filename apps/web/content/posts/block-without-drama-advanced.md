@@ -5,12 +5,12 @@ date: 2026-08-31
 status: published
 tags: ["Safety & Moderation", "Safety", "Blocking"]
 excerpt: "Beyond the basics of blocking without drama: power tactics for boards that already hum."
-pixabay: "calm boundary fence"
+pixabay: calm boundary fence
 readMinutes: 4
-image: "/blog-images/block-without-drama-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/block-without-drama-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/block-without-drama-advanced.jpg"
+credit: manfredrichter
+credit_url: "https://pixabay.com/photos/barbed-wire-jail-fence-security-9906199/"
 ---
 # Advanced Blocking Without Drama: Level Up
 

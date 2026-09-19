@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Offline Outbox, Explained"
+title: The Psychology Behind Offline Outbox, Explained
 slug: offline-mode-guide-psychology
 date: 2026-04-22
 status: published
 tags: ["Product & Features", "Offline", "App"]
-excerpt: "Why the offline outbox, explained works on human brains — the behavioral science plus what to do with it."
-pixabay: "airplane travel phone"
+excerpt: Why the offline outbox, explained works on human brains — the behavioral science plus what to do with it.
+pixabay: airplane travel phone
 readMinutes: 4
-image: "/blog-images/offline-mode-guide-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/offline-mode-guide-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/offline-mode-guide-psychology.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/still-items-things-passes-boarding-2609682/"
 ---
 # The Psychology Behind Offline Outbox, Explained
 

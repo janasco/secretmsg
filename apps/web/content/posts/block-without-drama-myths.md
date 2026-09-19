@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Blocking Without Drama"
+title: 5 Myths About Blocking Without Drama
 slug: block-without-drama-myths
 date: 2026-09-02
 status: published
 tags: ["Safety & Moderation", "Safety", "Blocking"]
-excerpt: "Five myths about blocking without drama, busted with evidence and better defaults."
-pixabay: "calm boundary fence"
+excerpt: Five myths about blocking without drama, busted with evidence and better defaults.
+pixabay: calm boundary fence
 readMinutes: 4
-image: "/blog-images/block-without-drama-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/block-without-drama-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/block-without-drama-myths.jpg"
+credit: manfredrichter
+credit_url: "https://pixabay.com/photos/barbed-wire-jail-fence-security-9906199/"
 ---
 # 5 Myths About Blocking Without Drama
 

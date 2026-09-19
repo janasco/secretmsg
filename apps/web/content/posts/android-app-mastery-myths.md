@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Mastering the Android App"
+title: 5 Myths About Mastering the Android App
 slug: android-app-mastery-myths
 date: 2027-12-02
 status: scheduled
 tags: ["Product & Features", "App", "Guide"]
-excerpt: "Five myths about mastering the android app, busted with evidence and better defaults."
-pixabay: "android phone apps"
+excerpt: Five myths about mastering the android app, busted with evidence and better defaults.
+pixabay: android phone apps
 readMinutes: 4
-image: "/blog-images/android-app-mastery-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/android-app-mastery-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/android-app-mastery-myths.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/phone-android-apps-world-map-1869510/"
 ---
 # 5 Myths About Mastering the Android App
 

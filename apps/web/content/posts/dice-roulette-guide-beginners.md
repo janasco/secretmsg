@@ -1,16 +1,16 @@
 ---
-title: "Dice Roulette Playbook for Beginners"
+title: Dice Roulette Playbook for Beginners
 slug: dice-roulette-guide-beginners
 date: 2026-03-19
 status: published
 tags: ["Product & Features", "Dice", "Prompts"]
 excerpt: "New to the dice roulette playbook? Start here: zero jargon, first win in under ten minutes."
-pixabay: "dice game neon"
+pixabay: dice game neon
 readMinutes: 5
-image: "/blog-images/dice-roulette-guide-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/dice-roulette-guide-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/dice-roulette-guide-beginners.jpg"
+credit: PIRO4D
+credit_url: "https://pixabay.com/photos/dice-game-random-gambling-1963036/"
 ---
 # Dice Roulette Playbook for Beginners
 

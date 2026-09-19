@@ -1,16 +1,16 @@
 ---
-title: "Wedding & Party Boards in Real Life"
+title: Wedding & Party Boards in Real Life
 slug: wedding-party-board-scenarios
 date: 2027-02-22
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Events"]
-excerpt: "Wedding & Party Boards played out in real scenes — watch the loop work, then steal it."
-pixabay: "wedding celebration dance"
+excerpt: Wedding & Party Boards played out in real scenes — watch the loop work, then steal it.
+pixabay: wedding celebration dance
 readMinutes: 4
-image: "/blog-images/wedding-party-board-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/wedding-party-board-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/wedding-party-board-scenarios.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/woman-dance-dress-wedding-hindu-2178480/"
 ---
 # Wedding & Party Boards in Real Life
 

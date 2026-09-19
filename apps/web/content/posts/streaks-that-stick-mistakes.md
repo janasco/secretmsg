@@ -4,13 +4,13 @@ slug: streaks-that-stick-mistakes
 date: 2026-02-10
 status: published
 tags: ["Product & Features", "Streaks", "Ritual"]
-excerpt: "The seven ways people fumble streaks that actually stick, each with its fix. Learn them here, not the hard way."
-pixabay: "fire flame energy"
+excerpt: The seven ways people fumble streaks that actually stick, each with its fix. Learn them here, not the hard way.
+pixabay: fire flame energy
 readMinutes: 5
-image: "/blog-images/streaks-that-stick-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/streaks-that-stick-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/streaks-that-stick-mistakes.jpg"
+credit: raedon
+credit_url: "https://pixabay.com/photos/flame-matchsticks-match-171732/"
 ---
 # Streaks That Actually Stick: 7 Mistakes Everyone Makes
 

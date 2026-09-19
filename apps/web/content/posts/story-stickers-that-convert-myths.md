@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Story Stickers That Actually Convert"
+title: 5 Myths About Story Stickers That Actually Convert
 slug: story-stickers-that-convert-myths
 date: 2026-03-11
 status: published
 tags: ["Growth & Sharing", "Growth", "Stickers"]
-excerpt: "Five myths about story stickers that actually convert, busted with evidence and better defaults."
-pixabay: "phone social media story"
+excerpt: Five myths about story stickers that actually convert, busted with evidence and better defaults.
+pixabay: phone social media story
 readMinutes: 4
-image: "/blog-images/story-stickers-that-convert-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/story-stickers-that-convert-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/story-stickers-that-convert-myths.jpg"
+credit: LoboStudioHamburg
+credit_url: "https://pixabay.com/photos/internet-whatsapp-smartphone-3113279/"
 ---
 # 5 Myths About Story Stickers That Actually Convert
 

@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Streaks That Actually Stick"
+title: The Ultimate Guide to Streaks That Actually Stick
 slug: streaks-that-stick-ultimate-guide
 date: 2026-02-09
 status: published
 tags: ["Product & Features", "Streaks", "Ritual"]
-excerpt: "Everything about streaks that actually stick — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "fire flame energy"
+excerpt: Everything about streaks that actually stick — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: fire flame energy
 readMinutes: 5
-image: "/blog-images/streaks-that-stick-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/streaks-that-stick-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/streaks-that-stick-ultimate-guide.jpg"
+credit: raedon
+credit_url: "https://pixabay.com/photos/flame-matchsticks-match-171732/"
 ---
 # The Ultimate Guide to Streaks That Actually Stick
 

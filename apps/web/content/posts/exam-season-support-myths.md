@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Exam Season Support Boards"
+title: 5 Myths About Exam Season Support Boards
 slug: exam-season-support-myths
 date: 2026-12-20
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Support"]
-excerpt: "Five myths about exam season support boards, busted with evidence and better defaults."
-pixabay: "students studying library"
+excerpt: Five myths about exam season support boards, busted with evidence and better defaults.
+pixabay: students studying library
 readMinutes: 4
-image: "/blog-images/exam-season-support-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/exam-season-support-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/exam-season-support-myths.jpg"
+credit: wal_172619
+credit_url: "https://pixabay.com/photos/library-books-reading-knowledge-7408106/"
 ---
 # 5 Myths About Exam Season Support Boards
 

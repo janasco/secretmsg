@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Streaks That Actually Stick"
+title: The Psychology Behind Streaks That Actually Stick
 slug: streaks-that-stick-psychology
 date: 2026-02-11
 status: published
 tags: ["Product & Features", "Streaks", "Ritual"]
-excerpt: "Why streaks that actually stick works on human brains — the behavioral science plus what to do with it."
-pixabay: "fire flame energy"
+excerpt: Why streaks that actually stick works on human brains — the behavioral science plus what to do with it.
+pixabay: fire flame energy
 readMinutes: 5
-image: "/blog-images/streaks-that-stick-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/streaks-that-stick-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/streaks-that-stick-psychology.jpg"
+credit: raedon
+credit_url: "https://pixabay.com/photos/flame-matchsticks-match-171732/"
 ---
 # The Psychology Behind Streaks That Actually Stick
 

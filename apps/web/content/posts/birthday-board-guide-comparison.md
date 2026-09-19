@@ -5,12 +5,12 @@ date: 2026-05-31
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Celebration"]
 excerpt: "How the birthday board: a month of proof stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "birthday party confetti"
+pixabay: birthday party confetti
 readMinutes: 4
-image: "/blog-images/birthday-board-guide-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/birthday-board-guide-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/birthday-board-guide-comparison.jpg"
+credit: RosZie
+credit_url: "https://pixabay.com/photos/birthday-cake-cakes-celebration-7381735/"
 ---
 # Birthday Board: A Month of Proof vs the Alternatives
 

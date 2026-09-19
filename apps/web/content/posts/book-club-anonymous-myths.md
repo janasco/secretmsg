@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Anonymous Book Club Boards"
+title: 5 Myths About Anonymous Book Club Boards
 slug: book-club-anonymous-myths
 date: 2027-06-12
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Community"]
-excerpt: "Five myths about anonymous book club boards, busted with evidence and better defaults."
-pixabay: "books reading cozy"
+excerpt: Five myths about anonymous book club boards, busted with evidence and better defaults.
+pixabay: books reading cozy
 readMinutes: 4
-image: "/blog-images/book-club-anonymous-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/book-club-anonymous-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/book-club-anonymous-myths.jpg"
+credit: fotografierende
+credit_url: "https://pixabay.com/photos/camera-book-candle-read-cozy-bed-4597415/"
 ---
 # 5 Myths About Anonymous Book Club Boards
 

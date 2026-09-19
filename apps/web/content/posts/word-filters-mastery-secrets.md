@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Word Filters, Mastered"
+title: What Nobody Tells You About Word Filters, Mastered
 slug: word-filters-mastery-secrets
 date: 2026-02-07
 status: draft
 tags: ["Safety & Moderation", "Safety", "Moderation"]
-excerpt: "The insider truths about word filters, mastered nobody puts in the onboarding."
-pixabay: "shield protection security"
+excerpt: The insider truths about word filters, mastered nobody puts in the onboarding.
+pixabay: shield protection security
 readMinutes: 5
-image: "/blog-images/word-filters-mastery-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/word-filters-mastery-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/word-filters-mastery-secrets.jpg"
+credit: PublicDomainPictures
+credit_url: "https://pixabay.com/photos/close-isolated-key-keys-lock-2204/"
 ---
 # What Nobody Tells You About Word Filters, Mastered
 

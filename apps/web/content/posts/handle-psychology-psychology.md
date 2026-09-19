@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Psychology of Handles"
+title: The Psychology Behind Psychology of Handles
 slug: handle-psychology-psychology
 date: 2026-08-05
 status: published
 tags: ["Culture & Psychology", "Culture", "Identity"]
-excerpt: "Why the psychology of handles works on human brains — the behavioral science plus what to do with it."
-pixabay: "neon name sign"
+excerpt: Why the psychology of handles works on human brains — the behavioral science plus what to do with it.
+pixabay: neon name sign
 readMinutes: 4
-image: "/blog-images/handle-psychology-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/handle-psychology-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/handle-psychology-psychology.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/open-sign-neon-lights-illuminated-1836961/"
 ---
 # The Psychology Behind Psychology of Handles
 

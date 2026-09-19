@@ -4,13 +4,13 @@ slug: story-stickers-that-convert-faq
 date: 2026-03-13
 status: published
 tags: ["Growth & Sharing", "Growth", "Stickers"]
-excerpt: "Every question people actually ask about story stickers that actually convert, answered straight."
-pixabay: "phone social media story"
+excerpt: Every question people actually ask about story stickers that actually convert, answered straight.
+pixabay: phone social media story
 readMinutes: 4
-image: "/blog-images/story-stickers-that-convert-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/story-stickers-that-convert-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/story-stickers-that-convert-faq.jpg"
+credit: LoboStudioHamburg
+credit_url: "https://pixabay.com/photos/internet-whatsapp-smartphone-3113279/"
 ---
 # Story Stickers That Actually Convert: Questions, Answered
 

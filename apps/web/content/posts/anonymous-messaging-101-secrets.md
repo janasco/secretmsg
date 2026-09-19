@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Anonymous Messaging 101"
+title: What Nobody Tells You About Anonymous Messaging 101
 slug: anonymous-messaging-101-secrets
 date: 2026-01-15
 status: published
 tags: ["Guides & How-To", "Guide", "Beginners"]
-excerpt: "The insider truths about anonymous messaging 101 nobody puts in the onboarding."
-pixabay: "friends messaging phone"
+excerpt: The insider truths about anonymous messaging 101 nobody puts in the onboarding.
+pixabay: friends messaging phone
 readMinutes: 5
-image: "/blog-images/anonymous-messaging-101-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/anonymous-messaging-101-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/anonymous-messaging-101-secrets.jpg"
+credit: terimakasih0
+credit_url: "https://pixabay.com/photos/new-year-mobile-phones-texting-1490691/"
 ---
 # What Nobody Tells You About Anonymous Messaging 101
 

@@ -5,12 +5,12 @@ date: 2027-09-06
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Stickers"]
 excerpt: "The seven ways people fumble qr codes: screenshots into taps, each with its fix. Learn them here, not the hard way."
-pixabay: "qr code phone scan"
+pixabay: qr code phone scan
 readMinutes: 4
-image: "/blog-images/qr-codes-on-stickers-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/qr-codes-on-stickers-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/qr-codes-on-stickers-mistakes.jpg"
+credit: geralt
+credit_url: "https://pixabay.com/photos/qr-code-quick-response-code-to-scan-1903447/"
 ---
 # QR Codes: Screenshots Into Taps: 7 Mistakes Everyone Makes
 

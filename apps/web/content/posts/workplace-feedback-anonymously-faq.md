@@ -4,13 +4,13 @@ slug: workplace-feedback-anonymously-faq
 date: 2026-05-22
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Work"]
-excerpt: "Every question people actually ask about workplace feedback without the fallout, answered straight."
-pixabay: "office team meeting"
+excerpt: Every question people actually ask about workplace feedback without the fallout, answered straight.
+pixabay: office team meeting
 readMinutes: 4
-image: "/blog-images/workplace-feedback-anonymously-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/workplace-feedback-anonymously-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/workplace-feedback-anonymously-faq.jpg"
+credit: RonaldCandonga
+credit_url: "https://pixabay.com/photos/job-office-team-business-internet-5382501/"
 ---
 # Workplace Feedback Without the Fallout: Questions, Answered
 

@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind A Strong Reply Game"
+title: The Psychology Behind A Strong Reply Game
 slug: reply-game-strong-psychology
 date: 2026-07-13
 status: published
 tags: ["Guides & How-To", "Replies", "Guide"]
-excerpt: "Why a strong reply game works on human brains — the behavioral science plus what to do with it."
-pixabay: "typing message chat"
+excerpt: Why a strong reply game works on human brains — the behavioral science plus what to do with it.
+pixabay: typing message chat
 readMinutes: 4
-image: "/blog-images/reply-game-strong-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/reply-game-strong-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/reply-game-strong-psychology.jpg"
+credit: truyentranhmoi123
+credit_url: "https://pixabay.com/photos/smartphone-phone-iphone-5551318/"
 ---
 # The Psychology Behind A Strong Reply Game
 

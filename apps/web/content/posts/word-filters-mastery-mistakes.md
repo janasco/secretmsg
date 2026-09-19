@@ -4,13 +4,13 @@ slug: word-filters-mastery-mistakes
 date: 2026-01-29
 status: published
 tags: ["Safety & Moderation", "Safety", "Moderation"]
-excerpt: "The seven ways people fumble word filters, mastered, each with its fix. Learn them here, not the hard way."
-pixabay: "shield protection security"
+excerpt: The seven ways people fumble word filters, mastered, each with its fix. Learn them here, not the hard way.
+pixabay: shield protection security
 readMinutes: 5
-image: "/blog-images/word-filters-mastery-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/word-filters-mastery-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/word-filters-mastery-mistakes.jpg"
+credit: PublicDomainPictures
+credit_url: "https://pixabay.com/photos/close-isolated-key-keys-lock-2204/"
 ---
 # Word Filters, Mastered: 7 Mistakes Everyone Makes
 

@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Every Supporter Perk, Explained"
+title: The Psychology Behind Every Supporter Perk, Explained
 slug: supporter-perks-tour-psychology
 date: 2026-04-10
 status: published
 tags: ["Product & Features", "Supporters", "Perks"]
-excerpt: "Why every supporter perk, explained works on human brains — the behavioral science plus what to do with it."
-pixabay: "golden badge premium"
+excerpt: Why every supporter perk, explained works on human brains — the behavioral science plus what to do with it.
+pixabay: golden badge premium
 readMinutes: 4
-image: "/blog-images/supporter-perks-tour-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/supporter-perks-tour-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/supporter-perks-tour-psychology.jpg"
+credit: rolfvandewal
+credit_url: "https://pixabay.com/photos/bmw-gearstick-4-series-premium-car-4993779/"
 ---
 # The Psychology Behind Every Supporter Perk, Explained
 

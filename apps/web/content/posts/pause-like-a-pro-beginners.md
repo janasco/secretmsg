@@ -1,16 +1,16 @@
 ---
-title: "Pause Like a Pro for Beginners"
+title: Pause Like a Pro for Beginners
 slug: pause-like-a-pro-beginners
 date: 2026-03-31
 status: published
 tags: ["Safety & Moderation", "Safety", "Boundaries"]
 excerpt: "New to pause like a pro? Start here: zero jargon, first win in under ten minutes."
-pixabay: "peaceful break relax"
+pixabay: peaceful break relax
 readMinutes: 4
-image: "/blog-images/pause-like-a-pro-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/pause-like-a-pro-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/pause-like-a-pro-beginners.jpg"
+credit: ahuanzuishuai111
+credit_url: "https://pixabay.com/photos/coffee-cup-spoon-reading-book-10283354/"
 ---
 # Pause Like a Pro for Beginners
 

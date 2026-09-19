@@ -1,16 +1,16 @@
 ---
-title: "Pause Like a Pro in Real Life"
+title: Pause Like a Pro in Real Life
 slug: pause-like-a-pro-scenarios
 date: 2026-04-05
 status: published
 tags: ["Safety & Moderation", "Safety", "Boundaries"]
-excerpt: "Pause Like a Pro played out in real scenes — watch the loop work, then steal it."
-pixabay: "peaceful break relax"
+excerpt: Pause Like a Pro played out in real scenes — watch the loop work, then steal it.
+pixabay: peaceful break relax
 readMinutes: 4
-image: "/blog-images/pause-like-a-pro-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/pause-like-a-pro-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/pause-like-a-pro-scenarios.jpg"
+credit: ahuanzuishuai111
+credit_url: "https://pixabay.com/photos/coffee-cup-spoon-reading-book-10283354/"
 ---
 # Pause Like a Pro in Real Life
 

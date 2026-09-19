@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Double-Blind Replies, Demystified"
+title: What Nobody Tells You About Double-Blind Replies, Demystified
 slug: double-blind-replies-secrets
 date: 2026-03-03
 status: published
 tags: ["Product & Features", "Replies", "Privacy"]
-excerpt: "The insider truths about double-blind replies, demystified nobody puts in the onboarding."
-pixabay: "secret letter envelope"
+excerpt: The insider truths about double-blind replies, demystified nobody puts in the onboarding.
+pixabay: secret letter envelope
 readMinutes: 5
-image: "/blog-images/double-blind-replies-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/double-blind-replies-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/double-blind-replies-secrets.jpg"
+credit: Ylanite
+credit_url: "https://pixabay.com/photos/flowers-rose-nature-bloom-letter-6943134/"
 ---
 # What Nobody Tells You About Double-Blind Replies, Demystified
 

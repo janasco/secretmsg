@@ -1,16 +1,16 @@
 ---
-title: "Story Stickers That Actually Convert for Beginners"
+title: Story Stickers That Actually Convert for Beginners
 slug: story-stickers-that-convert-beginners
 date: 2026-03-07
 status: published
 tags: ["Growth & Sharing", "Growth", "Stickers"]
 excerpt: "New to story stickers that actually convert? Start here: zero jargon, first win in under ten minutes."
-pixabay: "phone social media story"
+pixabay: phone social media story
 readMinutes: 5
-image: "/blog-images/story-stickers-that-convert-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/story-stickers-that-convert-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/story-stickers-that-convert-beginners.jpg"
+credit: Firmbee
+credit_url: "https://pixabay.com/photos/social-media-facebook-smartphone-763731/"
 ---
 # Story Stickers That Actually Convert for Beginners
 

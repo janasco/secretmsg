@@ -5,12 +5,12 @@ date: 2026-01-09
 status: published
 tags: ["Guides & How-To", "Guide", "Beginners"]
 excerpt: "Beyond the basics of anonymous messaging 101: power tactics for boards that already hum."
-pixabay: "friends messaging phone"
+pixabay: friends messaging phone
 readMinutes: 5
-image: "/blog-images/anonymous-messaging-101-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/anonymous-messaging-101-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/anonymous-messaging-101-advanced.jpg"
+credit: terimakasih0
+credit_url: "https://pixabay.com/photos/new-year-mobile-phones-texting-1490691/"
 ---
 # Advanced Anonymous Messaging 101: Level Up
 

@@ -5,12 +5,12 @@ date: 2026-05-29
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Celebration"]
 excerpt: "Beyond the basics of the birthday board: a month of proof: power tactics for boards that already hum."
-pixabay: "birthday party confetti"
+pixabay: birthday party confetti
 readMinutes: 4
-image: "/blog-images/birthday-board-guide-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/birthday-board-guide-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/birthday-board-guide-advanced.jpg"
+credit: RosZie
+credit_url: "https://pixabay.com/photos/birthday-cake-cakes-celebration-7381735/"
 ---
 # Advanced Birthday Board: A Month of Proof: Level Up
 

@@ -4,13 +4,13 @@ slug: pause-like-a-pro-faq
 date: 2026-04-06
 status: published
 tags: ["Safety & Moderation", "Safety", "Boundaries"]
-excerpt: "Every question people actually ask about pause like a pro, answered straight."
-pixabay: "peaceful break relax"
+excerpt: Every question people actually ask about pause like a pro, answered straight.
+pixabay: peaceful break relax
 readMinutes: 4
-image: "/blog-images/pause-like-a-pro-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/pause-like-a-pro-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/pause-like-a-pro-faq.jpg"
+credit: ahuanzuishuai111
+credit_url: "https://pixabay.com/photos/coffee-cup-spoon-reading-book-10283354/"
 ---
 # Pause Like a Pro: Questions, Answered
 

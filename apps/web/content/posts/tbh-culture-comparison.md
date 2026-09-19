@@ -1,16 +1,16 @@
 ---
-title: "TBH Culture, Explained vs the Alternatives"
+title: TBH Culture, Explained vs the Alternatives
 slug: tbh-culture-comparison
 date: 2026-01-22
 status: published
 tags: ["Culture & Psychology", "Culture", "TBH"]
-excerpt: "How tbh culture, explained stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "teen friends laughing"
+excerpt: How tbh culture, explained stacks against the alternatives — honest verdict, no tribalism.
+pixabay: teen friends laughing
 readMinutes: 5
-image: "/blog-images/tbh-culture-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/tbh-culture-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/tbh-culture-comparison.jpg"
+credit: 46173
+credit_url: "https://pixabay.com/photos/joy-fun-friends-happy-family-4196370/"
 ---
 # TBH Culture, Explained vs the Alternatives
 

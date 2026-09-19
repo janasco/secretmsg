@@ -1,16 +1,16 @@
 ---
-title: "Graduation & Farewell Boards vs the Alternatives"
+title: Graduation & Farewell Boards vs the Alternatives
 slug: graduation-farewell-board-comparison
 date: 2026-09-13
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Milestones"]
-excerpt: "How graduation & farewell boards stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "graduation caps celebration"
+excerpt: How graduation & farewell boards stacks against the alternatives — honest verdict, no tribalism.
+pixabay: graduation caps celebration
 readMinutes: 4
-image: "/blog-images/graduation-farewell-board-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/graduation-farewell-board-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/graduation-farewell-board-comparison.jpg"
+credit: HuyNgan
+credit_url: "https://pixabay.com/photos/yearbook-vietnamese-students-10168363/"
 ---
 # Graduation & Farewell Boards vs the Alternatives
 

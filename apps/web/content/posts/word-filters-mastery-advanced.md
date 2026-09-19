@@ -5,12 +5,12 @@ date: 2026-02-02
 status: published
 tags: ["Safety & Moderation", "Safety", "Moderation"]
 excerpt: "Beyond the basics of word filters, mastered: power tactics for boards that already hum."
-pixabay: "shield protection security"
+pixabay: shield protection security
 readMinutes: 5
-image: "/blog-images/word-filters-mastery-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/word-filters-mastery-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/word-filters-mastery-advanced.jpg"
+credit: PublicDomainPictures
+credit_url: "https://pixabay.com/photos/close-isolated-key-keys-lock-2204/"
 ---
 # Advanced Word Filters, Mastered: Level Up
 

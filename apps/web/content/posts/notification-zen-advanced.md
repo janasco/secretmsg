@@ -5,12 +5,12 @@ date: 2026-08-19
 status: published
 tags: ["Product & Features", "Notifications", "Balance"]
 excerpt: "Beyond the basics of notification zen: power tactics for boards that already hum."
-pixabay: "phone notification calm"
+pixabay: phone notification calm
 readMinutes: 4
-image: "/blog-images/notification-zen-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/notification-zen-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/notification-zen-advanced.jpg"
+credit: PatrickLFC93
+credit_url: "https://pixabay.com/photos/phone-booth-phone-english-uk-7728783/"
 ---
 # Advanced Notification Zen: Level Up
 

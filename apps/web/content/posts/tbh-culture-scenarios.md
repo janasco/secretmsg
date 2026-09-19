@@ -1,16 +1,16 @@
 ---
-title: "TBH Culture, Explained in Real Life"
+title: TBH Culture, Explained in Real Life
 slug: tbh-culture-scenarios
 date: 2026-01-24
 status: published
 tags: ["Culture & Psychology", "Culture", "TBH"]
-excerpt: "TBH Culture, Explained played out in real scenes — watch the loop work, then steal it."
-pixabay: "teen friends laughing"
+excerpt: TBH Culture, Explained played out in real scenes — watch the loop work, then steal it.
+pixabay: teen friends laughing
 readMinutes: 5
-image: "/blog-images/tbh-culture-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/tbh-culture-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/tbh-culture-scenarios.jpg"
+credit: 46173
+credit_url: "https://pixabay.com/photos/joy-fun-friends-happy-family-4196370/"
 ---
 # TBH Culture, Explained in Real Life
 

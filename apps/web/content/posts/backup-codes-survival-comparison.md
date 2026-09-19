@@ -1,16 +1,16 @@
 ---
-title: "Backup Codes Survival Guide vs the Alternatives"
+title: Backup Codes Survival Guide vs the Alternatives
 slug: backup-codes-survival-comparison
 date: 2026-07-28
 status: published
 tags: ["Guides & How-To", "Guide", "Account"]
-excerpt: "How backup codes survival guide stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "safe lock security"
+excerpt: How backup codes survival guide stacks against the alternatives — honest verdict, no tribalism.
+pixabay: safe lock security
 readMinutes: 5
-image: "/blog-images/backup-codes-survival-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/backup-codes-survival-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/backup-codes-survival-comparison.jpg"
+credit: 12019
+credit_url: "https://pixabay.com/photos/padlock-door-lock-key-hole-macro-172770/"
 ---
 # Backup Codes Survival Guide vs the Alternatives
 

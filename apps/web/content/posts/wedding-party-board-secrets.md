@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Wedding & Party Boards"
+title: What Nobody Tells You About Wedding & Party Boards
 slug: wedding-party-board-secrets
 date: 2027-03-05
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Events"]
-excerpt: "The insider truths about wedding & party boards nobody puts in the onboarding."
-pixabay: "wedding celebration dance"
+excerpt: The insider truths about wedding & party boards nobody puts in the onboarding.
+pixabay: wedding celebration dance
 readMinutes: 4
-image: "/blog-images/wedding-party-board-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/wedding-party-board-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/wedding-party-board-secrets.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/woman-dance-dress-wedding-hindu-2178480/"
 ---
 # What Nobody Tells You About Wedding & Party Boards
 

@@ -5,12 +5,12 @@ date: 2027-09-24
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Stickers"]
 excerpt: "Beyond the basics of qr codes: screenshots into taps: power tactics for boards that already hum."
-pixabay: "qr code phone scan"
+pixabay: qr code phone scan
 readMinutes: 4
-image: "/blog-images/qr-codes-on-stickers-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/qr-codes-on-stickers-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/qr-codes-on-stickers-advanced.jpg"
+credit: geralt
+credit_url: "https://pixabay.com/photos/qr-code-quick-response-code-to-scan-1903447/"
 ---
 # Advanced QR Codes: Screenshots Into Taps: Level Up
 

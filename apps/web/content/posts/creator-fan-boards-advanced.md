@@ -5,12 +5,12 @@ date: 2027-07-28
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Creators"]
 excerpt: "Beyond the basics of creator & fan boards: power tactics for boards that already hum."
-pixabay: "creator camera content"
+pixabay: creator camera content
 readMinutes: 4
-image: "/blog-images/creator-fan-boards-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/creator-fan-boards-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/creator-fan-boards-advanced.jpg"
+credit: LadyQuester
+credit_url: "https://pixabay.com/photos/film-studio-chomakey-studio-5366454/"
 ---
 # Advanced Creator & Fan Boards: Level Up
 

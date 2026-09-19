@@ -4,13 +4,13 @@ slug: fitness-accountability-board-faq
 date: 2027-04-26
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Habits"]
-excerpt: "Every question people actually ask about fitness accountability, anonymously, answered straight."
-pixabay: "running fitness sunrise"
+excerpt: Every question people actually ask about fitness accountability, anonymously, answered straight.
+pixabay: running fitness sunrise
 readMinutes: 4
-image: "/blog-images/fitness-accountability-board-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/fitness-accountability-board-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/fitness-accountability-board-faq.jpg"
+credit: kinkate
+credit_url: "https://pixabay.com/photos/jogging-run-sport-jog-sporty-race-2343558/"
 ---
 # Fitness Accountability, Anonymously: Questions, Answered
 

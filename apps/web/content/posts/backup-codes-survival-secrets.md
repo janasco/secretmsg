@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Backup Codes Survival Guide"
+title: What Nobody Tells You About Backup Codes Survival Guide
 slug: backup-codes-survival-secrets
 date: 2026-08-02
 status: draft
 tags: ["Guides & How-To", "Guide", "Account"]
-excerpt: "The insider truths about backup codes survival guide nobody puts in the onboarding."
-pixabay: "safe lock security"
+excerpt: The insider truths about backup codes survival guide nobody puts in the onboarding.
+pixabay: safe lock security
 readMinutes: 5
-image: "/blog-images/backup-codes-survival-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/backup-codes-survival-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/backup-codes-survival-secrets.jpg"
+credit: 12019
+credit_url: "https://pixabay.com/photos/padlock-door-lock-key-hole-macro-172770/"
 ---
 # What Nobody Tells You About Backup Codes Survival Guide
 

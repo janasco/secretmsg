@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About TBH Culture, Explained"
+title: 5 Myths About TBH Culture, Explained
 slug: tbh-culture-myths
 date: 2026-01-23
 status: published
 tags: ["Culture & Psychology", "Culture", "TBH"]
-excerpt: "Five myths about tbh culture, explained, busted with evidence and better defaults."
-pixabay: "teen friends laughing"
+excerpt: Five myths about tbh culture, explained, busted with evidence and better defaults.
+pixabay: teen friends laughing
 readMinutes: 5
-image: "/blog-images/tbh-culture-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/tbh-culture-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/tbh-culture-myths.jpg"
+credit: 46173
+credit_url: "https://pixabay.com/photos/joy-fun-friends-happy-family-4196370/"
 ---
 # 5 Myths About TBH Culture, Explained
 

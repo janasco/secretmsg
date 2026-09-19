@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Fitness Accountability, Anonymously"
+title: 5 Myths About Fitness Accountability, Anonymously
 slug: fitness-accountability-board-myths
 date: 2027-04-15
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Habits"]
-excerpt: "Five myths about fitness accountability, anonymously, busted with evidence and better defaults."
-pixabay: "running fitness sunrise"
+excerpt: Five myths about fitness accountability, anonymously, busted with evidence and better defaults.
+pixabay: running fitness sunrise
 readMinutes: 4
-image: "/blog-images/fitness-accountability-board-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/fitness-accountability-board-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/fitness-accountability-board-myths.jpg"
+credit: kinkate
+credit_url: "https://pixabay.com/photos/jogging-run-sport-jog-sporty-race-2343558/"
 ---
 # 5 Myths About Fitness Accountability, Anonymously
 

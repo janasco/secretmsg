@@ -1,16 +1,16 @@
 ---
-title: "Blocking Without Drama vs the Alternatives"
+title: Blocking Without Drama vs the Alternatives
 slug: block-without-drama-comparison
 date: 2026-09-01
 status: published
 tags: ["Safety & Moderation", "Safety", "Blocking"]
-excerpt: "How blocking without drama stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "calm boundary fence"
+excerpt: How blocking without drama stacks against the alternatives — honest verdict, no tribalism.
+pixabay: calm boundary fence
 readMinutes: 4
-image: "/blog-images/block-without-drama-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/block-without-drama-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/block-without-drama-comparison.jpg"
+credit: manfredrichter
+credit_url: "https://pixabay.com/photos/barbed-wire-jail-fence-security-9906199/"
 ---
 # Blocking Without Drama vs the Alternatives
 

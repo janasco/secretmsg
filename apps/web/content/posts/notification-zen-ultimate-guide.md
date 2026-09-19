@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Notification Zen"
+title: The Ultimate Guide to Notification Zen
 slug: notification-zen-ultimate-guide
 date: 2026-08-15
 status: published
 tags: ["Product & Features", "Notifications", "Balance"]
-excerpt: "Everything about notification zen — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "phone notification calm"
+excerpt: Everything about notification zen — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: phone notification calm
 readMinutes: 4
-image: "/blog-images/notification-zen-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/notification-zen-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/notification-zen-ultimate-guide.jpg"
+credit: PatrickLFC93
+credit_url: "https://pixabay.com/photos/phone-booth-phone-english-uk-7728783/"
 ---
 # The Ultimate Guide to Notification Zen
 

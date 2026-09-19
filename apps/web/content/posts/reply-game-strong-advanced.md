@@ -5,12 +5,12 @@ date: 2026-07-15
 status: published
 tags: ["Guides & How-To", "Replies", "Guide"]
 excerpt: "Beyond the basics of a strong reply game: power tactics for boards that already hum."
-pixabay: "typing message chat"
+pixabay: typing message chat
 readMinutes: 4
-image: "/blog-images/reply-game-strong-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/reply-game-strong-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/reply-game-strong-advanced.jpg"
+credit: truyentranhmoi123
+credit_url: "https://pixabay.com/photos/smartphone-phone-iphone-5551318/"
 ---
 # Advanced A Strong Reply Game: Level Up
 

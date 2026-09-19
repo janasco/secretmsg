@@ -1,16 +1,16 @@
 ---
-title: "Graduation & Farewell Boards for Beginners"
+title: Graduation & Farewell Boards for Beginners
 slug: graduation-farewell-board-beginners
 date: 2026-09-10
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Milestones"]
 excerpt: "New to graduation & farewell boards? Start here: zero jargon, first win in under ten minutes."
-pixabay: "graduation caps celebration"
+pixabay: graduation caps celebration
 readMinutes: 4
-image: "/blog-images/graduation-farewell-board-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/graduation-farewell-board-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/graduation-farewell-board-beginners.jpg"
+credit: HuyNgan
+credit_url: "https://pixabay.com/photos/yearbook-vietnamese-students-10168363/"
 ---
 # Graduation & Farewell Boards for Beginners
 

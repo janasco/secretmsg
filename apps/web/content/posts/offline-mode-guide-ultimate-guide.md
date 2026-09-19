@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to The Offline Outbox, Explained"
+title: The Ultimate Guide to The Offline Outbox, Explained
 slug: offline-mode-guide-ultimate-guide
 date: 2026-04-20
 status: published
 tags: ["Product & Features", "Offline", "App"]
-excerpt: "Everything about the offline outbox, explained — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "airplane travel phone"
+excerpt: Everything about the offline outbox, explained — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: airplane travel phone
 readMinutes: 4
-image: "/blog-images/offline-mode-guide-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/offline-mode-guide-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/offline-mode-guide-ultimate-guide.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/still-items-things-passes-boarding-2609682/"
 ---
 # The Ultimate Guide to The Offline Outbox, Explained
 

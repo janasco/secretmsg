@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Workplace Feedback Without the Fallout"
+title: The Ultimate Guide to Workplace Feedback Without the Fallout
 slug: workplace-feedback-anonymously-ultimate-guide
 date: 2026-05-13
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Work"]
-excerpt: "Everything about workplace feedback without the fallout — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "office team meeting"
+excerpt: Everything about workplace feedback without the fallout — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: office team meeting
 readMinutes: 4
-image: "/blog-images/workplace-feedback-anonymously-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/workplace-feedback-anonymously-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/workplace-feedback-anonymously-ultimate-guide.jpg"
+credit: RonaldCandonga
+credit_url: "https://pixabay.com/photos/job-office-team-business-internet-5382501/"
 ---
 # The Ultimate Guide to Workplace Feedback Without the Fallout
 

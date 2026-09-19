@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to New Year, Honest Answers"
+title: The Ultimate Guide to New Year, Honest Answers
 slug: new-year-reflection-board-ultimate-guide
 date: 2026-06-05
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Reflection"]
-excerpt: "Everything about new year, honest answers — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "new year fireworks night"
+excerpt: Everything about new year, honest answers — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: new year fireworks night
 readMinutes: 4
-image: "/blog-images/new-year-reflection-board-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/new-year-reflection-board-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/new-year-reflection-board-ultimate-guide.jpg"
+credit: Ri_Lens
+credit_url: "https://pixabay.com/photos/fireworks-night-celebration-festive-10444646/"
 ---
 # The Ultimate Guide to New Year, Honest Answers
 

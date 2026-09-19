@@ -1,16 +1,16 @@
 ---
-title: "A Strong Reply Game in Real Life"
+title: A Strong Reply Game in Real Life
 slug: reply-game-strong-scenarios
 date: 2026-07-19
 status: published
 tags: ["Guides & How-To", "Replies", "Guide"]
-excerpt: "A Strong Reply Game played out in real scenes — watch the loop work, then steal it."
-pixabay: "typing message chat"
+excerpt: A Strong Reply Game played out in real scenes — watch the loop work, then steal it.
+pixabay: typing message chat
 readMinutes: 4
-image: "/blog-images/reply-game-strong-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/reply-game-strong-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/reply-game-strong-scenarios.jpg"
+credit: truyentranhmoi123
+credit_url: "https://pixabay.com/photos/smartphone-phone-iphone-5551318/"
 ---
 # A Strong Reply Game in Real Life
 

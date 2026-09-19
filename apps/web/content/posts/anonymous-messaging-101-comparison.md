@@ -1,16 +1,16 @@
 ---
-title: "Anonymous Messaging 101 vs the Alternatives"
+title: Anonymous Messaging 101 vs the Alternatives
 slug: anonymous-messaging-101-comparison
 date: 2026-01-10
 status: published
 tags: ["Guides & How-To", "Guide", "Beginners"]
-excerpt: "How anonymous messaging 101 stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "friends messaging phone"
+excerpt: How anonymous messaging 101 stacks against the alternatives — honest verdict, no tribalism.
+pixabay: friends messaging phone
 readMinutes: 5
-image: "/blog-images/anonymous-messaging-101-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/anonymous-messaging-101-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/anonymous-messaging-101-comparison.jpg"
+credit: terimakasih0
+credit_url: "https://pixabay.com/photos/new-year-mobile-phones-texting-1490691/"
 ---
 # Anonymous Messaging 101 vs the Alternatives
 

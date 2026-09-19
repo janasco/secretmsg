@@ -4,13 +4,13 @@ slug: block-without-drama-faq
 date: 2026-09-05
 status: published
 tags: ["Safety & Moderation", "Safety", "Blocking"]
-excerpt: "Every question people actually ask about blocking without drama, answered straight."
-pixabay: "calm boundary fence"
+excerpt: Every question people actually ask about blocking without drama, answered straight.
+pixabay: calm boundary fence
 readMinutes: 4
-image: "/blog-images/block-without-drama-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/block-without-drama-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/block-without-drama-faq.jpg"
+credit: manfredrichter
+credit_url: "https://pixabay.com/photos/barbed-wire-jail-fence-security-9906199/"
 ---
 # Blocking Without Drama: Questions, Answered
 

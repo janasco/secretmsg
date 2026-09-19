@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Summer Break Boards"
+title: What Nobody Tells You About Summer Break Boards
 slug: summer-break-boards-secrets
 date: 2026-11-10
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Summer"]
-excerpt: "The insider truths about summer break boards nobody puts in the onboarding."
-pixabay: "summer beach friends"
+excerpt: The insider truths about summer break boards nobody puts in the onboarding.
+pixabay: summer beach friends
 readMinutes: 4
-image: "/blog-images/summer-break-boards-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/summer-break-boards-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/summer-break-boards-secrets.jpg"
+credit: FotografieLink
+credit_url: "https://pixabay.com/photos/women-friends-beach-sea-summer-3266211/"
 ---
 # What Nobody Tells You About Summer Break Boards
 

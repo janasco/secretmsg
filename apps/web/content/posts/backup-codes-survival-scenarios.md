@@ -1,16 +1,16 @@
 ---
-title: "Backup Codes Survival Guide in Real Life"
+title: Backup Codes Survival Guide in Real Life
 slug: backup-codes-survival-scenarios
 date: 2026-07-30
 status: published
 tags: ["Guides & How-To", "Guide", "Account"]
-excerpt: "Backup Codes Survival Guide played out in real scenes — watch the loop work, then steal it."
-pixabay: "safe lock security"
+excerpt: Backup Codes Survival Guide played out in real scenes — watch the loop work, then steal it.
+pixabay: safe lock security
 readMinutes: 5
-image: "/blog-images/backup-codes-survival-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/backup-codes-survival-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/backup-codes-survival-scenarios.jpg"
+credit: 12019
+credit_url: "https://pixabay.com/photos/padlock-door-lock-key-hole-macro-172770/"
 ---
 # Backup Codes Survival Guide in Real Life
 

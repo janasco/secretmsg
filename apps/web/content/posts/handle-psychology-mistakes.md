@@ -4,13 +4,13 @@ slug: handle-psychology-mistakes
 date: 2026-08-04
 status: published
 tags: ["Culture & Psychology", "Culture", "Identity"]
-excerpt: "The seven ways people fumble the psychology of handles, each with its fix. Learn them here, not the hard way."
-pixabay: "neon name sign"
+excerpt: The seven ways people fumble the psychology of handles, each with its fix. Learn them here, not the hard way.
+pixabay: neon name sign
 readMinutes: 4
-image: "/blog-images/handle-psychology-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/handle-psychology-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/handle-psychology-mistakes.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/open-sign-neon-lights-illuminated-1836961/"
 ---
 # Psychology of Handles: 7 Mistakes Everyone Makes
 

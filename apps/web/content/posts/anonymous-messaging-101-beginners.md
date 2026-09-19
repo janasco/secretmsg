@@ -1,16 +1,16 @@
 ---
-title: "Anonymous Messaging 101 for Beginners"
+title: Anonymous Messaging 101 for Beginners
 slug: anonymous-messaging-101-beginners
 date: 2026-01-08
 status: published
 tags: ["Guides & How-To", "Guide", "Beginners"]
 excerpt: "New to anonymous messaging 101? Start here: zero jargon, first win in under ten minutes."
-pixabay: "friends messaging phone"
+pixabay: friends messaging phone
 readMinutes: 5
-image: "/blog-images/anonymous-messaging-101-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/anonymous-messaging-101-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/anonymous-messaging-101-beginners.jpg"
+credit: terimakasih0
+credit_url: "https://pixabay.com/photos/new-year-mobile-phones-texting-1490691/"
 ---
 # Anonymous Messaging 101 for Beginners
 

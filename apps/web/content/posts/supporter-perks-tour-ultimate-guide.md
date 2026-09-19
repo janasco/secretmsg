@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Every Supporter Perk, Explained"
+title: The Ultimate Guide to Every Supporter Perk, Explained
 slug: supporter-perks-tour-ultimate-guide
 date: 2026-04-08
 status: published
 tags: ["Product & Features", "Supporters", "Perks"]
-excerpt: "Everything about every supporter perk, explained — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "golden badge premium"
+excerpt: Everything about every supporter perk, explained — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: golden badge premium
 readMinutes: 4
-image: "/blog-images/supporter-perks-tour-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/supporter-perks-tour-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/supporter-perks-tour-ultimate-guide.jpg"
+credit: rolfvandewal
+credit_url: "https://pixabay.com/photos/bmw-gearstick-4-series-premium-car-4993779/"
 ---
 # The Ultimate Guide to Every Supporter Perk, Explained
 

@@ -1,16 +1,16 @@
 ---
-title: "Creator & Fan Boards for Beginners"
+title: Creator & Fan Boards for Beginners
 slug: creator-fan-boards-beginners
 date: 2027-07-22
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Creators"]
 excerpt: "New to creator & fan boards? Start here: zero jargon, first win in under ten minutes."
-pixabay: "creator camera content"
+pixabay: creator camera content
 readMinutes: 4
-image: "/blog-images/creator-fan-boards-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/creator-fan-boards-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/creator-fan-boards-beginners.jpg"
+credit: LadyQuester
+credit_url: "https://pixabay.com/photos/film-studio-chomakey-studio-5366454/"
 ---
 # Creator & Fan Boards for Beginners
 

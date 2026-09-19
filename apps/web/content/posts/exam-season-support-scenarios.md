@@ -1,16 +1,16 @@
 ---
-title: "Exam Season Support Boards in Real Life"
+title: Exam Season Support Boards in Real Life
 slug: exam-season-support-scenarios
 date: 2026-12-26
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Support"]
-excerpt: "Exam Season Support Boards played out in real scenes — watch the loop work, then steal it."
-pixabay: "students studying library"
+excerpt: Exam Season Support Boards played out in real scenes — watch the loop work, then steal it.
+pixabay: students studying library
 readMinutes: 4
-image: "/blog-images/exam-season-support-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/exam-season-support-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/exam-season-support-scenarios.jpg"
+credit: wal_172619
+credit_url: "https://pixabay.com/photos/library-books-reading-knowledge-7408106/"
 ---
 # Exam Season Support Boards in Real Life
 

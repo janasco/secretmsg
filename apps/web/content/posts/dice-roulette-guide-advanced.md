@@ -5,12 +5,12 @@ date: 2026-03-20
 status: published
 tags: ["Product & Features", "Dice", "Prompts"]
 excerpt: "Beyond the basics of the dice roulette playbook: power tactics for boards that already hum."
-pixabay: "dice game neon"
+pixabay: dice game neon
 readMinutes: 5
-image: "/blog-images/dice-roulette-guide-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/dice-roulette-guide-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/dice-roulette-guide-advanced.jpg"
+credit: PIRO4D
+credit_url: "https://pixabay.com/photos/dice-game-random-gambling-1963036/"
 ---
 # Advanced Dice Roulette Playbook: Level Up
 

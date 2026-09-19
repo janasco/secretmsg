@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to The Psychology of Handles"
+title: The Ultimate Guide to The Psychology of Handles
 slug: handle-psychology-ultimate-guide
 date: 2026-08-03
 status: published
 tags: ["Culture & Psychology", "Culture", "Identity"]
-excerpt: "Everything about the psychology of handles — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "neon name sign"
+excerpt: Everything about the psychology of handles — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: neon name sign
 readMinutes: 4
-image: "/blog-images/handle-psychology-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/handle-psychology-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/handle-psychology-ultimate-guide.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/open-sign-neon-lights-illuminated-1836961/"
 ---
 # The Ultimate Guide to The Psychology of Handles
 

@@ -1,16 +1,16 @@
 ---
-title: "Workplace Feedback Without the Fallout vs the Alternatives"
+title: Workplace Feedback Without the Fallout vs the Alternatives
 slug: workplace-feedback-anonymously-comparison
 date: 2026-05-19
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Work"]
-excerpt: "How workplace feedback without the fallout stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "office team meeting"
+excerpt: How workplace feedback without the fallout stacks against the alternatives — honest verdict, no tribalism.
+pixabay: office team meeting
 readMinutes: 4
-image: "/blog-images/workplace-feedback-anonymously-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/workplace-feedback-anonymously-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/workplace-feedback-anonymously-comparison.jpg"
+credit: RonaldCandonga
+credit_url: "https://pixabay.com/photos/job-office-team-business-internet-5382501/"
 ---
 # Workplace Feedback Without the Fallout vs the Alternatives
 

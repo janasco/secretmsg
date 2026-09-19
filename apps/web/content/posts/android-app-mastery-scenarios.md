@@ -1,16 +1,16 @@
 ---
-title: "Mastering the Android App in Real Life"
+title: Mastering the Android App in Real Life
 slug: android-app-mastery-scenarios
 date: 2027-12-08
 status: scheduled
 tags: ["Product & Features", "App", "Guide"]
-excerpt: "Mastering the Android App played out in real scenes — watch the loop work, then steal it."
-pixabay: "android phone apps"
+excerpt: Mastering the Android App played out in real scenes — watch the loop work, then steal it.
+pixabay: android phone apps
 readMinutes: 4
-image: "/blog-images/android-app-mastery-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/android-app-mastery-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/android-app-mastery-scenarios.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/phone-android-apps-world-map-1869510/"
 ---
 # Mastering the Android App in Real Life
 

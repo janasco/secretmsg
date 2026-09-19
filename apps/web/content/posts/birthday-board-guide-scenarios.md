@@ -5,12 +5,12 @@ date: 2026-06-02
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Celebration"]
 excerpt: "The Birthday Board: A Month of Proof played out in real scenes — watch the loop work, then steal it."
-pixabay: "birthday party confetti"
+pixabay: birthday party confetti
 readMinutes: 4
-image: "/blog-images/birthday-board-guide-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/birthday-board-guide-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/birthday-board-guide-scenarios.jpg"
+credit: RosZie
+credit_url: "https://pixabay.com/photos/birthday-cake-cakes-celebration-7381735/"
 ---
 # Birthday Board: A Month of Proof in Real Life
 

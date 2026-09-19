@@ -4,13 +4,13 @@ slug: double-blind-replies-faq
 date: 2026-03-02
 status: published
 tags: ["Product & Features", "Replies", "Privacy"]
-excerpt: "Every question people actually ask about double-blind replies, demystified, answered straight."
-pixabay: "secret letter envelope"
+excerpt: Every question people actually ask about double-blind replies, demystified, answered straight.
+pixabay: secret letter envelope
 readMinutes: 5
-image: "/blog-images/double-blind-replies-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/double-blind-replies-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/double-blind-replies-faq.jpg"
+credit: Ylanite
+credit_url: "https://pixabay.com/photos/flowers-rose-nature-bloom-letter-6943134/"
 ---
 # Double-Blind Replies, Demystified: Questions, Answered
 

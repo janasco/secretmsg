@@ -4,13 +4,13 @@ slug: handle-psychology-faq
 date: 2026-08-12
 status: published
 tags: ["Culture & Psychology", "Culture", "Identity"]
-excerpt: "Every question people actually ask about the psychology of handles, answered straight."
-pixabay: "neon name sign"
+excerpt: Every question people actually ask about the psychology of handles, answered straight.
+pixabay: neon name sign
 readMinutes: 4
-image: "/blog-images/handle-psychology-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/handle-psychology-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/handle-psychology-faq.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/open-sign-neon-lights-illuminated-1836961/"
 ---
 # Psychology of Handles: Questions, Answered
 

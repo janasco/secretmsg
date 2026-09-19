@@ -1,16 +1,16 @@
 ---
-title: "New Year, Honest Answers in Real Life"
+title: New Year, Honest Answers in Real Life
 slug: new-year-reflection-board-scenarios
 date: 2026-06-14
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Reflection"]
-excerpt: "New Year, Honest Answers played out in real scenes — watch the loop work, then steal it."
-pixabay: "new year fireworks night"
+excerpt: New Year, Honest Answers played out in real scenes — watch the loop work, then steal it.
+pixabay: new year fireworks night
 readMinutes: 4
-image: "/blog-images/new-year-reflection-board-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/new-year-reflection-board-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/new-year-reflection-board-scenarios.jpg"
+credit: Ri_Lens
+credit_url: "https://pixabay.com/photos/fireworks-night-celebration-festive-10444646/"
 ---
 # New Year, Honest Answers in Real Life
 

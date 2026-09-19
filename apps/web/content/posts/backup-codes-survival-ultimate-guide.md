@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Backup Codes Survival Guide"
+title: The Ultimate Guide to Backup Codes Survival Guide
 slug: backup-codes-survival-ultimate-guide
 date: 2026-07-22
 status: published
 tags: ["Guides & How-To", "Guide", "Account"]
-excerpt: "Everything about backup codes survival guide — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "safe lock security"
+excerpt: Everything about backup codes survival guide — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: safe lock security
 readMinutes: 5
-image: "/blog-images/backup-codes-survival-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/backup-codes-survival-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/backup-codes-survival-ultimate-guide.jpg"
+credit: 12019
+credit_url: "https://pixabay.com/photos/padlock-door-lock-key-hole-macro-172770/"
 ---
 # The Ultimate Guide to Backup Codes Survival Guide
 

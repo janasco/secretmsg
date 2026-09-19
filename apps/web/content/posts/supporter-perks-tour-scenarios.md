@@ -1,16 +1,16 @@
 ---
-title: "Every Supporter Perk, Explained in Real Life"
+title: Every Supporter Perk, Explained in Real Life
 slug: supporter-perks-tour-scenarios
 date: 2026-04-16
 status: published
 tags: ["Product & Features", "Supporters", "Perks"]
-excerpt: "Every Supporter Perk, Explained played out in real scenes — watch the loop work, then steal it."
-pixabay: "golden badge premium"
+excerpt: Every Supporter Perk, Explained played out in real scenes — watch the loop work, then steal it.
+pixabay: golden badge premium
 readMinutes: 4
-image: "/blog-images/supporter-perks-tour-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/supporter-perks-tour-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/supporter-perks-tour-scenarios.jpg"
+credit: rolfvandewal
+credit_url: "https://pixabay.com/photos/bmw-gearstick-4-series-premium-car-4993779/"
 ---
 # Every Supporter Perk, Explained in Real Life
 

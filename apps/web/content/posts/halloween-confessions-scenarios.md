@@ -1,16 +1,16 @@
 ---
-title: "Halloween Confessions Season in Real Life"
+title: Halloween Confessions Season in Real Life
 slug: halloween-confessions-scenarios
 date: 2026-07-07
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Fun"]
-excerpt: "Halloween Confessions Season played out in real scenes — watch the loop work, then steal it."
-pixabay: "halloween spooky night"
+excerpt: Halloween Confessions Season played out in real scenes — watch the loop work, then steal it.
+pixabay: halloween spooky night
 readMinutes: 4
-image: "/blog-images/halloween-confessions-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/halloween-confessions-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/halloween-confessions-scenarios.jpg"
+credit: Bessi
+credit_url: "https://pixabay.com/photos/tree-cat-silhouette-moon-full-moon-736877/"
 ---
 # Halloween Confessions Season in Real Life
 

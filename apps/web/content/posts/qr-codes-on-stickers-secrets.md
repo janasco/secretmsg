@@ -5,12 +5,12 @@ date: 2027-10-23
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Stickers"]
 excerpt: "The insider truths about qr codes: screenshots into taps nobody puts in the onboarding."
-pixabay: "qr code phone scan"
+pixabay: qr code phone scan
 readMinutes: 4
-image: "/blog-images/qr-codes-on-stickers-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/qr-codes-on-stickers-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/qr-codes-on-stickers-secrets.jpg"
+credit: geralt
+credit_url: "https://pixabay.com/photos/qr-code-quick-response-code-to-scan-1903447/"
 ---
 # What Nobody Tells You About QR Codes: Screenshots Into Taps
 

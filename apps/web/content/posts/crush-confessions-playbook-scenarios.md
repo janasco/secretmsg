@@ -1,16 +1,16 @@
 ---
-title: "Crush Confessions Playbook in Real Life"
+title: Crush Confessions Playbook in Real Life
 slug: crush-confessions-playbook-scenarios
 date: 2026-05-10
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Crush"]
-excerpt: "The Crush Confessions Playbook played out in real scenes — watch the loop work, then steal it."
-pixabay: "romantic couple silhouette"
+excerpt: The Crush Confessions Playbook played out in real scenes — watch the loop work, then steal it.
+pixabay: romantic couple silhouette
 readMinutes: 4
-image: "/blog-images/crush-confessions-playbook-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/crush-confessions-playbook-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/crush-confessions-playbook-scenarios.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/couple-kissing-sunset-man-woman-2585328/"
 ---
 # Crush Confessions Playbook in Real Life
 

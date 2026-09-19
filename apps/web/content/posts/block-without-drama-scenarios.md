@@ -1,16 +1,16 @@
 ---
-title: "Blocking Without Drama in Real Life"
+title: Blocking Without Drama in Real Life
 slug: block-without-drama-scenarios
 date: 2026-09-03
 status: published
 tags: ["Safety & Moderation", "Safety", "Blocking"]
-excerpt: "Blocking Without Drama played out in real scenes — watch the loop work, then steal it."
-pixabay: "calm boundary fence"
+excerpt: Blocking Without Drama played out in real scenes — watch the loop work, then steal it.
+pixabay: calm boundary fence
 readMinutes: 4
-image: "/blog-images/block-without-drama-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/block-without-drama-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/block-without-drama-scenarios.jpg"
+credit: manfredrichter
+credit_url: "https://pixabay.com/photos/barbed-wire-jail-fence-security-9906199/"
 ---
 # Blocking Without Drama in Real Life
 

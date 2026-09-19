@@ -4,13 +4,13 @@ slug: reply-game-strong-faq
 date: 2026-07-20
 status: published
 tags: ["Guides & How-To", "Replies", "Guide"]
-excerpt: "Every question people actually ask about a strong reply game, answered straight."
-pixabay: "typing message chat"
+excerpt: Every question people actually ask about a strong reply game, answered straight.
+pixabay: typing message chat
 readMinutes: 4
-image: "/blog-images/reply-game-strong-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/reply-game-strong-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/reply-game-strong-faq.jpg"
+credit: truyentranhmoi123
+credit_url: "https://pixabay.com/photos/smartphone-phone-iphone-5551318/"
 ---
 # A Strong Reply Game: Questions, Answered
 

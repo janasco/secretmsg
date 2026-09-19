@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Blocking Without Drama"
+title: What Nobody Tells You About Blocking Without Drama
 slug: block-without-drama-secrets
 date: 2026-09-06
 status: draft
 tags: ["Safety & Moderation", "Safety", "Blocking"]
-excerpt: "The insider truths about blocking without drama nobody puts in the onboarding."
-pixabay: "calm boundary fence"
+excerpt: The insider truths about blocking without drama nobody puts in the onboarding.
+pixabay: calm boundary fence
 readMinutes: 4
-image: "/blog-images/block-without-drama-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/block-without-drama-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/block-without-drama-secrets.jpg"
+credit: manfredrichter
+credit_url: "https://pixabay.com/photos/barbed-wire-jail-fence-security-9906199/"
 ---
 # What Nobody Tells You About Blocking Without Drama
 

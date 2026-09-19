@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Valentine's Week TBH Guide"
+title: 5 Myths About Valentine's Week TBH Guide
 slug: valentines-tbh-guide-myths
 date: 2026-06-24
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Crush"]
-excerpt: "Five myths about valentine's week tbh guide, busted with evidence and better defaults."
-pixabay: "valentine hearts romance"
+excerpt: Five myths about valentine's week tbh guide, busted with evidence and better defaults.
+pixabay: valentine hearts romance
 readMinutes: 4
-image: "/blog-images/valentines-tbh-guide-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/valentines-tbh-guide-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/valentines-tbh-guide-myths.jpg"
+credit: beasternchen
+credit_url: "https://pixabay.com/photos/heart-valentines-day-love-romance-8559831/"
 ---
 # 5 Myths About Valentine's Week TBH Guide
 

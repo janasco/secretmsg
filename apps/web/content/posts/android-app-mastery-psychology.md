@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Mastering the Android App"
+title: The Psychology Behind Mastering the Android App
 slug: android-app-mastery-psychology
 date: 2027-11-09
 status: scheduled
 tags: ["Product & Features", "App", "Guide"]
-excerpt: "Why mastering the android app works on human brains — the behavioral science plus what to do with it."
-pixabay: "android phone apps"
+excerpt: Why mastering the android app works on human brains — the behavioral science plus what to do with it.
+pixabay: android phone apps
 readMinutes: 4
-image: "/blog-images/android-app-mastery-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/android-app-mastery-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/android-app-mastery-psychology.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/phone-android-apps-world-map-1869510/"
 ---
 # The Psychology Behind Mastering the Android App
 

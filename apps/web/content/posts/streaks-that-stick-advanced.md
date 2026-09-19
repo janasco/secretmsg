@@ -5,12 +5,12 @@ date: 2026-02-13
 status: published
 tags: ["Product & Features", "Streaks", "Ritual"]
 excerpt: "Beyond the basics of streaks that actually stick: power tactics for boards that already hum."
-pixabay: "fire flame energy"
+pixabay: fire flame energy
 readMinutes: 5
-image: "/blog-images/streaks-that-stick-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/streaks-that-stick-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/streaks-that-stick-advanced.jpg"
+credit: raedon
+credit_url: "https://pixabay.com/photos/flame-matchsticks-match-171732/"
 ---
 # Advanced Streaks That Actually Stick: Level Up
 

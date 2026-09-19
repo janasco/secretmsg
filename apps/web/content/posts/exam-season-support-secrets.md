@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Exam Season Support Boards"
+title: What Nobody Tells You About Exam Season Support Boards
 slug: exam-season-support-secrets
 date: 2027-01-06
 status: draft
 tags: ["Moments & Seasons", "Seasonal", "Support"]
-excerpt: "The insider truths about exam season support boards nobody puts in the onboarding."
-pixabay: "students studying library"
+excerpt: The insider truths about exam season support boards nobody puts in the onboarding.
+pixabay: students studying library
 readMinutes: 4
-image: "/blog-images/exam-season-support-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/exam-season-support-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/exam-season-support-secrets.jpg"
+credit: wal_172619
+credit_url: "https://pixabay.com/photos/library-books-reading-knowledge-7408106/"
 ---
 # What Nobody Tells You About Exam Season Support Boards
 

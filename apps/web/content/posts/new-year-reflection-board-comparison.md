@@ -1,16 +1,16 @@
 ---
-title: "New Year, Honest Answers vs the Alternatives"
+title: New Year, Honest Answers vs the Alternatives
 slug: new-year-reflection-board-comparison
 date: 2026-06-11
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Reflection"]
-excerpt: "How new year, honest answers stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "new year fireworks night"
+excerpt: How new year, honest answers stacks against the alternatives — honest verdict, no tribalism.
+pixabay: new year fireworks night
 readMinutes: 4
-image: "/blog-images/new-year-reflection-board-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/new-year-reflection-board-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/new-year-reflection-board-comparison.jpg"
+credit: Ri_Lens
+credit_url: "https://pixabay.com/photos/fireworks-night-celebration-festive-10444646/"
 ---
 # New Year, Honest Answers vs the Alternatives
 

@@ -4,13 +4,13 @@ slug: tbh-culture-faq
 date: 2026-01-26
 status: published
 tags: ["Culture & Psychology", "Culture", "TBH"]
-excerpt: "Every question people actually ask about tbh culture, explained, answered straight."
-pixabay: "teen friends laughing"
+excerpt: Every question people actually ask about tbh culture, explained, answered straight.
+pixabay: teen friends laughing
 readMinutes: 5
-image: "/blog-images/tbh-culture-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/tbh-culture-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/tbh-culture-faq.jpg"
+credit: 46173
+credit_url: "https://pixabay.com/photos/joy-fun-friends-happy-family-4196370/"
 ---
 # TBH Culture, Explained: Questions, Answered
 

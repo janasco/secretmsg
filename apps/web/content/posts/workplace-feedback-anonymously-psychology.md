@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Workplace Feedback Without the Fallout"
+title: The Psychology Behind Workplace Feedback Without the Fallout
 slug: workplace-feedback-anonymously-psychology
 date: 2026-05-15
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Work"]
-excerpt: "Why workplace feedback without the fallout works on human brains — the behavioral science plus what to do with it."
-pixabay: "office team meeting"
+excerpt: Why workplace feedback without the fallout works on human brains — the behavioral science plus what to do with it.
+pixabay: office team meeting
 readMinutes: 4
-image: "/blog-images/workplace-feedback-anonymously-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/workplace-feedback-anonymously-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/workplace-feedback-anonymously-psychology.jpg"
+credit: RonaldCandonga
+credit_url: "https://pixabay.com/photos/job-office-team-business-internet-5382501/"
 ---
 # The Psychology Behind Workplace Feedback Without the Fallout
 

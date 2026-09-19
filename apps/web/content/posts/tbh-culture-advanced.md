@@ -5,12 +5,12 @@ date: 2026-01-21
 status: published
 tags: ["Culture & Psychology", "Culture", "TBH"]
 excerpt: "Beyond the basics of tbh culture, explained: power tactics for boards that already hum."
-pixabay: "teen friends laughing"
+pixabay: teen friends laughing
 readMinutes: 5
-image: "/blog-images/tbh-culture-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/tbh-culture-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/tbh-culture-advanced.jpg"
+credit: 46173
+credit_url: "https://pixabay.com/photos/joy-fun-friends-happy-family-4196370/"
 ---
 # Advanced TBH Culture, Explained: Level Up
 

@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind TBH Culture, Explained"
+title: The Psychology Behind TBH Culture, Explained
 slug: tbh-culture-psychology
 date: 2026-01-19
 status: published
 tags: ["Culture & Psychology", "Culture", "TBH"]
-excerpt: "Why tbh culture, explained works on human brains — the behavioral science plus what to do with it."
-pixabay: "teen friends laughing"
+excerpt: Why tbh culture, explained works on human brains — the behavioral science plus what to do with it.
+pixabay: teen friends laughing
 readMinutes: 5
-image: "/blog-images/tbh-culture-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/tbh-culture-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/tbh-culture-psychology.jpg"
+credit: 46173
+credit_url: "https://pixabay.com/photos/joy-fun-friends-happy-family-4196370/"
 ---
 # The Psychology Behind TBH Culture, Explained
 

@@ -1,16 +1,16 @@
 ---
-title: "Double-Blind Replies, Demystified in Real Life"
+title: Double-Blind Replies, Demystified in Real Life
 slug: double-blind-replies-scenarios
 date: 2026-02-28
 status: published
 tags: ["Product & Features", "Replies", "Privacy"]
-excerpt: "Double-Blind Replies, Demystified played out in real scenes — watch the loop work, then steal it."
-pixabay: "secret letter envelope"
+excerpt: Double-Blind Replies, Demystified played out in real scenes — watch the loop work, then steal it.
+pixabay: secret letter envelope
 readMinutes: 5
-image: "/blog-images/double-blind-replies-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/double-blind-replies-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/double-blind-replies-scenarios.jpg"
+credit: Ylanite
+credit_url: "https://pixabay.com/photos/flowers-rose-nature-bloom-letter-6943134/"
 ---
 # Double-Blind Replies, Demystified in Real Life
 

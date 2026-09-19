@@ -1,16 +1,16 @@
 ---
-title: "Story Stickers That Actually Convert in Real Life"
+title: Story Stickers That Actually Convert in Real Life
 slug: story-stickers-that-convert-scenarios
 date: 2026-03-12
 status: published
 tags: ["Growth & Sharing", "Growth", "Stickers"]
-excerpt: "Story Stickers That Actually Convert played out in real scenes — watch the loop work, then steal it."
-pixabay: "phone social media story"
+excerpt: Story Stickers That Actually Convert played out in real scenes — watch the loop work, then steal it.
+pixabay: phone social media story
 readMinutes: 4
-image: "/blog-images/story-stickers-that-convert-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/story-stickers-that-convert-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/story-stickers-that-convert-scenarios.jpg"
+credit: LoboStudioHamburg
+credit_url: "https://pixabay.com/photos/internet-whatsapp-smartphone-3113279/"
 ---
 # Story Stickers That Actually Convert in Real Life
 

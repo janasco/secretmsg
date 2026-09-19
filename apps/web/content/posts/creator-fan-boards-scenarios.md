@@ -1,16 +1,16 @@
 ---
-title: "Creator & Fan Boards in Real Life"
+title: Creator & Fan Boards in Real Life
 slug: creator-fan-boards-scenarios
 date: 2027-08-14
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Creators"]
-excerpt: "Creator & Fan Boards played out in real scenes — watch the loop work, then steal it."
-pixabay: "creator camera content"
+excerpt: Creator & Fan Boards played out in real scenes — watch the loop work, then steal it.
+pixabay: creator camera content
 readMinutes: 4
-image: "/blog-images/creator-fan-boards-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/creator-fan-boards-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/creator-fan-boards-scenarios.jpg"
+credit: LadyQuester
+credit_url: "https://pixabay.com/photos/film-studio-chomakey-studio-5366454/"
 ---
 # Creator & Fan Boards in Real Life
 

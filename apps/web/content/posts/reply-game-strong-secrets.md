@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About A Strong Reply Game"
+title: What Nobody Tells You About A Strong Reply Game
 slug: reply-game-strong-secrets
 date: 2026-07-21
 status: published
 tags: ["Guides & How-To", "Replies", "Guide"]
-excerpt: "The insider truths about a strong reply game nobody puts in the onboarding."
-pixabay: "typing message chat"
+excerpt: The insider truths about a strong reply game nobody puts in the onboarding.
+pixabay: typing message chat
 readMinutes: 5
-image: "/blog-images/reply-game-strong-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/reply-game-strong-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/reply-game-strong-secrets.jpg"
+credit: truyentranhmoi123
+credit_url: "https://pixabay.com/photos/smartphone-phone-iphone-5551318/"
 ---
 # What Nobody Tells You About A Strong Reply Game
 

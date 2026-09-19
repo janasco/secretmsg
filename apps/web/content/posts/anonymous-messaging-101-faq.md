@@ -4,13 +4,13 @@ slug: anonymous-messaging-101-faq
 date: 2026-01-14
 status: published
 tags: ["Guides & How-To", "Guide", "Beginners"]
-excerpt: "Every question people actually ask about anonymous messaging 101, answered straight."
-pixabay: "friends messaging phone"
+excerpt: Every question people actually ask about anonymous messaging 101, answered straight.
+pixabay: friends messaging phone
 readMinutes: 5
-image: "/blog-images/anonymous-messaging-101-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/anonymous-messaging-101-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/anonymous-messaging-101-faq.jpg"
+credit: terimakasih0
+credit_url: "https://pixabay.com/photos/new-year-mobile-phones-texting-1490691/"
 ---
 # Anonymous Messaging 101: Questions, Answered
 

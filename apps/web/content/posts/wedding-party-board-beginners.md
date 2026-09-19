@@ -1,16 +1,16 @@
 ---
-title: "Wedding & Party Boards for Beginners"
+title: Wedding & Party Boards for Beginners
 slug: wedding-party-board-beginners
 date: 2027-01-30
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Events"]
 excerpt: "New to wedding & party boards? Start here: zero jargon, first win in under ten minutes."
-pixabay: "wedding celebration dance"
+pixabay: wedding celebration dance
 readMinutes: 4
-image: "/blog-images/wedding-party-board-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/wedding-party-board-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/wedding-party-board-beginners.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/woman-dance-dress-wedding-hindu-2178480/"
 ---
 # Wedding & Party Boards for Beginners
 

@@ -4,13 +4,13 @@ slug: notification-zen-faq
 date: 2026-08-24
 status: published
 tags: ["Product & Features", "Notifications", "Balance"]
-excerpt: "Every question people actually ask about notification zen, answered straight."
-pixabay: "phone notification calm"
+excerpt: Every question people actually ask about notification zen, answered straight.
+pixabay: phone notification calm
 readMinutes: 4
-image: "/blog-images/notification-zen-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/notification-zen-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/notification-zen-faq.jpg"
+credit: PatrickLFC93
+credit_url: "https://pixabay.com/photos/phone-booth-phone-english-uk-7728783/"
 ---
 # Notification Zen: Questions, Answered
 

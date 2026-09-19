@@ -4,13 +4,13 @@ slug: double-blind-replies-mistakes
 date: 2026-02-21
 status: published
 tags: ["Product & Features", "Replies", "Privacy"]
-excerpt: "The seven ways people fumble double-blind replies, demystified, each with its fix. Learn them here, not the hard way."
-pixabay: "secret letter envelope"
+excerpt: The seven ways people fumble double-blind replies, demystified, each with its fix. Learn them here, not the hard way.
+pixabay: secret letter envelope
 readMinutes: 4
-image: "/blog-images/double-blind-replies-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/double-blind-replies-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/double-blind-replies-mistakes.jpg"
+credit: Ylanite
+credit_url: "https://pixabay.com/photos/flowers-rose-nature-bloom-letter-6943134/"
 ---
 # Double-Blind Replies, Demystified: 7 Mistakes Everyone Makes
 

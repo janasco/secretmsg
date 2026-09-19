@@ -5,12 +5,12 @@ date: 2026-05-25
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Celebration"]
 excerpt: "Everything about the birthday board: a month of proof — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "birthday party confetti"
+pixabay: birthday party confetti
 readMinutes: 4
-image: "/blog-images/birthday-board-guide-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/birthday-board-guide-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/birthday-board-guide-ultimate-guide.jpg"
+credit: RosZie
+credit_url: "https://pixabay.com/photos/birthday-cake-cakes-celebration-7381735/"
 ---
 # The Ultimate Guide to The Birthday Board: A Month of Proof
 

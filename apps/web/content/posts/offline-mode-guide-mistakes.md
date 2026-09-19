@@ -4,13 +4,13 @@ slug: offline-mode-guide-mistakes
 date: 2026-04-21
 status: published
 tags: ["Product & Features", "Offline", "App"]
-excerpt: "The seven ways people fumble the offline outbox, explained, each with its fix. Learn them here, not the hard way."
-pixabay: "airplane travel phone"
+excerpt: The seven ways people fumble the offline outbox, explained, each with its fix. Learn them here, not the hard way.
+pixabay: airplane travel phone
 readMinutes: 4
-image: "/blog-images/offline-mode-guide-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/offline-mode-guide-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/offline-mode-guide-mistakes.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/still-items-things-passes-boarding-2609682/"
 ---
 # Offline Outbox, Explained: 7 Mistakes Everyone Makes
 

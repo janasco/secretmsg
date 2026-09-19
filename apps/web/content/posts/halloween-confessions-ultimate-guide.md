@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Halloween Confessions Season"
+title: The Ultimate Guide to Halloween Confessions Season
 slug: halloween-confessions-ultimate-guide
 date: 2026-06-29
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Fun"]
-excerpt: "Everything about halloween confessions season — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "halloween spooky night"
+excerpt: Everything about halloween confessions season — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: halloween spooky night
 readMinutes: 4
-image: "/blog-images/halloween-confessions-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/halloween-confessions-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/halloween-confessions-ultimate-guide.jpg"
+credit: Bessi
+credit_url: "https://pixabay.com/photos/tree-cat-silhouette-moon-full-moon-736877/"
 ---
 # The Ultimate Guide to Halloween Confessions Season
 

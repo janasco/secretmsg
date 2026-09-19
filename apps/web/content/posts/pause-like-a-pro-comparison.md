@@ -1,16 +1,16 @@
 ---
-title: "Pause Like a Pro vs the Alternatives"
+title: Pause Like a Pro vs the Alternatives
 slug: pause-like-a-pro-comparison
 date: 2026-04-02
 status: published
 tags: ["Safety & Moderation", "Safety", "Boundaries"]
-excerpt: "How pause like a pro stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "peaceful break relax"
+excerpt: How pause like a pro stacks against the alternatives — honest verdict, no tribalism.
+pixabay: peaceful break relax
 readMinutes: 4
-image: "/blog-images/pause-like-a-pro-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/pause-like-a-pro-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/pause-like-a-pro-comparison.jpg"
+credit: ahuanzuishuai111
+credit_url: "https://pixabay.com/photos/coffee-cup-spoon-reading-book-10283354/"
 ---
 # Pause Like a Pro vs the Alternatives
 

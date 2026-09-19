@@ -5,12 +5,12 @@ date: 2026-07-04
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Fun"]
 excerpt: "Beyond the basics of halloween confessions season: power tactics for boards that already hum."
-pixabay: "halloween spooky night"
+pixabay: halloween spooky night
 readMinutes: 4
-image: "/blog-images/halloween-confessions-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/halloween-confessions-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/halloween-confessions-advanced.jpg"
+credit: Bessi
+credit_url: "https://pixabay.com/photos/tree-cat-silhouette-moon-full-moon-736877/"
 ---
 # Advanced Halloween Confessions Season: Level Up
 

@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind New Year, Honest Answers"
+title: The Psychology Behind New Year, Honest Answers
 slug: new-year-reflection-board-psychology
 date: 2026-06-08
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Reflection"]
-excerpt: "Why new year, honest answers works on human brains — the behavioral science plus what to do with it."
-pixabay: "new year fireworks night"
+excerpt: Why new year, honest answers works on human brains — the behavioral science plus what to do with it.
+pixabay: new year fireworks night
 readMinutes: 4
-image: "/blog-images/new-year-reflection-board-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/new-year-reflection-board-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/new-year-reflection-board-psychology.jpg"
+credit: Ri_Lens
+credit_url: "https://pixabay.com/photos/fireworks-night-celebration-festive-10444646/"
 ---
 # The Psychology Behind New Year, Honest Answers
 

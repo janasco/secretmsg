@@ -4,13 +4,13 @@ slug: book-club-anonymous-faq
 date: 2027-06-23
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Community"]
-excerpt: "Every question people actually ask about anonymous book club boards, answered straight."
-pixabay: "books reading cozy"
+excerpt: Every question people actually ask about anonymous book club boards, answered straight.
+pixabay: books reading cozy
 readMinutes: 4
-image: "/blog-images/book-club-anonymous-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/book-club-anonymous-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/book-club-anonymous-faq.jpg"
+credit: fotografierende
+credit_url: "https://pixabay.com/photos/camera-book-candle-read-cozy-bed-4597415/"
 ---
 # Anonymous Book Club Boards: Questions, Answered
 

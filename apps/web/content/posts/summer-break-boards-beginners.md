@@ -1,16 +1,16 @@
 ---
-title: "Summer Break Boards for Beginners"
+title: Summer Break Boards for Beginners
 slug: summer-break-boards-beginners
 date: 2026-10-06
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Summer"]
 excerpt: "New to summer break boards? Start here: zero jargon, first win in under ten minutes."
-pixabay: "summer beach friends"
+pixabay: summer beach friends
 readMinutes: 4
-image: "/blog-images/summer-break-boards-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/summer-break-boards-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/summer-break-boards-beginners.jpg"
+credit: FotografieLink
+credit_url: "https://pixabay.com/photos/women-friends-beach-sea-summer-3266211/"
 ---
 # Summer Break Boards for Beginners
 

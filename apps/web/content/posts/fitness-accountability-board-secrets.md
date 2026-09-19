@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Fitness Accountability, Anonymously"
+title: What Nobody Tells You About Fitness Accountability, Anonymously
 slug: fitness-accountability-board-secrets
 date: 2027-05-02
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Habits"]
-excerpt: "The insider truths about fitness accountability, anonymously nobody puts in the onboarding."
-pixabay: "running fitness sunrise"
+excerpt: The insider truths about fitness accountability, anonymously nobody puts in the onboarding.
+pixabay: running fitness sunrise
 readMinutes: 4
-image: "/blog-images/fitness-accountability-board-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/fitness-accountability-board-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/fitness-accountability-board-secrets.jpg"
+credit: kinkate
+credit_url: "https://pixabay.com/photos/jogging-run-sport-jog-sporty-race-2343558/"
 ---
 # What Nobody Tells You About Fitness Accountability, Anonymously
 

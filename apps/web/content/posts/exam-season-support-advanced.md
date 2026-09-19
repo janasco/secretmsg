@@ -5,12 +5,12 @@ date: 2026-12-08
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Support"]
 excerpt: "Beyond the basics of exam season support boards: power tactics for boards that already hum."
-pixabay: "students studying library"
+pixabay: students studying library
 readMinutes: 4
-image: "/blog-images/exam-season-support-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/exam-season-support-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/exam-season-support-advanced.jpg"
+credit: wal_172619
+credit_url: "https://pixabay.com/photos/library-books-reading-knowledge-7408106/"
 ---
 # Advanced Exam Season Support Boards: Level Up
 

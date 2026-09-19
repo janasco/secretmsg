@@ -1,16 +1,16 @@
 ---
-title: "Exam Season Support Boards vs the Alternatives"
+title: Exam Season Support Boards vs the Alternatives
 slug: exam-season-support-comparison
 date: 2026-12-14
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Support"]
-excerpt: "How exam season support boards stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "students studying library"
+excerpt: How exam season support boards stacks against the alternatives — honest verdict, no tribalism.
+pixabay: students studying library
 readMinutes: 4
-image: "/blog-images/exam-season-support-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/exam-season-support-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/exam-season-support-comparison.jpg"
+credit: wal_172619
+credit_url: "https://pixabay.com/photos/library-books-reading-knowledge-7408106/"
 ---
 # Exam Season Support Boards vs the Alternatives
 

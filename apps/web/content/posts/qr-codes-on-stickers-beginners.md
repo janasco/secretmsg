@@ -5,12 +5,12 @@ date: 2027-09-18
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Stickers"]
 excerpt: "New to qr codes: screenshots into taps? Start here: zero jargon, first win in under ten minutes."
-pixabay: "qr code phone scan"
+pixabay: qr code phone scan
 readMinutes: 4
-image: "/blog-images/qr-codes-on-stickers-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/qr-codes-on-stickers-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/qr-codes-on-stickers-beginners.jpg"
+credit: geralt
+credit_url: "https://pixabay.com/photos/qr-code-quick-response-code-to-scan-1903447/"
 ---
 # QR Codes: Screenshots Into Taps for Beginners
 

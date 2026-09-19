@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Graduation & Farewell Boards"
+title: The Ultimate Guide to Graduation & Farewell Boards
 slug: graduation-farewell-board-ultimate-guide
 date: 2026-09-07
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Milestones"]
-excerpt: "Everything about graduation & farewell boards — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "graduation caps celebration"
+excerpt: Everything about graduation & farewell boards — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: graduation caps celebration
 readMinutes: 4
-image: "/blog-images/graduation-farewell-board-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/graduation-farewell-board-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/graduation-farewell-board-ultimate-guide.jpg"
+credit: HuyNgan
+credit_url: "https://pixabay.com/photos/yearbook-vietnamese-students-10168363/"
 ---
 # The Ultimate Guide to Graduation & Farewell Boards
 

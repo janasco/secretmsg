@@ -5,12 +5,12 @@ date: 2026-05-28
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Celebration"]
 excerpt: "New to the birthday board: a month of proof? Start here: zero jargon, first win in under ten minutes."
-pixabay: "birthday party confetti"
+pixabay: birthday party confetti
 readMinutes: 4
-image: "/blog-images/birthday-board-guide-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/birthday-board-guide-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/birthday-board-guide-beginners.jpg"
+credit: RosZie
+credit_url: "https://pixabay.com/photos/birthday-cake-cakes-celebration-7381735/"
 ---
 # Birthday Board: A Month of Proof for Beginners
 

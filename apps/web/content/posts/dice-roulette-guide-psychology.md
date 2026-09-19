@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Dice Roulette Playbook"
+title: The Psychology Behind Dice Roulette Playbook
 slug: dice-roulette-guide-psychology
 date: 2026-03-18
 status: published
 tags: ["Product & Features", "Dice", "Prompts"]
-excerpt: "Why the dice roulette playbook works on human brains — the behavioral science plus what to do with it."
-pixabay: "dice game neon"
+excerpt: Why the dice roulette playbook works on human brains — the behavioral science plus what to do with it.
+pixabay: dice game neon
 readMinutes: 5
-image: "/blog-images/dice-roulette-guide-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/dice-roulette-guide-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/dice-roulette-guide-psychology.jpg"
+credit: PIRO4D
+credit_url: "https://pixabay.com/photos/dice-game-random-gambling-1963036/"
 ---
 # The Psychology Behind Dice Roulette Playbook
 

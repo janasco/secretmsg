@@ -1,16 +1,16 @@
 ---
-title: "Anonymous Book Club Boards for Beginners"
+title: Anonymous Book Club Boards for Beginners
 slug: book-club-anonymous-beginners
 date: 2027-05-25
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Community"]
 excerpt: "New to anonymous book club boards? Start here: zero jargon, first win in under ten minutes."
-pixabay: "books reading cozy"
+pixabay: books reading cozy
 readMinutes: 4
-image: "/blog-images/book-club-anonymous-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/book-club-anonymous-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/book-club-anonymous-beginners.jpg"
+credit: fotografierende
+credit_url: "https://pixabay.com/photos/camera-book-candle-read-cozy-bed-4597415/"
 ---
 # Anonymous Book Club Boards for Beginners
 

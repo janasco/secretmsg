@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Summer Break Boards"
+title: The Ultimate Guide to Summer Break Boards
 slug: summer-break-boards-ultimate-guide
 date: 2026-09-19
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Summer"]
-excerpt: "Everything about summer break boards — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "summer beach friends"
+excerpt: Everything about summer break boards — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: summer beach friends
 readMinutes: 4
-image: "/blog-images/summer-break-boards-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/summer-break-boards-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/summer-break-boards-ultimate-guide.jpg"
+credit: FotografieLink
+credit_url: "https://pixabay.com/photos/women-friends-beach-sea-summer-3266211/"
 ---
 # The Ultimate Guide to Summer Break Boards
 

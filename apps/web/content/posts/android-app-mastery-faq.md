@@ -4,13 +4,13 @@ slug: android-app-mastery-faq
 date: 2027-12-14
 status: scheduled
 tags: ["Product & Features", "App", "Guide"]
-excerpt: "Every question people actually ask about mastering the android app, answered straight."
-pixabay: "android phone apps"
+excerpt: Every question people actually ask about mastering the android app, answered straight.
+pixabay: android phone apps
 readMinutes: 4
-image: "/blog-images/android-app-mastery-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/android-app-mastery-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/android-app-mastery-faq.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/phone-android-apps-world-map-1869510/"
 ---
 # Mastering the Android App: Questions, Answered
 

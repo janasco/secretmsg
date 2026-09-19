@@ -5,12 +5,12 @@ date: 2027-09-30
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Stickers"]
 excerpt: "How qr codes: screenshots into taps stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "qr code phone scan"
+pixabay: qr code phone scan
 readMinutes: 4
-image: "/blog-images/qr-codes-on-stickers-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/qr-codes-on-stickers-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/qr-codes-on-stickers-comparison.jpg"
+credit: geralt
+credit_url: "https://pixabay.com/photos/qr-code-quick-response-code-to-scan-1903447/"
 ---
 # QR Codes: Screenshots Into Taps vs the Alternatives
 

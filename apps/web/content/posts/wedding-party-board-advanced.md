@@ -5,12 +5,12 @@ date: 2027-02-04
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Events"]
 excerpt: "Beyond the basics of wedding & party boards: power tactics for boards that already hum."
-pixabay: "wedding celebration dance"
+pixabay: wedding celebration dance
 readMinutes: 4
-image: "/blog-images/wedding-party-board-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/wedding-party-board-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/wedding-party-board-advanced.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/woman-dance-dress-wedding-hindu-2178480/"
 ---
 # Advanced Wedding & Party Boards: Level Up
 

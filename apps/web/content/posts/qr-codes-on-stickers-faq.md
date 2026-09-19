@@ -5,12 +5,12 @@ date: 2027-10-17
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Stickers"]
 excerpt: "Every question people actually ask about qr codes: screenshots into taps, answered straight."
-pixabay: "qr code phone scan"
+pixabay: qr code phone scan
 readMinutes: 4
-image: "/blog-images/qr-codes-on-stickers-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/qr-codes-on-stickers-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/qr-codes-on-stickers-faq.jpg"
+credit: geralt
+credit_url: "https://pixabay.com/photos/qr-code-quick-response-code-to-scan-1903447/"
 ---
 # QR Codes: Screenshots Into Taps: Questions, Answered
 

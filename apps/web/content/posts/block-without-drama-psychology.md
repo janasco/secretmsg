@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Blocking Without Drama"
+title: The Psychology Behind Blocking Without Drama
 slug: block-without-drama-psychology
 date: 2026-08-29
 status: published
 tags: ["Safety & Moderation", "Safety", "Blocking"]
-excerpt: "Why blocking without drama works on human brains — the behavioral science plus what to do with it."
-pixabay: "calm boundary fence"
+excerpt: Why blocking without drama works on human brains — the behavioral science plus what to do with it.
+pixabay: calm boundary fence
 readMinutes: 4
-image: "/blog-images/block-without-drama-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/block-without-drama-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/block-without-drama-psychology.jpg"
+credit: manfredrichter
+credit_url: "https://pixabay.com/photos/barbed-wire-jail-fence-security-9906199/"
 ---
 # The Psychology Behind Blocking Without Drama
 

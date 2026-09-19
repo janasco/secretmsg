@@ -1,16 +1,16 @@
 ---
-title: "Notification Zen for Beginners"
+title: Notification Zen for Beginners
 slug: notification-zen-beginners
 date: 2026-08-18
 status: published
 tags: ["Product & Features", "Notifications", "Balance"]
 excerpt: "New to notification zen? Start here: zero jargon, first win in under ten minutes."
-pixabay: "phone notification calm"
+pixabay: phone notification calm
 readMinutes: 4
-image: "/blog-images/notification-zen-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/notification-zen-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/notification-zen-beginners.jpg"
+credit: PatrickLFC93
+credit_url: "https://pixabay.com/photos/phone-booth-phone-english-uk-7728783/"
 ---
 # Notification Zen for Beginners
 

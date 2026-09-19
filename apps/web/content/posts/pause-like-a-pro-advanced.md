@@ -5,12 +5,12 @@ date: 2026-04-01
 status: published
 tags: ["Safety & Moderation", "Safety", "Boundaries"]
 excerpt: "Beyond the basics of pause like a pro: power tactics for boards that already hum."
-pixabay: "peaceful break relax"
+pixabay: peaceful break relax
 readMinutes: 4
-image: "/blog-images/pause-like-a-pro-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/pause-like-a-pro-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/pause-like-a-pro-advanced.jpg"
+credit: ahuanzuishuai111
+credit_url: "https://pixabay.com/photos/coffee-cup-spoon-reading-book-10283354/"
 ---
 # Advanced Pause Like a Pro: Level Up
 

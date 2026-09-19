@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Wedding & Party Boards"
+title: The Ultimate Guide to Wedding & Party Boards
 slug: wedding-party-board-ultimate-guide
 date: 2027-01-12
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Events"]
-excerpt: "Everything about wedding & party boards — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "wedding celebration dance"
+excerpt: Everything about wedding & party boards — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: wedding celebration dance
 readMinutes: 4
-image: "/blog-images/wedding-party-board-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/wedding-party-board-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/wedding-party-board-ultimate-guide.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/woman-dance-dress-wedding-hindu-2178480/"
 ---
 # The Ultimate Guide to Wedding & Party Boards
 

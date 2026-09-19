@@ -5,12 +5,12 @@ date: 2026-09-12
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Milestones"]
 excerpt: "Beyond the basics of graduation & farewell boards: power tactics for boards that already hum."
-pixabay: "graduation caps celebration"
+pixabay: graduation caps celebration
 readMinutes: 4
-image: "/blog-images/graduation-farewell-board-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/graduation-farewell-board-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/graduation-farewell-board-advanced.jpg"
+credit: HuyNgan
+credit_url: "https://pixabay.com/photos/yearbook-vietnamese-students-10168363/"
 ---
 # Advanced Graduation & Farewell Boards: Level Up
 

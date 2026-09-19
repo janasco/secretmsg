@@ -5,12 +5,12 @@ date: 2026-06-10
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Reflection"]
 excerpt: "Beyond the basics of new year, honest answers: power tactics for boards that already hum."
-pixabay: "new year fireworks night"
+pixabay: new year fireworks night
 readMinutes: 4
-image: "/blog-images/new-year-reflection-board-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/new-year-reflection-board-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/new-year-reflection-board-advanced.jpg"
+credit: Ri_Lens
+credit_url: "https://pixabay.com/photos/fireworks-night-celebration-festive-10444646/"
 ---
 # Advanced New Year, Honest Answers: Level Up
 

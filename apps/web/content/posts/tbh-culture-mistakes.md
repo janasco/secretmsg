@@ -4,13 +4,13 @@ slug: tbh-culture-mistakes
 date: 2026-01-17
 status: published
 tags: ["Culture & Psychology", "Culture", "TBH"]
-excerpt: "The seven ways people fumble tbh culture, explained, each with its fix. Learn them here, not the hard way."
-pixabay: "teen friends laughing"
+excerpt: The seven ways people fumble tbh culture, explained, each with its fix. Learn them here, not the hard way.
+pixabay: teen friends laughing
 readMinutes: 5
-image: "/blog-images/tbh-culture-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/tbh-culture-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/tbh-culture-mistakes.jpg"
+credit: 46173
+credit_url: "https://pixabay.com/photos/joy-fun-friends-happy-family-4196370/"
 ---
 # TBH Culture, Explained: 7 Mistakes Everyone Makes
 

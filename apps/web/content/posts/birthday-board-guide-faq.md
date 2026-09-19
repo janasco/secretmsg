@@ -5,12 +5,12 @@ date: 2026-06-03
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Celebration"]
 excerpt: "Every question people actually ask about the birthday board: a month of proof, answered straight."
-pixabay: "birthday party confetti"
+pixabay: birthday party confetti
 readMinutes: 4
-image: "/blog-images/birthday-board-guide-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/birthday-board-guide-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/birthday-board-guide-faq.jpg"
+credit: RosZie
+credit_url: "https://pixabay.com/photos/birthday-cake-cakes-celebration-7381735/"
 ---
 # Birthday Board: A Month of Proof: Questions, Answered
 

@@ -4,13 +4,13 @@ slug: workplace-feedback-anonymously-mistakes
 date: 2026-05-14
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Work"]
-excerpt: "The seven ways people fumble workplace feedback without the fallout, each with its fix. Learn them here, not the hard way."
-pixabay: "office team meeting"
+excerpt: The seven ways people fumble workplace feedback without the fallout, each with its fix. Learn them here, not the hard way.
+pixabay: office team meeting
 readMinutes: 4
-image: "/blog-images/workplace-feedback-anonymously-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/workplace-feedback-anonymously-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/workplace-feedback-anonymously-mistakes.jpg"
+credit: RonaldCandonga
+credit_url: "https://pixabay.com/photos/job-office-team-business-internet-5382501/"
 ---
 # Workplace Feedback Without the Fallout: 7 Mistakes Everyone Makes
 

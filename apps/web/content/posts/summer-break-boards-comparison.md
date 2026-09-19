@@ -1,16 +1,16 @@
 ---
-title: "Summer Break Boards vs the Alternatives"
+title: Summer Break Boards vs the Alternatives
 slug: summer-break-boards-comparison
 date: 2026-10-17
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Summer"]
-excerpt: "How summer break boards stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "summer beach friends"
+excerpt: How summer break boards stacks against the alternatives — honest verdict, no tribalism.
+pixabay: summer beach friends
 readMinutes: 4
-image: "/blog-images/summer-break-boards-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/summer-break-boards-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/summer-break-boards-comparison.jpg"
+credit: FotografieLink
+credit_url: "https://pixabay.com/photos/women-friends-beach-sea-summer-3266211/"
 ---
 # Summer Break Boards vs the Alternatives
 

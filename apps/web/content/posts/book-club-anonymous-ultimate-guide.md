@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Anonymous Book Club Boards"
+title: The Ultimate Guide to Anonymous Book Club Boards
 slug: book-club-anonymous-ultimate-guide
 date: 2027-05-08
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Community"]
-excerpt: "Everything about anonymous book club boards — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "books reading cozy"
+excerpt: Everything about anonymous book club boards — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: books reading cozy
 readMinutes: 4
-image: "/blog-images/book-club-anonymous-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/book-club-anonymous-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/book-club-anonymous-ultimate-guide.jpg"
+credit: fotografierende
+credit_url: "https://pixabay.com/photos/camera-book-candle-read-cozy-bed-4597415/"
 ---
 # The Ultimate Guide to Anonymous Book Club Boards
 

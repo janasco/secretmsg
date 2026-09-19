@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to TBH Culture, Explained"
+title: The Ultimate Guide to TBH Culture, Explained
 slug: tbh-culture-ultimate-guide
 date: 2026-01-16
 status: published
 tags: ["Culture & Psychology", "Culture", "TBH"]
-excerpt: "Everything about tbh culture, explained — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "teen friends laughing"
+excerpt: Everything about tbh culture, explained — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: teen friends laughing
 readMinutes: 5
-image: "/blog-images/tbh-culture-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/tbh-culture-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/tbh-culture-ultimate-guide.jpg"
+credit: 46173
+credit_url: "https://pixabay.com/photos/joy-fun-friends-happy-family-4196370/"
 ---
 # The Ultimate Guide to TBH Culture, Explained
 

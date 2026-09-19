@@ -4,13 +4,13 @@ slug: new-year-reflection-board-mistakes
 date: 2026-06-07
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Reflection"]
-excerpt: "The seven ways people fumble new year, honest answers, each with its fix. Learn them here, not the hard way."
-pixabay: "new year fireworks night"
+excerpt: The seven ways people fumble new year, honest answers, each with its fix. Learn them here, not the hard way.
+pixabay: new year fireworks night
 readMinutes: 4
-image: "/blog-images/new-year-reflection-board-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/new-year-reflection-board-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/new-year-reflection-board-mistakes.jpg"
+credit: Ri_Lens
+credit_url: "https://pixabay.com/photos/fireworks-night-celebration-festive-10444646/"
 ---
 # New Year, Honest Answers: 7 Mistakes Everyone Makes
 

@@ -1,16 +1,16 @@
 ---
-title: "Crush Confessions Playbook for Beginners"
+title: Crush Confessions Playbook for Beginners
 slug: crush-confessions-playbook-beginners
 date: 2026-05-05
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Crush"]
 excerpt: "New to the crush confessions playbook? Start here: zero jargon, first win in under ten minutes."
-pixabay: "romantic couple silhouette"
+pixabay: romantic couple silhouette
 readMinutes: 4
-image: "/blog-images/crush-confessions-playbook-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/crush-confessions-playbook-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/crush-confessions-playbook-beginners.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/couple-kissing-sunset-man-woman-2585328/"
 ---
 # Crush Confessions Playbook for Beginners
 

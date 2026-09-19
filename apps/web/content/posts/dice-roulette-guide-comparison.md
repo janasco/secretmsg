@@ -1,16 +1,16 @@
 ---
-title: "Dice Roulette Playbook vs the Alternatives"
+title: Dice Roulette Playbook vs the Alternatives
 slug: dice-roulette-guide-comparison
 date: 2026-03-21
 status: published
 tags: ["Product & Features", "Dice", "Prompts"]
-excerpt: "How the dice roulette playbook stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "dice game neon"
+excerpt: How the dice roulette playbook stacks against the alternatives — honest verdict, no tribalism.
+pixabay: dice game neon
 readMinutes: 4
-image: "/blog-images/dice-roulette-guide-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/dice-roulette-guide-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/dice-roulette-guide-comparison.jpg"
+credit: PIRO4D
+credit_url: "https://pixabay.com/photos/dice-game-random-gambling-1963036/"
 ---
 # Dice Roulette Playbook vs the Alternatives
 

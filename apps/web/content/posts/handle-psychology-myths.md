@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Psychology of Handles"
+title: 5 Myths About Psychology of Handles
 slug: handle-psychology-myths
 date: 2026-08-10
 status: published
 tags: ["Culture & Psychology", "Culture", "Identity"]
-excerpt: "Five myths about the psychology of handles, busted with evidence and better defaults."
-pixabay: "neon name sign"
+excerpt: Five myths about the psychology of handles, busted with evidence and better defaults.
+pixabay: neon name sign
 readMinutes: 4
-image: "/blog-images/handle-psychology-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/handle-psychology-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/handle-psychology-myths.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/open-sign-neon-lights-illuminated-1836961/"
 ---
 # 5 Myths About Psychology of Handles
 

@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Notification Zen"
+title: What Nobody Tells You About Notification Zen
 slug: notification-zen-secrets
 date: 2026-08-25
 status: published
 tags: ["Product & Features", "Notifications", "Balance"]
-excerpt: "The insider truths about notification zen nobody puts in the onboarding."
-pixabay: "phone notification calm"
+excerpt: The insider truths about notification zen nobody puts in the onboarding.
+pixabay: phone notification calm
 readMinutes: 4
-image: "/blog-images/notification-zen-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/notification-zen-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/notification-zen-secrets.jpg"
+credit: PatrickLFC93
+credit_url: "https://pixabay.com/photos/phone-booth-phone-english-uk-7728783/"
 ---
 # What Nobody Tells You About Notification Zen
 

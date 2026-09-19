@@ -4,13 +4,13 @@ slug: dice-roulette-guide-faq
 date: 2026-03-25
 status: published
 tags: ["Product & Features", "Dice", "Prompts"]
-excerpt: "Every question people actually ask about the dice roulette playbook, answered straight."
-pixabay: "dice game neon"
+excerpt: Every question people actually ask about the dice roulette playbook, answered straight.
+pixabay: dice game neon
 readMinutes: 5
-image: "/blog-images/dice-roulette-guide-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/dice-roulette-guide-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/dice-roulette-guide-faq.jpg"
+credit: PIRO4D
+credit_url: "https://pixabay.com/photos/dice-game-random-gambling-1963036/"
 ---
 # Dice Roulette Playbook: Questions, Answered
 

@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Crush Confessions Playbook"
+title: 5 Myths About Crush Confessions Playbook
 slug: crush-confessions-playbook-myths
 date: 2026-05-08
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Crush"]
-excerpt: "Five myths about the crush confessions playbook, busted with evidence and better defaults."
-pixabay: "romantic couple silhouette"
+excerpt: Five myths about the crush confessions playbook, busted with evidence and better defaults.
+pixabay: romantic couple silhouette
 readMinutes: 4
-image: "/blog-images/crush-confessions-playbook-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/crush-confessions-playbook-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/crush-confessions-playbook-myths.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/couple-kissing-sunset-man-woman-2585328/"
 ---
 # 5 Myths About Crush Confessions Playbook
 

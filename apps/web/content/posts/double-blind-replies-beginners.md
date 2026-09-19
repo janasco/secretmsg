@@ -1,16 +1,16 @@
 ---
-title: "Double-Blind Replies, Demystified for Beginners"
+title: Double-Blind Replies, Demystified for Beginners
 slug: double-blind-replies-beginners
 date: 2026-02-24
 status: published
 tags: ["Product & Features", "Replies", "Privacy"]
 excerpt: "New to double-blind replies, demystified? Start here: zero jargon, first win in under ten minutes."
-pixabay: "secret letter envelope"
+pixabay: secret letter envelope
 readMinutes: 4
-image: "/blog-images/double-blind-replies-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/double-blind-replies-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/double-blind-replies-beginners.jpg"
+credit: Ylanite
+credit_url: "https://pixabay.com/photos/flowers-rose-nature-bloom-letter-6943134/"
 ---
 # Double-Blind Replies, Demystified for Beginners
 

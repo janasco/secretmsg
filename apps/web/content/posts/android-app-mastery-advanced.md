@@ -5,12 +5,12 @@ date: 2027-11-21
 status: scheduled
 tags: ["Product & Features", "App", "Guide"]
 excerpt: "Beyond the basics of mastering the android app: power tactics for boards that already hum."
-pixabay: "android phone apps"
+pixabay: android phone apps
 readMinutes: 4
-image: "/blog-images/android-app-mastery-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/android-app-mastery-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/android-app-mastery-advanced.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/phone-android-apps-world-map-1869510/"
 ---
 # Advanced Mastering the Android App: Level Up
 

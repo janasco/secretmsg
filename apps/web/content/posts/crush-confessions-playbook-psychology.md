@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Crush Confessions Playbook"
+title: The Psychology Behind Crush Confessions Playbook
 slug: crush-confessions-playbook-psychology
 date: 2026-05-04
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Crush"]
-excerpt: "Why the crush confessions playbook works on human brains — the behavioral science plus what to do with it."
-pixabay: "romantic couple silhouette"
+excerpt: Why the crush confessions playbook works on human brains — the behavioral science plus what to do with it.
+pixabay: romantic couple silhouette
 readMinutes: 4
-image: "/blog-images/crush-confessions-playbook-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/crush-confessions-playbook-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/crush-confessions-playbook-psychology.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/couple-kissing-sunset-man-woman-2585328/"
 ---
 # The Psychology Behind Crush Confessions Playbook
 

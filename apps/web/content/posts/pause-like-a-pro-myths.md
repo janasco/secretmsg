@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Pause Like a Pro"
+title: 5 Myths About Pause Like a Pro
 slug: pause-like-a-pro-myths
 date: 2026-04-03
 status: published
 tags: ["Safety & Moderation", "Safety", "Boundaries"]
-excerpt: "Five myths about pause like a pro, busted with evidence and better defaults."
-pixabay: "peaceful break relax"
+excerpt: Five myths about pause like a pro, busted with evidence and better defaults.
+pixabay: peaceful break relax
 readMinutes: 4
-image: "/blog-images/pause-like-a-pro-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/pause-like-a-pro-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/pause-like-a-pro-myths.jpg"
+credit: ahuanzuishuai111
+credit_url: "https://pixabay.com/photos/coffee-cup-spoon-reading-book-10283354/"
 ---
 # 5 Myths About Pause Like a Pro
 

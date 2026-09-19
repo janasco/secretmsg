@@ -1,16 +1,16 @@
 ---
-title: "Anonymous Book Club Boards vs the Alternatives"
+title: Anonymous Book Club Boards vs the Alternatives
 slug: book-club-anonymous-comparison
 date: 2027-06-06
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Community"]
-excerpt: "How anonymous book club boards stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "books reading cozy"
+excerpt: How anonymous book club boards stacks against the alternatives — honest verdict, no tribalism.
+pixabay: books reading cozy
 readMinutes: 4
-image: "/blog-images/book-club-anonymous-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/book-club-anonymous-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/book-club-anonymous-comparison.jpg"
+credit: fotografierende
+credit_url: "https://pixabay.com/photos/camera-book-candle-read-cozy-bed-4597415/"
 ---
 # Anonymous Book Club Boards vs the Alternatives
 

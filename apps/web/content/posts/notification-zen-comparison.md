@@ -1,16 +1,16 @@
 ---
-title: "Notification Zen vs the Alternatives"
+title: Notification Zen vs the Alternatives
 slug: notification-zen-comparison
 date: 2026-08-20
 status: published
 tags: ["Product & Features", "Notifications", "Balance"]
-excerpt: "How notification zen stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "phone notification calm"
+excerpt: How notification zen stacks against the alternatives — honest verdict, no tribalism.
+pixabay: phone notification calm
 readMinutes: 4
-image: "/blog-images/notification-zen-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/notification-zen-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/notification-zen-comparison.jpg"
+credit: PatrickLFC93
+credit_url: "https://pixabay.com/photos/phone-booth-phone-english-uk-7728783/"
 ---
 # Notification Zen vs the Alternatives
 

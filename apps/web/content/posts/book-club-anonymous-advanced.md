@@ -5,12 +5,12 @@ date: 2027-05-31
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Community"]
 excerpt: "Beyond the basics of anonymous book club boards: power tactics for boards that already hum."
-pixabay: "books reading cozy"
+pixabay: books reading cozy
 readMinutes: 4
-image: "/blog-images/book-club-anonymous-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/book-club-anonymous-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/book-club-anonymous-advanced.jpg"
+credit: fotografierende
+credit_url: "https://pixabay.com/photos/camera-book-candle-read-cozy-bed-4597415/"
 ---
 # Advanced Anonymous Book Club Boards: Level Up
 

@@ -4,13 +4,13 @@ slug: graduation-farewell-board-faq
 date: 2026-09-16
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Milestones"]
-excerpt: "Every question people actually ask about graduation & farewell boards, answered straight."
-pixabay: "graduation caps celebration"
+excerpt: Every question people actually ask about graduation & farewell boards, answered straight.
+pixabay: graduation caps celebration
 readMinutes: 4
-image: "/blog-images/graduation-farewell-board-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/graduation-farewell-board-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/graduation-farewell-board-faq.jpg"
+credit: HuyNgan
+credit_url: "https://pixabay.com/photos/yearbook-vietnamese-students-10168363/"
 ---
 # Graduation & Farewell Boards: Questions, Answered
 

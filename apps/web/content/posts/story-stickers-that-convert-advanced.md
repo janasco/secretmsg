@@ -5,12 +5,12 @@ date: 2026-03-09
 status: published
 tags: ["Growth & Sharing", "Growth", "Stickers"]
 excerpt: "Beyond the basics of story stickers that actually convert: power tactics for boards that already hum."
-pixabay: "phone social media story"
+pixabay: phone social media story
 readMinutes: 5
-image: "/blog-images/story-stickers-that-convert-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/story-stickers-that-convert-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/story-stickers-that-convert-advanced.jpg"
+credit: LoboStudioHamburg
+credit_url: "https://pixabay.com/photos/phone-display-apps-applications-292994/"
 ---
 # Advanced Story Stickers That Actually Convert: Level Up
 

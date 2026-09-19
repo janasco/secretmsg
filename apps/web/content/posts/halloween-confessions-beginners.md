@@ -1,16 +1,16 @@
 ---
-title: "Halloween Confessions Season for Beginners"
+title: Halloween Confessions Season for Beginners
 slug: halloween-confessions-beginners
 date: 2026-07-02
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Fun"]
 excerpt: "New to halloween confessions season? Start here: zero jargon, first win in under ten minutes."
-pixabay: "halloween spooky night"
+pixabay: halloween spooky night
 readMinutes: 4
-image: "/blog-images/halloween-confessions-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/halloween-confessions-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/halloween-confessions-beginners.jpg"
+credit: Bessi
+credit_url: "https://pixabay.com/photos/tree-cat-silhouette-moon-full-moon-736877/"
 ---
 # Halloween Confessions Season for Beginners
 

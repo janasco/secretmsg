@@ -5,12 +5,12 @@ date: 2027-10-05
 status: scheduled
 tags: ["Growth & Sharing", "Growth", "Stickers"]
 excerpt: "Five myths about qr codes: screenshots into taps, busted with evidence and better defaults."
-pixabay: "qr code phone scan"
+pixabay: qr code phone scan
 readMinutes: 4
-image: "/blog-images/qr-codes-on-stickers-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/qr-codes-on-stickers-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/qr-codes-on-stickers-myths.jpg"
+credit: geralt
+credit_url: "https://pixabay.com/photos/qr-code-quick-response-code-to-scan-1903447/"
 ---
 # 5 Myths About QR Codes: Screenshots Into Taps
 

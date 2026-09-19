@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About A Strong Reply Game"
+title: 5 Myths About A Strong Reply Game
 slug: reply-game-strong-myths
 date: 2026-07-18
 status: published
 tags: ["Guides & How-To", "Replies", "Guide"]
-excerpt: "Five myths about a strong reply game, busted with evidence and better defaults."
-pixabay: "typing message chat"
+excerpt: Five myths about a strong reply game, busted with evidence and better defaults.
+pixabay: typing message chat
 readMinutes: 4
-image: "/blog-images/reply-game-strong-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/reply-game-strong-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/reply-game-strong-myths.jpg"
+credit: truyentranhmoi123
+credit_url: "https://pixabay.com/photos/smartphone-phone-iphone-5551318/"
 ---
 # 5 Myths About A Strong Reply Game
 

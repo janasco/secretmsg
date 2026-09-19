@@ -1,16 +1,16 @@
 ---
-title: "Double-Blind Replies, Demystified vs the Alternatives"
+title: Double-Blind Replies, Demystified vs the Alternatives
 slug: double-blind-replies-comparison
 date: 2026-02-26
 status: published
 tags: ["Product & Features", "Replies", "Privacy"]
-excerpt: "How double-blind replies, demystified stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "secret letter envelope"
+excerpt: How double-blind replies, demystified stacks against the alternatives — honest verdict, no tribalism.
+pixabay: secret letter envelope
 readMinutes: 4
-image: "/blog-images/double-blind-replies-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/double-blind-replies-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/double-blind-replies-comparison.jpg"
+credit: Ylanite
+credit_url: "https://pixabay.com/photos/flowers-rose-nature-bloom-letter-6943134/"
 ---
 # Double-Blind Replies, Demystified vs the Alternatives
 

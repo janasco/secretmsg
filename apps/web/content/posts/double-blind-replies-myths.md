@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Double-Blind Replies, Demystified"
+title: 5 Myths About Double-Blind Replies, Demystified
 slug: double-blind-replies-myths
 date: 2026-02-27
 status: published
 tags: ["Product & Features", "Replies", "Privacy"]
-excerpt: "Five myths about double-blind replies, demystified, busted with evidence and better defaults."
-pixabay: "secret letter envelope"
+excerpt: Five myths about double-blind replies, demystified, busted with evidence and better defaults.
+pixabay: secret letter envelope
 readMinutes: 5
-image: "/blog-images/double-blind-replies-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/double-blind-replies-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/double-blind-replies-myths.jpg"
+credit: Ylanite
+credit_url: "https://pixabay.com/photos/flowers-rose-nature-bloom-letter-6943134/"
 ---
 # 5 Myths About Double-Blind Replies, Demystified
 

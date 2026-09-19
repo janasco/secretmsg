@@ -1,16 +1,16 @@
 ---
-title: "Fitness Accountability, Anonymously for Beginners"
+title: Fitness Accountability, Anonymously for Beginners
 slug: fitness-accountability-board-beginners
 date: 2027-03-28
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Habits"]
 excerpt: "New to fitness accountability, anonymously? Start here: zero jargon, first win in under ten minutes."
-pixabay: "running fitness sunrise"
+pixabay: running fitness sunrise
 readMinutes: 4
-image: "/blog-images/fitness-accountability-board-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/fitness-accountability-board-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/fitness-accountability-board-beginners.jpg"
+credit: kinkate
+credit_url: "https://pixabay.com/photos/jogging-run-sport-jog-sporty-race-2343558/"
 ---
 # Fitness Accountability, Anonymously for Beginners
 

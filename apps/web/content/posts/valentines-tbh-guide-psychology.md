@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Valentine's Week TBH Guide"
+title: The Psychology Behind Valentine's Week TBH Guide
 slug: valentines-tbh-guide-psychology
 date: 2026-06-19
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Crush"]
-excerpt: "Why valentine's week tbh guide works on human brains — the behavioral science plus what to do with it."
-pixabay: "valentine hearts romance"
+excerpt: Why valentine's week tbh guide works on human brains — the behavioral science plus what to do with it.
+pixabay: valentine hearts romance
 readMinutes: 4
-image: "/blog-images/valentines-tbh-guide-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/valentines-tbh-guide-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/valentines-tbh-guide-psychology.jpg"
+credit: beasternchen
+credit_url: "https://pixabay.com/photos/heart-valentines-day-love-romance-8559831/"
 ---
 # The Psychology Behind Valentine's Week TBH Guide
 

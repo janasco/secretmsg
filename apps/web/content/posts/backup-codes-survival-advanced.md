@@ -5,12 +5,12 @@ date: 2026-07-27
 status: published
 tags: ["Guides & How-To", "Guide", "Account"]
 excerpt: "Beyond the basics of backup codes survival guide: power tactics for boards that already hum."
-pixabay: "safe lock security"
+pixabay: safe lock security
 readMinutes: 5
-image: "/blog-images/backup-codes-survival-advanced.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/backup-codes-survival-advanced.jpg
+image_r2: "https://cdn.secretmsg.net/blog/backup-codes-survival-advanced.jpg"
+credit: 12019
+credit_url: "https://pixabay.com/photos/padlock-door-lock-key-hole-macro-172770/"
 ---
 # Advanced Backup Codes Survival Guide: Level Up
 

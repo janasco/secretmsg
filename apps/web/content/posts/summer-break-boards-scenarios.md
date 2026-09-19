@@ -1,16 +1,16 @@
 ---
-title: "Summer Break Boards in Real Life"
+title: Summer Break Boards in Real Life
 slug: summer-break-boards-scenarios
 date: 2026-10-29
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Summer"]
-excerpt: "Summer Break Boards played out in real scenes — watch the loop work, then steal it."
-pixabay: "summer beach friends"
+excerpt: Summer Break Boards played out in real scenes — watch the loop work, then steal it.
+pixabay: summer beach friends
 readMinutes: 4
-image: "/blog-images/summer-break-boards-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/summer-break-boards-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/summer-break-boards-scenarios.jpg"
+credit: FotografieLink
+credit_url: "https://pixabay.com/photos/women-friends-beach-sea-summer-3266211/"
 ---
 # Summer Break Boards in Real Life
 

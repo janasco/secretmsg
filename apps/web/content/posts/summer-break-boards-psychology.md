@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Summer Break Boards"
+title: The Psychology Behind Summer Break Boards
 slug: summer-break-boards-psychology
 date: 2026-09-30
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Summer"]
-excerpt: "Why summer break boards works on human brains — the behavioral science plus what to do with it."
-pixabay: "summer beach friends"
+excerpt: Why summer break boards works on human brains — the behavioral science plus what to do with it.
+pixabay: summer beach friends
 readMinutes: 4
-image: "/blog-images/summer-break-boards-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/summer-break-boards-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/summer-break-boards-psychology.jpg"
+credit: FotografieLink
+credit_url: "https://pixabay.com/photos/women-friends-beach-sea-summer-3266211/"
 ---
 # The Psychology Behind Summer Break Boards
 

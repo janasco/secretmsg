@@ -1,16 +1,16 @@
 ---
-title: "Offline Outbox, Explained for Beginners"
+title: Offline Outbox, Explained for Beginners
 slug: offline-mode-guide-beginners
 date: 2026-04-23
 status: published
 tags: ["Product & Features", "Offline", "App"]
 excerpt: "New to the offline outbox, explained? Start here: zero jargon, first win in under ten minutes."
-pixabay: "airplane travel phone"
+pixabay: airplane travel phone
 readMinutes: 4
-image: "/blog-images/offline-mode-guide-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/offline-mode-guide-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/offline-mode-guide-beginners.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/still-items-things-passes-boarding-2609682/"
 ---
 # Offline Outbox, Explained for Beginners
 

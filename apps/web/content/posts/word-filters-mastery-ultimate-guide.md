@@ -1,16 +1,16 @@
 ---
-title: "The Ultimate Guide to Word Filters, Mastered"
+title: The Ultimate Guide to Word Filters, Mastered
 slug: word-filters-mastery-ultimate-guide
 date: 2026-01-28
 status: published
 tags: ["Safety & Moderation", "Safety", "Moderation"]
-excerpt: "Everything about word filters, mastered — setup, strategy, and the details that separate thriving boards from silent ones."
-pixabay: "shield protection security"
+excerpt: Everything about word filters, mastered — setup, strategy, and the details that separate thriving boards from silent ones.
+pixabay: shield protection security
 readMinutes: 5
-image: "/blog-images/word-filters-mastery-ultimate-guide.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/word-filters-mastery-ultimate-guide.jpg
+image_r2: "https://cdn.secretmsg.net/blog/word-filters-mastery-ultimate-guide.jpg"
+credit: PublicDomainPictures
+credit_url: "https://pixabay.com/photos/close-isolated-key-keys-lock-2204/"
 ---
 # The Ultimate Guide to Word Filters, Mastered
 

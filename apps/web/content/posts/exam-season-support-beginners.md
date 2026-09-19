@@ -1,16 +1,16 @@
 ---
-title: "Exam Season Support Boards for Beginners"
+title: Exam Season Support Boards for Beginners
 slug: exam-season-support-beginners
 date: 2026-12-03
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Support"]
 excerpt: "New to exam season support boards? Start here: zero jargon, first win in under ten minutes."
-pixabay: "students studying library"
+pixabay: students studying library
 readMinutes: 4
-image: "/blog-images/exam-season-support-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/exam-season-support-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/exam-season-support-beginners.jpg"
+credit: wal_172619
+credit_url: "https://pixabay.com/photos/library-books-reading-knowledge-7408106/"
 ---
 # Exam Season Support Boards for Beginners
 

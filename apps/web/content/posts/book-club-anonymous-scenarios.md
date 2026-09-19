@@ -1,16 +1,16 @@
 ---
-title: "Anonymous Book Club Boards in Real Life"
+title: Anonymous Book Club Boards in Real Life
 slug: book-club-anonymous-scenarios
 date: 2027-06-17
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Community"]
-excerpt: "Anonymous Book Club Boards played out in real scenes — watch the loop work, then steal it."
-pixabay: "books reading cozy"
+excerpt: Anonymous Book Club Boards played out in real scenes — watch the loop work, then steal it.
+pixabay: books reading cozy
 readMinutes: 4
-image: "/blog-images/book-club-anonymous-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/book-club-anonymous-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/book-club-anonymous-scenarios.jpg"
+credit: fotografierende
+credit_url: "https://pixabay.com/photos/camera-book-candle-read-cozy-bed-4597415/"
 ---
 # Anonymous Book Club Boards in Real Life
 

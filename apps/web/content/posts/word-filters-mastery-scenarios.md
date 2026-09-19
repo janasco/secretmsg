@@ -1,16 +1,16 @@
 ---
-title: "Word Filters, Mastered in Real Life"
+title: Word Filters, Mastered in Real Life
 slug: word-filters-mastery-scenarios
 date: 2026-02-05
 status: published
 tags: ["Safety & Moderation", "Safety", "Moderation"]
-excerpt: "Word Filters, Mastered played out in real scenes — watch the loop work, then steal it."
-pixabay: "shield protection security"
+excerpt: Word Filters, Mastered played out in real scenes — watch the loop work, then steal it.
+pixabay: shield protection security
 readMinutes: 5
-image: "/blog-images/word-filters-mastery-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/word-filters-mastery-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/word-filters-mastery-scenarios.jpg"
+credit: PublicDomainPictures
+credit_url: "https://pixabay.com/photos/close-isolated-key-keys-lock-2204/"
 ---
 # Word Filters, Mastered in Real Life
 

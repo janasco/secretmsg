@@ -4,13 +4,13 @@ slug: wedding-party-board-mistakes
 date: 2027-01-18
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Events"]
-excerpt: "The seven ways people fumble wedding & party boards, each with its fix. Learn them here, not the hard way."
-pixabay: "wedding celebration dance"
+excerpt: The seven ways people fumble wedding & party boards, each with its fix. Learn them here, not the hard way.
+pixabay: wedding celebration dance
 readMinutes: 4
-image: "/blog-images/wedding-party-board-mistakes.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/wedding-party-board-mistakes.jpg
+image_r2: "https://cdn.secretmsg.net/blog/wedding-party-board-mistakes.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/woman-dance-dress-wedding-hindu-2178480/"
 ---
 # Wedding & Party Boards: 7 Mistakes Everyone Makes
 

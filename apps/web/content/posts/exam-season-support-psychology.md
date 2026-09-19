@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Exam Season Support Boards"
+title: The Psychology Behind Exam Season Support Boards
 slug: exam-season-support-psychology
 date: 2026-11-27
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Support"]
-excerpt: "Why exam season support boards works on human brains — the behavioral science plus what to do with it."
-pixabay: "students studying library"
+excerpt: Why exam season support boards works on human brains — the behavioral science plus what to do with it.
+pixabay: students studying library
 readMinutes: 4
-image: "/blog-images/exam-season-support-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/exam-season-support-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/exam-season-support-psychology.jpg"
+credit: wal_172619
+credit_url: "https://pixabay.com/photos/library-books-reading-knowledge-7408106/"
 ---
 # The Psychology Behind Exam Season Support Boards
 

@@ -1,16 +1,16 @@
 ---
-title: "Anonymous Messaging 101 in Real Life"
+title: Anonymous Messaging 101 in Real Life
 slug: anonymous-messaging-101-scenarios
 date: 2026-01-13
 status: published
 tags: ["Guides & How-To", "Guide", "Beginners"]
-excerpt: "Anonymous Messaging 101 played out in real scenes — watch the loop work, then steal it."
-pixabay: "friends messaging phone"
+excerpt: Anonymous Messaging 101 played out in real scenes — watch the loop work, then steal it.
+pixabay: friends messaging phone
 readMinutes: 5
-image: "/blog-images/anonymous-messaging-101-scenarios.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/anonymous-messaging-101-scenarios.jpg
+image_r2: "https://cdn.secretmsg.net/blog/anonymous-messaging-101-scenarios.jpg"
+credit: terimakasih0
+credit_url: "https://pixabay.com/photos/new-year-mobile-phones-texting-1490691/"
 ---
 # Anonymous Messaging 101 in Real Life
 

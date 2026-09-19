@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Backup Codes Survival Guide"
+title: The Psychology Behind Backup Codes Survival Guide
 slug: backup-codes-survival-psychology
 date: 2026-07-25
 status: published
 tags: ["Guides & How-To", "Guide", "Account"]
-excerpt: "Why backup codes survival guide works on human brains — the behavioral science plus what to do with it."
-pixabay: "safe lock security"
+excerpt: Why backup codes survival guide works on human brains — the behavioral science plus what to do with it.
+pixabay: safe lock security
 readMinutes: 5
-image: "/blog-images/backup-codes-survival-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/backup-codes-survival-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/backup-codes-survival-psychology.jpg"
+credit: 12019
+credit_url: "https://pixabay.com/photos/padlock-door-lock-key-hole-macro-172770/"
 ---
 # The Psychology Behind Backup Codes Survival Guide
 

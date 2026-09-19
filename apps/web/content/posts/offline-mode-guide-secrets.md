@@ -1,16 +1,16 @@
 ---
-title: "What Nobody Tells You About Offline Outbox, Explained"
+title: What Nobody Tells You About Offline Outbox, Explained
 slug: offline-mode-guide-secrets
 date: 2026-04-30
 status: published
 tags: ["Product & Features", "Offline", "App"]
-excerpt: "The insider truths about the offline outbox, explained nobody puts in the onboarding."
-pixabay: "airplane travel phone"
+excerpt: The insider truths about the offline outbox, explained nobody puts in the onboarding.
+pixabay: airplane travel phone
 readMinutes: 4
-image: "/blog-images/offline-mode-guide-secrets.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/offline-mode-guide-secrets.jpg
+image_r2: "https://cdn.secretmsg.net/blog/offline-mode-guide-secrets.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/still-items-things-passes-boarding-2609682/"
 ---
 # What Nobody Tells You About Offline Outbox, Explained
 

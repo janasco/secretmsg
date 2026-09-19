@@ -1,16 +1,16 @@
 ---
-title: "Psychology of Handles for Beginners"
+title: Psychology of Handles for Beginners
 slug: handle-psychology-beginners
 date: 2026-08-06
 status: published
 tags: ["Culture & Psychology", "Culture", "Identity"]
 excerpt: "New to the psychology of handles? Start here: zero jargon, first win in under ten minutes."
-pixabay: "neon name sign"
+pixabay: neon name sign
 readMinutes: 4
-image: "/blog-images/handle-psychology-beginners.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/handle-psychology-beginners.jpg
+image_r2: "https://cdn.secretmsg.net/blog/handle-psychology-beginners.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/open-sign-neon-lights-illuminated-1836961/"
 ---
 # Psychology of Handles for Beginners
 

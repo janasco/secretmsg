@@ -1,16 +1,16 @@
 ---
-title: "Offline Outbox, Explained vs the Alternatives"
+title: Offline Outbox, Explained vs the Alternatives
 slug: offline-mode-guide-comparison
 date: 2026-04-26
 status: published
 tags: ["Product & Features", "Offline", "App"]
-excerpt: "How the offline outbox, explained stacks against the alternatives — honest verdict, no tribalism."
-pixabay: "airplane travel phone"
+excerpt: How the offline outbox, explained stacks against the alternatives — honest verdict, no tribalism.
+pixabay: airplane travel phone
 readMinutes: 4
-image: "/blog-images/offline-mode-guide-comparison.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/offline-mode-guide-comparison.jpg
+image_r2: "https://cdn.secretmsg.net/blog/offline-mode-guide-comparison.jpg"
+credit: StockSnap
+credit_url: "https://pixabay.com/photos/still-items-things-passes-boarding-2609682/"
 ---
 # Offline Outbox, Explained vs the Alternatives
 

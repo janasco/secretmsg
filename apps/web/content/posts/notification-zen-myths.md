@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Notification Zen"
+title: 5 Myths About Notification Zen
 slug: notification-zen-myths
 date: 2026-08-22
 status: published
 tags: ["Product & Features", "Notifications", "Balance"]
-excerpt: "Five myths about notification zen, busted with evidence and better defaults."
-pixabay: "phone notification calm"
+excerpt: Five myths about notification zen, busted with evidence and better defaults.
+pixabay: phone notification calm
 readMinutes: 4
-image: "/blog-images/notification-zen-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/notification-zen-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/notification-zen-myths.jpg"
+credit: PatrickLFC93
+credit_url: "https://pixabay.com/photos/phone-booth-phone-english-uk-7728783/"
 ---
 # 5 Myths About Notification Zen
 

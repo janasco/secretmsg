@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Backup Codes Survival Guide"
+title: 5 Myths About Backup Codes Survival Guide
 slug: backup-codes-survival-myths
 date: 2026-07-29
 status: published
 tags: ["Guides & How-To", "Guide", "Account"]
-excerpt: "Five myths about backup codes survival guide, busted with evidence and better defaults."
-pixabay: "safe lock security"
+excerpt: Five myths about backup codes survival guide, busted with evidence and better defaults.
+pixabay: safe lock security
 readMinutes: 5
-image: "/blog-images/backup-codes-survival-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/backup-codes-survival-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/backup-codes-survival-myths.jpg"
+credit: 12019
+credit_url: "https://pixabay.com/photos/padlock-door-lock-key-hole-macro-172770/"
 ---
 # 5 Myths About Backup Codes Survival Guide
 

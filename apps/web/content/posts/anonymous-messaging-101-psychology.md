@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Anonymous Messaging 101"
+title: The Psychology Behind Anonymous Messaging 101
 slug: anonymous-messaging-101-psychology
 date: 2026-01-07
 status: published
 tags: ["Guides & How-To", "Guide", "Beginners"]
-excerpt: "Why anonymous messaging 101 works on human brains — the behavioral science plus what to do with it."
-pixabay: "friends messaging phone"
+excerpt: Why anonymous messaging 101 works on human brains — the behavioral science plus what to do with it.
+pixabay: friends messaging phone
 readMinutes: 5
-image: "/blog-images/anonymous-messaging-101-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/anonymous-messaging-101-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/anonymous-messaging-101-psychology.jpg"
+credit: terimakasih0
+credit_url: "https://pixabay.com/photos/new-year-mobile-phones-texting-1490691/"
 ---
 # The Psychology Behind Anonymous Messaging 101
 

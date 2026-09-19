@@ -1,16 +1,16 @@
 ---
-title: "5 Myths About Wedding & Party Boards"
+title: 5 Myths About Wedding & Party Boards
 slug: wedding-party-board-myths
 date: 2027-02-16
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Events"]
-excerpt: "Five myths about wedding & party boards, busted with evidence and better defaults."
-pixabay: "wedding celebration dance"
+excerpt: Five myths about wedding & party boards, busted with evidence and better defaults.
+pixabay: wedding celebration dance
 readMinutes: 4
-image: "/blog-images/wedding-party-board-myths.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/wedding-party-board-myths.jpg
+image_r2: "https://cdn.secretmsg.net/blog/wedding-party-board-myths.jpg"
+credit: Pexels
+credit_url: "https://pixabay.com/photos/woman-dance-dress-wedding-hindu-2178480/"
 ---
 # 5 Myths About Wedding & Party Boards
 

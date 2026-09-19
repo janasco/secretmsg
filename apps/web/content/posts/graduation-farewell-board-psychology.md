@@ -1,16 +1,16 @@
 ---
-title: "The Psychology Behind Graduation & Farewell Boards"
+title: The Psychology Behind Graduation & Farewell Boards
 slug: graduation-farewell-board-psychology
 date: 2026-09-09
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Milestones"]
-excerpt: "Why graduation & farewell boards works on human brains — the behavioral science plus what to do with it."
-pixabay: "graduation caps celebration"
+excerpt: Why graduation & farewell boards works on human brains — the behavioral science plus what to do with it.
+pixabay: graduation caps celebration
 readMinutes: 4
-image: "/blog-images/graduation-farewell-board-psychology.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/graduation-farewell-board-psychology.jpg
+image_r2: "https://cdn.secretmsg.net/blog/graduation-farewell-board-psychology.jpg"
+credit: HuyNgan
+credit_url: "https://pixabay.com/photos/yearbook-vietnamese-students-10168363/"
 ---
 # The Psychology Behind Graduation & Farewell Boards
 

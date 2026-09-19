@@ -4,13 +4,13 @@ slug: word-filters-mastery-faq
 date: 2026-02-06
 status: published
 tags: ["Safety & Moderation", "Safety", "Moderation"]
-excerpt: "Every question people actually ask about word filters, mastered, answered straight."
-pixabay: "shield protection security"
+excerpt: Every question people actually ask about word filters, mastered, answered straight.
+pixabay: shield protection security
 readMinutes: 5
-image: "/blog-images/word-filters-mastery-faq.svg"
-image_r2: ""
-credit: "SecretMsg Studio"
-credit_url: ""
+image: /blog-images/word-filters-mastery-faq.jpg
+image_r2: "https://cdn.secretmsg.net/blog/word-filters-mastery-faq.jpg"
+credit: PublicDomainPictures
+credit_url: "https://pixabay.com/photos/close-isolated-key-keys-lock-2204/"
 ---
 # Word Filters, Mastered: Questions, Answered
 
