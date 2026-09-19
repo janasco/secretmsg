@@ -39,8 +39,12 @@ function parseFm(text) {
 }
 
 /** Minimal markdown -> HTML (headings, bold, italic, quotes, lists, paragraphs). */
+function slugify(s) {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
+}
 function mdToHtml(md) {
   const lines = md.split('\n');
+  const headings = [];
   let html = '';
   let inList = false;
   const inline = (s) =>
@@ -61,7 +65,11 @@ function mdToHtml(md) {
         html += '</ul>';
         inList = false;
       }
-      if (t.startsWith('## ')) html += `<h2>${inline(t.slice(3))}</h2>`;
+      if (t.startsWith('## ')) {
+        const text = t.slice(3);
+        headings.push({ id: slugify(text), text });
+        html += `<h2 id="${slugify(text)}">${inline(text)}</h2>`;
+      }
       else if (t.startsWith('# ')) continue; // title lives in frontmatter
       else if (t.startsWith('> ')) html += `<blockquote>${inline(t.slice(2))}</blockquote>`;
       else if (t === '') continue;
@@ -69,7 +77,7 @@ function mdToHtml(md) {
     }
   }
   if (inList) html += '</ul>';
-  return html;
+  return { html, headings };
 }
 
 function rfc822(iso) {
@@ -94,6 +102,7 @@ for (const file of files) {
   if (!fm.slug || !fm.title || !fm.date) continue;
   const due = fm.status === 'published' || (fm.status === 'scheduled' && fm.date <= today);
   if (!due) continue;
+  const rendered = mdToHtml(body);
   published.push({
     slug: fm.slug,
     title: fm.title,
@@ -104,15 +113,31 @@ for (const file of files) {
     image: fm.image_r2 || fm.image || '',
     credit: fm.credit || '',
     credit_url: fm.credit_url || '',
-    html: mdToHtml(body),
+    html: rendered.html,
+    headings: rendered.headings,
   });
 }
 published.sort((a, b) => (a.date < b.date ? 1 : -1));
 
+// Related posts: top 3 by shared tags (then recency), computed once here.
+for (const p of published) {
+  const scored = published
+    .filter((q) => q.slug !== p.slug)
+    .map((q) => ({
+      q,
+      shared: q.tags.filter((t) => p.tags.includes(t)).length,
+    }))
+    .filter((s) => s.shared > 0)
+    .sort((a, b) => b.shared - a.shared || (a.q.date < b.q.date ? 1 : -1))
+    .slice(0, 3)
+    .map((s) => ({ slug: s.q.slug, title: s.q.title, image: s.q.image }));
+  p.related = scored;
+}
+
 mkdirSync(outPosts, { recursive: true });
 // Clear stale post files (slugs may be removed).
 for (const f of readdirSync(outPosts).filter((f) => f.endsWith('.json'))) rmSync(join(outPosts, f));
-const index = published.map(({ html, ...meta }) => meta);
+const index = published.map(({ html, headings, related, ...meta }) => meta);
 writeFileSync(outIndex, JSON.stringify(index));
 for (const p of published) writeFileSync(join(outPosts, `${p.slug}.json`), JSON.stringify(p));
 

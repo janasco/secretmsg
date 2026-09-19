@@ -16,6 +16,8 @@ interface FullPost {
   credit: string;
   credit_url: string;
   html: string;
+  headings: { id: string; text: string }[];
+  related: { slug: string; title: string; image: string }[];
 }
 
 export const PostPage: React.FC = () => {
@@ -81,6 +83,46 @@ export const PostPage: React.FC = () => {
     );
   }
 
+  const postUrl = `https://secretmsg.net/post/${slug ?? ''}`;
+  const shareLinks = post
+    ? [
+        {
+          name: 'X',
+          href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(postUrl)}`,
+        },
+        {
+          name: 'Facebook',
+          href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}`,
+        },
+        {
+          name: 'WhatsApp',
+          href: `https://wa.me/?text=${encodeURIComponent(`${post.title} ${postUrl}`)}`,
+        },
+        {
+          name: 'Telegram',
+          href: `https://t.me/share/url?url=${encodeURIComponent(postUrl)}&text=${encodeURIComponent(post.title)}`,
+        },
+      ]
+    : [];
+
+  const jsonLd = post
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.excerpt,
+        image: post.image.startsWith('http') ? [post.image] : [`https://secretmsg.net${post.image}`],
+        datePublished: `${post.date}T12:00:00Z`,
+        author: { '@type': 'Organization', name: 'SecretMsg', url: 'https://secretmsg.net' },
+        publisher: {
+          '@type': 'Organization',
+          name: 'SecretMsg',
+          logo: { '@type': 'ImageObject', url: 'https://secretmsg.net/logo.svg' },
+        },
+        mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
+      }
+    : null;
+
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(`https://secretmsg.net/post/${post.slug}`);
@@ -97,6 +139,9 @@ export const PostPage: React.FC = () => {
       eyebrow={`${formatPostDate(post.date)} • ${post.readMinutes} min read`}
       description={post.excerpt}
     >
+      {jsonLd && (
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      )}
       <div className="flex flex-wrap items-center gap-2 mb-6">
         {post.tags.map((t) => (
           <span
@@ -146,6 +191,67 @@ export const PostPage: React.FC = () => {
       )}
 
       <article className="blog-body" dangerouslySetInnerHTML={{ __html: post.html }} />
+
+      {post.headings.length > 0 && (
+        <nav className="mt-8 glass-panel p-5 rounded-2xl border-white/5">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+            On this page
+          </h2>
+          <ul className="space-y-1.5">
+            {post.headings.map((h) => (
+              <li key={h.id}>
+                <a href={`#${h.id}`} className="text-xs text-slate-400 hover:text-indigo-300 transition-colors">
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
+      <div className="mt-8 flex flex-wrap items-center gap-2">
+        <span className="text-xs text-slate-500 mr-1">Share this post:</span>
+        {shareLinks.map((s) => (
+          <a
+            key={s.name}
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-1.5 rounded-lg text-[11px] font-semibold bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition-colors"
+          >
+            {s.name}
+          </a>
+        ))}
+      </div>
+
+      {post.related.length > 0 && (
+        <div className="mt-10">
+          <h2 className="text-base font-bold text-white mb-4">Keep reading</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {post.related.map((r) => (
+              <Link
+                key={r.slug}
+                to={`/post/${r.slug}`}
+                className="glass-panel rounded-xl border-white/5 hover:border-indigo-500/40 transition-all overflow-hidden group"
+              >
+                {r.image && (
+                  <div className="h-24 overflow-hidden">
+                    <img
+                      src={r.image}
+                      alt=""
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
+                <p className="p-3 text-xs font-semibold text-slate-200 group-hover:text-indigo-300 transition-colors line-clamp-2">
+                  {r.title}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="mt-12 glass-panel p-6 rounded-2xl border-indigo-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>

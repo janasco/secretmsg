@@ -1,8 +1,8 @@
 ---
 title: What Nobody Tells You About Backup Codes Survival Guide
 slug: backup-codes-survival-secrets
-date: 2026-08-02
-status: draft
+date: 2027-10-12
+status: scheduled
 tags: ["Guides & How-To", "Guide", "Account"]
 excerpt: The insider truths about backup codes survival guide nobody puts in the onboarding.
 pixabay: safe lock security

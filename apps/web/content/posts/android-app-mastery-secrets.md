@@ -1,8 +1,8 @@
 ---
 title: What Nobody Tells You About Mastering the Android App
 slug: android-app-mastery-secrets
-date: 2027-12-20
-status: draft
+date: 2027-10-04
+status: scheduled
 tags: ["Product & Features", "App", "Guide"]
 excerpt: The insider truths about mastering the android app nobody puts in the onboarding.
 pixabay: android phone apps

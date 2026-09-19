@@ -1,8 +1,8 @@
 ---
 title: What Nobody Tells You About Every Supporter Perk, Explained
 slug: supporter-perks-tour-secrets
-date: 2026-04-19
-status: draft
+date: 2027-11-21
+status: scheduled
 tags: ["Product & Features", "Supporters", "Perks"]
 excerpt: The insider truths about every supporter perk, explained nobody puts in the onboarding.
 pixabay: golden badge premium
