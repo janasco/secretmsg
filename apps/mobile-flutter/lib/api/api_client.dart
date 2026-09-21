@@ -306,22 +306,40 @@ class ApiClient {
 
   // ---- Inbox ----
   static Future<List<AnonymousMessage>> getInbox() async {
-    final data = await _getJson('/api/inbox', auth: true);
+    final page = await getInboxPage();
+    return page.messages;
+  }
+
+  /// Keyset page: pass [cursor] from the previous page's `nextCursor`.
+  /// Empty cursor starts at head. `nextCursor == null` means end.
+  static Future<({List<AnonymousMessage> messages, String? nextCursor})> getInboxPage({String? cursor}) async {
+    final uri = cursor == null || cursor.isEmpty
+        ? '/api/inbox'
+        : '/api/inbox?cursor=${Uri.encodeComponent(cursor)}';
+    final data = await _getJson(uri, auth: true);
     final list = (data['messages'] as List?)
             ?.map((e) => AnonymousMessage.fromJson(e as Map<String, dynamic>))
             .toList() ??
         const [];
-    return list;
+    return (messages: list, nextCursor: data['next_cursor']?.toString());
   }
 
   // ---- Filtered tray (quarantined moderation holds) ----
   static Future<List<AnonymousMessage>> getFilteredTray() async {
-    final data = await _getJson('/api/inbox?filter=quarantined', auth: true);
+    final page = await getFilteredTrayPage();
+    return page.messages;
+  }
+
+  static Future<({List<AnonymousMessage> messages, String? nextCursor})> getFilteredTrayPage({String? cursor}) async {
+    final uri = cursor == null || cursor.isEmpty
+        ? '/api/inbox?filter=quarantined'
+        : '/api/inbox?filter=quarantined&cursor=${Uri.encodeComponent(cursor)}';
+    final data = await _getJson(uri, auth: true);
     final list = (data['messages'] as List?)
             ?.map((e) => AnonymousMessage.fromJson(e as Map<String, dynamic>))
             .toList() ??
         const [];
-    return list;
+    return (messages: list, nextCursor: data['next_cursor']?.toString());
   }
 
   static Future<void> approveMessage(String messageId) async {

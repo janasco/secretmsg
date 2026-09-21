@@ -34,6 +34,9 @@ class InboxScreen extends StatefulWidget {
 class _InboxScreenState extends State<InboxScreen> {
   List<AnonymousMessage>? _messages;
   bool _loading = false;
+  bool _loadingMore = false;
+  String? _nextCursor;
+  String? _trayCursor;
   String? _error;
   String _filter = 'all';
   bool _isAuthed = false;
@@ -92,23 +95,25 @@ class _InboxScreenState extends State<InboxScreen> {
       // One round trip instead of three waterfalls: inbox is authoritative
       // (its 401 still signs out below); tray and profile are best-effort.
       final fetched = await Future.wait([
-        ApiClient.getInbox(),
-        ApiClient.getFilteredTray().then((v) => v, onError: (_) => const <AnonymousMessage>[]),
+        ApiClient.getInboxPage(),
+        ApiClient.getFilteredTrayPage().then((v) => v, onError: (_) => (messages: const <AnonymousMessage>[], nextCursor: null)),
         ApiClient.getMe().then<UserProfile?>((v) => v, onError: (_) => null),
       ]);
       if (!mounted) return;
-      final messages = fetched[0] as List<AnonymousMessage>;
-      final tray = fetched[1] as List<AnonymousMessage>;
+      final inboxPage = fetched[0] as ({List<AnonymousMessage> messages, String? nextCursor});
+      final trayPage = fetched[1] as ({List<AnonymousMessage> messages, String? nextCursor});
       final me = fetched[2] as UserProfile?;
       setState(() {
-        _messages = messages;
-        _tray = tray;
+        _messages = inboxPage.messages;
+        _nextCursor = inboxPage.nextCursor;
+        _tray = trayPage.messages;
+        _trayCursor = trayPage.nextCursor;
         _loading = false;
         _offline = false;
         _cacheSavedAt = null; // Fresh: no staleness to show.
       });
-      // Snapshot the fresh state for instant/offline boots.
-      unawaited(InboxCache.save(messages, tray));
+      // Snapshot the fresh head page for instant/offline boots.
+      unawaited(InboxCache.save(inboxPage.messages, trayPage.messages));
       // Ritual check-in rides the inbox refresh: streak rolls, tonight's
       // reminders refresh from real state, vibe prompt shows once per day.
       unawaited(_ritualCheckIn());
@@ -256,7 +261,9 @@ class _InboxScreenState extends State<InboxScreen> {
       case 'filtered':
         return _tray;
       default:
-        return all;
+        // Pinned float to top client-side (server orders strictly by time
+        // so keyset pages never skip or duplicate rows).
+        return [...all]..sort((a, b) => (b.isPinned - a.isPinned));
     }
   }
 
@@ -632,6 +639,7 @@ class _InboxScreenState extends State<InboxScreen> {
     }
     final items = _filtered;
     final isTray = _filter == 'filtered';
+    final hasMore = isTray ? _trayCursor != null : _nextCursor != null;
     if (items.isEmpty) {
       return ListView(
         children: [
@@ -666,9 +674,28 @@ class _InboxScreenState extends State<InboxScreen> {
     return ListView.separated(
       physics: const AlwaysScrollableScrollPhysics(),
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
-      itemCount: items.length,
+      itemCount: items.length + (hasMore ? 1 : 0),
       separatorBuilder: (_, __) => const SizedBox(height: 10),
       itemBuilder: (context, i) {
+        if (i >= items.length) {
+          // End-of-list sentinel: kicks the next page exactly once per
+          // appearance, then shows the spinner while it loads.
+          if (!_loadingMore) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (mounted) _loadMore();
+            });
+          }
+          return const Center(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 12),
+              child: SizedBox(
+                width: 22,
+                height: 22,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              ),
+            ),
+          );
+        }
         final m = items[i];
         if (isTray) {
           return _TrayCard(
@@ -680,6 +707,37 @@ class _InboxScreenState extends State<InboxScreen> {
         return _MessageCard(message: m, onTap: () => _openMessage(m));
       },
     );
+  }
+
+  /// Next page for the active feed (inbox or tray). Guarded against
+  /// overlap; dedupes by id in case rows shifted between pages.
+  Future<void> _loadMore() async {
+    if (_loadingMore) return;
+    final isTray = _filter == 'filtered';
+    final cursor = isTray ? _trayCursor : _nextCursor;
+    if (cursor == null) return;
+    setState(() => _loadingMore = true);
+    try {
+      final page = isTray
+          ? await ApiClient.getFilteredTrayPage(cursor: cursor)
+          : await ApiClient.getInboxPage(cursor: cursor);
+      if (!mounted) return;
+      setState(() {
+        if (isTray) {
+          final seen = _tray.map((m) => m.id).toSet();
+          _tray = [..._tray, ...page.messages.where((m) => !seen.contains(m.id))];
+          _trayCursor = page.nextCursor;
+        } else {
+          final seen = (_messages ?? const []).map((m) => m.id).toSet();
+          _messages = [...?_messages, ...page.messages.where((m) => !seen.contains(m.id))];
+          _nextCursor = page.nextCursor;
+        }
+        _loadingMore = false;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _loadingMore = false);
+    }
   }
 
   Future<void> _approveHeld(AnonymousMessage m) async {
