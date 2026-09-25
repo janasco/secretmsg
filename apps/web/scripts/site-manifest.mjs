@@ -1,7 +1,10 @@
 export const HOST = 'https://secretmsg.net';
 export const DEFAULT_IMAGE = `${HOST}/logo.svg`;
 
-export const canonicalUrl = (path) => (path === '/' ? HOST : `${HOST}${path}/`);
+export const canonicalUrl = (path) => {
+  if (path === '/') return HOST;
+  return `${HOST}${path.replace(/\/+$/, '')}/`;
+};
 
 export const STATIC_ROUTES = Object.freeze([
   {

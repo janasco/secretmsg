@@ -206,6 +206,7 @@ export class ApiClient {
   }
 
   static async deleteAccount(): Promise<void> {
+    if (this.isReadOnly()) throw new Error('Read-only sessions cannot delete accounts');
     if (USE_MOCK) {
       await MockApiClient.deleteAccount();
       this.removeToken();

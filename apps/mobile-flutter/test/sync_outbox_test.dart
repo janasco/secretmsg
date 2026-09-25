@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -130,5 +132,103 @@ void main() {
               now.subtract(const Duration(days: 2)), now),
           '2d ago');
     });
+  });
+
+  group('drain failure semantics', () {
+    test('retains a network-failed operation for retry', () async {
+      final op = await Outbox.enqueue(
+        OutboxKind.reply,
+        {'messageId': 'm1', 'reply': 'hello'},
+        autoDrain: false,
+      );
+
+      final drained = await Outbox.drain(
+        execute: (_) async {
+          throw const SocketException('offline');
+        },
+      );
+
+      expect(drained, false);
+      expect(await Outbox.depth(), 1);
+      expect(Outbox.status.value.pending, 1);
+      expect(Outbox.status.value.failed, isNull);
+      expect(await Outbox.drain(execute: (_) async {}), true);
+      expect(await Outbox.depth(), 0);
+      expect(op.id, isNotEmpty);
+    });
+
+    test('parks a send rejected with a verification status', () async {
+      final op = await Outbox.enqueue(
+        OutboxKind.send,
+        {'username': 'u1', 'content': 'hello'},
+        autoDrain: false,
+      );
+
+      final drained = await Outbox.drain(
+        execute: (_) async {
+          throw ApiException('Verification required', statusCode: 403, body: const {});
+        },
+      );
+
+      expect(drained, false);
+      expect(await Outbox.depth(), 1);
+      expect(Outbox.status.value.blocked?.id, op.id);
+      expect(Outbox.status.value.failed, isNull);
+    });
+
+    test('removes an operation rejected as unauthorized', () async {
+      final op = await Outbox.enqueue(
+        OutboxKind.reply,
+        {'messageId': 'm1', 'reply': 'hello'},
+        autoDrain: false,
+      );
+
+      final drained = await Outbox.drain(
+        execute: (_) async {
+          throw UnauthorizedError('expired');
+        },
+      );
+
+      expect(drained, true);
+      expect(await Outbox.depth(), 0);
+      expect(Outbox.status.value.failed, isNull);
+      expect(op.id, isNotEmpty);
+    });
+  });
+
+  test('round-trips every serialized operation state', () {
+    const op = OutboxOp(
+      id: 'serialized',
+      kind: OutboxKind.send,
+      params: {'username': 'u1', 'content': 'hello'},
+      queuedAt: 42,
+      attempts: 2,
+      needsVerification: true,
+      failed: true,
+      error: 'needs attention',
+    );
+
+    expect(OutboxOp.fromJson(op.toJson()).toJson(), op.toJson());
+  });
+
+  test('drains enqueued operations in insertion order', () async {
+    final labels = ['first', 'second', 'third'];
+    for (final label in labels) {
+      await Outbox.enqueue(
+        OutboxKind.reply,
+        {'label': label},
+        autoDrain: false,
+      );
+    }
+
+    final seen = <String>[];
+    final drained = await Outbox.drain(
+      execute: (op) async {
+        seen.add(op.params['label']!);
+      },
+    );
+
+    expect(drained, true);
+    expect(seen, labels);
   });
 }

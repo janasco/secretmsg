@@ -7,14 +7,14 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { DonationModal } from '@/components/DonationModal';
 import { LandingPage } from '@/pages/LandingPage';
-import { SendMessagePage } from '@/pages/SendMessagePage';
-import { InboxPage } from '@/pages/InboxPage';
-import { SettingsPage } from '@/pages/SettingsPage';
-import { LoginPage } from '@/pages/LoginPage';
-import { BlindReplyPage } from '@/pages/BlindReplyPage';
-import { LegalPage } from '@/pages/LegalPage';
-import { SupportersPage } from '@/pages/SupportersPage';
 
+const SendMessagePage = lazy(() => import('@//pages/SendMessagePage').then(m => ({ default: m.SendMessagePage })));
+const InboxPage = lazy(() => import('@//pages/InboxPage').then(m => ({ default: m.InboxPage })));
+const SettingsPage = lazy(() => import('@//pages/SettingsPage').then(m => ({ default: m.SettingsPage })));
+const LoginPage = lazy(() => import('@//pages/LoginPage').then(m => ({ default: m.LoginPage })));
+const BlindReplyPage = lazy(() => import('@//pages/BlindReplyPage').then(m => ({ default: m.BlindReplyPage })));
+const LegalPage = lazy(() => import('@//pages/LegalPage').then(m => ({ default: m.LegalPage })));
+const SupportersPage = lazy(() => import('@//pages/SupportersPage').then(m => ({ default: m.SupportersPage })));
 const AboutPage = lazy(() => import('@//pages/AboutPage').then(m => ({ default: m.AboutPage })));
 const DicePage = lazy(() => import('@//pages/DicePage').then(m => ({ default: m.DicePage })));
 const StickerStudioPage = lazy(() => import('@//pages/StickerStudioPage').then(m => ({ default: m.StickerStudioPage })));
@@ -117,10 +117,10 @@ export const App: React.FC = () => {
       <main id="main-content" className="flex-1">
         <Routes>
           <Route path="/" element={<LandingPage onOpenDonation={() => setIsDonationOpen(true)} />} />
-          <Route path="/login" element={<LoginPage onLoginSuccess={(u) => setUser(u)} />} />
-          <Route path="/inbox" element={<InboxPage user={user} onOpenDonation={() => setIsDonationOpen(true)} onLogout={handleLogout} />} />
-          <Route path="/settings" element={<SettingsPage user={user} setUser={setUser} onLogout={handleLogout} onOpenDonation={() => setIsDonationOpen(true)} />} />
-          <Route path="/supporters" element={<SupportersPage onOpenDonation={() => setIsDonationOpen(true)} />} />
+          <Route path="/login" element={<Suspense fallback={<PublicSuspense />}><LoginPage onLoginSuccess={(u) => setUser(u)} /></Suspense>} />
+          <Route path="/inbox" element={<Suspense fallback={<PublicSuspense />}><InboxPage user={user} onOpenDonation={() => setIsDonationOpen(true)} onLogout={handleLogout} /></Suspense>} />
+          <Route path="/settings" element={<Suspense fallback={<PublicSuspense />}><SettingsPage user={user} setUser={setUser} onLogout={handleLogout} onOpenDonation={() => setIsDonationOpen(true)} /></Suspense>} />
+          <Route path="/supporters" element={<Suspense fallback={<PublicSuspense />}><SupportersPage onOpenDonation={() => setIsDonationOpen(true)} /></Suspense>} />
           <Route path="/about" element={<Suspense fallback={<PublicSuspense />}><AboutPage /></Suspense>} />
           <Route path="/dice" element={<Suspense fallback={<PublicSuspense />}><DicePage /></Suspense>} />
           <Route path="/sticker-studio" element={<Suspense fallback={<PublicSuspense />}><StickerStudioPage /></Suspense>} />
@@ -141,11 +141,11 @@ export const App: React.FC = () => {
           <Route path="/p/terms" element={<Suspense fallback={<PublicSuspense />}><TermsPage /></Suspense>} />
           <Route path="/p/cookies" element={<Suspense fallback={<PublicSuspense />}><CookiesPage /></Suspense>} />
           <Route path="/p/disclaimer" element={<Suspense fallback={<PublicSuspense />}><DisclaimerPage /></Suspense>} />
-          <Route path="/reply/:token" element={<BlindReplyPage />} />
-          <Route path="/legal/:doc" element={<LegalPage />} />
+          <Route path="/reply/:token" element={<Suspense fallback={<PublicSuspense />}><BlindReplyPage /></Suspense>} />
+          <Route path="/legal/:doc" element={<Suspense fallback={<PublicSuspense />}><LegalPage /></Suspense>} />
           <Route path="/blog" element={<Suspense fallback={<PublicSuspense />}><BlogPage /></Suspense>} />
           <Route path="/post/:slug" element={<Suspense fallback={<PublicSuspense />}><PostPage /></Suspense>} />
-          <Route path="/:username" element={<SendMessagePage />} />
+          <Route path="/:username" element={<Suspense fallback={<PublicSuspense />}><SendMessagePage /></Suspense>} />
         </Routes>
       </main>
 

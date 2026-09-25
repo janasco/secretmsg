@@ -7,7 +7,7 @@
  * Status: published always ships; scheduled ships once date <= today (UTC);
  * drafts never ship. Run via `prebuild`.
  */
-import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync, rmSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { HOST, STATIC_ROUTES, canonicalUrl } from './site-manifest.mjs';
@@ -182,15 +182,54 @@ const index = published.map(({ html, headings, related, ...meta }) => meta);
 writeFileSync(outIndex, JSON.stringify(index));
 for (const p of published) writeFileSync(join(outPosts, `${p.slug}.json`), JSON.stringify(p));
 
-const latest = published.length ? published[0].date : today;
+const staticRouteSources = Object.freeze({
+  '/': ['src/pages/LandingPage.tsx', 'src/lib/appVersion.ts'],
+  '/about': ['src/pages/AboutPage.tsx'],
+  '/faq': ['src/pages/FaqPage.tsx'],
+  '/contact': ['src/pages/ContactPage.tsx'],
+  '/download': ['src/pages/DownloadPage.tsx', 'src/lib/appVersion.ts'],
+  '/supporters': ['src/pages/SupportersPage.tsx'],
+  '/demo': ['src/pages/DemoPage.tsx'],
+  '/dice': ['src/pages/DicePage.tsx'],
+  '/sticker-studio': ['src/pages/StickerStudioPage.tsx'],
+  '/login': ['src/pages/LoginPage.tsx'],
+  '/delete-account': ['src/pages/DeleteAccountPage.tsx'],
+  '/p/safety': ['src/pages/SafetyPage.tsx'],
+  '/p/child-safety-policy': ['src/pages/ChildSafetyPage.tsx'],
+  '/p/approach-to-safety': ['src/pages/ApproachToSafetyPage.tsx'],
+  '/p/guide-to-online-safety': ['src/pages/OnlineSafetyGuidePage.tsx'],
+  '/p/community-guidelines': ['src/pages/CommunityGuidelinesPage.tsx'],
+  '/p/safety-tools': ['src/pages/SafetyToolsPage.tsx'],
+  '/p/resources': ['src/pages/SafetyResourcesPage.tsx'],
+  '/p/contact-us': ['src/pages/ContactPage.tsx'],
+  '/p/terms': ['src/pages/TermsPage.tsx'],
+  '/p/privacy': ['src/pages/PrivacyPage.tsx'],
+  '/p/cookies': ['src/pages/CookiesPage.tsx'],
+  '/p/disclaimer': ['src/pages/DisclaimerPage.tsx'],
+});
+
+const sourceLastmod = (sources = []) => {
+  const mtimes = sources
+    .map((source) => join(root, source))
+    .filter(existsSync)
+    .map((source) => statSync(source).mtimeMs)
+    .filter(Number.isFinite);
+  if (!mtimes.length) return undefined;
+  return new Date(Math.max(...mtimes)).toISOString().slice(0, 10);
+};
+
+const latestPublishedDate = published[0]?.date;
 const sitemapUrls = [
-  ...STATIC_ROUTES.map((route) => ({ loc: canonicalUrl(route.path), lastmod: latest })),
+  ...STATIC_ROUTES.map((route) => {
+    const lastmod = route.path === '/blog' ? latestPublishedDate : sourceLastmod(staticRouteSources[route.path]);
+    return { loc: canonicalUrl(route.path), ...(lastmod ? { lastmod } : {}) };
+  }),
   ...published.map((p) => ({ loc: canonicalUrl(`/post/${p.slug}`), lastmod: p.date })),
 ];
 writeFileSync(
   join(root, 'public', 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-    sitemapUrls.map((u) => `  <url><loc>${esc(u.loc)}</loc><lastmod>${esc(u.lastmod)}</lastmod></url>`).join('\n') +
+    sitemapUrls.map((u) => `  <url><loc>${esc(u.loc)}</loc>${u.lastmod ? `<lastmod>${esc(u.lastmod)}</lastmod>` : ''}</url>`).join('\n') +
     `\n</urlset>\n`,
 );
 writeFileSync(

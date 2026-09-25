@@ -20,7 +20,7 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
     StaticSection('psychology Why We Built SecretMsg', [
       'Modern digital tools turned communication into a performative stage. At secretmsg.net , we are giving people their authentic voice back.',
       'In typical social networks and workplace channels, every statement is permanently attached to your profile, weighed against social risk, or parsed by algorithms. The result is silent conformity: valuable workplace feedback goes withheld, heartfelt sentiments to old friends remain unsent, and sincere questions stay unasked.',
-      'We created SecretMsg to prove that anonymous messaging can be a mature, high-trust utility rather than a reckless gimmick. By combining strict cryptographic privacy with recipient sovereignty and intelligent moderation, we enable purposeful honesty that strengthens human connection.',
+      'We created SecretMsg to prove that anonymous messaging can be a mature, high-trust utility rather than a reckless gimmick. By combining transport security, data minimization, recipient sovereignty, and rules-based safety controls, we enable purposeful honesty that strengthens human connection.',
     ]),
     StaticSection('Workplace & Peer Candor', [
       'Deliver constructive, honest feedback to teammates, founders, or mentors without navigating office politics or fearing career friction.',
@@ -29,14 +29,14 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'Reach out across time to someone you’ve drifted from or share a warm sentiment without the pressure or permanence of an official direct message.',
     ]),
     StaticSection('True Privacy by Design', [
-      'Ask burning questions, express honest feelings, and speak openly with zero IP tracking, zero profile mining, and zero ad surveillance.',
+      'Ask honest questions without advertising surveillance or cross-site profiling. Cloudflare processes request data to host SecretMsg, and the D1 rate-limit table uses hashed keys rather than readable IP addresses.',
     ]),
     StaticSection('Engineering Trust into Every Message', [
       'Unlike legacy platforms that treat privacy as a marketing slogan or monetize conflict with fake notification paywalls, SecretMsg is engineered from the ground up around dignity, control, and verifiable safety .',
       'We believe communication should empower honest connections rather than compromise peace of mind. Every mechanism we design is built to protect the recipient\'s well-being while giving senders a secure, low-friction channel to share what is real.',
     ]),
     StaticSection('Recipient Sovereignty', [
-      'You are always in total control of your inbox. Filter custom words, mute trolls, pause your link anytime, or wipe your data with one tap.',
+      'You are always in total control of your inbox. Filter custom words, delete messages, pause your link, or request account deletion with its disclosed limits.',
     ]),
     StaticSection('Double-Blind Replies', [
       'Reply directly to an anonymous question without revealing who sent it. Keep the conversation going privately and organically.',
@@ -61,49 +61,48 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'Every day, people use SecretMsg to learn about their friends, play Q&A games on Instagram & Snapchat, and express things they were always too shy to say in person. You make this platform amazing, and we are grateful for each and every one of you.',
     ]),
     StaticSection('We’d love to hear from you', [
-      'Got ideas, feedback, partner inquiries, or just want to say hi? Reach out anytime. Our team reads every note.',
+      'Got ideas, feedback, partner inquiries, or just want to say hi? Use the appropriate SecretMsg contact channel.',
     ]),
   ]),
   'approach-to-safety': StaticPageContent('Our Approach to Safety', [
     StaticSection('Overview', [
       'At SecretMsg, safety is our highest priority. We created SecretMsg as a vibrant anonymous Q&A platform where you can foster authentic, meaningful connections with friends, ask fun questions, reply in public or private, and keep the conversation going — all within a community rooted in kindness and respect.',
     ]),
-    StaticSection('Automated First Line of Defense', [
-      'State-of-the-art automated moderation scans every incoming question before delivery, filtering toxic language, hate speech, and predatory content.',
+    StaticSection('Automated Safeguards', [
+      'Message submission and abuse reporting use Cloudflare Turnstile. Recipients can also configure hidden-word filters that quarantine matching messages for review or reject them in strict mode. These are rules-based safeguards, not automated machine-learning content classification.',
     ]),
-    StaticSection('24/7 Human Trust & Safety Team', [
-      'Our community operations team monitors user reports, escalations, and support requests around the clock to ensure safety and quick action.',
+    StaticSection('Reports and Safety Contacts', [
+      'In-app reports store the report reason and pending or resolved status. Email reports can be sent to safety@secretmsg.net . SecretMsg does not claim a staffed 24-hour review team.',
     ]),
     StaticSection('Recipient Sovereignty', [
-      'Pause your link at any time, filter custom keywords, block unwanted senders in 1 tap, or wipe your entire inbox in an instant.',
+      'Pause your link at any time, filter custom keywords, block unwanted senders in 1 tap, or delete individual messages from your inbox.',
     ]),
     StaticSection('Swift In-App Reporting', [
-      'Reporting an uncomfortable message instantly purges it from your board and flags the sender\'s anonymous session for review and throttling.',
+      'Reporting an uncomfortable message quarantines it and records the report. Reporting does not automatically identify, globally block, or terminate the anonymous sender.',
     ]),
     StaticSection('01 Cultivating Kindness in Anonymous Q&A', [
       'Anonymity can empower people to share candid compliments, wholesome confessions, and creative questions that they might feel too hesitant to say aloud. However, an open door must always have an ironclad shield.',
-      'SecretMsg has engineered an extensive ecosystem of security controls, safety infrastructure, clear community guidelines, and proactive policies that make us a leading voice for user protection in anonymous communication. You are always in control of your link, your board, and your conversations.',
+      'SecretMsg uses text-only message delivery, abuse verification, recipient controls, reporting, and block lists. You are always in control of your link, your board, and your conversations.',
     ]),
-    StaticSection('02 Advanced Content Moderation Architecture', [
-      'We take cases of bullying, hate, or violence with extreme seriousness. SecretMsg utilizes a multi-layered moderation pipeline combining automated machine intelligence with experienced human oversight:',
-      'Before any message hits a user\'s inbox, automated deep-learning algorithms analyze the text. Our models understand context, nuances of modern internet slang, and semantic emoji combinations to detect abusive intent, self-harm language, harassment, or predatory behavior. Messages flagged as harmful are intercepted and blocked before delivery.',
-      'Automated systems are accompanied by real-world human experience. Our specialized Trust & Safety team reviews escalations, investigates ambiguous reports, and acts swiftly against bad actors.',
-      'Content moderation is a careful balance between user expression and community protection. Our rules ensure SecretMsg remains a safe, uplifting space where genuine curiosity thrives free from harassment or intimidation.',
+    StaticSection('02 Actual Content Moderation Architecture', [
+      'We take cases of bullying, hate, or violence seriously. SecretMsg does not use automated machine-learning classification or claim that its filters understand context, slang, intent, or every form of abuse.',
+      'The implemented content control is recipient-configured hidden-word matching. In standard mode, a match is quarantined for recipient review. In strict mode, the submission is rejected and quarantined.',
+      'Pending reports can be reviewed and marked resolved through an operator process. This policy does not promise an immediate or 24-hour human response.',
     ]),
     StaticSection('03 How In-App Reporting & Blocking Works', [
-      'When you receive a message on SecretMsg that you find inappropriate, offensive, or harmful, you can report it directly within your inbox in seconds:',
+      'When you receive a message on SecretMsg that you find inappropriate, offensive, or harmful, you can report it directly within your inbox and provide a reason:',
     ]),
     StaticSection('Q: What is and isn\'t allowed on SecretMsg?', [
       'Our Community Guidelines and Terms of Service define all prohibited behavior. In general, SecretMsg is an uplifting place to have fun, ask questions, share compliments, and create authentic Q&A threads with friends. Cyberbullying, hate speech, threats, sexual harassment, and predatory behavior are strictly prohibited.',
     ]),
     StaticSection('Q: Can I block anonymous message senders?', [
-      'Yes. Whenever you view a message, you can tap the Report button (⚠) and select "Block sender". The message will be purged from your inbox and that sender will be forbidden from sending messages to your link.',
+      'Yes. Select the separate block action on a message. The app-generated sender value is stored by SecretMsg only as a SHA-256 hash in that recipient\'s block list. The message is removed, and the sender is blocked from that link without revealing their identity or creating a network-wide IP block.',
     ]),
     StaticSection('Q: I received an emergency message; what should I do?', [
-      'If a message suggests that you or someone else may be in imminent physical danger or crisis, please contact local emergency services or law enforcement immediately. Once emergency responders are engaged, please notify our safety team at safety@secretmsg.net so we can take immediate protective action.',
+      'If a message suggests that you or someone else may be in imminent physical danger or crisis, contact local emergency services or law enforcement immediately. Once emergency responders are engaged, notify safety@secretmsg.net when it is safe to do so.',
     ]),
     StaticSection('Q: I received a concerning message; how do I get help?', [
-      'If the message is concerning but not an immediate physical emergency, reach out to our team at safety@secretmsg.net . A member of our team will review the issue and assist you with guidance and technical controls.',
+      'If the message is concerning but not an immediate physical emergency, report it in your inbox or email safety@secretmsg.net with the link, relevant message details, and a safe way to contact you.',
     ]),
     StaticSection('Q: Where can I find crisis and mental health resources?', [
       'Visit our dedicated Safety & Crisis Resources page for direct hotlines, text lines, and confidential support services for mental health, anti-bullying, and crisis intervention.',
@@ -116,36 +115,37 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
     StaticSection('Overview', [
       'Effective Date: June 22, 2026 • Updated September 2026',
     ]),
-    StaticSection('emergency Mandatory Law Enforcement & NCMEC Escalation', [
-      'Any attempt to transmit, solicit, promote, or store Child Sexual Abuse Material (CSAM) or engage in the exploitation of minors results in immediate account termination, network-wide blocks, and mandatory reporting to the National Center for Missing & Exploited Children (NCMEC) via the CyberTipline and relevant international law enforcement agencies pursuant to 18 U.S.C. § 2258A.',
+    StaticSection('CSAE Reporting and Required Escalation', [
+      'SecretMsg prohibits Child Sexual Abuse Material (CSAM) and child sexual exploitation or abuse (CSAE). A child, parent, guardian, or any other person may report CSAE directly to the National Center for Missing & Exploited Children (NCMEC) CyberTipline. When SecretMsg obtains actual knowledge of CSAE, it will preserve relevant records and refer the matter to NCMEC and other competent authorities as required by law. The current service does not automatically detect CSAE or automatically submit reports, and SecretMsg does not claim a staffed 24-hour review team.',
     ]),
     StaticSection('01 Our Commitment', [
-      'SecretMsg is committed to the safety of all users, and particularly to protecting children and minors from exploitation, abuse, and harmful content. We strictly prohibit any use of our platform to endanger, exploit, or abuse minors in any way.',
+      'SecretMsg is committed to protecting children and minors from exploitation, abuse, and harmful content. SecretMsg is not directed to children under 13. Users aged 13–17 may use the service only with parent or legal-guardian permission and in compliance with applicable law. The current application does not use automated age assurance or age classification.',
     ]),
     StaticSection('02 Prohibited Content and Conduct', [
-      'SecretMsg strictly prohibits the following on its platform without exception:',
-      'These prohibitions apply to all users regardless of age. Violations result in immediate removal of the content, termination of the offending account, permanent IP and network blocking, and reporting to the appropriate authorities as required by law.',
+      'SecretMsg prohibits CSAM, grooming or predatory behavior, sexualization or exploitation of minors, and use of the service to facilitate harmful offline contact. These prohibitions apply to all users regardless of age.',
+      'Depending on the evidence and applicable law, violations may result in message removal, account restriction or termination, a recipient-specific sender block, preservation of relevant records, and referral to NCMEC or law enforcement. An in-app report quarantines the message and records the report; it does not automatically reveal, globally block, or terminate the anonymous sender.',
     ]),
     StaticSection('03 Platform Design Protections', [
-      'SecretMsg does not permit anonymous senders to attach photos, videos, audio recordings, or any other media files through the platform. All messages sent to users are strictly text-only. This fundamental design choice deliberately eliminates image-based exploitation vectors and safeguards our community against unsolicited illicit media.',
-      'All messages submitted to SecretMsg links are scanned through automated content moderation safeguards prior to delivery. Messages identified as violating our policies — including any text referencing CSAM, sexual harassment, predatory grooming patterns, or self-harm encouragement — are quarantined and rejected before they can ever reach the recipient\'s inbox.',
+      'The message API is text-only and does not accept photos, videos, audio, or other media. This reduces media-based child-exploitation pathways but does not make harmful text safe.',
+      'Message submission and reporting use Cloudflare Turnstile. Recipients can configure hidden-word filters: standard mode quarantines a match for review, and strict mode rejects and quarantines it. These deterministic checks are not machine-learning content classifiers and cannot identify every instance of CSAE, grooming, self-harm, or other abuse.',
+      'A recipient can report a message with a reason. Reporting moves the message to quarantine. Blocking is separate: it stores the app-generated sender-fingerprint hash in that recipient\'s block list and removes the message without revealing the sender or creating a network-wide IP block.',
     ]),
-    StaticSection('04 In-App Reporting Mechanism', [
-      'Users can report any message they receive that they believe violates this Child Safety Policy or our Community Guidelines directly within their inbox with a single tap. When a message is reported:',
-      'We encourage all users — as well as parents and legal guardians of minor users — to report any content or conduct that causes concern, even if uncertain whether it rises to the level of a formal policy violation.',
+    StaticSection('04 Reporting by a Child, Parent, or Guardian', [
+      'Anyone may report a child-safety concern without an account by emailing safety@secretmsg.net or abuse@secretmsg.net . Include the SecretMsg link, relevant message details, the concern, and a safe contact method, but do not include unnecessary information about a child. A recipient may also report from the inbox. This policy is published at secretmsg.net/p/child-safety-policy .',
+      'An in-app report stores the report reason and pending or resolved status and quarantines the message. SecretMsg does not promise a staffed 24-hour response channel or immediate human review. For immediate danger, contact local emergency services first.',
     ]),
-    StaticSection('05 How We Address CSAM & NCMEC Coordination', [
-      'SecretMsg enforces comprehensive protocols to eradicate Child Sexual Abuse Material:',
+    StaticSection('05 CSAE Escalation Path', [
+      'If possible CSAM or other CSAE is identified, report it directly to the NCMEC CyberTipline at report.cybertip.org and also notify safety@secretmsg.net . Where required, use the relevant law-enforcement channel. Immediate danger should be reported to local emergency services first.',
+      'When SecretMsg obtains actual knowledge of CSAE, it will preserve relevant records and refer the matter to NCMEC and other competent authorities as required by law. The current application does not automatically classify reports or automatically submit authority reports.',
     ]),
     StaticSection('06 Child Safety Point of Contact', [
-      'SecretMsg has designated a dedicated Child Safety Point of Contact to receive notifications from platform partners, application stores, and child protection organizations regarding Child Sexual Abuse and Exploitation (CSAE) matters, and to coordinate with law enforcement:',
-      'This point of contact is authorized to speak to SecretMsg\'s enforcement and review procedures and take immediate remedial action.',
+      'Designated child-safety, CSAE, preservation, and escalation contacts are safety@secretmsg.net , abuse@secretmsg.net , and legal@secretmsg.net . For possible CSAM, use the NCMEC CyberTipline directly.',
     ]),
-    StaticSection('07 Compliance with Applicable Law', [
-      'SecretMsg complies with all applicable child protection laws and regulations, including:',
+    StaticSection('07 Applicable Child-Protection Commitments', [
+      'SecretMsg applies COPPA, 18 U.S.C. § 2258A, and applicable regional child-protection, privacy, preservation, and emergency-disclosure requirements to the extent required by law.',
     ]),
     StaticSection('08 Contact Us & Reporting Concerns', [
-      'If you have questions regarding this policy, wish to report an urgent minor safety concern, or need to connect directly with our child protection team:',
+      'A child, parent, guardian, or other concerned person may email safety@secretmsg.net without creating an account. For possible CSAM, report directly to the NCMEC CyberTipline. This policy is published at secretmsg.net/p/child-safety-policy .',
     ]),
   ]),
   'community-guidelines': StaticPageContent('Our Community Guidelines', [
@@ -162,11 +162,11 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'Don’t post pyramid schemes, chain letters, commercial ads, or claim false partnerships or endorsements with SecretMsg.',
     ]),
     StaticSection('What If You See Someone Violate These Guidelines? ⚠️', [
-      'While our automated pre-delivery moderation intercepts the vast majority of objectionable content, no filter is 100% infallible. Here is how you can take action:',
-      'Tap the Report icon (⚠) on the message card to instantly remove it from your board and flag the sender for moderation review.',
-      'Choose "Block User" in the report dialog to permanently prevent that anonymous sender from contacting your link again.',
-      'Visit our Resources page for free, confidential mental health and anti-bullying helplines.',
-      'Messages that violate these Community Guidelines may be removed at our sole discretion. Users who repeatedly or severely violate these rules face permanent bans. Any observed criminal activity is escalated directly to the appropriate law enforcement authorities.',
+      'SecretMsg uses Turnstile verification and recipient-configured hidden-word filters, but it does not use machine-learning content classification and no safeguard is complete. Here is how you can act:',
+      'Tap the Report icon (⚠), provide a reason, and complete Turnstile verification. Reporting stores the report and quarantines the message for review.',
+      'Use the separate block action to store the app-generated sender-fingerprint hash in your block list and prevent that sender from sending to your link. This does not reveal the sender or create a network-wide IP block.',
+      'Visit our Resources page for free, confidential mental health and anti-bullying hotlines.',
+      'Messages that violate these Community Guidelines may be removed, and accounts may be restricted or terminated. Relevant criminal activity may be referred to appropriate authorities, but in-app reports are not automatically classified or submitted to law enforcement.',
     ]),
     StaticSection('The SecretMsg Golden Rule', [
       'SecretMsg is meant to be a fun, creative, and safe bridge between friends. Always be respectful, protect each other, and treat others the way you wish to be treated.',
@@ -177,13 +177,13 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'Have questions, feedback, or need urgent trust & safety assistance? Reach out to our dedicated channels below.',
     ]),
     StaticSection('Trust, Abuse & Harassment', [
-      'For cyberbullying, harassment, threats, or urgent safety concerns. Monitored with top priority.',
+      'For cyberbullying, harassment, threats, or safety concerns.',
     ]),
     StaticSection('Child Protection & Minor Safety', [
-      'Reports regarding underage users or any child endangerment concern.',
+      'Reports regarding an under-13 user, possible CSAE, or any child-endangerment concern.',
     ]),
     StaticSection('Privacy & GDPR Data Requests', [
-      'Questions about our zero-log architecture or data verification inquiries.',
+      'Questions about privacy, account data, processor disclosures, or data-verification inquiries.',
     ]),
     StaticSection('Legal, DMCA & Law Enforcement', [
       'Official court orders, DMCA copyright takedown notices, or regulatory inquiries.',
@@ -230,7 +230,7 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'THE SERVICE, CONTENT, AND UNDERLYING SOFTWARE ARE PROVIDED ON AN "AS-IS" BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR UNINTERRUPTED ERROR-FREE OPERATION. WE DO NOT GUARANTEE 100% CONTINUOUS SERVICE AVAILABILITY OR PREVENTION OF OCCASIONAL SERVICE INTERRUPTIONS.',
     ]),
     StaticSection('03 User-Generated Content & Conduit Rule', [
-      'SecretMsg functions solely as an automated technical conduit facilitating message transmission between consenting participants. SecretMsg does not pre-screen, verify, endorse, or assume responsibility for opinions, statements, or claims transmitted by anonymous message senders. Each user assumes full responsibility for messages they transmit.',
+      'SecretMsg facilitates message transmission between participants. It applies Turnstile verification, recipient-configured hidden-word filtering, quarantine, reporting, and recipient-specific blocking, but it does not verify or endorse anonymous claims and does not use machine-learning content classification. Each user is responsible for messages they transmit.',
     ]),
     StaticSection('04 DMCA & Copyright Takedown Procedure', [
       'If you believe material hosted on or accessible via SecretMsg infringes upon your copyright or intellectual property rights, submit a takedown request containing:',
@@ -238,89 +238,84 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
   ]),
   'faq': StaticPageContent('Platform Guide & Frequently Asked Questions', [
     StaticSection('Overview', [
-      'Everything you need to know about creating your link, sending anonymous messages, managing your board, troubleshooting URLs, and our zero-knowledge privacy guarantee.',
+      'Everything you need to know about creating your link, sending anonymous messages, managing your board, troubleshooting URLs, and SecretMsg privacy practices.',
     ]),
     StaticSection('How to Create Your Anonymous Message Link', [
       'Getting started takes less than a minute:',
-      'Open secretmsg.net in your browser (Chrome recommended on all devices).',
-      'Enter your display name so friends and followers know whose link it is.',
-      'Set a secure password — you will use this to log in and access your private board from any device at any time.',
-      'Click Create Your Anonymous Message Link — your unique secret message URL is generated instantly.',
-      'Share your link on Instagram Stories, WhatsApp Status, Facebook, X (Twitter), or anywhere you like. Once your link is live, people can send you anonymous messages at any time. Only you can see them on your private message board!',
+      'Open secretmsg.net in your browser or the SecretMsg app.',
+      'Choose a handle or accept the generated handle used for your public SecretMsg link.',
+      'Set a 4–6 digit PIN and save the backup codes. A real email is optional for the legacy email-code path; the normal handle/PIN path stores only a synthetic <handle>@v2.secretmsg placeholder that is not a mailbox.',
+      'Create your account, then share your unique link on Instagram Stories, WhatsApp, Facebook, X, or another channel.',
     ]),
     StaticSection('How to Send an Anonymous Message', [
-      'Sending an anonymous message is even easier than creating one:',
-      'Open the secret message link shared by your friend on Instagram, WhatsApp, or Twitter.',
-      'Type your message in the text box (up to 80 words / 300 characters). You can insert emojis or choose vibes.',
-      'Tap Send — your message is delivered instantly and your identity is never revealed.',
+      'Sending an anonymous message does not require an account:',
+      'Open the SecretMsg link shared by the Account User.',
+      'Type a text message within the service limit.',
+      'Complete Turnstile verification and send. SecretMsg does not ask for your name, email address, social handle, or account.',
+      'The mobile app may send a stable app-generated random value so the server can store only its SHA-256 hash for recipient-controlled blocking. It is not a hardware identifier, and the recipient cannot reverse the hash into an identity.',
     ]),
     StaticSection('Creative Ways to Use Anonymous Messages', [
       'Here are popular ways people use SecretMsg every day:',
-      'Add your secret message link to your story sticker and let followers send you anonymous questions, hot takes, or compliments.',
-      'Share your anonymous message link on your WhatsApp status and discover what your contacts really think about you.',
-      'Collect honest, unfiltered feedback after meetups, community workshops, podcast episodes, or team hackathons.',
+      'Add your SecretMsg link to your story sticker and let followers send anonymous questions, hot takes, or compliments.',
+      'Share your link on WhatsApp and discover what your contacts really think about you.',
+      'Collect candid feedback after meetups, workshops, podcast episodes, or team events.',
       'Teachers, professors, and study leaders can let students ask candid questions without fear of peer social pressure.',
-      'Ask your personal and professional network for candid constructive opinions. Anonymity strips away social friction and encourages truthful, empowering answers.',
+      'Ask your personal and professional network for candid constructive opinions.',
     ]),
     StaticSection('Manage Your Secret Msg Board', [
-      'Once your board is created, you have full control through your Profile page ( secretmsg.net/profile ). Here is what you can do:',
+      'Once your board is created, you can manage messages, your handle and profile, safety filters, sender blocks, reports, pairing, purchases, and deletion from the authenticated account controls.',
     ]),
     StaticSection('Troubleshooting: Why Your Secret Msg URL Might Not Work', [
       'If your anonymous message link won\'t open or looks broken, try these simple fixes:',
-      'In Chrome go to Settings → Site settings → Cookies and set to Allow . Essential cookies are required to authenticate your board and verify bot prevention.',
-      'We recommend Chrome on Android and iPhone for the best compatibility and smoothest local message storage.',
-      'A stale browser cache can sometimes break the page. Clear your browser cache and reload the link.',
-      'Copy the exact link from your secret message board (e.g. secretmsg.net/yourname ) rather than typing it manually.',
+      'Confirm the link is spelled correctly and that the Account User has not paused the link.',
+      'If authentication is unavailable, sign in with your handle and PIN. The public read-only web pairing session cannot make changes or delete an account.',
+      'A stale browser cache can sometimes affect the page. Clear the browser cache and reload the link.',
+      'Copy the exact link from your SecretMsg board rather than typing it manually.',
     ]),
     StaticSection('Frequently Asked Questions', [
-      'A secret msg is a unique URL tied to your profile on secretmsg.net. Share it with anyone — they can open it and send you an anonymous message without logging in or creating an account. All messages are delivered privately to your board and only you can read them.',
-      'Yes, completely. Secret Msg does not collect or store any identifying information about message senders — no IP address, no device fingerprint, no login data. Your anonymous messages are truly private and untraceable.',
-      'Go to secretmsg.net/login , enter your board\'s unique link (or slug) and the password you set when you created it. You will be redirected to your profile where you can view settings and manage your board.',
-      'Log in to your account and go to your Profile page. Scroll to the Change Password section, enter your new password (minimum 6 characters), and click Change Password. Your new password takes effect immediately.',
-      'Sign in with a full account session and open Settings, then use Danger Zone to delete your account. You can also request deletion without the app at secretmsg.net/delete-account. Signed-out visitors must log in to verify ownership. This action immediately and permanently removes your account data and cannot be undone.',
-      'Open the secret message link shared by your friend, type your message in the text box, and tap Send. No account, no sign-up, and no personal information is required. Your identity is never revealed to the link owner.',
-      'The most common cause is cookies being disabled. Open Chrome, go to Settings → Site settings → Cookies, and make sure they are turned on. Then reload your secret message link and try again.',
-      'Yes! Add your anonymous message link to your Instagram bio or story sticker. Followers can tap the link and send you anonymous messages instantly — no app download needed. You can also export custom 9:16 story stickers from our Sticker Studio .',
-      'Secret Msg is 100% free, takes under a minute to set up, and requires no sign-up for senders. You get a full profile to manage your board — change your name, update your password, view your link, and delete your account any time. It\'s one of the simplest ways to receive honest, anonymous messages from anyone, anywhere.',
-      'Yes. You are always in full control — delete individual messages from your inbox, change your password, or permanently delete your entire account from Settings or the public page at secretmsg.net/delete-account. We continuously improve safety features to keep SecretMessage secure for everyone. Read our full Safety Hub .',
-      'Delete the abusive messages directly from your inbox. If the problem persists, use Delete Account in Settings or the public page at secretmsg.net/delete-account to permanently remove your account. Because the service is fully anonymous, individual senders cannot be traced. For serious threats, please contact your local authorities or review our Urgent Abuse Escalations .',
+      'A SecretMsg link is tied to an Account User profile. Anyone with the link can submit a text message without creating an account. The Account User can read the received inbox.',
+      'SecretMsg does not ask for a sender name, email address, social handle, or account. It may store a hash of an app-generated random sender value for recipient-controlled blocking. Cloudflare processes the raw connecting IP to serve requests, and D1 stores SHA-256-derived rate-limit keys rather than readable IP addresses. Turnstile receives the raw connecting IP when verification is requested.',
+      'Sign in with your handle and 4–6 digit PIN. A legacy account may instead use a real email and six-digit login code delivered by Resend.',
+      'Use the PIN-change control after verifying your current PIN. Backup codes support account recovery when the primary PIN is unavailable.',
+      'Use Delete Account in the app or secretmsg.net/delete-account with a full signed-in session. Successful deletion removes the primary D1 account row, handle, profile, received messages, blocked-sender records, reports involving the account, pairing codes, purchases, linked donations, email-keyed one-time-code sessions, and identifiable account-derived rate-limit rows. It does not purge unmapped IP-keyed rate limits, user-exported or shared copies, provider records, or encrypted backups, and the server sequence is not transactional.',
+      'No account, sign-up, name, email address, or social handle is required to send. The Account User cannot receive a sender name because none is requested.',
+      'If a link or authenticated page does not load, verify the URL, paused-link status, and authentication. Browser storage settings can affect web sessions.',
+      'A SecretMsg link can be shared through a bio, direct link, or story sticker. Publicly exported story stickers can be saved or shared outside SecretMsg and are not deleted if the Account User later deletes the account.',
+      'Account creation and anonymous sending are available without supporter payment. Optional Google Play purchases and Polar web donations support development.',
+      'Account Users can delete individual messages, change their PIN, use safety controls, or request account deletion. A recipient can report a message or separately block the app-generated sender-fingerprint hash for that link.',
+      'Delete or report uncomfortable messages from the inbox. For serious threats, contact local authorities. Do not claim that individual senders can be identified: the service does not ask for their identity, but a recipient can block future submissions from a sender-fingerprint hash.',
     ]),
     StaticSection('Ready to Receive Candid Anonymous Messages?', [
-      'Join thousands of creators sharing candid TBH links on Instagram & TikTok today. Takes less than a minute.',
+      'Create your SecretMsg link, save your recovery information, and review the privacy and child-safety policies before sharing it widely.',
     ]),
   ]),
   'online-safety-guide': StaticPageContent('Our Guide to Online Safety', [
     StaticSection('Overview', [
-      'SecretMsg is built for authentic, uplifting connections with friends. Here is our complete guide on keeping your anonymous Q&A fun, protecting your personal privacy, and our formal procedures for law enforcement information requests.',
-      'Remove uncomfortable messages immediately and forbid the sender from contacting you again.',
-      'Help friends by reporting abusive behavior directly to our 24/7 team at safety@secretmsg.net.',
-      'Formal compliance pathways for statutory preservation, emergency disclosure, and warrants.',
+      'SecretMsg is built for authentic connections with friends. This guide describes implemented safety tools, reporting channels, and the limits of account deletion.',
+      'Remove uncomfortable messages and use the separate block action when you do not want further submissions from that sender-fingerprint hash.',
+      'Report concerning content in the app or email safety@secretmsg.net . Immediate danger should be reported to local emergency services.',
     ]),
-    StaticSection('01 Staying Safe on SecretMsg: We’re Here for You', [
-      'We created SecretMsg as a place where you can foster authentic connections with friends, ask questions, reply in public or private, and get to be your true self. But attacking, intimidating, or being unkind is never okay. Stopping abuse is a team effort.',
-      'Keeping Users Safe: Keeping our community safe is our number one priority. Our automated pre-delivery moderation filters messages for toxicity before they reach inboxes. Additionally, our dedicated safety team is available 24/7 at safety@secretmsg.net to investigate reports and combat harassment.',
-      'See Something, Say Something: If you see a friend receiving abusive comments or see inappropriate prompts, speak up! Report the abuse directly within the app or email our safety team right away. We review every situation and take swift remedial action.',
+    StaticSection('01 Staying Safe on SecretMsg', [
+      'SecretMsg accepts text-only messages and uses Turnstile verification. These controls reduce abuse but do not make every message safe.',
+      'Recipients can configure hidden-word filters. A standard-mode match is quarantined for review; a strict-mode match is rejected and quarantined. These rules-based controls do not use machine-learning content classification or understand context.',
+      'See something, say something: report the message in the app with a reason, or email safety@secretmsg.net with the link and relevant details.',
     ]),
     StaticSection('02 What to Do If a Message Makes You Uncomfortable', [
-      'While we do our best to filter out negativity, an unexpected message may occasionally leave you feeling uneasy or threatened. If that happens, take these steps immediately:',
-      'Tap the Report icon (⚠) on the message card and select "Block Sender". The message is instantly expunged from your board, and the sender cannot submit messages to your link again.',
-      'Reporting the card alerts our moderation team to evaluate the sender\'s session for platform-wide throttling or bans.',
+      'If a message leaves you feeling uneasy or threatened, use the report and block controls as appropriate:',
+      'Reporting stores the reason and pending or resolved status and quarantines the message. It does not automatically identify or globally block the sender.',
+      'Blocking is separate. It stores the message\'s app-generated sender-fingerprint hash in that recipient\'s block list and removes the message. The raw app-generated value is not stored by SecretMsg, and the block is specific to the recipient\'s link.',
       'Visit our Resources page for free, confidential mental health and anti-bullying hotlines available 24/7.',
     ]),
     StaticSection('03 Practical Tips for Staying Safe & Protecting Privacy', [
       'Never share your home address, phone number, school location, or private contact details in public prompt cards or replies.',
       'Pause and consider whether you are comfortable with everyone seeing what you publish to social media or your public board.',
-      'Remember there is a real human being reading your message. Keep the energy fun, kind, and uplifting.',
-      'Use our Safety Controls in Settings to pause your link, set keyword filters, or execute a 1-tap complete account wipeout at any time.',
+      'Remember there is a real human being reading your message. Keep the energy respectful and avoid threats, harassment, or sexual exploitation.',
+      'Use Safety Controls in Settings to pause your link, configure hidden-word filters, or request account deletion. Review the Privacy Policy for provider, backup, copied-content, and IP-keyed rate-limit deletion limits.',
     ]),
     StaticSection('04 SecretMsg Procedures for Law Enforcement & Information Requests', [
-      'The safety of our users and community is paramount. SecretMsg cooperates fully with law enforcement agencies in accordance with applicable laws, constitutional standards, and statutory due process.',
-      'If you witness or receive content on SecretMsg that constitutes illegal or criminal activity, report it via the in-app Report function and email our safety team immediately at safety@secretmsg.net . Our team evaluates reports, contacts relevant authorities when necessary, bans offending actors, and secures records.',
-      'SecretMsg maintains limited user content data and discloses such data pursuant to proper legal process in accordance with 18 U.S.C. § 2703(a) and United States v. Warshak , 631 F.3d 266 (6th Cir. 2010). In order to produce the contents of communications, SecretMsg requires a valid search warrant issued upon a finding of probable cause by a court of competent jurisdiction.',
-      'SecretMsg will honor official preservation requests submitted by law enforcement to lawenforcement@secretmsg.net . In accordance with 18 U.S.C. § 2703(f), we will preserve temporarily available stored records for an active account for a period of up to 180 days pending issuance of a formal court order or warrant.',
-      'Pursuant to 18 U.S.C. §§ 2702(b)(8) and 2702(c)(4), SecretMsg is permitted to disclose information voluntarily to federal, state, or local government authorities when we believe in good faith that an emergency involving imminent danger of death or serious physical injury to any person requires disclosure without delay.',
-      'In accordance with 18 U.S.C. § 2703(c)(1)(C), SecretMsg may disclose records based on verified user consent obtained by law enforcement, provided that sufficient corroborating information verifies the person providing consent is the verified creator of the account.',
-      'SecretMsg accepts out-of-state legal process (subpoenas, court orders, search warrants, and emergency requests) without requiring domestication. All requests submitted by law enforcement must meet the following criteria:',
+      'SecretMsg may preserve or disclose relevant records when required by valid legal process or applicable law. Requests may be directed to legal@secretmsg.net with the official process and required case information.',
+      'The current application code does not implement a dedicated law-enforcement request intake, automatic out-of-state-process acceptance, or fixed 180-day preservation workflow. This policy therefore does not promise those capabilities. Emergency disclosures and preservation remain subject to applicable law and verification through the designated legal channel.',
+      'In-app reports are stored for operator review and are not automatically classified, escalated, or submitted to law enforcement.',
     ]),
   ]),
   'privacy': StaticPageContent('Privacy Policy', [
@@ -328,64 +323,79 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'At SecretMsg ( secretmsg.net ), privacy is not an afterthought or marketing slogan—it is the foundational design constraint of our entire architecture.',
     ]),
     StaticSection('No Sender Identity', [
-      'When sending an anonymous message, zero personal identifiers or accounts are tied to your text.',
+      'We do not ask senders for a name, email address, social handle, or account. The mobile app may use a stable app-generated random value for recipient-controlled blocking, but the server stores only its SHA-256 hash. It is not a hardware identifier and the recipient cannot reverse it into an identity.',
     ]),
     StaticSection('Zero Data Brokers', [
-      'We never sell, trade, or monetize user data. No Facebook or Google tracking pixels exist on our platform.',
+      'We never sell, trade, or monetize user data. No Facebook or Google advertising pixels exist on our platform.',
     ]),
-    StaticSection('1-Tap Total Erasure', [
-      'Account deletion permanently deletes your account, handle, email, and received messages. Review exactly what is removed and the retention limits at secretmsg.net/delete-account.',
+    StaticSection('Account Deletion', [
+      'A successful account-deletion request removes the primary D1 account row, handle, profile, and received messages. It is not universal erasure; the processor, backup, local-copy, and rate-limit limits below apply.',
     ]),
     StaticSection('01 The Basics: How SecretMsg Works', [
-      'SecretMsg allows users to receive questions and messages through social media and direct links:',
+      'SecretMsg allows users to receive questions and messages through social media and direct links. Senders submit without an account. Recipients can reply through a secure one-time link or publish an answer elsewhere. If both parties permit it, only a broad platform type such as Mobile / Android may be shown; SecretMsg does not provide precise location through this feature.',
     ]),
     StaticSection('02 Personal Information We Collect', [
-      'We collect information depending on how you interact with our platform:',
+      'The primary sign-in method is a handle and 4–6 digit PIN. An account may contain a random account ID, display name, avatar selection, bio, safety settings, hashed credentials, and an optional FCM registration token. Handle/PIN accounts store the synthetic placeholder <handle>@v2.secretmsg; it is not a mailbox. A real email is optional and is used only with the legacy email-code path.',
+      'Message data includes text, replies, recipient settings, timestamps, delivery metadata, and report reasons. Cloudflare processes the raw connecting IP and request data to serve the service. Turnstile receives its challenge response and the raw connecting IP when verification is requested. No precise location is collected through SecretMsg.',
+      'D1 stores SHA-256-derived rate-limit keys based on an IP address, handle, email address, or account ID as applicable. Raw IP addresses are not stored in readable form in the D1 rate-limit table, but Cloudflare processes the raw IP to serve the request and Turnstile receives it when verification is requested.',
+      'The identifiers disclosed here are account IDs, optional FCM tokens, hashes of app-generated random sender values, and hashed rate-limit keys. None is a hardware ID or advertising ID. SecretMsg has no advertising, marketing, or analytics SDK.',
+      'For a new message, FCM receives the registered token, a random message ID, the unread count, and a preview truncated to 140 characters, plus an ellipsis when truncated. The full message body is not sent through FCM.',
     ]),
     StaticSection('03 What We Will NEVER Do', [
-      '🚫 We never sell, rent, license, or monetize your personal information, messages, or emails to advertisers or third-party data brokers.',
-      '🚫 We never disclose the sender\'s identity to the recipient.',
-      '🚫 We never use retargeting pixels , invasive tracking beacons, or cross-site advertising trackers.',
+      'We never sell, rent, license, or monetize personal information, messages, or emails to advertisers or third-party data brokers.',
+      'We never disclose a sender\'s name or account to the recipient because we do not ask for one.',
+      'We never use advertising pixels, retargeting, cross-site behavioral advertising, Firebase Analytics, Crashlytics, or another advertising or analytics SDK.',
     ]),
     StaticSection('05 Automated Safety & Content Moderation', [
-      'To protect user safety, SecretMsg utilizes automated content moderation filters and algorithms designed to screen incoming messages. These filters detect and block harmful language, cyberbullying, predatory behavior, threats, and illegal material before it reaches recipients\' inboxes. Recipients also retain full authority to report or block any message with a single tap.',
+      'Message submission and reporting use Cloudflare Turnstile. Recipient-configured hidden-word matching quarantines a match in standard mode and rejects and quarantines it in strict mode. These are rules-based safeguards, not machine-learning content classification, and they do not understand context or reliably identify CSAE, grooming, or other abuse.',
+      'Reporting records a reason and quarantines the message. Blocking is separate: it stores the app-generated sender-fingerprint hash in that recipient\'s block list and removes the message. Reporting and blocking do not reveal the sender\'s identity.',
     ]),
     StaticSection('06 How Information Is Shared', [
-      'Public Social Sharing by Users: When an Account User chooses to post a response publicly, the question text and their answer become visible on their public Q&A thread and wherever they share it on social media.',
-      'Trusted Service Providers: We work with essential service providers who assist in operating our platform, including secure server hosting, database storage, and transactional email verification. These providers are bound by strict confidentiality and data protection standards.',
-      'Compliance & Safety: We may disclose information if we believe in good faith that such action is necessary to comply with legal requests, prevent physical harm or financial loss, or protect the safety and integrity of our users.',
+      'When an Account User publishes a response, the question and answer become visible on the chosen public thread or elsewhere. We also use the following service processors:',
+      'Cloudflare: hosts the API, processes request content, headers, and the raw connecting IP, stores primary records in D1, handles Turnstile verification with the challenge response and raw connecting IP, and may receive encrypted D1 backups in R2.',
+      'Resend: receives a real email address and six-digit login code only for the legacy email-code path. The handle/PIN path uses a synthetic placeholder and does not send a login email.',
+      'Google Play Billing: receives the purchase token and product ID for verification. SecretMsg receives purchase state and an order ID when available, but never receives or stores card details.',
+      'Google Firebase Cloud Messaging: receives the FCM token, random message ID, unread count, and 140-character truncated preview. It does not receive the full message body.',
+      'Polar: the current web donation link does not append a SecretMsg username or email. Checkout information is provided directly to Polar, which may return a verified webhook with donor information, amount, and donation metadata. SecretMsg may use a public name or email local part as the supporter alias and supplied account metadata to link eligible perks.',
+      'We may disclose relevant information to comply with valid legal process, prevent imminent harm, enforce our terms, protect users, or preserve relevant records.',
     ]),
     StaticSection('07 Your Rights & Choices (GDPR & CCPA)', [
-      'Regardless of your location, you have strong rights regarding your personal information:',
-      'lock_reset Self-Service 1-Tap Account Wipeout',
-      'Open Settings → Delete Account or use the public Delete Account page at secretmsg.net/delete-account without the app. When confirmed, our systems immediately and permanently delete your account, custom handle, email address, and all received messages. This deletion cannot be reversed.',
+      'Depending on your location, you may have rights to access, correct, export, restrict, object to, or request deletion of personal information. Profile and safety fields can be updated directly; contact privacy@secretmsg.net for other requests.',
+      'Open Settings → Delete Account or use the public Delete Account page at secretmsg.net/delete-account with a full signed-in session. A successful request deletes received messages, blocked-sender records, reports involving the account as recipient or reporter, pairing codes, purchase records, linked donations, email-keyed one-time-code sessions, identifiable account-derived rate-limit rows, and the primary D1 account row.',
+      'For a handle/PIN account, account-row deletion removes the synthetic <handle>@v2.secretmsg placeholder; no deletion message is sent because it is not a mailbox. For a legacy account, the real email is removed from D1, but provider-side copies are outside this operation.',
+      'Deletion limits: IP-keyed rate-limit rows that cannot be mapped to the account are not explicitly purged; copies you exported, saved, posted, or shared cannot be retracted; records held independently by Google, Resend, Polar, Cloudflare, or other providers are not erased by this endpoint; encrypted R2 backups have no verified post-deletion purge; and the server deletion steps are sequential rather than transactional, so a failed request can leave partial deletion until retried or support assists.',
+      'The mobile app attempts to clear local account data after the server request, but local cleanup is separate from the server transaction. The account cannot be restored after successful deletion.',
     ]),
     StaticSection('08 Do Not Track Signals', [
-      'Because we do not track our users across third-party websites or serve targeted behavioral advertising, our privacy practices remain consistent whether or not your browser transmits a "Do Not Track" signal.',
+      'Because we do not track users across third-party websites for advertising or serve targeted behavioral advertising, our privacy practices remain consistent whether or not a browser transmits a Do Not Track signal.',
     ]),
     StaticSection('09 Children\'s Privacy', [
-      'Our Services are not directed to children under 13 years of age (or the minimum legal age in your jurisdiction). We do not knowingly collect personal information from children. If we learn that personal information has been collected from a child under 13 without verified parental consent, we will promptly delete that information. Parents or guardians may contact us at safety@secretmsg.net .',
+      'SecretMsg is not directed to children under 13, or to a higher minimum age where local law requires it. Users aged 13–17 may use the service only with parent or legal-guardian permission. Parents or guardians may contact safety@secretmsg.net to request review and deletion of information submitted by an under-13 user. The child-safety policy is published at secretmsg.net/p/child-safety-policy .',
     ]),
     StaticSection('10 Data Retention & Security Practices', [
-      'We retain your information only for as long as necessary to fulfill the purposes outlined in this policy or until you request deletion. We implement reasonable technical, administrative, and physical safeguards designed to protect personal data against unauthorized access, loss, alteration, or misuse.',
+      'Pairing codes are usable for approximately 5 minutes. Expired rows are removed by the next scheduled cleanup; consumed rows remain for at least 24 hours and are removed by the first scheduled cleanup after that threshold.',
+      'Legacy email login codes are valid for 15 minutes. Their hashed rows are rejected after expiry and removed by the next scheduled cleanup, not necessarily at the exact expiry second.',
+      'Rate-limit counters stop counting after their applicable 1-minute to 1-hour window. Rows whose window began more than 2 hours earlier are removed by nightly cleanup.',
+      'Messages remain until the recipient deletes them or the Account User deletes the account. Reports remain pending or resolved in D1 until account deletion; separate legal-preservation requirements may apply. Account records remain while active; FCM tokens remain until unregister, stale-token clearing, or account deletion.',
+      'Processor and legal-preservation periods are controlled independently and may be longer. SecretMsg uses HTTPS for implemented application and processor paths along with authentication, hashed credentials, rate limits, and other technical and administrative safeguards.',
     ]),
     StaticSection('11 Inquiries & Data Protection Contact', [
-      'If you have questions regarding this Privacy Policy, our data practices, or wish to exercise your legal privacy rights, contact us at:',
+      'If you have questions regarding this Privacy Policy, our data practices, or wish to exercise a legal privacy right, contact privacy@secretmsg.net or support@secretmsg.net .',
     ]),
   ]),
   'safety': StaticPageContent('Safety Center & Crisis Help', [
     StaticSection('Overview', [
-      'Your emotional well-being and psychological safety are paramount. Discover our proactive moderation tools, reporting procedures, and immediate 24/7 crisis hotlines.',
+      'Your emotional well-being and psychological safety are paramount. Discover our recipient-configured safeguards, reporting procedures, and immediate 24/7 crisis hotlines.',
       'If you or someone you know is feeling overwhelmed, hopeless, or experiencing suicidal thoughts, free confidential support is available 24/7:',
     ]),
     StaticSection('policy Explore Safety & Community Policies', [
-      'Zero tolerance for CSAM, mandatory 13+ age policy, parental guidance, and immediate NCMEC escalation.',
-      'Defense-in-depth architecture, zero-retention privacy, automated ML toxicity filtering, and rapid human moderation.',
-      'Actionable digital wellness practices, anti-cyberbullying strategies, social media boundaries, and healthy TBH etiquette.',
-      'Clear rules of conduct, prohibited behaviors, toxicity thresholds, harassment prevention, and enforcement actions.',
-      '1-tap message reporting, automated bot deterrence, double-blind replies, inbox wipeout, and account erasure.',
+      'Zero tolerance for CSAE, no targeting of children under 13, parent or guardian permission for ages 13–17, and an NCMEC CyberTipline escalation path when required.',
+      'Turnstile verification, recipient-configured hidden-word quarantine, reporting, and recipient-specific sender blocking. The service does not use machine-learning content classification or claim a staffed 24-hour review team.',
+      'Actionable digital wellness practices, anti-cyberbullying strategies, social media boundaries, and healthy communication etiquette.',
+      'Clear rules of conduct, prohibited behavior, harassment prevention, and possible account or message actions.',
+      'In-app reporting, double-blind replies, individual message deletion, and account deletion with disclosed limits.',
       '24/7 confidential crisis hotlines, 988 Suicide & Crisis Lifeline, Crisis Text Line 741741, Trevor Project, and global directories.',
-      'Direct departmental contacts for urgent abuse reports, legal inquiries, child safety alerts, and user support.',
+      'Child-safety, abuse, legal, privacy, and support contact channels.',
     ]),
     StaticSection('tips_and_updates Advice for Teens & Parents', [
       '💡 Remember that feedback does not define you: Anonymous messages reflect the sender\'s thoughts, not your worth. If a message ever feels uncomfortable, delete or report it immediately.',
@@ -410,28 +420,28 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'If you ever feel overwhelmed, need to study, or want to take a break from social media, you can freeze your SecretMsg link instantly. When your link is paused, no one can send you messages.',
     ]),
     StaticSection('Filtered Words, Phrases & Emojis', [
-      'Create a personalized blocklist tailored to your personal boundaries. SecretMsg gives you granular control down to specific keywords, traumatic themes, negative slang, or even specific emojis.',
-      'If a sender attempts to submit a message containing any word from your list, the form blocks submission immediately with a friendly warning.',
-      'Any borderline messages are routed to a separate Quarantine folder so they never appear in your main feed unless you choose to review them.',
+      'Create a personalized hidden-word list tailored to your boundaries, including specific keywords, phrases, or emoji text.',
+      'In standard mode, a matching message is stored in a separate quarantine tray and does not appear in the main inbox. In strict mode, the sender is rejected and the message is still quarantined for your review.',
+      'The hidden-word filter is deterministic and recipient-configured. It is not machine-learning content classification and may not identify abuse that does not match a configured term.',
     ]),
-    StaticSection('Device-Level Sender Blocking', [
-      'If someone sends you a message that violates your boundaries, you don\'t need to know who they are in real life to prevent them from ever contacting you again.',
-      'On any message detail card, tap Report / Block with a single tap.',
-      'The sender\'s unique device signature is added to your personal blocklist automatically.',
-      'Review blocked devices in Settings anytime with complete 1-tap unblock freedom.',
+    StaticSection('App-Generated Sender Blocking', [
+      'If someone sends you a message that violates your boundaries, you can prevent future submissions from that mobile-app installation without knowing the sender\'s identity.',
+      'Use the separate block action on the message. It stores only the SHA-256 hash of the app-generated random sender value in your block list and removes the message.',
+      'The app-generated value is not a hardware identifier, and the block is specific to your link. It does not create a network-wide IP block or reveal the sender to you.',
+      'Review and unblock sender-fingerprint hashes in Settings.',
     ]),
     StaticSection('01 What, Who & When: Complete Recipient Sovereignty', [
       'Together, these tools ensure that you—and only you—control the experience on your link:',
     ]),
-    StaticSection('02 Instant Action & Data Erasure Controls', [
-      'Start completely fresh anytime. With a single confirmation in Settings, permanently purge all stored messages from your inbox with zero residual server logs.',
-      'Complete self-service deletion from Settings or the public Delete Account page at secretmsg.net/delete-account, which works without the app. Deletion is immediate and irreversible; review the page for the complete list of removed data and retention limits.',
+    StaticSection('02 Account Deletion & Its Limits', [
+      'You can delete individual inbox messages at any time. The server endpoint also removes the account row, handle, profile, received messages, blocked-sender records, reports involving the account, pairing codes, purchases, linked donations, email-keyed one-time-code sessions, and identifiable account-derived rate-limit rows.',
+      'Self-service deletion is available from Settings or secretmsg.net/delete-account with a full signed-in session. The server sequence is not transactional. It does not purge unmapped IP-keyed rate limits, copies you exported or shared, independent provider records, or encrypted backups with no verified post-deletion purge.',
     ]),
-    StaticSection('03 Human Support & 24/7 Crisis Assistance', [
-      'Technology works hand-in-hand with human care. If you ever experience harassment, threats, or emotional distress, we offer rapid response channels and direct integration with 24/7 crisis lifelines.',
+    StaticSection('03 Safety Contacts & 24/7 Crisis Assistance', [
+      'For harassment, threats, or child-safety concerns, report in the app or email safety@secretmsg.net . SecretMsg does not claim a staffed 24-hour review team. Separate third-party crisis lifelines may be available 24/7, and immediate danger should be reported to local emergency services.',
     ]),
-    StaticSection('Trust & Safety Team', [
-      'Contact us directly with reports or inquiries:',
+    StaticSection('Safety Contacts', [
+      'Contact safety@secretmsg.net , abuse@secretmsg.net , privacy@secretmsg.net , or support@secretmsg.net as appropriate.',
     ]),
     StaticSection('Crisis & Mental Health Hotlines', [
       'Free, confidential, and available 24 hours a day, 7 days a week:',
@@ -445,7 +455,7 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'Please read these Terms of Service carefully before utilizing SecretMsg ( secretmsg.net ). By accessing our services, you agree to be bound by this agreement.',
     ]),
     StaticSection('Strict Anti-Harassment & Zero Tolerance Policy', [
-      'SecretMsg is built for fun, candid, and uplifting communication. We have an unyielding zero-tolerance policy for hate speech, cyberbullying, sexual harassment, threats of self-harm, or extortion. Malicious actors are subject to permanent IP blocks and law enforcement referral.',
+      'SecretMsg prohibits hate speech, cyberbullying, sexual harassment, threats of self-harm, extortion, CSAE, and other illegal conduct. Depending on evidence and applicable law, violations may result in message or account action, recipient-specific sender blocking, record preservation, and referral to appropriate authorities. The service does not claim an automated network-wide IP block or automatic law-enforcement referral.',
     ]),
     StaticSection('01 Interpretation & Definitions', [
       'The words with capitalized initial letters have meanings defined under the following conditions. The following definitions have the same meaning regardless of whether they appear in singular or in plural:',
@@ -458,7 +468,7 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
     ]),
     StaticSection('03 User Accounts & Handle Guidelines', [
       'When You create an account with Us, You must provide accurate, complete, and current information. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of Your account.',
-      'You are responsible for safeguarding the password You use to access the Service and for any activities or actions under Your password. You agree not to disclose Your password to any third party and must notify Us immediately upon becoming aware of any breach of security or unauthorized use of Your account.',
+      'You are responsible for safeguarding your PIN and backup codes. You agree not to disclose them to any third party and must notify SecretMsg promptly if you believe an account has been accessed without authorization.',
       'Handle & Username Restrictions: You may not use as a username or URL slug the name of another person or entity with the intent to impersonate them, a name or trademark subject to any third-party rights without proper authorization, or a name that is offensive, vulgar, or obscene. We reserve the right to reclaim, suspend, or reassign usernames at our sole discretion.',
     ]),
     StaticSection('04 Content: Rights, Licenses & Public Replies', [
@@ -471,7 +481,7 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'The Company reserves the right, but not the obligation, to determine whether Content complies with these Terms, and to format, edit, refuse, or remove Content at any time. As SecretMsg facilitates anonymous feedback, You agree to use the Service at Your own risk.',
     ]),
     StaticSection('06 Content Backups', [
-      'Although regular backups of Content are performed, the Company does not guarantee there will be no loss or corruption of data. Corrupt backup points may occur due to network events or system changes. You acknowledge that the Company has no liability related to the integrity of Content or the failure to successfully restore Content. You are encouraged to maintain independent copies of important Content.',
+      'The operator may create encrypted D1 backups, including copies uploaded to Cloudflare R2. The current code does not establish that every deletion is purged from a backup. You are encouraged to maintain independent copies of important Content.',
     ]),
     StaticSection('07 Copyright Policy & DMCA Takedown Procedure', [
       'We respect the intellectual property rights of others. If You believe that Content on the Service infringes Your copyright, You may submit a written notice to our designated Copyright Agent at legal@secretmsg.net pursuant to the Digital Millennium Copyright Act (DMCA) (17 U.S.C. § 512(c)(3)) with the following:',
@@ -486,8 +496,8 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
     StaticSection('10 Links to Other Websites & Third-Party Platforms', [
       'Our Service may contain links to third-party websites or services that are not owned or controlled by the Company (including Instagram, WhatsApp, TikTok, and X). We assume no responsibility for the content, privacy policies, or practices of any third-party websites. You acknowledge that the Company shall not be liable for any damage or loss caused by reliance on external services.',
     ]),
-    StaticSection('11 Termination & 1-Tap Wipeout', [
-      'We may terminate or suspend Your Account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms. You may also terminate Your account at any time using the self-service Delete Account option in Settings or the public page at secretmsg.net/delete-account, which permanently removes Your board, username, and stored messages.',
+    StaticSection('11 Termination & Account Deletion', [
+      'We may suspend or terminate an account for a Terms violation or as otherwise permitted by these Terms. You may request account deletion through Settings or secretmsg.net/delete-account with a full signed-in session. A successful request removes the primary D1 account row, handle, profile, received messages, and other listed account-linked records. It does not purge unmapped IP-keyed rate limits, user-exported or shared copies, provider records, or encrypted backups. The server deletion sequence is not transactional and cannot be reversed.',
     ]),
     StaticSection('12 Limitation of Liability', [
       'Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of these Terms, and Your exclusive remedy for all of the foregoing, shall be limited to the amount actually paid by You through the Service, or 100 USD if You have not purchased anything through the Service.',
