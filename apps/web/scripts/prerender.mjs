@@ -122,6 +122,18 @@ const staticFiles = STATIC_ROUTES.map((route) => renderPage({
 const index = JSON.parse(readFileSync(join(dist, 'blog-index.json'), 'utf8'));
 if (!Array.isArray(index)) throw new Error('dist/blog-index.json must contain an array');
 
+const legacyRoutes = [
+  ['/donors', '/supporters/'],
+  ['/donors/', '/supporters/'],
+  ...['terms', 'privacy', 'cookies', 'disclaimer'].flatMap((doc) => [
+    [`/p/legal/${doc}`, `/p/${doc}/`],
+    [`/p/legal/${doc}/`, `/p/${doc}/`],
+    [`/legal/${doc}`, `/p/${doc}/`],
+    [`/legal/${doc}/`, `/p/${doc}/`],
+  ]),
+];
+writeFileSync(join(dist, '_redirects'), `${legacyRoutes.map(([source, destination]) => `${source} ${destination} 301`).join('\n')}\n`);
+
 const postFiles = index.map((post) => {
   if (typeof post?.slug !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(post.slug)) {
     throw new Error(`Invalid post slug in blog index: ${post?.slug}`);

@@ -532,32 +532,70 @@ const ANGLES = [
   { id: 'secrets', title: (t) => `What Nobody Tells You About ${t.replace(/^The /, '')}`, frame: 'insider truths', extra: 'truths' },
 ];
 
-const ANGLE_SECTIONS = {
-  checklist: [
-    ['Your action checklist', ['Print this mentally and run it in order. First, the one-time setup: link live, prompt specific, filters sane. Second, the weekly loop: post evenings, answer nightly, review the tray. Third, the monthly audit: strictness, pins, stale presets.', 'Most people do step one and skip the loop, then wonder why results fade. The loop IS the product — setup merely unlocks it.']],
+const ANGLE_CONTENT = {
+  'ultimate-guide': [
+    ['The complete path', ['Start by choosing the job {T} needs to do, then write the smallest prompt that serves that job. A complete guide is not a longer checklist; it is a sequence of decisions that keeps the board coherent as it grows.', 'Keep the first week deliberately small: publish one specific invitation, answer the replies you receive, and record what people return to. Add features only after the basic loop has a real response.']],
+    ['The operating system', ['A durable setup has three layers: a clear promise to senders, a dependable reply routine, and a review habit for anything that needs a decision. {T} works best when those layers reinforce one another instead of competing for attention.', 'Use the feature that removes the most friction this week. For one board that may be a filter; for another, a backup-code routine or a better sticker. The best setup is the one you will still follow when the novelty fades.']],
+    ['What good looks like', ['Good does not mean a crowded inbox. It means the right people can understand the invitation, send without fear, and receive a response that makes the next visit likely. {T} becomes useful when the board feels dependable, not merely popular.', 'Review the loop at the end of each month. Keep what produced thoughtful returns, retire what created only noise, and write down the one change you will test next.']],
   ],
-  studies: [
-    ['What the research actually says', ['Anonymity studies converge on three findings: candor rises, conformity falls, and accountability must be structural rather than social. In other words, the psychology works only when the guardrails do — filters and blocks are not accessories, they are the experiment controls.', 'The second finding: identified feedback skews positive and vague; anonymous feedback skews specific in both directions. Design your prompts to harvest the specificity and your filters to catch the sting.']],
+  mistakes: [
+    ['The failure pattern', ['Most failed attempts at {T} are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.', 'The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.']],
+    ['Fix the order, not the symptom', ['When results are weak, change one variable at a time. First clarify the promise, then test the prompt, then adjust timing. Changing the theme, handle, filters, and posting time together makes the outcome impossible to learn from.', 'Keep a seven-day log with the prompt, reply count, and one observation. The log turns vague disappointment into a decision you can test again.']],
+    ['The recovery path', ['You do not need to rebuild {T} from zero. Keep the link, clear the backlog, answer the messages that still matter, and announce a smaller restart. People are forgiving of a pause when the return feels intentional.', 'After two stable weeks, add one tactic. The recovery should end with a habit, not a burst of settings changes.']],
   ],
-  steps: [
-    ['Step zero: set up in four minutes', ['Create the inbox, set a memorable PIN, save backup codes somewhere real (screenshot plus a file, not just memory), and post your first sticker before you close the app. Momentum beats perfection; a live imperfect board beats a perfect draft every time.', 'Common stall: agonizing over the handle. Auto-generated handles are charming and free — supporters can claim custom names later. Ship first.']],
-    ['Your first seven days', ['Days 1–2: post evenings with a specific question. Days 3–4: answer everything, pin one keeper. Days 5–6: try a second format (dice roll, new theme). Day 7: review what arrived and double down on the winner. One week, one working loop.']],
+  psychology: [
+    ['The mechanism', ['People approach {T} differently when the social cost of being visible disappears. They disclose more specific observations, take fewer half-hearted positions, and use a prompt as permission to articulate a question they would otherwise edit out.', 'That effect is not magic. The blank link lowers one kind of friction while leaving the need for clarity intact. Specific prompts give the lowered social cost a useful direction.']],
+    ['The trade-off', ['Lower accountability can mean more honesty and more abuse. The same anonymity that lets someone ask a difficult question can make the recipient responsible for every boundary. {T} works when recipient controls are visible and easy to use, not buried in a policy.', 'Design for the generous majority and contain harmful behavior with proportionate tools: prompts that invite care, filters that catch clear problems, and blocks that end repeated boundary crossing.']],
+    ['Observe before you conclude', ['Run a small experiment before generalizing. Change the prompt for one week, count meaningful returns, and read the replies for specificity rather than volume. A behavioral explanation should tell you what to try next.', 'If the change helps kind people participate more but also increases harmful messages, adjust the guardrail and the prompt together. Psychology is a lens, not a substitute for judgment.']],
   ],
-  tactics: [
-    ['Power moves', ['Stack prompts: run the same question across sticker, drop, and dice in one week and compare reply quality per channel. A/B your captions by reposting variants 48 hours apart. Recruit power senders by replying fast to first-timers — speed is the cheapest retention tool in existence.', 'Archive ruthlessly: screenshot monthly winners into a folder. In six months that folder is a content library, a nostalgia engine, and proof the habit was worth building.']],
+  beginners: [
+    ['The first launch', ['Begin with one sentence that tells a first-time sender exactly what kind of message would be welcome in {T}. Do not explain the whole concept. Post the invitation, keep the link easy to find, and let the first replies teach you what needs clarification.', 'Your first goal is not a perfect board. It is a complete loop: someone understands the invitation, sends a message, receives a thoughtful response, and knows it can return.']],
+    ['The seven-day plan', ['Days one and two are for publishing and answering. Days three and four are for pinning a good example and changing one confusing detail. Days five and six are for trying a different format. Day seven is for deciding what to keep based on actual replies.', 'Do not make a beginner’s board carry every feature at once. {T} becomes manageable when the next action is obvious and the maintenance is short enough to repeat.']],
+    ['When to ask for help', ['Ask for help when the link is broken, the backup routine is uncertain, or someone is sending something that crosses a boundary. A support conversation is more useful than guessing when the risk involves account access or another person’s safety.', 'Otherwise, use the first week as a small experiment. Record what you tried, what happened, and what you would change; that record is the foundation for every later improvement.']],
   ],
-  verdict: [
-    ['The honest verdict', ['Alternatives exist for every piece: polls for opinions, forms for feedback, DMs for courage. Nothing else bundles anonymity with replies, rituals, and recipient control in one link — that bundle is the moat.', 'Use polls when you need numbers, forms when you need structure, and this when you need truth. Different tools, different jobs, no tribalism required.']],
+  advanced: [
+    ['The leverage point', ['Advanced use of {T} comes from coordinating the loop, not from adding more settings. Put the prompt where the audience already is, make the response easy to answer, and use the resulting signal to decide what deserves another week of effort.', 'The most useful systems are quiet: recurring prompts, a predictable reply window, and a small archive of messages that worked. They reduce the number of decisions without taking authorship away from you.']],
+    ['Edge cases worth planning for', ['Plan for a quiet week, a burst of messages, a sender who needs a boundary, and a device change. Each case should have a named response so the inbox does not require improvisation at the exact moment attention is scarce.', 'For {T}, the edge case is often not technical. It is social: a repeated sender, a question that needs privacy, or a reply that should stay kind but not become a promise. Write the response before you need it.']],
+    ['Measure the compounding', ['Compare return senders, thoughtful replies, and the time spent managing the board. Raw reach is useful for distribution, but it does not tell you whether the system is becoming easier to run or harder.', 'Change one variable in a two-week test and keep the result. A durable advanced practice is a sequence of measured, reversible decisions.']],
   ],
-  truths: [
-    ['Uncomfortable truths', ['Truth one: most boards fail from neglect, not hate — silence, not abuse, is the killer. Truth two: your best senders are quiet people who needed exactly one good reply to become regulars. Truth three: the feature you ignore (tray reviews, streak freezes, recents) is usually the one that would have saved you.', 'Sit with those before optimizing anything else.']],
+  comparison: [
+    ['Choose by job', ['The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. {T} is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.', 'Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.']],
+    ['What changes when you switch', ['Moving to {T} changes the friction profile. Senders no longer need an account, replies can remain double-blind, and the recipient can filter or pause without a public confrontation. That is a real advantage for sensitive conversations, not a reason to pretend every use case is anonymous.', 'The cost is operational responsibility. Prompts need maintenance, boundaries need explaining, and a quiet board needs diagnosis rather than blame. Compare the full workflow, not only the signup flow.']],
+    ['The verdict', ['Use the simplest tool that meets the need. Choose a poll for consensus, a form for repeatable data, a direct message for a known exchange, and {T} for candid, recipient-controlled interaction. Distinct tools solve distinct intents.', 'The most defensible choice is the one you can explain to the people using it and operate consistently for the next month.']],
   ],
-  scenes: [
-    ['Scene: the breakthrough week', ['Monday: a specific evening sticker goes up. Tuesday: three replies arrive, one spectacular. Wednesday: you answer all three double-blind. Thursday: two of the three send again, braver. Friday: a friend asks how your inbox got good — you send them your link and the loop recruits its next board.', 'Nothing in that week required talent. It required a loop, run once, in order.']],
+  myths: [
+    ['Myth, evidence, default', ['A common myth about {T} is that a blank prompt is neutral. It is not: a vague invitation sets the tone, determines who feels invited, and shapes the kind of response you will review. Replace the myth with a testable default: name the subject, the tone, and the boundary.', 'Evidence beats folklore here. Look at the specific messages that arrive, the people who return, and the cases that require intervention. The best correction is a practice that can be tested next week.']],
+    ['What survives the evidence', ['Anonymity can lower social pressure, but it cannot guarantee kindness. A strong prompt can improve participation, but it cannot manufacture care. Good filters can reduce obvious harm, but they cannot replace a clear community standard.', 'Keep the useful part of the myth and discard the promise. {T} is a way to remove identity pressure, not a substitute for consent, moderation, or a reason to keep the board running.']],
+    ['The practical default', ['Start with a specific invitation, reply within a predictable window, review the tray before it becomes a backlog, and explain what happens when a message crosses a line. These defaults are less exciting than a magic setting and more likely to survive a real community.', 'After a month, revise the default from evidence. A myth-busting page should leave readers with a better experiment, not just a firmer opinion.']],
   ],
-  answers: [
-    ['Asked and answered', ['"Does this really stay anonymous?" Yes — senders need no account, and the server stores zero sender identifiers. "What if someone is cruel?" Filters, tray review, blocks, reports, in that order. "Is the app free?" Sending, receiving, and replying are free forever; perks fund the servers.', 'Still curious? The inbox itself answers fastest: post a link and ask your own crowd.']],
+  scenarios: [
+    ['Scene map', ['Picture a real {T} board before it works: the first post is slightly awkward, the first replies arrive at uneven hours, and the owner is unsure whether to keep going. The useful question is not whether the scene looks effortless. It is which next action keeps the exchange alive.', 'Name the audience, the timing, the prompt, and the response. Those four details turn a vague story into a repeatable test that can be adapted without copying someone else’s personality.']],
+    ['The turning point', ['In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.', 'After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own {T} rather than copying the dramatic details.']],
+    ['Build your own version', ['Use the scene as a starting point, then change one element for your audience. A different time zone may need a later prompt; a smaller group may need a narrower question; a sensitive board may need stronger filters. The transferable asset is the loop, not the anecdote.', 'Scenarios are useful when they teach a decision. If the story ends without a clear next move, it is entertainment; if it leaves you with a test you can run, it is guidance.']],
   ],
+  faq: [
+    ['Short answers', ['Start with the question a first-time reader is likely to have about {T}, answer it in the first paragraph, and then show the condition that changes the answer. Directness here is more useful than a dramatic opening.', 'Keep the quick answers genuinely quick. Put the edge cases below them so readers can stop after resolving the practical question without losing the longer explanation.']],
+    ['Edge-case answers', ['Questions about privacy, safety, timing, or expectations become clearer when each answer names the tradeoff. Explain what the system protects, what the owner must do, and what remains outside the tool’s control.', 'A useful FAQ does not pretend every person has the same risk tolerance. It gives readers a way to make an informed choice and tells them where to look when the answer is not simple.']],
+    ['What to do next', ['Turn the most common questions into a small preflight: confirm the link, choose a prompt, decide how to review replies, and save the recovery information. {T} is easier to use when the answer to “what now?” is part of the product.', 'If a question remains, ask it with context. Include the board type, the moment you are trying to handle, and the result you expected. Better questions produce better answers than another search for a perfect slogan.']],
+  ],
+  secrets: [
+    ['The overlooked detail', ['The least obvious lever in {T} is often the one that makes the first action easy: a handle people can read, a prompt that says what to send, or a response that does not sound like an automated deflection. Details compound because they decide whether the next step is taken.', 'Review the path as a sender would. Start with the link, read the invitation, imagine the reply, and notice every point where curiosity gets interrupted. Fix the interruption before adding another feature.']],
+    ['The advanced loop', ['Experienced operators do not chase a perfect post. They build a small system for testing prompts, preserving winners, and returning to the people who replied well. The loop creates evidence; the evidence makes the next choice less arbitrary.', 'For {T}, keep a record of the question, the response pattern, and the change made. A small archive is more useful than a large list of features because it tells you what your audience actually values.']],
+    ['The non-obvious rule', ['The rule is to protect attention without making the board feel closed. Reply selectively, make boundaries visible, and leave enough room for a person to surprise you. {T} stays interesting when consistency provides safety without turning every interaction into a script.', 'The best advanced practice is restraint. Keep the system small enough to inspect, the prompt specific enough to trust, and the response human enough to remember.']],
+  ],
+};
+
+const ANGLE_PLANS = {
+  'ultimate-guide': [0, 1, 2, 3, 4],
+  mistakes: [2, 3, 4],
+  psychology: [1, 0, 2],
+  beginners: [0, 4, 1],
+  advanced: [3, 1, 4],
+  comparison: [4, 0],
+  myths: [1, 3, 2],
+  scenarios: [2, 0],
+  faq: [3, 1],
+  secrets: [2, 4],
 };
 
 const CLOSERS = [
@@ -737,37 +775,27 @@ function main() {
 
       const title = angle.title(topic.title);
       const slug = `${topic.slug}-${angle.id}`;
-      const intro = pick(rnd, INTROS[topic.cat]).replaceAll('{T}', topic.title.toLowerCase());
+      const intro = `${topic.title} is easier to use when the page has a clear job. This ${angle.frame} starts with the decision in front of you, then follows the details that make the decision workable.`;
       const outro = pick(rnd, OUTROS[topic.cat]);
       const stat = pick(rnd, STATS);
-      const stat2 = pick(rnd, STATS.filter((s) => s !== stat));
-      const stat3 = pick(rnd, STATS.filter((s) => s !== stat && s !== stat2));
-      const pitch = FEATURE_PITCH[topic.feature].map((p) => p).join('\n\n');
-      const angleSec = ANGLE_SECTIONS[angle.extra][0];
-      const deep = pick(rnd, DEEP_DIVES[topic.cat]);
-      const notes = pick(rnd, FIELD_NOTES[topic.cat]);
       const closer = pick(rnd, CLOSERS);
-      // Related: sibling angles of the same pillar (most relevant by construction).
       const sibs = ANGLES.filter((a) => a.id !== angle.id);
       const rel = [sibs[idx % sibs.length], sibs[(idx + 3) % sibs.length], sibs[(idx + 5) % sibs.length]];
       const relLines = rel.map((a) => `- [${a.title(topic.title)}](/post/${topic.slug}-${a.id})`);
-
-      // Rotate section order by angle for structural variety.
-      const secs = [...topic.secs];
-      const rot = idx % secs.length;
-      const ordered = [...secs.slice(rot), ...secs.slice(0, rot)];
+      const ordered = ANGLE_PLANS[angle.id].map((sectionIndex) => topic.secs[sectionIndex]);
+      const angleSections = ANGLE_CONTENT[angle.id].map(([heading, paragraphs]) => [
+        heading,
+        paragraphs.map((paragraph) => paragraph.replaceAll('{T}', topic.title)),
+      ]);
 
       let body = `# ${title}\n\n${intro}\n\n> ${stat}\n`;
-      ordered.forEach(([h, ps], si) => {
-        body += `\n## ${h}\n\n${ps.join('\n\n')}\n\n${LENSES[(idx + si * 3) % LENSES.length]}\n`;
+      ordered.forEach(([h, ps]) => {
+        body += `\n## ${h}\n\n${ps.join('\n\n')}\n`;
       });
-      body += `\n## ${angleSec[0]}\n\n${angleSec[1].join('\n\n')}\n`;
-      body += `\n## ${deep[0]}\n\n${deep[1].join('\n\n')}\n`;
-      body += `\n## ${notes[0]}\n\n${notes[1].join('\n\n')}\n`;
-      body += `\n## By the numbers\n\n- ${stat}\n\n- ${stat2}\n\n- ${stat3}\n`;
-      body += `\n## Why this works with SecretMsg\n\n${pitch}\n`;
-      body += `\n## Key takeaways\n\n${ordered.slice(0, 4).map(([h]) => `- ${h}: re-read that section before you post tonight.`).join('\n')}\n`;
-      body += `\n## Keep reading\n\n${relLines.join('\n')}\n`;
+      angleSections.forEach(([h, ps]) => {
+        body += `\n## ${h}\n\n${ps.join('\n\n')}\n`;
+      });
+      body += `\n## Related by intent\n\n${relLines.join('\n')}\n`;
       body += `\n${outro}\n\n*${closer}*\n`;
 
       const words = body.split(/\s+/).length;

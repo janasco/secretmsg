@@ -1,38 +1,22 @@
 ---
-title: Every Supporter Perk, Explained for Beginners
+title: "Every Supporter Perk, Explained for Beginners"
 slug: supporter-perks-tour-beginners
 date: 2026-04-12
 status: published
 tags: ["Product & Features", "Supporters", "Perks"]
 excerpt: "New to every supporter perk, explained? Start here: zero jargon, first win in under ten minutes."
-pixabay: golden badge premium
+pixabay: "golden badge premium"
 readMinutes: 4
-image: /blog-images/supporter-perks-tour-beginners.jpg
-image_r2: "https://cdn.secretmsg.net/blog/supporter-perks-tour-beginners.jpg"
-credit: rolfvandewal
-credit_url: "https://pixabay.com/photos/bmw-gearstick-4-series-premium-car-4993779/"
+image: ""
+image_r2: ""
+credit: ""
+credit_url: ""
 ---
 # Every Supporter Perk, Explained for Beginners
 
-This is the manual every supporter perk, explained should have shipped with: practical, opinionated, and short on fluff.
+Every Supporter Perk, Explained is easier to use when the page has a clear job. This zero-to-first-win tutorial starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
-
-## Custom usernames
-
-Auto-generated handles are charming; chosen names are identity. Supporters can claim a clean personal username once — short, memorable, linkable in bios everywhere.
-
-Claim carefully: usernames are unique, first-come, and part of your public link forever.
-
-Pushback welcome: skeptics will say this only works for extroverts, big accounts, or lucky timing. The data disagrees — small, consistent boards outperform flashy ones on every retention metric that matters. Boring and steady wins.
-
-## How backing works
-
-Checkout runs through verified Polar sessions; perks grant server-side only after payment confirms — no client-side unlocks to spoof. Monthly goal progress shows on the supporters wall for full transparency.
-
-Cancel anytime; perks persist for the paid period, then fade gracefully. No dark patterns, no retention mazes.
-
-If you take one thing from this section, take this: the mechanism matters less than the repetition. A mediocre prompt posted every evening beats a perfect prompt posted once, by an embarrassing margin.
+> Senders who start from a vibe template reply twice as often as those facing a blank box.
 
 ## Why perks exist at all
 
@@ -40,7 +24,11 @@ Servers, push infrastructure, spam screening, and app-store fees cost real money
 
 The line is deliberate: sending, receiving, and replying are free forever. Everything else is garnish.
 
-One more angle: consider what happens if you do the opposite for a week. Inversion is a cheap experiment and occasionally reveals that the conventional advice was optimized for someone else entirely.
+## How backing works
+
+Checkout runs through verified Polar sessions; perks grant server-side only after payment confirms — no client-side unlocks to spoof. Monthly goal progress shows on the supporters wall for full transparency.
+
+Cancel anytime; perks persist for the paid period, then fade gracefully. No dark patterns, no retention mazes.
 
 ## Badges and verified shine
 
@@ -48,61 +36,30 @@ A badge is social proof that you fund the commons. Verified marks supporters who
 
 Display them or hide them — both are respected choices, and toggling is instant.
 
-An example makes it concrete. Picture a board owner, Tuesday evening, phone in hand, three minutes to spare. Everything in this section should survive that exact scene — if it requires a desktop, a spreadsheet, or an hour, it belongs in a different post.
+## The first launch
 
-## Hints: viewer and sender
+Begin with one sentence that tells a first-time sender exactly what kind of message would be welcome in Every Supporter Perk, Explained. Do not explain the whole concept. Post the invitation, keep the link easy to find, and let the first replies teach you what needs clarification.
 
-Viewer hints reveal gentle context about your audience in aggregate; sender hints attach broad device context to messages whose senders allowed it. Neither ever identifies anyone — they add texture, not surveillance.
+Your first goal is not a perfect board. It is a complete loop: someone understands the invitation, sends a message, receives a thoughtful response, and knows it can return.
 
-Hint enjoyers describe the inbox as "warmer". Skeptics leave them off and lose nothing.
+## The seven-day plan
 
-Watch for the trap of optimizing too early. Run the basic version for two full weeks before tweaking anything — most "improvements" made in week one are just anxiety wearing a lab coat.
+Days one and two are for publishing and answering. Days three and four are for pinning a good example and changing one confusing detail. Days five and six are for trying a different format. Day seven is for deciding what to keep based on actual replies.
 
-## Step zero: set up in four minutes
+Do not make a beginner’s board carry every feature at once. Every Supporter Perk, Explained becomes manageable when the next action is obvious and the maintenance is short enough to repeat.
 
-Create the inbox, set a memorable PIN, save backup codes somewhere real (screenshot plus a file, not just memory), and post your first sticker before you close the app. Momentum beats perfection; a live imperfect board beats a perfect draft every time.
+## When to ask for help
 
-Common stall: agonizing over the handle. Auto-generated handles are charming and free — supporters can claim custom names later. Ship first.
+Ask for help when the link is broken, the backup routine is uncertain, or someone is sending something that crosses a boundary. A support conversation is more useful than guessing when the risk involves account access or another person’s safety.
 
-## What we will never build
+Otherwise, use the first week as a small experiment. Record what you tried, what happened, and what you would change; that record is the foundation for every later improvement.
 
-No read receipts for senders. No typing indicators. No follower counts, no public leaderboards of people, no "seen" checkmarks that manufacture anxiety. Engagement mechanics that cost users peace are off the table permanently.
-
-This restraint is a feature list in negative space. Every missing surveillance widget is a decision you can verify by using the app.
-
-## Feature adoption curves
-
-Power features take weeks to find their people. Streaks clicked instantly; the filtered tray took months of education. If a feature feels invisible, the answer is usually explanation, not redesign.
-
-Read the blog (this one) as the manual layer: every capability gets its essay, its scenarios, its edge cases. Documentation is a feature with words instead of buttons.
-
-## By the numbers
-
-- A paused board loses nothing: delivery simply waits until you reopen it.
-
-- The first reply a sender receives determines whether they ever send a second message.
-
-- Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
-
-## Why this works with SecretMsg
-
-Supporters keep the lights on and get the good stuff: badges, viewer hints, sender hints, custom usernames, and a wall that remembers them.
-
-Perks are granted server-side through verified checkouts only — no client-side unlocks, no funny business.
-
-## Key takeaways
-
-- Custom usernames: re-read that section before you post tonight.
-- How backing works: re-read that section before you post tonight.
-- Why perks exist at all: re-read that section before you post tonight.
-- Badges and verified shine: re-read that section before you post tonight.
-
-## Keep reading
+## Related by intent
 
 - [The Psychology Behind Every Supporter Perk, Explained](/post/supporter-perks-tour-psychology)
 - [5 Myths About Every Supporter Perk, Explained](/post/supporter-perks-tour-myths)
 - [Every Supporter Perk, Explained: Questions, Answered](/post/supporter-perks-tour-faq)
 
-Update the app, tap around, and make the feature yours. That is what it is for.
+Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
 
-*If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*
+*Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

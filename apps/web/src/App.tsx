@@ -48,7 +48,6 @@ const ROUTE_TITLES: Array<[RegExp, string]> = [
   [/^\/settings/, 'Settings - SecretMsg'],
   [/^\/login/, 'Log In - SecretMsg'],
   [/^\/supporters/, 'Supporters - SecretMsg'],
-  [/^\/donors/, 'Supporters - SecretMsg'],
   [/^\/dice/, 'Dice Roulette - SecretMsg'],
   [/^\/sticker-studio/, 'Sticker Studio - SecretMsg'],
   [/^\/demo/, 'Demo - SecretMsg'],
@@ -122,7 +121,6 @@ export const App: React.FC = () => {
           <Route path="/inbox" element={<InboxPage user={user} onOpenDonation={() => setIsDonationOpen(true)} onLogout={handleLogout} />} />
           <Route path="/settings" element={<SettingsPage user={user} setUser={setUser} onLogout={handleLogout} onOpenDonation={() => setIsDonationOpen(true)} />} />
           <Route path="/supporters" element={<SupportersPage onOpenDonation={() => setIsDonationOpen(true)} />} />
-          <Route path="/donors" element={<SupportersPage onOpenDonation={() => setIsDonationOpen(true)} />} />
           <Route path="/about" element={<Suspense fallback={<PublicSuspense />}><AboutPage /></Suspense>} />
           <Route path="/dice" element={<Suspense fallback={<PublicSuspense />}><DicePage /></Suspense>} />
           <Route path="/sticker-studio" element={<Suspense fallback={<PublicSuspense />}><StickerStudioPage /></Suspense>} />
@@ -139,10 +137,6 @@ export const App: React.FC = () => {
           <Route path="/p/safety-tools" element={<Suspense fallback={<PublicSuspense />}><SafetyToolsPage /></Suspense>} />
           <Route path="/p/resources" element={<Suspense fallback={<PublicSuspense />}><SafetyResourcesPage /></Suspense>} />
           <Route path="/p/contact-us" element={<Suspense fallback={<PublicSuspense />}><ContactPage /></Suspense>} />
-          <Route path="/p/legal/terms" element={<Suspense fallback={<PublicSuspense />}><TermsPage /></Suspense>} />
-          <Route path="/p/legal/privacy" element={<Suspense fallback={<PublicSuspense />}><PrivacyPage /></Suspense>} />
-          <Route path="/p/legal/cookies" element={<Suspense fallback={<PublicSuspense />}><CookiesPage /></Suspense>} />
-          <Route path="/p/legal/disclaimer" element={<Suspense fallback={<PublicSuspense />}><DisclaimerPage /></Suspense>} />
           <Route path="/p/privacy" element={<Suspense fallback={<PublicSuspense />}><PrivacyPage /></Suspense>} />
           <Route path="/p/terms" element={<Suspense fallback={<PublicSuspense />}><TermsPage /></Suspense>} />
           <Route path="/p/cookies" element={<Suspense fallback={<PublicSuspense />}><CookiesPage /></Suspense>} />

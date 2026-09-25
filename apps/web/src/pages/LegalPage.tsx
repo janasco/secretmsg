@@ -8,15 +8,15 @@ import { Navigate, useParams } from 'react-router-dom';
  * the canonical /p/* document.
  */
 const CANONICAL: Record<string, string> = {
-  terms: '/p/terms',
-  privacy: '/p/privacy',
-  cookies: '/p/cookies',
-  disclaimer: '/p/disclaimer',
+  terms: '/p/terms/',
+  privacy: '/p/privacy/',
+  cookies: '/p/cookies/',
+  disclaimer: '/p/disclaimer/',
 };
 
 export const LegalPage: React.FC = () => {
   const { doc } = useParams<{ doc: string }>();
-  const target = CANONICAL[(doc || '').toLowerCase()] ?? '/p/terms';
+  const target = CANONICAL[(doc || '').toLowerCase()] ?? '/p/terms/';
 
   if (
     typeof window !== 'undefined' &&

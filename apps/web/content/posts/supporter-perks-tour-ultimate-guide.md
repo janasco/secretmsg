@@ -1,22 +1,22 @@
 ---
-title: The Ultimate Guide to Every Supporter Perk, Explained
+title: "The Ultimate Guide to Every Supporter Perk, Explained"
 slug: supporter-perks-tour-ultimate-guide
 date: 2026-04-08
 status: published
 tags: ["Product & Features", "Supporters", "Perks"]
-excerpt: Everything about every supporter perk, explained — setup, strategy, and the details that separate thriving boards from silent ones.
-pixabay: golden badge premium
+excerpt: "Everything about every supporter perk, explained — setup, strategy, and the details that separate thriving boards from silent ones."
+pixabay: "golden badge premium"
 readMinutes: 4
-image: /blog-images/supporter-perks-tour-ultimate-guide.jpg
-image_r2: "https://cdn.secretmsg.net/blog/supporter-perks-tour-ultimate-guide.jpg"
-credit: rolfvandewal
-credit_url: "https://pixabay.com/photos/bmw-gearstick-4-series-premium-car-4993779/"
+image: ""
+image_r2: ""
+credit: ""
+credit_url: ""
 ---
 # The Ultimate Guide to Every Supporter Perk, Explained
 
-Most people use about ten percent of what their apps can do. Consider this your unlock key for every supporter perk, explained.
+Every Supporter Perk, Explained is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
 
 ## Why perks exist at all
 
@@ -24,15 +24,11 @@ Servers, push infrastructure, spam screening, and app-store fees cost real money
 
 The line is deliberate: sending, receiving, and replying are free forever. Everything else is garnish.
 
-Look closer and a second-order effect appears: the people who benefit most are rarely the loudest, which means the visible feedback undersells the real impact. Design for the quiet majority and let the vocal minority enjoy the ride.
-
 ## Badges and verified shine
 
 A badge is social proof that you fund the commons. Verified marks supporters whose backing is confirmed; tier badges (Coffee through Golden Guardian) mark how deep the commitment runs.
 
 Display them or hide them — both are respected choices, and toggling is instant.
-
-Pushback welcome: skeptics will say this only works for extroverts, big accounts, or lucky timing. The data disagrees — small, consistent boards outperform flashy ones on every retention metric that matters. Boring and steady wins.
 
 ## Hints: viewer and sender
 
@@ -40,15 +36,11 @@ Viewer hints reveal gentle context about your audience in aggregate; sender hint
 
 Hint enjoyers describe the inbox as "warmer". Skeptics leave them off and lose nothing.
 
-If you take one thing from this section, take this: the mechanism matters less than the repetition. A mediocre prompt posted every evening beats a perfect prompt posted once, by an embarrassing margin.
-
 ## Custom usernames
 
 Auto-generated handles are charming; chosen names are identity. Supporters can claim a clean personal username once — short, memorable, linkable in bios everywhere.
 
 Claim carefully: usernames are unique, first-come, and part of your public link forever.
-
-One more angle: consider what happens if you do the opposite for a week. Inversion is a cheap experiment and occasionally reveals that the conventional advice was optimized for someone else entirely.
 
 ## How backing works
 
@@ -56,53 +48,30 @@ Checkout runs through verified Polar sessions; perks grant server-side only afte
 
 Cancel anytime; perks persist for the paid period, then fade gracefully. No dark patterns, no retention mazes.
 
-An example makes it concrete. Picture a board owner, Tuesday evening, phone in hand, three minutes to spare. Everything in this section should survive that exact scene — if it requires a desktop, a spreadsheet, or an hour, it belongs in a different post.
+## The complete path
 
-## Your action checklist
+Start by choosing the job Every Supporter Perk, Explained needs to do, then write the smallest prompt that serves that job. A complete guide is not a longer checklist; it is a sequence of decisions that keeps the board coherent as it grows.
 
-Print this mentally and run it in order. First, the one-time setup: link live, prompt specific, filters sane. Second, the weekly loop: post evenings, answer nightly, review the tray. Third, the monthly audit: strictness, pins, stale presets.
+Keep the first week deliberately small: publish one specific invitation, answer the replies you receive, and record what people return to. Add features only after the basic loop has a real response.
 
-Most people do step one and skip the loop, then wonder why results fade. The loop IS the product — setup merely unlocks it.
+## The operating system
 
-## Under the hood, honestly
+A durable setup has three layers: a clear promise to senders, a dependable reply routine, and a review habit for anything that needs a decision. Every Supporter Perk, Explained works best when those layers reinforce one another instead of competing for attention.
 
-No machine learning, no behavior graphs, no engagement optimizer. The stack is boring on purpose: a fast edge API, an encrypted-at-rest database, and client apps with no trackers. Boring scales, boring audits, boring sleeps well.
+Use the feature that removes the most friction this week. For one board that may be a filter; for another, a backup-code routine or a better sticker. The best setup is the one you will still follow when the novelty fades.
 
-Every "smart" feature here is deterministic: streak math, drop rotation, template pools. Deterministic means testable, explainable, and private — the opposite of the black boxes that monetize you elsewhere.
+## What good looks like
 
-## Feature adoption curves
+Good does not mean a crowded inbox. It means the right people can understand the invitation, send without fear, and receive a response that makes the next visit likely. Every Supporter Perk, Explained becomes useful when the board feels dependable, not merely popular.
 
-Power features take weeks to find their people. Streaks clicked instantly; the filtered tray took months of education. If a feature feels invisible, the answer is usually explanation, not redesign.
+Review the loop at the end of each month. Keep what produced thoughtful returns, retire what created only noise, and write down the one change you will test next.
 
-Read the blog (this one) as the manual layer: every capability gets its essay, its scenarios, its edge cases. Documentation is a feature with words instead of buttons.
-
-## By the numbers
-
-- Senders who start from a vibe template reply twice as often as those facing a blank box.
-
-- Anonymous feedback is measurably more candid than attributed feedback in every study of it.
-
-- Boards that answer with double-blind replies keep senders coming back for weeks.
-
-## Why this works with SecretMsg
-
-Supporters keep the lights on and get the good stuff: badges, viewer hints, sender hints, custom usernames, and a wall that remembers them.
-
-Perks are granted server-side through verified checkouts only — no client-side unlocks, no funny business.
-
-## Key takeaways
-
-- Why perks exist at all: re-read that section before you post tonight.
-- Badges and verified shine: re-read that section before you post tonight.
-- Hints: viewer and sender: re-read that section before you post tonight.
-- Custom usernames: re-read that section before you post tonight.
-
-## Keep reading
+## Related by intent
 
 - [What Nobody Tells You About Every Supporter Perk, Explained](/post/supporter-perks-tour-secrets)
 - [Every Supporter Perk, Explained for Beginners](/post/supporter-perks-tour-beginners)
 - [Every Supporter Perk, Explained vs the Alternatives](/post/supporter-perks-tour-comparison)
 
-Update the app, tap around, and make the feature yours. That is what it is for.
+Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
 
-*Theory ends here. Open the app, run one play from this post, and check back tomorrow.*
+*Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*

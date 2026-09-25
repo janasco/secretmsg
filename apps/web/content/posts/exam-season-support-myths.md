@@ -1,20 +1,20 @@
 ---
-title: 5 Myths About Exam Season Support Boards
+title: "5 Myths About Exam Season Support Boards"
 slug: exam-season-support-myths
 date: 2026-12-20
 status: scheduled
 tags: ["Moments & Seasons", "Seasonal", "Support"]
-excerpt: Five myths about exam season support boards, busted with evidence and better defaults.
-pixabay: students studying library
+excerpt: "Five myths about exam season support boards, busted with evidence and better defaults."
+pixabay: "students studying library"
 readMinutes: 4
-image: /blog-images/exam-season-support-myths.jpg
-image_r2: "https://cdn.secretmsg.net/blog/exam-season-support-myths.jpg"
-credit: wal_172619
-credit_url: "https://pixabay.com/photos/library-books-reading-knowledge-7408106/"
+image: ""
+image_r2: ""
+credit: ""
+credit_url: ""
 ---
 # 5 Myths About Exam Season Support Boards
 
-Seasons change what people want to confess. Align your board with exam season support boards and watch what happens.
+Exam Season Support Boards is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
 > Anonymous feedback is measurably more candid than attributed feedback in every study of it.
 
@@ -24,7 +24,11 @@ Post the board link with library hours: "procrastinating? send a TBH instead of 
 
 Evening drops sync perfectly with study schedules — prompt at dinner, replies by midnight, morale for tomorrow.
 
-If you take one thing from this section, take this: the mechanism matters less than the repetition. A mediocre prompt posted every evening beats a perfect prompt posted once, by an embarrassing margin.
+## Boundaries during crunch
+
+Pause the board during actual exam hours — delivery waits, focus does not. Word-filter the catastrophizing spirals ("fail", "drop out") into the tray for calmer review.
+
+Protect sleep like a subject: notifications off, digest on, inbox in the morning like mail.
 
 ## Anonymous pep talks hit different
 
@@ -32,77 +36,30 @@ If you take one thing from this section, take this: the mechanism matters less t
 
 Reply to the scared ones double-blind. One sentence from a stranger can reroute an entire study night.
 
-One more angle: consider what happens if you do the opposite for a week. Inversion is a cheap experiment and occasionally reveals that the conventional advice was optimized for someone else entirely.
+## Myth, evidence, default
 
-## Boundaries during crunch
+A common myth about Exam Season Support Boards is that a blank prompt is neutral. It is not: a vague invitation sets the tone, determines who feels invited, and shapes the kind of response you will review. Replace the myth with a testable default: name the subject, the tone, and the boundary.
 
-Pause the board during actual exam hours — delivery waits, focus does not. Word-filter the catastrophizing spirals ("fail", "drop out") into the tray for calmer review.
+Evidence beats folklore here. Look at the specific messages that arrive, the people who return, and the cases that require intervention. The best correction is a practice that can be tested next week.
 
-Protect sleep like a subject: notifications off, digest on, inbox in the morning like mail.
+## What survives the evidence
 
-An example makes it concrete. Picture a board owner, Tuesday evening, phone in hand, three minutes to spare. Everything in this section should survive that exact scene — if it requires a desktop, a spreadsheet, or an hour, it belongs in a different post.
+Anonymity can lower social pressure, but it cannot guarantee kindness. A strong prompt can improve participation, but it cannot manufacture care. Good filters can reduce obvious harm, but they cannot replace a clear community standard.
 
-## After the last paper
+Keep the useful part of the myth and discard the promise. Exam Season Support Boards is a way to remove identity pressure, not a substitute for consent, moderation, or a reason to keep the board running.
 
-Flip the board to celebration mode: predictions, roasts, summer plans. The same link that absorbed stress now collects joy — full circle in one URL.
+## The practical default
 
-Keep the kindest messages. Future hard weeks accept them as currency.
+Start with a specific invitation, reply within a predictable window, review the tray before it becomes a backlog, and explain what happens when a message crosses a line. These defaults are less exciting than a magic setting and more likely to survive a real community.
 
-Watch for the trap of optimizing too early. Run the basic version for two full weeks before tweaking anything — most "improvements" made in week one are just anxiety wearing a lab coat.
+After a month, revise the default from evidence. A myth-busting page should leave readers with a better experiment, not just a firmer opinion.
 
-## Stress loves an audience
-
-Exam weeks concentrate anxiety beautifully — everyone spiraling in parallel, nobody saying it. A support board converts private panic into shared comedy and genuine encouragement.
-
-Prompt it well: "TBH about finals week fears" beats "send messages" the way umbrellas beat wishing.
-
-Context changes everything, so calibrate to your audience size. Under fifty followers, intimacy does the heavy lifting — be personal. Over five hundred, systems do — be consistent. Same section, different emphasis.
-
-## Uncomfortable truths
-
-Truth one: most boards fail from neglect, not hate — silence, not abuse, is the killer. Truth two: your best senders are quiet people who needed exactly one good reply to become regulars. Truth three: the feature you ignore (tray reviews, streak freezes, recents) is usually the one that would have saved you.
-
-Sit with those before optimizing anything else.
-
-## Borrowed energy
-
-Moments do half your marketing: the calendar supplies motive, mood, and attention, and your prompt just needs to catch the wave. Generic prompts on special weeks underperform specific seasonal ones dramatically.
-
-The rule: name the moment in the prompt. "TBH about this semester" beats "send TBH" every finals week ever recorded.
-
-## Off-season maintenance
-
-Between moments, run evergreen prompts weekly to keep the loop warm. A board that posts monthly hibernates; one that posts weekly idles, ready to sprint.
-
-Use quiet weeks for audits: filters, pins, presets, streaks. Maintenance in peacetime wins wartime.
-
-## By the numbers
-
-- Anonymous feedback is measurably more candid than attributed feedback in every study of it.
-
-- A paused board loses nothing: delivery simply waits until you reopen it.
-
-- The first reply a sender receives determines whether they ever send a second message.
-
-## Why this works with SecretMsg
-
-Your inbox is private by default: no public wall, no follower counts, no performative metrics. Just messages, replies, and the quiet satisfaction of being told the truth.
-
-Everything lands in one calm stream with filters for unread, replied, and pinned — triage in seconds, then get on with your day.
-
-## Key takeaways
-
-- Study break rituals: re-read that section before you post tonight.
-- Anonymous pep talks hit different: re-read that section before you post tonight.
-- Boundaries during crunch: re-read that section before you post tonight.
-- After the last paper: re-read that section before you post tonight.
-
-## Keep reading
+## Related by intent
 
 - [The Psychology Behind Exam Season Support Boards](/post/exam-season-support-psychology)
 - [Exam Season Support Boards vs the Alternatives](/post/exam-season-support-comparison)
 - [Exam Season Support Boards: Questions, Answered](/post/exam-season-support-faq)
 
-The window is open now — it will not stay open. Post while the moment is hot.
+Calendar moves fast. Your link should move faster.
 
-*Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*
+*Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

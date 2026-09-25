@@ -1,22 +1,26 @@
 ---
-title: Word Filters, Mastered vs the Alternatives
+title: "Word Filters, Mastered vs the Alternatives"
 slug: word-filters-mastery-comparison
 date: 2026-02-03
 status: published
 tags: ["Safety & Moderation", "Safety", "Moderation"]
-excerpt: How word filters, mastered stacks against the alternatives — honest verdict, no tribalism.
-pixabay: shield protection security
-readMinutes: 5
-image: /blog-images/word-filters-mastery-comparison.jpg
-image_r2: "https://cdn.secretmsg.net/blog/word-filters-mastery-comparison.jpg"
-credit: PublicDomainPictures
-credit_url: "https://pixabay.com/photos/close-isolated-key-keys-lock-2204/"
+excerpt: "How word filters, mastered stacks against the alternatives — honest verdict, no tribalism."
+pixabay: "shield protection security"
+readMinutes: 4
+image: ""
+image_r2: ""
+credit: ""
+credit_url: ""
 ---
 # Word Filters, Mastered vs the Alternatives
 
-Anonymity protects honesty, and occasionally shields unkindness. That is exactly why word filters, mastered exists, and why you should know it cold.
+Word Filters, Mastered is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A paused board loses nothing: delivery simply waits until you reopen it.
+
+## The monthly five-minute audit
+
+Open the tray, scan what was caught, delete the junk, approve the edge cases, add any new repeat offender to the list, and check strictness still matches your life. Five minutes, once a month, and the system stays invisible the way good infrastructure should.
 
 ## What filters actually do
 
@@ -24,83 +28,30 @@ Every incoming message is scanned server-side against your list before delivery.
 
 Nobody is told what tripped: not the sender, not the word, not the rule. That silence is load-bearing — naming the rule would let senders probe around it.
 
-Watch for the trap of optimizing too early. Run the basic version for two full weeks before tweaking anything — most "improvements" made in week one are just anxiety wearing a lab coat.
+## Choose by job
 
-## Building a list that works
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Word Filters, Mastered is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Start with your five non-negotiables — the words that ruin your day on sight. Add variants over time as the tray shows you what is actually arriving. Review the tray weekly at first, monthly once it stabilizes.
+Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
 
-Resist the urge to filter emotions instead of abuse. "hate" is a filter; "disagree" is a conversation. Over-filtering starves the inbox you built the board to fill.
+## What changes when you switch
 
-Context changes everything, so calibrate to your audience size. Under fifty followers, intimacy does the heavy lifting — be personal. Over five hundred, systems do — be consistent. Same section, different emphasis.
+Moving to Word Filters, Mastered changes the friction profile. Senders no longer need an account, replies can remain double-blind, and the recipient can filter or pause without a public confrontation. That is a real advantage for sensitive conversations, not a reason to pretend every use case is anonymous.
 
-## Standard vs strict, honestly
+The cost is operational responsibility. Prompts need maintenance, boundaries need explaining, and a quiet board needs diagnosis rather than blame. Compare the full workflow, not only the signup flow.
 
-Standard holds matches for review: maximum safety with zero false-positive cost. Strict rejects at send time, which feels stronger but blinds you — you will never know what you refused. Most people should run standard and review the tray like mail.
+## The verdict
 
-Off exists for trusted circles and short experiments. Set a reminder to turn it back on.
+Use the simplest tool that meets the need. Choose a poll for consensus, a form for repeatable data, a direct message for a known exchange, and Word Filters, Mastered for candid, recipient-controlled interaction. Distinct tools solve distinct intents.
 
-There is a common failure mode here worth naming: doing the motion without the meaning. Checklist behavior — tapping through steps while thinking about dinner — produces checklist results. Slow down for the one step that actually matters and rush the rest.
+The most defensible choice is the one you can explain to the people using it and operate consistently for the next month.
 
-## Filters plus pause plus block
-
-Filters handle words, pause handles volume, blocks handle people. A bad week usually needs pause, not a longer word list. A repeat offender needs a block, not a filter. Match the tool to the problem and each stays sharp.
-
-Reports are the fourth lever: use them when behavior, not content, is the issue.
-
-The advanced version of this section fits in one sentence: automate the reminder, personalize the execution. Systems handle cadence; humans handle care. Never confuse which job is yours.
-
-## The monthly five-minute audit
-
-Open the tray, scan what was caught, delete the junk, approve the edge cases, add any new repeat offender to the list, and check strictness still matches your life. Five minutes, once a month, and the system stays invisible the way good infrastructure should.
-
-A useful test: explain this section to a friend in thirty seconds. Whatever survives that compression is the real point; everything else was scaffolding. Keep the point, ship the scaffolding to the archive.
-
-## The honest verdict
-
-Alternatives exist for every piece: polls for opinions, forms for feedback, DMs for courage. Nothing else bundles anonymity with replies, rituals, and recipient control in one link — that bundle is the moat.
-
-Use polls when you need numbers, forms when you need structure, and this when you need truth. Different tools, different jobs, no tribalism required.
-
-## Helping others stay safe
-
-Share this post with anyone running a board, especially younger users. Walk them through pause and block before they need either — safety tooling learned calmly works instantly under stress.
-
-Normalize reporting: it protects the whole platform, takes seconds, and never exposes the reporter. Communities that report stay communities.
-
-## Threat modeling for real life
-
-List your actual risks in order: unkind strangers, boundary-pushing acquaintances, coordinated pile-ons, platform-level failures. Assign one tool per risk and stop there — uncovered risks get attention, covered ones get peace.
-
-Revisit the list seasonally. Risks change with visibility: a board that grows tenfold needs a stricter posture than a quiet one.
-
-## By the numbers
-
-- Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
-
-- Boards that answer with double-blind replies keep senders coming back for weeks.
-
-- Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
-
-## Why this works with SecretMsg
-
-Word filters hold hits in a review tray instead of deleting them into the void. You approve what is fair and discard what is not — the sender never knows which.
-
-Strictness dials the whole system from off to strict, pause takes the board offline gracefully, and blocks stick to hashed fingerprints, never identities.
-
-## Key takeaways
-
-- What filters actually do: re-read that section before you post tonight.
-- Building a list that works: re-read that section before you post tonight.
-- Standard vs strict, honestly: re-read that section before you post tonight.
-- Filters plus pause plus block: re-read that section before you post tonight.
-
-## Keep reading
+## Related by intent
 
 - [Word Filters, Mastered: Questions, Answered](/post/word-filters-mastery-faq)
 - [Word Filters, Mastered: 7 Mistakes Everyone Makes](/post/word-filters-mastery-mistakes)
 - [Word Filters, Mastered for Beginners](/post/word-filters-mastery-beginners)
 
-Save this post, share it with anyone running a board, and sleep well: the levers are all yours.
+Filter, pause, block, report — in that order. Your inbox, your rules, enforced by the server.
 
-*If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*
+*Bookmark it, share it with a friend running a board, and put one idea to work this week.*
