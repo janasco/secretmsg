@@ -10,12 +10,12 @@
 import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { HOST, STATIC_ROUTES, canonicalUrl } from './site-manifest.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const postsDir = join(root, 'content', 'posts');
 const outIndex = join(root, 'public', 'blog-index.json');
 const outPosts = join(root, 'public', 'posts');
-const HOST = 'https://secretmsg.net';
 
 const esc = (s) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -131,14 +131,6 @@ function rfc822(iso) {
   return new Date(Date.UTC(y, m - 1, d, 12)).toUTCString();
 }
 
-const STATIC_ROUTES = [
-  '/', '/about', '/faq', '/contact', '/download', '/supporters', '/demo',
-  '/dice', '/sticker-studio', '/login', '/delete-account', '/blog',
-  '/p/safety', '/p/child-safety-policy', '/p/approach-to-safety',
-  '/p/guide-to-online-safety', '/p/community-guidelines', '/p/safety-tools',
-  '/p/resources', '/p/contact-us', '/p/terms', '/p/privacy', '/p/cookies', '/p/disclaimer',
-];
-
 const today = new Date().toISOString().slice(0, 10);
 const files = readdirSync(postsDir).filter((f) => f.endsWith('.md')).sort();
 const duePosts = [];
@@ -192,8 +184,8 @@ for (const p of published) writeFileSync(join(outPosts, `${p.slug}.json`), JSON.
 
 const latest = published.length ? published[0].date : today;
 const sitemapUrls = [
-  ...STATIC_ROUTES.map((r) => ({ loc: `${HOST}${r}`, lastmod: latest })),
-  ...published.map((p) => ({ loc: `${HOST}/post/${p.slug}`, lastmod: p.date })),
+  ...STATIC_ROUTES.map((route) => ({ loc: canonicalUrl(route.path), lastmod: latest })),
+  ...published.map((p) => ({ loc: canonicalUrl(`/post/${p.slug}`), lastmod: p.date })),
 ];
 writeFileSync(
   join(root, 'public', 'sitemap.xml'),
@@ -204,10 +196,10 @@ writeFileSync(
 writeFileSync(
   join(root, 'public', 'feed.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n` +
-    `    <title>SecretMsg Blog</title>\n    <link>${esc(`${HOST}/blog`)}</link>\n` +
+    `    <title>SecretMsg Blog</title>\n    <link>${esc(canonicalUrl('/blog'))}</link>\n` +
     `    <description>Notes on honest messaging, privacy, and anonymous culture.</description>\n    <language>en-us</language>\n` +
     published.slice(0, 50).map((p) =>
-      `    <item>\n      <title>${esc(p.title)}</title>\n      <link>${esc(`${HOST}/post/${p.slug}`)}</link>\n` +
+      `    <item>\n      <title>${esc(p.title)}</title>\n      <link>${esc(canonicalUrl(`/post/${p.slug}`))}</link>\n` +
       `      <guid isPermaLink="true">${esc(`${HOST}/post/${p.slug}`)}</guid>\n      <pubDate>${rfc822(p.date)}</pubDate>\n      <description>${esc(p.excerpt)}</description>\n    </item>`).join('\n') +
     `\n  </channel>\n</rss>\n`,
 );

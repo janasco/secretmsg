@@ -248,10 +248,33 @@ Future<void> rescheduleAll({
 
 /// Cancels every ritual reminder (logout / toggles all off).
 Future<void> cancelAllReminders() async {
+  if (!_ready) return;
   await _plugin.cancel(_idDropMorning);
   await _plugin.cancel(_idDropEvening);
   await _plugin.cancel(_idStreakNight);
   await _plugin.cancel(_idDigestWeekly);
+}
+
+Future<List<String>> clearReminderPreferences() async {
+  final failures = <String>[];
+  try {
+    final prefs = await SharedPreferences.getInstance();
+    for (final key in [
+      prefDropEnabled,
+      prefStreakEnabled,
+      prefMilestoneEnabled,
+      prefDigestEnabled,
+    ]) {
+      try {
+        await prefs.remove(key);
+      } catch (_) {
+        failures.add('reminder preferences');
+      }
+    }
+  } catch (_) {
+    failures.add('reminder preferences');
+  }
+  return failures;
 }
 
 /// Immediate milestone push (rank-up). Respects its toggle.

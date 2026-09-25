@@ -143,6 +143,53 @@ class Session {
   }
 
   static Future<void> clearDeviceFingerprint() async {
+    _memFp = null;
     await _storage.delete(key: _kDeviceFpKey);
+  }
+
+  static Future<List<String>> clearAccountData() async {
+    final failures = <String>[];
+
+    void recordFailure(String subsystem) {
+      if (!failures.contains(subsystem)) failures.add(subsystem);
+    }
+
+    _memToken = null;
+    _memFp = null;
+
+    Future<void> deleteSecure(String key) async {
+      try {
+        await _storage.delete(key: key);
+      } catch (_) {
+        recordFailure('secure storage');
+      }
+    }
+
+    await deleteSecure(_kTokenKey);
+    await deleteSecure(_kProfileKey);
+    await deleteSecure(_kDeviceFpKey);
+    await deleteSecure(_kLastRankKey);
+
+    try {
+      final prefs = await _prefs;
+      final keys = prefs.getKeys().where(
+        (key) =>
+            key == _kStreakKey ||
+            key == _kDayKey ||
+            key == _kBadgesKey ||
+            key.startsWith(_kDonePrefix),
+      );
+      for (final key in keys) {
+        try {
+          await prefs.remove(key);
+        } catch (_) {
+          recordFailure('gamification preferences');
+        }
+      }
+    } catch (_) {
+      recordFailure('gamification preferences');
+    }
+
+    return failures;
   }
 }

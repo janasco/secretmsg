@@ -75,6 +75,14 @@ class StreakStore {
     }
   }
 
+  static Future<void> clear() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_kCount);
+    await prefs.remove(_kLastDay);
+    await prefs.remove(_kFreezes);
+    await prefs.remove(_kLastRepair);
+  }
+
   /// Records a check-in for [now]. Returns the new state plus whether a
   /// freeze absorbed a missed day and whether a 7-day milestone earned one.
   static Future<StreakCheckIn> checkIn(DateTime now) async {

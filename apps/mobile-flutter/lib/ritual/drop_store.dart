@@ -27,6 +27,11 @@ class DropStore {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_kDropDoneDay, dayKey(now));
   }
+
+  static Future<void> clear() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_kDropDoneDay);
+  }
 }
 
 class VibeStore {
@@ -42,5 +47,11 @@ class VibeStore {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_kVibeDay, dayKey(now));
     await prefs.setString(_kVibeMood, mood);
+  }
+
+  static Future<void> clear() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_kVibeDay);
+    await prefs.remove(_kVibeMood);
   }
 }

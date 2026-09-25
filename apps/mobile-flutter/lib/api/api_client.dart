@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'config.dart';
+import 'local_data_wipe.dart';
 import 'models.dart';
 import 'session.dart';
 
@@ -386,7 +387,7 @@ class ApiClient {
   // ---- Account deletion ----
   static Future<void> deleteAccount() async {
     await _deleteJson('/api/account');
-    await Session.clear();
+    await AccountDataWipe.wipeAllLocalAccountData();
   }
 
   // ---- Abuse report ----

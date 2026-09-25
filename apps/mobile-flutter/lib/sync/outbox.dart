@@ -302,7 +302,13 @@ class Outbox {
   /// Drops the whole queue (logout: parked ops are authed as the previous
   /// owner and could never succeed — the drain drops them on 401 anyway).
   static Future<void> clearAll() async {
-    await _write([]);
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove(_kOutboxKey);
+      _emit([], draining: _draining);
+    } catch (_) {
+      await refresh();
+    }
   }
 
   /// Removes a parked op (user chose the manual composer handoff instead).

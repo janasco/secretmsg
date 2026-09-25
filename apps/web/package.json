@@ -9,6 +9,7 @@
     "dev": "vite",
     "prebuild": "node scripts/blog.mjs",
     "build": "tsc && vite build",
+    "postbuild": "node scripts/prerender.mjs",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
