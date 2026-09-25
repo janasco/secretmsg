@@ -1,9 +1,16 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:secretmsg_mobile/api/api_client.dart';
 import 'package:secretmsg_mobile/sync/cache.dart';
 import 'package:secretmsg_mobile/sync/outbox.dart';
 
 void main() {
+  setUp(() async {
+    SharedPreferences.setMockInitialValues({});
+    await Outbox.clearAll();
+  });
+
   group('newClientMsgId', () {
     test('matches the server shape and is unique', () {
       final a = newClientMsgId();
@@ -28,6 +35,8 @@ void main() {
       expect(back.params['reply'], 'hi');
       expect(back.attempts, 0);
       expect(back.needsVerification, false);
+      expect(back.failed, false);
+      expect(back.error, isNull);
     });
 
     test('bumped increments attempts and can flag', () {
@@ -51,6 +60,56 @@ void main() {
         'queuedAt': 0,
       });
       expect(op.kind, OutboxKind.send);
+    });
+  });
+
+  group('failed operations', () {
+    test('preserves server rejection and surfaces its safe message', () async {
+      final op = await Outbox.enqueue(
+        OutboxKind.report,
+        {'messageId': 'm1', 'reason': 'bad'},
+        autoDrain: false,
+      );
+
+      final drained = await Outbox.drain(
+        execute: (_) async {
+          throw ApiException(
+            'That report reason is not allowed.',
+            statusCode: 400,
+            body: const {},
+          );
+        },
+      );
+
+      expect(drained, false);
+      expect(await Outbox.depth(), 1);
+      expect(Outbox.status.value.failed?.id, op.id);
+      expect(Outbox.status.value.error, 'That report reason is not allowed.');
+
+      await Outbox.discard(op.id);
+      expect(await Outbox.depth(), 0);
+    });
+
+    test('preserves unknown failure without exposing exception text', () async {
+      final op = await Outbox.enqueue(
+        OutboxKind.reply,
+        {'messageId': 'm1', 'reply': 'hello'},
+        autoDrain: false,
+      );
+
+      final drained = await Outbox.drain(
+        execute: (_) async {
+          throw StateError('sensitive internal detail');
+        },
+      );
+
+      expect(drained, false);
+      expect(await Outbox.depth(), 1);
+      expect(Outbox.status.value.failed?.id, op.id);
+      expect(Outbox.status.value.error, 'Queued action failed unexpectedly.');
+
+      await Outbox.discard(op.id);
+      expect(await Outbox.depth(), 0);
     });
   });
 

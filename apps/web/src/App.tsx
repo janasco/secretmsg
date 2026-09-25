@@ -98,6 +98,12 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-dark-950 text-slate-100 selection:bg-indigo-500 selection:text-white">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only:fixed focus:not-sr-only:left-4 focus:not-sr-only:top-4 focus:not-sr-only:z-[60] focus:not-sr-only:rounded-lg focus:not-sr-only:bg-indigo-600 focus:not-sr-only:px-4 focus:not-sr-only:py-2 focus:not-sr-only:text-sm focus:not-sr-only:font-semibold focus:not-sr-only:text-white"
+      >
+        Skip to main content
+      </a>
       <Navbar
         user={user}
         onOpenDonation={() => setIsDonationOpen(true)}
@@ -107,7 +113,7 @@ export const App: React.FC = () => {
       <ViewOnlyBanner />
 
       <RouteTitle />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <Routes>
           <Route path="/" element={<LandingPage onOpenDonation={() => setIsDonationOpen(true)} />} />
           <Route path="/login" element={<LoginPage onLoginSuccess={(u) => setUser(u)} />} />

@@ -340,22 +340,28 @@ class _VibeIcon extends StatelessWidget {
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          width: 46,
-          height: 46,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: selected
-                ? context.colors.accent.withValues(alpha: 0.2)
-                : Colors.transparent,
-            border: Border.all(
-              color: selected ? context.colors.accent : context.colors.border,
-              width: selected ? 2 : 1,
+        child: SizedBox(
+          width: 48,
+          height: 48,
+          child: Center(
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
+              width: 46,
+              height: 46,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: selected
+                    ? context.colors.accent.withValues(alpha: 0.2)
+                    : Colors.transparent,
+                border: Border.all(
+                  color: selected ? context.colors.accent : context.colors.border,
+                  width: selected ? 2 : 1,
+                ),
+              ),
+              child: Text(emoji, style: const TextStyle(fontSize: 22)),
             ),
           ),
-          child: Text(emoji, style: const TextStyle(fontSize: 22)),
         ),
       ),
     );

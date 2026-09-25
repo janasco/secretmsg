@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -42,6 +41,13 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
     super.initState();
     _loadIdentity();
     _loadRecents();
+  }
+
+  @override
+  void dispose() {
+    _captionCtrl.dispose();
+    _linkCtrl.dispose();
+    super.dispose();
   }
 
   /// Prefills the board link (and avatar) for signed-in owners so the
@@ -109,12 +115,20 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
       if (mounted) showErrorSnack(context, 'Could not capture sticker');
       return;
     }
-    unawaited(_keepRecent(path));
-    await Share.shareXFiles(
-      [XFile(path)],
-      text: '$_caption\n\n${shareUrlFor(_boardHandle)}',
-      subject: '$_caption\n\n${shareUrlFor(_boardHandle)}',
-    );
+    try {
+      await _keepRecent(path);
+      await Share.shareXFiles(
+        [XFile(path)],
+        text: '$_caption\n\n${shareUrlFor(_boardHandle)}',
+        subject: '$_caption\n\n${shareUrlFor(_boardHandle)}',
+      );
+    } catch (_) {
+      if (mounted) showErrorSnack(context, 'Could not share sticker');
+    } finally {
+      try {
+        await File(path).delete();
+      } catch (_) {}
+    }
   }
 
   /// Recents tray: last 6 shared/saved stickers on-device for one-tap reshare.
@@ -169,6 +183,7 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
   }
 
   Future<void> _saveImage() async {
+    File? capture;
     try {
       final hasAccess = await Gal.requestAccess();
       if (!hasAccess) {
@@ -180,10 +195,17 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
         if (mounted) showErrorSnack(context, 'Could not capture sticker');
         return;
       }
-      await Gal.putImageBytes(File(path).readAsBytesSync(), name: 'secretmsg-sticker');
+      capture = File(path);
+      await Gal.putImageBytes(await capture.readAsBytes(), name: 'secretmsg-sticker');
       if (mounted) showSuccessSnack(context, 'Sticker saved to gallery');
     } catch (_) {
       if (mounted) showErrorSnack(context, 'Could not save sticker');
+    } finally {
+      if (capture != null) {
+        try {
+          await capture.delete();
+        } catch (_) {}
+      }
     }
   }
 
@@ -321,12 +343,16 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
             separatorBuilder: (_, __) => const SizedBox(width: 8),
             itemBuilder: (_, i) {
               final f = _recents[i];
-              return GestureDetector(
-                onTap: () => _reshareRecent(f),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.file(f, width: 54, height: 96, fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) => const SizedBox(width: 54, height: 96)),
+              return Semantics(
+                button: true,
+                label: 'Reshare recent sticker ${i + 1}',
+                child: GestureDetector(
+                  onTap: () => _reshareRecent(f),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.file(f, width: 54, height: 96, fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) => const SizedBox(width: 54, height: 96)),
+                  ),
                 ),
               );
             },
@@ -391,6 +417,7 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
           children: [
             for (final t in STICKER_THEMES) ...[
               _ThemeSwatch(
+                label: t.name,
                 gradient: [for (final c in t.gradient) _parseHex(c)],
                 selected: _themeId == t.id,
                 onTap: () => _pickTheme(t.id),
@@ -448,29 +475,35 @@ class _StickerStudioScreenState extends State<StickerStudioScreen> {
             for (var i = 0; i < _fontSizes.length; i++)
               Padding(
                 padding: EdgeInsets.only(left: i == 0 ? 0 : 8),
-                child: InkWell(
-                  onTap: () => setState(() => _fontSize = _fontSizes[i]),
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(
-                    width: 40,
-                    height: 36,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: _fontSize == _fontSizes[i]
-                          ? context.colors.accent.withValues(alpha: 0.18)
-                          : Colors.transparent,
+                child: SizedBox(
+                  width: 48,
+                  height: 48,
+                  child: Center(
+                    child: InkWell(
+                      onTap: () => setState(() => _fontSize = _fontSizes[i]),
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: _fontSize == _fontSizes[i] ? context.colors.accent : context.colors.border,
+                      child: Container(
+                        width: 40,
+                        height: 36,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: _fontSize == _fontSizes[i]
+                              ? context.colors.accent.withValues(alpha: 0.18)
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: _fontSize == _fontSizes[i] ? context.colors.accent : context.colors.border,
+                          ),
+                        ),
+                        child: Text(_fontLabels[i],
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w800,
+                                color: _fontSize == _fontSizes[i]
+                                    ? context.colors.textPrimary
+                                    : context.colors.textSecondary)),
                       ),
                     ),
-                    child: Text(_fontLabels[i],
-                        style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w800,
-                            color: _fontSize == _fontSizes[i]
-                                ? context.colors.textPrimary
-                                : context.colors.textSecondary)),
                   ),
                 ),
               ),
@@ -620,25 +653,31 @@ const _STICKER_THEME_BY_ID = {
 };
 
 class _ThemeSwatch extends StatelessWidget {
+  final String label;
   final List<Color> gradient;
   final bool selected;
   final VoidCallback onTap;
-  const _ThemeSwatch({required this.gradient, required this.selected, required this.onTap});
+  const _ThemeSwatch({required this.label, required this.gradient, required this.selected, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(colors: gradient, begin: Alignment.topLeft, end: Alignment.bottomRight),
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: selected ? context.colors.textPrimary : context.colors.borderStrong,
-            width: selected ? 2 : 1,
+    return Semantics(
+      button: true,
+      label: 'Use $label theme',
+      selected: selected,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Container(
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: gradient, begin: Alignment.topLeft, end: Alignment.bottomRight),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: selected ? context.colors.textPrimary : context.colors.borderStrong,
+              width: selected ? 2 : 1,
+            ),
           ),
         ),
       ),

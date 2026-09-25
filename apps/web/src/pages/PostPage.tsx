@@ -41,17 +41,30 @@ export const PostPage: React.FC = () => {
   });
 
   useEffect(() => {
+    const controller = new AbortController();
+    setPost(null);
+    setMissing(false);
+    setCopied(false);
+
     if (!slug || !/^[a-z0-9-]+$/.test(slug)) {
       setMissing(true);
-      return;
+      return () => controller.abort();
     }
-    fetch(`/posts/${slug}.json`)
+
+    fetch(`/posts/${slug}.json`, { signal: controller.signal })
       .then((r) => {
         if (!r.ok) throw new Error('missing');
         return r.json();
       })
-      .then((d) => setPost(d))
-      .catch(() => setMissing(true));
+      .then((d) => {
+        if (!controller.signal.aborted) setPost(d);
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return;
+        if (!controller.signal.aborted) setMissing(true);
+      });
+
+    return () => controller.abort();
   }, [slug]);
 
   if (missing) {
@@ -151,7 +164,7 @@ export const PostPage: React.FC = () => {
             {t}
           </span>
         ))}
-        <span className="inline-flex items-center gap-1 text-[11px] text-slate-500 ml-1">
+        <span className="inline-flex items-center gap-1 text-[11px] text-slate-400 ml-1">
           <Clock className="w-3 h-3" />
           {post.readMinutes} min read
         </span>
@@ -170,10 +183,11 @@ export const PostPage: React.FC = () => {
           <img
             src={post.image}
             alt={post.title}
-            className="w-full rounded-2xl border border-white/10 object-cover max-h-[420px]"
+            decoding="async"
+            className="w-full aspect-video rounded-2xl border border-white/10 object-cover max-h-[420px]"
           />
           {post.credit && (
-            <figcaption className="mt-2 flex items-center gap-1.5 text-[11px] text-slate-500">
+            <figcaption className="mt-2 flex items-center gap-1.5 text-[11px] text-slate-400">
               <Camera className="w-3 h-3 shrink-0" />
               {post.credit_url ? (
                 <>
@@ -210,7 +224,7 @@ export const PostPage: React.FC = () => {
       )}
 
       <div className="mt-8 flex flex-wrap items-center gap-2">
-        <span className="text-xs text-slate-500 mr-1">Share this post:</span>
+        <span className="text-xs text-slate-400 mr-1">Share this post:</span>
         {shareLinks.map((s) => (
           <a
             key={s.name}

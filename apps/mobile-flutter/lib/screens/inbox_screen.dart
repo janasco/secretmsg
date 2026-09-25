@@ -83,10 +83,12 @@ class _InboxScreenState extends State<InboxScreen> {
         });
       }
     } catch (_) {}
+    if (!mounted) return;
     await _load();
   }
 
   Future<void> _load() async {
+    if (!mounted) return;
     setState(() {
       _loading = true;
       _error = null;
@@ -188,7 +190,9 @@ class _InboxScreenState extends State<InboxScreen> {
         filteredWeekCount: _trayWeekCount,
       );
       if (!mounted || _vibePrompted) return;
-      if (!await VibeStore.isCheckedIn(now)) {
+      final checkedIn = await VibeStore.isCheckedIn(now);
+      if (!mounted) return;
+      if (!checkedIn) {
         _vibePrompted = true;
         _promptVibe();
       }
@@ -440,7 +444,11 @@ class _InboxScreenState extends State<InboxScreen> {
         String text;
         IconData icon;
         VoidCallback? onTap;
-        if (status.blocked != null) {
+        if (status.failed != null) {
+          text = 'Queued action needs attention';
+          icon = Icons.error_outline;
+          onTap = () => _showFailedOutbox(status.failed!);
+        } else if (status.blocked != null) {
           final n = status.pending;
           text = n > 1
               ? '$n queued — 1 needs verification'
@@ -495,6 +503,37 @@ class _InboxScreenState extends State<InboxScreen> {
         );
       },
     );
+  }
+
+  Future<void> _showFailedOutbox(OutboxOp op) async {
+    final action = await showDialog<String>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: context.colors.surface,
+        title: const Text('Queued action needs attention'),
+        content: Text(
+          op.error ?? 'This queued action could not be completed.',
+          style: TextStyle(color: context.colors.textSecondary, height: 1.5),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop('discard'),
+            child: Text('Discard', style: TextStyle(color: context.colors.roseLight)),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(ctx).pop('retry'),
+            child: const Text('Retry'),
+          ),
+        ],
+      ),
+    );
+    if (!mounted) return;
+    if (action == 'retry') {
+      final drained = await Outbox.retry(op.id);
+      if (drained && mounted) await _load();
+    } else if (action == 'discard') {
+      await Outbox.discard(op.id);
+    }
   }
 
   /// A parked send can't re-verify headlessly (Turnstile needs its WebView),
@@ -1094,7 +1133,8 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
     } catch (e) {
       if (!mounted) return;
       setState(() => _sending = false);
-      showErrorSnack(context, e.toString());
+      showErrorSnack(context,
+          e is ApiException ? e.message : 'Could not send your reply. Try again.');
     }
   }
 
@@ -1224,7 +1264,8 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
     } catch (e) {
       if (!mounted) return;
       setState(() => _blocking = false);
-      showErrorSnack(context, e.toString());
+      showErrorSnack(context,
+          e is ApiException ? e.message : 'Could not block this sender. Try again.');
     }
   }
 

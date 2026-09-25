@@ -64,26 +64,50 @@ class _BlockedSendersScreenState extends State<BlockedSendersScreen> {
     } catch (e) {
       if (!mounted) return;
       setState(() => _unblocking = {..._unblocking}..remove(hash));
-      showErrorSnack(context, e.toString());
+      showErrorSnack(context,
+          e is ApiException ? e.message : 'Could not unblock this sender. Try again.');
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final blocked = _blocked;
+    final hasBlocked = !_loading && _error == null && blocked != null && blocked.isNotEmpty;
     return Scaffold(
       appBar: const AppTopBar(title: 'Blocked Senders'),
       body: RefreshIndicator(
         onRefresh: _load,
-        child: ListView(
+        child: ListView.separated(
+          key: const PageStorageKey('blocked-senders'),
+          physics: const AlwaysScrollableScrollPhysics(),
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 40),
-          children: [
-            Center(
+          itemCount: hasBlocked ? blocked.length + 1 : 1,
+          separatorBuilder: (_, __) => const SizedBox(height: 10),
+          itemBuilder: (context, i) {
+            final Widget child;
+            if (!hasBlocked) {
+              child = _buildBody();
+            } else if (i == 0) {
+              child = Text(
+                'Blocked devices cannot deliver messages to your inbox. Senders remain anonymous to you — you are blocking a device, not a person.',
+                style: TextStyle(color: context.colors.textMuted, fontSize: 12, height: 1.5),
+              );
+            } else {
+              final sender = blocked[i - 1];
+              child = _BlockedSenderTile(
+                key: ValueKey(sender.senderFpHash),
+                sender: sender,
+                unblocking: _unblocking.contains(sender.senderFpHash),
+                onUnblock: () => _unblock(sender),
+              );
+            }
+            return Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 560),
-                child: _buildBody(),
+                child: child,
               ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
@@ -107,37 +131,18 @@ class _BlockedSendersScreenState extends State<BlockedSendersScreen> {
       );
     }
 
-    final blocked = _blocked ?? const [];
-    if (blocked.isEmpty) {
-      return Column(
-        children: [
-          const SizedBox(height: 80),
-          Icon(Icons.block_outlined, size: 52, color: context.colors.textFaint),
-          const SizedBox(height: 12),
-          Text('No blocked senders', style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w800)),
-          const SizedBox(height: 6),
-          Text(
-            'Blocked devices stay anonymous to you. They are simply prevented from sending you new messages.',
-            textAlign: TextAlign.center,
-            style: TextStyle(color: context.colors.textMuted, fontSize: 12, height: 1.5),
-          ),
-        ],
-      );
-    }
-
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        const SizedBox(height: 80),
+        Icon(Icons.block_outlined, size: 52, color: context.colors.textFaint),
+        const SizedBox(height: 12),
+        Text('No blocked senders', style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w800)),
+        const SizedBox(height: 6),
         Text(
-          'Blocked devices cannot deliver messages to your inbox. Senders remain anonymous to you — you are blocking a device, not a person.',
+          'Blocked devices stay anonymous to you. They are simply prevented from sending you new messages.',
+          textAlign: TextAlign.center,
           style: TextStyle(color: context.colors.textMuted, fontSize: 12, height: 1.5),
         ),
-        const SizedBox(height: 12),
-        ...blocked.map((s) => _BlockedSenderTile(
-              sender: s,
-              unblocking: _unblocking.contains(s.senderFpHash),
-              onUnblock: () => _unblock(s),
-            )),
       ],
     );
   }
@@ -148,6 +153,7 @@ class _BlockedSenderTile extends StatelessWidget {
   final bool unblocking;
   final VoidCallback onUnblock;
   const _BlockedSenderTile({
+    super.key,
     required this.sender,
     required this.unblocking,
     required this.onUnblock,
@@ -173,7 +179,6 @@ class _BlockedSenderTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.fromLTRB(14, 6, 6, 6),
       decoration: BoxDecoration(
         color: context.colors.surface,

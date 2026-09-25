@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart' show compute;
 import 'package:flutter/services.dart' show rootBundle;
 
 class RouletteCategory {
@@ -45,29 +46,36 @@ class RouletteData {
   }
 
   static Future<List<RouletteCategory>> _read() async {
-    final decoded = jsonDecode(await rootBundle.loadString(_assetPath)) as List<dynamic>;
-
-    final categories = <RouletteCategory>[];
-    final everything = <String>[];
-
-    for (final entry in decoded) {
-      final map = entry as Map<String, dynamic>;
-      final prompts = List<String>.unmodifiable(
-        (map['prompts'] as List<dynamic>).cast<String>(),
-      );
-      everything.addAll(prompts);
-      categories.add(
-        RouletteCategory(map['key'] as String, map['label'] as String, prompts),
-      );
-    }
-
-    final result = List<RouletteCategory>.unmodifiable([
-      RouletteCategory(allKey, allLabel, List<String>.unmodifiable(everything)),
-      ...categories,
-    ]);
-
+    final source = await rootBundle.loadString(_assetPath);
+    final result = await compute(_decodeCategories, source);
     _cache = result;
     _pending = null;
     return result;
   }
+}
+
+List<RouletteCategory> _decodeCategories(String source) {
+  final decoded = jsonDecode(source) as List<dynamic>;
+  final categories = <RouletteCategory>[];
+  final everything = <String>[];
+
+  for (final entry in decoded) {
+    final map = entry as Map<String, dynamic>;
+    final prompts = List<String>.unmodifiable(
+      (map['prompts'] as List<dynamic>).cast<String>(),
+    );
+    everything.addAll(prompts);
+    categories.add(
+      RouletteCategory(map['key'] as String, map['label'] as String, prompts),
+    );
+  }
+
+  return List<RouletteCategory>.unmodifiable([
+    RouletteCategory(
+      RouletteData.allKey,
+      RouletteData.allLabel,
+      List<String>.unmodifiable(everything),
+    ),
+    ...categories,
+  ]);
 }

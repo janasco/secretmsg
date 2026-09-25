@@ -28,24 +28,29 @@ class _BackupCodesScreenState extends State<BackupCodesScreen> {
   Future<void> _saveTxt() async {
     if (_saving) return;
     setState(() => _saving = true);
+    File? file;
     try {
-      final dir = await getTemporaryDirectory();
-      final file = File('${dir.path}${Platform.pathSeparator}secretmsg-backup-codes-${widget.handle}.txt');
-      await file.writeAsString(
-        'SecretMsg backup codes for secretmsg.net/${widget.handle}\n'
-        'Each code works once. Keep this file somewhere safe.\n\n'
-        '${widget.backupCodes.join('\n')}\n',
-      );
-      await Share.shareXFiles(
-        [XFile(file.path)],
-        subject: 'SecretMsg backup codes',
-        text: 'My SecretMsg backup codes — keep these safe.',
-      );
-      // Don't leave secrets in temp: the shared copy is the user's now.
       try {
-        await file.delete();
-      } catch (_) {}
-      if (mounted) setState(() => _saved = true);
+        final dir = await getTemporaryDirectory();
+        file = File('${dir.path}${Platform.pathSeparator}secretmsg-backup-codes-${widget.handle}.txt');
+        await file.writeAsString(
+          'SecretMsg backup codes for secretmsg.net/${widget.handle}\n'
+          'Each code works once. Keep this file somewhere safe.\n\n'
+          '${widget.backupCodes.join('\n')}\n',
+        );
+        await Share.shareXFiles(
+          [XFile(file.path)],
+          subject: 'SecretMsg backup codes',
+          text: 'My SecretMsg backup codes — keep these safe.',
+        );
+        if (mounted) setState(() => _saved = true);
+      } finally {
+        if (file != null) {
+          try {
+            await file.delete();
+          } catch (_) {}
+        }
+      }
     } catch (_) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(

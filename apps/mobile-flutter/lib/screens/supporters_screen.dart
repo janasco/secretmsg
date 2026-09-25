@@ -66,36 +66,66 @@ class _SupportersScreenState extends State<SupportersScreen> {
                 )
               : RefreshIndicator(
                   onRefresh: _load,
-                  child: ListView(
+                  child: ListView.builder(
+                    key: const PageStorageKey('supporters'),
+                    physics: const AlwaysScrollableScrollPhysics(),
                     padding: const EdgeInsets.fromLTRB(16, 12, 16, 40),
-                    children: [
-                      Center(
+                    itemCount: _data!.supporters.isEmpty
+                        ? 3
+                        : _data!.supporters.length + 3,
+                    itemBuilder: (context, i) {
+                      final supporters = _data!.supporters;
+                      final Widget child;
+                      if (i == 0) {
+                        child = _HeroCard(data: _data!);
+                      } else if (supporters.isEmpty && i == 1) {
+                        child = const SizedBox(height: 18);
+                      } else if (supporters.isEmpty) {
+                        child = const _SupportCta();
+                      } else if (i == 1) {
+                        child = const Padding(
+                          padding: EdgeInsets.only(bottom: 10),
+                          child: _RecentSupportersTitle(),
+                        );
+                      } else if (i < supporters.length + 2) {
+                        child = Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: _SupporterTile(
+                            key: ValueKey(supporters[i - 2].alias),
+                            supporter: supporters[i - 2],
+                          ),
+                        );
+                      } else {
+                        child = const Padding(
+                          padding: EdgeInsets.only(top: 8),
+                          child: _SupportCta(),
+                        );
+                      }
+                      return Center(
                         child: ConstrainedBox(
                           constraints: const BoxConstraints(maxWidth: 560),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              _HeroCard(data: _data!),
-                              const SizedBox(height: 18),
-                              if (_data!.supporters.isNotEmpty)
-                                Text(
-                                  'Recent supporters',
-                                  style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w800),
-                                ),
-                              const SizedBox(height: 10),
-                              for (final s in _data!.supporters) ...[
-                                _SupporterTile(supporter: s),
-                                const SizedBox(height: 10),
-                              ],
-                              const SizedBox(height: 8),
-                              const _SupportCta(),
-                            ],
-                          ),
+                          child: child,
                         ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
+    );
+  }
+}
+
+class _RecentSupportersTitle extends StatelessWidget {
+  const _RecentSupportersTitle();
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Recent supporters',
+      style: TextStyle(
+        color: context.colors.textPrimary,
+        fontSize: 16,
+        fontWeight: FontWeight.w800,
+      ),
     );
   }
 }
@@ -182,7 +212,7 @@ class _StatBox extends StatelessWidget {
 
 class _SupporterTile extends StatelessWidget {
   final Supporter supporter;
-  const _SupporterTile({required this.supporter});
+  const _SupporterTile({super.key, required this.supporter});
 
   (String, Color) tierStyle(BuildContext context, String tier) {
     switch (tier) {
@@ -335,7 +365,7 @@ class _SupportCtaState extends State<_SupportCta> {
       if (!mounted) return;
       setState(() {
         _busyProductId = null;
-        _notice = e.toString();
+        _notice = e is ApiException ? e.message : 'Could not complete this purchase.';
       });
     }
   }
@@ -346,7 +376,7 @@ class _SupportCtaState extends State<_SupportCta> {
       await Billing.restore();
     } catch (e) {
       if (!mounted) return;
-      setState(() => _notice = e.toString());
+      setState(() => _notice = e is ApiException ? e.message : 'Could not restore your purchases.');
     }
   }
 

@@ -62,15 +62,22 @@ function formatRelativeTime(dateString: string): string {
 export const SupportersPage: React.FC<SupportersPageProps> = ({ onOpenDonation }) => {
   const [data, setData] = useState<SupportersData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [loadKey, setLoadKey] = useState(0);
   const [selectedTier, setSelectedTier] = useState<string>('all');
 
   useEffect(() => {
     let isMounted = true;
     setLoading(true);
+    setError(false);
+    setData(null);
 
     ApiClient.getSupporters()
       .then((res) => {
         if (isMounted) setData(res);
+      })
+      .catch(() => {
+        if (isMounted) setError(true);
       })
       .finally(() => {
         if (isMounted) setLoading(false);
@@ -79,7 +86,7 @@ export const SupportersPage: React.FC<SupportersPageProps> = ({ onOpenDonation }
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [loadKey]);
 
   const supporters = data?.supporters || [];
   const filtered = selectedTier === 'all' 
@@ -127,7 +134,7 @@ export const SupportersPage: React.FC<SupportersPageProps> = ({ onOpenDonation }
             <span>Total Backers</span>
           </div>
           <p className="text-2xl font-bold text-white">
-            {loading ? '...' : (data?.stats.totalSupporters || 4)}
+            {loading ? '...' : error ? '—' : (data?.stats.totalSupporters ?? 0)}
           </p>
           <p className="text-[11px] text-slate-400">Generous souls keeping the service online</p>
         </div>
@@ -139,14 +146,16 @@ export const SupportersPage: React.FC<SupportersPageProps> = ({ onOpenDonation }
           </div>
           <div className="flex items-baseline space-x-2">
             <p className="text-2xl font-bold text-emerald-300">
-              {data?.stats.monthlyServerGoalPercent || 100}%
+              {error ? '—' : `${data?.stats.monthlyServerGoalPercent ?? 0}%`}
             </p>
-            <span className="text-xs text-emerald-400/80 font-medium">Funded for {data?.stats.currentMonth || 'Current Month'}</span>
+            <span className="text-xs text-emerald-400/80 font-medium">
+              {error ? 'Funding status unavailable' : `Funded for ${data?.stats.currentMonth || 'Current Month'}`}
+            </span>
           </div>
           <div className="w-full bg-dark-900 h-2 rounded-full overflow-hidden mt-1">
             <div 
               className="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full" 
-              style={{ width: `${Math.min(100, data?.stats.monthlyServerGoalPercent || 100)}%` }}
+              style={{ width: `${error ? 0 : Math.min(100, data?.stats.monthlyServerGoalPercent ?? 0)}%` }}
             ></div>
           </div>
         </div>
@@ -197,6 +206,18 @@ export const SupportersPage: React.FC<SupportersPageProps> = ({ onOpenDonation }
           <div className="w-8 h-8 border-2 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
           <p className="text-xs text-slate-400">Loading supporters wall...</p>
         </div>
+      ) : error ? (
+        <div className="text-center py-16 glass-panel rounded-2xl p-8 space-y-3" role="alert">
+          <Heart className="w-8 h-8 text-slate-400 mx-auto" />
+          <h3 className="text-base font-semibold text-white">Unable to load supporters</h3>
+          <p className="text-xs text-slate-400">Check your connection and try again.</p>
+          <button
+            onClick={() => setLoadKey((key) => key + 1)}
+            className="py-2 px-4 rounded-lg text-xs font-semibold bg-white/10 hover:bg-white/15 text-white border border-white/10 transition-colors"
+          >
+            Try again
+          </button>
+        </div>
       ) : filtered.length === 0 ? (
         <div className="text-center py-16 glass-panel rounded-2xl p-8 space-y-3">
           <Heart className="w-8 h-8 text-slate-500 mx-auto" />
@@ -238,7 +259,7 @@ export const SupportersPage: React.FC<SupportersPageProps> = ({ onOpenDonation }
                           <Lock className="w-3 h-3 text-slate-500" />
                         </span>
                       </div>
-                      <span className="text-[11px] text-slate-500 font-mono flex items-center space-x-1">
+                      <span className="text-[11px] text-slate-400 font-mono flex items-center space-x-1">
                         <Calendar className="w-3 h-3" />
                         <span>{formatRelativeTime(supporter.createdAt)}</span>
                       </span>
@@ -259,12 +280,12 @@ export const SupportersPage: React.FC<SupportersPageProps> = ({ onOpenDonation }
                   </div>
                 )}
 
-                <div className="flex items-center justify-between text-[10px] text-slate-500 pt-1 border-t border-white/5">
+                <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-white/5">
                   <span className="flex items-center space-x-1 text-emerald-400/80">
                     <CheckCircle2 className="w-3 h-3" />
                     <span>Verified Anonymous Contribution</span>
                   </span>
-                  <span className="font-mono text-slate-600">ID: {supporter.id.slice(0, 8)}</span>
+                  <span className="font-mono text-slate-400">ID: {supporter.id.slice(0, 8)}</span>
                 </div>
               </div>
             );

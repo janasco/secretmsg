@@ -34,6 +34,8 @@ class OutboxOp {
   final int queuedAt;
   final int attempts;
   final bool needsVerification;
+  final bool failed;
+  final String? error;
 
   const OutboxOp({
     required this.id,
@@ -42,6 +44,8 @@ class OutboxOp {
     required this.queuedAt,
     this.attempts = 0,
     this.needsVerification = false,
+    this.failed = false,
+    this.error,
   });
 
   Map<String, dynamic> toJson() => {
@@ -51,6 +55,8 @@ class OutboxOp {
         'queuedAt': queuedAt,
         'attempts': attempts,
         'needsVerification': needsVerification,
+        'failed': failed,
+        'error': error,
       };
 
   factory OutboxOp.fromJson(Map<String, dynamic> json) => OutboxOp(
@@ -62,6 +68,8 @@ class OutboxOp {
         queuedAt: (json['queuedAt'] as num?)?.toInt() ?? 0,
         attempts: (json['attempts'] as num?)?.toInt() ?? 0,
         needsVerification: json['needsVerification'] == true,
+        failed: json['failed'] == true,
+        error: json['error']?.toString(),
       );
 
   OutboxOp bumped({bool? needsVerification}) => OutboxOp(
@@ -71,14 +79,35 @@ class OutboxOp {
         queuedAt: queuedAt,
         attempts: attempts + 1,
         needsVerification: needsVerification ?? this.needsVerification,
+        failed: failed,
+        error: error,
+      );
+
+  OutboxOp withFailure(String error) => OutboxOp(
+        id: id,
+        kind: kind,
+        params: params,
+        queuedAt: queuedAt,
+        attempts: attempts + 1,
+        needsVerification: needsVerification,
+        failed: true,
+        error: error,
       );
 }
 
 class OutboxStatus {
   final int pending;
   final OutboxOp? blocked;
+  final OutboxOp? failed;
+  final String? error;
   final bool draining;
-  const OutboxStatus({required this.pending, required this.blocked, required this.draining});
+  const OutboxStatus({
+    required this.pending,
+    required this.blocked,
+    required this.draining,
+    this.failed,
+    this.error,
+  });
 }
 
 String newClientMsgId() {
@@ -119,8 +148,14 @@ class Outbox {
 
   static void _emit(List<OutboxOp> ops, {required bool draining}) {
     final blocked = ops.where((o) => o.needsVerification).firstOrNull;
-    status.value =
-        OutboxStatus(pending: ops.length, blocked: blocked, draining: draining);
+    final failed = ops.where((o) => o.failed).firstOrNull;
+    status.value = OutboxStatus(
+      pending: ops.length,
+      blocked: blocked,
+      failed: failed,
+      error: failed?.error,
+      draining: draining,
+    );
   }
 
   /// Current depth without triggering listeners (for badges).
@@ -131,7 +166,11 @@ class Outbox {
     _emit(ops, draining: _draining);
   }
 
-  static Future<OutboxOp> enqueue(OutboxKind kind, Map<String, String> params) async {
+  static Future<OutboxOp> enqueue(
+    OutboxKind kind,
+    Map<String, String> params, {
+    bool autoDrain = true,
+  }) async {
     final op = OutboxOp(
       id: '${DateTime.now().microsecondsSinceEpoch}_${Random.secure().nextInt(1 << 32)}',
       kind: kind,
@@ -141,7 +180,7 @@ class Outbox {
     final ops = await _read();
     ops.add(op);
     await _write(ops);
-    unawaited(drain());
+    if (autoDrain) unawaited(drain());
     return op;
   }
 
@@ -154,7 +193,10 @@ class Outbox {
 
   /// Drains the queue in order. Returns true when fully drained.
   /// [onChanged] fires when server state may have moved (caller refreshes).
-  static Future<bool> drain({Future<void> Function()? onChanged}) async {
+  static Future<bool> drain({
+    Future<void> Function()? onChanged,
+    Future<void> Function(OutboxOp op)? execute,
+  }) async {
     if (_draining) return false;
     _draining = true;
     var changed = false;
@@ -164,17 +206,16 @@ class Outbox {
       var i = 0;
       while (i < ops.length) {
         final op = ops[i];
-        if (op.needsVerification) {
+        if (op.needsVerification || op.failed) {
           i++;
           continue;
         }
         try {
-          await _execute(op);
+          await (execute?.call(op) ?? _execute(op));
           ops.removeAt(i);
           changed = true;
           await _write(ops);
         } on ApiException catch (e) {
-          // Expired challenge on a queued send: park it, keep flowing.
           if (op.kind == OutboxKind.send &&
               (e.statusCode == 403 || e.statusCode == 400)) {
             ops[i] = op.bumped(needsVerification: true);
@@ -182,24 +223,21 @@ class Outbox {
             i++;
             continue;
           }
-          // Other API errors (validation etc.): op is poison — drop it so one
-          // bad op can't wedge the queue behind it.
-          ops.removeAt(i);
+          ops[i] = op.withFailure(e.message);
           await _write(ops);
+          i++;
         } on UnauthorizedError {
-          // Session died: parked ops could never succeed. Drop, keep going.
           ops.removeAt(i);
           await _write(ops);
         } catch (e) {
           if (_isNetworkError(e)) {
-            // Still offline: stop, keep the rest for next time.
             ops[i] = op.bumped();
             await _write(ops);
             break;
           }
-          // Unknown failure: drop the poison op, keep flowing.
-          ops.removeAt(i);
+          ops[i] = op.withFailure('Queued action failed unexpectedly.');
           await _write(ops);
+          i++;
         }
       }
       if (changed) {
@@ -274,20 +312,38 @@ class Outbox {
     await _write(ops);
   }
 
-  /// Clears the verification flag so the next drain retries the op (used
-  /// after the user re-verifies through the composer handoff... which
-  /// consumes the op instead — kept for future inline re-mint).
+  static Future<void> discard(String id) => remove(id);
+
+  static Future<bool> retry(String id) async {
+    final ops = await _read();
+    final i = ops.indexWhere((o) => o.id == id);
+    if (i < 0) return false;
+    final op = ops[i];
+    ops[i] = OutboxOp(
+      id: op.id,
+      kind: op.kind,
+      params: op.params,
+      queuedAt: op.queuedAt,
+      needsVerification: false,
+    );
+    await _write(ops);
+    return drain();
+  }
+
   static Future<void> unpark(String id) async {
     final ops = await _read();
     final i = ops.indexWhere((o) => o.id == id);
     if (i < 0) return;
+    final op = ops[i];
     ops[i] = OutboxOp(
-      id: ops[i].id,
-      kind: ops[i].kind,
-      params: ops[i].params,
-      queuedAt: ops[i].queuedAt,
-      attempts: ops[i].attempts,
+      id: op.id,
+      kind: op.kind,
+      params: op.params,
+      queuedAt: op.queuedAt,
+      attempts: op.attempts,
       needsVerification: false,
+      failed: op.failed,
+      error: op.error,
     );
     await _write(ops);
   }

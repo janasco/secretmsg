@@ -27,6 +27,8 @@ export const formatPostDate = (iso: string): string => {
 
 export const BlogPage: React.FC = () => {
   const [posts, setPosts] = useState<BlogIndexEntry[] | null>(null);
+  const [error, setError] = useState(false);
+  const [loadKey, setLoadKey] = useState(0);
 
   useSeo({
     title: 'Blog - SecretMsg',
@@ -36,11 +38,26 @@ export const BlogPage: React.FC = () => {
   });
 
   useEffect(() => {
-    fetch('/blog-index.json')
-      .then((r) => (r.ok ? r.json() : []))
-      .then((d) => setPosts(Array.isArray(d) ? d : []))
-      .catch(() => setPosts([]));
-  }, []);
+    const controller = new AbortController();
+    setError(false);
+    setPosts(null);
+
+    fetch('/blog-index.json', { signal: controller.signal })
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((d: unknown) => {
+        if (!Array.isArray(d)) throw new Error('Invalid blog index');
+        if (!controller.signal.aborted) setPosts(d);
+      })
+      .catch((loadError: unknown) => {
+        if (loadError instanceof DOMException && loadError.name === 'AbortError') return;
+        if (!controller.signal.aborted) setError(true);
+      });
+
+    return () => controller.abort();
+  }, [loadKey]);
 
   return (
     <PublicPage
@@ -48,7 +65,17 @@ export const BlogPage: React.FC = () => {
       eyebrow="Notes on Honest Messaging"
       description="Essays on privacy, anonymous culture, and getting the most out of your inbox. New posts most weeks."
     >
-      {posts === null ? (
+      {error ? (
+        <div className="text-center py-10 space-y-4" role="alert">
+          <p className="text-sm text-slate-300">Unable to load blog posts.</p>
+          <button
+            onClick={() => setLoadKey((key) => key + 1)}
+            className="py-2.5 px-5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/15 text-white border border-white/10 transition-colors"
+          >
+            Try again
+          </button>
+        </div>
+      ) : posts === null ? (
         <div className="flex justify-center py-16">
           <div className="w-8 h-8 rounded-full border-2 border-indigo-500 border-t-transparent animate-spin" />
         </div>
@@ -75,7 +102,7 @@ export const BlogPage: React.FC = () => {
                 </div>
               )}
               <div className="flex-1 space-y-1.5 min-w-0 p-5 sm:pl-1">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-500">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-400">
                   <span>{formatPostDate(post.date)}</span>
                   <span className="inline-flex items-center gap-1">
                     <Clock className="w-3 h-3" />

@@ -20,6 +20,7 @@ class TurnstileWidget extends StatefulWidget {
   final void Function(String? error)? onError;
   final double height;
   final int resetCount;
+  final String siteKey;
 
   /// Diagnostics-only: if no token arrives after a short delay, mount an
   /// invisible `execution: 'execute'` widget and call execute() automatically.
@@ -31,15 +32,16 @@ class TurnstileWidget extends StatefulWidget {
     this.onError,
     this.height = 88,
     this.resetCount = 0,
+    this.siteKey = kTurnstileSiteKey,
     this.autoExecuteFallback = false,
   });
 
   @override
-  State<TurnstileWidget> createState() => _TurnstileWidgetState();
+  State<TurnstileWidget> createState() => TurnstileWidgetState();
 }
 
-class _TurnstileWidgetState extends State<TurnstileWidget> {
-  late final WebViewController _controller;
+class TurnstileWidgetState extends State<TurnstileWidget> {
+  late final WebViewController? _controller;
   String _status = 'Preparing verification…';
   bool _errored = false;
   bool _ready = false;
@@ -53,16 +55,14 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
     super.initState();
     // Fail CLOSED: without a site key the backend rejects every submission,
     // so surface the outage instead of rendering a widget that can never mint.
-    if (kTurnstileSiteKey.isEmpty) {
+    if (widget.siteKey.isEmpty) {
       _misconfigured = true;
       _errored = true;
       _status = 'Verification unavailable';
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        widget.onError?.call('turnstile-misconfigured');
+        if (mounted) widget.onError?.call('turnstile-misconfigured');
       });
-      _controller = WebViewController()
-        ..setJavaScriptMode(JavaScriptMode.disabled)
-        ..setBackgroundColor(context.colors.bg);
+      _controller = null;
       return;
     }
     if (defaultTargetPlatform == TargetPlatform.android) {
@@ -100,27 +100,35 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
                 _ready = true;
                 _turnstileTokenReady = true;
               });
+              widget.onToken?.call(value);
             }
-            widget.onToken?.call(value);
           } else if (kind == 'expired' || kind == 'error') {
-            if (mounted) {
-              setState(() {
-                _status = kind == 'expired'
-                    ? 'Challenge expired — reloading…'
-                    : 'Verification unavailable';
-                _errored = true;
-                _turnstileTokenReady = false;
-              });
-            }
-            widget.onError?.call(value ?? kind);
+            _handleError(value ?? kind, expired: kind == 'expired');
           }
         },
       );
-    _controller.loadRequest(Uri.parse('$kPublicBaseUrl/'));
+    _controller!.loadRequest(Uri.parse('$kPublicBaseUrl/'));
     // Watchdog: the backend fails closed without a token, so a widget that
     // never becomes ready must surface an error instead of hanging forever
     // (offline WebView, blocked challenges API, slow network).
     _armWatchdog();
+  }
+
+  @visibleForTesting
+  void handleError(String? error) {
+    _handleError(error);
+  }
+
+  void _handleError(String? error, {bool expired = false}) {
+    if (!mounted) return;
+    setState(() {
+      _status = expired
+          ? 'Challenge expired — reloading…'
+          : 'Verification unavailable';
+      _errored = true;
+      _turnstileTokenReady = false;
+    });
+    widget.onError?.call(error);
   }
 
   void _armWatchdog() {
@@ -146,7 +154,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
       _status = 'Retrying verification…';
     });
     widget.onError?.call(null);
-    _controller.loadRequest(Uri.parse('$kPublicBaseUrl/'));
+    _controller!.loadRequest(Uri.parse('$kPublicBaseUrl/'));
     _armWatchdog();
   }
 
@@ -168,11 +176,11 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
       _status = 'Preparing verification…';
       widget.onError?.call(null);
       try {
-        _controller.setBackgroundColor(
+        _controller!.setBackgroundColor(
           want == 'light' ? const Color(0xFFFFFFFF) : const Color(0xFF101322),
         );
       } catch (_) {}
-      _controller.loadRequest(Uri.parse('$kPublicBaseUrl/'));
+      _controller!.loadRequest(Uri.parse('$kPublicBaseUrl/'));
       _armWatchdog();
     }
   }
@@ -199,7 +207,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
         _turnstileTokenReady = false;
         _status = 'Completing verification…';
       });
-      _controller.runJavaScript(
+      _controller!.runJavaScript(
         'if (window.turnstile && window.__smTsInjected) { window.turnstile.reset(); window.TurnstileChannel.postMessage(JSON.stringify({kind:"expired"})); }',
       );
     }
@@ -208,7 +216,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
   void _inject() async {
     if (_misconfigured) return;
     try {
-      const sitekey = kTurnstileSiteKey;
+      final sitekey = widget.siteKey;
       final autoExecute = widget.autoExecuteFallback ? 'true' : 'false';
       final script = '''
 (function(){
@@ -342,7 +350,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
   }
 })();
 ''';
-      await _controller.runJavaScript(script);
+      await _controller!.runJavaScript(script);
     } catch (_) {}
   }
 
@@ -354,7 +362,7 @@ class _TurnstileWidgetState extends State<TurnstileWidget> {
     if (_misconfigured) return const SizedBox.shrink();
     return SizedBox(
       height: 72,
-      child: WebViewWidget(controller: _controller),
+      child: WebViewWidget(controller: _controller!),
     );
   }
 

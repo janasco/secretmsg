@@ -194,79 +194,83 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final u = _user;
     if (u == null) return;
     final ctrl = TextEditingController(text: u.username);
-    final claimed = await showDialog<String>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: context.colors.surface,
-        title: Text('Pick your custom username', style: TextStyle(color: context.colors.textPrimary, fontSize: 16)),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Your supporter perk. Choose a clean handle without numbers — this replaces your link.',
-              style: TextStyle(color: context.colors.textSecondary, fontSize: 13, height: 1.5),
-            ),
-            const SizedBox(height: 12),
-            TextField(
-              controller: ctrl,
-              autocorrect: false,
-              textCapitalization: TextCapitalization.none,
-              decoration: InputDecoration(
-                labelText: 'Username',
-                hintText: 'yourname',
-                prefixText: '@ ',
-                filled: true,
-                fillColor: context.colors.bg,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: context.colors.border),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: context.colors.border),
+    try {
+      final claimed = await showDialog<String>(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          backgroundColor: context.colors.surface,
+          title: Text('Pick your custom username', style: TextStyle(color: context.colors.textPrimary, fontSize: 16)),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Your supporter perk. Choose a clean handle without numbers — this replaces your link.',
+                style: TextStyle(color: context.colors.textSecondary, fontSize: 13, height: 1.5),
+              ),
+              const SizedBox(height: 12),
+              TextField(
+                controller: ctrl,
+                autocorrect: false,
+                textCapitalization: TextCapitalization.none,
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                  hintText: 'yourname',
+                  prefixText: '@ ',
+                  filled: true,
+                  fillColor: context.colors.bg,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: context.colors.border),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: context.colors.border),
+                  ),
                 ),
               ),
+              const SizedBox(height: 6),
+              Text(
+                '4–30 lowercase letters, numbers, dashes, underscores, or dots.',
+                style: TextStyle(color: context.colors.textMuted, fontSize: 11),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(ctx).pop(),
+              child: Text('Cancel', style: TextStyle(color: context.colors.accentSoft)),
             ),
-            const SizedBox(height: 6),
-            Text(
-              '4–30 lowercase letters, numbers, dashes, underscores, or dots.',
-              style: TextStyle(color: context.colors.textMuted, fontSize: 11),
+            TextButton(
+              onPressed: () => Navigator.of(ctx).pop(ctrl.text.trim().toLowerCase()),
+              child: Text('Claim', style: TextStyle(color: context.colors.accent, fontWeight: FontWeight.w700)),
             ),
           ],
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(),
-            child: Text('Cancel', style: TextStyle(color: context.colors.accentSoft)),
-          ),
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(ctrl.text.trim().toLowerCase()),
-            child: Text('Claim', style: TextStyle(color: context.colors.accent, fontWeight: FontWeight.w700)),
-          ),
-        ],
-      ),
-    );
-    if (claimed == null || claimed.isEmpty) return;
-    if (!RegExp(r'^[a-z0-9_\-\.]{4,30}$').hasMatch(claimed)) {
-      if (!mounted) return;
-      showErrorSnack(context, 'Use 4–30 lowercase letters, numbers, dashes, underscores, or dots.');
-      return;
-    }
-    setState(() => _claimingUsername = true);
-    try {
-      await ApiClient.setUsername(claimed);
-      await _load();
-      if (!mounted) return;
-      showErrorSnack(context, 'Your custom link is live: secretmsg.net/$claimed');
-    } on ApiException catch (e) {
-      if (!mounted) return;
-      setState(() => _claimingUsername = false);
-      showErrorSnack(context, e.message);
-    } catch (_) {
-      if (!mounted) return;
-      setState(() => _claimingUsername = false);
-      showErrorSnack(context, 'Could not update your username. Try again.');
+      );
+      if (!mounted || claimed == null || claimed.isEmpty) return;
+      if (!RegExp(r'^[a-z0-9_\-\.]{4,30}$').hasMatch(claimed)) {
+        showErrorSnack(context, 'Use 4–30 lowercase letters, numbers, dashes, underscores, or dots.');
+        return;
+      }
+      setState(() => _claimingUsername = true);
+      try {
+        await ApiClient.setUsername(claimed);
+        if (!mounted) return;
+        await _load();
+        if (!mounted) return;
+        showErrorSnack(context, 'Your custom link is live: secretmsg.net/$claimed');
+      } on ApiException catch (e) {
+        if (!mounted) return;
+        setState(() => _claimingUsername = false);
+        showErrorSnack(context, e.message);
+      } catch (_) {
+        if (!mounted) return;
+        setState(() => _claimingUsername = false);
+        showErrorSnack(context, 'Could not update your username. Try again.');
+      }
+    } finally {
+      ctrl.dispose();
     }
   }
 
@@ -279,70 +283,83 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Future<void> _showChangePinDialog(BuildContext context) async {
     final currentCtrl = TextEditingController();
     final newCtrl = TextEditingController();
-    final result = await showDialog<bool>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('Change PIN'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(controller: currentCtrl, keyboardType: TextInputType.number, obscureText: true, decoration: const InputDecoration(labelText: 'Current PIN')),
-            const SizedBox(height: 8),
-            TextField(controller: newCtrl, keyboardType: TextInputType.number, obscureText: true, decoration: const InputDecoration(labelText: 'New PIN (4-6 digits)')),
+    try {
+      final result = await showDialog<bool>(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text('Change PIN'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(controller: currentCtrl, keyboardType: TextInputType.number, obscureText: true, decoration: const InputDecoration(labelText: 'Current PIN')),
+              const SizedBox(height: 8),
+              TextField(controller: newCtrl, keyboardType: TextInputType.number, obscureText: true, decoration: const InputDecoration(labelText: 'New PIN (4-6 digits)')),
+            ],
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+            TextButton(onPressed: () async {
+              try {
+                await ApiClient.authChangePin(currentPin: currentCtrl.text, newPin: newCtrl.text);
+                if (ctx.mounted) Navigator.pop(ctx, true);
+              } catch (e) {
+                if (ctx.mounted) {
+                  ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(content: Text(e is ApiException ? e.message : 'Could not change your PIN. Try again.')));
+                }
+              }
+            }, child: const Text('Save')),
           ],
         ),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
-          TextButton(onPressed: () async {
-            try {
-              await ApiClient.authChangePin(currentPin: currentCtrl.text, newPin: newCtrl.text);
-              if (ctx.mounted) Navigator.pop(ctx, true);
-            } catch (e) {
-              if (ctx.mounted) ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(content: Text('Failed: $e')));
-            }
-          }, child: const Text('Save')),
-        ],
-      ),
-    );
-    if (result == true && context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('PIN changed successfully')));
+      );
+      if (result == true && context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('PIN changed successfully')));
+      }
+    } finally {
+      currentCtrl.dispose();
+      newCtrl.dispose();
     }
   }
 
   Future<void> _showRefreshCodesDialog(BuildContext context) async {
     final pinCtrl = TextEditingController();
-    final result = await showDialog<List<String>?>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('New Backup Codes'),
-        content: TextField(controller: pinCtrl, keyboardType: TextInputType.number, obscureText: true, decoration: const InputDecoration(labelText: 'Enter your PIN')),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
-          TextButton(onPressed: () async {
-            try {
-              final codes = await ApiClient.authRefreshBackupCodes(currentPin: pinCtrl.text);
-              if (ctx.mounted) Navigator.pop(ctx, codes);
-            } catch (e) {
-              if (ctx.mounted) ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(content: Text('Failed: $e')));
-            }
-          }, child: const Text('Generate')),
-        ],
-      ),
-    );
-    if (result != null && result.isNotEmpty && context.mounted) {
-      showDialog(
+    try {
+      final result = await showDialog<List<String>?>(
         context: context,
         builder: (ctx) => AlertDialog(
           title: const Text('New Backup Codes'),
-          content: Column(mainAxisSize: MainAxisSize.min, children: [
-            const Text('Save these codes. Old codes are now invalid.', style: TextStyle(fontSize: 12)),
-            const SizedBox(height: 12),
-            for (final code in result)
-              Padding(padding: const EdgeInsets.symmetric(vertical: 2), child: Text(code, style: const TextStyle(fontFamily: 'monospace', fontWeight: FontWeight.w600))),
-          ]),
-          actions: [TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Done'))],
+          content: TextField(controller: pinCtrl, keyboardType: TextInputType.number, obscureText: true, decoration: const InputDecoration(labelText: 'Enter your PIN')),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+            TextButton(onPressed: () async {
+              try {
+                final codes = await ApiClient.authRefreshBackupCodes(currentPin: pinCtrl.text);
+                if (ctx.mounted) Navigator.pop(ctx, codes);
+              } catch (e) {
+                if (ctx.mounted) {
+                  ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(content: Text(e is ApiException ? e.message : 'Could not generate backup codes. Try again.')));
+                }
+              }
+            }, child: const Text('Generate')),
+          ],
         ),
       );
+      if (result != null && result.isNotEmpty && context.mounted) {
+        showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            title: const Text('New Backup Codes'),
+            content: Column(mainAxisSize: MainAxisSize.min, children: [
+              const Text('Save these codes. Old codes are now invalid.', style: TextStyle(fontSize: 12)),
+              const SizedBox(height: 12),
+              for (final code in result)
+                Padding(padding: const EdgeInsets.symmetric(vertical: 2), child: Text(code, style: const TextStyle(fontFamily: 'monospace', fontWeight: FontWeight.w600))),
+            ]),
+            actions: [TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Done'))],
+          ),
+        );
+      }
+    } finally {
+      pinCtrl.dispose();
     }
   }
 
@@ -592,7 +609,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       );
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e is ApiException ? e.message : 'Could not create a pairing code. Try again.')));
     }
   }
 
@@ -1090,32 +1107,36 @@ class _ProfileCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              GestureDetector(
-                onTap: () => _showAvatarPicker(context, user, onAvatarSaved),
-                child: Stack(
-                  children: [
-                    UserAvatar(
-                      seed: (user.avatarSeed == null || user.avatarSeed!.isEmpty)
-                          ? user.username
-                          : user.avatarSeed!,
-                      fallbackInitials: user.initials,
-                      size: 54,
-                    ),
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: Container(
-                        width: 20,
-                        height: 20,
-                        decoration: BoxDecoration(
-                          color: context.colors.accent,
-                          shape: BoxShape.circle,
-                          border: Border.all(color: context.colors.surface, width: 2),
-                        ),
-                        child: const Icon(Icons.edit, size: 11, color: Colors.white),
+              Semantics(
+                button: true,
+                label: 'Change profile avatar',
+                child: GestureDetector(
+                  onTap: () => _showAvatarPicker(context, user, onAvatarSaved),
+                  child: Stack(
+                    children: [
+                      UserAvatar(
+                        seed: (user.avatarSeed == null || user.avatarSeed!.isEmpty)
+                            ? user.username
+                            : user.avatarSeed!,
+                        fallbackInitials: user.initials,
+                        size: 54,
                       ),
-                    ),
-                  ],
+                      Positioned(
+                        right: 0,
+                        bottom: 0,
+                        child: Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: context.colors.accent,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: context.colors.surface, width: 2),
+                          ),
+                          child: const Icon(Icons.edit, size: 11, color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(width: 14),
@@ -1136,7 +1157,7 @@ class _ProfileCard extends StatelessWidget {
                           tooltip: 'Edit display name',
                           visualDensity: VisualDensity.compact,
                           padding: EdgeInsets.zero,
-                          constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                          constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
                           onPressed: () => _editDisplayName(context, user, onAvatarSaved),
                           icon: Icon(Icons.edit_outlined, size: 15, color: context.colors.textMuted),
                         ),
@@ -1204,88 +1225,94 @@ Future<void> _editDisplayName(
   final ctrl = TextEditingController(text: user.displayName);
   var saving = false;
   String? error;
-  await showDialog<void>(
-    context: context,
-    builder: (ctx) => StatefulBuilder(
-      builder: (ctx, setDlg) => AlertDialog(
-        backgroundColor: context.colors.surface,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: Text('Display name',
-            style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w800)),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Shown on your profile and link card. Your @handle never changes.',
-                style: TextStyle(color: context.colors.textMuted, fontSize: 12)),
-            const SizedBox(height: 12),
-            TextField(
-              controller: ctrl,
-              maxLength: 30,
-              autofocus: true,
-              textCapitalization: TextCapitalization.words,
-              decoration: InputDecoration(
-                hintText: user.username,
-                filled: true,
-                fillColor: context.colors.bg,
-                counterText: '',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: context.colors.border),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: context.colors.border),
+  try {
+    await showDialog<void>(
+      context: context,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setDlg) => AlertDialog(
+          backgroundColor: context.colors.surface,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          title: Text('Display name',
+              style: TextStyle(color: context.colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w800)),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Shown on your profile and link card. Your @handle never changes.',
+                  style: TextStyle(color: context.colors.textMuted, fontSize: 12)),
+              const SizedBox(height: 12),
+              TextField(
+                controller: ctrl,
+                maxLength: 30,
+                autofocus: true,
+                textCapitalization: TextCapitalization.words,
+                decoration: InputDecoration(
+                  hintText: user.username,
+                  filled: true,
+                  fillColor: context.colors.bg,
+                  counterText: '',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: context.colors.border),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: context.colors.border),
+                  ),
                 ),
               ),
-            ),
-            if (error != null) ...[
-              const SizedBox(height: 8),
-              Text(error!, style: TextStyle(color: context.colors.roseLight, fontSize: 12)),
+              if (error != null) ...[
+                const SizedBox(height: 8),
+                Text(error!, style: TextStyle(color: context.colors.roseLight, fontSize: 12)),
+              ],
             ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(ctx).pop(),
+              child: Text('Cancel', style: TextStyle(color: context.colors.accentSoft)),
+            ),
+            FilledButton(
+              style: FilledButton.styleFrom(
+                backgroundColor: context.colors.accent,
+                foregroundColor: Colors.white,
+              ),
+              onPressed: saving
+                  ? null
+                  : () async {
+                      if (!ctx.mounted) return;
+                      final name = ctrl.text.trim();
+                      if (name.isEmpty || name.length > 30) {
+                        setDlg(() => error = 'Use 1-30 characters.');
+                        return;
+                      }
+                      setDlg(() {
+                        saving = true;
+                        error = null;
+                      });
+                      try {
+                        await ApiClient.updateDisplayName(name);
+                        if (ctx.mounted) Navigator.of(ctx).pop();
+                        if (context.mounted) onSaved(name);
+                      } catch (_) {
+                        if (ctx.mounted) {
+                          setDlg(() {
+                            saving = false;
+                            error = 'Could not save name.';
+                          });
+                        }
+                      }
+                    },
+              child: Text(saving ? 'Saving…' : 'Save',
+                  style: const TextStyle(fontWeight: FontWeight.w800)),
+            ),
           ],
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(),
-            child: Text('Cancel', style: TextStyle(color: context.colors.accentSoft)),
-          ),
-          FilledButton(
-            style: FilledButton.styleFrom(
-              backgroundColor: context.colors.accent,
-              foregroundColor: Colors.white,
-            ),
-            onPressed: saving
-                ? null
-                : () async {
-                    final name = ctrl.text.trim();
-                    if (name.isEmpty || name.length > 30) {
-                      setDlg(() => error = 'Use 1-30 characters.');
-                      return;
-                    }
-                    setDlg(() {
-                      saving = true;
-                      error = null;
-                    });
-                    try {
-                      await ApiClient.updateDisplayName(name);
-                      if (ctx.mounted) Navigator.of(ctx).pop();
-                      onSaved(name);
-                    } catch (_) {
-                      setDlg(() {
-                        saving = false;
-                        error = 'Could not save name.';
-                      });
-                    }
-                  },
-            child: Text(saving ? 'Saving…' : 'Save',
-                style: const TextStyle(fontWeight: FontWeight.w800)),
-          ),
-        ],
       ),
-    ),
-  );
-  ctrl.dispose();
+    );
+  } finally {
+    ctrl.dispose();
+  }
 }
 
 /// Avatar studio: live multiavatar preview, shuffle for a new random face,
@@ -1323,6 +1350,7 @@ Future<void> _showAvatarPicker(
                 Expanded(
                   child: OutlinedButton.icon(
                     onPressed: () {
+                      if (!ctx.mounted) return;
                       final r = DateTime.now().microsecondsSinceEpoch;
                       setSheet(() => seed = 'u${(r % 899999 + 100000).toString()}');
                     },
@@ -1346,14 +1374,15 @@ Future<void> _showAvatarPicker(
                     onPressed: saving
                         ? null
                         : () async {
+                            if (!ctx.mounted) return;
                             setSheet(() => saving = true);
                             try {
                               await ApiClient.updateAvatarSeed(seed);
                               if (ctx.mounted) Navigator.of(ctx).pop();
-                              onSaved(seed);
+                              if (context.mounted) onSaved(seed);
                             } catch (_) {
-                              setSheet(() => saving = false);
                               if (ctx.mounted) {
+                                setSheet(() => saving = false);
                                 showErrorSnack(ctx, 'Could not save avatar. Try again.');
                               }
                             }

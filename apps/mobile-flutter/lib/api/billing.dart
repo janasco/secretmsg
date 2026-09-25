@@ -77,7 +77,7 @@ class Billing {
     _sub ??= _iap.purchaseStream.listen(
       _onPurchaseUpdate,
       onError: (Object e) => _events.add(
-        BillingEvent(BillingStage.failed, '', e.toString()),
+        const BillingEvent(BillingStage.failed, '', 'The purchase could not be completed.'),
       ),
     );
 

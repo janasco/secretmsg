@@ -3,7 +3,6 @@
  */
 
 import { MockApiClient } from '@/lib/mockApi';
-import { offlineSupportersFallback } from '@/lib/fallbacks';
 import { API_BASE_URL, USE_MOCK } from '@/lib/config';
 import { getDeviceFingerprint } from '@/lib/links';
 import type {
@@ -363,13 +362,8 @@ export class ApiClient {
 
   static async getSupporters(): Promise<SupportersData> {
     if (USE_MOCK) return MockApiClient.getSupporters();
-    try {
-      const res = await fetch(`${API_BASE_URL}/api/supporters`);
-      if (!res.ok) throw new Error('Failed to load supporters');
-      return await res.json() as SupportersData;
-    } catch {
-      // Graceful fallback for offline / disconnected environments
-      return offlineSupportersFallback();
-    }
+    const res = await fetch(`${API_BASE_URL}/api/supporters`);
+    if (!res.ok) throw new Error('Failed to load supporters');
+    return res.json() as Promise<SupportersData>;
   }
 }

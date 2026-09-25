@@ -31,9 +31,9 @@ export const Navbar: React.FC<NavbarProps> = ({ user, onOpenDonation, onLogout }
   return (
     <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-dark-950/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group shrink-0">
+        <Link to="/" aria-label="SecretMsg home" className="flex items-center gap-2 group shrink-0">
           <LogoIcon className="w-8 h-8 group-hover:scale-105 transition-transform" />
-          <span className="font-bold text-base tracking-tight bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent hidden xs:inline">
+          <span className="font-bold text-base tracking-tight bg-gradient-to-r from-white via-slate-100 to-indigo-300 bg-clip-text text-transparent hidden sm:inline">
             secretmsg<span className="text-indigo-400">.net</span>
           </span>
         </Link>

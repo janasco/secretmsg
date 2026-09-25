@@ -7,13 +7,13 @@ import { ROULETTE_POOL } from '@/lib/data/rouletteData';
 type CatKey = keyof typeof ROULETTE_POOL;
 
 const CATS: { key: CatKey; label: string; color: string }[] = [
-  { key: 'all', label: 'ðŸ”¥ All Vibes (9,000+)', color: 'text-white' },
-  { key: 'crush', label: 'ðŸ’˜ Crush & Flirt (1,500+)', color: 'text-rose-400' },
-  { key: 'spicy', label: 'ðŸŒ¶ï¸ Spicy (1,500+)', color: 'text-amber-400' },
-  { key: 'secrets', label: 'ðŸ¤« Deep Secrets (1,500+)', color: 'text-violet-400' },
-  { key: 'chaotic', label: 'ðŸŒªï¸ Chaotic & Wild (1,500+)', color: 'text-emerald-400' },
-  { key: 'realtalk', label: 'ðŸ’¬ Real Talk (1,500+)', color: 'text-sky-400' },
-  { key: 'latenight', label: 'ðŸŒ™ 3AM Thoughts (1,500+)', color: 'text-indigo-400' },
+  { key: 'all', label: '🎲 All Vibes (9,000+)', color: 'text-white' },
+  { key: 'crush', label: '💕 Crush & Flirt (1,500+)', color: 'text-rose-400' },
+  { key: 'spicy', label: '🌶️ Spicy (1,500+)', color: 'text-amber-400' },
+  { key: 'secrets', label: '💣 Deep Secrets (1,500+)', color: 'text-violet-400' },
+  { key: 'chaotic', label: '🪩 Chaotic & Wild (1,500+)', color: 'text-emerald-400' },
+  { key: 'realtalk', label: '🗣️ Real Talk (1,500+)', color: 'text-sky-400' },
+  { key: 'latenight', label: '🌙 3AM Thoughts (1,500+)', color: 'text-indigo-400' },
 ];
 
 const CAT_TAG: Record<string, { label: string; color: string }> = {
@@ -29,7 +29,7 @@ const POOL_PAGE_SIZE = 20;
 
 export const DicePage: React.FC = () => {
   const [activeCat, setActiveCat] = useState<CatKey>('all');
-  const [featured, setFeatured] = useState<string>('"Send me an honest TBH. Don\'t hold back ðŸ«£"');
+  const [featured, setFeatured] = useState<string>('"Send me an honest TBH. Don\'t hold back 👋"');
   const [rolling, setRolling] = useState(false);
   const [copied, setCopied] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -69,7 +69,7 @@ export const DicePage: React.FC = () => {
   const switchCat = useCallback((key: CatKey) => {
     setActiveCat(key);
     setPoolCount(POOL_PAGE_SIZE);
-    setFeatured('"Roll the dice to unlock a prompt ðŸŽ²"');
+    setFeatured('"Roll the dice to unlock a prompt 🎲"');
   }, []);
 
   const loadPrompt = useCallback((prompt: string) => {
@@ -83,8 +83,8 @@ export const DicePage: React.FC = () => {
     <>
       <PublicPage
         title="3D Dice Prompt Roulette"
-        eyebrow="1,500+ curated prompts per category Â· 9,000+ total"
-        description="Roll the dice to shake out a viral, candid, or deep question to post on your story â€” or browse the pool manually."
+        eyebrow="1,500+ curated prompts per category · 9,000+ total"
+        description="Roll the dice to shake out a viral, candid, or deep question to post on your story — or browse the pool manually."
       >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
           {/* Left: Die + actions */}
@@ -107,7 +107,7 @@ export const DicePage: React.FC = () => {
                   }`}
                   style={{ animationDuration: rolling ? '0.6s' : undefined }}
                 >
-                  <span className="text-7xl">{rolling ? 'ðŸŽ²' : 'âœ¨'}</span>
+                  <span className="text-7xl">{rolling ? '🎲' : '✅'}</span>
                 </div>
               </button>
 
@@ -117,7 +117,7 @@ export const DicePage: React.FC = () => {
                 className="w-full max-w-[260px] py-3 bg-white text-dark-900 font-bold text-sm rounded-full active:scale-95 transition-all flex items-center justify-center gap-2 mt-2 shadow-lg disabled:opacity-70"
               >
                 <Dices className="w-5 h-5" />
-                {rolling ? 'Rollingâ€¦' : 'Roll Prompt Roulette ðŸŽ²'}
+                {rolling ? 'Rolling…' : 'Roll Prompt Roulette 🎲'}
               </button>
 
               <div className="w-full bg-dark-850 rounded-2xl p-4 mt-4 text-center border border-white/10 min-h-[72px] flex items-center justify-center transition-all">
@@ -185,7 +185,7 @@ export const DicePage: React.FC = () => {
                     className="glass-panel rounded-2xl p-3.5 flex items-center justify-between gap-3 transition-transform active:scale-[0.99] hover:border-indigo-500/30"
                   >
                     <div className="flex-1">
-                      <span className={`text-[10px] ${tag.color} font-mono block mb-0.5`}>{tag.label} â€¢ {rolls}K ROLLS</span>
+                      <span className={`text-[10px] ${tag.color} font-mono block mb-0.5`}>{tag.label} • {rolls}K ROLLS</span>
                       <p className="text-xs font-medium text-white">"{prompt}"</p>
                     </div>
                     <button

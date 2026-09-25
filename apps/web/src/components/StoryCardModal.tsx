@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 import { Copy, Check, Download, X, Share2, Wand2 } from 'lucide-react';
 import { UserProfile, getShareUrl } from '@/lib/api';
+import { useDialogFocus } from '@/lib/useDialogFocus';
 
 interface StoryCardModalProps {
   user: UserProfile;
@@ -26,6 +27,8 @@ const PROMPT_PRESETS = [
 ];
 
 export const StoryCardModal: React.FC<StoryCardModalProps> = ({ user, isOpen, onClose }) => {
+  const titleId = useId();
+  const dialogRef = useDialogFocus<HTMLDivElement>(isOpen, onClose);
   const [selectedTheme, setSelectedTheme] = useState(THEMES[0]);
   const [customPrompt, setCustomPrompt] = useState(PROMPT_PRESETS[0].text);
   const [copied, setCopied] = useState(false);
@@ -42,16 +45,24 @@ export const StoryCardModal: React.FC<StoryCardModalProps> = ({ user, isOpen, on
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="glass-panel max-w-md w-full rounded-2xl p-5 sm:p-6 space-y-5 relative max-h-[90vh] overflow-y-auto">
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
+        className="glass-panel max-w-md w-full rounded-2xl p-5 sm:p-6 space-y-5 relative max-h-[90vh] overflow-y-auto"
+      >
         <button
           onClick={onClose}
+          aria-label="Close dialog"
           className="absolute top-4 right-4 p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
         >
           <X className="w-4 h-4" />
         </button>
 
         <div className="space-y-1">
-          <h3 className="text-lg font-bold text-white flex items-center space-x-2">
+          <h3 id={titleId} className="text-lg font-bold text-white flex items-center space-x-2">
             <Share2 className="w-5 h-5 text-indigo-400" />
             <span>NGL & TBH Story Sticker</span>
           </h3>

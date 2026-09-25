@@ -7,6 +7,7 @@ import '../data/vibe_templates.dart';
 import '../ritual/daily_drop.dart';
 import '../ritual/drop_store.dart';
 import '../ritual/reminders.dart';
+import '../ritual/streak_store.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import '../widgets/drop_countdown.dart';
@@ -55,9 +56,8 @@ class _DailyDropScreenState extends State<DailyDropScreen> {
   }
 
   Future<int> _streakCount() async {
-    // Kept local to avoid pulling the whole streak store into this screen;
-    // the inbox owns streak state.
-    return 0;
+    final state = await StreakStore.load();
+    return state.count;
   }
 
   Future<void> _shareLink() async {

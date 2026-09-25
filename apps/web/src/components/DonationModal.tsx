@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useId } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Sparkles, Shield, Check, ExternalLink, X, Github } from 'lucide-react';
+import { useDialogFocus } from '@/lib/useDialogFocus';
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -35,15 +36,25 @@ const PERKS = [
 ];
 
 export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose }) => {
+  const titleId = useId();
+  const dialogRef = useDialogFocus<HTMLDivElement>(isOpen, onClose);
   const donationUrl = import.meta.env?.VITE_DONATION_URL || 'https://polar.sh/janasco/secretmsg';
 
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="glass-panel max-w-lg w-full rounded-2xl p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto">
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
+        className="glass-panel max-w-lg w-full rounded-2xl p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto"
+      >
         <button
           onClick={onClose}
+          aria-label="Close dialog"
           className="absolute top-4 right-4 p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
         >
           <X className="w-5 h-5" />
@@ -54,7 +65,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
           <div className="w-14 h-14 bg-indigo-500/10 border border-indigo-500/20 rounded-2xl flex items-center justify-center mx-auto text-indigo-400 shadow-lg shadow-indigo-500/10">
             <Heart className="w-7 h-7 fill-indigo-400" />
           </div>
-          <h3 className="text-2xl font-bold text-white tracking-tight">Support SecretMsg on Polar</h3>
+          <h3 id={titleId} className="text-2xl font-bold text-white tracking-tight">Support SecretMsg on Polar</h3>
           <p className="text-xs sm:text-sm text-slate-400 max-w-sm mx-auto">
             SecretMsg is an open-source personal project. We use <span className="text-indigo-300 font-semibold">Polar.sh</span> for GitHub issue funding and transparent community sponsorship.
           </p>

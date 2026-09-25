@@ -31,10 +31,16 @@ Future<String?> capturePng(GlobalKey key) async {
 Future<bool> sharePng(GlobalKey key, {String? subject}) async {
   final path = await capturePng(key);
   if (path == null) return false;
-  await Share.shareXFiles(
-    [XFile(path)],
-    text: subject,
-    subject: subject,
-  );
-  return true;
+  try {
+    await Share.shareXFiles(
+      [XFile(path)],
+      text: subject,
+      subject: subject,
+    );
+    return true;
+  } finally {
+    try {
+      await File(path).delete();
+    } catch (_) {}
+  }
 }

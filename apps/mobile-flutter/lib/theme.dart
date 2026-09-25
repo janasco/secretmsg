@@ -101,7 +101,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
     textPrimary: Color(0xFF0F172A),
     textHigh: Color(0xFF334155),
     textSecondary: Color(0xFF64748B),
-    textMuted: Color(0xFF94A3B8),
+    textMuted: Color(0xFF64748B),
     textFaint: Color(0xFFCBD5E1),
     accentDeep: Color(0xFFEEF2FF),
     emeraldSoft: Color(0xFF059669),
