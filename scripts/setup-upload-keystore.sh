@@ -8,6 +8,7 @@ export PATH="/home/janasco/.local/bin:/opt/flutter/bin:/opt/android-sdk/build-to
 
 ENV_FILE="/opt/secretmsg/secretmsg-private/.env.production"
 ANDROID_DIR="/opt/secretmsg/secretmsg/apps/mobile-flutter/android"
+KEYSTORE_OWNER="${KEYSTORE_OWNER:-janasco}"
 
 set -a
 # shellcheck disable=SC1090
@@ -49,6 +50,7 @@ else
 fi
 
 chmod 600 "$ANDROID_KEYSTORE_PATH"
+chown "$KEYSTORE_OWNER":"$KEYSTORE_OWNER" "$ANDROID_KEYSTORE_PATH" 2>/dev/null || true
 
 echo "Verifying keystore integrity..."
 keytool -list -v \
@@ -65,7 +67,8 @@ keyAlias=$ANDROID_KEYSTORE_KEY_ALIAS
 storeFile=$ANDROID_KEYSTORE_PATH
 EOF
 chmod 600 "$ANDROID_DIR/key.properties"
-echo "Wrote $ANDROID_DIR/key.properties (mode 600)."
+chown "$KEYSTORE_OWNER":"$KEYSTORE_OWNER" "$ANDROID_DIR/key.properties" 2>/dev/null || true
+echo "Wrote $ANDROID_DIR/key.properties (mode 600, owner $KEYSTORE_OWNER)."
 
 echo "Keystore SHA-256:"
 keytool -list -v \
