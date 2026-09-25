@@ -1,10 +1,10 @@
-﻿import React, { useMemo, useState, useCallback } from 'react';
+﻿import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Dices, Send, Copy, Check, Wand2, Sparkles } from 'lucide-react';
 import { PublicPage } from '@/components/PublicPage';
-import { ROULETTE_POOL } from '@/lib/data/rouletteData';
+import { loadRouletteCategory, type RouletteCategory } from '@/lib/data/rouletteData';
 
-type CatKey = keyof typeof ROULETTE_POOL;
+type CatKey = RouletteCategory;
 
 const CATS: { key: CatKey; label: string; color: string }[] = [
   { key: 'all', label: '🎲 All Vibes (9,000+)', color: 'text-white' },
@@ -35,9 +35,23 @@ export const DicePage: React.FC = () => {
   const [toast, setToast] = useState<string | null>(null);
   const [poolCount, setPoolCount] = useState(POOL_PAGE_SIZE);
   const [diceKey, setDiceKey] = useState(0);
+  const [pool, setPool] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const pool = useMemo(() => ROULETTE_POOL[activeCat] || ROULETTE_POOL.all, [activeCat]);
-  const visible = useMemo(() => pool.slice(0, poolCount), [pool, poolCount]);
+  useEffect(() => {
+    let mounted = true;
+    setIsLoading(true);
+    loadRouletteCategory(activeCat).then(prompts => {
+      if (mounted) setPool(prompts);
+    }).finally(() => {
+      if (mounted) setIsLoading(false);
+    });
+    return () => {
+      mounted = false;
+    };
+  }, [activeCat]);
+
+  const visible = useMemo(() => isLoading ? [] : pool.slice(0, poolCount), [isLoading, pool, poolCount]);
 
   const showToast = useCallback((msg: string) => {
     setToast(msg);
@@ -45,17 +59,16 @@ export const DicePage: React.FC = () => {
   }, []);
 
   const roll = useCallback(() => {
-    if (rolling) return;
+    if (rolling || isLoading || pool.length === 0) return;
     setRolling(true);
     setDiceKey(k => k + 1);
     window.setTimeout(() => {
-      const list = ROULETTE_POOL[activeCat] || ROULETTE_POOL.all;
-      const p = list[Math.floor(Math.random() * list.length)];
+      const p = pool[Math.floor(Math.random() * pool.length)];
       setFeatured(`"${p}"`);
       setRolling(false);
       showToast('New prompt unlocked!');
     }, 750);
-  }, [activeCat, rolling, showToast]);
+  }, [isLoading, pool, rolling, showToast]);
 
   const handleCopy = useCallback(() => {
     const text = featured.replace(/^"|"$/g, '').trim();
@@ -97,7 +110,7 @@ export const DicePage: React.FC = () => {
                 onClick={roll}
                 aria-label="Roll prompt roulette"
                 className="relative w-44 h-44 rounded-full flex items-center justify-center my-1 cursor-pointer group"
-                disabled={rolling}
+                disabled={rolling || isLoading}
               >
                 <div className="absolute inset-0 bg-indigo-500/10 rounded-full blur-2xl" />
                 <div
@@ -113,7 +126,7 @@ export const DicePage: React.FC = () => {
 
               <button
                 onClick={roll}
-                disabled={rolling}
+                disabled={rolling || isLoading}
                 className="w-full max-w-[260px] py-3 bg-white text-dark-900 font-bold text-sm rounded-full active:scale-95 transition-all flex items-center justify-center gap-2 mt-2 shadow-lg disabled:opacity-70"
               >
                 <Dices className="w-5 h-5" />
@@ -156,6 +169,7 @@ export const DicePage: React.FC = () => {
                 <button
                   key={cat.key}
                   onClick={() => switchCat(cat.key)}
+                  disabled={isLoading}
                   className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
                     activeCat === cat.key
                       ? 'bg-white text-dark-900 shadow-sm'
@@ -169,7 +183,9 @@ export const DicePage: React.FC = () => {
 
             <div className="flex justify-between items-center">
               <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Curated Roulette Pool</h3>
-              <span className="text-xs text-slate-400 font-mono">{pool.length.toLocaleString()} prompts</span>
+              <span className="text-xs text-slate-400 font-mono">
+                {isLoading ? 'Loading prompts…' : `${pool.length.toLocaleString()} prompts`}
+              </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

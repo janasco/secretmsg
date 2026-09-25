@@ -119,6 +119,13 @@ function mdToHtml(md) {
   return { html, headings };
 }
 
+function sanitizeInternalLinks(md, liveSlugs) {
+  return md.replace(/\[([^\]]+)\]\((\/post\/[^)]+)\)/g, (match, label, href) => {
+    const slug = href.split(/[?#]/, 1)[0].replace(/^\/post\//, '');
+    return liveSlugs.has(slug) ? match : label;
+  });
+}
+
 function rfc822(iso) {
   const [y, m, d] = iso.split('-').map(Number);
   return new Date(Date.UTC(y, m - 1, d, 12)).toUTCString();
@@ -134,13 +141,17 @@ const STATIC_ROUTES = [
 
 const today = new Date().toISOString().slice(0, 10);
 const files = readdirSync(postsDir).filter((f) => f.endsWith('.md')).sort();
-const published = [];
+const duePosts = [];
 for (const file of files) {
   const { fm, body } = parseFm(readFileSync(join(postsDir, file), 'utf8'), file);
   const validated = validateFrontmatter(fm, file);
   const due = validated.status === 'published' || (validated.status === 'scheduled' && validated.date <= today);
-  if (!due) continue;
-  const rendered = mdToHtml(body);
+  if (due) duePosts.push({ fm, body, validated });
+}
+const liveSlugs = new Set(duePosts.map(({ validated }) => validated.slug));
+const published = [];
+for (const { fm, body, validated } of duePosts) {
+  const rendered = mdToHtml(sanitizeInternalLinks(body, liveSlugs));
   published.push({
     slug: validated.slug,
     title: fm.title,

@@ -1,7 +1,7 @@
-import React, { useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Send, RotateCcw, Sparkles, Mail, Wand2, RefreshCw, MessageSquare } from 'lucide-react';
 import { PublicPage } from '@/components/PublicPage';
-import { ROULETTE_POOL } from '@/lib/data/rouletteData';
+import { loadRouletteCategory, type RouletteCategory } from '@/lib/data/rouletteData';
 
 interface DemoMessage {
   id: number;
@@ -45,11 +45,28 @@ export const DemoPage: React.FC = () => {
   const [activeVibe, setActiveVibe] = useState(VIBES[0]);
   const [text, setText] = useState('');
   const [toast, setToast] = useState<string | null>(null);
-  const [rouletteCat, setRouletteCat] = useState<'all' | 'crush' | 'latenight'>('all');
-  const [currentPrompt, setCurrentPrompt] = useState(ROULETTE_POOL.latenight[0]);
+  const [rouletteCat, setRouletteCat] = useState<RouletteCategory>('all');
+  const [currentPrompt, setCurrentPrompt] = useState('');
+  const [roulettePool, setRoulettePool] = useState<string[]>([]);
+  const [rouletteLoading, setRouletteLoading] = useState(true);
   const [gradient, setGradient] = useState(GRADIENTS[0]);
   const [openReply, setOpenReply] = useState<number | null>(null);
   const [replyText, setReplyText] = useState('');
+
+  useEffect(() => {
+    let mounted = true;
+    setRouletteLoading(true);
+    loadRouletteCategory(rouletteCat).then(prompts => {
+      if (!mounted) return;
+      setRoulettePool(prompts);
+      setCurrentPrompt(prev => prev || prompts[0] || '');
+    }).finally(() => {
+      if (mounted) setRouletteLoading(false);
+    });
+    return () => {
+      mounted = false;
+    };
+  }, [rouletteCat]);
 
   const showToast = useCallback((msg: string) => {
     setToast(msg);
@@ -80,9 +97,9 @@ export const DemoPage: React.FC = () => {
   }, [showToast]);
 
   const rollRoulette = useCallback(() => {
-    const pool = ROULETTE_POOL[rouletteCat];
-    setCurrentPrompt(pool[Math.floor(Math.random() * pool.length)]);
-  }, [rouletteCat]);
+    if (rouletteLoading || roulettePool.length === 0) return;
+    setCurrentPrompt(roulettePool[Math.floor(Math.random() * roulettePool.length)]);
+  }, [rouletteLoading, roulettePool]);
 
   const openReplyModal = useCallback((id: number) => {
     setOpenReply(id);
@@ -237,6 +254,7 @@ export const DemoPage: React.FC = () => {
                 <button
                   key={c}
                   onClick={() => setRouletteCat(c)}
+                  disabled={rouletteLoading}
                   className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
                     rouletteCat === c
                       ? 'border-indigo-500 bg-indigo-500/20 text-indigo-200'
@@ -248,11 +266,14 @@ export const DemoPage: React.FC = () => {
               ))}
             </div>
             <div className="bg-dark-850 border border-white/10 rounded-2xl p-4 min-h-[56px] flex items-center">
-              <p className="text-sm font-semibold text-white">"{currentPrompt}"</p>
+              <p className="text-sm font-semibold text-white">
+                {rouletteLoading ? 'Loading prompts…' : `“${currentPrompt}”`}
+              </p>
             </div>
             <button
               onClick={rollRoulette}
-              className="w-full py-3 rounded-xl text-sm font-bold bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2 transition-colors"
+              disabled={rouletteLoading || roulettePool.length === 0}
+              className="w-full py-3 rounded-xl text-sm font-bold bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <RefreshCw className="w-4 h-4" /> Roll Another
             </button>
