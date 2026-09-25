@@ -131,26 +131,6 @@ class ApiClient {
     return data['replyToken']?.toString();
   }
 
-  // ---- OTP auth ----
-  static Future<void> requestOtp(String email) async {
-    await _postJson('/api/auth/otp-request', {'email': email});
-  }
-
-  static Future<({UserProfile user, String token})> verifyOtp(
-    String email,
-    String otp,
-  ) async {
-    final data = await _postJson('/api/auth/otp-verify', {
-      'email': email,
-      'otp': otp,
-    });
-    final user = UserProfile.fromJson(data['user'] as Map<String, dynamic>);
-    final token = data['token']?.toString() ?? '';
-    await Session.setToken(token);
-    await Session.saveUser(user);
-    return (user: user, token: token);
-  }
-
   // ---- Auth V2: Handle + PIN + Backup Codes ----
   static Future<({String handle, List<String> backupCodes, String token})> authSignup({
     String? handle,
@@ -376,12 +356,6 @@ class ApiClient {
 
   static Future<void> unregisterPushToken() async {
     await _postJson('/api/push/register', {'fcm_token': ''}, auth: true);
-  }
-
-  // ---- Blind reply check ----
-  static Future<ReplyThread> checkReply(String token) async {
-    final data = await _getJson('/api/reply/${Uri.encodeComponent(token)}');
-    return ReplyThread.fromJson(data['thread'] as Map<String, dynamic>);
   }
 
   // ---- Account deletion ----

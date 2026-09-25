@@ -48,6 +48,3 @@ local.properties
 
 # Firebase config (must not be committed)
 google-services.json
-
-# Capacitor legacy wrapper: www/ is generated from site/public via `npm run sync:content`
-apps/mobile-android-archived/www/

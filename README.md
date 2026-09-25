@@ -65,8 +65,7 @@ This repository contains the **open-source client applications and frontend pack
 
 - **Web Platform** (`apps/web`): React 18 + Vite + Tailwind CSS single-page application, served from **`https://secretmsg.net`**: landing page, public message submission `/:username`, the dice roulette, sticker studio, legal/safety pages, plus the account hub (`/login`, `/inbox`, `/settings`, `/supporters`). Single-host app — there are no subdomain deployments.
   Configuration comes from `VITE_API_URL` and `VITE_PUBLIC_URL` (sane production defaults baked in; see `apps/web/README.md`).
-- **Flutter Android App** (`apps/mobile-flutter`): Native Flutter (Dart) Android application — the primary mobile client — shipped as release **APK & AAB** builds (application id `net.secretmsg.android_app`). Implements the full mobile experience: public send pages with automated bot screening, story sticker studio, dice prompt roulette, email-OTP sign-in, inbox & double-blind replies, settings with browser-pairing codes, Google Play Billing perks, supporters wall, and all legal/safety screens, with deep links and native haptics/share.
-- **Legacy Prototypes & Wrappers** (`site/public`, `apps/mobile-android-archived`): Earlier touch-optimized static HTML prototype and its archived Capacitor wrapper, kept for reference only — not built, not deployed. The `m.` mobile hostname is removed; legacy links now point at the canonical host.
+- **Flutter Android App** (`apps/mobile-flutter`): Native Flutter (Dart) Android application — the primary mobile client — shipped as release **APK & AAB** builds (application id `net.secretmsg.android_app`). Implements the full mobile experience: public send pages with automated bot screening, story sticker studio, dice prompt roulette, handle-and-PIN sign-in, inbox & double-blind replies, settings with browser-pairing codes, Google Play Billing perks, supporters wall, and all legal/safety screens, with deep links and native haptics/share.
 
 > [!NOTE]
 > To protect platform stability, user data privacy, and prevent abuse, backend services, database storage, and design-system prototypes are maintained in an isolated private repository. Client apps interact with services strictly via standard REST API contracts (`https://api.secretmsg.net`).
@@ -84,12 +83,6 @@ This repository contains the **open-source client applications and frontend pack
 - **CORS strict allowlist**: disallowed origins receive `Access-Control-Allow-Origin: null` and are blocked, rather than silently falling back to `secretmsg.net`.
 - **Cryptographically clean tokens**: `generateRandomToken` uses rejection sampling to remove modulo bias.
 - **Rate limiting**: message sending, OTP requests/verification, checkout, public profile views, and abuse reports are all rate-limited per IP / email.
-
----
-
-## Legacy Screens (`site/public/`, kept for reference)
-
-The decommissioned mobile prototype remains in the repo: `landing.html`, `index.html` (viral template gallery), `compose.html`, `dice.html` (Three.js roulette), `sticker-studio.html`, `inbox.html`, `message-detail.html`, `profile.html`, `supporters.html`, `settings.html`, and the `safety.html` hub with sub-pages. The live products are `apps/web` and `apps/mobile-flutter`.
 
 ---
 
@@ -128,7 +121,7 @@ See [`apps/mobile-flutter/README.md`](apps/mobile-flutter/README.md) for release
 
 **Key Native Mobile Capabilities**:
 - **Bot screening**: A native widget produces a verified human-check token before any message send (fail-closed at the API).
-- **OTP Authentication**: legacy email one-time-code sign-in is still supported API-side; the JWT is stored in the Android Keystore via `flutter_secure_storage`. New accounts use handle + PIN.
+- **Authentication**: handle + PIN with backup codes; the JWT is stored in the Android Keystore via `flutter_secure_storage`.
 - **Web Pairing**: Settings can mint a 5-minute code that pairs a browser to the inbox with read-only scope.
 - **Google Play Billing**: Supporter perks purchased in-app, verified server-side before granting.
 - **Deep Links**: `https://secretmsg.net/{username}` opens the public send screen; `https://secretmsg.net/inbox` opens the inbox.

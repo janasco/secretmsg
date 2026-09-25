@@ -56,13 +56,13 @@ Review the files immediately before uploading them. Play limits are 30 character
 
 ## App content declarations
 
-- **Privacy policy:** `https://secretmsg.net/p/privacy`. The policy source is `site/public/privacy.html`, and the route is recognized by the app at `apps/mobile-flutter/lib/main.dart:63-82` and tested at `apps/mobile-flutter/test/deep_link_router_test.dart:16-35`. Verify the public page before submission.
+- **Privacy policy:** `https://secretmsg.net/p/privacy`. The policy source is `apps/web/src/pages/PrivacyPage.tsx`, and the route is recognized by the app at `apps/mobile-flutter/lib/main.dart:63-82` and tested at `apps/mobile-flutter/test/deep_link_router_test.dart:16-35`. Verify the public page before submission.
 - **Contact details:** website `https://secretmsg.net`; use `privacy@secretmsg.net` for privacy and `safety@secretmsg.net` for child-safety and abuse concerns. These addresses appear in the published policy sources.
 - **Ads:** no ads.
 - **App access:** declare that all or some functionality is restricted. Provision the `playreview` account, seed it, and enter its exact handle and PIN in Play Console. The app supports handle/PIN authentication at `/opt/secretmsg/secretmsg-private/api/src/index.ts:362-440`. Keep the PIN and backup codes only in the password manager, never in this document.
 - **Content rating:** complete the IARC questionnaire honestly. SecretMsg hosts unrestricted user-generated communication, including anonymous user-to-user messages, so the answers will not support an Everyone rating. Anonymous communication rates strictly; expect Teen or higher, subject to the questionnaire result.
 - **Target audience:** do not select an under-13 audience or age band. Review the Families-policy consequences before submitting the target-audience and content-rating forms.
-- **Child safety standards:** provide the published child-safety policy at `https://secretmsg.net/p/child-safety-policy`, backed by `site/public/child-safety.html`; identify `safety@secretmsg.net` as the child-safety contact. The app provides an in-app message-report action in `apps/mobile-flutter/lib/screens/inbox_screen.dart:1141-1228` and routes the policy URL at `apps/mobile-flutter/lib/main.dart:63-82`.
+- **Child safety standards:** provide the published child-safety policy at `https://secretmsg.net/p/child-safety-policy`, backed by `apps/web/src/pages/ChildSafetyPage.tsx`; identify `safety@secretmsg.net` as the child-safety contact. The app provides an in-app message-report action in `apps/mobile-flutter/lib/screens/inbox_screen.dart:1141-1228` and routes the policy URL at `apps/mobile-flutter/lib/main.dart:63-82`.
 - **Data safety:** use the separate controlled annex, [DATA_SAFETY.md](DATA_SAFETY.md). For account deletion, the public URL is `https://secretmsg.net/delete-account` (shipped and verified); in-app deletion remains available from Settings.
 - **Other declarations:** answer Government apps, Financial features, and Health as not applicable; this is not a News app.
 

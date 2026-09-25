@@ -73,12 +73,12 @@ regardless.
   Firebase Cloud Messaging for push registration and delivery; Polar.sh for web
   supporter checkout and its webhook where that web flow is used.
 
-**APK/web authentication distinction:** The Flutter client has
-`requestOtp` and `verifyOtp` methods, but the current Flutter login,
-registration, and recovery screens call handle/PIN, backup-code, and Turnstile
-flows instead. The legacy real-email OTP flow is reachable on the web login
-page, not exposed in the current Flutter APK UI. For the APK-only form, no
-real email is collected; a handle account can use the synthetic placeholder.
+**APK/web authentication distinction:** The web client has `requestOtp` and
+`verifyOtp` methods, but the current Flutter login, registration, and recovery
+screens call handle/PIN, backup-code, and Turnstile flows instead. The legacy
+real-email OTP flow is reachable on the web login page, not exposed in the
+current Flutter APK UI. For the APK-only form, no real email is collected; a
+handle account can use the synthetic placeholder.
 
 ### Financial info — purchase history
 
