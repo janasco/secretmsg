@@ -1,8 +1,8 @@
 ---
 title: "What Nobody Tells You About Workplace Feedback Without the Fallout"
 slug: workplace-feedback-anonymously-secrets
-date: 2026-05-24
-status: draft
+date: 2027-12-15
+status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Work"]
 excerpt: "The insider truths about workplace feedback without the fallout nobody puts in the onboarding."
 pixabay: "office team meeting"

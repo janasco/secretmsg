@@ -72,6 +72,7 @@ export const STATIC_ROUTES = Object.freeze([
     title: 'Delete Your SecretMsg Account',
     description: 'Permanently delete your SecretMsg account and associated account data using the public deletion request page.',
     type: 'WebPage',
+    component: 'DeleteAccountPage',
   },
   {
     path: '/blog',

@@ -62,8 +62,8 @@ Use these exact device and export settings for every shot:
 ### 5. Dice result
 
 - **File:** `05-dice-result-dark.png`
-- **Navigation from launch:** Launch SecretMsg → tap **Dice** in the custom bottom nav → choose a tame category such as **Secrets** or **Real Talk** → tap **Roll the dice** → reroll until the result is suitable.
-- **Ready state:** The prompt pool has loaded, the roll has completed, the result card and its **Copy** and **Use in composer** actions are visible, and the keyboard is hidden. Do not use **Spicy** or **crush**. The **Dice** item is settled in the custom bottom nav.
+- **Navigation from launch:** Launch SecretMsg → tap **Dice** in the custom bottom nav → choose a tame category such as **Deep Secrets** or **Real Talk** → tap **Roll the dice** → reroll until the result is suitable.
+- **Ready state:** The prompt pool has loaded, the roll has completed, the result card and its **Copy** and **Use in composer** actions are visible, and the keyboard is hidden. Use **Deep Secrets**, **Real Talk**, **Chaotic & Wild**, or **3AM Thoughts**; do not use **Spicy** or **Crush & Flirt**. The **Dice** item is settled in the custom bottom nav.
 - **Why this shot:** It demonstrates a playful conversation starter and a clear path from inspiration to sending.
 
 ### 6. Sticker Studio 9:16 preview
@@ -95,7 +95,7 @@ Use this only if billing is not ready for the listing. It is not a substitute fo
 
 - Use only the synthetic seeded content. Never capture real handles, names, avatars, messages, replies, or report text.
 - Keep the account restricted to the seeded reviewer data: four synthetic inbox messages, one synthetic blind reply, `received_count=4`, `replies_count=1`, and rank **Newcomer**.
-- Use a tame Dice category. Reroll if any result is unsuitable. Do **not** use Dice **Spicy** or **crush**.
+- Use a tame Dice category. Reroll if any result is unsuitable. The six real categories are **Crush & Flirt**, **Spicy**, **Deep Secrets**, **Chaotic & Wild**, **Real Talk**, and **3AM Thoughts**; do **not** use **Spicy** or **Crush & Flirt**.
 - On the Send screen, do not open or feature the **Crush** or **Confessions** inspiration presets.
 - Do not feature the report flow, a report dialog, report text, child-safety policy, or moderation/legal screens as marketing shots.
 - Do not add device frames, finger or touch overlays, captions added after capture, or promotional **Best**, ranking, discount, or call-to-action badges.

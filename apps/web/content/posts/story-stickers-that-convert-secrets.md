@@ -1,8 +1,8 @@
 ---
 title: "What Nobody Tells You About Story Stickers That Actually Convert"
 slug: story-stickers-that-convert-secrets
-date: 2026-03-14
-status: draft
+date: 2027-11-13
+status: scheduled
 tags: ["Growth & Sharing", "Growth", "Stickers"]
 excerpt: "The insider truths about story stickers that actually convert nobody puts in the onboarding."
 pixabay: "phone social media story"

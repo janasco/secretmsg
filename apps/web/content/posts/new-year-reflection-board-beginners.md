@@ -28,7 +28,7 @@ A specific reflection prompt gives people more to answer than a generic "send TB
 
 Save the keepers somewhere permanent. Next December, repost the best prompt with last year answers as bait. Traditions are just good ideas on a schedule.
 
-##  prompts that land
+## Prompts that land
 
 "One thing I did this year you admired?" "What should I stop pretending about?" "Rate my 2026 glow-up honestly." Each invites a story, not a score — stories are what get screenshotted and remembered.
 

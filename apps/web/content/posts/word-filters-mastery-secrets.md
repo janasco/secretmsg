@@ -1,8 +1,8 @@
 ---
 title: "What Nobody Tells You About Word Filters, Mastered"
 slug: word-filters-mastery-secrets
-date: 2026-02-07
-status: draft
+date: 2027-12-07
+status: scheduled
 tags: ["Safety & Moderation", "Safety", "Moderation"]
 excerpt: "The insider truths about word filters, mastered nobody puts in the onboarding."
 pixabay: "shield protection security"

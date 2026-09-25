@@ -16,7 +16,7 @@ credit_url: ""
 
 Streaks That Actually Stick is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Double-blind replies preserve sender identity while giving the recipient a way to answer.
+> Double-blind replies hide sender identity from the recipient while still giving them a way to answer.
 
 ## Designing your unmissable day
 

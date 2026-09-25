@@ -12,7 +12,8 @@
 ### Does the app collect or share any of the required user data types?
 
 **Yes.** The app collects account information, user IDs, messages, app
-activity/interaction data, purchase history, and device or other identifiers.
+activity/interaction data, purchase history, supporter/donation data, and
+device or other identifiers.
 It shares data with infrastructure and payment, email, verification, and push
 processors as described below. Some categories are optional depending on the
 account and features used.
@@ -100,6 +101,34 @@ handle account can use the synthetic placeholder.
 - **Processors:** Google Play Developer API and Google Play Billing;
   Cloudflare Workers/D1. Google Play processes the purchase; SecretMsg does
   not receive card details.
+
+### Supporter donations — purchase history and user-supplied donor content
+
+- **Collected:** Yes, when someone supports the project through the Polar web
+  donation flow. This is distinct from the Google Play purchase records above
+  and is collected by the web flow, not by an in-app purchase. The in-app
+  Google Pay donation endpoint is fail-closed and returns HTTP 501.
+- **Shared:** Yes. Cloudflare Workers/D1 stores the donation record; Polar
+  processes the checkout and returns a verified webhook. The Flutter app then
+  reads donation records back through the public, unauthenticated
+  `GET /api/supporters` endpoint, so a donor-supplied alias and note are served
+  to any installed client.
+- **Required or optional:** Optional and unrelated to using the messaging
+  feature. No account is required to donate.
+- **Purpose:** Display the public supporter wall, credit the donor, and grant
+  supporter tiers.
+- **Where stored:** `api/schema.sql` and `db/schema.sql`, `donations`:
+  `user_id` (NULL when unlinked), `donor_alias` (defaults to
+  "Anonymous Supporter"), `badge_tier`, `note` (optional free-text message),
+  `amount_usd`, `is_anonymous`, `provider`, `reference_id`, and
+  `created_at`. The public endpoint returns `alias` (capped at 60 characters),
+  `tier`, `note` (capped at 200 characters), and `createdAt`.
+- **Processors:** Polar for checkout and webhook delivery; Cloudflare
+  Workers/D1 for storage and delivery to the app.
+- **Play mapping note:** `amount_usd` is purchase history; the donor-supplied
+  `note` is user-generated content. Neither is a Play "Purchase history" record
+  created by an in-app purchase, so declare the Play purchase-history question
+  for the Google Play products and disclose this separately.
 
 ### App activity — app interactions and in-app activity
 
@@ -313,20 +342,33 @@ handle account can use the synthetic placeholder.
    `device_hint`; the coarse `device_hint` is not a unique ID.
 6. **Runtime and build permissions:** The app requests notification permission
    through Settings on Android 13+ (`POST_NOTIFICATIONS`). The main manifest
-   declares `INTERNET`, `POST_NOTIFICATIONS`, `SCHEDULE_EXACT_ALARM`,
-   `USE_EXACT_ALARM`, and `RECEIVE_BOOT_COMPLETED`; exact alarms and boot
-   completion support local reminders and their restoration. The final merged
-   APK also includes plugin-inherited permissions for the current dependencies,
-   including `WAKE_LOCK`, `VIBRATE`, `ACCESS_NETWORK_STATE`, `C2DM`, and
-   `BILLING`; the merged manifest and final APK must be checked again at each
-   release because source-manifest inspection alone is not the final merged
-   permission set.
-7. **Local data:** The server delete flow does not clear Flutter secure
-   storage, the device fingerprint, the inbox cache, the offline outbox, or
-   gamification preferences. These include `secretmsg_auth_token`,
-   `secretmsg_device_fingerprint`, `cache_inbox_v1`, `cache_tray_v1`, and
-   `outbox_ops_v1` in the client code. The delete UI calls the API and does
-   not itself perform a complete local wipe.
+   declares `INTERNET`, `POST_NOTIFICATIONS`, `SCHEDULE_EXACT_ALARM`, and
+   `RECEIVE_BOOT_COMPLETED`; exact alarms and boot completion support local
+   reminders and their restoration. `USE_EXACT_ALARM` is **not** declared — it
+   was removed before v1.6.9 and is absent from the merged v1.6.9 release
+   manifest. The final merged APK also includes plugin-inherited permissions for
+   the current dependencies, including `WAKE_LOCK`, `VIBRATE`,
+   `ACCESS_NETWORK_STATE`, and the `com.google.android.c2dm.permission.RECEIVE`
+   group; in-app billing is contributed as the
+   `com.google.android.play.billingclient.version` `<uses-library>` entry rather
+   than an `android.permission.BILLING` permission. The merged manifest and
+   final APK must be checked again at each release because source-manifest
+   inspection alone is not the final merged permission set.
+7. **Local data:** As of v1.6.9 the in-app delete flow does attempt a full
+   local wipe: `ApiClient.deleteAccount` calls `AccountDataWipe.wipeAllLocalAccountData`
+   after the server request succeeds, which clears the auth token, cached
+   profile, and `secretmsg_device_fingerprint` from `flutter_secure_storage`,
+   the inbox and moderation-tray caches (`cache_inbox_v1`, `cache_tray_v1`),
+   the offline outbox (`outbox_ops_v1`), streak, Daily Drop, and vibe state,
+   and the scheduled reminder notifications and preferences. This supersedes
+   the earlier position that the delete UI performed no local cleanup. The
+   honest caveats are unchanged: the wipe is best-effort and per-subsystem —
+   a failure in any step is swallowed, recorded in `debugPrint`, and the
+   navigation proceeds regardless, so it is not guaranteed complete; it runs
+   **after** the server response, so an aborted or failed server call skips
+   it entirely; and the public web deletion page at
+   `https://secretmsg.net/delete-account` cannot reach device storage at all.
+   Data already exported, saved, or shared by the user is unaffected.
 8. **Deletion behavior:** `DELETE /api/account` explicitly deletes received
    messages, blocked senders, reports where the user is recipient and reports
    where the user is reporter, pair codes, purchases, linked donations,
@@ -362,6 +404,16 @@ handle account can use the synthetic placeholder.
     and `shared_preferences`. This is not an SDK analytics declaration; the
     list is included to prevent the previous stale dependency inventory from
     being reused.
+13. **Play "Sensitive info" category is undeclared:** this annex has no
+    Sensitive info section. The service has no dedicated field for health,
+    financial, sexual, political, religious, or biometric data, and no
+    structure requests it. The open question is the free-text content itself:
+    anonymous messages, blind replies, public Q&A posts, bios, display names,
+    and donation notes are unrestricted user text and may incidentally contain
+    any such topic. Play treats data as sensitive when the app *specifically*
+    collects it, and SecretMsg does not, so the defensible answer is "No" — but
+    that is a judgment call on a UGC messaging app, not a code fact. Decide it
+    explicitly in the Console rather than leaving the category unanswered.
 
 ## Cannot be determined from code
 

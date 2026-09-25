@@ -24,7 +24,7 @@ People may be reflective near the end of the year. Give them somewhere to say it
 
 A specific reflection prompt gives people more to answer than a generic "send TBH" invitation. Test the timing rather than assuming a seasonal increase.
 
-##  prompts that land
+## Prompts that land
 
 "One thing I did this year you admired?" "What should I stop pretending about?" "Rate my 2026 glow-up honestly." Each invites a story, not a score — stories are what get screenshotted and remembered.
 

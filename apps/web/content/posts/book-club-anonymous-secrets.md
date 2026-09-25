@@ -1,8 +1,8 @@
 ---
 title: "What Nobody Tells You About Anonymous Book Club Boards"
 slug: book-club-anonymous-secrets
-date: 2027-06-29
-status: draft
+date: 2027-10-28
+status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Community"]
 excerpt: "The insider truths about anonymous book club boards nobody puts in the onboarding."
 pixabay: "books reading cozy"

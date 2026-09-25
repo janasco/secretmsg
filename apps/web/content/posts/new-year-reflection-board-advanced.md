@@ -24,7 +24,7 @@ Friend groups can use several overlapping boards: one person posts, another repl
 
 SecretMsg groups are just overlapping boards. The overlap is the party.
 
-##  prompts that land
+## Prompts that land
 
 "One thing I did this year you admired?" "What should I stop pretending about?" "Rate my 2026 glow-up honestly." Each invites a story, not a score — stories are what get screenshotted and remembered.
 

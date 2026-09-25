@@ -42,7 +42,7 @@ const STATS = [
   'A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.',
   'Posting times vary by audience; test a small number of windows instead of assuming one is best.',
   'Vibe templates can help someone start when a blank box feels difficult.',
-  'Double-blind replies preserve sender identity while giving the recipient a way to answer.',
+  'Double-blind replies hide sender identity from the recipient while still giving them a way to answer.',
   'Pause submissions rejects new messages until the board is active again; senders must try later.',
   'A clear question can reduce uncertainty about what kind of message to send.',
   'A useful first reply can make the next interaction easier, but no reply guarantees another message.',
@@ -334,7 +334,7 @@ const TOPICS = [
     feature: 'drops', title: 'New Year, Honest Answers',
     secs: [
       ['Late December energy', ['People may be reflective near the end of the year. Give them somewhere to say it out loud: "TBH — what should I leave in 2026?" Post between Christmas and New Year if that timing fits your audience.', 'A specific reflection prompt gives people more to answer than a generic "send TBH" invitation. Test the timing rather than assuming a seasonal increase.']],
-      [' prompts that land', ['"One thing I did this year you admired?" "What should I stop pretending about?" "Rate my 2026 glow-up honestly." Each invites a story, not a score — stories are what get screenshotted and remembered.', 'Rotate one per day through the final week. Scarcity plus occasion beats a single mega-post.']],
+      ['Prompts that land', ['"One thing I did this year you admired?" "What should I stop pretending about?" "Rate my 2026 glow-up honestly." Each invites a story, not a score — stories are what get screenshotted and remembered.', 'Rotate one per day through the final week. Scarcity plus occasion beats a single mega-post.']],
       ['Answering in public (sort of)', ['Use double-blind replies for the gems and keep the tender ones private. The current app does not publish a shared response feed; if you want a recap, save the messages and share your own summary elsewhere.', 'On January first, pin the single message that describes who you are becoming. Let it headline the new year.']],
       ['The group version', ['Friend groups can use several overlapping boards: one person posts, another replies, and the group chat keeps the ritual moving. The app does not create a shared group account, so somebody still has to manage the links and replies.', 'SecretMsg groups are just overlapping boards. The overlap is the party.']],
       ['Carrying it forward', ['Save the keepers somewhere permanent. Next December, repost the best prompt with last year answers as bait. Traditions are just good ideas on a schedule.']],
@@ -723,6 +723,18 @@ function excerptFor(angle, topic) {
   return frames[angle.id];
 }
 
+function readExistingIdentity(slug) {
+  const file = join(outDir, `${slug}.md`);
+  if (!existsSync(file)) return null;
+  const head = readFileSync(file, 'utf8').slice(0, 600);
+  const date = /^date:\s*(\S+)\s*$/m.exec(head);
+  const status = /^status:\s*(\S+)\s*$/m.exec(head);
+  if (!date || !status) return null;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date[1])) return null;
+  if (!/^(published|scheduled|draft)$/.test(status[1])) return null;
+  return { date: date[1], status: status[1] };
+}
+
 function fm(post) {
   const lines = [
     '---',
@@ -773,6 +785,14 @@ function main() {
       let status = date <= todayCut ? 'published' : 'scheduled';
       if (idx % 30 === 29) status = 'draft'; // ~10 drafts scattered
 
+      // Date and status are assigned by iteration index, so reordering the
+      // angle list would silently reshuffle every post's publish date. Once a
+      // post exists, keep whatever it was given: the publish calendar is
+      // content, not a derived value, and must survive regeneration.
+      const existing = readExistingIdentity(`${topic.slug}-${angle.id}`);
+      const finalDate = existing ? existing.date : date;
+      const finalStatus = existing ? existing.status : status;
+
       const title = angle.title(topic.title);
       const slug = `${topic.slug}-${angle.id}`;
       const intro = `${topic.title} is easier to use when the page has a clear job. This ${angle.frame} starts with the decision in front of you, then follows the details that make the decision workable.`;
@@ -800,7 +820,7 @@ function main() {
 
       const words = body.split(/\s+/).length;
       const post = {
-        title, slug, date, status,
+        title, slug, date: finalDate, status: finalStatus,
         tags: [CATS[topic.cat], ...topic.tags].slice(0, 3),
         excerpt: excerptFor(angle, topic),
         query: topic.query,

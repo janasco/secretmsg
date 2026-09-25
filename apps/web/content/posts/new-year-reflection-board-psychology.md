@@ -18,7 +18,7 @@ New Year, Honest Answers is easier to use when the page has a clear job. This be
 
 > Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
-##  prompts that land
+## Prompts that land
 
 "One thing I did this year you admired?" "What should I stop pretending about?" "Rate my 2026 glow-up honestly." Each invites a story, not a score — stories are what get screenshotted and remembered.
 

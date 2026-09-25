@@ -1,8 +1,8 @@
 ---
 title: "What Nobody Tells You About Every Supporter Perk, Explained"
 slug: supporter-perks-tour-secrets
-date: 2026-04-19
-status: draft
+date: 2027-11-21
+status: scheduled
 tags: ["Product & Features", "Supporters", "Perks"]
 excerpt: "The insider truths about every supporter perk, explained nobody puts in the onboarding."
 pixabay: "golden badge premium"
@@ -16,7 +16,7 @@ credit_url: ""
 
 Every Supporter Perk, Explained is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Double-blind replies preserve sender identity while giving the recipient a way to answer.
+> Double-blind replies hide sender identity from the recipient while still giving them a way to answer.
 
 ## Sender hints, carefully scoped
 

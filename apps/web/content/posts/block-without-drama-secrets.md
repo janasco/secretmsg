@@ -1,8 +1,8 @@
 ---
 title: "What Nobody Tells You About Blocking Without Drama"
 slug: block-without-drama-secrets
-date: 2026-09-06
-status: draft
+date: 2027-10-20
+status: scheduled
 tags: ["Safety & Moderation", "Safety", "Blocking"]
 excerpt: "The insider truths about blocking without drama nobody puts in the onboarding."
 pixabay: "calm boundary fence"
