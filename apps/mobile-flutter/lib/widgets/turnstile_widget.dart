@@ -218,10 +218,13 @@ class TurnstileWidgetState extends State<TurnstileWidget> {
     try {
       final sitekey = widget.siteKey;
       final autoExecute = widget.autoExecuteFallback ? 'true' : 'false';
+      const log = kDebugMode
+          ? "var log = function(msg){ try { console.log('SMTS:' + msg); } catch(e){} };"
+          : 'var log = function(){};';
       final script = '''
 (function(){
   if (window.__smTsInjected) return;
-  var log = function(msg){ try { console.log('SMTS:' + msg); } catch(e){} };
+  $log
   window.__smTsGotToken = false;
   try {
     if (!document.body) throw new Error('no body');

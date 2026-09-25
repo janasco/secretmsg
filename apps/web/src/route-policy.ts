@@ -6,6 +6,7 @@ const ASSET_EXTENSIONS = new Set([
   'csv',
   'eot',
   'gif',
+  'html',
   'ico',
   'jpeg',
   'jpg',
@@ -33,11 +34,68 @@ const ASSET_EXTENSIONS = new Set([
   'zip',
 ]);
 
+const STATIC_ROUTES = new Set([
+  '/',
+  '/about',
+  '/faq',
+  '/contact',
+  '/download',
+  '/supporters',
+  '/demo',
+  '/dice',
+  '/sticker-studio',
+  '/login',
+  '/delete-account',
+  '/blog',
+  '/p/safety',
+  '/p/child-safety-policy',
+  '/p/approach-to-safety',
+  '/p/guide-to-online-safety',
+  '/p/community-guidelines',
+  '/p/safety-tools',
+  '/p/resources',
+  '/p/contact-us',
+  '/p/terms',
+  '/p/privacy',
+  '/p/cookies',
+  '/p/disclaimer',
+]);
+
+const CLIENT_ROUTES = new Set([...STATIC_ROUTES, '/inbox', '/settings']);
+const RESERVED_PATHS = new Set(['/_headers', '/_headers.tmp', '/_redirects', '/_redirects.tmp']);
 const LEGAL_DOCUMENTS = new Set(['terms', 'privacy', 'cookies', 'disclaimer']);
 
 function normalizedPath(pathname: string): string {
   const normalized = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
   return normalized || '/';
+}
+
+function hasAssetExtension(segment: string): boolean {
+  const dot = segment.lastIndexOf('.');
+  return dot >= 0 && dot < segment.length - 1 && ASSET_EXTENSIONS.has(segment.slice(dot + 1).toLowerCase());
+}
+
+function isDynamicRoute(path: string, prefix: string): boolean {
+  if (!path.startsWith(prefix)) return false;
+  const segment = path.slice(prefix.length);
+  return segment.length > 0 && !segment.includes('/') && !/[\u0000-\u001f\u007f?#\\]/.test(segment);
+}
+
+function isUsernameRoute(path: string): boolean {
+  const segment = path.slice(1);
+  if (hasAssetExtension(segment)) return false;
+  return /^\/[A-Za-z0-9._-]+$/.test(path)
+    && !segment.startsWith('.')
+    && !segment.endsWith('.');
+}
+
+export function isClientRoute(pathname: string): boolean {
+  const path = normalizedPath(pathname).toLowerCase();
+  if (CLIENT_ROUTES.has(path)) return true;
+  if (isDynamicRoute(path, '/reply/')) return true;
+  if (isDynamicRoute(path, '/post/')) return true;
+  if (isDynamicRoute(path, '/legal/')) return true;
+  return isUsernameRoute(path);
 }
 
 export function legacyRedirect(pathname: string): string | null {
@@ -53,14 +111,17 @@ export function legacyRedirect(pathname: string): string | null {
   return null;
 }
 
-export function isAssetRequest(pathname: string): boolean {
+export function isAssetRequest(pathname: string, search = ''): boolean {
   const path = normalizedPath(pathname).toLowerCase();
   if (path === '/downloads' || path.startsWith('/downloads/')) return true;
+  if (RESERVED_PATHS.has(path)) return true;
+  if (Array.from(new URLSearchParams(search)).some(([key, value]) => hasAssetExtension(key) || hasAssetExtension(value))) return true;
+  if (isDynamicRoute(path, '/reply/') || isDynamicRoute(path, '/post/') || isDynamicRoute(path, '/legal/')) return false;
 
   const segment = path.slice(path.lastIndexOf('/') + 1);
-  const dot = segment.lastIndexOf('.');
-  if (dot <= 0 || dot === segment.length - 1) return false;
-  return ASSET_EXTENSIONS.has(segment.slice(dot + 1));
+  if (hasAssetExtension(segment) && segment.endsWith('.html')) return true;
+  if (isClientRoute(path)) return false;
+  return hasAssetExtension(segment);
 }
 
 export const notFoundHtml = `<!doctype html>

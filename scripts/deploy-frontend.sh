@@ -1,21 +1,12 @@
 #!/bin/bash
 # Redeploy secretmsg.net / www.secretmsg.net via the secretmsg-frontend static-assets Worker.
 # Usage: bash /opt/secretmsg/deploy-frontend.sh
-#
-# This file is the version-controlled source. The runtime copy lives at
-# /opt/secretmsg/deploy-frontend.sh; keep the two in sync. The generated
-# wrangler.toml MUST keep the ASSETS binding, not_found_handling = "none"
-# and run_worker_first = false: apps/web/src/worker.ts depends on that
-# contract to return real 404s for missing assets while still serving the
-# prerendered route files and the SPA shell.
 set -e
 set -o pipefail
 export PATH="/home/janasco/.local/bin:$PATH"
 rm -rf /tmp/fe-dist
 cp -r /opt/secretmsg/secretmsg/apps/web/dist /tmp/fe-dist
-TMPF=/tmp/fe-dist/_redirects.tmp
-# Drop the SPA fallback line; the Worker assets config handles SPA via not_found_handling.
-grep -v '^/\*    /index.html' /tmp/fe-dist/_redirects > "$TMPF" && mv "$TMPF" /tmp/fe-dist/_redirects
+rm -f /tmp/fe-dist/_redirects.tmp
 mkdir -p /tmp/fe-assets
 cat > /tmp/fe-assets/wrangler.toml <<'EOF'
 name = "secretmsg-frontend"

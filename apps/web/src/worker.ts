@@ -1,4 +1,10 @@
-import { isAssetRequest, legacyRedirect, notFoundHtml } from './route-policy';
+import { isAssetRequest, isClientRoute, legacyRedirect, notFoundHtml } from './route-policy';
+
+const SECURITY_HEADERS = {
+  'x-content-type-options': 'nosniff',
+  'x-frame-options': 'DENY',
+  'referrer-policy': 'strict-origin-when-cross-origin',
+};
 
 export interface AssetBinding {
   fetch(input: Request | URL | string): Promise<Response>;
@@ -8,27 +14,43 @@ export interface WorkerEnv {
   ASSETS: AssetBinding;
 }
 
+function withSecurityHeaders(response: Response): Response {
+  const headers = new Headers(response.headers);
+  for (const [name, value] of Object.entries(SECURITY_HEADERS)) headers.set(name, value);
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 export async function handleRequest(request: Request, env: WorkerEnv): Promise<Response> {
   const url = new URL(request.url);
   const redirect = legacyRedirect(url.pathname);
   if (redirect) {
     return new Response(null, {
       status: 301,
-      headers: { location: redirect },
+      headers: {
+        ...SECURITY_HEADERS,
+        location: redirect,
+      },
     });
   }
 
-  if (request.method !== 'GET' || isAssetRequest(url.pathname)) {
+  const methodAllowed = request.method === 'GET' || request.method === 'HEAD';
+  if (!methodAllowed || isAssetRequest(url.pathname, url.search) || !isClientRoute(url.pathname)) {
     return new Response(notFoundHtml, {
       status: 404,
       headers: {
+        ...SECURITY_HEADERS,
         'cache-control': 'no-store',
         'content-type': 'text/html; charset=utf-8',
       },
     });
   }
 
-  return env.ASSETS.fetch(new URL('/index.html', url));
+  const shellRequest = new Request(new URL('/', url), request);
+  return withSecurityHeaders(await env.ASSETS.fetch(shellRequest));
 }
 
 export default {

@@ -1,12 +1,33 @@
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { DEFAULT_IMAGE, HOST, STATIC_ROUTES, canonicalUrl } from './site-manifest.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
 const templatePath = join(dist, 'index.html');
 const template = readFileSync(templatePath, 'utf8');
+const rendererEntry = join(root, 'src', 'prerender-renderer.tsx');
+const esbuildPath = join(root, '../../../node_modules/.bin/esbuild');
+
+async function loadRenderer() {
+  const tempRoot = mkdtempSync(join('/tmp/opencode', 'secretmsg-prerender-'));
+  const tempFile = join(tempRoot, 'renderer.cjs');
+  try {
+    execFileSync(esbuildPath, [
+      rendererEntry,
+      '--bundle',
+      '--platform=node',
+      '--format=cjs',
+      `--outfile=${tempFile}`,
+      `--alias:@=${join(root, 'src')}`,
+    ], { stdio: 'inherit' });
+    return await import(`${pathToFileURL(tempFile).href}?cacheBust=${Date.now()}`);
+  } finally {
+    rmSync(tempRoot, { recursive: true, force: true });
+  }
+}
 
 function escapeHtml(value) {
   return String(value ?? '')
@@ -88,12 +109,12 @@ function outputPath(routePath) {
   return join(dist, ...segments, 'index.html');
 }
 
-function renderPage(page, routePath) {
-  const rootPattern = /<div\b[^>]*\bid\s*=\s*(?:"root"|'root'|root)[^>]*><\/div>/gi;
+function renderPage(page, routePath, body = '') {
+  const rootPattern = /(<div\b[^>]*\bid\s*=\s*(?:"root"|'root'|root)[^>]*>)<\/div>/gi;
   const head = renderHead(page);
   const roots = head.match(rootPattern) ?? [];
   if (roots.length !== 1) throw new Error(`Expected one empty root div for ${routePath}, found ${roots.length}`);
-  const html = head.replace(rootPattern, (root) => `${root}${renderNoscript(page)}`);
+  const html = head.replace(rootPattern, (_, open) => `${open}${renderNoscript(page)}${body}</div>`);
   const destination = outputPath(routePath);
   mkdirSync(dirname(destination), { recursive: true });
   writeFileSync(destination, html);
@@ -112,12 +133,17 @@ function staticJsonLd(route) {
   return { ...data, isPartOf: { '@type': 'WebSite', name: 'SecretMsg', url: HOST } };
 }
 
-const staticFiles = STATIC_ROUTES.map((route) => renderPage({
-  ...route,
-  url: canonicalUrl(route.path),
-  image: DEFAULT_IMAGE,
-  jsonLd: staticJsonLd(route),
-}, route.path));
+const renderer = await loadRenderer();
+const staticFiles = [];
+for (const route of STATIC_ROUTES) {
+  const body = route.component ? renderer.renderManifestPage(route.path, route.component) : '';
+  staticFiles.push(renderPage({
+    ...route,
+    url: canonicalUrl(route.path),
+    image: DEFAULT_IMAGE,
+    jsonLd: staticJsonLd(route),
+  }, route.path, body));
+}
 
 const index = JSON.parse(readFileSync(join(dist, 'blog-index.json'), 'utf8'));
 if (!Array.isArray(index)) throw new Error('dist/blog-index.json must contain an array');
@@ -133,6 +159,11 @@ const legacyRoutes = [
   ]),
 ];
 writeFileSync(join(dist, '_redirects'), `${legacyRoutes.map(([source, destination]) => `${source} ${destination} 301`).join('\n')}\n`);
+writeFileSync(join(dist, '_headers'), `/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+`);
 
 const postFiles = index.map((post) => {
   if (typeof post?.slug !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(post.slug)) {
