@@ -16,13 +16,13 @@ credit_url: ""
 
 Anonymous Book Club Boards is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## Between books
 
-The gap weeks kill clubs. A standing prompt ("what are you reading now, honestly?") keeps the board warm between picks.
+The gap weeks can cool a club down. A standing prompt ("what are you reading now, honestly?") keeps the board active between picks.
 
-Let members pitch next reads anonymously with one-line pitches. Voting without campaigning.
+Let members pitch next reads with one-line messages. The app does not provide a built-in voting or campaigning feature; collect and compare the pitches yourself.
 
 ## Running the discussion
 

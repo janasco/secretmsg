@@ -16,7 +16,7 @@ credit_url: ""
 
 The Dice Roulette Playbook is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Sound, haptics, and feel
 
@@ -30,9 +30,9 @@ Pick a vibe first — the categories are moods, not topics. Roll until something
 
 Keep recent rolls: yesterday winner often beats today random. The history tray is a greatest-hits album you did not have to compile.
 
-## Nine thousand prompts, zero repeats (almost)
+## Nine thousand prompts, with room to repeat
 
-The pool spans crushes, chaos, 3am thoughts, real talk, spice, and secrets — fifteen hundred each. Categories keep rolls relevant; All Vibes keeps them dangerous. You will not exhaust it. Statistically, you cannot.
+The pool spans crushes, chaos, 3am thoughts, real talk, spice, and secrets — 1,500 each. Categories keep rolls relevant; All Vibes mixes them together. Random selection can repeat a prompt, so roll history and the composer handoff are there to help you move on.
 
 ## The leverage point
 

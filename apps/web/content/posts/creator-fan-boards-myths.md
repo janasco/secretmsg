@@ -16,25 +16,25 @@ credit_url: ""
 
 Creator & Fan Boards is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## AMAs without the chaos
 
-Scheduled anonymous Q&A beats live chat for depth: questions arrive all week, you answer the best in one sitting, the recap post quotes highlights. No moderation firefighting mid-stream.
+Collect questions during the week, answer the useful ones in one sitting, and publish a recap elsewhere if you want. The app has no automatic content classifier or live-chat moderation; a hidden-word filter and the filtered tray are recipient-controlled tools.
 
-Word filters pre-screen the obvious junk; the tray catches the rest. You curate signal while the algorithm chases noise elsewhere.
+Word filters hold exact matches for review. They do not catch every piece of junk, so review the tray, report concerns, and use boundaries rather than calling the filter comprehensive.
 
 ## Monetizing honesty
 
-Supporter perks map beautifully to creator economies: custom usernames for mods, badges for top fans, hints for inner-circle vibes. The wall of supporters doubles as social proof for sponsors.
+Supporter contributions can help fund the project, but the available grant depends on the checkout and account. Eligible options can include a supporter badge, sender hints, or a custom username; the app does not automatically give perks to top fans or mods.
 
-Transparent monthly goals ("server costs, covered by you") convert better than vague tip jars. Show the math.
+The supporters wall lists qualifying Polar contributions. Treat a public wall as community information, not a promise of sponsor reach or a guaranteed conversion result.
 
 ## Feedback that improves the work
 
-"TBH about my latest video" from anonymous viewers cuts deeper than any analytics dashboard. Retention graphs never say "the intro rambles" — a stranger will, kindly.
+"TBH about my latest video" from viewers can add context that an analytics dashboard does not capture. A message may point out something the creator missed, but it is not guaranteed to be useful or correct.
 
-Separate boards per series or season keep feedback organized. Archive between projects; reopen with a retrospective prompt.
+Separate boards per series or season can keep feedback organized. Save the keepers between projects; reopen the link with a retrospective prompt when you want another round.
 
 ## Myth, evidence, default
 
@@ -60,6 +60,6 @@ After a month, revise the default from evidence. A myth-busting page should leav
 - [The Ultimate Guide to Creator & Fan Boards](/post/creator-fan-boards-ultimate-guide)
 - [The Psychology Behind Creator & Fan Boards](/post/creator-fan-boards-psychology)
 
-Your next ten senders are one good share away. Go make it.
+A clear invitation gives the next sender an easy way in. Post, observe, and improve the next version.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

@@ -16,19 +16,19 @@ credit_url: ""
 
 Every Supporter Perk, Explained is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## Custom usernames
 
-Auto-generated handles are charming; chosen names are identity. Supporters can claim a clean personal username once — short, memorable, linkable in bios everywhere.
+If the account has the custom-slug entitlement, the app lets its owner request a different handle. The endpoint checks availability and updates the public link, so an old link is not guaranteed to remain the address after a change.
 
-Claim carefully: usernames are unique, first-come, and part of your public link forever.
+Treat the handle as a public choice: it is unique at claim time, and the app does not promise that every username can be claimed or that the link is permanent.
 
-## Badges and verified shine
+## Badges and supporter status
 
-A badge is social proof that you fund the commons. Verified marks supporters whose backing is confirmed; tier badges (Coffee through Golden Guardian) mark how deep the commitment runs.
+A supporter badge reflects a verified grant on the account. The current app can show a supporter tier such as Coffee Backer, Silver Patron, or another grant recorded by a qualifying contribution.
 
-Display them or hide them — both are respected choices, and toggling is instant.
+Treat the badge as account status, not a promise of extra reach. The app does not provide a public follower count or a guaranteed distribution boost.
 
 ## Short answers
 
@@ -54,6 +54,6 @@ If a question remains, ask it with context. Include the board type, the moment y
 - [Every Supporter Perk, Explained: 7 Mistakes Everyone Makes](/post/supporter-perks-tour-mistakes)
 - [Every Supporter Perk, Explained for Beginners](/post/supporter-perks-tour-beginners)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

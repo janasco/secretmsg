@@ -16,7 +16,7 @@ credit_url: ""
 
 The Crush Confessions Playbook is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## Scene two: the inbox fills
 
@@ -26,9 +26,9 @@ She pins the laugh one. Pins are bookmarks for feelings.
 
 ## What made it work
 
-Specific prompt, evening timing, answered everything, pinned the keeper. Four moves, all repeatable, none requiring courage from anyone but the first sender — and even they only needed thirty seconds of it.
+Specific prompt, evening timing, answered everything, pinned the keeper. Four moves, all repeatable, none requiring a public identity from the sender. The exact time and response volume will vary.
 
-Maya's board now gets weekly traffic from the same five people. Community, assembled one anonymous message at a time.
+Maya can keep the loop going without knowing who sent each message. Community, assembled one anonymous message at a time.
 
 ## Scene three: the double-blind reply
 

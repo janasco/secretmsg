@@ -16,7 +16,7 @@ credit_url: ""
 
 The Psychology of Handles is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## Display names vs handles
 
@@ -26,9 +26,9 @@ Cute today, professional tomorrow, mysterious on weekends. The name is a costume
 
 ## Why random handles work
 
-Randomness removes decision paralysis and status games in one stroke. Nobody agonizes over lumen4821, nobody judges it, and its very forgettability keeps attention on messages instead of branding.
+Randomness removes a naming decision from the first setup. A generated handle like lumen4821 can keep attention on the messages instead of branding.
 
-Data agrees: boards go live faster with generated handles, and live boards beat perfect ones every time.
+There is no built-in claim that generated handles make a board go live faster. If a chosen name matters, the custom-slug entitlement lets an eligible account change its handle; the current link changes with it.
 
 ## The avatar completes the promise
 
@@ -60,6 +60,6 @@ Change one variable in a two-week test and keep the result. A durable advanced p
 - [Psychology of Handles: Questions, Answered](/post/handle-psychology-faq)
 - [The Ultimate Guide to The Psychology of Handles](/post/handle-psychology-ultimate-guide)
 
-Stay honest out there — and give someone else a safe place to be honest back.
+Stay honest out there — and give someone else room to be honest back without promising anonymity or safety you cannot guarantee.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

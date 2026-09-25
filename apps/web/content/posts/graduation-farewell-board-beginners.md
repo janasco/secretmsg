@@ -4,7 +4,7 @@ slug: graduation-farewell-board-beginners
 date: 2026-09-10
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Milestones"]
-excerpt: "New to graduation & farewell boards? Start here: zero jargon, first win in under ten minutes."
+excerpt: "New to graduation & farewell boards? Start here: zero jargon, a complete first loop."
 pixabay: "graduation caps celebration"
 readMinutes: 4
 image: ""
@@ -16,7 +16,7 @@ credit_url: ""
 
 Graduation & Farewell Boards is easier to use when the page has a clear job. This zero-to-first-win tutorial starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## Endings deserve archives
 
@@ -30,9 +30,9 @@ Retirements, team departures, end-of-season, moving abroad: the pattern ports to
 
 ## Prompts for the occasion
 
-"TBH — favorite memory of us?" "One thing I will never forget about this place?" "Roast me fondly, one last time." Specific, warm, and just structured enough to defeat blank-box paralysis.
+"TBH — favorite memory of us?" "One thing I will never forget about this place?" "Roast me fondly, one last time." Specific, warm, and structured enough to give senders a starting point.
 
-Theme it like the event: school colors via custom gradients, or the paper theme for yearbook energy.
+Theme it like the event with one of the available Sticker Studio themes, such as the paper theme for yearbook energy. The app does not provide custom event gradients.
 
 ## The first launch
 

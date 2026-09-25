@@ -16,13 +16,13 @@ credit_url: ""
 
 Anonymous Messaging 101 is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Why it works better than you expect
 
-Decades of research agree: removing identity removes performance. People disclose more, flatter less, and ask the questions they actually have. The blank text box is not a gimmick; it is the lowest-pressure communication interface ever built.
+Removing a visible identity can lower social pressure for some senders, which may make a specific question easier to ask. It does not guarantee honesty, kindness, or a return visit. The blank text box is a simple way to invite a response without asking a sender to create an account.
 
-The catch is friction. A confusing link, a dead board, or a silent inbox kills the magic instantly — which is why everything below focuses on mechanics, not vibes.
+The catch is friction. A confusing link, a dead board, or a silent inbox can stop the exchange — which is why everything below focuses on mechanics, not vibes.
 
 ## The three mistakes that kill boards
 
@@ -60,6 +60,6 @@ After a month, revise the default from evidence. A myth-busting page should leav
 - [The Ultimate Guide to Anonymous Messaging 101](/post/anonymous-messaging-101-ultimate-guide)
 - [The Psychology Behind Anonymous Messaging 101](/post/anonymous-messaging-101-psychology)
 
-The whole playbook fits in a pocket: specific prompt, zero friction, good timing. Go post.
+The whole playbook fits in a pocket: specific prompt, low friction, good timing. Go post.
 
 *Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*

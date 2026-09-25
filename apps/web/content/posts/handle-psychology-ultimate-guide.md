@@ -16,7 +16,7 @@ credit_url: ""
 
 The Psychology of Handles is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Names are promises
 
@@ -26,15 +26,15 @@ Neither is better. They are different doors into the same room — pick the door
 
 ## Why random handles work
 
-Randomness removes decision paralysis and status games in one stroke. Nobody agonizes over lumen4821, nobody judges it, and its very forgettability keeps attention on messages instead of branding.
+Randomness removes a naming decision from the first setup. A generated handle like lumen4821 can keep attention on the messages instead of branding.
 
-Data agrees: boards go live faster with generated handles, and live boards beat perfect ones every time.
+There is no built-in claim that generated handles make a board go live faster. If a chosen name matters, the custom-slug entitlement lets an eligible account change its handle; the current link changes with it.
 
 ## When to claim a custom name
 
-Claim when the link leaves the app: bios, business cards, team docs, creator profiles. A clean name is infrastructure for everywhere your handle travels without you.
+Claim when the link leaves the app: bios, business cards, team docs, or creator profiles. A clean name can be easier to remember when the handle is shared outside SecretMsg.
 
-Supporters claim once, permanently. Choose like it is a tattoo — short, spellable aloud, unembarrassing in five years.
+The account must already have the custom-slug entitlement, and the current endpoint allows a later change when another valid name is available. Do not promise a one-time or permanent address.
 
 ## Display names vs handles
 

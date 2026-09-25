@@ -16,19 +16,19 @@ credit_url: ""
 
 New Year, Honest Answers is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Answering in public (sort of)
 
-Use public replies for the gems: they show newcomers the board is alive and set the tone for next year. Keep the tender ones private — selectivity reads as taste.
+Use double-blind replies for the gems and keep the tender ones private. The current app does not publish a shared response feed; if you want a recap, save the messages and share your own summary elsewhere.
 
 On January first, pin the single message that describes who you are becoming. Let it headline the new year.
 
 ## Late December energy
 
-Everyone is already auditing their year in private. Give them somewhere to say it out loud: "TBH — what should I leave in 2026?" Post between Christmas and New Year when scrolling peaks and guards drop.
+People may be reflective near the end of the year. Give them somewhere to say it out loud: "TBH — what should I leave in 2026?" Post between Christmas and New Year if that timing fits your audience.
 
-Reflection prompts outperform generic ones roughly threefold in that window. Borrow the calendar tailwind.
+A specific reflection prompt gives people more to answer than a generic "send TBH" invitation. Test the timing rather than assuming a seasonal increase.
 
 ## Scene map
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own New Year, Honest Answers rather than copying the dramatic details.
 

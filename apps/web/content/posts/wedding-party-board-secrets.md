@@ -16,7 +16,7 @@ credit_url: ""
 
 Wedding & Party Boards is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Prompts for every table
 

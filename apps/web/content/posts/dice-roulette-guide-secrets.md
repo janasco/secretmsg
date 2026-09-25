@@ -16,17 +16,17 @@ credit_url: ""
 
 The Dice Roulette Playbook is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## The composer loop
 
-A landed prompt is half a message. "Use in composer" prefills the draft; you add the handle and send. The whole journey from boredom to delivered message takes under thirty seconds.
+A landed prompt is half a message. "Use in composer" prefills the draft; you add the recipient and send. The route is direct, but Turnstile and network conditions still affect delivery.
 
-Pro move: roll three, send the best, save the runners-up as tomorrow stickers. One roll session funds days of content.
+Roll a few prompts, send the one that fits, and keep the others in your notes. The feature gives you a starting point; the message is still yours to write.
 
-## Nine thousand prompts, zero repeats (almost)
+## Nine thousand prompts, with room to repeat
 
-The pool spans crushes, chaos, 3am thoughts, real talk, spice, and secrets — fifteen hundred each. Categories keep rolls relevant; All Vibes keeps them dangerous. You will not exhaust it. Statistically, you cannot.
+The pool spans crushes, chaos, 3am thoughts, real talk, spice, and secrets — 1,500 each. Categories keep rolls relevant; All Vibes mixes them together. Random selection can repeat a prompt, so roll history and the composer handoff are there to help you move on.
 
 ## The overlooked detail
 

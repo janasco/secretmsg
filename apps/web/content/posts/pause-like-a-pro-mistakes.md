@@ -16,13 +16,13 @@ credit_url: ""
 
 Pause Like a Pro is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## What senders experience
 
-No error pages, no dead links: a polite "taking a break" state with your profile intact. Most senders simply try later — which is precisely the behavior you want to train.
+The profile can remain visible while the API rejects a new submission with a board-is-paused response. A sender can return after reopening, but SecretMsg does not queue a message for later delivery.
 
-Scheduled senders (the good kind) will wait. Spammers will not, which helpfully filters them for free.
+If you need to accept messages without interruptions, leave the board active and use hidden words, blocking, or reporting for unwanted submissions.
 
 ## Pause plus filters: the combo
 
@@ -36,9 +36,9 @@ Guilt is the main reason pauses stay on too long. Reframe it: a paused inbox is 
 
 ## The failure pattern
 
-Most failed attempts at Pause Like a Pro are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Pause Like a Pro is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 
@@ -58,6 +58,6 @@ After two stable weeks, add one tactic. The recovery should end with a habit, no
 - [Pause Like a Pro for Beginners](/post/pause-like-a-pro-beginners)
 - [Pause Like a Pro vs the Alternatives](/post/pause-like-a-pro-comparison)
 
-Filter, pause, block, report — in that order. Your inbox, your rules, enforced by the server.
+Filter, pause, block, or report according to the situation. These are recipient controls, not comprehensive automated moderation.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

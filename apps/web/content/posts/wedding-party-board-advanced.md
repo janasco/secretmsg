@@ -16,13 +16,13 @@ credit_url: ""
 
 Wedding & Party Boards is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## The morning-after artifact
 
-Export everything before the honeymoon haze: the keepers become an anniversary time capsule, the roasts become lore, the kind ones become framing-worthy.
+Save the keepers before the honeymoon haze: the roasts can become lore, and the kind ones can become framing-worthy. The app does not provide a bulk message-export feature, so use screenshots or your own archive.
 
-One board per wedding beats a hundred scattered stories that expire in 24 hours. Permanence is the gift.
+One board can collect the occasion in one place, but it is not automatically permanent. Save what matters before deleting the account or message.
 
 ## Running it on the day
 

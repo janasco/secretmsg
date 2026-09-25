@@ -16,25 +16,25 @@ credit_url: ""
 
 Exam Season Support Boards is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## Study break rituals
 
-Post the board link with library hours: "procrastinating? send a TBH instead of refreshing grades." Micro-breaks with incoming messages beat doomscrolling on every metric that matters.
+Post the board link with library hours: "procrastinating? send a TBH instead of refreshing grades." A short message exchange can give someone a break, but it does not replace rest, study support, or a real safety plan.
 
-Evening drops sync perfectly with study schedules — prompt at dinner, replies by midnight, morale for tomorrow.
+Evening drops can fit a study schedule — prompt at dinner, then review replies when you are ready. The app schedules reminders locally; it does not promise replies by midnight.
 
 ## Stress loves an audience
 
-Exam weeks concentrate anxiety beautifully — everyone spiraling in parallel, nobody saying it. A support board converts private panic into shared comedy and genuine encouragement.
+Exam weeks can concentrate anxiety for some people, and a support board gives them a place to name it. A clear prompt can invite shared encouragement without pretending every reply will help.
 
-Prompt it well: "TBH about finals week fears" beats "send messages" the way umbrellas beat wishing.
+Prompt it well: "TBH about finals week fears" gives people more to answer than "send messages".
 
-## Anonymous pep talks hit different
+## Anonymous pep talks can feel different
 
-"You have never failed anything that mattered" lands harder from nowhere than from a friend performing optimism. Anonymity strips the social accounting out of encouragement.
+"You have never failed anything that mattered" may land differently from a stranger than from someone performing optimism. Anonymity can lower the social pressure attached to encouragement.
 
-Reply to the scared ones double-blind. One sentence from a stranger can reroute an entire study night.
+Reply to the scared ones double-blind when that feels appropriate. One sentence can be useful, but the app cannot promise that it will change someone’s night.
 
 ## The mechanism
 

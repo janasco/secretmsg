@@ -16,19 +16,19 @@ credit_url: ""
 
 Graduation & Farewell Boards is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## The group effect
 
-Farewells compound: each posted sticker reminds ten more people the deadline exists. Pin the board link in every relevant chat and watch stragglers convert in the final 48 hours.
+Farewells can compound when each shared sticker gives the next person a reason to respond. Pin the board link in the relevant chats and decide when the final reminder should go out.
 
-Read a selection aloud at the actual goodbye. Anonymous praise, spoken by a friend, hits like consensus — because it is.
+Read a selection aloud at the actual goodbye. Anonymous praise can land as a group moment, but the app does not promise consensus or a particular response rate.
 
 ## After everyone scatters
 
-Export the keepers before closing anything. Group chats die within months; a saved set of messages outlives every platform migration.
+Save screenshots of the keepers before closing anything. A saved set can remain useful after a platform migration, but the app has no message-export feature for a whole board.
 
-Keep the board paused, not deleted, through the first year. Nostalgia messages arrive on anniversaries, and they are the best ones.
+Keep the board active or pause submissions through the first year according to your boundary. A paused board rejects new messages rather than storing them for an anniversary.
 
 ## Beyond graduation
 
@@ -36,9 +36,9 @@ Retirements, team departures, end-of-season, moving abroad: the pattern ports to
 
 ## The failure pattern
 
-Most failed attempts at Graduation & Farewell Boards are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Graduation & Farewell Boards is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

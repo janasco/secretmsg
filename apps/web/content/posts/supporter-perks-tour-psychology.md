@@ -16,25 +16,25 @@ credit_url: ""
 
 Every Supporter Perk, Explained is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
-## Badges and verified shine
+## Badges and supporter status
 
-A badge is social proof that you fund the commons. Verified marks supporters whose backing is confirmed; tier badges (Coffee through Golden Guardian) mark how deep the commitment runs.
+A supporter badge reflects a verified grant on the account. The current app can show a supporter tier such as Coffee Backer, Silver Patron, or another grant recorded by a qualifying contribution.
 
-Display them or hide them — both are respected choices, and toggling is instant.
+Treat the badge as account status, not a promise of extra reach. The app does not provide a public follower count or a guaranteed distribution boost.
 
 ## Why perks exist at all
 
-Servers, push infrastructure, spam screening, and app-store fees cost real money every month. Supporters cover it, and perks are the thank-you — never paywalled core features, always extras that make a good inbox better.
+Servers, push infrastructure, and app operations cost money. Supporters help cover those costs, and eligible extras are the thank-you. The message, inbox, filter, block, report, and reply features are available without a supporter purchase.
 
-The line is deliberate: sending, receiving, and replying are free forever. Everything else is garnish.
+Pricing and eligible perks can change, so check the current checkout rather than relying on a permanent promise. The current app verifies Play purchases server-side before granting supported perks.
 
-## Hints: viewer and sender
+## Sender hints, carefully scoped
 
-Viewer hints reveal gentle context about your audience in aggregate; sender hints attach broad device context to messages whose senders allowed it. Neither ever identifies anyone — they add texture, not surveillance.
+A sender hint is a coarse platform clue such as "Mobile / Android" or "Web Browser." It appears only when the sender opts in and the recipient has the sender-hints entitlement; it is not a name, location, or unique identity.
 
-Hint enjoyers describe the inbox as "warmer". Skeptics leave them off and lose nothing.
+The mobile app can generate a stable installation value whose SHA-256 hash is stored for a message and, when blocked, in that recipient’s list. The server does not reverse the hash into a person.
 
 ## The mechanism
 
@@ -60,6 +60,6 @@ If the change helps kind people participate more but also increases harmful mess
 - [Every Supporter Perk, Explained vs the Alternatives](/post/supporter-perks-tour-comparison)
 - [Every Supporter Perk, Explained in Real Life](/post/supporter-perks-tour-scenarios)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

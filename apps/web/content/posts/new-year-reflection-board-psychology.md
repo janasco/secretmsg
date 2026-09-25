@@ -16,7 +16,7 @@ credit_url: ""
 
 New Year, Honest Answers is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ##  prompts that land
 
@@ -26,13 +26,13 @@ Rotate one per day through the final week. Scarcity plus occasion beats a single
 
 ## Late December energy
 
-Everyone is already auditing their year in private. Give them somewhere to say it out loud: "TBH — what should I leave in 2026?" Post between Christmas and New Year when scrolling peaks and guards drop.
+People may be reflective near the end of the year. Give them somewhere to say it out loud: "TBH — what should I leave in 2026?" Post between Christmas and New Year if that timing fits your audience.
 
-Reflection prompts outperform generic ones roughly threefold in that window. Borrow the calendar tailwind.
+A specific reflection prompt gives people more to answer than a generic "send TBH" invitation. Test the timing rather than assuming a seasonal increase.
 
 ## Answering in public (sort of)
 
-Use public replies for the gems: they show newcomers the board is alive and set the tone for next year. Keep the tender ones private — selectivity reads as taste.
+Use double-blind replies for the gems and keep the tender ones private. The current app does not publish a shared response feed; if you want a recap, save the messages and share your own summary elsewhere.
 
 On January first, pin the single message that describes who you are becoming. Let it headline the new year.
 

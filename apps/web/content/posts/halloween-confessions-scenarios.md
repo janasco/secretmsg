@@ -16,7 +16,7 @@ credit_url: ""
 
 Halloween Confessions Season is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## Costume feedback machine
 
@@ -26,9 +26,9 @@ Run the finalists as a dice category all week. Democracy, but fun.
 
 ## Spooky season is confession season
 
-Costumes lower inhibitions; so do anonymous links. October is the annual peak for spicy and secrets categories — lean into it with themed prompts and the darkest sticker theme you own.
+Costumes and anonymous links can change the tone of a conversation. October may be a good time to try a themed prompt and the darkest sticker theme you own; the app does not track a monthly usage peak for the dice categories.
 
-Obsidian theme exists for exactly this month. You are welcome.
+Obsidian theme exists for exactly this kind of seasonal prompt. You are welcome.
 
 ## Scene map
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own Halloween Confessions Season rather than copying the dramatic details.
 

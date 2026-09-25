@@ -16,23 +16,23 @@ credit_url: ""
 
 The Offline Outbox, Explained is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## What stays online-only
 
-Login, signup, and recovery verify server-side by design — identity must never be decided offline. Everything else degrades gracefully, and the sync row always tells you the truth about what is pending.
+Login, signup, recovery, and the send-time Turnstile check remain server-backed. The offline outbox and cached inbox cover the named actions above; they are not a general promise that every screen or provider works without a connection.
 
 ## The subway test
 
 Every app works on wifi. The good ones work in tunnels. SecretMsg queues sends, replies, approvals, discards, and reports made offline, then drains them in order when you reconnect — with a visible sync row, never silent magic.
 
-Your drafts and streaks never depend on bars. The ritual survives dead zones.
+Drafts and local streak state stay on the device, but a new authenticated check-in still needs a connection. The ritual can survive dead zones without pretending every action is available offline.
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. The Offline Outbox, Explained is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. The Offline Outbox, Explained is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 

@@ -16,13 +16,13 @@ credit_url: ""
 
 Word Filters, Mastered is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## Standard vs strict, honestly
 
-Standard holds matches for review: maximum safety with zero false-positive cost. Strict rejects at send time, which feels stronger but blinds you — you will never know what you refused. Most people should run standard and review the tray like mail.
+Standard quarantines a match and returns a generic success response to the sender. Strict returns a generic rejection and still quarantines the message for the recipient’s review. Both modes can produce false positives, and neither understands context or provides comprehensive abuse detection.
 
-Off exists for trusted circles and short experiments. Set a reminder to turn it back on.
+Off skips hidden-word checks entirely. Choose the mode that matches the board, review held messages regularly, and remember that filters are only one part of handling abuse.
 
 ## What filters actually do
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own Word Filters, Mastered rather than copying the dramatic details.
 
@@ -54,6 +54,6 @@ Scenarios are useful when they teach a decision. If the story ends without a cle
 - [Word Filters, Mastered for Beginners](/post/word-filters-mastery-beginners)
 - [Word Filters, Mastered vs the Alternatives](/post/word-filters-mastery-comparison)
 
-Filter, pause, block, report — in that order. Your inbox, your rules, enforced by the server.
+Filter, pause, block, or report according to the situation. These are recipient controls, not comprehensive automated moderation.
 
 *Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*

@@ -16,25 +16,25 @@ credit_url: ""
 
 Double-Blind Replies, Demystified is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
-## How the cryptography of etiquette works
+## How blind reply links work
 
-Each message carries a reply token — a long random string handed only to the original sender. Your answer attaches to that token, not to a person. When the sender checks the private link, they see your words and nothing else.
+Each message carries a reply token — a long random string handed to the original sender. Your answer attaches to that token, not to a sender profile. When the sender checks the private link, the service returns the message and reply without showing a recipient identity.
 
-No accounts for senders, no identity database to breach, no "seen by" metadata. The thread exists; the participants do not, as far as anyone can prove.
+Senders do not create accounts, and the reply link has no public profile attached. This is anonymity from the other participant’s view, not a promise that the service cannot read or retain the content.
 
 ## What senders see
 
-From their side: a private link, your words, zero trace of you beyond what you chose to write. They can return through the same link, which is why great replies compound — every answer is an invitation to send again.
+From their side: a private link containing the original message and your reply, without a recipient identity. The current link is for viewing the reply; it is not a public conversation thread or a second composer.
 
-Lose the link, lose the thread. Remind senders to save it; the app warns them exactly once.
+Treat the link like a private handoff. Keep it if you want to preserve the exchange, and remember that deleting the message removes the stored thread from the service.
 
 ## Replying well is a skill
 
-Answer the message that was sent, not the one you wish arrived. Short replies beat silence; specific replies beat short ones. A single thoughtful sentence outperforms a paragraph of filler.
+Answer the message that was sent, not the one you wish arrived. Short replies can be useful; specific replies give the sender something concrete to respond to. A single thoughtful sentence is often easier to answer than a paragraph of filler.
 
-Set a rhythm: clear the inbox nightly, pin the keepers, and let public replies (used sparingly) show newcomers the board is alive.
+Set a rhythm: clear the inbox at a predictable time, pin the keepers, and use private double-blind replies when you want to answer without publishing a response to the board.
 
 ## Myth, evidence, default
 

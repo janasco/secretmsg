@@ -4,7 +4,7 @@ slug: word-filters-mastery-beginners
 date: 2026-01-31
 status: published
 tags: ["Safety & Moderation", "Safety", "Moderation"]
-excerpt: "New to word filters, mastered? Start here: zero jargon, first win in under ten minutes."
+excerpt: "New to word filters, mastered? Start here: zero jargon, a complete first loop."
 pixabay: "shield protection security"
 readMinutes: 4
 image: ""
@@ -16,7 +16,7 @@ credit_url: ""
 
 Word Filters, Mastered is easier to use when the page has a clear job. This zero-to-first-win tutorial starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## What filters actually do
 
@@ -58,6 +58,6 @@ Otherwise, use the first week as a small experiment. Record what you tried, what
 - [What Nobody Tells You About Word Filters, Mastered](/post/word-filters-mastery-secrets)
 - [Word Filters, Mastered: 7 Mistakes Everyone Makes](/post/word-filters-mastery-mistakes)
 
-Filter, pause, block, report — in that order. Your inbox, your rules, enforced by the server.
+Filter, pause, block, or report according to the situation. These are recipient controls, not comprehensive automated moderation.
 
 *Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*

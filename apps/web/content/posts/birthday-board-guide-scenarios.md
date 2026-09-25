@@ -16,13 +16,13 @@ credit_url: ""
 
 The Birthday Board: A Month of Proof is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## The reveal
 
-Screenshot the keepers (with the app badges cropped tastefully), read the best ones aloud at the party, watch the room melt. Anonymous praise hits differently spoken — it lands as consensus, not flattery.
+Save the keepers as screenshots, read a few aloud at the party, and let the room react. Anonymous praise can land differently when it is spoken, but the board does not add app badges to message screenshots.
 
-Keep one message pinned all year. Future rough days have an antidote on file.
+Keep one message pinned if you want it easy to find later. Future rough days can have an antidote on file.
 
 ## The setup
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own The Birthday Board: A Month of Proof rather than copying the dramatic details.
 

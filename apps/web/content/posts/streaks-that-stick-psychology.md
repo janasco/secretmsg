@@ -16,25 +16,25 @@ credit_url: ""
 
 Streaks That Actually Stick is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## The anatomy of our streaks
 
-Any authenticated refresh counts as a check-in — no grinding, no tasks. Consecutive calendar days grow the flame; a miss pauses it, and one banked freeze forgives exactly one bad day per cycle.
+A successful authenticated inbox refresh counts as a check-in — no tasks are required. Consecutive local calendar days grow the flame; a miss normally resets it, while one banked freeze can preserve it.
 
-Milestones earn freezes back, so longevity compounds forgiveness. The system rewards showing up without punishing being human.
+Each newly reached 7-day milestone can earn a freeze, up to one stored at a time. The feature adds a little forgiveness; it does not guarantee a long streak.
 
-## Why streaks work on brains
+## Why streaks can work on brains
 
-Loss aversion is stronger than reward-seeking: day twelve matters because day zero hurts. Streaks convert vague intentions ("check in more") into a concrete daily contract with visible length.
+A visible count turns a vague intention such as "check in more" into a concrete daily action. That can make the next check-in easier to remember, especially when the app has something useful to show.
 
-The research caveat: streaks motivate only when the underlying action is rewarding. An inbox full of good messages makes day thirty inevitable; an empty one makes day three feel like homework. Feed the inbox first.
+The practical caveat: a streak does not create value by itself. If refreshing the inbox feels pointless, change the prompt or response habit first. The streak should record a useful ritual, not replace one.
 
 ## Designing your unmissable day
 
-Anchor the check-in to something you already do: morning coffee, the commute, lights-out scrolling. Enable the nightly nudge and let the 9:30pm reminder carry the days your memory will not.
+Anchor the check-in to something you already do: morning coffee, the commute, or lights-out scrolling. Enable the nightly nudge if a 9:30pm reminder fits your routine.
 
-Pair it with the Daily Drop: answer the prompt, check the inbox, done in ninety seconds. Rituals survive on smallness.
+Pair it with the Daily Drop: open the prompt, check the inbox, and answer what deserves care. Small routines are easier to repeat than an ambitious setup.
 
 ## The mechanism
 
@@ -60,6 +60,6 @@ If the change helps kind people participate more but also increases harmful mess
 - [What Nobody Tells You About Streaks That Actually Stick](/post/streaks-that-stick-secrets)
 - [Streaks That Actually Stick: 7 Mistakes Everyone Makes](/post/streaks-that-stick-mistakes)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

@@ -16,13 +16,13 @@ credit_url: ""
 
 The Psychology of Handles is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## When to claim a custom name
 
-Claim when the link leaves the app: bios, business cards, team docs, creator profiles. A clean name is infrastructure for everywhere your handle travels without you.
+Claim when the link leaves the app: bios, business cards, team docs, or creator profiles. A clean name can be easier to remember when the handle is shared outside SecretMsg.
 
-Supporters claim once, permanently. Choose like it is a tattoo — short, spellable aloud, unembarrassing in five years.
+The account must already have the custom-slug entitlement, and the current endpoint allows a later change when another valid name is available. Do not promise a one-time or permanent address.
 
 ## Names are promises
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own The Psychology of Handles rather than copying the dramatic details.
 

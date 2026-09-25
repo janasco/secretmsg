@@ -16,7 +16,7 @@ credit_url: ""
 
 Pause Like a Pro is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## Pause plus filters: the combo
 
@@ -26,9 +26,9 @@ Audit quarterly: is the pause still on? Did the trip end three weeks ago? Reopen
 
 ## Choosing your duration
 
-Thirty minutes for a meeting, a day for a reset, a week for a trip, indefinite for a hibernation. Match the timer to the reason and you will never forget to reopen — expiring pauses reopen themselves.
+The app offers 30 minutes, one hour, 24 hours, one week, permanent pause, or an active link. A timed pause automatically ends at its stored time; a permanent pause stays paused until you reactivate it.
 
-Permanent pause is for boards in cold storage: the link lives, delivery sleeps, and you return whenever.
+Permanent pause is for boards in cold storage: the link lives, submissions are rejected, and you return whenever.
 
 ## The psychology of the break
 
@@ -58,6 +58,6 @@ Change one variable in a two-week test and keep the result. A durable advanced p
 - [5 Myths About Pause Like a Pro](/post/pause-like-a-pro-myths)
 - [Pause Like a Pro: Questions, Answered](/post/pause-like-a-pro-faq)
 
-Filter, pause, block, report — in that order. Your inbox, your rules, enforced by the server.
+Filter, pause, block, or report according to the situation. These are recipient controls, not comprehensive automated moderation.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

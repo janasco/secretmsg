@@ -16,13 +16,13 @@ credit_url: ""
 
 TBH Culture, Explained is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
-## Why compliments hit harder anonymously
+## Why compliments can land differently
 
-A compliment from a known friend carries social accounting — what do they want, what do I owe back? An anonymous TBH has no ledger. The recipient can simply believe it, which is why recipients screenshot TBHs and keep them for years.
+A compliment from a known friend carries social accounting — what do they want, what do I owe back? An anonymous TBH removes the visible sender name from that exchange. The recipient can respond to the words rather than the person attached to them.
 
-Specificity is the active ingredient. "Your energy" fades; "the way you defended Maya at lunch" lasts. Prompt for specifics and watch quality triple.
+Specificity often gives the recipient more to respond to. "Your energy" is broad; "the way you defended Maya at lunch" names a moment. Prompt for details, then judge the replies that actually arrive.
 
 ## TBH etiquette for senders
 
@@ -30,11 +30,11 @@ Be specific, be kind on purpose, and never use anonymity as a weapon — recipie
 
 The golden test: would the recipient screenshot this proudly? Aim there.
 
-## The anatomy of a perfect TBH prompt
+## The anatomy of a useful TBH prompt
 
-Great prompts constrain just enough: a topic (energy, style, courage), a frame (TBH, confession, roast-kindly), and an example. "TBH about my red flags — be honest but kind" outperforms "send tbh" by an order of magnitude.
+A focused prompt gives senders a clear shape: a topic (energy, style, courage), a frame (TBH or confession), and a boundary. "TBH about my red flags — be honest but kind" tells someone what kind of message to write; "send tbh" leaves more of the interpretation to them.
 
-Rotate prompts weekly. Familiarity breeds scrolling past; novelty earns taps.
+Rotate prompts when one starts to feel repetitive. Fresh wording can help, but no wording guarantees more taps.
 
 ## Myth, evidence, default
 

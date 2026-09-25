@@ -16,25 +16,25 @@ credit_url: ""
 
 Every Supporter Perk, Explained is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## How backing works
 
-Checkout runs through verified Polar sessions; perks grant server-side only after payment confirms — no client-side unlocks to spoof. Monthly goal progress shows on the supporters wall for full transparency.
+Android purchases use Google Play Billing and the server verifies the purchase token before granting the supported perk. A Polar contribution is recorded only through a verified webhook, and any eligible account grant is applied server-side.
 
-Cancel anytime; perks persist for the paid period, then fade gracefully. No dark patterns, no retention mazes.
+The available checkout and the exact grant vary by path. Do not treat a supporter badge, custom handle, or hint as automatically included in every contribution; check the current checkout and your account settings.
 
 ## Why perks exist at all
 
-Servers, push infrastructure, spam screening, and app-store fees cost real money every month. Supporters cover it, and perks are the thank-you — never paywalled core features, always extras that make a good inbox better.
+Servers, push infrastructure, and app operations cost money. Supporters help cover those costs, and eligible extras are the thank-you. The message, inbox, filter, block, report, and reply features are available without a supporter purchase.
 
-The line is deliberate: sending, receiving, and replying are free forever. Everything else is garnish.
+Pricing and eligible perks can change, so check the current checkout rather than relying on a permanent promise. The current app verifies Play purchases server-side before granting supported perks.
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Every Supporter Perk, Explained is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Every Supporter Perk, Explained is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 

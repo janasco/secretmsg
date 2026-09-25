@@ -16,7 +16,7 @@ credit_url: ""
 
 Word Filters, Mastered is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## Building a list that works
 
@@ -32,9 +32,9 @@ Reports are the fourth lever: use them when behavior, not content, is the issue.
 
 ## Standard vs strict, honestly
 
-Standard holds matches for review: maximum safety with zero false-positive cost. Strict rejects at send time, which feels stronger but blinds you — you will never know what you refused. Most people should run standard and review the tray like mail.
+Standard quarantines a match and returns a generic success response to the sender. Strict returns a generic rejection and still quarantines the message for the recipient’s review. Both modes can produce false positives, and neither understands context or provides comprehensive abuse detection.
 
-Off exists for trusted circles and short experiments. Set a reminder to turn it back on.
+Off skips hidden-word checks entirely. Choose the mode that matches the board, review held messages regularly, and remember that filters are only one part of handling abuse.
 
 ## Myth, evidence, default
 
@@ -60,6 +60,6 @@ After a month, revise the default from evidence. A myth-busting page should leav
 - [The Psychology Behind Word Filters, Mastered](/post/word-filters-mastery-psychology)
 - [Advanced Word Filters, Mastered: Level Up](/post/word-filters-mastery-advanced)
 
-Save this post, share it with anyone running a board, and sleep well: the levers are all yours.
+Save this post and share it with anyone running a board: know the available controls, their limits, and the steps for a safety concern.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

@@ -16,7 +16,7 @@ credit_url: ""
 
 New Year, Honest Answers is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Carrying it forward
 
@@ -24,15 +24,15 @@ Save the keepers somewhere permanent. Next December, repost the best prompt with
 
 ## Late December energy
 
-Everyone is already auditing their year in private. Give them somewhere to say it out loud: "TBH — what should I leave in 2026?" Post between Christmas and New Year when scrolling peaks and guards drop.
+People may be reflective near the end of the year. Give them somewhere to say it out loud: "TBH — what should I leave in 2026?" Post between Christmas and New Year if that timing fits your audience.
 
-Reflection prompts outperform generic ones roughly threefold in that window. Borrow the calendar tailwind.
+A specific reflection prompt gives people more to answer than a generic "send TBH" invitation. Test the timing rather than assuming a seasonal increase.
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. New Year, Honest Answers is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. New Year, Honest Answers is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 

@@ -16,25 +16,25 @@ credit_url: ""
 
 Notification Zen is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## When to go silent deliberately
 
-Vacations, exams, heartbreaks: kill notifications at the OS level and let the board accumulate like mail. Returning to a full inbox beats returning to an anxious one.
+Vacations, exams, heartbreaks: pause submissions and use the device notification settings when you want fewer interruptions. Paused submissions are rejected rather than accumulated for later delivery.
 
-The digest pattern beats the drip pattern. Batch, breathe, reply in one calm sitting.
+When you return, read the saved inbox and reply in one calm sitting. The app has a weekly filtered-tray review, not a general message digest.
 
 ## Every ping spends trust
 
-Notifications are a loan against attention: useful ones repay with joy, noisy ones default into the off switch. The entire notification philosophy here is fewer, better, sillenced-by-default-except-what-matters.
+Notifications are a loan against attention: useful ones can be welcome, noisy ones can send you to the off switch. The app separates new-message alerts, Daily Drop reminders, streak nudges, weekly tray review, and milestone reminders so you can tune them.
 
-Counts, not contents, on the lock screen. Curiosity opens apps; previews get read and dismissed.
+FCM receives a message ID, unread count, and a server-truncated preview of up to 140 characters for a new message. Full message bodies do not travel through FCM, but a preview can still appear on the lock screen.
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Notification Zen is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Notification Zen is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 
@@ -54,6 +54,6 @@ The most defensible choice is the one you can explain to the people using it and
 - [The Ultimate Guide to Notification Zen](/post/notification-zen-ultimate-guide)
 - [The Psychology Behind Notification Zen](/post/notification-zen-psychology)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

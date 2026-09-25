@@ -16,13 +16,13 @@ credit_url: ""
 
 Word Filters, Mastered is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## Standard vs strict, honestly
 
-Standard holds matches for review: maximum safety with zero false-positive cost. Strict rejects at send time, which feels stronger but blinds you — you will never know what you refused. Most people should run standard and review the tray like mail.
+Standard quarantines a match and returns a generic success response to the sender. Strict returns a generic rejection and still quarantines the message for the recipient’s review. Both modes can produce false positives, and neither understands context or provides comprehensive abuse detection.
 
-Off exists for trusted circles and short experiments. Set a reminder to turn it back on.
+Off skips hidden-word checks entirely. Choose the mode that matches the board, review held messages regularly, and remember that filters are only one part of handling abuse.
 
 ## The monthly five-minute audit
 
@@ -52,6 +52,6 @@ The best advanced practice is restraint. Keep the system small enough to inspect
 - [Word Filters, Mastered vs the Alternatives](/post/word-filters-mastery-comparison)
 - [Word Filters, Mastered in Real Life](/post/word-filters-mastery-scenarios)
 
-Save this post, share it with anyone running a board, and sleep well: the levers are all yours.
+Save this post and share it with anyone running a board: know the available controls, their limits, and the steps for a safety concern.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

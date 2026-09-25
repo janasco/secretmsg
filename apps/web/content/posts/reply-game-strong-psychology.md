@@ -16,19 +16,19 @@ credit_url: ""
 
 A Strong Reply Game is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Specificity over volume
 
-One sentence that proves you read the message beats three generic thank-yous. Quote their words back, react to the detail, ask one follow-up. Senders can tell instantly whether a human engaged or a habit fired.
+One sentence that shows you read the message can be more useful than several generic thank-yous. Refer to the detail, or ask one focused follow-up. Senders may be able to tell whether a person engaged or a habit fired.
 
-Specific replies get screenshot and shared. Generic ones get archived.
+Specific replies may be easier to remember, but the app does not track screenshots, shares, or replies to future sends.
 
-## Speed wins
+## Speed can help
 
-The first reply sets the relationship. Answer within a day and senders learn your inbox is alive; wait a week and they learn the opposite. Double-blind replies cost ninety seconds — spend them nightly, not monthly.
+A reply gives a sender a response to return to; timing still depends on the person and the situation. Double-blind replies are short to compose, but the time to write a good one varies.
 
-Batch the habit: inbox, reply-all-worth-answering, pin one, done. Rhythm beats marathons.
+Batch the habit: inbox, reply to what deserves an answer, pin one, done. Rhythm beats marathons.
 
 ## When not to reply
 

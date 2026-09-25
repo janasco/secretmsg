@@ -16,23 +16,23 @@ credit_url: ""
 
 Fitness Accountability, Anonymously is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Measuring what matters
 
-Count check-ins, not likes. Count honest weeks, not perfect ones. The board that survives a bad month is worth ten that shine for a week.
+Count check-ins, not likes. Count honest weeks, not perfect ones. A board that survives a bad month may be more useful than one that looks bright for a week and then disappears.
 
 ## Why anonymous accountability works
 
-Gym selfies invite judgment; anonymous check-ins invite honesty. "Skipped leg day, TBH why I am like this" gets real answers where performance posts get likes.
+Gym selfies can invite judgment; an anonymous check-in can invite honesty. "Skipped leg day, TBH why I am like this" gives people a way to ask for support without attaching their name.
 
-The board becomes a confessional for the fitness journey — struggles included, which is where the value lives.
+The board can become a place for the fitness journey — struggles included, where the value may live.
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Fitness Accountability, Anonymously is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Fitness Accountability, Anonymously is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 

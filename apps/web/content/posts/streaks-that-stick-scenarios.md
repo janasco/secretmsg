@@ -16,19 +16,19 @@ credit_url: ""
 
 Streaks That Actually Stick is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## Designing your unmissable day
 
-Anchor the check-in to something you already do: morning coffee, the commute, lights-out scrolling. Enable the nightly nudge and let the 9:30pm reminder carry the days your memory will not.
+Anchor the check-in to something you already do: morning coffee, the commute, or lights-out scrolling. Enable the nightly nudge if a 9:30pm reminder fits your routine.
 
-Pair it with the Daily Drop: answer the prompt, check the inbox, done in ninety seconds. Rituals survive on smallness.
+Pair it with the Daily Drop: open the prompt, check the inbox, and answer what deserves care. Small routines are easier to repeat than an ambitious setup.
 
-## Why streaks work on brains
+## Why streaks can work on brains
 
-Loss aversion is stronger than reward-seeking: day twelve matters because day zero hurts. Streaks convert vague intentions ("check in more") into a concrete daily contract with visible length.
+A visible count turns a vague intention such as "check in more" into a concrete daily action. That can make the next check-in easier to remember, especially when the app has something useful to show.
 
-The research caveat: streaks motivate only when the underlying action is rewarding. An inbox full of good messages makes day thirty inevitable; an empty one makes day three feel like homework. Feed the inbox first.
+The practical caveat: a streak does not create value by itself. If refreshing the inbox feels pointless, change the prompt or response habit first. The streak should record a useful ritual, not replace one.
 
 ## Scene map
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own Streaks That Actually Stick rather than copying the dramatic details.
 

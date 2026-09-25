@@ -16,25 +16,25 @@ credit_url: ""
 
 Fitness Accountability, Anonymously is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## Structuring the week
 
-Monday: intentions ("this week I will..."). Wednesday: midweek honesty check. Friday: wins and wipeouts. Sunday: rest-day reflections. Same four prompts weekly; rituals beat novelty for habits.
+Monday: intentions ("this week I will..."). Wednesday: midweek honesty check. Friday: wins and wipeouts. Sunday: rest-day reflections. A small set of weekly prompts can make the habit easier to follow than constant novelty.
 
-Streaks map perfectly onto training streaks. Two flames, one discipline.
+The app streak can mirror a training streak, but it does not measure fitness or guarantee consistency. Two flames, one discipline.
 
 ## Why anonymous accountability works
 
-Gym selfies invite judgment; anonymous check-ins invite honesty. "Skipped leg day, TBH why I am like this" gets real answers where performance posts get likes.
+Gym selfies can invite judgment; an anonymous check-in can invite honesty. "Skipped leg day, TBH why I am like this" gives people a way to ask for support without attaching their name.
 
-The board becomes a confessional for the fitness journey — struggles included, which is where the value lives.
+The board can become a place for the fitness journey — struggles included, where the value may live.
 
 ## The group board advantage
 
-Training partners sharing one board create gentle surveillance: everyone sees the check-ins roll (or not). Social pressure without social exposure.
+Training partners can use one board as a place to post intentions, setbacks, and wins. It does not create a shared public check-in feed; the recipient sees the messages in the private inbox.
 
-Roast-kindly mode for missed sessions. Shame never built a habit; laughter has.
+Add a roast-kindly instruction to the prompt rather than assuming a special mode. Use pause, hidden words, blocking, or reporting when the board needs a boundary.
 
 ## The mechanism
 

@@ -16,7 +16,7 @@ credit_url: ""
 
 TBH Culture, Explained is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## TBH etiquette for senders
 
@@ -24,11 +24,11 @@ Be specific, be kind on purpose, and never use anonymity as a weapon — recipie
 
 The golden test: would the recipient screenshot this proudly? Aim there.
 
-## Why compliments hit harder anonymously
+## Why compliments can land differently
 
-A compliment from a known friend carries social accounting — what do they want, what do I owe back? An anonymous TBH has no ledger. The recipient can simply believe it, which is why recipients screenshot TBHs and keep them for years.
+A compliment from a known friend carries social accounting — what do they want, what do I owe back? An anonymous TBH removes the visible sender name from that exchange. The recipient can respond to the words rather than the person attached to them.
 
-Specificity is the active ingredient. "Your energy" fades; "the way you defended Maya at lunch" lasts. Prompt for specifics and watch quality triple.
+Specificity often gives the recipient more to respond to. "Your energy" is broad; "the way you defended Maya at lunch" names a moment. Prompt for details, then judge the replies that actually arrive.
 
 ## Short answers
 
@@ -54,6 +54,6 @@ If a question remains, ask it with context. Include the board type, the moment y
 - [TBH Culture, Explained for Beginners](/post/tbh-culture-beginners)
 - [TBH Culture, Explained vs the Alternatives](/post/tbh-culture-comparison)
 
-Stay honest out there — and give someone else a safe place to be honest back.
+Stay honest out there — and give someone else room to be honest back without promising anonymity or safety you cannot guarantee.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

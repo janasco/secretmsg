@@ -16,7 +16,7 @@ credit_url: ""
 
 Backup Codes Survival Guide is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## Recovery, step by step
 
@@ -26,9 +26,9 @@ After recovering, save the FRESH codes immediately. Recovery rotates the set, an
 
 ## The two-minute setup that saves accounts
 
-Screenshot the codes the moment they appear. Save the same screenshot somewhere off-phone: cloud drive, password manager, printed paper in a drawer. Two copies, two places, done in the time it takes to read this paragraph.
+Screenshot the codes the moment they appear, or use the app’s Save .txt option and move the file somewhere you trust. Keep a second copy in a secure password manager if that is part of your threat model; do not leave backup codes in an ordinary photo album.
 
-Then test one: recovery with a fresh PIN proves the whole chain works before you need it. Untested backups are rumors.
+Testing a recovery consumes a code and rotates the set. If you test, save the fresh codes immediately and confirm you can still sign in before relying on the backup.
 
 ## Short answers
 
@@ -54,6 +54,6 @@ If a question remains, ask it with context. Include the board type, the moment y
 - [Backup Codes Survival Guide: 7 Mistakes Everyone Makes](/post/backup-codes-survival-mistakes)
 - [Backup Codes Survival Guide for Beginners](/post/backup-codes-survival-beginners)
 
-The whole playbook fits in a pocket: specific prompt, zero friction, good timing. Go post.
+The whole playbook fits in a pocket: specific prompt, low friction, good timing. Go post.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

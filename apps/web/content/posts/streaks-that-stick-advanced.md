@@ -16,23 +16,23 @@ credit_url: ""
 
 Streaks That Actually Stick is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## When streaks break anyway
 
-Life happens — travel, illness, dead batteries. Supporters can repair a recent break once a month; everyone else restarts at one, which stings for exactly a day and then becomes a new run.
+Life happens — travel, illness, dead batteries. Without a banked freeze, the next successful check-in starts a new count at one. The current app does not expose a supporter streak-repair control, so do not plan around a repair that is not available.
 
-Never let a broken streak end the habit. The second streak always grows faster because the inbox is already warm.
+Treat a reset as a prompt to make the habit easier, not a verdict. A useful inbox and a realistic reminder matter more than pretending the old count survived.
 
 ## The anatomy of our streaks
 
-Any authenticated refresh counts as a check-in — no grinding, no tasks. Consecutive calendar days grow the flame; a miss pauses it, and one banked freeze forgives exactly one bad day per cycle.
+A successful authenticated inbox refresh counts as a check-in — no tasks are required. Consecutive local calendar days grow the flame; a miss normally resets it, while one banked freeze can preserve it.
 
-Milestones earn freezes back, so longevity compounds forgiveness. The system rewards showing up without punishing being human.
+Each newly reached 7-day milestone can earn a freeze, up to one stored at a time. The feature adds a little forgiveness; it does not guarantee a long streak.
 
 ## Streaks as social proof
 
-Long streaks signal a living board to senders: this person reads, replies, returns. Share milestones the way runners share race photos — it recruits the next wave of senders better than any sticker.
+A long streak can signal that someone is still checking the app, but it does not prove how often they read or reply. Share a milestone only if it fits your profile; do not treat a flame as an engagement metric.
 
 ## The leverage point
 
@@ -58,6 +58,6 @@ Change one variable in a two-week test and keep the result. A durable advanced p
 - [Streaks That Actually Stick: 7 Mistakes Everyone Makes](/post/streaks-that-stick-mistakes)
 - [Streaks That Actually Stick for Beginners](/post/streaks-that-stick-beginners)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

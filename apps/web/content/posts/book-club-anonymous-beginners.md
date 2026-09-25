@@ -4,7 +4,7 @@ slug: book-club-anonymous-beginners
 date: 2027-05-25
 status: scheduled
 tags: ["Scenarios & Stories", "Scenarios", "Community"]
-excerpt: "New to anonymous book club boards? Start here: zero jargon, first win in under ten minutes."
+excerpt: "New to anonymous book club boards? Start here: zero jargon, a complete first loop."
 pixabay: "books reading cozy"
 readMinutes: 4
 image: ""
@@ -16,7 +16,7 @@ credit_url: ""
 
 Anonymous Book Club Boards is easier to use when the page has a clear job. This zero-to-first-win tutorial starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## Hot takes need cover
 

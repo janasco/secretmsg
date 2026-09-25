@@ -4,7 +4,7 @@ slug: birthday-board-guide-beginners
 date: 2026-05-28
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Celebration"]
-excerpt: "New to the birthday board: a month of proof? Start here: zero jargon, first win in under ten minutes."
+excerpt: "New to the birthday board: a month of proof? Start here: zero jargon, a complete first loop."
 pixabay: "birthday party confetti"
 readMinutes: 4
 image: ""
@@ -16,7 +16,7 @@ credit_url: ""
 
 The Birthday Board: A Month of Proof is easier to use when the page has a clear job. This zero-to-first-win tutorial starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## The setup
 
@@ -30,7 +30,7 @@ Same playbook ports to graduations, farewells, weddings, and new-baby season. An
 
 ## Harvesting season
 
-Messages arrive in waves: close friends first, then the long tail of acquaintances as the story gets shared onward. Answer a few double-blind to keep momentum — senders recruit senders.
+Messages may arrive at different times as the story gets shared. Answer a few double-blind replies when they fit the occasion; the app does not measure or promise a particular arrival pattern.
 
 The filtered tray earns its keep here: birthday roasts walk a line, and you decide exactly where yours sits.
 

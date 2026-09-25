@@ -16,13 +16,13 @@ credit_url: ""
 
 Graduation & Farewell Boards is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## The group effect
 
-Farewells compound: each posted sticker reminds ten more people the deadline exists. Pin the board link in every relevant chat and watch stragglers convert in the final 48 hours.
+Farewells can compound when each shared sticker gives the next person a reason to respond. Pin the board link in the relevant chats and decide when the final reminder should go out.
 
-Read a selection aloud at the actual goodbye. Anonymous praise, spoken by a friend, hits like consensus — because it is.
+Read a selection aloud at the actual goodbye. Anonymous praise can land as a group moment, but the app does not promise consensus or a particular response rate.
 
 ## Endings deserve archives
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own Graduation & Farewell Boards rather than copying the dramatic details.
 

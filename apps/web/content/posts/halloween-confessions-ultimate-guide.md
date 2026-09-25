@@ -16,19 +16,19 @@ credit_url: ""
 
 Halloween Confessions Season is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## Spooky season is confession season
 
-Costumes lower inhibitions; so do anonymous links. October is the annual peak for spicy and secrets categories — lean into it with themed prompts and the darkest sticker theme you own.
+Costumes and anonymous links can change the tone of a conversation. October may be a good time to try a themed prompt and the darkest sticker theme you own; the app does not track a monthly usage peak for the dice categories.
 
-Obsidian theme exists for exactly this month. You are welcome.
+Obsidian theme exists for exactly this kind of seasonal prompt. You are welcome.
 
 ## Prompts from the crypt
 
-"Confess your most unhinged costume idea." "TBH — your villain origin story." "Spiciest take you would never say sober." Roll the dice on spicy + secrets and post whatever lands; the holiday grants absolution in advance.
+"Confess your most unhinged costume idea." "TBH — your villain origin story." "Spiciest take you would never say sober." Roll the dice on spicy + secrets and post whatever lands, while keeping the community boundary clear.
 
-Roast-kindly mode: ON. October mischief, November friendships.
+Add a roast-kindly instruction to the prompt rather than assuming a special moderation mode. The app has hidden-word filtering, pause, blocking, and reporting; it does not grant the holiday any safety exemption.
 
 ## Costume feedback machine
 

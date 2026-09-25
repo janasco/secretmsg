@@ -16,25 +16,25 @@ credit_url: ""
 
 TBH Culture, Explained is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Where "to be honest" came from
 
-TBH began as forum shorthand and grew into a social ritual: permission to say the nice thing out loud. The format survived every platform migration because the need never changed — people crave sincere, specific affirmation, and everyday life rarely schedules it.
+TBH began as forum shorthand and grew into a social ritual: permission to say the nice thing out loud. The format has moved across forum and social platforms as people look for sincere, specific affirmation.
 
-Modern TBH runs on story stickers: a link, a prompt, and thirty seconds of courage from the sender.
+Modern TBH runs on story stickers: a link, a prompt, and a little courage from the sender.
 
-## Why compliments hit harder anonymously
+## Why compliments can land differently
 
-A compliment from a known friend carries social accounting — what do they want, what do I owe back? An anonymous TBH has no ledger. The recipient can simply believe it, which is why recipients screenshot TBHs and keep them for years.
+A compliment from a known friend carries social accounting — what do they want, what do I owe back? An anonymous TBH removes the visible sender name from that exchange. The recipient can respond to the words rather than the person attached to them.
 
-Specificity is the active ingredient. "Your energy" fades; "the way you defended Maya at lunch" lasts. Prompt for specifics and watch quality triple.
+Specificity often gives the recipient more to respond to. "Your energy" is broad; "the way you defended Maya at lunch" names a moment. Prompt for details, then judge the replies that actually arrive.
 
-## The anatomy of a perfect TBH prompt
+## The anatomy of a useful TBH prompt
 
-Great prompts constrain just enough: a topic (energy, style, courage), a frame (TBH, confession, roast-kindly), and an example. "TBH about my red flags — be honest but kind" outperforms "send tbh" by an order of magnitude.
+A focused prompt gives senders a clear shape: a topic (energy, style, courage), a frame (TBH or confession), and a boundary. "TBH about my red flags — be honest but kind" tells someone what kind of message to write; "send tbh" leaves more of the interpretation to them.
 
-Rotate prompts weekly. Familiarity breeds scrolling past; novelty earns taps.
+Rotate prompts when one starts to feel repetitive. Fresh wording can help, but no wording guarantees more taps.
 
 ## TBH etiquette for senders
 
@@ -44,7 +44,9 @@ The golden test: would the recipient screenshot this proudly? Aim there.
 
 ## From receiving to ritual
 
-The senders who return are the ones who got answers. Reply double-blind, keep streaks alive, and let the Daily Drop supply fresh prompts on autopilot. Ritual beats willpower, in inboxes as in gyms.
+A thoughtful reply gives a sender a reason to visit the link again, but it does not guarantee a return. Reply double-blind when useful and use the Daily Drop for a fresh local prompt each day.
+
+A small ritual still needs a realistic response routine. Choose a window you can protect, review the messages that deserve care, and let the rest wait until the next check.
 
 ## The complete path
 

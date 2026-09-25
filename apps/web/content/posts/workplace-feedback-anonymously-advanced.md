@@ -16,11 +16,11 @@ credit_url: ""
 
 Workplace Feedback Without the Fallout is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## The guardrails that matter
 
-Strict mode during sensitive weeks, standard otherwise. Pause during incidents — nobody needs hot takes mid-outage. Reports route to you first, and the team knows the rules because you posted them with the link.
+Strict mode rejects matching sends while still holding them for the recipient’s review; standard quarantines matches for review. Pause submissions when a board needs a break, and tell the team what reporting can and cannot do: it records a reason and quarantines the message for review.
 
 Anonymity at work requires more structure, not less. The structure is the product.
 
@@ -30,9 +30,9 @@ Dedicated board, professional display name, clear prompt: "TBH on our deploy pro
 
 Share in the team channel Friday morning; review the tray Monday. Cadence beats intensity.
 
-## What changes in six months
+## What to change next
 
-Quiet contributors surface. Recurring themes get names. The retro stops performing alignment and starts producing it — all because the cost of honesty dropped to zero.
+Look for recurring themes, decide which follow-up belongs to the team, and keep the board’s rules visible. Anonymity can lower the cost of speaking up, but it does not remove the work of responding.
 
 ## The leverage point
 

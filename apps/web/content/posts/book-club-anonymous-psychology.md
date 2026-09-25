@@ -16,7 +16,7 @@ credit_url: ""
 
 Anonymous Book Club Boards is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Running the discussion
 
@@ -32,9 +32,9 @@ Spoiler discipline via word filters: filter character names until everyone finis
 
 ## Author events, upgraded
 
-Visiting authors answering anonymous questions get the questions audiences actually have, not the polite ones. "Why did you spare THAT character" beats "where do you get ideas" forever.
+Visiting authors answering anonymous questions can surface questions that people might not ask in a crowded room. "Why did you spare THAT character" can be more specific than "where do you get ideas".
 
-Collect questions for a week, curate the best dozen, run the session. Standing ovation optional but likely.
+Collect questions for a week, curate the best dozen, and run the session. A standing ovation is optional.
 
 ## The mechanism
 

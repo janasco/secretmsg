@@ -16,7 +16,7 @@ credit_url: ""
 
 Word Filters, Mastered is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## The monthly five-minute audit
 
@@ -30,9 +30,9 @@ Nobody is told what tripped: not the sender, not the word, not the rule. That si
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Word Filters, Mastered is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Word Filters, Mastered is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 
@@ -52,6 +52,6 @@ The most defensible choice is the one you can explain to the people using it and
 - [Word Filters, Mastered: 7 Mistakes Everyone Makes](/post/word-filters-mastery-mistakes)
 - [Word Filters, Mastered for Beginners](/post/word-filters-mastery-beginners)
 
-Filter, pause, block, report — in that order. Your inbox, your rules, enforced by the server.
+Filter, pause, block, or report according to the situation. These are recipient controls, not comprehensive automated moderation.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

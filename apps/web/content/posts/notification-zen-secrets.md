@@ -16,19 +16,19 @@ credit_url: ""
 
 Notification Zen is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Tuning to your life
 
-Night owl? The streak nudge lands before YOUR bedtime math, not ours. Busy season? Pause the board and notifications hush themselves — no settings spelunking required.
+The streak nudge is scheduled for 9:30pm local when the current state calls for it. Busy season? Pause submissions; new sends will be rejected until the board is active again, while existing inbox notifications remain under your device settings.
 
-Per-type toggles live in settings, each with a plain-English description of what it does and when. No dark patterns, no re-opt-in mazes after updates.
+Per-type toggles live in settings, each with a plain-English description. The app does not promise a custom bedtime, a message digest, or a re-opt-in maze after updates.
 
 ## When to go silent deliberately
 
-Vacations, exams, heartbreaks: kill notifications at the OS level and let the board accumulate like mail. Returning to a full inbox beats returning to an anxious one.
+Vacations, exams, heartbreaks: pause submissions and use the device notification settings when you want fewer interruptions. Paused submissions are rejected rather than accumulated for later delivery.
 
-The digest pattern beats the drip pattern. Batch, breathe, reply in one calm sitting.
+When you return, read the saved inbox and reply in one calm sitting. The app has a weekly filtered-tray review, not a general message digest.
 
 ## The overlooked detail
 

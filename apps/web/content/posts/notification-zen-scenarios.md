@@ -16,19 +16,19 @@ credit_url: ""
 
 Notification Zen is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Tuning to your life
 
-Night owl? The streak nudge lands before YOUR bedtime math, not ours. Busy season? Pause the board and notifications hush themselves — no settings spelunking required.
+The streak nudge is scheduled for 9:30pm local when the current state calls for it. Busy season? Pause submissions; new sends will be rejected until the board is active again, while existing inbox notifications remain under your device settings.
 
-Per-type toggles live in settings, each with a plain-English description of what it does and when. No dark patterns, no re-opt-in mazes after updates.
+Per-type toggles live in settings, each with a plain-English description. The app does not promise a custom bedtime, a message digest, or a re-opt-in maze after updates.
 
 ## Every ping spends trust
 
-Notifications are a loan against attention: useful ones repay with joy, noisy ones default into the off switch. The entire notification philosophy here is fewer, better, sillenced-by-default-except-what-matters.
+Notifications are a loan against attention: useful ones can be welcome, noisy ones can send you to the off switch. The app separates new-message alerts, Daily Drop reminders, streak nudges, weekly tray review, and milestone reminders so you can tune them.
 
-Counts, not contents, on the lock screen. Curiosity opens apps; previews get read and dismissed.
+FCM receives a message ID, unread count, and a server-truncated preview of up to 140 characters for a new message. Full message bodies do not travel through FCM, but a preview can still appear on the lock screen.
 
 ## Scene map
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own Notification Zen rather than copying the dramatic details.
 

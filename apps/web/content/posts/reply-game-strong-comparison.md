@@ -16,25 +16,25 @@ credit_url: ""
 
 A Strong Reply Game is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Closing loops kindly
 
-Every thread should end warm, even the weird ones. A graceful close ("thanks for trusting me with that") costs nothing and leaves senders likelier to return with something better.
+A graceful close ("thanks for trusting me with that") can keep the exchange respectful. It may make a sender more comfortable returning, but no reply format guarantees a return.
 
-Reputation compounds invisibly. Be the board people recommend in group chats.
+Keep the rules and follow-through consistent. That is more useful than claiming an invisible reputation metric.
 
-## Speed wins
+## Speed can help
 
-The first reply sets the relationship. Answer within a day and senders learn your inbox is alive; wait a week and they learn the opposite. Double-blind replies cost ninety seconds — spend them nightly, not monthly.
+A reply gives a sender a response to return to; timing still depends on the person and the situation. Double-blind replies are short to compose, but the time to write a good one varies.
 
-Batch the habit: inbox, reply-all-worth-answering, pin one, done. Rhythm beats marathons.
+Batch the habit: inbox, reply to what deserves an answer, pin one, done. Rhythm beats marathons.
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. A Strong Reply Game is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. A Strong Reply Game is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 

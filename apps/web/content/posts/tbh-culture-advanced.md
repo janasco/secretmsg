@@ -16,7 +16,7 @@ credit_url: ""
 
 TBH Culture, Explained is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## TBH etiquette for senders
 
@@ -24,15 +24,17 @@ Be specific, be kind on purpose, and never use anonymity as a weapon — recipie
 
 The golden test: would the recipient screenshot this proudly? Aim there.
 
-## Why compliments hit harder anonymously
+## Why compliments can land differently
 
-A compliment from a known friend carries social accounting — what do they want, what do I owe back? An anonymous TBH has no ledger. The recipient can simply believe it, which is why recipients screenshot TBHs and keep them for years.
+A compliment from a known friend carries social accounting — what do they want, what do I owe back? An anonymous TBH removes the visible sender name from that exchange. The recipient can respond to the words rather than the person attached to them.
 
-Specificity is the active ingredient. "Your energy" fades; "the way you defended Maya at lunch" lasts. Prompt for specifics and watch quality triple.
+Specificity often gives the recipient more to respond to. "Your energy" is broad; "the way you defended Maya at lunch" names a moment. Prompt for details, then judge the replies that actually arrive.
 
 ## From receiving to ritual
 
-The senders who return are the ones who got answers. Reply double-blind, keep streaks alive, and let the Daily Drop supply fresh prompts on autopilot. Ritual beats willpower, in inboxes as in gyms.
+A thoughtful reply gives a sender a reason to visit the link again, but it does not guarantee a return. Reply double-blind when useful and use the Daily Drop for a fresh local prompt each day.
+
+A small ritual still needs a realistic response routine. Choose a window you can protect, review the messages that deserve care, and let the rest wait until the next check.
 
 ## The leverage point
 

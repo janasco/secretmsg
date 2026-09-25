@@ -16,13 +16,13 @@ credit_url: ""
 
 Graduation & Farewell Boards is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## The group effect
 
-Farewells compound: each posted sticker reminds ten more people the deadline exists. Pin the board link in every relevant chat and watch stragglers convert in the final 48 hours.
+Farewells can compound when each shared sticker gives the next person a reason to respond. Pin the board link in the relevant chats and decide when the final reminder should go out.
 
-Read a selection aloud at the actual goodbye. Anonymous praise, spoken by a friend, hits like consensus — because it is.
+Read a selection aloud at the actual goodbye. Anonymous praise can land as a group moment, but the app does not promise consensus or a particular response rate.
 
 ## Beyond graduation
 

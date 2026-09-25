@@ -16,17 +16,17 @@ credit_url: ""
 
 Double-Blind Replies, Demystified is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## Replying well is a skill
 
-Answer the message that was sent, not the one you wish arrived. Short replies beat silence; specific replies beat short ones. A single thoughtful sentence outperforms a paragraph of filler.
+Answer the message that was sent, not the one you wish arrived. Short replies can be useful; specific replies give the sender something concrete to respond to. A single thoughtful sentence is often easier to answer than a paragraph of filler.
 
-Set a rhythm: clear the inbox nightly, pin the keepers, and let public replies (used sparingly) show newcomers the board is alive.
+Set a rhythm: clear the inbox at a predictable time, pin the keepers, and use private double-blind replies when you want to answer without publishing a response to the board.
 
 ## Edge cases, handled
 
-Paused boards hold replies with everything else. Deleted messages take their threads with them — there is no orphaned half-conversation haunting the database. Blocked senders cannot start new threads, full stop.
+A paused board rejects new submissions; it does not queue a sender’s message. Deleting a message removes its stored reply data. A recipient-specific block stores the message’s hashed mobile sender value when one is present, so future messages from that app-generated value are rejected for that recipient only.
 
 ## The overlooked detail
 
@@ -52,6 +52,6 @@ The best advanced practice is restraint. Keep the system small enough to inspect
 - [Double-Blind Replies, Demystified in Real Life](/post/double-blind-replies-scenarios)
 - [The Ultimate Guide to Double-Blind Replies, Demystified](/post/double-blind-replies-ultimate-guide)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

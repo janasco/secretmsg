@@ -16,7 +16,7 @@ credit_url: ""
 
 Pause Like a Pro is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## Pause plus filters: the combo
 
@@ -26,9 +26,9 @@ Audit quarterly: is the pause still on? Did the trip end three weeks ago? Reopen
 
 ## Choosing your duration
 
-Thirty minutes for a meeting, a day for a reset, a week for a trip, indefinite for a hibernation. Match the timer to the reason and you will never forget to reopen — expiring pauses reopen themselves.
+The app offers 30 minutes, one hour, 24 hours, one week, permanent pause, or an active link. A timed pause automatically ends at its stored time; a permanent pause stays paused until you reactivate it.
 
-Permanent pause is for boards in cold storage: the link lives, delivery sleeps, and you return whenever.
+Permanent pause is for boards in cold storage: the link lives, submissions are rejected, and you return whenever.
 
 ## Short answers
 
@@ -54,6 +54,6 @@ If a question remains, ask it with context. Include the board type, the moment y
 - [The Ultimate Guide to Pause Like a Pro](/post/pause-like-a-pro-ultimate-guide)
 - [The Psychology Behind Pause Like a Pro](/post/pause-like-a-pro-psychology)
 
-Save this post, share it with anyone running a board, and sleep well: the levers are all yours.
+Save this post and share it with anyone running a board: know the available controls, their limits, and the steps for a safety concern.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

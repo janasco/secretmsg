@@ -16,19 +16,19 @@ credit_url: ""
 
 QR Codes: Screenshots Into Taps is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## The screenshot problem
 
-Most story views never tap: apps bury link stickers, viewers screenshot instead, and screenshots do not convert. A QR code on the sticker converts the screenshot itself into a doorway.
+A viewer who screenshots a story card may not have a tappable link. A QR code on the card gives that screenshot another route to the board.
 
-Every exported sticker carries one automatically. No extra step, no design skill, no excuses.
+Every generated Sticker Studio card carries a QR code automatically. The app does not claim that every viewer will scan it or that scans are automatically measured.
 
 ## Placement that survives platforms
 
-Bottom-right, clear of rails and input rows, sized for arm-length scanning: the safe-area presets already reserve the exact zone per platform.
+The Sticker Studio places the QR code at the top-right of the card and offers platform safe-area guides. Test the result on the platform you use rather than assuming one placement fits every app.
 
-Test it yourself before posting: screenshot your own story, scan from another phone. Thirty seconds that saves a dead campaign.
+Test it yourself before posting: screenshot your own story, scan from another phone, and check that the link opens the board you intended.
 
 ## Print is back, apparently
 
@@ -38,13 +38,13 @@ Pair with a one-line prompt on the physical sticker. Context plus code beats cod
 
 ## Measuring the invisible
 
-You cannot track scans — and should not. Measure replies per sticker instead: the metric that matters, honestly earned, privacy intact.
+Sticker Studio does not emit a scan event or provide scan analytics. The account’s public profile can show a view count through the normal profile lookup, so do not describe QR scans as untrackable in every part of the service.
 
-A/B placement across weeks: same prompt, QR top vs bottom. Let the inbox vote.
+A/B placement across weeks: same prompt, QR at the top-right versus a different layout you create. Let the inbox and your own notes guide the next version.
 
 ## The meta-lesson
 
-Reduce every step between impulse and action. QR codes delete the "type the link" step that killed a thousand would-be messages. Friction is the enemy; ink is cheap.
+Reduce the steps between seeing a card and opening the board. A QR code removes the need to type the link, but the service cannot predict how many people will take that step. Reduce friction, then test the result.
 
 ## The complete path
 
@@ -70,6 +70,6 @@ Review the loop at the end of each month. Keep what produced thoughtful returns,
 - [QR Codes: Screenshots Into Taps vs the Alternatives](/post/qr-codes-on-stickers-comparison)
 - [QR Codes: Screenshots Into Taps in Real Life](/post/qr-codes-on-stickers-scenarios)
 
-Your next ten senders are one good share away. Go make it.
+A clear invitation gives the next sender an easy way in. Post, observe, and improve the next version.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

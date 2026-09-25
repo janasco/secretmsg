@@ -16,19 +16,19 @@ credit_url: ""
 
 The Offline Outbox, Explained is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## The verification exception
 
-One honest constraint: bot-checks cannot mint offline. A queued send whose challenge expired parks as "needs verification" — tap it and the composer reopens prefilled, so one fresh tap finishes the job.
+Turnstile verification cannot be completed offline. A queued send that reaches a send-time verification failure is handed back to the composer with its text intact so you can complete a fresh challenge.
 
-This is stated upfront in the UI rather than discovered mid-tunnel. Constraints you can see are features; hidden ones are bugs.
+The visible sync row tells you when an action is queued, blocked, or needs attention. That status is about this device’s outbox, not a guarantee that every service is available offline.
 
 ## The subway test
 
 Every app works on wifi. The good ones work in tunnels. SecretMsg queues sends, replies, approvals, discards, and reports made offline, then drains them in order when you reconnect — with a visible sync row, never silent magic.
 
-Your drafts and streaks never depend on bars. The ritual survives dead zones.
+Drafts and local streak state stay on the device, but a new authenticated check-in still needs a connection. The ritual can survive dead zones without pretending every action is available offline.
 
 ## Scene map
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own The Offline Outbox, Explained rather than copying the dramatic details.
 
@@ -54,6 +54,6 @@ Scenarios are useful when they teach a decision. If the story ends without a cle
 - [Offline Outbox, Explained: 7 Mistakes Everyone Makes](/post/offline-mode-guide-mistakes)
 - [Offline Outbox, Explained for Beginners](/post/offline-mode-guide-beginners)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

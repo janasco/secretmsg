@@ -16,19 +16,19 @@ credit_url: ""
 
 QR Codes: Screenshots Into Taps is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Placement that survives platforms
 
-Bottom-right, clear of rails and input rows, sized for arm-length scanning: the safe-area presets already reserve the exact zone per platform.
+The Sticker Studio places the QR code at the top-right of the card and offers platform safe-area guides. Test the result on the platform you use rather than assuming one placement fits every app.
 
-Test it yourself before posting: screenshot your own story, scan from another phone. Thirty seconds that saves a dead campaign.
+Test it yourself before posting: screenshot your own story, scan from another phone, and check that the link opens the board you intended.
 
 ## The screenshot problem
 
-Most story views never tap: apps bury link stickers, viewers screenshot instead, and screenshots do not convert. A QR code on the sticker converts the screenshot itself into a doorway.
+A viewer who screenshots a story card may not have a tappable link. A QR code on the card gives that screenshot another route to the board.
 
-Every exported sticker carries one automatically. No extra step, no design skill, no excuses.
+Every generated Sticker Studio card carries a QR code automatically. The app does not claim that every viewer will scan it or that scans are automatically measured.
 
 ## Print is back, apparently
 
@@ -60,6 +60,6 @@ If the change helps kind people participate more but also increases harmful mess
 - [QR Codes: Screenshots Into Taps in Real Life](/post/qr-codes-on-stickers-scenarios)
 - [What Nobody Tells You About QR Codes: Screenshots Into Taps](/post/qr-codes-on-stickers-secrets)
 
-Your next ten senders are one good share away. Go make it.
+A clear invitation gives the next sender an easy way in. Post, observe, and improve the next version.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

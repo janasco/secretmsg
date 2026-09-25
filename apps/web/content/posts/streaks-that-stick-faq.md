@@ -16,19 +16,19 @@ credit_url: ""
 
 Streaks That Actually Stick is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## When streaks break anyway
 
-Life happens — travel, illness, dead batteries. Supporters can repair a recent break once a month; everyone else restarts at one, which stings for exactly a day and then becomes a new run.
+Life happens — travel, illness, dead batteries. Without a banked freeze, the next successful check-in starts a new count at one. The current app does not expose a supporter streak-repair control, so do not plan around a repair that is not available.
 
-Never let a broken streak end the habit. The second streak always grows faster because the inbox is already warm.
+Treat a reset as a prompt to make the habit easier, not a verdict. A useful inbox and a realistic reminder matter more than pretending the old count survived.
 
 ## The anatomy of our streaks
 
-Any authenticated refresh counts as a check-in — no grinding, no tasks. Consecutive calendar days grow the flame; a miss pauses it, and one banked freeze forgives exactly one bad day per cycle.
+A successful authenticated inbox refresh counts as a check-in — no tasks are required. Consecutive local calendar days grow the flame; a miss normally resets it, while one banked freeze can preserve it.
 
-Milestones earn freezes back, so longevity compounds forgiveness. The system rewards showing up without punishing being human.
+Each newly reached 7-day milestone can earn a freeze, up to one stored at a time. The feature adds a little forgiveness; it does not guarantee a long streak.
 
 ## Short answers
 

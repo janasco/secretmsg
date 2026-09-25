@@ -16,19 +16,19 @@ credit_url: ""
 
 Every Supporter Perk, Explained is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
-## Hints: viewer and sender
+## Sender hints, carefully scoped
 
-Viewer hints reveal gentle context about your audience in aggregate; sender hints attach broad device context to messages whose senders allowed it. Neither ever identifies anyone — they add texture, not surveillance.
+A sender hint is a coarse platform clue such as "Mobile / Android" or "Web Browser." It appears only when the sender opts in and the recipient has the sender-hints entitlement; it is not a name, location, or unique identity.
 
-Hint enjoyers describe the inbox as "warmer". Skeptics leave them off and lose nothing.
+The mobile app can generate a stable installation value whose SHA-256 hash is stored for a message and, when blocked, in that recipient’s list. The server does not reverse the hash into a person.
 
 ## Why perks exist at all
 
-Servers, push infrastructure, spam screening, and app-store fees cost real money every month. Supporters cover it, and perks are the thank-you — never paywalled core features, always extras that make a good inbox better.
+Servers, push infrastructure, and app operations cost money. Supporters help cover those costs, and eligible extras are the thank-you. The message, inbox, filter, block, report, and reply features are available without a supporter purchase.
 
-The line is deliberate: sending, receiving, and replying are free forever. Everything else is garnish.
+Pricing and eligible perks can change, so check the current checkout rather than relying on a permanent promise. The current app verifies Play purchases server-side before granting supported perks.
 
 ## Scene map
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own Every Supporter Perk, Explained rather than copying the dramatic details.
 
@@ -54,6 +54,6 @@ Scenarios are useful when they teach a decision. If the story ends without a cle
 - [The Ultimate Guide to Every Supporter Perk, Explained](/post/supporter-perks-tour-ultimate-guide)
 - [The Psychology Behind Every Supporter Perk, Explained](/post/supporter-perks-tour-psychology)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

@@ -16,17 +16,17 @@ credit_url: ""
 
 Streaks That Actually Stick is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Designing your unmissable day
 
-Anchor the check-in to something you already do: morning coffee, the commute, lights-out scrolling. Enable the nightly nudge and let the 9:30pm reminder carry the days your memory will not.
+Anchor the check-in to something you already do: morning coffee, the commute, or lights-out scrolling. Enable the nightly nudge if a 9:30pm reminder fits your routine.
 
-Pair it with the Daily Drop: answer the prompt, check the inbox, done in ninety seconds. Rituals survive on smallness.
+Pair it with the Daily Drop: open the prompt, check the inbox, and answer what deserves care. Small routines are easier to repeat than an ambitious setup.
 
 ## Streaks as social proof
 
-Long streaks signal a living board to senders: this person reads, replies, returns. Share milestones the way runners share race photos — it recruits the next wave of senders better than any sticker.
+A long streak can signal that someone is still checking the app, but it does not prove how often they read or reply. Share a milestone only if it fits your profile; do not treat a flame as an engagement metric.
 
 ## The overlooked detail
 
@@ -52,6 +52,6 @@ The best advanced practice is restraint. Keep the system small enough to inspect
 - [5 Myths About Streaks That Actually Stick](/post/streaks-that-stick-myths)
 - [Streaks That Actually Stick: Questions, Answered](/post/streaks-that-stick-faq)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*

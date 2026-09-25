@@ -16,17 +16,17 @@ credit_url: ""
 
 The Birthday Board: A Month of Proof is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
-## Why it beats a group card
+## Why it can beat a group card
 
-Group cards collect signatures; boards collect sentences. A paragraph from someone who never comments publicly outweighs twenty emoji reacts — specificity again, doing its quiet work.
+Group cards collect signatures; boards collect sentences. A paragraph from someone who rarely comments publicly can give the occasion more texture than a short reaction, depending on the audience.
 
-Next year, the board already exists. Tradition compounds.
+Next year, the board already exists. You can decide whether the ritual is worth continuing.
 
 ## Harvesting season
 
-Messages arrive in waves: close friends first, then the long tail of acquaintances as the story gets shared onward. Answer a few double-blind to keep momentum — senders recruit senders.
+Messages may arrive at different times as the story gets shared. Answer a few double-blind replies when they fit the occasion; the app does not measure or promise a particular arrival pattern.
 
 The filtered tray earns its keep here: birthday roasts walk a line, and you decide exactly where yours sits.
 

@@ -16,7 +16,7 @@ credit_url: ""
 
 New Year, Honest Answers is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ##  prompts that land
 
@@ -26,13 +26,13 @@ Rotate one per day through the final week. Scarcity plus occasion beats a single
 
 ## The group version
 
-Friend groups do this brilliantly: everyone posts the same prompt, everyone answers everyone, and the group chat spends January 2nd screaming. Shared ritual, zero organization overhead.
+Friend groups can use several overlapping boards: one person posts, another replies, and the group chat keeps the ritual moving. The app does not create a shared group account, so somebody still has to manage the links and replies.
 
 SecretMsg groups are just overlapping boards. The overlap is the party.
 
 ## Answering in public (sort of)
 
-Use public replies for the gems: they show newcomers the board is alive and set the tone for next year. Keep the tender ones private — selectivity reads as taste.
+Use double-blind replies for the gems and keep the tender ones private. The current app does not publish a shared response feed; if you want a recap, save the messages and share your own summary elsewhere.
 
 On January first, pin the single message that describes who you are becoming. Let it headline the new year.
 

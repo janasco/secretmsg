@@ -16,13 +16,13 @@ credit_url: ""
 
 Notification Zen is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## Quiet hours are sacred
 
-Nothing non-urgent fires between ten and eight. Anonymous messages are wonderful; 3am buzzes are not. The schedule respects sleep like a good roommate.
+The local ritual scheduler avoids its 10pm–8am quiet window, but that setting does not silence every FCM message notification. Android notification channels and the device’s own settings determine whether a new-message alert is shown.
 
-Urgent is narrowly defined: nothing here pages you. If the building is on fire, call someone — do not wait for a push.
+If the building is on fire, call someone — do not wait for a push.
 
 ## The three that earn their place
 
@@ -32,9 +32,9 @@ Everything else waits inside the app. If it can wait until morning, it does.
 
 ## When to go silent deliberately
 
-Vacations, exams, heartbreaks: kill notifications at the OS level and let the board accumulate like mail. Returning to a full inbox beats returning to an anxious one.
+Vacations, exams, heartbreaks: pause submissions and use the device notification settings when you want fewer interruptions. Paused submissions are rejected rather than accumulated for later delivery.
 
-The digest pattern beats the drip pattern. Batch, breathe, reply in one calm sitting.
+When you return, read the saved inbox and reply in one calm sitting. The app has a weekly filtered-tray review, not a general message digest.
 
 ## The leverage point
 
@@ -60,6 +60,6 @@ Change one variable in a two-week test and keep the result. A durable advanced p
 - [What Nobody Tells You About Notification Zen](/post/notification-zen-secrets)
 - [Notification Zen: 7 Mistakes Everyone Makes](/post/notification-zen-mistakes)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

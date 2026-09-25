@@ -16,23 +16,23 @@ credit_url: ""
 
 Summer Break Boards is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## The summer prompt calendar
 
-June: predictions and dares. July: confessions and ratings, peak courage season. August: nostalgia and "what changed" retrospectives. One vibe per week keeps it fresh without daily labor.
+June: predictions and dares. July: confessions and ratings. August: nostalgia and "what changed" retrospectives. One vibe per week keeps it fresh without daily labor.
 
-Sunset sticker themes were basically invented for golden-hour stories. Use them shamelessly all season.
+Sunset sticker themes suit golden-hour stories. Use them all season if the color fits your invitation.
 
 ## Distance makes inboxes grow fonder
 
-Scattered for summer? A board becomes the group hangout that needs no scheduling: post nightly prompts, wake to replies across time zones, keep the streak alive from three area codes.
+Scattered for summer? A board can become a low-scheduling group hangout: post prompts, check replies across time zones, and keep a local streak going when the app is available.
 
 Summer prompts write themselves: ratings of beach reads, confession season, glow-up predictions for fall.
 
 ## Camp, travel, and patchy wifi
 
-Offline outbox earns its keep on road trips and camps with one bar: queue replies and sends, sync at the next town. Streak freezes forgive the national-park week.
+The offline outbox can queue supported replies, sends, approvals, discards, and reports made during a network failure, then drains them when connectivity returns. Streak freezes can cover one missed day when available.
 
 Time zones are a feature: wake to messages written while you slept, like letters from the future.
 

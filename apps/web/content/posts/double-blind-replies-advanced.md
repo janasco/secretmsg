@@ -16,23 +16,23 @@ credit_url: ""
 
 Double-Blind Replies, Demystified is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## What senders see
 
-From their side: a private link, your words, zero trace of you beyond what you chose to write. They can return through the same link, which is why great replies compound — every answer is an invitation to send again.
+From their side: a private link containing the original message and your reply, without a recipient identity. The current link is for viewing the reply; it is not a public conversation thread or a second composer.
 
-Lose the link, lose the thread. Remind senders to save it; the app warns them exactly once.
+Treat the link like a private handoff. Keep it if you want to preserve the exchange, and remember that deleting the message removes the stored thread from the service.
 
-## How the cryptography of etiquette works
+## How blind reply links work
 
-Each message carries a reply token — a long random string handed only to the original sender. Your answer attaches to that token, not to a person. When the sender checks the private link, they see your words and nothing else.
+Each message carries a reply token — a long random string handed to the original sender. Your answer attaches to that token, not to a sender profile. When the sender checks the private link, the service returns the message and reply without showing a recipient identity.
 
-No accounts for senders, no identity database to breach, no "seen by" metadata. The thread exists; the participants do not, as far as anyone can prove.
+Senders do not create accounts, and the reply link has no public profile attached. This is anonymity from the other participant’s view, not a promise that the service cannot read or retain the content.
 
 ## Edge cases, handled
 
-Paused boards hold replies with everything else. Deleted messages take their threads with them — there is no orphaned half-conversation haunting the database. Blocked senders cannot start new threads, full stop.
+A paused board rejects new submissions; it does not queue a sender’s message. Deleting a message removes its stored reply data. A recipient-specific block stores the message’s hashed mobile sender value when one is present, so future messages from that app-generated value are rejected for that recipient only.
 
 ## The leverage point
 
@@ -58,6 +58,6 @@ Change one variable in a two-week test and keep the result. A durable advanced p
 - [The Psychology Behind Double-Blind Replies, Demystified](/post/double-blind-replies-psychology)
 - [Double-Blind Replies, Demystified vs the Alternatives](/post/double-blind-replies-comparison)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

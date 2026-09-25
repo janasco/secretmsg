@@ -16,23 +16,23 @@ credit_url: ""
 
 Valentine's Week TBH Guide is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## For the happily attached
 
 Couples run boards too: "TBH about us" from mutual friends is a chaos engine of joy. Share the highlights, laugh together, pin the unhinged-but-loving ones.
 
-## The highest-stakes prompt of the year
+## A prompt with some romantic stakes
 
-February concentrates more romantic courage per capita than any other month. A well-timed crush sticker converts ambient tension into actual messages — confessions that would never survive daylight get sent at 11pm.
+February can make anonymous crush prompts feel especially timely for some people. A clear invitation may turn that mood into messages, but the app does not measure a seasonal increase in courage or guarantee more sends.
 
-Post early in the week; the brave need runway, and the shy need to watch others go first.
+Post when your audience is likely to see it; the brave may need runway, and the shy may want a little context first.
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Valentine's Week TBH Guide is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Valentine's Week TBH Guide is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 

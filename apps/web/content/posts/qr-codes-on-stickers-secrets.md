@@ -16,7 +16,7 @@ credit_url: ""
 
 QR Codes: Screenshots Into Taps is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Print is back, apparently
 
@@ -26,7 +26,7 @@ Pair with a one-line prompt on the physical sticker. Context plus code beats cod
 
 ## The meta-lesson
 
-Reduce every step between impulse and action. QR codes delete the "type the link" step that killed a thousand would-be messages. Friction is the enemy; ink is cheap.
+Reduce the steps between seeing a card and opening the board. A QR code removes the need to type the link, but the service cannot predict how many people will take that step. Reduce friction, then test the result.
 
 ## The overlooked detail
 

@@ -16,13 +16,13 @@ credit_url: ""
 
 Anonymous Book Club Boards is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Between books
 
-The gap weeks kill clubs. A standing prompt ("what are you reading now, honestly?") keeps the board warm between picks.
+The gap weeks can cool a club down. A standing prompt ("what are you reading now, honestly?") keeps the board active between picks.
 
-Let members pitch next reads anonymously with one-line pitches. Voting without campaigning.
+Let members pitch next reads with one-line messages. The app does not provide a built-in voting or campaigning feature; collect and compare the pitches yourself.
 
 ## Running the discussion
 

@@ -16,19 +16,19 @@ credit_url: ""
 
 Exam Season Support Boards is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
-## Anonymous pep talks hit different
+## Anonymous pep talks can feel different
 
-"You have never failed anything that mattered" lands harder from nowhere than from a friend performing optimism. Anonymity strips the social accounting out of encouragement.
+"You have never failed anything that mattered" may land differently from a stranger than from someone performing optimism. Anonymity can lower the social pressure attached to encouragement.
 
-Reply to the scared ones double-blind. One sentence from a stranger can reroute an entire study night.
+Reply to the scared ones double-blind when that feels appropriate. One sentence can be useful, but the app cannot promise that it will change someone’s night.
 
 ## Stress loves an audience
 
-Exam weeks concentrate anxiety beautifully — everyone spiraling in parallel, nobody saying it. A support board converts private panic into shared comedy and genuine encouragement.
+Exam weeks can concentrate anxiety for some people, and a support board gives them a place to name it. A clear prompt can invite shared encouragement without pretending every reply will help.
 
-Prompt it well: "TBH about finals week fears" beats "send messages" the way umbrellas beat wishing.
+Prompt it well: "TBH about finals week fears" gives people more to answer than "send messages".
 
 ## Scene map
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own Exam Season Support Boards rather than copying the dramatic details.
 

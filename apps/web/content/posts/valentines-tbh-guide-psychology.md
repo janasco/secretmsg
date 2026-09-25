@@ -16,7 +16,7 @@ credit_url: ""
 
 Valentine's Week TBH Guide is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Prompts calibrated by nerve
 
@@ -24,11 +24,11 @@ Low nerve: "TBH about love in general." Medium: "TBH — secret admirer check-in
 
 Candy theme, obviously. Aesthetics are load-bearing in February.
 
-## The highest-stakes prompt of the year
+## A prompt with some romantic stakes
 
-February concentrates more romantic courage per capita than any other month. A well-timed crush sticker converts ambient tension into actual messages — confessions that would never survive daylight get sent at 11pm.
+February can make anonymous crush prompts feel especially timely for some people. A clear invitation may turn that mood into messages, but the app does not measure a seasonal increase in courage or guarantee more sends.
 
-Post early in the week; the brave need runway, and the shy need to watch others go first.
+Post when your audience is likely to see it; the brave may need runway, and the shy may want a little context first.
 
 ## Reading the results
 

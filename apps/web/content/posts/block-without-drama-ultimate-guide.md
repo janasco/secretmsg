@@ -16,13 +16,13 @@ credit_url: ""
 
 Blocking Without Drama is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## The quietest superpower
 
-Blocking here stores one hash, deletes the message, and tells the sender nothing — no "you are blocked" page to screenshot, no escalation fuel, no farewell tour. The harassment ends mid-sentence.
+When a mobile message has an app-generated sender value, blocking stores its hash in the recipient’s block list and removes that message. The API does not reveal a name or a global block status; browser senders without that value are not added to the fingerprint list.
 
-Compare with social platforms, where blocks are public performances. Silence is not just kinder; it is strategically superior.
+The block is recipient-specific. It can stop future submissions carrying the same hashed app value for that recipient, but it is not a network-wide ban or a human account judgment.
 
 ## When to block vs filter vs pause
 
@@ -38,9 +38,9 @@ This design choice is deliberate: observable blocks teach harassers to rotate de
 
 ## Managing the list
 
-Review blocked fingerprints quarterly in settings. Unblock liberally — people change, contexts change, and an unblock costs nothing to reverse. The list is hygiene, not a grudge.
+Review blocked fingerprints in settings. Unblock when the context changes and the list has a clear reason to keep the hash. The list is a recipient control, not a permanent grudge.
 
-Pair with reports for the worst cases: your block protects you, the report protects everyone else.
+Pair with reports when you need a reason recorded. A report quarantines that message and stores the reason, but it does not automatically protect every other inbox.
 
 ## The philosophy in one line
 
@@ -70,6 +70,6 @@ Review the loop at the end of each month. Keep what produced thoughtful returns,
 - [5 Myths About Blocking Without Drama](/post/block-without-drama-myths)
 - [Blocking Without Drama: Questions, Answered](/post/block-without-drama-faq)
 
-Filter, pause, block, report — in that order. Your inbox, your rules, enforced by the server.
+Filter, pause, block, or report according to the situation. These are recipient controls, not comprehensive automated moderation.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

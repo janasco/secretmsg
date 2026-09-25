@@ -4,7 +4,7 @@ slug: notification-zen-beginners
 date: 2026-08-18
 status: published
 tags: ["Product & Features", "Notifications", "Balance"]
-excerpt: "New to notification zen? Start here: zero jargon, first win in under ten minutes."
+excerpt: "New to notification zen? Start here: zero jargon, a complete first loop."
 pixabay: "phone notification calm"
 readMinutes: 4
 image: ""
@@ -16,19 +16,19 @@ credit_url: ""
 
 Notification Zen is easier to use when the page has a clear job. This zero-to-first-win tutorial starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## Every ping spends trust
 
-Notifications are a loan against attention: useful ones repay with joy, noisy ones default into the off switch. The entire notification philosophy here is fewer, better, sillenced-by-default-except-what-matters.
+Notifications are a loan against attention: useful ones can be welcome, noisy ones can send you to the off switch. The app separates new-message alerts, Daily Drop reminders, streak nudges, weekly tray review, and milestone reminders so you can tune them.
 
-Counts, not contents, on the lock screen. Curiosity opens apps; previews get read and dismissed.
+FCM receives a message ID, unread count, and a server-truncated preview of up to 140 characters for a new message. Full message bodies do not travel through FCM, but a preview can still appear on the lock screen.
 
 ## When to go silent deliberately
 
-Vacations, exams, heartbreaks: kill notifications at the OS level and let the board accumulate like mail. Returning to a full inbox beats returning to an anxious one.
+Vacations, exams, heartbreaks: pause submissions and use the device notification settings when you want fewer interruptions. Paused submissions are rejected rather than accumulated for later delivery.
 
-The digest pattern beats the drip pattern. Batch, breathe, reply in one calm sitting.
+When you return, read the saved inbox and reply in one calm sitting. The app has a weekly filtered-tray review, not a general message digest.
 
 ## The three that earn their place
 

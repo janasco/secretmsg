@@ -16,13 +16,13 @@ credit_url: ""
 
 Blocking Without Drama is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Managing the list
 
-Review blocked fingerprints quarterly in settings. Unblock liberally — people change, contexts change, and an unblock costs nothing to reverse. The list is hygiene, not a grudge.
+Review blocked fingerprints in settings. Unblock when the context changes and the list has a clear reason to keep the hash. The list is a recipient control, not a permanent grudge.
 
-Pair with reports for the worst cases: your block protects you, the report protects everyone else.
+Pair with reports when you need a reason recorded. A report quarantines that message and stores the reason, but it does not automatically protect every other inbox.
 
 ## When to block vs filter vs pause
 
@@ -54,6 +54,6 @@ If a question remains, ask it with context. Include the board type, the moment y
 - [Advanced Blocking Without Drama: Level Up](/post/block-without-drama-advanced)
 - [5 Myths About Blocking Without Drama](/post/block-without-drama-myths)
 
-Filter, pause, block, report — in that order. Your inbox, your rules, enforced by the server.
+Filter, pause, block, or report according to the situation. These are recipient controls, not comprehensive automated moderation.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

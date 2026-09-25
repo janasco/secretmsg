@@ -16,25 +16,25 @@ credit_url: ""
 
 Every Supporter Perk, Explained is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
-## Badges and verified shine
+## Badges and supporter status
 
-A badge is social proof that you fund the commons. Verified marks supporters whose backing is confirmed; tier badges (Coffee through Golden Guardian) mark how deep the commitment runs.
+A supporter badge reflects a verified grant on the account. The current app can show a supporter tier such as Coffee Backer, Silver Patron, or another grant recorded by a qualifying contribution.
 
-Display them or hide them — both are respected choices, and toggling is instant.
+Treat the badge as account status, not a promise of extra reach. The app does not provide a public follower count or a guaranteed distribution boost.
 
 ## Custom usernames
 
-Auto-generated handles are charming; chosen names are identity. Supporters can claim a clean personal username once — short, memorable, linkable in bios everywhere.
+If the account has the custom-slug entitlement, the app lets its owner request a different handle. The endpoint checks availability and updates the public link, so an old link is not guaranteed to remain the address after a change.
 
-Claim carefully: usernames are unique, first-come, and part of your public link forever.
+Treat the handle as a public choice: it is unique at claim time, and the app does not promise that every username can be claimed or that the link is permanent.
 
-## Hints: viewer and sender
+## Sender hints, carefully scoped
 
-Viewer hints reveal gentle context about your audience in aggregate; sender hints attach broad device context to messages whose senders allowed it. Neither ever identifies anyone — they add texture, not surveillance.
+A sender hint is a coarse platform clue such as "Mobile / Android" or "Web Browser." It appears only when the sender opts in and the recipient has the sender-hints entitlement; it is not a name, location, or unique identity.
 
-Hint enjoyers describe the inbox as "warmer". Skeptics leave them off and lose nothing.
+The mobile app can generate a stable installation value whose SHA-256 hash is stored for a message and, when blocked, in that recipient’s list. The server does not reverse the hash into a person.
 
 ## Myth, evidence, default
 

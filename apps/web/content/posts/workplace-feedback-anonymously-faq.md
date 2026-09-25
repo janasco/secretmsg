@@ -16,11 +16,11 @@ credit_url: ""
 
 Workplace Feedback Without the Fallout is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## The guardrails that matter
 
-Strict mode during sensitive weeks, standard otherwise. Pause during incidents — nobody needs hot takes mid-outage. Reports route to you first, and the team knows the rules because you posted them with the link.
+Strict mode rejects matching sends while still holding them for the recipient’s review; standard quarantines matches for review. Pause submissions when a board needs a break, and tell the team what reporting can and cannot do: it records a reason and quarantines the message for review.
 
 Anonymity at work requires more structure, not less. The structure is the product.
 

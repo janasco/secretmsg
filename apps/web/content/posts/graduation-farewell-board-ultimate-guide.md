@@ -16,7 +16,7 @@ credit_url: ""
 
 Graduation & Farewell Boards is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Endings deserve archives
 
@@ -26,21 +26,21 @@ Start two weeks out. Goodbyes need lead time; the best messages arrive after day
 
 ## Prompts for the occasion
 
-"TBH — favorite memory of us?" "One thing I will never forget about this place?" "Roast me fondly, one last time." Specific, warm, and just structured enough to defeat blank-box paralysis.
+"TBH — favorite memory of us?" "One thing I will never forget about this place?" "Roast me fondly, one last time." Specific, warm, and structured enough to give senders a starting point.
 
-Theme it like the event: school colors via custom gradients, or the paper theme for yearbook energy.
+Theme it like the event with one of the available Sticker Studio themes, such as the paper theme for yearbook energy. The app does not provide custom event gradients.
 
 ## The group effect
 
-Farewells compound: each posted sticker reminds ten more people the deadline exists. Pin the board link in every relevant chat and watch stragglers convert in the final 48 hours.
+Farewells can compound when each shared sticker gives the next person a reason to respond. Pin the board link in the relevant chats and decide when the final reminder should go out.
 
-Read a selection aloud at the actual goodbye. Anonymous praise, spoken by a friend, hits like consensus — because it is.
+Read a selection aloud at the actual goodbye. Anonymous praise can land as a group moment, but the app does not promise consensus or a particular response rate.
 
 ## After everyone scatters
 
-Export the keepers before closing anything. Group chats die within months; a saved set of messages outlives every platform migration.
+Save screenshots of the keepers before closing anything. A saved set can remain useful after a platform migration, but the app has no message-export feature for a whole board.
 
-Keep the board paused, not deleted, through the first year. Nostalgia messages arrive on anniversaries, and they are the best ones.
+Keep the board active or pause submissions through the first year according to your boundary. A paused board rejects new messages rather than storing them for an anniversary.
 
 ## Beyond graduation
 

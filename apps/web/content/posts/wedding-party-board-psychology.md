@@ -16,7 +16,7 @@ credit_url: ""
 
 Wedding & Party Boards is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Running it on the day
 
@@ -26,9 +26,9 @@ Strict mode during toasts (no heckling the speeches), standard during dancing (h
 
 ## The guest book, upgraded
 
-Paper guest books collect signatures; boards collect stories. "TBH about the couple" and "roast the best man kindly" produce keepsakes no stationery ever could.
+Paper guest books collect signatures; boards collect stories. "TBH about the couple" and "roast the best man kindly" can produce keepsakes that stationery does not.
 
-QR on the sticker, QR on the tables. Grandparents scan codes now — trust the process.
+QR on the sticker, QR on the tables. Some guests will scan a code; others will need the link printed beside it.
 
 ## Prompts for every table
 

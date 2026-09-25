@@ -16,13 +16,13 @@ credit_url: ""
 
 Pause Like a Pro is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Choosing your duration
 
-Thirty minutes for a meeting, a day for a reset, a week for a trip, indefinite for a hibernation. Match the timer to the reason and you will never forget to reopen — expiring pauses reopen themselves.
+The app offers 30 minutes, one hour, 24 hours, one week, permanent pause, or an active link. A timed pause automatically ends at its stored time; a permanent pause stays paused until you reactivate it.
 
-Permanent pause is for boards in cold storage: the link lives, delivery sleeps, and you return whenever.
+Permanent pause is for boards in cold storage: the link lives, submissions are rejected, and you return whenever.
 
 ## Pause plus filters: the combo
 
@@ -32,9 +32,9 @@ Audit quarterly: is the pause still on? Did the trip end three weeks ago? Reopen
 
 ## What senders experience
 
-No error pages, no dead links: a polite "taking a break" state with your profile intact. Most senders simply try later — which is precisely the behavior you want to train.
+The profile can remain visible while the API rejects a new submission with a board-is-paused response. A sender can return after reopening, but SecretMsg does not queue a message for later delivery.
 
-Scheduled senders (the good kind) will wait. Spammers will not, which helpfully filters them for free.
+If you need to accept messages without interruptions, leave the board active and use hidden words, blocking, or reporting for unwanted submissions.
 
 ## Myth, evidence, default
 
@@ -60,6 +60,6 @@ After a month, revise the default from evidence. A myth-busting page should leav
 - [Pause Like a Pro: Questions, Answered](/post/pause-like-a-pro-faq)
 - [The Ultimate Guide to Pause Like a Pro](/post/pause-like-a-pro-ultimate-guide)
 
-Filter, pause, block, report — in that order. Your inbox, your rules, enforced by the server.
+Filter, pause, block, or report according to the situation. These are recipient controls, not comprehensive automated moderation.
 
 *Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*

@@ -16,7 +16,7 @@ credit_url: ""
 
 The Dice Roulette Playbook is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Playing it right
 
@@ -32,9 +32,9 @@ The roll ritual also front-loads fun into an otherwise blank moment — the tumb
 
 ## The composer loop
 
-A landed prompt is half a message. "Use in composer" prefills the draft; you add the handle and send. The whole journey from boredom to delivered message takes under thirty seconds.
+A landed prompt is half a message. "Use in composer" prefills the draft; you add the recipient and send. The route is direct, but Turnstile and network conditions still affect delivery.
 
-Pro move: roll three, send the best, save the runners-up as tomorrow stickers. One roll session funds days of content.
+Roll a few prompts, send the one that fits, and keep the others in your notes. The feature gives you a starting point; the message is still yours to write.
 
 ## The mechanism
 
@@ -60,6 +60,6 @@ If the change helps kind people participate more but also increases harmful mess
 - [Dice Roulette Playbook for Beginners](/post/dice-roulette-guide-beginners)
 - [Dice Roulette Playbook vs the Alternatives](/post/dice-roulette-guide-comparison)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

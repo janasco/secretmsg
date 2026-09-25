@@ -16,19 +16,19 @@ credit_url: ""
 
 Mastering the Android App is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## Beyond the download
 
-Installing is step zero. Mastery is: notifications tuned, Drop ritualized, offline outbox trusted, themes matched to your wallpaper. Ten minutes of setup buys a year of smooth.
+Installing is step zero. Start with the controls that matter to you: notifications, the Daily Drop, the offline outbox, and the theme. There is no measured setup time that guarantees a year of smooth use; make the routine yours.
 
-Start in settings: appearance, notification types, strictness. Defaults are sane; tuned is sublime.
+Start in settings: appearance, notification types, and strictness. Defaults are a starting point, not a promise of a particular experience.
 
 ## The notification setup that works
 
-Keep message alerts and Drop reminders on; mute milestones if you are minimalist. Nightly streak nudges stay — they are the cheapest habit technology ever built.
+Keep message alerts and Daily Drop reminders on if they help; mute milestones if you are minimalist. The nightly streak nudge is a local reminder, not a guarantee that a habit will form.
 
-Inline replies are the superpower: answer from the shade without opening anything. Try it once and the old way feels broken.
+Inline replies are a useful shortcut: answer from the notification when the Android action is available, then decide whether to open the app for the full thread.
 
 ## Offline confidence
 
@@ -38,15 +38,15 @@ Parked verifications hand back to the composer prefilled — never lost text, ne
 
 ## Themes, widgets, shortcuts
 
-System theme by default, manual override in settings. Home-screen widget for glanceable counts (coming to your launcher soon), long-press shortcuts for send and Drop.
+System theme by default, with a manual override in settings. The current app has no home-screen integration or long-press launcher shortcuts for send and Drop; the Android app provides its in-app tabs and settings instead.
 
 Match the app icon to your wallpaper era. Aesthetics are motivation wearing a costume.
 
 ## Update without thinking
 
-Skippable prompts on cold starts behind, full notes on the download page, per-ABI builds so updates stay lean. Stay current; each version compounds the last.
+Skippable prompts appear on cold starts when the version feed says the app is behind. The download page offers the current APK, checksum, and other architectures; it does not promise full release notes. Stay current if an update matters to your device.
 
-Beta energy, stable manners: report weirdness through the usual channels and watch it vanish by next release.
+Use the app’s current support channel for a problem. There is no promise that a report will be fixed or disappear by the next release.
 
 ## The complete path
 

@@ -16,13 +16,13 @@ credit_url: ""
 
 Exam Season Support Boards is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
-## Anonymous pep talks hit different
+## Anonymous pep talks can feel different
 
-"You have never failed anything that mattered" lands harder from nowhere than from a friend performing optimism. Anonymity strips the social accounting out of encouragement.
+"You have never failed anything that mattered" may land differently from a stranger than from someone performing optimism. Anonymity can lower the social pressure attached to encouragement.
 
-Reply to the scared ones double-blind. One sentence from a stranger can reroute an entire study night.
+Reply to the scared ones double-blind when that feels appropriate. One sentence can be useful, but the app cannot promise that it will change someone’s night.
 
 ## After the last paper
 

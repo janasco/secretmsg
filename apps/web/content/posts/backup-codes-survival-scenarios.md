@@ -16,7 +16,7 @@ credit_url: ""
 
 Backup Codes Survival Guide is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## PIN hygiene without paranoia
 
@@ -26,9 +26,9 @@ Never share codes or PINs, even with people you trust with everything else. Trus
 
 ## Why codes exist
 
-No email, no password reset link, no support agent who can verify your soul. Your PIN plus backup codes ARE your account — lose both and the math says goodbye, because the server cannot distinguish you from an attacker.
+No email, no password reset link, no support agent who can verify your soul. Your PIN plus backup codes ARE your account — if you lose both, the server cannot distinguish you from an attacker and cannot recover the account.
 
-This is not a flaw in the system. It is the system: true anonymity means nobody, including us, holds a spare key.
+This is a recovery design choice, not a promise of anonymity. Account credentials are handled separately from the sender identity that a message sender may provide.
 
 ## Scene map
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own Backup Codes Survival Guide rather than copying the dramatic details.
 

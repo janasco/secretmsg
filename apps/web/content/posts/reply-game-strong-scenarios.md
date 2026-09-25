@@ -16,7 +16,7 @@ credit_url: ""
 
 A Strong Reply Game is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## When not to reply
 
@@ -24,11 +24,11 @@ Cruelty gets deleted, not debated. Bait gets ignored, not fed. Vague one-worders
 
 The filtered tray exists precisely so "no reply" is a decision, not an accident.
 
-## Speed wins
+## Speed can help
 
-The first reply sets the relationship. Answer within a day and senders learn your inbox is alive; wait a week and they learn the opposite. Double-blind replies cost ninety seconds — spend them nightly, not monthly.
+A reply gives a sender a response to return to; timing still depends on the person and the situation. Double-blind replies are short to compose, but the time to write a good one varies.
 
-Batch the habit: inbox, reply-all-worth-answering, pin one, done. Rhythm beats marathons.
+Batch the habit: inbox, reply to what deserves an answer, pin one, done. Rhythm beats marathons.
 
 ## Scene map
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own A Strong Reply Game rather than copying the dramatic details.
 

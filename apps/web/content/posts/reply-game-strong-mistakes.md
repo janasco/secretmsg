@@ -16,7 +16,7 @@ credit_url: ""
 
 A Strong Reply Game is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## When not to reply
 
@@ -24,23 +24,23 @@ Cruelty gets deleted, not debated. Bait gets ignored, not fed. Vague one-worders
 
 The filtered tray exists precisely so "no reply" is a decision, not an accident.
 
-## Public replies, used sparingly
+## Private replies, used consistently
 
-One public answer a week shows newcomers the board breathes. More than that turns your inbox into a broadcast channel and chills the candor that makes it valuable.
+Double-blind replies let you answer without turning the inbox into a public broadcast. Keep the rhythm realistic, and reserve replies for messages that deserve a response.
 
 Pick messages that teach: great questions, kind answers, funny exchanges. Curate like a gallery, not a feed.
 
 ## Closing loops kindly
 
-Every thread should end warm, even the weird ones. A graceful close ("thanks for trusting me with that") costs nothing and leaves senders likelier to return with something better.
+A graceful close ("thanks for trusting me with that") can keep the exchange respectful. It may make a sender more comfortable returning, but no reply format guarantees a return.
 
-Reputation compounds invisibly. Be the board people recommend in group chats.
+Keep the rules and follow-through consistent. That is more useful than claiming an invisible reputation metric.
 
 ## The failure pattern
 
-Most failed attempts at A Strong Reply Game are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at A Strong Reply Game is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

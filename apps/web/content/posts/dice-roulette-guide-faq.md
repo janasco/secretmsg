@@ -16,7 +16,7 @@ credit_url: ""
 
 The Dice Roulette Playbook is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## Sound, haptics, and feel
 
@@ -54,6 +54,6 @@ If a question remains, ask it with context. Include the board type, the moment y
 - [What Nobody Tells You About Dice Roulette Playbook](/post/dice-roulette-guide-secrets)
 - [Dice Roulette Playbook: 7 Mistakes Everyone Makes](/post/dice-roulette-guide-mistakes)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*

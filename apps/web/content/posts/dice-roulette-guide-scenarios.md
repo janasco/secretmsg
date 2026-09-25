@@ -16,13 +16,13 @@ credit_url: ""
 
 The Dice Roulette Playbook is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## The composer loop
 
-A landed prompt is half a message. "Use in composer" prefills the draft; you add the handle and send. The whole journey from boredom to delivered message takes under thirty seconds.
+A landed prompt is half a message. "Use in composer" prefills the draft; you add the recipient and send. The route is direct, but Turnstile and network conditions still affect delivery.
 
-Pro move: roll three, send the best, save the runners-up as tomorrow stickers. One roll session funds days of content.
+Roll a few prompts, send the one that fits, and keep the others in your notes. The feature gives you a starting point; the message is still yours to write.
 
 ## Why randomness beats choice
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own The Dice Roulette Playbook rather than copying the dramatic details.
 

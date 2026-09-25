@@ -16,7 +16,7 @@ credit_url: ""
 
 Exam Season Support Boards is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## After the last paper
 
@@ -26,15 +26,15 @@ Keep the kindest messages. Future hard weeks accept them as currency.
 
 ## Stress loves an audience
 
-Exam weeks concentrate anxiety beautifully — everyone spiraling in parallel, nobody saying it. A support board converts private panic into shared comedy and genuine encouragement.
+Exam weeks can concentrate anxiety for some people, and a support board gives them a place to name it. A clear prompt can invite shared encouragement without pretending every reply will help.
 
-Prompt it well: "TBH about finals week fears" beats "send messages" the way umbrellas beat wishing.
+Prompt it well: "TBH about finals week fears" gives people more to answer than "send messages".
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Exam Season Support Boards is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Exam Season Support Boards is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 

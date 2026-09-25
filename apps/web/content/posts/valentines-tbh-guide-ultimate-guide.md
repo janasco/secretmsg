@@ -16,13 +16,13 @@ credit_url: ""
 
 Valentine's Week TBH Guide is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
-## The highest-stakes prompt of the year
+## A prompt with some romantic stakes
 
-February concentrates more romantic courage per capita than any other month. A well-timed crush sticker converts ambient tension into actual messages — confessions that would never survive daylight get sent at 11pm.
+February can make anonymous crush prompts feel especially timely for some people. A clear invitation may turn that mood into messages, but the app does not measure a seasonal increase in courage or guarantee more sends.
 
-Post early in the week; the brave need runway, and the shy need to watch others go first.
+Post when your audience is likely to see it; the brave may need runway, and the shy may want a little context first.
 
 ## Prompts calibrated by nerve
 
@@ -38,9 +38,9 @@ Do not interrogate the inbox for identities. The mystery is doing romantic work;
 
 ## After the 14th
 
-Whatever arrived, answer kindly — admirers remember Valentine replies for years. Unrequited or not, grace now pays compound interest in future honesty.
+Whatever arrived, answer kindly when you choose to respond. A thoughtful reply can preserve the tone of the exchange without promising a particular future outcome.
 
-Keep the board up through the weekend. Late confessions are often the most sincere; courage has a long tail.
+Keep the board up through the weekend if you want to accept more messages; a pause will reject new submissions until the board is active again.
 
 ## For the happily attached
 

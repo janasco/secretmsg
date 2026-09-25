@@ -16,7 +16,7 @@ credit_url: ""
 
 Anonymous Messaging 101 is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## The three mistakes that kill boards
 
@@ -26,13 +26,13 @@ Each takes under a minute to fix, and each compounds weekly.
 
 ## Why it works better than you expect
 
-Decades of research agree: removing identity removes performance. People disclose more, flatter less, and ask the questions they actually have. The blank text box is not a gimmick; it is the lowest-pressure communication interface ever built.
+Removing a visible identity can lower social pressure for some senders, which may make a specific question easier to ask. It does not guarantee honesty, kindness, or a return visit. The blank text box is a simple way to invite a response without asking a sender to create an account.
 
-The catch is friction. A confusing link, a dead board, or a silent inbox kills the magic instantly — which is why everything below focuses on mechanics, not vibes.
+The catch is friction. A confusing link, a dead board, or a silent inbox can stop the exchange — which is why everything below focuses on mechanics, not vibes.
 
 ## Leveling up without trying
 
-Once the basics hum, add texture: sticker themes per mood, dice rolls for prompts on dry days, the Daily Drop as your morning ritual. None of this is required. All of it converts casual viewers into regulars.
+Once the basics hum, add texture: sticker themes per mood, dice rolls for prompts on dry days, the Daily Drop as your morning ritual. None of this is required. Each can make the invitation easier to understand, but results still depend on your audience and follow-through.
 
 Watch which senders return after your replies — those are your community. Treat them like it.
 
@@ -60,6 +60,6 @@ Change one variable in a two-week test and keep the result. A durable advanced p
 - [Anonymous Messaging 101: Questions, Answered](/post/anonymous-messaging-101-faq)
 - [The Ultimate Guide to Anonymous Messaging 101](/post/anonymous-messaging-101-ultimate-guide)
 
-The whole playbook fits in a pocket: specific prompt, zero friction, good timing. Go post.
+The whole playbook fits in a pocket: specific prompt, low friction, good timing. Go post.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

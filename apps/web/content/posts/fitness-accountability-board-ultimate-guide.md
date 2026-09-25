@@ -16,35 +16,35 @@ credit_url: ""
 
 Fitness Accountability, Anonymously is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Why anonymous accountability works
 
-Gym selfies invite judgment; anonymous check-ins invite honesty. "Skipped leg day, TBH why I am like this" gets real answers where performance posts get likes.
+Gym selfies can invite judgment; an anonymous check-in can invite honesty. "Skipped leg day, TBH why I am like this" gives people a way to ask for support without attaching their name.
 
-The board becomes a confessional for the fitness journey — struggles included, which is where the value lives.
+The board can become a place for the fitness journey — struggles included, where the value may live.
 
 ## Structuring the week
 
-Monday: intentions ("this week I will..."). Wednesday: midweek honesty check. Friday: wins and wipeouts. Sunday: rest-day reflections. Same four prompts weekly; rituals beat novelty for habits.
+Monday: intentions ("this week I will..."). Wednesday: midweek honesty check. Friday: wins and wipeouts. Sunday: rest-day reflections. A small set of weekly prompts can make the habit easier to follow than constant novelty.
 
-Streaks map perfectly onto training streaks. Two flames, one discipline.
+The app streak can mirror a training streak, but it does not measure fitness or guarantee consistency. Two flames, one discipline.
 
 ## The group board advantage
 
-Training partners sharing one board create gentle surveillance: everyone sees the check-ins roll (or not). Social pressure without social exposure.
+Training partners can use one board as a place to post intentions, setbacks, and wins. It does not create a shared public check-in feed; the recipient sees the messages in the private inbox.
 
-Roast-kindly mode for missed sessions. Shame never built a habit; laughter has.
+Add a roast-kindly instruction to the prompt rather than assuming a special mode. Use pause, hidden words, blocking, or reporting when the board needs a boundary.
 
 ## Plateaus and bad weeks
 
-Post the slump honestly and watch strangers who have been there answer with what worked. Anonymous veterans give better advice than identifiable influencers — no brand to protect.
+Post the slump honestly and let people who have been there answer with what worked for them. Anonymous advice is not automatically better than advice from an identifiable expert; compare it with your own goals and a qualified professional where relevant.
 
-Pause the board during injury recovery. The inbox will wait; tendons will not.
+Pause submissions during injury recovery. New messages will be rejected while the board is paused; tendons will not.
 
 ## Measuring what matters
 
-Count check-ins, not likes. Count honest weeks, not perfect ones. The board that survives a bad month is worth ten that shine for a week.
+Count check-ins, not likes. Count honest weeks, not perfect ones. A board that survives a bad month may be more useful than one that looks bright for a week and then disappears.
 
 ## The complete path
 

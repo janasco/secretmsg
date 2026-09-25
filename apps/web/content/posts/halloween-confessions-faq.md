@@ -16,7 +16,7 @@ credit_url: ""
 
 Halloween Confessions Season is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## The morning after
 
@@ -26,9 +26,9 @@ Screenshot the keepers before the purge. Some confessions deserve files.
 
 ## Prompts from the crypt
 
-"Confess your most unhinged costume idea." "TBH — your villain origin story." "Spiciest take you would never say sober." Roll the dice on spicy + secrets and post whatever lands; the holiday grants absolution in advance.
+"Confess your most unhinged costume idea." "TBH — your villain origin story." "Spiciest take you would never say sober." Roll the dice on spicy + secrets and post whatever lands, while keeping the community boundary clear.
 
-Roast-kindly mode: ON. October mischief, November friendships.
+Add a roast-kindly instruction to the prompt rather than assuming a special moderation mode. The app has hidden-word filtering, pause, blocking, and reporting; it does not grant the holiday any safety exemption.
 
 ## Short answers
 

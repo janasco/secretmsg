@@ -16,25 +16,25 @@ credit_url: ""
 
 The Offline Outbox, Explained is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## How queuing actually works
 
-Each queued action gets an idempotency key. If a send reached the server but the confirmation died in transit, the retry resolves to the original row instead of double-posting. Retries are safe by construction, not by luck.
+The app keeps a local FIFO outbox for the actions it supports. Message sends include a client message ID so a retry can resolve to the original row; other actions are designed to converge when repeated, but they do not all share one server-side idempotency key.
 
-Order is preserved: FIFO drain means your reply lands before your follow-up, exactly as you wrote them.
+A network error pauses the drain and resumes after connectivity returns. A send that cannot pass the send-time Turnstile check is handed back to the composer for a fresh challenge rather than silently retried forever.
 
 ## The subway test
 
 Every app works on wifi. The good ones work in tunnels. SecretMsg queues sends, replies, approvals, discards, and reports made offline, then drains them in order when you reconnect — with a visible sync row, never silent magic.
 
-Your drafts and streaks never depend on bars. The ritual survives dead zones.
+Drafts and local streak state stay on the device, but a new authenticated check-in still needs a connection. The ritual can survive dead zones without pretending every action is available offline.
 
 ## The verification exception
 
-One honest constraint: bot-checks cannot mint offline. A queued send whose challenge expired parks as "needs verification" — tap it and the composer reopens prefilled, so one fresh tap finishes the job.
+Turnstile verification cannot be completed offline. A queued send that reaches a send-time verification failure is handed back to the composer with its text intact so you can complete a fresh challenge.
 
-This is stated upfront in the UI rather than discovered mid-tunnel. Constraints you can see are features; hidden ones are bugs.
+The visible sync row tells you when an action is queued, blocked, or needs attention. That status is about this device’s outbox, not a guarantee that every service is available offline.
 
 ## The mechanism
 

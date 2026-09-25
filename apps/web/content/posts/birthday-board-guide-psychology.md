@@ -16,11 +16,11 @@ credit_url: ""
 
 The Birthday Board: A Month of Proof is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## Harvesting season
 
-Messages arrive in waves: close friends first, then the long tail of acquaintances as the story gets shared onward. Answer a few double-blind to keep momentum — senders recruit senders.
+Messages may arrive at different times as the story gets shared. Answer a few double-blind replies when they fit the occasion; the app does not measure or promise a particular arrival pattern.
 
 The filtered tray earns its keep here: birthday roasts walk a line, and you decide exactly where yours sits.
 
@@ -32,9 +32,9 @@ Pin the board link in the group chat so latecomers find it without asking.
 
 ## The reveal
 
-Screenshot the keepers (with the app badges cropped tastefully), read the best ones aloud at the party, watch the room melt. Anonymous praise hits differently spoken — it lands as consensus, not flattery.
+Save the keepers as screenshots, read a few aloud at the party, and let the room react. Anonymous praise can land differently when it is spoken, but the board does not add app badges to message screenshots.
 
-Keep one message pinned all year. Future rough days have an antidote on file.
+Keep one message pinned if you want it easy to find later. Future rough days can have an antidote on file.
 
 ## The mechanism
 

@@ -16,31 +16,31 @@ credit_url: ""
 
 Creator & Fan Boards is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## Feedback that improves the work
 
-"TBH about my latest video" from anonymous viewers cuts deeper than any analytics dashboard. Retention graphs never say "the intro rambles" — a stranger will, kindly.
+"TBH about my latest video" from viewers can add context that an analytics dashboard does not capture. A message may point out something the creator missed, but it is not guaranteed to be useful or correct.
 
-Separate boards per series or season keep feedback organized. Archive between projects; reopen with a retrospective prompt.
+Separate boards per series or season can keep feedback organized. Save the keepers between projects; reopen the link with a retrospective prompt when you want another round.
 
 ## Monetizing honesty
 
-Supporter perks map beautifully to creator economies: custom usernames for mods, badges for top fans, hints for inner-circle vibes. The wall of supporters doubles as social proof for sponsors.
+Supporter contributions can help fund the project, but the available grant depends on the checkout and account. Eligible options can include a supporter badge, sender hints, or a custom username; the app does not automatically give perks to top fans or mods.
 
-Transparent monthly goals ("server costs, covered by you") convert better than vague tip jars. Show the math.
+The supporters wall lists qualifying Polar contributions. Treat a public wall as community information, not a promise of sponsor reach or a guaranteed conversion result.
 
 ## Boundaries at scale
 
-Fame, even micro-fame, attracts boundary-pushers. Strict mode during launches, blocks without ceremony, pause between seasons. Protect the creator and the community survives.
+Fame, even micro-fame, can attract boundary-pushers. Strict mode rejects matching sends, blocks are recipient-specific, and pause submissions closes the board to new messages until reopened. None of those controls guarantees that a community will be safe.
 
 You set the tone once, in the first prompt. Everything after is maintenance.
 
 ## The failure pattern
 
-Most failed attempts at Creator & Fan Boards are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Creator & Fan Boards is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

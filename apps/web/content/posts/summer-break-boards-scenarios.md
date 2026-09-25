@@ -16,17 +16,17 @@ credit_url: ""
 
 Summer Break Boards is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## Camp, travel, and patchy wifi
 
-Offline outbox earns its keep on road trips and camps with one bar: queue replies and sends, sync at the next town. Streak freezes forgive the national-park week.
+The offline outbox can queue supported replies, sends, approvals, discards, and reports made during a network failure, then drains them when connectivity returns. Streak freezes can cover one missed day when available.
 
 Time zones are a feature: wake to messages written while you slept, like letters from the future.
 
 ## Distance makes inboxes grow fonder
 
-Scattered for summer? A board becomes the group hangout that needs no scheduling: post nightly prompts, wake to replies across time zones, keep the streak alive from three area codes.
+Scattered for summer? A board can become a low-scheduling group hangout: post prompts, check replies across time zones, and keep a local streak going when the app is available.
 
 Summer prompts write themselves: ratings of beach reads, confession season, glow-up predictions for fall.
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own Summer Break Boards rather than copying the dramatic details.
 

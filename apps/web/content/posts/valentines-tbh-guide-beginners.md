@@ -4,7 +4,7 @@ slug: valentines-tbh-guide-beginners
 date: 2026-06-21
 status: published
 tags: ["Moments & Seasons", "Seasonal", "Crush"]
-excerpt: "New to valentine's week tbh guide? Start here: zero jargon, first win in under ten minutes."
+excerpt: "New to valentine's week tbh guide? Start here: zero jargon, a complete first loop."
 pixabay: "valentine hearts romance"
 readMinutes: 4
 image: ""
@@ -16,13 +16,13 @@ credit_url: ""
 
 Valentine's Week TBH Guide is easier to use when the page has a clear job. This zero-to-first-win tutorial starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
-## The highest-stakes prompt of the year
+## A prompt with some romantic stakes
 
-February concentrates more romantic courage per capita than any other month. A well-timed crush sticker converts ambient tension into actual messages — confessions that would never survive daylight get sent at 11pm.
+February can make anonymous crush prompts feel especially timely for some people. A clear invitation may turn that mood into messages, but the app does not measure a seasonal increase in courage or guarantee more sends.
 
-Post early in the week; the brave need runway, and the shy need to watch others go first.
+Post when your audience is likely to see it; the brave may need runway, and the shy may want a little context first.
 
 ## For the happily attached
 

@@ -16,7 +16,7 @@ credit_url: ""
 
 A Strong Reply Game is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## When not to reply
 
@@ -26,9 +26,9 @@ The filtered tray exists precisely so "no reply" is a decision, not an accident.
 
 ## Closing loops kindly
 
-Every thread should end warm, even the weird ones. A graceful close ("thanks for trusting me with that") costs nothing and leaves senders likelier to return with something better.
+A graceful close ("thanks for trusting me with that") can keep the exchange respectful. It may make a sender more comfortable returning, but no reply format guarantees a return.
 
-Reputation compounds invisibly. Be the board people recommend in group chats.
+Keep the rules and follow-through consistent. That is more useful than claiming an invisible reputation metric.
 
 ## The overlooked detail
 

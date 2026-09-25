@@ -16,7 +16,7 @@ credit_url: ""
 
 Halloween Confessions Season is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## Costume feedback machine
 

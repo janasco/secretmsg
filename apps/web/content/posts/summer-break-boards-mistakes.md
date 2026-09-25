@@ -16,29 +16,29 @@ credit_url: ""
 
 Summer Break Boards is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## Camp, travel, and patchy wifi
 
-Offline outbox earns its keep on road trips and camps with one bar: queue replies and sends, sync at the next town. Streak freezes forgive the national-park week.
+The offline outbox can queue supported replies, sends, approvals, discards, and reports made during a network failure, then drains them when connectivity returns. Streak freezes can cover one missed day when available.
 
 Time zones are a feature: wake to messages written while you slept, like letters from the future.
 
 ## Reunion fuel
 
-Screenshot the summer highlights (tastefully) and read them at the reunion. Three months of anonymous honesty, performed live, beats any slideshow.
+Screenshot the summer highlights (tastefully) and read them at the reunion. A shared set of messages can make the reunion more personal than a generic slideshow.
 
 Keep one thread running all summer: "song of the summer, with reasons." Playlists plus justifications equal anthropology.
 
 ## September payoff
 
-Return with receipts: the funniest, kindest, wildest messages of the season, shared with permission vibes intact. Summer boards become fall legends, and legends recruit.
+Return with receipts: the funniest, kindest, and most memorable messages of the season, shared only when the sender is comfortable. Summer boards can become a shared story for the group.
 
 ## The failure pattern
 
-Most failed attempts at Summer Break Boards are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Summer Break Boards is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

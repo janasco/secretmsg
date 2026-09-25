@@ -16,7 +16,7 @@ credit_url: ""
 
 The Crush Confessions Playbook is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Scene one: the story goes up
 
@@ -38,9 +38,9 @@ Replies are retention machines wearing romance costumes.
 
 ## What made it work
 
-Specific prompt, evening timing, answered everything, pinned the keeper. Four moves, all repeatable, none requiring courage from anyone but the first sender — and even they only needed thirty seconds of it.
+Specific prompt, evening timing, answered everything, pinned the keeper. Four moves, all repeatable, none requiring a public identity from the sender. The exact time and response volume will vary.
 
-Maya's board now gets weekly traffic from the same five people. Community, assembled one anonymous message at a time.
+Maya can keep the loop going without knowing who sent each message. Community, assembled one anonymous message at a time.
 
 ## Steal this exact setup
 

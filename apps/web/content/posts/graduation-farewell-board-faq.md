@@ -16,19 +16,19 @@ credit_url: ""
 
 Graduation & Farewell Boards is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## After everyone scatters
 
-Export the keepers before closing anything. Group chats die within months; a saved set of messages outlives every platform migration.
+Save screenshots of the keepers before closing anything. A saved set can remain useful after a platform migration, but the app has no message-export feature for a whole board.
 
-Keep the board paused, not deleted, through the first year. Nostalgia messages arrive on anniversaries, and they are the best ones.
+Keep the board active or pause submissions through the first year according to your boundary. A paused board rejects new messages rather than storing them for an anniversary.
 
 ## Prompts for the occasion
 
-"TBH — favorite memory of us?" "One thing I will never forget about this place?" "Roast me fondly, one last time." Specific, warm, and just structured enough to defeat blank-box paralysis.
+"TBH — favorite memory of us?" "One thing I will never forget about this place?" "Roast me fondly, one last time." Specific, warm, and structured enough to give senders a starting point.
 
-Theme it like the event: school colors via custom gradients, or the paper theme for yearbook energy.
+Theme it like the event with one of the available Sticker Studio themes, such as the paper theme for yearbook energy. The app does not provide custom event gradients.
 
 ## Short answers
 

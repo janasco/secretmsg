@@ -16,7 +16,7 @@ credit_url: ""
 
 Blocking Without Drama is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## When to block vs filter vs pause
 
@@ -26,9 +26,9 @@ Blocking a word problem leaves the person; filtering a person problem leaves the
 
 ## Managing the list
 
-Review blocked fingerprints quarterly in settings. Unblock liberally — people change, contexts change, and an unblock costs nothing to reverse. The list is hygiene, not a grudge.
+Review blocked fingerprints in settings. Unblock when the context changes and the list has a clear reason to keep the hash. The list is a recipient control, not a permanent grudge.
 
-Pair with reports for the worst cases: your block protects you, the report protects everyone else.
+Pair with reports when you need a reason recorded. A report quarantines that message and stores the reason, but it does not automatically protect every other inbox.
 
 ## What blocked senders experience
 
@@ -60,6 +60,6 @@ After a month, revise the default from evidence. A myth-busting page should leav
 - [The Psychology Behind Blocking Without Drama](/post/block-without-drama-psychology)
 - [Advanced Blocking Without Drama: Level Up](/post/block-without-drama-advanced)
 
-Save this post, share it with anyone running a board, and sleep well: the levers are all yours.
+Save this post and share it with anyone running a board: know the available controls, their limits, and the steps for a safety concern.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

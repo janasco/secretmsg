@@ -16,17 +16,17 @@ credit_url: ""
 
 Workplace Feedback Without the Fallout is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Reading like a manager
 
-Sort signal from sting: filter for actionable nouns (process, meeting, deploy), approve the fair ones, discard the venting. Reply double-blind to the best critiques so the team sees feedback landing.
+Sort signal from sting: filter for actionable nouns (process, meeting, deploy), approve the fair ones, discard the venting. Reply double-blind to useful critiques so the sender receives an answer.
 
-Publish a monthly "you said, we did" note. Anonymous input without visible response dies within a quarter.
+Publish a periodic "you said, we did" note. Anonymous input still needs a visible follow-up plan if the team wants the loop to continue.
 
-## What changes in six months
+## What to change next
 
-Quiet contributors surface. Recurring themes get names. The retro stops performing alignment and starts producing it — all because the cost of honesty dropped to zero.
+Look for recurring themes, decide which follow-up belongs to the team, and keep the board’s rules visible. Anonymity can lower the cost of speaking up, but it does not remove the work of responding.
 
 ## The overlooked detail
 

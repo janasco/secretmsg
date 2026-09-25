@@ -16,25 +16,25 @@ credit_url: ""
 
 The Birthday Board: A Month of Proof is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## Harvesting season
 
-Messages arrive in waves: close friends first, then the long tail of acquaintances as the story gets shared onward. Answer a few double-blind to keep momentum — senders recruit senders.
+Messages may arrive at different times as the story gets shared. Answer a few double-blind replies when they fit the occasion; the app does not measure or promise a particular arrival pattern.
 
 The filtered tray earns its keep here: birthday roasts walk a line, and you decide exactly where yours sits.
 
-## Why it beats a group card
+## Why it can beat a group card
 
-Group cards collect signatures; boards collect sentences. A paragraph from someone who never comments publicly outweighs twenty emoji reacts — specificity again, doing its quiet work.
+Group cards collect signatures; boards collect sentences. A paragraph from someone who rarely comments publicly can give the occasion more texture than a short reaction, depending on the audience.
 
-Next year, the board already exists. Tradition compounds.
+Next year, the board already exists. You can decide whether the ritual is worth continuing.
 
 ## The reveal
 
-Screenshot the keepers (with the app badges cropped tastefully), read the best ones aloud at the party, watch the room melt. Anonymous praise hits differently spoken — it lands as consensus, not flattery.
+Save the keepers as screenshots, read a few aloud at the party, and let the room react. Anonymous praise can land differently when it is spoken, but the board does not add app badges to message screenshots.
 
-Keep one message pinned all year. Future rough days have an antidote on file.
+Keep one message pinned if you want it easy to find later. Future rough days can have an antidote on file.
 
 ## Myth, evidence, default
 

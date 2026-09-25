@@ -16,17 +16,17 @@ credit_url: ""
 
 Creator & Fan Boards is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Feedback that improves the work
 
-"TBH about my latest video" from anonymous viewers cuts deeper than any analytics dashboard. Retention graphs never say "the intro rambles" — a stranger will, kindly.
+"TBH about my latest video" from viewers can add context that an analytics dashboard does not capture. A message may point out something the creator missed, but it is not guaranteed to be useful or correct.
 
-Separate boards per series or season keep feedback organized. Archive between projects; reopen with a retrospective prompt.
+Separate boards per series or season can keep feedback organized. Save the keepers between projects; reopen the link with a retrospective prompt when you want another round.
 
 ## Boundaries at scale
 
-Fame, even micro-fame, attracts boundary-pushers. Strict mode during launches, blocks without ceremony, pause between seasons. Protect the creator and the community survives.
+Fame, even micro-fame, can attract boundary-pushers. Strict mode rejects matching sends, blocks are recipient-specific, and pause submissions closes the board to new messages until reopened. None of those controls guarantees that a community will be safe.
 
 You set the tone once, in the first prompt. Everything after is maintenance.
 
@@ -54,6 +54,6 @@ The best advanced practice is restraint. Keep the system small enough to inspect
 - [Creator & Fan Boards for Beginners](/post/creator-fan-boards-beginners)
 - [Creator & Fan Boards vs the Alternatives](/post/creator-fan-boards-comparison)
 
-Your next ten senders are one good share away. Go make it.
+A clear invitation gives the next sender an easy way in. Post, observe, and improve the next version.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

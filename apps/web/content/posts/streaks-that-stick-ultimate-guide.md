@@ -16,35 +16,35 @@ credit_url: ""
 
 Streaks That Actually Stick is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
-## Why streaks work on brains
+## Why streaks can work on brains
 
-Loss aversion is stronger than reward-seeking: day twelve matters because day zero hurts. Streaks convert vague intentions ("check in more") into a concrete daily contract with visible length.
+A visible count turns a vague intention such as "check in more" into a concrete daily action. That can make the next check-in easier to remember, especially when the app has something useful to show.
 
-The research caveat: streaks motivate only when the underlying action is rewarding. An inbox full of good messages makes day thirty inevitable; an empty one makes day three feel like homework. Feed the inbox first.
+The practical caveat: a streak does not create value by itself. If refreshing the inbox feels pointless, change the prompt or response habit first. The streak should record a useful ritual, not replace one.
 
 ## The anatomy of our streaks
 
-Any authenticated refresh counts as a check-in — no grinding, no tasks. Consecutive calendar days grow the flame; a miss pauses it, and one banked freeze forgives exactly one bad day per cycle.
+A successful authenticated inbox refresh counts as a check-in — no tasks are required. Consecutive local calendar days grow the flame; a miss normally resets it, while one banked freeze can preserve it.
 
-Milestones earn freezes back, so longevity compounds forgiveness. The system rewards showing up without punishing being human.
+Each newly reached 7-day milestone can earn a freeze, up to one stored at a time. The feature adds a little forgiveness; it does not guarantee a long streak.
 
 ## Designing your unmissable day
 
-Anchor the check-in to something you already do: morning coffee, the commute, lights-out scrolling. Enable the nightly nudge and let the 9:30pm reminder carry the days your memory will not.
+Anchor the check-in to something you already do: morning coffee, the commute, or lights-out scrolling. Enable the nightly nudge if a 9:30pm reminder fits your routine.
 
-Pair it with the Daily Drop: answer the prompt, check the inbox, done in ninety seconds. Rituals survive on smallness.
+Pair it with the Daily Drop: open the prompt, check the inbox, and answer what deserves care. Small routines are easier to repeat than an ambitious setup.
 
 ## When streaks break anyway
 
-Life happens — travel, illness, dead batteries. Supporters can repair a recent break once a month; everyone else restarts at one, which stings for exactly a day and then becomes a new run.
+Life happens — travel, illness, dead batteries. Without a banked freeze, the next successful check-in starts a new count at one. The current app does not expose a supporter streak-repair control, so do not plan around a repair that is not available.
 
-Never let a broken streak end the habit. The second streak always grows faster because the inbox is already warm.
+Treat a reset as a prompt to make the habit easier, not a verdict. A useful inbox and a realistic reminder matter more than pretending the old count survived.
 
 ## Streaks as social proof
 
-Long streaks signal a living board to senders: this person reads, replies, returns. Share milestones the way runners share race photos — it recruits the next wave of senders better than any sticker.
+A long streak can signal that someone is still checking the app, but it does not prove how often they read or reply. Share a milestone only if it fits your profile; do not treat a flame as an engagement metric.
 
 ## The complete path
 
@@ -70,6 +70,6 @@ Review the loop at the end of each month. Keep what produced thoughtful returns,
 - [Streaks That Actually Stick in Real Life](/post/streaks-that-stick-scenarios)
 - [What Nobody Tells You About Streaks That Actually Stick](/post/streaks-that-stick-secrets)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*

@@ -16,7 +16,7 @@ credit_url: ""
 
 Wedding & Party Boards is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Prompts for every table
 
@@ -26,9 +26,9 @@ The couple answers a few double-blind during dessert. The room goes feral. Trust
 
 ## The guest book, upgraded
 
-Paper guest books collect signatures; boards collect stories. "TBH about the couple" and "roast the best man kindly" produce keepsakes no stationery ever could.
+Paper guest books collect signatures; boards collect stories. "TBH about the couple" and "roast the best man kindly" can produce keepsakes that stationery does not.
 
-QR on the sticker, QR on the tables. Grandparents scan codes now — trust the process.
+QR on the sticker, QR on the tables. Some guests will scan a code; others will need the link printed beside it.
 
 ## Scene map
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own Wedding & Party Boards rather than copying the dramatic details.
 

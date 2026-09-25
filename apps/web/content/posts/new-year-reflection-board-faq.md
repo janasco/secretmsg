@@ -16,11 +16,11 @@ credit_url: ""
 
 New Year, Honest Answers is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## The group version
 
-Friend groups do this brilliantly: everyone posts the same prompt, everyone answers everyone, and the group chat spends January 2nd screaming. Shared ritual, zero organization overhead.
+Friend groups can use several overlapping boards: one person posts, another replies, and the group chat keeps the ritual moving. The app does not create a shared group account, so somebody still has to manage the links and replies.
 
 SecretMsg groups are just overlapping boards. The overlap is the party.
 

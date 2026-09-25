@@ -16,13 +16,13 @@ credit_url: ""
 
 The Dice Roulette Playbook is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## The composer loop
 
-A landed prompt is half a message. "Use in composer" prefills the draft; you add the handle and send. The whole journey from boredom to delivered message takes under thirty seconds.
+A landed prompt is half a message. "Use in composer" prefills the draft; you add the recipient and send. The route is direct, but Turnstile and network conditions still affect delivery.
 
-Pro move: roll three, send the best, save the runners-up as tomorrow stickers. One roll session funds days of content.
+Roll a few prompts, send the one that fits, and keep the others in your notes. The feature gives you a starting point; the message is still yours to write.
 
 ## Sound, haptics, and feel
 
@@ -30,15 +30,15 @@ Ticks while tumbling, a chime on landing, a thud you feel — the dice is tuned 
 
 The reveal springs in with overshoot physics because flat fades feel like loading screens. Feelings ship features.
 
-## Nine thousand prompts, zero repeats (almost)
+## Nine thousand prompts, with room to repeat
 
-The pool spans crushes, chaos, 3am thoughts, real talk, spice, and secrets — fifteen hundred each. Categories keep rolls relevant; All Vibes keeps them dangerous. You will not exhaust it. Statistically, you cannot.
+The pool spans crushes, chaos, 3am thoughts, real talk, spice, and secrets — 1,500 each. Categories keep rolls relevant; All Vibes mixes them together. Random selection can repeat a prompt, so roll history and the composer handoff are there to help you move on.
 
 ## The failure pattern
 
-Most failed attempts at The Dice Roulette Playbook are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at The Dice Roulette Playbook is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

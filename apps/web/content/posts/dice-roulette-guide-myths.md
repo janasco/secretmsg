@@ -16,7 +16,7 @@ credit_url: ""
 
 The Dice Roulette Playbook is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## Playing it right
 
@@ -32,9 +32,9 @@ The reveal springs in with overshoot physics because flat fades feel like loadin
 
 ## The composer loop
 
-A landed prompt is half a message. "Use in composer" prefills the draft; you add the handle and send. The whole journey from boredom to delivered message takes under thirty seconds.
+A landed prompt is half a message. "Use in composer" prefills the draft; you add the recipient and send. The route is direct, but Turnstile and network conditions still affect delivery.
 
-Pro move: roll three, send the best, save the runners-up as tomorrow stickers. One roll session funds days of content.
+Roll a few prompts, send the one that fits, and keep the others in your notes. The feature gives you a starting point; the message is still yours to write.
 
 ## Myth, evidence, default
 

@@ -16,13 +16,13 @@ credit_url: ""
 
 Blocking Without Drama is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## Managing the list
 
-Review blocked fingerprints quarterly in settings. Unblock liberally — people change, contexts change, and an unblock costs nothing to reverse. The list is hygiene, not a grudge.
+Review blocked fingerprints in settings. Unblock when the context changes and the list has a clear reason to keep the hash. The list is a recipient control, not a permanent grudge.
 
-Pair with reports for the worst cases: your block protects you, the report protects everyone else.
+Pair with reports when you need a reason recorded. A report quarantines that message and stores the reason, but it does not automatically protect every other inbox.
 
 ## When to block vs filter vs pause
 
@@ -58,6 +58,6 @@ Change one variable in a two-week test and keep the result. A durable advanced p
 - [The Ultimate Guide to Blocking Without Drama](/post/block-without-drama-ultimate-guide)
 - [The Psychology Behind Blocking Without Drama](/post/block-without-drama-psychology)
 
-Save this post, share it with anyone running a board, and sleep well: the levers are all yours.
+Save this post and share it with anyone running a board: know the available controls, their limits, and the steps for a safety concern.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

@@ -16,7 +16,7 @@ credit_url: ""
 
 Wedding & Party Boards is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## Prompts for every table
 
@@ -26,9 +26,9 @@ The couple answers a few double-blind during dessert. The room goes feral. Trust
 
 ## The morning-after artifact
 
-Export everything before the honeymoon haze: the keepers become an anniversary time capsule, the roasts become lore, the kind ones become framing-worthy.
+Save the keepers before the honeymoon haze: the roasts can become lore, and the kind ones can become framing-worthy. The app does not provide a bulk message-export feature, so use screenshots or your own archive.
 
-One board per wedding beats a hundred scattered stories that expire in 24 hours. Permanence is the gift.
+One board can collect the occasion in one place, but it is not automatically permanent. Save what matters before deleting the account or message.
 
 ## Beyond weddings
 
@@ -36,9 +36,9 @@ Baby showers, milestone birthdays, retirements, housewarmings: any gathering wit
 
 ## The failure pattern
 
-Most failed attempts at Wedding & Party Boards are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Wedding & Party Boards is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

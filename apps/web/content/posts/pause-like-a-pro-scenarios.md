@@ -16,17 +16,17 @@ credit_url: ""
 
 Pause Like a Pro is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## What senders experience
 
-No error pages, no dead links: a polite "taking a break" state with your profile intact. Most senders simply try later — which is precisely the behavior you want to train.
+The profile can remain visible while the API rejects a new submission with a board-is-paused response. A sender can return after reopening, but SecretMsg does not queue a message for later delivery.
 
-Scheduled senders (the good kind) will wait. Spammers will not, which helpfully filters them for free.
+If you need to accept messages without interruptions, leave the board active and use hidden words, blocking, or reporting for unwanted submissions.
 
 ## Pause is not surrender
 
-Every always-on inbox eventually needs an off switch that is not delete-account. Pause is that switch: delivery halts, senders see a calm note, and everything resumes exactly where it stopped.
+An always-on inbox can need an off switch that is not account deletion. Pause submissions is that switch: new sends are rejected while the board is paused, and the profile remains available. Reopening the board allows new submissions again.
 
 Use it for weekends, exams, launches, grief, vacations — any stretch where incoming volume exceeds outgoing care.
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own Pause Like a Pro rather than copying the dramatic details.
 
@@ -54,6 +54,6 @@ Scenarios are useful when they teach a decision. If the story ends without a cle
 - [What Nobody Tells You About Pause Like a Pro](/post/pause-like-a-pro-secrets)
 - [Pause Like a Pro: 7 Mistakes Everyone Makes](/post/pause-like-a-pro-mistakes)
 
-Filter, pause, block, report — in that order. Your inbox, your rules, enforced by the server.
+Filter, pause, block, or report according to the situation. These are recipient controls, not comprehensive automated moderation.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

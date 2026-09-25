@@ -16,13 +16,13 @@ credit_url: ""
 
 Workplace Feedback Without the Fallout is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## The retro nobody speaks at
 
-Every team has the meeting where honesty would help and silence wins. Anonymous boards fix the incentive: critique the idea, never the author, with zero hallway consequences.
+Teams often have a meeting where honesty would help and silence wins. An anonymous board can make it easier to critique an idea without attaching your name to it, though the content itself can still reveal context.
 
-One engineering team runs a permanent board linked in the retro doc. Participation tripled in a month; the loudest voice in the room stopped being the only voice.
+A team can try this as a small experiment with a clear topic and a private link. Keep the scope narrow, explain the rules, and decide what will happen with the feedback before asking for it.
 
 ## Setting it up right
 
@@ -32,19 +32,19 @@ Share in the team channel Friday morning; review the tray Monday. Cadence beats 
 
 ## Reading like a manager
 
-Sort signal from sting: filter for actionable nouns (process, meeting, deploy), approve the fair ones, discard the venting. Reply double-blind to the best critiques so the team sees feedback landing.
+Sort signal from sting: filter for actionable nouns (process, meeting, deploy), approve the fair ones, discard the venting. Reply double-blind to useful critiques so the sender receives an answer.
 
-Publish a monthly "you said, we did" note. Anonymous input without visible response dies within a quarter.
+Publish a periodic "you said, we did" note. Anonymous input still needs a visible follow-up plan if the team wants the loop to continue.
 
 ## The guardrails that matter
 
-Strict mode during sensitive weeks, standard otherwise. Pause during incidents — nobody needs hot takes mid-outage. Reports route to you first, and the team knows the rules because you posted them with the link.
+Strict mode rejects matching sends while still holding them for the recipient’s review; standard quarantines matches for review. Pause submissions when a board needs a break, and tell the team what reporting can and cannot do: it records a reason and quarantines the message for review.
 
 Anonymity at work requires more structure, not less. The structure is the product.
 
-## What changes in six months
+## What to change next
 
-Quiet contributors surface. Recurring themes get names. The retro stops performing alignment and starts producing it — all because the cost of honesty dropped to zero.
+Look for recurring themes, decide which follow-up belongs to the team, and keep the board’s rules visible. Anonymity can lower the cost of speaking up, but it does not remove the work of responding.
 
 ## The complete path
 

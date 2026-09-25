@@ -16,7 +16,7 @@ credit_url: ""
 
 Word Filters, Mastered is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Filters plus pause plus block
 
@@ -54,6 +54,6 @@ If a question remains, ask it with context. Include the board type, the moment y
 - [Advanced Word Filters, Mastered: Level Up](/post/word-filters-mastery-advanced)
 - [5 Myths About Word Filters, Mastered](/post/word-filters-mastery-myths)
 
-Filter, pause, block, report — in that order. Your inbox, your rules, enforced by the server.
+Filter, pause, block, or report according to the situation. These are recipient controls, not comprehensive automated moderation.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

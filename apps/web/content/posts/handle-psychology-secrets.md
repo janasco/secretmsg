@@ -16,13 +16,13 @@ credit_url: ""
 
 The Psychology of Handles is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## When to claim a custom name
 
-Claim when the link leaves the app: bios, business cards, team docs, creator profiles. A clean name is infrastructure for everywhere your handle travels without you.
+Claim when the link leaves the app: bios, business cards, team docs, or creator profiles. A clean name can be easier to remember when the handle is shared outside SecretMsg.
 
-Supporters claim once, permanently. Choose like it is a tattoo — short, spellable aloud, unembarrassing in five years.
+The account must already have the custom-slug entitlement, and the current endpoint allows a later change when another valid name is available. Do not promise a one-time or permanent address.
 
 ## The avatar completes the promise
 

@@ -16,11 +16,11 @@ credit_url: ""
 
 Creator & Fan Boards is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Boundaries at scale
 
-Fame, even micro-fame, attracts boundary-pushers. Strict mode during launches, blocks without ceremony, pause between seasons. Protect the creator and the community survives.
+Fame, even micro-fame, can attract boundary-pushers. Strict mode rejects matching sends, blocks are recipient-specific, and pause submissions closes the board to new messages until reopened. None of those controls guarantees that a community will be safe.
 
 You set the tone once, in the first prompt. Everything after is maintenance.
 
@@ -32,9 +32,9 @@ Link it in bio, mention it weekly. Discovery compounds; one mention converts lur
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Creator & Fan Boards is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Creator & Fan Boards is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 

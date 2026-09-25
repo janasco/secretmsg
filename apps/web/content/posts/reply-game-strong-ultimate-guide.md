@@ -16,19 +16,19 @@ credit_url: ""
 
 A Strong Reply Game is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
-## Speed wins
+## Speed can help
 
-The first reply sets the relationship. Answer within a day and senders learn your inbox is alive; wait a week and they learn the opposite. Double-blind replies cost ninety seconds — spend them nightly, not monthly.
+A reply gives a sender a response to return to; timing still depends on the person and the situation. Double-blind replies are short to compose, but the time to write a good one varies.
 
-Batch the habit: inbox, reply-all-worth-answering, pin one, done. Rhythm beats marathons.
+Batch the habit: inbox, reply to what deserves an answer, pin one, done. Rhythm beats marathons.
 
 ## Specificity over volume
 
-One sentence that proves you read the message beats three generic thank-yous. Quote their words back, react to the detail, ask one follow-up. Senders can tell instantly whether a human engaged or a habit fired.
+One sentence that shows you read the message can be more useful than several generic thank-yous. Refer to the detail, or ask one focused follow-up. Senders may be able to tell whether a person engaged or a habit fired.
 
-Specific replies get screenshot and shared. Generic ones get archived.
+Specific replies may be easier to remember, but the app does not track screenshots, shares, or replies to future sends.
 
 ## When not to reply
 
@@ -36,17 +36,17 @@ Cruelty gets deleted, not debated. Bait gets ignored, not fed. Vague one-worders
 
 The filtered tray exists precisely so "no reply" is a decision, not an accident.
 
-## Public replies, used sparingly
+## Private replies, used consistently
 
-One public answer a week shows newcomers the board breathes. More than that turns your inbox into a broadcast channel and chills the candor that makes it valuable.
+Double-blind replies let you answer without turning the inbox into a public broadcast. Keep the rhythm realistic, and reserve replies for messages that deserve a response.
 
 Pick messages that teach: great questions, kind answers, funny exchanges. Curate like a gallery, not a feed.
 
 ## Closing loops kindly
 
-Every thread should end warm, even the weird ones. A graceful close ("thanks for trusting me with that") costs nothing and leaves senders likelier to return with something better.
+A graceful close ("thanks for trusting me with that") can keep the exchange respectful. It may make a sender more comfortable returning, but no reply format guarantees a return.
 
-Reputation compounds invisibly. Be the board people recommend in group chats.
+Keep the rules and follow-through consistent. That is more useful than claiming an invisible reputation metric.
 
 ## The complete path
 
@@ -72,6 +72,6 @@ Review the loop at the end of each month. Keep what produced thoughtful returns,
 - [The Psychology Behind A Strong Reply Game](/post/reply-game-strong-psychology)
 - [Advanced A Strong Reply Game: Level Up](/post/reply-game-strong-advanced)
 
-The whole playbook fits in a pocket: specific prompt, zero friction, good timing. Go post.
+The whole playbook fits in a pocket: specific prompt, low friction, good timing. Go post.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

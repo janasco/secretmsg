@@ -16,19 +16,19 @@ credit_url: ""
 
 Mastering the Android App is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## The notification setup that works
 
-Keep message alerts and Drop reminders on; mute milestones if you are minimalist. Nightly streak nudges stay — they are the cheapest habit technology ever built.
+Keep message alerts and Daily Drop reminders on if they help; mute milestones if you are minimalist. The nightly streak nudge is a local reminder, not a guarantee that a habit will form.
 
-Inline replies are the superpower: answer from the shade without opening anything. Try it once and the old way feels broken.
+Inline replies are a useful shortcut: answer from the notification when the Android action is available, then decide whether to open the app for the full thread.
 
 ## Beyond the download
 
-Installing is step zero. Mastery is: notifications tuned, Drop ritualized, offline outbox trusted, themes matched to your wallpaper. Ten minutes of setup buys a year of smooth.
+Installing is step zero. Start with the controls that matter to you: notifications, the Daily Drop, the offline outbox, and the theme. There is no measured setup time that guarantees a year of smooth use; make the routine yours.
 
-Start in settings: appearance, notification types, strictness. Defaults are sane; tuned is sublime.
+Start in settings: appearance, notification types, and strictness. Defaults are a starting point, not a promise of a particular experience.
 
 ## Offline confidence
 

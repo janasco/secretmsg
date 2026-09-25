@@ -16,7 +16,7 @@ credit_url: ""
 
 Blocking Without Drama is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## When to block vs filter vs pause
 
@@ -26,9 +26,9 @@ Blocking a word problem leaves the person; filtering a person problem leaves the
 
 ## The quietest superpower
 
-Blocking here stores one hash, deletes the message, and tells the sender nothing — no "you are blocked" page to screenshot, no escalation fuel, no farewell tour. The harassment ends mid-sentence.
+When a mobile message has an app-generated sender value, blocking stores its hash in the recipient’s block list and removes that message. The API does not reveal a name or a global block status; browser senders without that value are not added to the fingerprint list.
 
-Compare with social platforms, where blocks are public performances. Silence is not just kinder; it is strategically superior.
+The block is recipient-specific. It can stop future submissions carrying the same hashed app value for that recipient, but it is not a network-wide ban or a human account judgment.
 
 ## What blocked senders experience
 
@@ -60,6 +60,6 @@ If the change helps kind people participate more but also increases harmful mess
 - [Blocking Without Drama: Questions, Answered](/post/block-without-drama-faq)
 - [The Ultimate Guide to Blocking Without Drama](/post/block-without-drama-ultimate-guide)
 
-Save this post, share it with anyone running a board, and sleep well: the levers are all yours.
+Save this post and share it with anyone running a board: know the available controls, their limits, and the steps for a safety concern.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

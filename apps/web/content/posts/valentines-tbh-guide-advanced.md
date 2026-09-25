@@ -16,13 +16,13 @@ credit_url: ""
 
 Valentine's Week TBH Guide is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## After the 14th
 
-Whatever arrived, answer kindly — admirers remember Valentine replies for years. Unrequited or not, grace now pays compound interest in future honesty.
+Whatever arrived, answer kindly when you choose to respond. A thoughtful reply can preserve the tone of the exchange without promising a particular future outcome.
 
-Keep the board up through the weekend. Late confessions are often the most sincere; courage has a long tail.
+Keep the board up through the weekend if you want to accept more messages; a pause will reject new submissions until the board is active again.
 
 ## Prompts calibrated by nerve
 

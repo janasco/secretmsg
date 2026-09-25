@@ -4,7 +4,7 @@ slug: handle-psychology-beginners
 date: 2026-08-06
 status: published
 tags: ["Culture & Psychology", "Culture", "Identity"]
-excerpt: "New to the psychology of handles? Start here: zero jargon, first win in under ten minutes."
+excerpt: "New to the psychology of handles? Start here: zero jargon, a complete first loop."
 pixabay: "neon name sign"
 readMinutes: 4
 image: ""
@@ -16,7 +16,7 @@ credit_url: ""
 
 The Psychology of Handles is easier to use when the page has a clear job. This zero-to-first-win tutorial starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Names are promises
 
@@ -32,9 +32,9 @@ Shuffle until it feels like you. You will know it when the preview makes you gri
 
 ## Why random handles work
 
-Randomness removes decision paralysis and status games in one stroke. Nobody agonizes over lumen4821, nobody judges it, and its very forgettability keeps attention on messages instead of branding.
+Randomness removes a naming decision from the first setup. A generated handle like lumen4821 can keep attention on the messages instead of branding.
 
-Data agrees: boards go live faster with generated handles, and live boards beat perfect ones every time.
+There is no built-in claim that generated handles make a board go live faster. If a chosen name matters, the custom-slug entitlement lets an eligible account change its handle; the current link changes with it.
 
 ## The first launch
 

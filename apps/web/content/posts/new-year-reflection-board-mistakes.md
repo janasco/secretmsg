@@ -16,17 +16,17 @@ credit_url: ""
 
 New Year, Honest Answers is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## Answering in public (sort of)
 
-Use public replies for the gems: they show newcomers the board is alive and set the tone for next year. Keep the tender ones private — selectivity reads as taste.
+Use double-blind replies for the gems and keep the tender ones private. The current app does not publish a shared response feed; if you want a recap, save the messages and share your own summary elsewhere.
 
 On January first, pin the single message that describes who you are becoming. Let it headline the new year.
 
 ## The group version
 
-Friend groups do this brilliantly: everyone posts the same prompt, everyone answers everyone, and the group chat spends January 2nd screaming. Shared ritual, zero organization overhead.
+Friend groups can use several overlapping boards: one person posts, another replies, and the group chat keeps the ritual moving. The app does not create a shared group account, so somebody still has to manage the links and replies.
 
 SecretMsg groups are just overlapping boards. The overlap is the party.
 
@@ -36,9 +36,9 @@ Save the keepers somewhere permanent. Next December, repost the best prompt with
 
 ## The failure pattern
 
-Most failed attempts at New Year, Honest Answers are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at New Year, Honest Answers is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

@@ -16,35 +16,35 @@ credit_url: ""
 
 The Offline Outbox, Explained is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## The subway test
 
 Every app works on wifi. The good ones work in tunnels. SecretMsg queues sends, replies, approvals, discards, and reports made offline, then drains them in order when you reconnect — with a visible sync row, never silent magic.
 
-Your drafts and streaks never depend on bars. The ritual survives dead zones.
+Drafts and local streak state stay on the device, but a new authenticated check-in still needs a connection. The ritual can survive dead zones without pretending every action is available offline.
 
 ## How queuing actually works
 
-Each queued action gets an idempotency key. If a send reached the server but the confirmation died in transit, the retry resolves to the original row instead of double-posting. Retries are safe by construction, not by luck.
+The app keeps a local FIFO outbox for the actions it supports. Message sends include a client message ID so a retry can resolve to the original row; other actions are designed to converge when repeated, but they do not all share one server-side idempotency key.
 
-Order is preserved: FIFO drain means your reply lands before your follow-up, exactly as you wrote them.
+A network error pauses the drain and resumes after connectivity returns. A send that cannot pass the send-time Turnstile check is handed back to the composer for a fresh challenge rather than silently retried forever.
 
 ## The verification exception
 
-One honest constraint: bot-checks cannot mint offline. A queued send whose challenge expired parks as "needs verification" — tap it and the composer reopens prefilled, so one fresh tap finishes the job.
+Turnstile verification cannot be completed offline. A queued send that reaches a send-time verification failure is handed back to the composer with its text intact so you can complete a fresh challenge.
 
-This is stated upfront in the UI rather than discovered mid-tunnel. Constraints you can see are features; hidden ones are bugs.
+The visible sync row tells you when an action is queued, blocked, or needs attention. That status is about this device’s outbox, not a guarantee that every service is available offline.
 
 ## Reading while offline
 
-Your last inbox snapshot renders instantly with a staleness label ("Updated 2h ago"). It is real data, clearly dated — better than a spinner, more honest than pretending it is live.
+The last saved inbox and filtered-tray snapshot can render with a staleness label such as "Updated 2h ago". It is cached data, not a live view.
 
-Reconnect triggers an automatic refresh; snapshot diffing pulls exactly what arrived while you were gone.
+When connectivity returns, the app requests a fresh inbox and tray. It does not perform a separate scan-event or message-difference report for the QR sticker.
 
 ## What stays online-only
 
-Login, signup, and recovery verify server-side by design — identity must never be decided offline. Everything else degrades gracefully, and the sync row always tells you the truth about what is pending.
+Login, signup, recovery, and the send-time Turnstile check remain server-backed. The offline outbox and cached inbox cover the named actions above; they are not a general promise that every screen or provider works without a connection.
 
 ## The complete path
 

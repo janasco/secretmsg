@@ -16,13 +16,13 @@ credit_url: ""
 
 Backup Codes Survival Guide is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## The two-minute setup that saves accounts
 
-Screenshot the codes the moment they appear. Save the same screenshot somewhere off-phone: cloud drive, password manager, printed paper in a drawer. Two copies, two places, done in the time it takes to read this paragraph.
+Screenshot the codes the moment they appear, or use the app’s Save .txt option and move the file somewhere you trust. Keep a second copy in a secure password manager if that is part of your threat model; do not leave backup codes in an ordinary photo album.
 
-Then test one: recovery with a fresh PIN proves the whole chain works before you need it. Untested backups are rumors.
+Testing a recovery consumes a code and rotates the set. If you test, save the fresh codes immediately and confirm you can still sign in before relying on the backup.
 
 ## Recovery, step by step
 
@@ -60,6 +60,6 @@ After a month, revise the default from evidence. A myth-busting page should leav
 - [What Nobody Tells You About Backup Codes Survival Guide](/post/backup-codes-survival-secrets)
 - [Backup Codes Survival Guide: 7 Mistakes Everyone Makes](/post/backup-codes-survival-mistakes)
 
-The whole playbook fits in a pocket: specific prompt, zero friction, good timing. Go post.
+The whole playbook fits in a pocket: specific prompt, low friction, good timing. Go post.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

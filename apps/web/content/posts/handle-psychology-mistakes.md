@@ -16,13 +16,13 @@ credit_url: ""
 
 The Psychology of Handles is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## When to claim a custom name
 
-Claim when the link leaves the app: bios, business cards, team docs, creator profiles. A clean name is infrastructure for everywhere your handle travels without you.
+Claim when the link leaves the app: bios, business cards, team docs, or creator profiles. A clean name can be easier to remember when the handle is shared outside SecretMsg.
 
-Supporters claim once, permanently. Choose like it is a tattoo — short, spellable aloud, unembarrassing in five years.
+The account must already have the custom-slug entitlement, and the current endpoint allows a later change when another valid name is available. Do not promise a one-time or permanent address.
 
 ## Display names vs handles
 
@@ -38,9 +38,9 @@ Shuffle until it feels like you. You will know it when the preview makes you gri
 
 ## The failure pattern
 
-Most failed attempts at The Psychology of Handles are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at The Psychology of Handles is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

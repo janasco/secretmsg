@@ -16,19 +16,19 @@ credit_url: ""
 
 A Strong Reply Game is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
-## Public replies, used sparingly
+## Private replies, used consistently
 
-One public answer a week shows newcomers the board breathes. More than that turns your inbox into a broadcast channel and chills the candor that makes it valuable.
+Double-blind replies let you answer without turning the inbox into a public broadcast. Keep the rhythm realistic, and reserve replies for messages that deserve a response.
 
 Pick messages that teach: great questions, kind answers, funny exchanges. Curate like a gallery, not a feed.
 
 ## Specificity over volume
 
-One sentence that proves you read the message beats three generic thank-yous. Quote their words back, react to the detail, ask one follow-up. Senders can tell instantly whether a human engaged or a habit fired.
+One sentence that shows you read the message can be more useful than several generic thank-yous. Refer to the detail, or ask one focused follow-up. Senders may be able to tell whether a person engaged or a habit fired.
 
-Specific replies get screenshot and shared. Generic ones get archived.
+Specific replies may be easier to remember, but the app does not track screenshots, shares, or replies to future sends.
 
 ## Short answers
 
@@ -54,6 +54,6 @@ If a question remains, ask it with context. Include the board type, the moment y
 - [The Ultimate Guide to A Strong Reply Game](/post/reply-game-strong-ultimate-guide)
 - [The Psychology Behind A Strong Reply Game](/post/reply-game-strong-psychology)
 
-The whole playbook fits in a pocket: specific prompt, zero friction, good timing. Go post.
+The whole playbook fits in a pocket: specific prompt, low friction, good timing. Go post.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

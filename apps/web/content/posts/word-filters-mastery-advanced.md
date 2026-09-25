@@ -16,7 +16,7 @@ credit_url: ""
 
 Word Filters, Mastered is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## Filters plus pause plus block
 
@@ -58,6 +58,6 @@ Change one variable in a two-week test and keep the result. A durable advanced p
 - [The Ultimate Guide to Word Filters, Mastered](/post/word-filters-mastery-ultimate-guide)
 - [The Psychology Behind Word Filters, Mastered](/post/word-filters-mastery-psychology)
 
-Save this post, share it with anyone running a board, and sleep well: the levers are all yours.
+Save this post and share it with anyone running a board: know the available controls, their limits, and the steps for a safety concern.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

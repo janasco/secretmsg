@@ -16,17 +16,17 @@ credit_url: ""
 
 The Offline Outbox, Explained is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## The verification exception
 
-One honest constraint: bot-checks cannot mint offline. A queued send whose challenge expired parks as "needs verification" — tap it and the composer reopens prefilled, so one fresh tap finishes the job.
+Turnstile verification cannot be completed offline. A queued send that reaches a send-time verification failure is handed back to the composer with its text intact so you can complete a fresh challenge.
 
-This is stated upfront in the UI rather than discovered mid-tunnel. Constraints you can see are features; hidden ones are bugs.
+The visible sync row tells you when an action is queued, blocked, or needs attention. That status is about this device’s outbox, not a guarantee that every service is available offline.
 
 ## What stays online-only
 
-Login, signup, and recovery verify server-side by design — identity must never be decided offline. Everything else degrades gracefully, and the sync row always tells you the truth about what is pending.
+Login, signup, recovery, and the send-time Turnstile check remain server-backed. The offline outbox and cached inbox cover the named actions above; they are not a general promise that every screen or provider works without a connection.
 
 ## The overlooked detail
 

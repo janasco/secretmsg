@@ -16,23 +16,23 @@ credit_url: ""
 
 Summer Break Boards is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## The summer prompt calendar
 
-June: predictions and dares. July: confessions and ratings, peak courage season. August: nostalgia and "what changed" retrospectives. One vibe per week keeps it fresh without daily labor.
+June: predictions and dares. July: confessions and ratings. August: nostalgia and "what changed" retrospectives. One vibe per week keeps it fresh without daily labor.
 
-Sunset sticker themes were basically invented for golden-hour stories. Use them shamelessly all season.
+Sunset sticker themes suit golden-hour stories. Use them all season if the color fits your invitation.
 
 ## Reunion fuel
 
-Screenshot the summer highlights (tastefully) and read them at the reunion. Three months of anonymous honesty, performed live, beats any slideshow.
+Screenshot the summer highlights (tastefully) and read them at the reunion. A shared set of messages can make the reunion more personal than a generic slideshow.
 
 Keep one thread running all summer: "song of the summer, with reasons." Playlists plus justifications equal anthropology.
 
 ## Camp, travel, and patchy wifi
 
-Offline outbox earns its keep on road trips and camps with one bar: queue replies and sends, sync at the next town. Streak freezes forgive the national-park week.
+The offline outbox can queue supported replies, sends, approvals, discards, and reports made during a network failure, then drains them when connectivity returns. Streak freezes can cover one missed day when available.
 
 Time zones are a feature: wake to messages written while you slept, like letters from the future.
 

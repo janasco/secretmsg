@@ -16,19 +16,19 @@ credit_url: ""
 
 Backup Codes Survival Guide is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## The two-minute setup that saves accounts
 
-Screenshot the codes the moment they appear. Save the same screenshot somewhere off-phone: cloud drive, password manager, printed paper in a drawer. Two copies, two places, done in the time it takes to read this paragraph.
+Screenshot the codes the moment they appear, or use the app’s Save .txt option and move the file somewhere you trust. Keep a second copy in a secure password manager if that is part of your threat model; do not leave backup codes in an ordinary photo album.
 
-Then test one: recovery with a fresh PIN proves the whole chain works before you need it. Untested backups are rumors.
+Testing a recovery consumes a code and rotates the set. If you test, save the fresh codes immediately and confirm you can still sign in before relying on the backup.
 
 ## Why codes exist
 
-No email, no password reset link, no support agent who can verify your soul. Your PIN plus backup codes ARE your account — lose both and the math says goodbye, because the server cannot distinguish you from an attacker.
+No email, no password reset link, no support agent who can verify your soul. Your PIN plus backup codes ARE your account — if you lose both, the server cannot distinguish you from an attacker and cannot recover the account.
 
-This is not a flaw in the system. It is the system: true anonymity means nobody, including us, holds a spare key.
+This is a recovery design choice, not a promise of anonymity. Account credentials are handled separately from the sender identity that a message sender may provide.
 
 ## PIN hygiene without paranoia
 

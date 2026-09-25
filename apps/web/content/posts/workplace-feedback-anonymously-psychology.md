@@ -16,7 +16,7 @@ credit_url: ""
 
 Workplace Feedback Without the Fallout is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Setting it up right
 
@@ -26,15 +26,15 @@ Share in the team channel Friday morning; review the tray Monday. Cadence beats 
 
 ## The retro nobody speaks at
 
-Every team has the meeting where honesty would help and silence wins. Anonymous boards fix the incentive: critique the idea, never the author, with zero hallway consequences.
+Teams often have a meeting where honesty would help and silence wins. An anonymous board can make it easier to critique an idea without attaching your name to it, though the content itself can still reveal context.
 
-One engineering team runs a permanent board linked in the retro doc. Participation tripled in a month; the loudest voice in the room stopped being the only voice.
+A team can try this as a small experiment with a clear topic and a private link. Keep the scope narrow, explain the rules, and decide what will happen with the feedback before asking for it.
 
 ## Reading like a manager
 
-Sort signal from sting: filter for actionable nouns (process, meeting, deploy), approve the fair ones, discard the venting. Reply double-blind to the best critiques so the team sees feedback landing.
+Sort signal from sting: filter for actionable nouns (process, meeting, deploy), approve the fair ones, discard the venting. Reply double-blind to useful critiques so the sender receives an answer.
 
-Publish a monthly "you said, we did" note. Anonymous input without visible response dies within a quarter.
+Publish a periodic "you said, we did" note. Anonymous input still needs a visible follow-up plan if the team wants the loop to continue.
 
 ## The mechanism
 

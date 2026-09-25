@@ -16,17 +16,17 @@ credit_url: ""
 
 Fitness Accountability, Anonymously is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## The group board advantage
 
-Training partners sharing one board create gentle surveillance: everyone sees the check-ins roll (or not). Social pressure without social exposure.
+Training partners can use one board as a place to post intentions, setbacks, and wins. It does not create a shared public check-in feed; the recipient sees the messages in the private inbox.
 
-Roast-kindly mode for missed sessions. Shame never built a habit; laughter has.
+Add a roast-kindly instruction to the prompt rather than assuming a special mode. Use pause, hidden words, blocking, or reporting when the board needs a boundary.
 
 ## Measuring what matters
 
-Count check-ins, not likes. Count honest weeks, not perfect ones. The board that survives a bad month is worth ten that shine for a week.
+Count check-ins, not likes. Count honest weeks, not perfect ones. A board that survives a bad month may be more useful than one that looks bright for a week and then disappears.
 
 ## The overlooked detail
 

@@ -16,7 +16,7 @@ credit_url: ""
 
 Valentine's Week TBH Guide is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## Prompts calibrated by nerve
 
@@ -26,9 +26,9 @@ Candy theme, obviously. Aesthetics are load-bearing in February.
 
 ## After the 14th
 
-Whatever arrived, answer kindly — admirers remember Valentine replies for years. Unrequited or not, grace now pays compound interest in future honesty.
+Whatever arrived, answer kindly when you choose to respond. A thoughtful reply can preserve the tone of the exchange without promising a particular future outcome.
 
-Keep the board up through the weekend. Late confessions are often the most sincere; courage has a long tail.
+Keep the board up through the weekend if you want to accept more messages; a pause will reject new submissions until the board is active again.
 
 ## Reading the results
 

@@ -16,19 +16,19 @@ credit_url: ""
 
 Fitness Accountability, Anonymously is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Plateaus and bad weeks
 
-Post the slump honestly and watch strangers who have been there answer with what worked. Anonymous veterans give better advice than identifiable influencers — no brand to protect.
+Post the slump honestly and let people who have been there answer with what worked for them. Anonymous advice is not automatically better than advice from an identifiable expert; compare it with your own goals and a qualified professional where relevant.
 
-Pause the board during injury recovery. The inbox will wait; tendons will not.
+Pause submissions during injury recovery. New messages will be rejected while the board is paused; tendons will not.
 
 ## Structuring the week
 
-Monday: intentions ("this week I will..."). Wednesday: midweek honesty check. Friday: wins and wipeouts. Sunday: rest-day reflections. Same four prompts weekly; rituals beat novelty for habits.
+Monday: intentions ("this week I will..."). Wednesday: midweek honesty check. Friday: wins and wipeouts. Sunday: rest-day reflections. A small set of weekly prompts can make the habit easier to follow than constant novelty.
 
-Streaks map perfectly onto training streaks. Two flames, one discipline.
+The app streak can mirror a training streak, but it does not measure fitness or guarantee consistency. Two flames, one discipline.
 
 ## Short answers
 

@@ -16,7 +16,7 @@ credit_url: ""
 
 The Psychology of Handles is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## The avatar completes the promise
 
@@ -32,9 +32,9 @@ Neither is better. They are different doors into the same room — pick the door
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. The Psychology of Handles is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. The Psychology of Handles is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 
@@ -54,6 +54,6 @@ The most defensible choice is the one you can explain to the people using it and
 - [What Nobody Tells You About Psychology of Handles](/post/handle-psychology-secrets)
 - [Psychology of Handles: 7 Mistakes Everyone Makes](/post/handle-psychology-mistakes)
 
-Stay honest out there — and give someone else a safe place to be honest back.
+Stay honest out there — and give someone else room to be honest back without promising anonymity or safety you cannot guarantee.
 
 *Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*

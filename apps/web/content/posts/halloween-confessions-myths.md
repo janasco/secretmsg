@@ -16,13 +16,13 @@ credit_url: ""
 
 Halloween Confessions Season is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## Prompts from the crypt
 
-"Confess your most unhinged costume idea." "TBH — your villain origin story." "Spiciest take you would never say sober." Roll the dice on spicy + secrets and post whatever lands; the holiday grants absolution in advance.
+"Confess your most unhinged costume idea." "TBH — your villain origin story." "Spiciest take you would never say sober." Roll the dice on spicy + secrets and post whatever lands, while keeping the community boundary clear.
 
-Roast-kindly mode: ON. October mischief, November friendships.
+Add a roast-kindly instruction to the prompt rather than assuming a special moderation mode. The app has hidden-word filtering, pause, blocking, and reporting; it does not grant the holiday any safety exemption.
 
 ## The morning after
 

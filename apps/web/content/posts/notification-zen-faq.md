@@ -16,13 +16,13 @@ credit_url: ""
 
 Notification Zen is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Quiet hours are sacred
 
-Nothing non-urgent fires between ten and eight. Anonymous messages are wonderful; 3am buzzes are not. The schedule respects sleep like a good roommate.
+The local ritual scheduler avoids its 10pm–8am quiet window, but that setting does not silence every FCM message notification. Android notification channels and the device’s own settings determine whether a new-message alert is shown.
 
-Urgent is narrowly defined: nothing here pages you. If the building is on fire, call someone — do not wait for a push.
+If the building is on fire, call someone — do not wait for a push.
 
 ## The three that earn their place
 
@@ -54,6 +54,6 @@ If a question remains, ask it with context. Include the board type, the moment y
 - [Notification Zen for Beginners](/post/notification-zen-beginners)
 - [Notification Zen vs the Alternatives](/post/notification-zen-comparison)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

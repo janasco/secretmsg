@@ -16,29 +16,29 @@ credit_url: ""
 
 Streaks That Actually Stick is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## Designing your unmissable day
 
-Anchor the check-in to something you already do: morning coffee, the commute, lights-out scrolling. Enable the nightly nudge and let the 9:30pm reminder carry the days your memory will not.
+Anchor the check-in to something you already do: morning coffee, the commute, or lights-out scrolling. Enable the nightly nudge if a 9:30pm reminder fits your routine.
 
-Pair it with the Daily Drop: answer the prompt, check the inbox, done in ninety seconds. Rituals survive on smallness.
+Pair it with the Daily Drop: open the prompt, check the inbox, and answer what deserves care. Small routines are easier to repeat than an ambitious setup.
 
 ## When streaks break anyway
 
-Life happens — travel, illness, dead batteries. Supporters can repair a recent break once a month; everyone else restarts at one, which stings for exactly a day and then becomes a new run.
+Life happens — travel, illness, dead batteries. Without a banked freeze, the next successful check-in starts a new count at one. The current app does not expose a supporter streak-repair control, so do not plan around a repair that is not available.
 
-Never let a broken streak end the habit. The second streak always grows faster because the inbox is already warm.
+Treat a reset as a prompt to make the habit easier, not a verdict. A useful inbox and a realistic reminder matter more than pretending the old count survived.
 
 ## Streaks as social proof
 
-Long streaks signal a living board to senders: this person reads, replies, returns. Share milestones the way runners share race photos — it recruits the next wave of senders better than any sticker.
+A long streak can signal that someone is still checking the app, but it does not prove how often they read or reply. Share a milestone only if it fits your profile; do not treat a flame as an engagement metric.
 
 ## The failure pattern
 
-Most failed attempts at Streaks That Actually Stick are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Streaks That Actually Stick is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

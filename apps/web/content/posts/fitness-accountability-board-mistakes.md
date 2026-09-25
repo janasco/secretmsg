@@ -16,29 +16,29 @@ credit_url: ""
 
 Fitness Accountability, Anonymously is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## The group board advantage
 
-Training partners sharing one board create gentle surveillance: everyone sees the check-ins roll (or not). Social pressure without social exposure.
+Training partners can use one board as a place to post intentions, setbacks, and wins. It does not create a shared public check-in feed; the recipient sees the messages in the private inbox.
 
-Roast-kindly mode for missed sessions. Shame never built a habit; laughter has.
+Add a roast-kindly instruction to the prompt rather than assuming a special mode. Use pause, hidden words, blocking, or reporting when the board needs a boundary.
 
 ## Plateaus and bad weeks
 
-Post the slump honestly and watch strangers who have been there answer with what worked. Anonymous veterans give better advice than identifiable influencers — no brand to protect.
+Post the slump honestly and let people who have been there answer with what worked for them. Anonymous advice is not automatically better than advice from an identifiable expert; compare it with your own goals and a qualified professional where relevant.
 
-Pause the board during injury recovery. The inbox will wait; tendons will not.
+Pause submissions during injury recovery. New messages will be rejected while the board is paused; tendons will not.
 
 ## Measuring what matters
 
-Count check-ins, not likes. Count honest weeks, not perfect ones. The board that survives a bad month is worth ten that shine for a week.
+Count check-ins, not likes. Count honest weeks, not perfect ones. A board that survives a bad month may be more useful than one that looks bright for a week and then disappears.
 
 ## The failure pattern
 
-Most failed attempts at Fitness Accountability, Anonymously are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Fitness Accountability, Anonymously is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

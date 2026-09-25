@@ -16,23 +16,23 @@ credit_url: ""
 
 The Offline Outbox, Explained is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Reading while offline
 
-Your last inbox snapshot renders instantly with a staleness label ("Updated 2h ago"). It is real data, clearly dated — better than a spinner, more honest than pretending it is live.
+The last saved inbox and filtered-tray snapshot can render with a staleness label such as "Updated 2h ago". It is cached data, not a live view.
 
-Reconnect triggers an automatic refresh; snapshot diffing pulls exactly what arrived while you were gone.
+When connectivity returns, the app requests a fresh inbox and tray. It does not perform a separate scan-event or message-difference report for the QR sticker.
 
 ## How queuing actually works
 
-Each queued action gets an idempotency key. If a send reached the server but the confirmation died in transit, the retry resolves to the original row instead of double-posting. Retries are safe by construction, not by luck.
+The app keeps a local FIFO outbox for the actions it supports. Message sends include a client message ID so a retry can resolve to the original row; other actions are designed to converge when repeated, but they do not all share one server-side idempotency key.
 
-Order is preserved: FIFO drain means your reply lands before your follow-up, exactly as you wrote them.
+A network error pauses the drain and resumes after connectivity returns. A send that cannot pass the send-time Turnstile check is handed back to the composer for a fresh challenge rather than silently retried forever.
 
 ## What stays online-only
 
-Login, signup, and recovery verify server-side by design — identity must never be decided offline. Everything else degrades gracefully, and the sync row always tells you the truth about what is pending.
+Login, signup, recovery, and the send-time Turnstile check remain server-backed. The offline outbox and cached inbox cover the named actions above; they are not a general promise that every screen or provider works without a connection.
 
 ## The leverage point
 

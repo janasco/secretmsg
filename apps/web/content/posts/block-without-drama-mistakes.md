@@ -16,7 +16,7 @@ credit_url: ""
 
 Blocking Without Drama is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## What blocked senders experience
 
@@ -26,9 +26,9 @@ This design choice is deliberate: observable blocks teach harassers to rotate de
 
 ## Managing the list
 
-Review blocked fingerprints quarterly in settings. Unblock liberally — people change, contexts change, and an unblock costs nothing to reverse. The list is hygiene, not a grudge.
+Review blocked fingerprints in settings. Unblock when the context changes and the list has a clear reason to keep the hash. The list is a recipient control, not a permanent grudge.
 
-Pair with reports for the worst cases: your block protects you, the report protects everyone else.
+Pair with reports when you need a reason recorded. A report quarantines that message and stores the reason, but it does not automatically protect every other inbox.
 
 ## The philosophy in one line
 
@@ -36,9 +36,9 @@ You owe strangers nothing, regulars warmth, and harassers silence. The tooling j
 
 ## The failure pattern
 
-Most failed attempts at Blocking Without Drama are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Blocking Without Drama is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 
@@ -58,6 +58,6 @@ After two stable weeks, add one tactic. The recovery should end with a habit, no
 - [Blocking Without Drama in Real Life](/post/block-without-drama-scenarios)
 - [What Nobody Tells You About Blocking Without Drama](/post/block-without-drama-secrets)
 
-Save this post, share it with anyone running a board, and sleep well: the levers are all yours.
+Save this post and share it with anyone running a board: know the available controls, their limits, and the steps for a safety concern.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

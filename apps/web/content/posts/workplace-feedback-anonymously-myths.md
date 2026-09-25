@@ -16,7 +16,7 @@ credit_url: ""
 
 Workplace Feedback Without the Fallout is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## Setting it up right
 
@@ -26,15 +26,15 @@ Share in the team channel Friday morning; review the tray Monday. Cadence beats 
 
 ## The guardrails that matter
 
-Strict mode during sensitive weeks, standard otherwise. Pause during incidents — nobody needs hot takes mid-outage. Reports route to you first, and the team knows the rules because you posted them with the link.
+Strict mode rejects matching sends while still holding them for the recipient’s review; standard quarantines matches for review. Pause submissions when a board needs a break, and tell the team what reporting can and cannot do: it records a reason and quarantines the message for review.
 
 Anonymity at work requires more structure, not less. The structure is the product.
 
 ## Reading like a manager
 
-Sort signal from sting: filter for actionable nouns (process, meeting, deploy), approve the fair ones, discard the venting. Reply double-blind to the best critiques so the team sees feedback landing.
+Sort signal from sting: filter for actionable nouns (process, meeting, deploy), approve the fair ones, discard the venting. Reply double-blind to useful critiques so the sender receives an answer.
 
-Publish a monthly "you said, we did" note. Anonymous input without visible response dies within a quarter.
+Publish a periodic "you said, we did" note. Anonymous input still needs a visible follow-up plan if the team wants the loop to continue.
 
 ## Myth, evidence, default
 

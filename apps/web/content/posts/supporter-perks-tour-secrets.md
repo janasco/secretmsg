@@ -16,19 +16,19 @@ credit_url: ""
 
 Every Supporter Perk, Explained is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
-## Hints: viewer and sender
+## Sender hints, carefully scoped
 
-Viewer hints reveal gentle context about your audience in aggregate; sender hints attach broad device context to messages whose senders allowed it. Neither ever identifies anyone — they add texture, not surveillance.
+A sender hint is a coarse platform clue such as "Mobile / Android" or "Web Browser." It appears only when the sender opts in and the recipient has the sender-hints entitlement; it is not a name, location, or unique identity.
 
-Hint enjoyers describe the inbox as "warmer". Skeptics leave them off and lose nothing.
+The mobile app can generate a stable installation value whose SHA-256 hash is stored for a message and, when blocked, in that recipient’s list. The server does not reverse the hash into a person.
 
 ## How backing works
 
-Checkout runs through verified Polar sessions; perks grant server-side only after payment confirms — no client-side unlocks to spoof. Monthly goal progress shows on the supporters wall for full transparency.
+Android purchases use Google Play Billing and the server verifies the purchase token before granting the supported perk. A Polar contribution is recorded only through a verified webhook, and any eligible account grant is applied server-side.
 
-Cancel anytime; perks persist for the paid period, then fade gracefully. No dark patterns, no retention mazes.
+The available checkout and the exact grant vary by path. Do not treat a supporter badge, custom handle, or hint as automatically included in every contribution; check the current checkout and your account settings.
 
 ## The overlooked detail
 

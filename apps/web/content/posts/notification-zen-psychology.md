@@ -16,7 +16,7 @@ credit_url: ""
 
 Notification Zen is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## The three that earn their place
 
@@ -26,15 +26,15 @@ Everything else waits inside the app. If it can wait until morning, it does.
 
 ## Every ping spends trust
 
-Notifications are a loan against attention: useful ones repay with joy, noisy ones default into the off switch. The entire notification philosophy here is fewer, better, sillenced-by-default-except-what-matters.
+Notifications are a loan against attention: useful ones can be welcome, noisy ones can send you to the off switch. The app separates new-message alerts, Daily Drop reminders, streak nudges, weekly tray review, and milestone reminders so you can tune them.
 
-Counts, not contents, on the lock screen. Curiosity opens apps; previews get read and dismissed.
+FCM receives a message ID, unread count, and a server-truncated preview of up to 140 characters for a new message. Full message bodies do not travel through FCM, but a preview can still appear on the lock screen.
 
 ## Tuning to your life
 
-Night owl? The streak nudge lands before YOUR bedtime math, not ours. Busy season? Pause the board and notifications hush themselves — no settings spelunking required.
+The streak nudge is scheduled for 9:30pm local when the current state calls for it. Busy season? Pause submissions; new sends will be rejected until the board is active again, while existing inbox notifications remain under your device settings.
 
-Per-type toggles live in settings, each with a plain-English description of what it does and when. No dark patterns, no re-opt-in mazes after updates.
+Per-type toggles live in settings, each with a plain-English description. The app does not promise a custom bedtime, a message digest, or a re-opt-in maze after updates.
 
 ## The mechanism
 
@@ -60,6 +60,6 @@ If the change helps kind people participate more but also increases harmful mess
 - [Notification Zen in Real Life](/post/notification-zen-scenarios)
 - [What Nobody Tells You About Notification Zen](/post/notification-zen-secrets)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

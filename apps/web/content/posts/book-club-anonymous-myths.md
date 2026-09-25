@@ -16,7 +16,7 @@ credit_url: ""
 
 Anonymous Book Club Boards is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## Running the discussion
 
@@ -26,15 +26,15 @@ Double-blind replies let shy members debate boldly. The quietest reader often ha
 
 ## Between books
 
-The gap weeks kill clubs. A standing prompt ("what are you reading now, honestly?") keeps the board warm between picks.
+The gap weeks can cool a club down. A standing prompt ("what are you reading now, honestly?") keeps the board active between picks.
 
-Let members pitch next reads anonymously with one-line pitches. Voting without campaigning.
+Let members pitch next reads with one-line messages. The app does not provide a built-in voting or campaigning feature; collect and compare the pitches yourself.
 
 ## Author events, upgraded
 
-Visiting authors answering anonymous questions get the questions audiences actually have, not the polite ones. "Why did you spare THAT character" beats "where do you get ideas" forever.
+Visiting authors answering anonymous questions can surface questions that people might not ask in a crowded room. "Why did you spare THAT character" can be more specific than "where do you get ideas".
 
-Collect questions for a week, curate the best dozen, run the session. Standing ovation optional but likely.
+Collect questions for a week, curate the best dozen, and run the session. A standing ovation is optional.
 
 ## Myth, evidence, default
 

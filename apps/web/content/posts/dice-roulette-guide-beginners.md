@@ -4,7 +4,7 @@ slug: dice-roulette-guide-beginners
 date: 2026-03-19
 status: published
 tags: ["Product & Features", "Dice", "Prompts"]
-excerpt: "New to the dice roulette playbook? Start here: zero jargon, first win in under ten minutes."
+excerpt: "New to the dice roulette playbook? Start here: zero jargon, a complete first loop."
 pixabay: "dice game neon"
 readMinutes: 4
 image: ""
@@ -16,7 +16,7 @@ credit_url: ""
 
 The Dice Roulette Playbook is easier to use when the page has a clear job. This zero-to-first-win tutorial starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## Why randomness beats choice
 
@@ -24,9 +24,9 @@ Decision fatigue kills more prompts than bad taste does. Staring at nine thousan
 
 The roll ritual also front-loads fun into an otherwise blank moment — the tumble, the tick sounds, the reveal. Play is a feature, not decoration.
 
-## Nine thousand prompts, zero repeats (almost)
+## Nine thousand prompts, with room to repeat
 
-The pool spans crushes, chaos, 3am thoughts, real talk, spice, and secrets — fifteen hundred each. Categories keep rolls relevant; All Vibes keeps them dangerous. You will not exhaust it. Statistically, you cannot.
+The pool spans crushes, chaos, 3am thoughts, real talk, spice, and secrets — 1,500 each. Categories keep rolls relevant; All Vibes mixes them together. Random selection can repeat a prompt, so roll history and the composer handoff are there to help you move on.
 
 ## Playing it right
 
@@ -58,6 +58,6 @@ Otherwise, use the first week as a small experiment. Record what you tried, what
 - [Advanced Dice Roulette Playbook: Level Up](/post/dice-roulette-guide-advanced)
 - [5 Myths About Dice Roulette Playbook](/post/dice-roulette-guide-myths)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*

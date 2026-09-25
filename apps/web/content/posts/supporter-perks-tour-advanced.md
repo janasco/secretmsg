@@ -16,25 +16,25 @@ credit_url: ""
 
 Every Supporter Perk, Explained is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## Custom usernames
 
-Auto-generated handles are charming; chosen names are identity. Supporters can claim a clean personal username once — short, memorable, linkable in bios everywhere.
+If the account has the custom-slug entitlement, the app lets its owner request a different handle. The endpoint checks availability and updates the public link, so an old link is not guaranteed to remain the address after a change.
 
-Claim carefully: usernames are unique, first-come, and part of your public link forever.
+Treat the handle as a public choice: it is unique at claim time, and the app does not promise that every username can be claimed or that the link is permanent.
 
-## Badges and verified shine
+## Badges and supporter status
 
-A badge is social proof that you fund the commons. Verified marks supporters whose backing is confirmed; tier badges (Coffee through Golden Guardian) mark how deep the commitment runs.
+A supporter badge reflects a verified grant on the account. The current app can show a supporter tier such as Coffee Backer, Silver Patron, or another grant recorded by a qualifying contribution.
 
-Display them or hide them — both are respected choices, and toggling is instant.
+Treat the badge as account status, not a promise of extra reach. The app does not provide a public follower count or a guaranteed distribution boost.
 
 ## How backing works
 
-Checkout runs through verified Polar sessions; perks grant server-side only after payment confirms — no client-side unlocks to spoof. Monthly goal progress shows on the supporters wall for full transparency.
+Android purchases use Google Play Billing and the server verifies the purchase token before granting the supported perk. A Polar contribution is recorded only through a verified webhook, and any eligible account grant is applied server-side.
 
-Cancel anytime; perks persist for the paid period, then fade gracefully. No dark patterns, no retention mazes.
+The available checkout and the exact grant vary by path. Do not treat a supporter badge, custom handle, or hint as automatically included in every contribution; check the current checkout and your account settings.
 
 ## The leverage point
 
@@ -60,6 +60,6 @@ Change one variable in a two-week test and keep the result. A durable advanced p
 - [Every Supporter Perk, Explained in Real Life](/post/supporter-perks-tour-scenarios)
 - [What Nobody Tells You About Every Supporter Perk, Explained](/post/supporter-perks-tour-secrets)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*

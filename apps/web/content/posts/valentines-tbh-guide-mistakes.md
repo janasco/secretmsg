@@ -16,7 +16,7 @@ credit_url: ""
 
 Valentine's Week TBH Guide is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Reading the results
 
@@ -26,9 +26,9 @@ Do not interrogate the inbox for identities. The mystery is doing romantic work;
 
 ## After the 14th
 
-Whatever arrived, answer kindly — admirers remember Valentine replies for years. Unrequited or not, grace now pays compound interest in future honesty.
+Whatever arrived, answer kindly when you choose to respond. A thoughtful reply can preserve the tone of the exchange without promising a particular future outcome.
 
-Keep the board up through the weekend. Late confessions are often the most sincere; courage has a long tail.
+Keep the board up through the weekend if you want to accept more messages; a pause will reject new submissions until the board is active again.
 
 ## For the happily attached
 
@@ -36,9 +36,9 @@ Couples run boards too: "TBH about us" from mutual friends is a chaos engine of 
 
 ## The failure pattern
 
-Most failed attempts at Valentine's Week TBH Guide are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Valentine's Week TBH Guide is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

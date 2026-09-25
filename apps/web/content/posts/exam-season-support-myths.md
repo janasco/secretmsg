@@ -16,25 +16,25 @@ credit_url: ""
 
 Exam Season Support Boards is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## Study break rituals
 
-Post the board link with library hours: "procrastinating? send a TBH instead of refreshing grades." Micro-breaks with incoming messages beat doomscrolling on every metric that matters.
+Post the board link with library hours: "procrastinating? send a TBH instead of refreshing grades." A short message exchange can give someone a break, but it does not replace rest, study support, or a real safety plan.
 
-Evening drops sync perfectly with study schedules — prompt at dinner, replies by midnight, morale for tomorrow.
+Evening drops can fit a study schedule — prompt at dinner, then review replies when you are ready. The app schedules reminders locally; it does not promise replies by midnight.
 
 ## Boundaries during crunch
 
-Pause the board during actual exam hours — delivery waits, focus does not. Word-filter the catastrophizing spirals ("fail", "drop out") into the tray for calmer review.
+Pause submissions during actual exam hours — new sends are rejected while the board is paused, and focus can stay with the exam. Word-filter terms such as "fail" or "drop out" into the tray for review when that is useful.
 
-Protect sleep like a subject: notifications off, digest on, inbox in the morning like mail.
+Protect sleep like a subject: adjust notifications, review the inbox when you are ready, and remember that a paused board does not hold submissions for later.
 
-## Anonymous pep talks hit different
+## Anonymous pep talks can feel different
 
-"You have never failed anything that mattered" lands harder from nowhere than from a friend performing optimism. Anonymity strips the social accounting out of encouragement.
+"You have never failed anything that mattered" may land differently from a stranger than from someone performing optimism. Anonymity can lower the social pressure attached to encouragement.
 
-Reply to the scared ones double-blind. One sentence from a stranger can reroute an entire study night.
+Reply to the scared ones double-blind when that feels appropriate. One sentence can be useful, but the app cannot promise that it will change someone’s night.
 
 ## Myth, evidence, default
 

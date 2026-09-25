@@ -16,7 +16,7 @@ credit_url: ""
 
 The Crush Confessions Playbook is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Scene three: the double-blind reply
 
@@ -26,9 +26,9 @@ Replies are retention machines wearing romance costumes.
 
 ## What made it work
 
-Specific prompt, evening timing, answered everything, pinned the keeper. Four moves, all repeatable, none requiring courage from anyone but the first sender — and even they only needed thirty seconds of it.
+Specific prompt, evening timing, answered everything, pinned the keeper. Four moves, all repeatable, none requiring a public identity from the sender. The exact time and response volume will vary.
 
-Maya's board now gets weekly traffic from the same five people. Community, assembled one anonymous message at a time.
+Maya can keep the loop going without knowing who sent each message. Community, assembled one anonymous message at a time.
 
 ## Steal this exact setup
 
@@ -36,9 +36,9 @@ Copy the sticker text verbatim, swap the vibe to Crush & Admirer, post at 8:30pm
 
 ## The failure pattern
 
-Most failed attempts at The Crush Confessions Playbook are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at The Crush Confessions Playbook is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

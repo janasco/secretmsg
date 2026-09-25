@@ -16,7 +16,7 @@ credit_url: ""
 
 Notification Zen is easier to use when the page has a clear job. This myth-busting starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## The three that earn their place
 
@@ -26,15 +26,15 @@ Everything else waits inside the app. If it can wait until morning, it does.
 
 ## Quiet hours are sacred
 
-Nothing non-urgent fires between ten and eight. Anonymous messages are wonderful; 3am buzzes are not. The schedule respects sleep like a good roommate.
+The local ritual scheduler avoids its 10pm–8am quiet window, but that setting does not silence every FCM message notification. Android notification channels and the device’s own settings determine whether a new-message alert is shown.
 
-Urgent is narrowly defined: nothing here pages you. If the building is on fire, call someone — do not wait for a push.
+If the building is on fire, call someone — do not wait for a push.
 
 ## Tuning to your life
 
-Night owl? The streak nudge lands before YOUR bedtime math, not ours. Busy season? Pause the board and notifications hush themselves — no settings spelunking required.
+The streak nudge is scheduled for 9:30pm local when the current state calls for it. Busy season? Pause submissions; new sends will be rejected until the board is active again, while existing inbox notifications remain under your device settings.
 
-Per-type toggles live in settings, each with a plain-English description of what it does and when. No dark patterns, no re-opt-in mazes after updates.
+Per-type toggles live in settings, each with a plain-English description. The app does not promise a custom bedtime, a message digest, or a re-opt-in maze after updates.
 
 ## Myth, evidence, default
 
@@ -60,6 +60,6 @@ After a month, revise the default from evidence. A myth-busting page should leav
 - [Notification Zen: 7 Mistakes Everyone Makes](/post/notification-zen-mistakes)
 - [Notification Zen for Beginners](/post/notification-zen-beginners)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

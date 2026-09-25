@@ -16,19 +16,19 @@ credit_url: ""
 
 Anonymous Book Club Boards is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## Author events, upgraded
 
-Visiting authors answering anonymous questions get the questions audiences actually have, not the polite ones. "Why did you spare THAT character" beats "where do you get ideas" forever.
+Visiting authors answering anonymous questions can surface questions that people might not ask in a crowded room. "Why did you spare THAT character" can be more specific than "where do you get ideas".
 
-Collect questions for a week, curate the best dozen, run the session. Standing ovation optional but likely.
+Collect questions for a week, curate the best dozen, and run the session. A standing ovation is optional.
 
 ## Between books
 
-The gap weeks kill clubs. A standing prompt ("what are you reading now, honestly?") keeps the board warm between picks.
+The gap weeks can cool a club down. A standing prompt ("what are you reading now, honestly?") keeps the board active between picks.
 
-Let members pitch next reads anonymously with one-line pitches. Voting without campaigning.
+Let members pitch next reads with one-line messages. The app does not provide a built-in voting or campaigning feature; collect and compare the pitches yourself.
 
 ## The library effect
 
@@ -36,9 +36,9 @@ A year of honest book talk, archived and searchable in memory if not in app: whi
 
 ## The failure pattern
 
-Most failed attempts at Anonymous Book Club Boards are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Anonymous Book Club Boards is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

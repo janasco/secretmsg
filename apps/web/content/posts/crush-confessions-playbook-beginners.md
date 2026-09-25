@@ -4,7 +4,7 @@ slug: crush-confessions-playbook-beginners
 date: 2026-05-05
 status: published
 tags: ["Scenarios & Stories", "Scenarios", "Crush"]
-excerpt: "New to the crush confessions playbook? Start here: zero jargon, first win in under ten minutes."
+excerpt: "New to the crush confessions playbook? Start here: zero jargon, a complete first loop."
 pixabay: "romantic couple silhouette"
 readMinutes: 4
 image: ""
@@ -16,7 +16,7 @@ credit_url: ""
 
 The Crush Confessions Playbook is easier to use when the page has a clear job. This zero-to-first-win tutorial starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## Scene one: the story goes up
 

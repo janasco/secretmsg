@@ -16,25 +16,25 @@ credit_url: ""
 
 Pause Like a Pro is easier to use when the page has a clear job. This comprehensive playbook starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Pause is not surrender
 
-Every always-on inbox eventually needs an off switch that is not delete-account. Pause is that switch: delivery halts, senders see a calm note, and everything resumes exactly where it stopped.
+An always-on inbox can need an off switch that is not account deletion. Pause submissions is that switch: new sends are rejected while the board is paused, and the profile remains available. Reopening the board allows new submissions again.
 
 Use it for weekends, exams, launches, grief, vacations — any stretch where incoming volume exceeds outgoing care.
 
 ## Choosing your duration
 
-Thirty minutes for a meeting, a day for a reset, a week for a trip, indefinite for a hibernation. Match the timer to the reason and you will never forget to reopen — expiring pauses reopen themselves.
+The app offers 30 minutes, one hour, 24 hours, one week, permanent pause, or an active link. A timed pause automatically ends at its stored time; a permanent pause stays paused until you reactivate it.
 
-Permanent pause is for boards in cold storage: the link lives, delivery sleeps, and you return whenever.
+Permanent pause is for boards in cold storage: the link lives, submissions are rejected, and you return whenever.
 
 ## What senders experience
 
-No error pages, no dead links: a polite "taking a break" state with your profile intact. Most senders simply try later — which is precisely the behavior you want to train.
+The profile can remain visible while the API rejects a new submission with a board-is-paused response. A sender can return after reopening, but SecretMsg does not queue a message for later delivery.
 
-Scheduled senders (the good kind) will wait. Spammers will not, which helpfully filters them for free.
+If you need to accept messages without interruptions, leave the board active and use hidden words, blocking, or reporting for unwanted submissions.
 
 ## Pause plus filters: the combo
 
@@ -70,6 +70,6 @@ Review the loop at the end of each month. Keep what produced thoughtful returns,
 - [The Psychology Behind Pause Like a Pro](/post/pause-like-a-pro-psychology)
 - [Advanced Pause Like a Pro: Level Up](/post/pause-like-a-pro-advanced)
 
-Filter, pause, block, report — in that order. Your inbox, your rules, enforced by the server.
+Filter, pause, block, or report according to the situation. These are recipient controls, not comprehensive automated moderation.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

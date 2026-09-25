@@ -16,31 +16,31 @@ credit_url: ""
 
 Notification Zen is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Tuning to your life
 
-Night owl? The streak nudge lands before YOUR bedtime math, not ours. Busy season? Pause the board and notifications hush themselves — no settings spelunking required.
+The streak nudge is scheduled for 9:30pm local when the current state calls for it. Busy season? Pause submissions; new sends will be rejected until the board is active again, while existing inbox notifications remain under your device settings.
 
-Per-type toggles live in settings, each with a plain-English description of what it does and when. No dark patterns, no re-opt-in mazes after updates.
+Per-type toggles live in settings, each with a plain-English description. The app does not promise a custom bedtime, a message digest, or a re-opt-in maze after updates.
 
 ## Quiet hours are sacred
 
-Nothing non-urgent fires between ten and eight. Anonymous messages are wonderful; 3am buzzes are not. The schedule respects sleep like a good roommate.
+The local ritual scheduler avoids its 10pm–8am quiet window, but that setting does not silence every FCM message notification. Android notification channels and the device’s own settings determine whether a new-message alert is shown.
 
-Urgent is narrowly defined: nothing here pages you. If the building is on fire, call someone — do not wait for a push.
+If the building is on fire, call someone — do not wait for a push.
 
 ## When to go silent deliberately
 
-Vacations, exams, heartbreaks: kill notifications at the OS level and let the board accumulate like mail. Returning to a full inbox beats returning to an anxious one.
+Vacations, exams, heartbreaks: pause submissions and use the device notification settings when you want fewer interruptions. Paused submissions are rejected rather than accumulated for later delivery.
 
-The digest pattern beats the drip pattern. Batch, breathe, reply in one calm sitting.
+When you return, read the saved inbox and reply in one calm sitting. The app has a weekly filtered-tray review, not a general message digest.
 
 ## The failure pattern
 
-Most failed attempts at Notification Zen are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Notification Zen is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

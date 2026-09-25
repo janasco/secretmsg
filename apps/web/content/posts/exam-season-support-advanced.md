@@ -16,19 +16,19 @@ credit_url: ""
 
 Exam Season Support Boards is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Boundaries during crunch
 
-Pause the board during actual exam hours — delivery waits, focus does not. Word-filter the catastrophizing spirals ("fail", "drop out") into the tray for calmer review.
+Pause submissions during actual exam hours — new sends are rejected while the board is paused, and focus can stay with the exam. Word-filter terms such as "fail" or "drop out" into the tray for review when that is useful.
 
-Protect sleep like a subject: notifications off, digest on, inbox in the morning like mail.
+Protect sleep like a subject: adjust notifications, review the inbox when you are ready, and remember that a paused board does not hold submissions for later.
 
 ## Study break rituals
 
-Post the board link with library hours: "procrastinating? send a TBH instead of refreshing grades." Micro-breaks with incoming messages beat doomscrolling on every metric that matters.
+Post the board link with library hours: "procrastinating? send a TBH instead of refreshing grades." A short message exchange can give someone a break, but it does not replace rest, study support, or a real safety plan.
 
-Evening drops sync perfectly with study schedules — prompt at dinner, replies by midnight, morale for tomorrow.
+Evening drops can fit a study schedule — prompt at dinner, then review replies when you are ready. The app schedules reminders locally; it does not promise replies by midnight.
 
 ## After the last paper
 

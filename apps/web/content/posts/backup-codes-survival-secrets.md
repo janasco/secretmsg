@@ -16,7 +16,7 @@ credit_url: ""
 
 Backup Codes Survival Guide is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## PIN hygiene without paranoia
 
@@ -26,9 +26,9 @@ Never share codes or PINs, even with people you trust with everything else. Trus
 
 ## The account you cannot lose
 
-For boards that matter — creators, teams, long streaks — treat codes like travel documents: stored before departure, checked before every trip. Five minutes of admin per year buys permanent peace of mind.
+For boards that matter — creators, teams, long streaks — treat codes like travel documents: stored before departure, checked before every trip. The time it takes is small, but no backup routine can guarantee that nothing will go wrong.
 
-Tell one trusted human where your codes live. Not the codes themselves — just the map.
+If a trusted person knows where a secure copy lives, do not give them the codes or PIN themselves. The app cannot restore a set that has been lost or exposed.
 
 ## The overlooked detail
 

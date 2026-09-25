@@ -16,23 +16,23 @@ credit_url: ""
 
 Workplace Feedback Without the Fallout is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
-## What changes in six months
+## What to change next
 
-Quiet contributors surface. Recurring themes get names. The retro stops performing alignment and starts producing it — all because the cost of honesty dropped to zero.
+Look for recurring themes, decide which follow-up belongs to the team, and keep the board’s rules visible. Anonymity can lower the cost of speaking up, but it does not remove the work of responding.
 
 ## The retro nobody speaks at
 
-Every team has the meeting where honesty would help and silence wins. Anonymous boards fix the incentive: critique the idea, never the author, with zero hallway consequences.
+Teams often have a meeting where honesty would help and silence wins. An anonymous board can make it easier to critique an idea without attaching your name to it, though the content itself can still reveal context.
 
-One engineering team runs a permanent board linked in the retro doc. Participation tripled in a month; the loudest voice in the room stopped being the only voice.
+A team can try this as a small experiment with a clear topic and a private link. Keep the scope narrow, explain the rules, and decide what will happen with the feedback before asking for it.
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Workplace Feedback Without the Fallout is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Workplace Feedback Without the Fallout is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 

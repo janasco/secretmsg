@@ -16,13 +16,13 @@ credit_url: ""
 
 Pause Like a Pro is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## What senders experience
 
-No error pages, no dead links: a polite "taking a break" state with your profile intact. Most senders simply try later — which is precisely the behavior you want to train.
+The profile can remain visible while the API rejects a new submission with a board-is-paused response. A sender can return after reopening, but SecretMsg does not queue a message for later delivery.
 
-Scheduled senders (the good kind) will wait. Spammers will not, which helpfully filters them for free.
+If you need to accept messages without interruptions, leave the board active and use hidden words, blocking, or reporting for unwanted submissions.
 
 ## The psychology of the break
 
@@ -52,6 +52,6 @@ The best advanced practice is restraint. Keep the system small enough to inspect
 - [Pause Like a Pro: 7 Mistakes Everyone Makes](/post/pause-like-a-pro-mistakes)
 - [Pause Like a Pro for Beginners](/post/pause-like-a-pro-beginners)
 
-Save this post, share it with anyone running a board, and sleep well: the levers are all yours.
+Save this post and share it with anyone running a board: know the available controls, their limits, and the steps for a safety concern.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*

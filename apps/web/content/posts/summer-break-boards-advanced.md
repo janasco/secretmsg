@@ -16,23 +16,23 @@ credit_url: ""
 
 Summer Break Boards is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## Reunion fuel
 
-Screenshot the summer highlights (tastefully) and read them at the reunion. Three months of anonymous honesty, performed live, beats any slideshow.
+Screenshot the summer highlights (tastefully) and read them at the reunion. A shared set of messages can make the reunion more personal than a generic slideshow.
 
 Keep one thread running all summer: "song of the summer, with reasons." Playlists plus justifications equal anthropology.
 
 ## The summer prompt calendar
 
-June: predictions and dares. July: confessions and ratings, peak courage season. August: nostalgia and "what changed" retrospectives. One vibe per week keeps it fresh without daily labor.
+June: predictions and dares. July: confessions and ratings. August: nostalgia and "what changed" retrospectives. One vibe per week keeps it fresh without daily labor.
 
-Sunset sticker themes were basically invented for golden-hour stories. Use them shamelessly all season.
+Sunset sticker themes suit golden-hour stories. Use them all season if the color fits your invitation.
 
 ## September payoff
 
-Return with receipts: the funniest, kindest, wildest messages of the season, shared with permission vibes intact. Summer boards become fall legends, and legends recruit.
+Return with receipts: the funniest, kindest, and most memorable messages of the season, shared only when the sender is comfortable. Summer boards can become a shared story for the group.
 
 ## The leverage point
 

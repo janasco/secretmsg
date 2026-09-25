@@ -16,7 +16,7 @@ credit_url: ""
 
 Anonymous Messaging 101 is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Your first week, day by day
 
@@ -32,15 +32,15 @@ Each takes under a minute to fix, and each compounds weekly.
 
 ## Leveling up without trying
 
-Once the basics hum, add texture: sticker themes per mood, dice rolls for prompts on dry days, the Daily Drop as your morning ritual. None of this is required. All of it converts casual viewers into regulars.
+Once the basics hum, add texture: sticker themes per mood, dice rolls for prompts on dry days, the Daily Drop as your morning ritual. None of this is required. Each can make the invitation easier to understand, but results still depend on your audience and follow-through.
 
 Watch which senders return after your replies — those are your community. Treat them like it.
 
 ## The failure pattern
 
-Most failed attempts at Anonymous Messaging 101 are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Anonymous Messaging 101 is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

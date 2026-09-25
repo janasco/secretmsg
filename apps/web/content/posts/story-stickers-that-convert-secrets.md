@@ -16,13 +16,13 @@ credit_url: ""
 
 Story Stickers That Actually Convert is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Caption strategy in thirty seconds
 
-Blank caption fields kill cards. Hit Ideas for a preset, or write the single most specific sentence you can: "TBH about my cooking — destroy me kindly" beats "send tbhs" every time of day.
+Use a preset from Ideas or write one specific sentence: "TBH about my cooking — destroy me kindly" gives a sender more context than "send tbhs". Rotate captions with your sticker theme when the same wording starts to feel repetitive.
 
-Rotate captions with your sticker theme. Same words, new skin reads as new content to scrollers.
+Keep the wording aligned with the invitation you want. A clear caption is easier to test than a decorative one, and your own replies are the best guide to what people understand.
 
 ## Measure, then double down
 
@@ -52,6 +52,6 @@ The best advanced practice is restraint. Keep the system small enough to inspect
 - [Story Stickers That Actually Convert: Questions, Answered](/post/story-stickers-that-convert-faq)
 - [Story Stickers That Actually Convert: 7 Mistakes Everyone Makes](/post/story-stickers-that-convert-mistakes)
 
-Your next ten senders are one good share away. Go make it.
+A clear invitation gives the next sender an easy way in. Post, observe, and improve the next version.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

@@ -4,7 +4,7 @@ slug: offline-mode-guide-beginners
 date: 2026-04-23
 status: published
 tags: ["Product & Features", "Offline", "App"]
-excerpt: "New to the offline outbox, explained? Start here: zero jargon, first win in under ten minutes."
+excerpt: "New to the offline outbox, explained? Start here: zero jargon, a complete first loop."
 pixabay: "airplane travel phone"
 readMinutes: 4
 image: ""
@@ -16,23 +16,23 @@ credit_url: ""
 
 The Offline Outbox, Explained is easier to use when the page has a clear job. This zero-to-first-win tutorial starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## The subway test
 
 Every app works on wifi. The good ones work in tunnels. SecretMsg queues sends, replies, approvals, discards, and reports made offline, then drains them in order when you reconnect — with a visible sync row, never silent magic.
 
-Your drafts and streaks never depend on bars. The ritual survives dead zones.
+Drafts and local streak state stay on the device, but a new authenticated check-in still needs a connection. The ritual can survive dead zones without pretending every action is available offline.
 
 ## What stays online-only
 
-Login, signup, and recovery verify server-side by design — identity must never be decided offline. Everything else degrades gracefully, and the sync row always tells you the truth about what is pending.
+Login, signup, recovery, and the send-time Turnstile check remain server-backed. The offline outbox and cached inbox cover the named actions above; they are not a general promise that every screen or provider works without a connection.
 
 ## How queuing actually works
 
-Each queued action gets an idempotency key. If a send reached the server but the confirmation died in transit, the retry resolves to the original row instead of double-posting. Retries are safe by construction, not by luck.
+The app keeps a local FIFO outbox for the actions it supports. Message sends include a client message ID so a retry can resolve to the original row; other actions are designed to converge when repeated, but they do not all share one server-side idempotency key.
 
-Order is preserved: FIFO drain means your reply lands before your follow-up, exactly as you wrote them.
+A network error pauses the drain and resumes after connectivity returns. A send that cannot pass the send-time Turnstile check is handed back to the composer for a fresh challenge rather than silently retried forever.
 
 ## The first launch
 
@@ -58,6 +58,6 @@ Otherwise, use the first week as a small experiment. Record what you tried, what
 - [Offline Outbox, Explained in Real Life](/post/offline-mode-guide-scenarios)
 - [What Nobody Tells You About Offline Outbox, Explained](/post/offline-mode-guide-secrets)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

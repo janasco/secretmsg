@@ -16,7 +16,7 @@ credit_url: ""
 
 The Crush Confessions Playbook is easier to use when the page has a clear job. This insider truths starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## Scene three: the double-blind reply
 

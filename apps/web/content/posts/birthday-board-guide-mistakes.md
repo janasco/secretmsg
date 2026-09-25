@@ -16,19 +16,19 @@ credit_url: ""
 
 The Birthday Board: A Month of Proof is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## The reveal
 
-Screenshot the keepers (with the app badges cropped tastefully), read the best ones aloud at the party, watch the room melt. Anonymous praise hits differently spoken — it lands as consensus, not flattery.
+Save the keepers as screenshots, read a few aloud at the party, and let the room react. Anonymous praise can land differently when it is spoken, but the board does not add app badges to message screenshots.
 
-Keep one message pinned all year. Future rough days have an antidote on file.
+Keep one message pinned if you want it easy to find later. Future rough days can have an antidote on file.
 
-## Why it beats a group card
+## Why it can beat a group card
 
-Group cards collect signatures; boards collect sentences. A paragraph from someone who never comments publicly outweighs twenty emoji reacts — specificity again, doing its quiet work.
+Group cards collect signatures; boards collect sentences. A paragraph from someone who rarely comments publicly can give the occasion more texture than a short reaction, depending on the audience.
 
-Next year, the board already exists. Tradition compounds.
+Next year, the board already exists. You can decide whether the ritual is worth continuing.
 
 ## Calendar notes
 
@@ -36,9 +36,9 @@ Same playbook ports to graduations, farewells, weddings, and new-baby season. An
 
 ## The failure pattern
 
-Most failed attempts at The Birthday Board: A Month of Proof are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at The Birthday Board: A Month of Proof is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 

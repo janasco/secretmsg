@@ -16,23 +16,23 @@ credit_url: ""
 
 Double-Blind Replies, Demystified is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## Edge cases, handled
 
-Paused boards hold replies with everything else. Deleted messages take their threads with them — there is no orphaned half-conversation haunting the database. Blocked senders cannot start new threads, full stop.
+A paused board rejects new submissions; it does not queue a sender’s message. Deleting a message removes its stored reply data. A recipient-specific block stores the message’s hashed mobile sender value when one is present, so future messages from that app-generated value are rejected for that recipient only.
 
 ## The problem with answering
 
-Every anonymous inbox faces the same dilemma: replies are the lifeblood of retention, but answering usually means revealing — a username, a thread, a tell. Most platforms resolve it by not offering replies at all, and their inboxes slowly die.
+Replies create a reason to return, but a visible username, thread, or tell can make an answer feel exposed. Double-blind replies are designed for that tradeoff: the sender does not receive the recipient’s account identity.
 
-Double-blind replies resolve it properly: both sides stay unknown while the conversation continues.
+The flow keeps a conversation available without making either side’s name the other side’s profile. The server still processes and stores the message and reply so it can deliver them.
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Double-Blind Replies, Demystified is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Double-Blind Replies, Demystified is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 

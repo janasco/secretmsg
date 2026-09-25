@@ -16,13 +16,13 @@ credit_url: ""
 
 The Crush Confessions Playbook is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## What made it work
 
-Specific prompt, evening timing, answered everything, pinned the keeper. Four moves, all repeatable, none requiring courage from anyone but the first sender — and even they only needed thirty seconds of it.
+Specific prompt, evening timing, answered everything, pinned the keeper. Four moves, all repeatable, none requiring a public identity from the sender. The exact time and response volume will vary.
 
-Maya's board now gets weekly traffic from the same five people. Community, assembled one anonymous message at a time.
+Maya can keep the loop going without knowing who sent each message. Community, assembled one anonymous message at a time.
 
 ## Scene two: the inbox fills
 

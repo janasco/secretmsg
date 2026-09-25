@@ -16,7 +16,7 @@ credit_url: ""
 
 Mastering the Android App is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## Offline confidence
 
@@ -26,9 +26,9 @@ Parked verifications hand back to the composer prefilled — never lost text, ne
 
 ## Beyond the download
 
-Installing is step zero. Mastery is: notifications tuned, Drop ritualized, offline outbox trusted, themes matched to your wallpaper. Ten minutes of setup buys a year of smooth.
+Installing is step zero. Start with the controls that matter to you: notifications, the Daily Drop, the offline outbox, and the theme. There is no measured setup time that guarantees a year of smooth use; make the routine yours.
 
-Start in settings: appearance, notification types, strictness. Defaults are sane; tuned is sublime.
+Start in settings: appearance, notification types, and strictness. Defaults are a starting point, not a promise of a particular experience.
 
 ## Scene map
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own Mastering the Android App rather than copying the dramatic details.
 

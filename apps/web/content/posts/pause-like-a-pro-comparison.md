@@ -16,7 +16,7 @@ credit_url: ""
 
 Pause Like a Pro is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
 ## The psychology of the break
 
@@ -24,15 +24,15 @@ Guilt is the main reason pauses stay on too long. Reframe it: a paused inbox is 
 
 ## Pause is not surrender
 
-Every always-on inbox eventually needs an off switch that is not delete-account. Pause is that switch: delivery halts, senders see a calm note, and everything resumes exactly where it stopped.
+An always-on inbox can need an off switch that is not account deletion. Pause submissions is that switch: new sends are rejected while the board is paused, and the profile remains available. Reopening the board allows new submissions again.
 
 Use it for weekends, exams, launches, grief, vacations — any stretch where incoming volume exceeds outgoing care.
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Pause Like a Pro is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Pause Like a Pro is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 
@@ -52,6 +52,6 @@ The most defensible choice is the one you can explain to the people using it and
 - [Pause Like a Pro in Real Life](/post/pause-like-a-pro-scenarios)
 - [What Nobody Tells You About Pause Like a Pro](/post/pause-like-a-pro-secrets)
 
-Save this post, share it with anyone running a board, and sleep well: the levers are all yours.
+Save this post and share it with anyone running a board: know the available controls, their limits, and the steps for a safety concern.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

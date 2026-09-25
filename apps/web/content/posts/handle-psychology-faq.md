@@ -16,7 +16,7 @@ credit_url: ""
 
 The Psychology of Handles is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## Display names vs handles
 
@@ -26,9 +26,9 @@ Cute today, professional tomorrow, mysterious on weekends. The name is a costume
 
 ## Why random handles work
 
-Randomness removes decision paralysis and status games in one stroke. Nobody agonizes over lumen4821, nobody judges it, and its very forgettability keeps attention on messages instead of branding.
+Randomness removes a naming decision from the first setup. A generated handle like lumen4821 can keep attention on the messages instead of branding.
 
-Data agrees: boards go live faster with generated handles, and live boards beat perfect ones every time.
+There is no built-in claim that generated handles make a board go live faster. If a chosen name matters, the custom-slug entitlement lets an eligible account change its handle; the current link changes with it.
 
 ## Short answers
 

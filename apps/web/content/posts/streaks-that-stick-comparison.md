@@ -16,23 +16,23 @@ credit_url: ""
 
 Streaks That Actually Stick is easier to use when the page has a clear job. This honest comparison starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Evening posts (7–10pm local) consistently outperform morning posts for anonymous replies.
+> Posting times vary by audience; test a small number of windows instead of assuming one is best.
 
 ## Streaks as social proof
 
-Long streaks signal a living board to senders: this person reads, replies, returns. Share milestones the way runners share race photos — it recruits the next wave of senders better than any sticker.
+A long streak can signal that someone is still checking the app, but it does not prove how often they read or reply. Share a milestone only if it fits your profile; do not treat a flame as an engagement metric.
 
-## Why streaks work on brains
+## Why streaks can work on brains
 
-Loss aversion is stronger than reward-seeking: day twelve matters because day zero hurts. Streaks convert vague intentions ("check in more") into a concrete daily contract with visible length.
+A visible count turns a vague intention such as "check in more" into a concrete daily action. That can make the next check-in easier to remember, especially when the app has something useful to show.
 
-The research caveat: streaks motivate only when the underlying action is rewarding. An inbox full of good messages makes day thirty inevitable; an empty one makes day three feel like homework. Feed the inbox first.
+The practical caveat: a streak does not create value by itself. If refreshing the inbox feels pointless, change the prompt or response habit first. The streak should record a useful ritual, not replace one.
 
 ## Choose by job
 
-The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Streaks That Actually Stick is strongest when the sender needs a low-pressure way in and the recipient needs control over the space.
+The right alternative depends on the job, not on the label. A poll is strong for quick votes, a form is strong for structured detail, and a private conversation is strong when the exchange needs continuity. Streaks That Actually Stick is a good fit when the sender needs a low-pressure way in and the recipient needs control over the space.
 
-Name the job before naming a winner. “I want more replies” and “I want a safer, more honest response” call for different tools and different success measures.
+Name the job before naming a winner. “I want more replies” and “I want a more candid response” call for different tools and different success measures.
 
 ## What changes when you switch
 
@@ -52,6 +52,6 @@ The most defensible choice is the one you can explain to the people using it and
 - [The Psychology Behind Streaks That Actually Stick](/post/streaks-that-stick-psychology)
 - [Advanced Streaks That Actually Stick: Level Up](/post/streaks-that-stick-advanced)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*

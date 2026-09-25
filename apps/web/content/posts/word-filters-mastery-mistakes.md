@@ -16,13 +16,13 @@ credit_url: ""
 
 Word Filters, Mastered is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Anonymous feedback is measurably more candid than attributed feedback in every study of it.
+> Anonymous feedback can feel lower-pressure; it does not guarantee candor or kindness.
 
 ## Standard vs strict, honestly
 
-Standard holds matches for review: maximum safety with zero false-positive cost. Strict rejects at send time, which feels stronger but blinds you — you will never know what you refused. Most people should run standard and review the tray like mail.
+Standard quarantines a match and returns a generic success response to the sender. Strict returns a generic rejection and still quarantines the message for the recipient’s review. Both modes can produce false positives, and neither understands context or provides comprehensive abuse detection.
 
-Off exists for trusted circles and short experiments. Set a reminder to turn it back on.
+Off skips hidden-word checks entirely. Choose the mode that matches the board, review held messages regularly, and remember that filters are only one part of handling abuse.
 
 ## Filters plus pause plus block
 
@@ -36,9 +36,9 @@ Open the tray, scan what was caught, delete the junk, approve the edge cases, ad
 
 ## The failure pattern
 
-Most failed attempts at Word Filters, Mastered are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Word Filters, Mastered is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 
@@ -58,6 +58,6 @@ After two stable weeks, add one tactic. The recovery should end with a habit, no
 - [Word Filters, Mastered in Real Life](/post/word-filters-mastery-scenarios)
 - [What Nobody Tells You About Word Filters, Mastered](/post/word-filters-mastery-secrets)
 
-Save this post, share it with anyone running a board, and sleep well: the levers are all yours.
+Save this post and share it with anyone running a board: know the available controls, their limits, and the steps for a safety concern.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

@@ -16,23 +16,23 @@ credit_url: ""
 
 Creator & Fan Boards is easier to use when the page has a clear job. This power-user tactics starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Monetizing honesty
 
-Supporter perks map beautifully to creator economies: custom usernames for mods, badges for top fans, hints for inner-circle vibes. The wall of supporters doubles as social proof for sponsors.
+Supporter contributions can help fund the project, but the available grant depends on the checkout and account. Eligible options can include a supporter badge, sender hints, or a custom username; the app does not automatically give perks to top fans or mods.
 
-Transparent monthly goals ("server costs, covered by you") convert better than vague tip jars. Show the math.
+The supporters wall lists qualifying Polar contributions. Treat a public wall as community information, not a promise of sponsor reach or a guaranteed conversion result.
 
 ## AMAs without the chaos
 
-Scheduled anonymous Q&A beats live chat for depth: questions arrive all week, you answer the best in one sitting, the recap post quotes highlights. No moderation firefighting mid-stream.
+Collect questions during the week, answer the useful ones in one sitting, and publish a recap elsewhere if you want. The app has no automatic content classifier or live-chat moderation; a hidden-word filter and the filtered tray are recipient-controlled tools.
 
-Word filters pre-screen the obvious junk; the tray catches the rest. You curate signal while the algorithm chases noise elsewhere.
+Word filters hold exact matches for review. They do not catch every piece of junk, so review the tray, report concerns, and use boundaries rather than calling the filter comprehensive.
 
 ## Boundaries at scale
 
-Fame, even micro-fame, attracts boundary-pushers. Strict mode during launches, blocks without ceremony, pause between seasons. Protect the creator and the community survives.
+Fame, even micro-fame, can attract boundary-pushers. Strict mode rejects matching sends, blocks are recipient-specific, and pause submissions closes the board to new messages until reopened. None of those controls guarantees that a community will be safe.
 
 You set the tone once, in the first prompt. Everything after is maintenance.
 

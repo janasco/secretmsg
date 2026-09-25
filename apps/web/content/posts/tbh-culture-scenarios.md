@@ -16,19 +16,19 @@ credit_url: ""
 
 TBH Culture, Explained is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards with a specific question in their sticker get roughly three times the replies of blank "send me something" links.
+> A specific question gives senders a clear starting point; compare it with a blank invitation on your own board.
 
-## The anatomy of a perfect TBH prompt
+## The anatomy of a useful TBH prompt
 
-Great prompts constrain just enough: a topic (energy, style, courage), a frame (TBH, confession, roast-kindly), and an example. "TBH about my red flags — be honest but kind" outperforms "send tbh" by an order of magnitude.
+A focused prompt gives senders a clear shape: a topic (energy, style, courage), a frame (TBH or confession), and a boundary. "TBH about my red flags — be honest but kind" tells someone what kind of message to write; "send tbh" leaves more of the interpretation to them.
 
-Rotate prompts weekly. Familiarity breeds scrolling past; novelty earns taps.
+Rotate prompts when one starts to feel repetitive. Fresh wording can help, but no wording guarantees more taps.
 
 ## Where "to be honest" came from
 
-TBH began as forum shorthand and grew into a social ritual: permission to say the nice thing out loud. The format survived every platform migration because the need never changed — people crave sincere, specific affirmation, and everyday life rarely schedules it.
+TBH began as forum shorthand and grew into a social ritual: permission to say the nice thing out loud. The format has moved across forum and social platforms as people look for sincere, specific affirmation.
 
-Modern TBH runs on story stickers: a link, a prompt, and thirty seconds of courage from the sender.
+Modern TBH runs on story stickers: a link, a prompt, and a little courage from the sender.
 
 ## Scene map
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own TBH Culture, Explained rather than copying the dramatic details.
 
@@ -54,6 +54,6 @@ Scenarios are useful when they teach a decision. If the story ends without a cle
 - [The Psychology Behind TBH Culture, Explained](/post/tbh-culture-psychology)
 - [Advanced TBH Culture, Explained: Level Up](/post/tbh-culture-advanced)
 
-Stay honest out there — and give someone else a safe place to be honest back.
+Stay honest out there — and give someone else room to be honest back without promising anonymity or safety you cannot guarantee.
 
 *Enjoyed this? Your inbox is one sticker away from its best week — post tonight and see.*

@@ -16,7 +16,7 @@ credit_url: ""
 
 Valentine's Week TBH Guide is easier to use when the page has a clear job. This worked scenarios starts with the decision in front of you, then follows the details that make the decision workable.
 
-> A paused board loses nothing: delivery simply waits until you reopen it.
+> Pause submissions rejects new messages until the board is active again; senders must try later.
 
 ## Reading the results
 
@@ -24,11 +24,11 @@ A 💘 with no words still counts — it is the lowest-risk signal ever designed
 
 Do not interrogate the inbox for identities. The mystery is doing romantic work; let it work.
 
-## The highest-stakes prompt of the year
+## A prompt with some romantic stakes
 
-February concentrates more romantic courage per capita than any other month. A well-timed crush sticker converts ambient tension into actual messages — confessions that would never survive daylight get sent at 11pm.
+February can make anonymous crush prompts feel especially timely for some people. A clear invitation may turn that mood into messages, but the app does not measure a seasonal increase in courage or guarantee more sends.
 
-Post early in the week; the brave need runway, and the shy need to watch others go first.
+Post when your audience is likely to see it; the brave may need runway, and the shy may want a little context first.
 
 ## Scene map
 
@@ -38,7 +38,7 @@ Name the audience, the timing, the prompt, and the response. Those four details 
 
 ## The turning point
 
-In the scenes that work, the turning point is usually one specific reply that makes a sender feel safe enough to return. The owner does not need a viral moment. They need a clear prompt, a timely response, and enough moderation to make the next message feel safe too.
+In a useful scene, one specific reply can give a sender a reason to return. The owner does not need a viral moment. A clear prompt, a timely response, and a boundary the owner can maintain matter more than a dramatic anecdote.
 
 After the week, record what changed: the prompt, the reply, the timing, or the boundary. Carry the mechanism into your own Valentine's Week TBH Guide rather than copying the dramatic details.
 

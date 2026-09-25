@@ -16,19 +16,19 @@ credit_url: ""
 
 Mastering the Android App is easier to use when the page has a clear job. This reader Q&A starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Boards that answer with double-blind replies keep senders coming back for weeks.
+> Double-blind replies preserve sender identity while giving the recipient a way to answer.
 
 ## Themes, widgets, shortcuts
 
-System theme by default, manual override in settings. Home-screen widget for glanceable counts (coming to your launcher soon), long-press shortcuts for send and Drop.
+System theme by default, with a manual override in settings. The current app has no home-screen integration or long-press launcher shortcuts for send and Drop; the Android app provides its in-app tabs and settings instead.
 
 Match the app icon to your wallpaper era. Aesthetics are motivation wearing a costume.
 
 ## The notification setup that works
 
-Keep message alerts and Drop reminders on; mute milestones if you are minimalist. Nightly streak nudges stay — they are the cheapest habit technology ever built.
+Keep message alerts and Daily Drop reminders on if they help; mute milestones if you are minimalist. The nightly streak nudge is a local reminder, not a guarantee that a habit will form.
 
-Inline replies are the superpower: answer from the shade without opening anything. Try it once and the old way feels broken.
+Inline replies are a useful shortcut: answer from the notification when the Android action is available, then decide whether to open the app for the full thread.
 
 ## Short answers
 
@@ -54,6 +54,6 @@ If a question remains, ask it with context. Include the board type, the moment y
 - [Advanced Mastering the Android App: Level Up](/post/android-app-mastery-advanced)
 - [5 Myths About Mastering the Android App](/post/android-app-mastery-myths)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Bookmark it, share it with a friend running a board, and put one idea to work this week.*

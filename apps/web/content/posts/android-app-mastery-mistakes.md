@@ -16,7 +16,7 @@ credit_url: ""
 
 Mastering the Android App is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Most senders decide in under ten seconds whether a link looks worth tapping.
+> A clear question can reduce uncertainty about what kind of message to send.
 
 ## Offline confidence
 
@@ -26,21 +26,21 @@ Parked verifications hand back to the composer prefilled — never lost text, ne
 
 ## Themes, widgets, shortcuts
 
-System theme by default, manual override in settings. Home-screen widget for glanceable counts (coming to your launcher soon), long-press shortcuts for send and Drop.
+System theme by default, with a manual override in settings. The current app has no home-screen integration or long-press launcher shortcuts for send and Drop; the Android app provides its in-app tabs and settings instead.
 
 Match the app icon to your wallpaper era. Aesthetics are motivation wearing a costume.
 
 ## Update without thinking
 
-Skippable prompts on cold starts behind, full notes on the download page, per-ABI builds so updates stay lean. Stay current; each version compounds the last.
+Skippable prompts appear on cold starts when the version feed says the app is behind. The download page offers the current APK, checksum, and other architectures; it does not promise full release notes. Stay current if an update matters to your device.
 
-Beta energy, stable manners: report weirdness through the usual channels and watch it vanish by next release.
+Use the app’s current support channel for a problem. There is no promise that a report will be fixed or disappear by the next release.
 
 ## The failure pattern
 
-Most failed attempts at Mastering the Android App are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at Mastering the Android App is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 
@@ -60,6 +60,6 @@ After two stable weeks, add one tactic. The recovery should end with a habit, no
 - [Mastering the Android App in Real Life](/post/android-app-mastery-scenarios)
 - [What Nobody Tells You About Mastering the Android App](/post/android-app-mastery-secrets)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

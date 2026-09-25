@@ -16,7 +16,7 @@ credit_url: ""
 
 Word Filters, Mastered is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> Senders who start from a vibe template reply twice as often as those facing a blank box.
+> Vibe templates can help someone start when a blank box feels difficult.
 
 ## Building a list that works
 
@@ -32,9 +32,9 @@ Nobody is told what tripped: not the sender, not the word, not the rule. That si
 
 ## Standard vs strict, honestly
 
-Standard holds matches for review: maximum safety with zero false-positive cost. Strict rejects at send time, which feels stronger but blinds you — you will never know what you refused. Most people should run standard and review the tray like mail.
+Standard quarantines a match and returns a generic success response to the sender. Strict returns a generic rejection and still quarantines the message for the recipient’s review. Both modes can produce false positives, and neither understands context or provides comprehensive abuse detection.
 
-Off exists for trusted circles and short experiments. Set a reminder to turn it back on.
+Off skips hidden-word checks entirely. Choose the mode that matches the board, review held messages regularly, and remember that filters are only one part of handling abuse.
 
 ## The mechanism
 
@@ -60,6 +60,6 @@ If the change helps kind people participate more but also increases harmful mess
 - [Word Filters, Mastered: Questions, Answered](/post/word-filters-mastery-faq)
 - [The Ultimate Guide to Word Filters, Mastered](/post/word-filters-mastery-ultimate-guide)
 
-Filter, pause, block, report — in that order. Your inbox, your rules, enforced by the server.
+Filter, pause, block, or report according to the situation. These are recipient controls, not comprehensive automated moderation.
 
 *Theory ends here. Open the app, run one play from this post, and check back tomorrow.*

@@ -16,13 +16,13 @@ credit_url: ""
 
 Creator & Fan Boards is easier to use when the page has a clear job. This behavioral science lens starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## AMAs without the chaos
 
-Scheduled anonymous Q&A beats live chat for depth: questions arrive all week, you answer the best in one sitting, the recap post quotes highlights. No moderation firefighting mid-stream.
+Collect questions during the week, answer the useful ones in one sitting, and publish a recap elsewhere if you want. The app has no automatic content classifier or live-chat moderation; a hidden-word filter and the filtered tray are recipient-controlled tools.
 
-Word filters pre-screen the obvious junk; the tray catches the rest. You curate signal while the algorithm chases noise elsewhere.
+Word filters hold exact matches for review. They do not catch every piece of junk, so review the tray, report concerns, and use boundaries rather than calling the filter comprehensive.
 
 ## The Q&A your comments wish they were
 
@@ -32,9 +32,9 @@ Link it in bio, mention it weekly. Discovery compounds; one mention converts lur
 
 ## Feedback that improves the work
 
-"TBH about my latest video" from anonymous viewers cuts deeper than any analytics dashboard. Retention graphs never say "the intro rambles" — a stranger will, kindly.
+"TBH about my latest video" from viewers can add context that an analytics dashboard does not capture. A message may point out something the creator missed, but it is not guaranteed to be useful or correct.
 
-Separate boards per series or season keep feedback organized. Archive between projects; reopen with a retrospective prompt.
+Separate boards per series or season can keep feedback organized. Save the keepers between projects; reopen the link with a retrospective prompt when you want another round.
 
 ## The mechanism
 

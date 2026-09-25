@@ -16,29 +16,29 @@ credit_url: ""
 
 The Offline Outbox, Explained is easier to use when the page has a clear job. This mistake autopsy with fixes starts with the decision in front of you, then follows the details that make the decision workable.
 
-> The first reply a sender receives determines whether they ever send a second message.
+> A useful first reply can make the next interaction easier, but no reply guarantees another message.
 
 ## The verification exception
 
-One honest constraint: bot-checks cannot mint offline. A queued send whose challenge expired parks as "needs verification" — tap it and the composer reopens prefilled, so one fresh tap finishes the job.
+Turnstile verification cannot be completed offline. A queued send that reaches a send-time verification failure is handed back to the composer with its text intact so you can complete a fresh challenge.
 
-This is stated upfront in the UI rather than discovered mid-tunnel. Constraints you can see are features; hidden ones are bugs.
+The visible sync row tells you when an action is queued, blocked, or needs attention. That status is about this device’s outbox, not a guarantee that every service is available offline.
 
 ## Reading while offline
 
-Your last inbox snapshot renders instantly with a staleness label ("Updated 2h ago"). It is real data, clearly dated — better than a spinner, more honest than pretending it is live.
+The last saved inbox and filtered-tray snapshot can render with a staleness label such as "Updated 2h ago". It is cached data, not a live view.
 
-Reconnect triggers an automatic refresh; snapshot diffing pulls exactly what arrived while you were gone.
+When connectivity returns, the app requests a fresh inbox and tray. It does not perform a separate scan-event or message-difference report for the QR sticker.
 
 ## What stays online-only
 
-Login, signup, and recovery verify server-side by design — identity must never be decided offline. Everything else degrades gracefully, and the sync row always tells you the truth about what is pending.
+Login, signup, recovery, and the send-time Turnstile check remain server-backed. The offline outbox and cached inbox cover the named actions above; they are not a general promise that every screen or provider works without a connection.
 
 ## The failure pattern
 
-Most failed attempts at The Offline Outbox, Explained are not caused by bad technology. They come from making the invitation vague, treating every message as urgent, and skipping the small maintenance that turns a first send into a habit.
+A common failure pattern at The Offline Outbox, Explained is an unclear invitation, treating every message as urgent, or skipping the small maintenance that turns a first send into a habit. Technology is only one part of the workflow.
 
-The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A board with fewer promises and a more reliable response beats an ambitious setup nobody maintains.
+The repair is usually subtraction: one clear prompt, one realistic reply window, one place to review messages. A smaller setup you can maintain is more useful than an ambitious setup nobody follows.
 
 ## Fix the order, not the symptom
 
@@ -58,6 +58,6 @@ After two stable weeks, add one tactic. The recovery should end with a habit, no
 - [Offline Outbox, Explained vs the Alternatives](/post/offline-mode-guide-comparison)
 - [Offline Outbox, Explained in Real Life](/post/offline-mode-guide-scenarios)
 
-Now go use it for real. And when you find the edge case we did not cover, tell us — anonymously, obviously.
+Now go use it for real. When you find an edge case this guide does not cover, note the setup and result so your next test is more precise.
 
 *If this helped, the highest compliment is a buzzing board. Go make some noise (politely, anonymously).*
