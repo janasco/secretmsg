@@ -54,6 +54,8 @@ The canonical listing copy is maintained separately under `store/listing/`:
 
 Review the files immediately before uploading them. Play limits are 30 characters for the title, 80 for the short description, and 4000 for the full description. Select the Social category and relevant tags.
 
+Release notes for every shipped version are in `store/RELEASE_NOTES.md`, each entry already trimmed to Play's 500-character limit. Paste the entry for the version being uploaded.
+
 ## App content declarations
 
 - **Privacy policy:** `https://secretmsg.net/p/privacy`. The policy source is `apps/web/src/pages/PrivacyPage.tsx`, and the route is recognized by the app at `apps/mobile-flutter/lib/main.dart:63-82` and tested at `apps/mobile-flutter/test/deep_link_router_test.dart:16-35`. Verify the public page before submission.
