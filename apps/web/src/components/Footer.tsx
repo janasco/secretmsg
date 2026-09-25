@@ -48,6 +48,7 @@ export const Footer: React.FC = () => {
             <li><Link to="/p/terms" className="hover:text-slate-300 transition-colors">Terms of Service</Link></li>
             <li><Link to="/p/cookies" className="hover:text-slate-300 transition-colors">Cookies Policy</Link></li>
             <li><Link to="/p/disclaimer" className="hover:text-slate-300 transition-colors">Disclaimer & Safety</Link></li>
+            <li><Link to="/delete-account" className="hover:text-slate-300 transition-colors">Delete Account</Link></li>
           </ul>
         </div>
 

@@ -133,7 +133,7 @@ function rfc822(iso) {
 
 const STATIC_ROUTES = [
   '/', '/about', '/faq', '/contact', '/download', '/supporters', '/demo',
-  '/dice', '/sticker-studio', '/login', '/blog',
+  '/dice', '/sticker-studio', '/login', '/delete-account', '/blog',
   '/p/safety', '/p/child-safety-policy', '/p/approach-to-safety',
   '/p/guide-to-online-safety', '/p/community-guidelines', '/p/safety-tools',
   '/p/resources', '/p/contact-us', '/p/terms', '/p/privacy', '/p/cookies', '/p/disclaimer',

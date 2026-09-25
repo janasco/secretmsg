@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../api/api_client.dart';
 import '../api/config.dart';
@@ -863,6 +864,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         label: 'Delete my account',
                         danger: true,
                         onTap: _deleteAccount,
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextButton(
+                          onPressed: () => launchUrl(
+                            Uri.parse('https://secretmsg.net/delete-account'),
+                            mode: LaunchMode.externalApplication,
+                          ),
+                          child: const Text('Delete account on the web'),
+                        ),
                       ),
                     ],
                   ),

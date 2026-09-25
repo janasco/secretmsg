@@ -277,13 +277,13 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'Yes, completely. Secret Msg does not collect or store any identifying information about message senders — no IP address, no device fingerprint, no login data. Your anonymous messages are truly private and untraceable.',
       'Go to secretmsg.net/login , enter your board\'s unique link (or slug) and the password you set when you created it. You will be redirected to your profile where you can view settings and manage your board.',
       'Log in to your account and go to your Profile page. Scroll to the Change Password section, enter your new password (minimum 6 characters), and click Change Password. Your new password takes effect immediately.',
-      'Log in and open your Profile page. Scroll to the Delete Account section at the bottom and click Delete My Account. This will permanently remove your board, all received anonymous messages, and your account data. This action cannot be undone.',
+      'Sign in with a full account session and open Settings, then use Danger Zone to delete your account. You can also request deletion without the app at secretmsg.net/delete-account. Signed-out visitors must log in to verify ownership. This action immediately and permanently removes your account data and cannot be undone.',
       'Open the secret message link shared by your friend, type your message in the text box, and tap Send. No account, no sign-up, and no personal information is required. Your identity is never revealed to the link owner.',
       'The most common cause is cookies being disabled. Open Chrome, go to Settings → Site settings → Cookies, and make sure they are turned on. Then reload your secret message link and try again.',
       'Yes! Add your anonymous message link to your Instagram bio or story sticker. Followers can tap the link and send you anonymous messages instantly — no app download needed. You can also export custom 9:16 story stickers from our Sticker Studio .',
       'Secret Msg is 100% free, takes under a minute to set up, and requires no sign-up for senders. You get a full profile to manage your board — change your name, update your password, view your link, and delete your account any time. It\'s one of the simplest ways to receive honest, anonymous messages from anyone, anywhere.',
-      'Yes. You are always in full control — delete individual messages from your board, change your password, or permanently delete your entire account from your Profile page at any time. We continuously improve safety features to keep SecretMessage secure for everyone. Read our full Safety Hub .',
-      'Delete the abusive messages directly from your board. If the problem persists, go to your Profile page and use Delete Account to permanently remove your board. Because the service is fully anonymous, individual senders cannot be traced. For serious threats, please contact your local authorities or review our Urgent Abuse Escalations .',
+      'Yes. You are always in full control — delete individual messages from your inbox, change your password, or permanently delete your entire account from Settings or the public page at secretmsg.net/delete-account. We continuously improve safety features to keep SecretMessage secure for everyone. Read our full Safety Hub .',
+      'Delete the abusive messages directly from your inbox. If the problem persists, use Delete Account in Settings or the public page at secretmsg.net/delete-account to permanently remove your account. Because the service is fully anonymous, individual senders cannot be traced. For serious threats, please contact your local authorities or review our Urgent Abuse Escalations .',
     ]),
     StaticSection('Ready to Receive Candid Anonymous Messages?', [
       'Join thousands of creators sharing candid TBH links on Instagram & TikTok today. Takes less than a minute.',
@@ -334,7 +334,7 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'We never sell, trade, or monetize user data. No Facebook or Google tracking pixels exist on our platform.',
     ]),
     StaticSection('1-Tap Total Erasure', [
-      'Account deletion permanently wipes out your email, handle, and every single message in the database instantly.',
+      'Account deletion permanently deletes your account, handle, email, and received messages. Review exactly what is removed and the retention limits at secretmsg.net/delete-account.',
     ]),
     StaticSection('01 The Basics: How SecretMsg Works', [
       'SecretMsg allows users to receive questions and messages through social media and direct links:',
@@ -358,7 +358,7 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
     StaticSection('07 Your Rights & Choices (GDPR & CCPA)', [
       'Regardless of your location, you have strong rights regarding your personal information:',
       'lock_reset Self-Service 1-Tap Account Wipeout',
-      'Open Settings → Delete Account at any time. When confirmed, our systems immediately and permanently wipe your account, custom handle, email address, and all received messages forever. This deletion is permanent and cannot be reversed.',
+      'Open Settings → Delete Account or use the public Delete Account page at secretmsg.net/delete-account without the app. When confirmed, our systems immediately and permanently delete your account, custom handle, email address, and all received messages. This deletion cannot be reversed.',
     ]),
     StaticSection('08 Do Not Track Signals', [
       'Because we do not track our users across third-party websites or serve targeted behavioral advertising, our privacy practices remain consistent whether or not your browser transmits a "Do Not Track" signal.',
@@ -425,7 +425,7 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
     ]),
     StaticSection('02 Instant Action & Data Erasure Controls', [
       'Start completely fresh anytime. With a single confirmation in Settings, permanently purge all stored messages from your inbox with zero residual server logs.',
-      'Complete self-service deletion. Deleting your account deletes your username handle, stored questions, replies, and settings forever with immediate SQL cascading erase.',
+      'Complete self-service deletion from Settings or the public Delete Account page at secretmsg.net/delete-account, which works without the app. Deletion is immediate and irreversible; review the page for the complete list of removed data and retention limits.',
     ]),
     StaticSection('03 Human Support & 24/7 Crisis Assistance', [
       'Technology works hand-in-hand with human care. If you ever experience harassment, threats, or emotional distress, we offer rapid response channels and direct integration with 24/7 crisis lifelines.',
@@ -487,7 +487,7 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'Our Service may contain links to third-party websites or services that are not owned or controlled by the Company (including Instagram, WhatsApp, TikTok, and X). We assume no responsibility for the content, privacy policies, or practices of any third-party websites. You acknowledge that the Company shall not be liable for any damage or loss caused by reliance on external services.',
     ]),
     StaticSection('11 Termination & 1-Tap Wipeout', [
-      'We may terminate or suspend Your Account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms. You may also terminate Your account at any time using the self-service Delete Account option in Settings, which permanently removes Your board, username, and stored messages.',
+      'We may terminate or suspend Your Account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms. You may also terminate Your account at any time using the self-service Delete Account option in Settings or the public page at secretmsg.net/delete-account, which permanently removes Your board, username, and stored messages.',
     ]),
     StaticSection('12 Limitation of Liability', [
       'Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of these Terms, and Your exclusive remedy for all of the foregoing, shall be limited to the amount actually paid by You through the Service, or 100 USD if You have not purchased anything through the Service.',

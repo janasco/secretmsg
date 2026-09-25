@@ -280,11 +280,13 @@ export class ApiClient {
   }
 
   static async authChangePin(currentPin: string, newPin: string): Promise<void> {
-    await this.post('/api/auth/change-pin', { current_pin: currentPin, new_pin: newPin }, true);
+    const data = await this.post('/api/auth/change-pin', { current_pin: currentPin, new_pin: newPin }, true);
+    if (data.token) localStorage.setItem('secretmsg_auth_token', data.token);
   }
 
   static async authRefreshBackupCodes(currentPin: string): Promise<string[]> {
     const data = await this.post('/api/auth/refresh-backup-codes', { current_pin: currentPin }, true);
+    if (data.token) localStorage.setItem('secretmsg_auth_token', data.token);
     return data.backupCodes || [];
   }
 

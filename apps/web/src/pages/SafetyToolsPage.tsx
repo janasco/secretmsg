@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ShieldCheck, Ban, EyeOff, Eye, Lock, Trash2, AlertTriangle, Fingerprint } from 'lucide-react';
 import { PublicPage } from '@/components/PublicPage';
 
@@ -228,7 +229,7 @@ export const SafetyToolsPage: React.FC = () => {
                 Permanent Account Wipeout
               </strong>
               <p className="text-slate-300 text-sm leading-relaxed">
-                Complete self-service deletion. Deleting your account deletes your username handle, stored questions, replies, and settings forever with immediate SQL cascading erase.
+                Complete self-service deletion from Settings or the public <Link to="/delete-account" className="text-indigo-300 underline">Delete Account</Link> page, which works without the app. Deletion is immediate and irreversible; review the page for the complete list of removed data and retention limits.
               </p>
             </div>
           </div>

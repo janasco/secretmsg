@@ -187,7 +187,7 @@ export const TermsPage: React.FC = () => {
             <span className="text-slate-500 font-mono text-xs">11</span> Termination &amp; 1-Tap Wipeout
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-            We may terminate or suspend Your Account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms. You may also terminate Your account at any time using the self-service <strong className="text-white">Delete Account</strong> option in Settings, which permanently removes Your board, username, and stored messages.
+            We may terminate or suspend Your Account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms. You may also terminate Your account at any time using the self-service <strong className="text-white">Delete Account</strong> option in Settings or the public <Link to="/delete-account" className="text-indigo-400 underline">Delete Account</Link> page, which permanently removes Your board, username, and stored messages.
           </p>
         </section>
 

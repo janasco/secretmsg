@@ -17,11 +17,11 @@ const faqItems: { question: string; answer: string }[] = [
   },
   {
     question: 'How do I change my Secret Msg password?',
-    answer: 'Log in to your account and go to your Profile page. Scroll to the Change Password section, enter your new password (minimum 6 characters), and click Change Password. Your new password takes effect immediately.',
+    answer: 'Log in to your account and open Settings. In the PIN & Backup Codes section, enter your current PIN and new PIN to change it. Your new PIN takes effect immediately.',
   },
   {
     question: 'How do I delete my Secret Msg account?',
-    answer: 'Log in and open your Profile page. Scroll to the Delete Account section at the bottom and click Delete My Account. This will permanently remove your board, all received anonymous messages, and your account data. This action cannot be undone.',
+    answer: 'Sign in with a full account session and open Settings, then use Danger Zone to delete your account. You can also request deletion without the app at secretmsg.net/delete-account. Signed-out visitors must log in to verify ownership before deletion. This action immediately and permanently removes your account data and cannot be undone.',
   },
   {
     question: 'How do I send an anonymous message to someone?',
@@ -41,11 +41,11 @@ const faqItems: { question: string; answer: string }[] = [
   },
   {
     question: 'Is Secret Msg safe to use?',
-    answer: 'Yes. You are always in full control — delete individual messages from your board, change your password, or permanently delete your entire account from your Profile page at any time. We continuously improve safety features to keep SecretMessage secure for everyone.',
+    answer: 'Yes. You are always in full control — delete individual messages from your inbox, change your password, or permanently delete your entire account from Settings or the public page at secretmsg.net/delete-account. We continuously improve safety features to keep SecretMessage secure for everyone.',
   },
   {
     question: 'What should I do if someone sends abusive anonymous messages?',
-    answer: 'Delete the abusive messages directly from your board. If the problem persists, go to your Profile page and use Delete Account to permanently remove your board. Because the service is fully anonymous, individual senders cannot be traced. For serious threats, please contact your local authorities.',
+    answer: 'Delete the abusive messages directly from your inbox. If the problem persists, use Delete Account in Settings or the public page at secretmsg.net/delete-account to permanently remove your account. Because the service is fully anonymous, individual senders cannot be traced. For serious threats, please contact your local authorities.',
   },
 ];
 
@@ -208,7 +208,7 @@ export const FaqPage: React.FC = () => {
           Manage Your Secret Msg Board
         </h2>
         <p className="text-xs text-slate-400">
-          Once your board is created, you have full control through your Profile page. Here is what you can do:
+          Once your board is created, you have full control through Settings. Here is what you can do:
         </p>
         <div className="space-y-3 text-xs">
           <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
@@ -225,11 +225,11 @@ export const FaqPage: React.FC = () => {
           </div>
           <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
             <strong className="text-white block font-bold mb-1">Change your password:</strong>
-            Set a new password from the Profile page under the Change Password section (minimum 6 characters). Your new password takes effect immediately.
+            Set a new password from the Settings page. Your new password takes effect immediately.
           </div>
           <div className="p-4 rounded-2xl bg-rose-950/20 border border-rose-500/30">
             <strong className="text-rose-300 block font-bold mb-1">Delete your account (Danger Zone):</strong>
-            <span className="text-slate-300">Permanently delete your board and all received messages from the Danger Zone in your profile. This action cannot be undone.</span>
+            <span className="text-slate-300">Permanently delete your board and all received messages from the Danger Zone in Settings. You can also use the public page at secretmsg.net/delete-account without the app. This action cannot be undone.</span>
           </div>
         </div>
       </div>

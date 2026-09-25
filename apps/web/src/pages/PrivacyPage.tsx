@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Eye, Ban, Minus, ShieldCheck } from 'lucide-react';
 import { PublicPage } from '@/components/PublicPage';
 
@@ -132,7 +133,7 @@ export const PrivacyPage: React.FC = () => {
               Self-Service 1-Tap Account Wipeout
             </p>
             <p className="text-slate-400">
-              Open <strong className="text-white">Settings &rarr; Delete Account</strong> at any time. When confirmed, our systems immediately and permanently wipe your account, custom handle, email address, and all received messages forever. This deletion is permanent and cannot be reversed.
+              Open <strong className="text-white">Settings &rarr; Delete Account</strong> or use our public <Link to="/delete-account" className="text-indigo-300 underline">Delete Account</Link> page. The public page works without the app and is reachable at <code className="text-slate-200 font-mono text-xs">secretmsg.net/delete-account</code>. When confirmed, our systems immediately and permanently delete your account, custom handle, email address, and all received messages. This deletion is permanent and cannot be reversed.
             </p>
           </div>
         </section>

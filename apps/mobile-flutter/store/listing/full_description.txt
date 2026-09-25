@@ -15,7 +15,7 @@ CONTROLS THAT ARE ACTUALLY YOURS
 • Filtered Words — build your own blocklist of words, phrases, or emoji. Anything matching is refused at the moment someone tries to send it.
 • Pause Submissions — freeze your link for an hour, six hours, a day, or indefinitely. Senders see a friendly notice instead of a form.
 • Report — flag anything abusive straight from the message.
-• Delete your account — wipe your profile and every message you have received, permanently, from Settings. No email required, no waiting.
+• Delete your account — wipe your profile and every message you have received, permanently, from Settings or at https://secretmsg.net/delete-account without the app. No email required, no waiting.
 
 PRIVACY BY DEFAULT
 

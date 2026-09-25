@@ -601,7 +601,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, setUser, onLog
           </div>
         ) : isReadOnly ? (
           <ViewOnlyNote>
-            Deleting your account is only possible from the app, on the device you signed in with.
+            This paired browser is view-only and cannot delete your account. Use the app on a device where you are signed in, or <Link to="/delete-account" className="text-indigo-300 underline">sign in with a full account session</Link> on the web.
           </ViewOnlyNote>
         ) : (
           <button
@@ -619,6 +619,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, setUser, onLog
         <Link to="/p/terms" className="hover:text-slate-400">Terms of Service</Link>
         <Link to="/p/privacy" className="hover:text-slate-400">Privacy Policy</Link>
         <Link to="/p/disclaimer" className="hover:text-slate-400">Personal Project Disclaimer</Link>
+        <Link to="/delete-account" className="hover:text-slate-400">Delete Account</Link>
       </div>
     </div>
   );

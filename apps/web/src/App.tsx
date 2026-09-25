@@ -33,6 +33,7 @@ const PrivacyPage = lazy(() => import('@//pages/PrivacyPage').then(m => ({ defau
 const TermsPage = lazy(() => import('@//pages/TermsPage').then(m => ({ default: m.TermsPage })));
 const CookiesPage = lazy(() => import('@//pages/CookiesPage').then(m => ({ default: m.CookiesPage })));
 const DisclaimerPage = lazy(() => import('@//pages/DisclaimerPage').then(m => ({ default: m.DisclaimerPage })));
+const DeleteAccountPage = lazy(() => import('@//pages/DeleteAccountPage').then(m => ({ default: m.DeleteAccountPage })));
 const BlogPage = lazy(() => import('@//pages/BlogPage').then(m => ({ default: m.BlogPage })));
 const PostPage = lazy(() => import('@//pages/PostPage').then(m => ({ default: m.PostPage })));
 
@@ -54,6 +55,7 @@ const ROUTE_TITLES: Array<[RegExp, string]> = [
   [/^\/download/, 'Download - SecretMsg'],
   [/^\/faq/, 'FAQ - SecretMsg'],
   [/^\/contact/, 'Contact - SecretMsg'],
+  [/^\/delete-account/, 'Delete Account - SecretMsg'],
   [/^\/about/, 'About - SecretMsg'],
   [/^\/blog/, 'Blog - SecretMsg'],
   [/^\/post\//, 'SecretMsg Blog'],
@@ -128,6 +130,7 @@ export const App: React.FC = () => {
           <Route path="/download" element={<Suspense fallback={<PublicSuspense />}><DownloadPage /></Suspense>} />
           <Route path="/faq" element={<Suspense fallback={<PublicSuspense />}><FaqPage /></Suspense>} />
           <Route path="/contact" element={<Suspense fallback={<PublicSuspense />}><ContactPage /></Suspense>} />
+          <Route path="/delete-account" element={<Suspense fallback={<PublicSuspense />}><DeleteAccountPage user={user} setUser={setUser} onLogout={handleLogout} /></Suspense>} />
           <Route path="/p/safety" element={<Suspense fallback={<PublicSuspense />}><SafetyPage /></Suspense>} />
           <Route path="/p/child-safety-policy" element={<Suspense fallback={<PublicSuspense />}><ChildSafetyPage /></Suspense>} />
           <Route path="/p/approach-to-safety" element={<Suspense fallback={<PublicSuspense />}><ApproachToSafetyPage /></Suspense>} />
