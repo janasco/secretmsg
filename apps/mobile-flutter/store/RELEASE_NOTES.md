@@ -172,3 +172,55 @@ First public Android release.
 5. Write for someone who reads it on their phone in the Play listing: what
    changed for them, not what changed in the code. Lead with the most valuable
    change, and put privacy and stability fixes ahead of cosmetic tweaks.
+6. Tag and publish the GitHub release (see below).
+
+## GitHub releases
+
+Every shipped version has a GitHub release in `janasco/secretmsg` carrying these
+notes as its body. **No binaries are attached** — the APKs and AAB are
+deliberately not published there, to keep the repository lean and to avoid
+storing multi-megabyte artifacts. The Android artifacts stay on
+`secretmsg.net/downloads` and in Play.
+
+To publish a new one, after the release is built and the version is committed:
+
+```bash
+cd /opt/secretmsg/secretmsg
+git tag -a v1.7.0 -m "v1.7.0"          # on the release commit
+git push origin main --follow-tags
+```
+
+Then create the release. There is no `gh` CLI on this host, so use the REST API
+with the token already present in `.env.production` as `GITHUB_TOKEN`:
+
+```bash
+set -a; source /opt/secretmsg/secretmsg-private/.env.production; set +a
+python3 - <<'PY'
+import json, os, urllib.request
+notes = open("apps/mobile-flutter/store/RELEASE_NOTES.md").read()
+body = notes.split("## v1.7.0")[1].split("---")[0].strip()
+payload = {"tag_name": "v1.7.0", "name": "v1.7.0", "body": body,
+           "draft": False, "prerelease": False}
+req = urllib.request.Request(
+    "https://api.github.com/repos/janasco/secretmsg/releases",
+    data=json.dumps(payload).encode(), method="POST",
+    headers={"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
+             "Accept": "application/vnd.github+json",
+             "Content-Type": "application/json"})
+print(json.loads(urllib.request.urlopen(req).read())["html_url"])
+PY
+```
+
+## No CI on GitHub
+
+This project does not use GitHub Actions, by decision, to avoid Actions
+billing. Neither repo contains a `.github/workflows` directory. The checks that
+used to run there — Flutter analyze and tests, web typecheck and tests, the blog
+link check, and the API test suite — run locally instead:
+
+```bash
+bash scripts/verify.sh
+```
+
+Do not re-add workflow files.
+
