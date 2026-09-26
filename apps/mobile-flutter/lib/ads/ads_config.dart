@@ -5,7 +5,16 @@ const String kAdsFlagsFetchedAtKey = 'ads_enabled_fetched_at';
 const Duration kAdsFlagsMaxAge = Duration(hours: 6);
 const bool kAdsEnabledWithoutServerFlag = false;
 const int kMaxStreakFreezes = 1;
-const double kBannerHeight = 50;
+/// Upper bound on the ad slot height, in logical pixels.
+///
+/// The anchored adaptive size Google returns can reach 150dp or 20% of the
+/// screen, whichever is smaller. That is too much to hand to a messaging
+/// surface that also holds a compose field, so the requested height is capped
+/// here. Width is left at screen width so eligible demand is not restricted.
+const double kMaxBannerHeight = 60;
+
+/// [kMaxBannerHeight] as the integer AdSize requires.
+const int kMaxBannerHeightInt = 60;
 
 // Ad identifiers are build-time inputs, never committed. The Gradle build
 // refuses to produce a release artifact unless these are supplied as a complete

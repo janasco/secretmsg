@@ -64,7 +64,7 @@ class FakeAdsPlatform implements AdsPlatform {
 
   @override
   Widget? buildBanner(BuildContext context) =>
-      const SizedBox(height: kBannerHeight, child: Text('ad'));
+      const SizedBox(height: kMaxBannerHeight, child: Text('ad'));
 
   @override
   Future<void> release() async {
@@ -610,24 +610,24 @@ void main() {
     // is the classic setup mistake, so each slot is checked against its own form.
     test('app ids use the tilde form', () {
       expect(
-        isRealAdMobAppId('ca-app-pub-1165824705893364~7180472622'),
+        isRealAdMobAppId('ca-app-pub-3940256099942544~3347511713'),
         isTrue,
       );
       // An ad unit id is not a valid app id.
       expect(
-        isRealAdMobAppId('ca-app-pub-1165824705893364/7180472622'),
+        isRealAdMobAppId('ca-app-pub-3940256099942544/7180472622'),
         isFalse,
       );
     });
 
     test('ad unit ids use the slash form', () {
       expect(
-        isRealAdUnitId('ca-app-pub-1165824705893364/6300978111'),
+        isRealAdUnitId('ca-app-pub-3940256099942544/6300978111'),
         isTrue,
       );
       // An app id is not a valid ad unit id.
       expect(
-        isRealAdUnitId('ca-app-pub-1165824705893364~7180472622'),
+        isRealAdUnitId('ca-app-pub-3940256099942544~3347511713'),
         isFalse,
       );
     });
@@ -644,10 +644,10 @@ void main() {
       for (final bad in [
         '',
         'ca-app-pub-',
-        '1165824705893364',
-        'ca-app-pub-1165824705893364',
-        'ca-app-pub-1165824705893364~',
-        'ca-app-pub-1165824705893364/',
+        '3940256099942544',
+        'ca-app-pub-3940256099942544',
+        'ca-app-pub-3940256099942544~',
+        'ca-app-pub-3940256099942544/',
       ]) {
         expect(isRealAdMobAppId(bad), isFalse, reason: 'app: $bad');
         expect(isRealAdUnitId(bad), isFalse, reason: 'unit: $bad');
@@ -656,12 +656,12 @@ void main() {
 
     test('the publisher id is recovered from either form', () {
       expect(
-        adMobPublisherId('ca-app-pub-1165824705893364~7180472622'),
-        '1165824705893364',
+        adMobPublisherId('ca-app-pub-3940256099942544~3347511713'),
+        '3940256099942544',
       );
       expect(
-        adMobPublisherId('ca-app-pub-1165824705893364/6300978111'),
-        '1165824705893364',
+        adMobPublisherId('ca-app-pub-3940256099942544/6300978111'),
+        '3940256099942544',
       );
       expect(adMobPublisherId('ca-app-pub-0000000000000000~1'), isNull);
       expect(adMobPublisherId('nonsense'), isNull);

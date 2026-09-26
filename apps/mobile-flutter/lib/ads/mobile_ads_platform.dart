@@ -1,6 +1,7 @@
 library;
 
 import 'dart:async';
+import 'dart:ui' show PlatformDispatcher;
 
 import 'package:flutter/widgets.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -155,9 +156,11 @@ class MobileAdsPlatform implements AdsPlatform {
   Future<bool> loadBanner(AdsRequest request) async {
     clearBanner();
     final loaded = Completer<bool>();
+    final size = await _bannerSize();
+    if (size == null) return false;
     final banner = BannerAd(
       adUnitId: request.adUnitId,
-      size: AdSize.banner,
+      size: size,
       request: AdRequest(
         keywords: const <String>[],
         nonPersonalizedAds: request.policy.nonPersonalised,
@@ -183,6 +186,43 @@ class MobileAdsPlatform implements AdsPlatform {
     );
   }
 
+  /// The slot to request: an anchored adaptive banner clamped to
+  /// [kMaxBannerHeight].
+  ///
+  /// The banner is pinned above the navigation bar, which is the anchored case
+  /// adaptive banners are designed for. Google's guidance is that adaptive
+  /// supersedes fixed 320x50 and earns materially more per impression, so a
+  /// fixed size would leave most of that on the table.
+  ///
+  /// The unclamped anchored height reaches 150dp or 20% of the screen, whichever
+  /// is smaller. That is too much to hand to a messaging surface which also
+  /// holds a compose field, so the height is capped while the width stays at
+  /// screen width, which keeps eligible demand unrestricted and the layout
+  /// stable.
+  Future<AdSize?> _bannerSize() async {
+    int width;
+    try {
+      final view = PlatformDispatcher.instance.views.first;
+      width = (view.physicalSize.width / view.devicePixelRatio).floor();
+    } catch (_) {
+      return null;
+    }
+    if (width <= 0) return null;
+
+    // Auto-detects orientation, so no BuildContext is needed and a rotation
+    // reloads the slot for the new width rather than keeping a stale one.
+    final AnchoredAdaptiveBannerAdSize? adaptive;
+    try {
+      adaptive = await AdSize.getLargeAnchoredAdaptiveBannerAdSize(width);
+    } catch (_) {
+      return null;
+    }
+    if (adaptive == null) return null;
+    if (adaptive.width <= 0 || adaptive.height <= 0) return null;
+    if (adaptive.height <= kMaxBannerHeightInt) return adaptive;
+    return AdSize(width: adaptive.width, height: kMaxBannerHeightInt);
+  }
+
   @override
   void clearBanner() {
     final banner = _banner;
@@ -195,8 +235,12 @@ class MobileAdsPlatform implements AdsPlatform {
   Widget? buildBanner(BuildContext context) {
     final banner = _banner;
     if (banner == null) return null;
+    // Size from the loaded creative rather than a hardcoded height, so the slot
+    // matches whatever was actually served. A 320x50 creative in a 60dp slot is
+    // centred with padding; a taller one fills it.
+    final height = banner.size.height.toDouble();
     return SizedBox(
-      height: kBannerHeight,
+      height: height > 0 ? height : kMaxBannerHeight,
       width: double.infinity,
       child: Center(child: AdWidget(ad: banner)),
     );
