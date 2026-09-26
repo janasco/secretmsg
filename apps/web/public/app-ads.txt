@@ -1,0 +1,20 @@
+# app-ads.txt — authorized sellers for the SecretMsg mobile app
+#
+# Served from the domain root, alongside ads.txt. Where ads.txt authorizes a
+# seller for the domain, app-ads.txt authorizes one for a specific app
+# identified by its store listing. Mobile ad SDKs use it to verify the seller
+# before serving a mobile ad.
+#
+# The pub- ID below must be the AdMob publisher ID from
+# AdMob > Account settings, and must match the pub- ID in ads.txt. Replace it,
+# then redeploy the frontend.
+#   npm run build && scripts/deploy-frontend.sh
+#
+# Keep the store identifiers below in sync with the shipped package. AdMob uses
+# them to match this file to the app it is serving ads in.
+#
+# This file is public by design. It must never contain secrets, and it must not
+# live in .env: mobile ad SDKs fetch it unauthenticated.
+
+# Google Play Store ID: net.secretmsg.android_app
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

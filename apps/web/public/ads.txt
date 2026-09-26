@@ -1,0 +1,17 @@
+# ads.txt — authorized sellers for inventory served on secretmsg.net
+#
+# Served from the domain root. Ad networks and the Google crawler fetch this
+# file to verify that the seller line is authorized to advertise here. An
+# unrecognised seller ID is one of the most common causes of zero ad fill.
+#
+# The pub- ID below must be the AdMob publisher ID from
+# AdMob > Account settings. Replace it, then redeploy the frontend.
+#   npm run build && scripts/deploy-frontend.sh
+#
+# The value after DIRECT is Google's public AdMob certification ID and is
+# correct as-is.
+#
+# This file is public by design. It must never contain secrets, and it must not
+# live in .env: ad networks fetch it unauthenticated over plain HTTPS.
+
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
