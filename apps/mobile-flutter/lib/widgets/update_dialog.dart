@@ -5,8 +5,16 @@ import '../ritual/update_check.dart';
 import '../theme.dart';
 
 /// Skippable "new version available" dialog. Update opens the download page
-/// in the browser; Later just closes (it shows again on next cold start).
+/// for this build's own distribution track in the browser; Later just closes
+/// (it shows again on next cold start).
+///
+/// Refuses to open anything when the feed named no destination for this
+/// track, which callers are expected to have filtered out already via
+/// [UpdateInfo.hasDestination]; the check is repeated here so the dialog can
+/// never be the thing that sends a user to the wrong track.
 Future<void> showUpdateDialog(BuildContext context, UpdateInfo info) async {
+  final url = info.url;
+  if (url == null || url.isEmpty) return;
   await showDialog<void>(
     context: context,
     barrierDismissible: true,
@@ -39,7 +47,7 @@ Future<void> showUpdateDialog(BuildContext context, UpdateInfo info) async {
           ),
           onPressed: () async {
             Navigator.of(ctx).pop();
-            final uri = Uri.tryParse(info.url);
+            final uri = Uri.tryParse(url);
             if (uri != null) {
               try {
                 await launchUrl(uri, mode: LaunchMode.externalApplication);

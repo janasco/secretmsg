@@ -207,7 +207,10 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
     _updateChecked = true;
     try {
       final info = await checkForUpdate();
-      if (info == null || !info.behind) return;
+      // hasDestination: a Play build gets no prompt at all while the feed names
+      // no Play listing, rather than a button that would hand it a sideload
+      // APK its device cannot install over the Play copy.
+      if (info == null || !info.behind || !info.hasDestination) return;
       final ctx = _navKey.currentContext;
       if (ctx == null || !ctx.mounted || !mounted) return;
       await showUpdateDialog(ctx, info);

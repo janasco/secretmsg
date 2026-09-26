@@ -44,6 +44,15 @@ upload key exactly as it always did, so the Play path is unaffected. Gradle
 refuses `-PsideloadSigning=true` when `android/sideload-key.properties` is
 missing rather than quietly falling back to the debug key.
 
+That one flag also tells the app which track it is on, by appending
+`--dart-define=SECRETMSG_DISTRIBUTION_TRACK=sideload` (or `=play` without it) to
+the `dart-defines` the Flutter CLI already passes. A build that knows its own
+track can ask the update feed for that track's download page instead of assuming
+one page serves everybody. Deliberately derived rather than declared separately:
+a second flag is a second thing to forget, and a track that disagrees with the
+signing key is the failure that produces an uninstall nobody can undo. See "Two
+tracks that never merge" below for the default and the reasoning.
+
 Both key files are gitignored, as are the keystores themselves. Passwords live
 in `secretmsg-private/.env.production` and are never echoed or passed on a
 command line.
@@ -118,19 +127,59 @@ needs a stricter regime than the upload key:
 sideload APKs: Play is not available in every market, some users will not have a
 Google account, and the sideload build is the distribution channel the website
 already owns. Treat the two as parallel tracks rather than a migration, and expect
-that a user who silently migrates is a user who has to reinstall. Two things then
-need a deliberate decision rather than a default:
+that a user who silently migrates is a user who has to reinstall. One of the two
+decisions that were pending here is now built; the other is not.
 
-- **The update feed stops being track-agnostic.** `GET /api/app-version` in the
-  private repo (`api/src/index.ts`) returns one `url` for every client, currently
-  `https://secretmsg.net/download`. That is correct only while Play is not
-  publicly distributed; a Play-installed user who is behind will be sent to a page
-  offering an APK their device cannot install over the Play copy. Resolving it
-  needs per-track URLs plus a client that knows which track it is on — a product
-  decision, not a build fix.
+- **The update feed is track-aware (done).** The client knows which track it is
+  on at compile time, and asks the feed for that track's URL only.
+  `android/app/build.gradle` derives it from the flag that already selects the
+  signing key: whenever `-PsideloadSigning=true` is set it appends
+  `--dart-define=SECRETMSG_DISTRIBUTION_TRACK=sideload` to the `dart-defines`
+  the Flutter CLI already passes, and the same block rewrites the value to
+  `play` when the flag is absent, so the key and the track are the same switch
+  and cannot drift. `lib/distribution/track.dart` reads it; there is no second
+  build flag to keep in step.
+
+  **The compile-time default is the Play track**, and that is deliberate.
+  `-PsideloadSigning` is an opt-in, so an absent flag already means "this is the
+  Play upload path" at the signing layer; the track default says the same thing
+  about the same artifact rather than contradicting it. The failure modes are
+  also lopsided. A Play build that mislabels itself as sideload asks for the
+  sideload page and hands a Play user an APK their device refuses to install
+  over the Play copy — a silent misconfiguration that surfaces as a failed
+  install on a stranger's phone. A Play build that correctly asks for `url_play`
+  before one exists simply gets no update prompt: degraded, harmless, fixed by
+  editing one line of the feed. So an app that cannot prove it is a sideload
+  build behaves as a Play build.
+
+  `GET /api/app-version` in the private repo (`api/src/index.ts`) now carries
+  `url_sideload` alongside the legacy `url`, which is kept forever because every
+  client released before this change reads only that key and it must keep
+  resolving to the download page. The selection itself is
+  `updateUrlForTrack` in `lib/ritual/update_check.dart`, and its fallback rules
+  are deliberately asymmetric:
+
+  - Sideload prefers `url_sideload`, falls back to the legacy `url`, then to a
+    hard-coded `https://secretmsg.net/download`. That fallback is only safe
+    because `url` *is* the sideload page; if `url` is ever repointed, the
+    fallback must be deleted rather than kept "for compatibility".
+  - Play never falls back to `url`, because `url` is the sideload page and
+    falling back to it is the exact bug these fields exist to remove. It takes
+    `url_play` or nothing, and "nothing" means the client stays silent.
+
+  **Still open:** `url_play` is deliberately **absent** from the feed rather than
+  stubbed, because Play is not published and there is no listing URL to name. An
+  absent key is an unambiguous "no destination we can honour"; a placeholder
+  would be a broken link that something would eventually open. Add `url_play`
+  in the same change that makes the listing public — nothing needs rebuilding
+  and no new client ships, the existing Play build picks it up on its next feed
+  poll. Until then no Play-track user is redirected anywhere, because a Play
+  build that finds no `url_play` shows no update prompt. There is still no
+  decision recorded here about *which* Play listing URL to publish: that is the
+  operator's to make at publication time.
 - **Which track the download page leads with.** Keep both (recommended) rather
   than replacing the APK, so existing download links and the SHA-256 in
-  `apps/web/src/lib/appVersion.ts` keep resolving.
+  `apps/web/src/lib/appVersion.ts` keep resolving. Still open.
 
 Retiring the sideload track, if it ever comes to that, means *stopping publishing
 APKs* and saying so on the page — never re-signing or re-issuing an already

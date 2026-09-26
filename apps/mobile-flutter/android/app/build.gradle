@@ -45,6 +45,49 @@ def sideloadSigningRequested =
     (project.findProperty("sideloadSigning") ?: System.getenv("SIDELOAD_SIGNING") ?: "false")
         .toString().toBoolean()
 
+// Dart cannot read a Gradle property, and the app has to know which of the two
+// tracks it was built for: the tracks are signed by different keys and so can
+// never update one another, which means an update prompt must never point a
+// Play build at a sideload APK. Rather than add a second switch that could
+// disagree with the first, the same boolean that reroutes the signing key also
+// writes the track into the Dart compile-time constants. One flag, two
+// consequences that cannot drift apart.
+//
+// Absent the flag the track is "play", which is also what the signing default
+// above means: the artifact is the Play upload path. See
+// lib/distribution/track.dart for why that default is the safe one.
+def distributionTrack = sideloadSigningRequested ? "sideload" : "play"
+
+// The Flutter CLI hands --dart-define values to Gradle as -Pdart-defines, a
+// comma-separated list of individually base64-encoded KEY=VALUE strings
+// (encodeDartDefines in flutter_tools/lib/src/build_info.dart). The Flutter
+// Gradle plugin reads that property inside afterEvaluate, i.e. after this file
+// has been evaluated, so writing it here merges with whatever the CLI passed
+// instead of dropping the AdMob defines.
+//
+// This is authoritative: a hand-rolled --dart-define=SECRETMSG_DISTRIBUTION_TRACK
+// passed without the Gradle flag is dropped and rewritten, because a track that
+// disagrees with the signing key is the exact failure this exists to prevent.
+def encodeDartDefine = { String entry -> entry.bytes.encodeBase64().toString() }
+def isTrackDartDefine = { String encoded ->
+    try {
+        return new String(encoded.decodeBase64(), "UTF-8").startsWith("SECRETMSG_DISTRIBUTION_TRACK=")
+    } catch (ignored) {
+        return false
+    }
+}
+def incomingDartDefines = ((project.findProperty("dart-defines") ?: "").toString().split(","))
+        .findAll { it }
+        .findAll { !isTrackDartDefine(it) }
+def trackDartDefine = encodeDartDefine("SECRETMSG_DISTRIBUTION_TRACK=${distributionTrack}")
+if (sideloadSigningRequested || !incomingDartDefines.isEmpty()) {
+    project.ext.set("dart-defines", (incomingDartDefines + [trackDartDefine]).join(","))
+} else {
+    // Absent the flag and with no other defines there is nothing to encode, and
+    // Dart's own absent-define default already resolves to "play".
+    logger.info("No -PsideloadSigning flag: building the Play track (SECRETMSG_DISTRIBUTION_TRACK is Dart's default).")
+}
+
 // AdMob identifiers are supplied at build time, never committed. Each may be
 // set as a Gradle property (-PadmobAppId=...) or an environment variable.
 // They must be provided as a complete set: a mismatched set is a build error

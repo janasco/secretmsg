@@ -9,7 +9,13 @@
 #
 # The distinction is carried by exactly one flag, -PsideloadSigning=true. Without
 # it the release build keeps signing with the Play upload key exactly as before,
-# so the upload path is untouched.
+# so the upload path is untouched. The same flag has a second consequence that is
+# deliberately not repeated here: android/app/build.gradle appends
+# --dart-define=SECRETMSG_DISTRIBUTION_TRACK=sideload to the dart-defines below
+# whenever the flag is set, so the app knows at runtime which track's download
+# page the update feed should point it at. Do not pass that define by hand — a
+# track that disagrees with the signing key is precisely the failure it exists
+# to prevent, and Gradle overwrites a hand-rolled value.
 #
 #   scripts/build_release.sh aab   -> Play upload artifact (upload key)
 #   scripts/build_sideload.sh      -> per-ABI public APKs (sideload key)

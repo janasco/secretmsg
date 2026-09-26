@@ -471,6 +471,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
         showErrorSnack(context, 'Could not reach the update server. Try again later.');
       } else if (!info.behind) {
         showSuccessSnack(context, 'You are on the latest version (v${info.current}).');
+      } else if (!info.hasDestination) {
+        // Behind, but the feed names no destination for this build's track —
+        // the Play branch, while /api/app-version carries no url_play. The
+        // store is the delivery channel for that track, so say so instead of
+        // opening a link that does not exist yet.
+        showSuccessSnack(context, 'v${info.latest} is out. Update from Google Play.');
       } else {
         await showUpdateDialog(context, info);
       }
