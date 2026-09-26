@@ -592,4 +592,39 @@ void main() {
       expect(tester.takeException(), isNull);
     });
   });
+
+  group('AdMob build-time identifiers', () {
+    // This suite runs without --dart-define, which is exactly the state a
+    // release artifact must never be in. It drives the fake platform rather
+    // than MobileAdsPlatform, so the default-valued constants are what a
+    // misconfigured build would see.
+    test('an unconfigured build reports missing identifiers', () {
+      expect(kAdMobAppId, isEmpty);
+      expect(kBannerAdUnitId, isEmpty);
+      expect(kRewardedAdUnitId, isEmpty);
+      expect(adsIdsConfigured, isFalse);
+    });
+
+    test('placeholder ids do not count as configured', () {
+      expect(isRealAdId('ca-app-pub-0000000000000000'), isFalse);
+      expect(
+        isRealAdId('ca-app-pub-0000000000000000/0000000000000000'),
+        isFalse,
+      );
+    });
+
+    test('real-looking ids are accepted', () {
+      expect(isRealAdId('ca-app-pub-3940256099942544'), isTrue);
+      expect(
+        isRealAdId('ca-app-pub-3940256099942544/6300978111'),
+        isTrue,
+      );
+    });
+
+    test('malformed ids are rejected', () {
+      expect(isRealAdId(''), isFalse);
+      expect(isRealAdId('3940256099942544'), isFalse);
+      expect(isRealAdId('ca-app-pub-'), isFalse);
+    });
+  });
 }

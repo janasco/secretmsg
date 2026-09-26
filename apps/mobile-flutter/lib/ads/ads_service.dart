@@ -145,7 +145,7 @@ class AdsService extends ChangeNotifier {
     var loaded = false;
     try {
       loaded = await _platform.loadBanner(
-        AdsRequest(adUnitId: kBannerAdUnitIdPlaceholder, policy: policy),
+        AdsRequest(adUnitId: kBannerAdUnitId, policy: policy),
       );
     } catch (_) {
       loaded = false;
@@ -170,7 +170,7 @@ class AdsService extends ChangeNotifier {
     _rewardInFlight = true;
     try {
       return await _platform.showRewarded(
-        AdsRequest(adUnitId: kRewardedAdUnitIdPlaceholder, policy: policy),
+        AdsRequest(adUnitId: kRewardedAdUnitId, policy: policy),
       );
     } catch (_) {
       return RewardedOutcome.failed;

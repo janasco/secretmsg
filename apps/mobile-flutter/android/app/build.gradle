@@ -20,6 +20,23 @@ if (keystorePropertiesFile.exists()) {
 }
 def hasReleaseKeystore = keystoreProperties.containsKey("storeFile")
 
+// AdMob identifiers are supplied at build time, never committed. Each may be
+// set as a Gradle property (-PadmobAppId=...) or an environment variable.
+// They must be provided as a complete set: a mismatched set is a build error
+// rather than a runtime surprise, because the AdMob app id and the ad unit ids
+// must belong to the same AdMob app.
+def admobPlaceholder = "ca-app-pub-0000000000000000"
+def admobAppId = (project.findProperty("admobAppId") ?: System.getenv("ADMOB_APP_ID") ?: admobPlaceholder)
+def admobBannerId = (project.findProperty("admobBannerAdUnitId") ?: System.getenv("ADMOB_BANNER_AD_UNIT_ID") ?: "")
+def admobRewardedId = (project.findProperty("admobRewardedAdUnitId") ?: System.getenv("ADMOB_REWARDED_AD_UNIT_ID") ?: "")
+
+def isRealAdId = { String value ->
+    value?.startsWith("ca-app-pub-") && !value.contains("0000000000000000")
+}
+
+def admobIdsSupplied = isRealAdId(admobAppId) || admobBannerId || admobRewardedId
+def admobIdsComplete = isRealAdId(admobAppId) && isRealAdId(admobBannerId) && isRealAdId(admobRewardedId)
+
 android {
     namespace = "net.secretmsg.android_app"
     compileSdk = flutter.compileSdkVersion
@@ -44,6 +61,10 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        // Injected into AndroidManifest.xml as ${admobAppId}. Defaults to the
+        // placeholder so debug/local builds always work; release builds assert
+        // on the real value below.
+        manifestPlaceholders += [admobAppId: admobAppId]
     }
 
     signingConfigs {
@@ -61,6 +82,35 @@ android {
         release {
             signingConfig = hasReleaseKeystore ? signingConfigs.release : signingConfigs.debug
         }
+    }
+}
+
+// A release artifact carrying the placeholder AdMob app id cannot serve ads and
+// would be rejected or show empty slots in production, so refuse to build it
+// instead of shipping something that silently does nothing. Debug builds stay
+// permissive so local development needs no AdMob account.
+gradle.taskGraph.whenReady { graph ->
+    def releaseRequested = graph.allTasks.any { t ->
+        t.project == project && t.name ==~ /(?i).*release.*/
+    }
+    if (!releaseRequested) return
+    if (admobIdsSupplied && !admobIdsComplete) {
+        throw new GradleException(
+            "Incomplete AdMob configuration. Provide all three as Gradle properties " +
+            "or environment variables, and no others:\n" +
+            "  -PadmobAppId=ca-app-pub-XXXXXXXXXXXXXXXX\n" +
+            "  -PadmobBannerAdUnitId=ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY\n" +
+            "  -PadmobRewardedAdUnitId=ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY\n" +
+            "(env: ADMOB_APP_ID, ADMOB_BANNER_AD_UNIT_ID, ADMOB_REWARDED_AD_UNIT_ID)\n" +
+            "Supplied -> app=${admobAppId} banner=${admobBannerId} rewarded=${admobRewardedId}"
+        )
+    }
+    if (!admobIdsComplete) {
+        throw new GradleException(
+            "Refusing to build a release artifact with the placeholder AdMob app id " +
+            "(${admobPlaceholder}). An upload-ready build must carry the real app id " +
+            "and ad unit ids from the operator's AdMob console."
+        )
     }
 }
 

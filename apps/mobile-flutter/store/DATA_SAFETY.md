@@ -81,14 +81,20 @@ not claim otherwise in its UI or in the Play listing.
   `lib/ads/ads_config.dart`) mounted inside the shell's `bottomNavigationBar`
   column, directly **above** the custom notch navigation bar
   (`lib/screens/app_shell.dart:105`).
-- **AdMob application ID and ad unit IDs are placeholders.** The manifest
-  declares `com.google.android.gms.ads.APPLICATION_ID` with the all-zero value
-  `ca-app-pub-0000000000000000`, and `lib/ads/ads_config.dart:3-7` holds
-  matching all-zero placeholders for the banner and rewarded ad unit IDs. The
-  source comment is explicit that an all-zero id makes the SDK report an
-  invalid-app-id error and no ad ever fills. **The real IDs must be substituted
-  before an ad-supported submission, and they are operator secrets-of-the-
-  console facts, not code facts.**
+- **AdMob identifiers are build-time inputs and no value is committed.** The
+  manifest declares `com.google.android.gms.ads.APPLICATION_ID` as the
+  `${admobAppId}` manifest placeholder, substituted by
+  `android/app/build.gradle` from `-PadmobAppId` / `ADMOB_APP_ID`; the banner and
+  rewarded ad unit ids reach Dart as `--dart-define` values read at
+  `lib/ads/ads_config.dart:14-16`. The all-zero `ca-app-pub-0000000000000000`
+  value is only a *fallback* used for debug and local builds. A release build
+  that would carry a placeholder is **refused by Gradle** before any artifact is
+  produced, and `MobileAdsPlatform.initialize` throws if the identifiers are
+  still unset at runtime, so the SDK can never initialize with unusable ids.
+  `scripts/build_release.sh` is the canonical invocation and feeds both layers
+  from one set of environment variables. **The real IDs must be supplied at build
+  time for an ad-supported submission, and they are operator facts of the
+  console, not code facts.**
 - **The ads kill-switch is fail-closed and currently unsatisfied.** Ads are
   gated on a public server flag read from `/api/config/ads`
   (`lib/api/config.dart:12`), cached for six hours in `SharedPreferences` under
@@ -591,20 +597,21 @@ Recorded posture:
 
 ## Known gaps and honest disclosures
 
-1. **The ad SDK and ad surfaces are in the client, but every AdMob identifier
-   is a placeholder and ads are currently switched off.**
+1. **The ad SDK and ad surfaces are in the client, but no real AdMob identifier
+   has been supplied yet and ads are currently switched off.**
    `pubspec.yaml:53` declares `google_mobile_ads: ^9.1.0`, `pubspec.lock`
    resolves `9.1.0`, and the client has a complete ad layer under `lib/ads/`
    (`ads_config.dart`, `ads_flags.dart`, `ads_platform.dart`,
    `mobile_ads_platform.dart`, `ads_service.dart`, `ads_banner.dart`) plus the
-   banner mounted at `lib/screens/app_shell.dart:105`. But the manifest
-   application id and both ad unit ids are all-zero placeholders, and the
-   `/api/config/ads` kill-switch endpoint does not exist in the Worker, so
-   `AdsFlagResolver` resolves to ads-off. **The declarations in this annex
-   describe the agreed and partly implemented target state. They become
-   accurate for a Play submission only once the real AdMob ids are substituted,
-   the kill-switch endpoint is deployed, and the merged manifest of the uploaded
-   AAB is re-inspected.** Re-derive this annex against that AAB.
+   banner mounted at `lib/screens/app_shell.dart:105`. No AdMob identifier is
+   committed; all three are build-time inputs, and the build refuses to produce
+   a release artifact without them. As of this re-derivation they have not been
+   supplied, so no ad-supported artifact exists, and the `ADS_ENABLED="false"`
+   kill-switch keeps ad code paths inert in the meantime. **The declarations in
+   this annex describe the agreed and partly implemented target state. They
+   become accurate for a Play submission only once the real AdMob ids are
+   supplied at build time, the kill-switch is turned on, and the merged manifest
+   of the uploaded AAB is re-inspected.** Re-derive this annex against that AAB.
 2. **The AdMob account configuration is not verifiable here.** The real
    application id and ad unit ids, `ads.txt` authorization, mediation partners,
    EEA/UK consent message, US state opt-out configuration, console ad content

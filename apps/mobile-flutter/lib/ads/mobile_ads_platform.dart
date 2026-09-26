@@ -13,6 +13,12 @@ class MobileAdsPlatform implements AdsPlatform {
 
   @override
   Future<void> initialize() async {
+    // The Gradle release guard already makes this unreachable in a shipped
+    // artifact; keep the runtime check so a misconfigured build fails closed
+    // rather than initializing the SDK with unusable identifiers.
+    if (!adsIdsConfigured) {
+      throw StateError('AdMob identifiers are not configured for this build.');
+    }
     try {
       await MobileAds.instance.updateRequestConfiguration(
         RequestConfiguration(

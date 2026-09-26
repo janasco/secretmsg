@@ -15,7 +15,7 @@ This is the canonical checklist and release runbook for submitting `net.secretms
 - [ ] **Phone screenshots:** still pending; the operator is capturing them on their own phone. Capture at least four portrait screenshots at 1080×1920 or larger, using inbox, Daily Drop, Dice Prompt Roulette, and Sticker Studio as the subjects.
 - [ ] **Closed testing and pre-launch review:** for a personal developer account created after 2023-11-13, keep at least 12 testers opted in continuously for 14 days, then apply for production access. Recruiting 20 or more provides headroom against dropouts; 20 is not the Play minimum. Review and fix findings in the pre-launch report before production.
 - [ ] **Billing service account:** create and grant the Google Play API service account, then provision `GOOGLE_PLAY_SA_EMAIL` and the private key as `GOOGLE_PLAY_SA_KEY` in the production API secret store. Verify `GOOGLE_PLAY_PACKAGE_NAME=net.secretmsg.android_app` is present without printing any secret. The API fails closed with HTTP 503 when any of these values is absent (`/opt/secretmsg/secretmsg-private/api/src/index.ts:867-869`). Note that `wrangler.toml` still lists all three under "Secrets to be configured via `wrangler secret put`", and `.env.production` carries the two key names with **empty** values, so the only authoritative check is `npx wrangler secret list`.
-- [ ] **AdMob account, application, and ad units:** create the AdMob account, register the Android app for package `net.secretmsg.android_app`, and record the generated **AdMob application ID**. Then create exactly two ad units: one **banner** and one **rewarded video**. Do not create or use interstitial, app-open, rewarded-interstitial, or native ad units; adding one requires re-deriving the Ads declaration and the data-safety annex. The application ID must be embedded in the build as `com.google.android.gms.ads.APPLICATION_ID` `<meta-data>` in `android/app/src/main/AndroidManifest.xml`; at the time of writing that `<meta-data>` is **not present**, so the current source would not serve ads. Confirm it in the merged manifest of the uploaded AAB.
+- [ ] **AdMob account, application, and ad units:** create the AdMob account, register the Android app for package `net.secretmsg.android_app`, and record the generated **AdMob application ID**. Then create exactly two ad units: one **banner** and one **rewarded video**. Do not create or use interstitial, app-open, rewarded-interstitial, or native ad units; adding one requires re-deriving the Ads declaration and the data-safety annex. No AdMob identifier is committed to the repository: supply all three at build time via `ADMOB_APP_ID`, `ADMOB_BANNER_AD_UNIT_ID`, and `ADMOB_REWARDED_AD_UNIT_ID`, and build with `scripts/build_release.sh aab`. The application ID is injected into the source manifest as the `${admobAppId}` placeholder, and a release build carrying a placeholder is refused by Gradle, so the uploaded AAB either has the real id or does not exist. Confirm it in the merged manifest of the uploaded AAB.
 - [ ] **`ads.txt` / app-ads.txt:** authorise the AdMob seller ID in the `ads.txt` published at the root of the developer's own domain, and confirm AdMob reports the app as authorised. An unrecognised seller line is a common cause of zero ad fill and must be resolved before the ad-supported release is judged working. This is an AdMob-console and web-property task; nothing in the Flutter app can assert it.
 - [ ] **Ad consent configuration:** in the AdMob console, set the EEA/UK consent message (or confirm the SDK's default UMP behaviour is the intended one), set the **US states** opt-out behaviour, set the **ad content rating** to match the IARC result below, and confirm that neither **child-directed treatment** nor **under-age-of-consent treatment** is enabled. None of these are visible in the app source and all of them are part of the legal posture recorded in [DATA_SAFETY.md](DATA_SAFETY.md).
 - [ ] **Age-treatment setting in the client:** verify the app explicitly sets `RequestConfiguration.ageRestrictedTreatment` to a non-child value and does not request child-directed or under-age-of-consent treatment. In `google_mobile_ads` `9.1.0` the classic `tagForChildDirectedTreatment` and `tagForUnderAgeOfConsent` parameters are **deprecated** in favour of `ageRestrictedTreatment` (`AgeRestrictedTreatment.child` / `.teen` / `.unspecified`). `AgeRestrictedTreatment.child` must never be used. A default that was never set deliberately is not the same as a deliberate value; read the call site, do not assume.
@@ -128,11 +128,19 @@ Run from `apps/mobile-flutter/`.
    flutter test
    ```
 
-5. Build the only supported release bundle command:
+5. Build the only supported release bundle command. The AdMob identifiers must
+   be exported first; the script feeds the same values to the manifest and to
+   Dart, and the build refuses to run without a complete set:
 
    ```bash
-   flutter build appbundle --release --obfuscate --split-debug-info=build/symbols
+   export ADMOB_APP_ID=ca-app-pub-XXXXXXXXXXXXXXXX
+   export ADMOB_BANNER_AD_UNIT_ID=ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY
+   export ADMOB_REWARDED_AD_UNIT_ID=ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY
+   scripts/build_release.sh aab --obfuscate --split-debug-info=build/symbols
    ```
+
+   A bare `flutter build appbundle --release` will fail on purpose. That is the
+   guard working, not a broken build.
 
 6. Archive `build/symbols` under the exact release version. Losing the matching symbol files makes production stack traces unreadable.
 7. Verify the signing certificate with Android SDK build tools before upload. `apksigner verify --print-certs` operates on an APK signed by the upload key; use a same-key diagnostic APK and verify that its certificate matches the backed-up upload certificate. Verify the AAB's JAR signature separately with `jarsigner -verify -verbose -certs build/app/outputs/bundle/release/app-release.aab`.
@@ -166,10 +174,14 @@ Repeat this section for every version.
 3. Bump `android_latest` in the public `/api/app-version` feed to the new release version and deploy that feed with the release. The feed currently exposes `android_latest` at `/opt/secretmsg/secretmsg-private/api/src/index.ts:85-89`; the Flutter app checks it on cold start and when requested from Settings and prompts when its installed version is behind (`apps/mobile-flutter/lib/ritual/update_check.dart:45-66`). Do not publish the AAB while leaving the feed stale.
 4. Re-check the Play policy declarations, the **ads** declaration, privacy and child-safety pages, Data safety annex, AdMob console configuration, and public account-deletion URL. Confirm the target-audience form still excludes every under-13 band and that the app still requests no child-directed or under-age-of-consent ad treatment.
 5. Run `flutter analyze` and `flutter test`; resolve all failures before building.
-6. Build with the canonical obfuscated command:
+6. Build with the canonical obfuscated command, exporting the AdMob identifiers
+   first:
 
    ```bash
-   flutter build appbundle --release --obfuscate --split-debug-info=build/symbols
+   export ADMOB_APP_ID=ca-app-pub-XXXXXXXXXXXXXXXX
+   export ADMOB_BANNER_AD_UNIT_ID=ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY
+   export ADMOB_REWARDED_AD_UNIT_ID=ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY
+   scripts/build_release.sh aab --obfuscate --split-debug-info=build/symbols
    ```
 
 7. Archive `build/symbols` with the exact version and build number. Never reuse another release's symbol directory.
