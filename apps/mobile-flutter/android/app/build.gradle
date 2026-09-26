@@ -20,6 +20,31 @@ if (keystorePropertiesFile.exists()) {
 }
 def hasReleaseKeystore = keystoreProperties.containsKey("storeFile")
 
+// Sideload signing is a second, independent key configured in
+// android/sideload-key.properties (also gitignored). It signs the APKs
+// published on the website, whose signature users actually install.
+//
+// The two keys must not be shared. The Play upload key only ever hands an
+// artifact to Google Play App Signing, which re-signs it with the per-app key
+// Google manages; a publicly downloadable APK must not carry that secret. And a
+// sideload APK signed with the debug key can never be upgraded onto a Play
+// build of the same package, so the sideload key is a real, long-lived key
+// rather than an accident.
+def sideloadProperties = new Properties()
+def sideloadPropertiesFile = rootProject.file("sideload-key.properties")
+if (sideloadPropertiesFile.exists()) {
+    sideloadPropertiesFile.withInputStream { sideloadProperties.load(it) }
+}
+def hasSideloadKeystore = sideloadProperties.containsKey("storeFile")
+
+// Opt-in switch. Absent (the default) the release build is byte-for-byte the
+// Play upload path it always was, so build_release.sh is untouched. Only
+// scripts/build_sideload.sh passes this, and it is the single flag standing
+// between the two keys.
+def sideloadSigningRequested =
+    (project.findProperty("sideloadSigning") ?: System.getenv("SIDELOAD_SIGNING") ?: "false")
+        .toString().toBoolean()
+
 // AdMob identifiers are supplied at build time, never committed. Each may be
 // set as a Gradle property (-PadmobAppId=...) or an environment variable.
 // They must be provided as a complete set: a mismatched set is a build error
@@ -90,6 +115,26 @@ android {
         manifestPlaceholders += [admobAppId: admobAppId]
     }
 
+    packaging {
+        jniLibs {
+            // Ship libapp.so and libflutter.so deflated rather than stored, which
+            // sets android:extractNativeLibs="true" in the merged manifest.
+            //
+            // By default AGP stores .so files uncompressed so the loader can mmap
+            // them straight out of the APK. That is the right trade for a Play
+            // bundle, where Play controls delivery anyway, but the per-ABI APKs on
+            // the website are downloaded whole by each user, and there the two
+            // native libraries are 21.5 MB of a 26.6 MB x86_64 APK. AdMob's SDK
+            // added ~2.4 MB on top of a v1.6.9 that already sat at 23.0 MiB, which
+            // pushed x86_64 over the 25 MiB per-file ceiling that Cloudflare
+            // Workers static assets impose on apps/web/public/downloads.
+            //
+            // Deflating costs one extraction step at install time and shrinks the
+            // download roughly in half; the installed footprint is unchanged.
+            useLegacyPackaging = true
+        }
+    }
+
     signingConfigs {
         release {
             if (hasReleaseKeystore) {
@@ -99,11 +144,34 @@ android {
                 keyPassword = keystoreProperties["keyPassword"]
             }
         }
+        sideload {
+            if (hasSideloadKeystore) {
+                storeFile = file(sideloadProperties["storeFile"])
+                storePassword = sideloadProperties["storePassword"]
+                keyAlias = sideloadProperties["keyAlias"]
+                keyPassword = sideloadProperties["keyPassword"]
+            }
+        }
     }
 
     buildTypes {
         release {
             signingConfig = hasReleaseKeystore ? signingConfigs.release : signingConfigs.debug
+            // Only an explicit opt-in reroutes release signing, and only onto a
+            // key that actually exists. Anything else leaves the Play upload
+            // path exactly as it was.
+            if (sideloadSigningRequested) {
+                if (hasSideloadKeystore) {
+                    signingConfig = signingConfigs.sideload
+                } else {
+                    throw new GradleException(
+                        "-PsideloadSigning=true was requested but android/sideload-key.properties " +
+                        "is missing or has no storeFile. Run scripts/setup-sideload-keystore.sh, or " +
+                        "drop the flag to build the Play upload artifact instead. Refusing to fall " +
+                        "back to the debug key for a build intended for public download."
+                    )
+                }
+            }
         }
     }
 }

@@ -27,6 +27,15 @@ set -euo pipefail
 format="${1:-aab}"
 app_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/../apps/mobile-flutter" && pwd)"
 
+# --check-only validates the AdMob identifiers and exits without building.
+# scripts/build_sideload.sh builds the same artifact with a different signing
+# key, and reuses these checks rather than keeping a second copy of the format
+# rules that could drift out of agreement with this one.
+if [[ "$format" == "--check-only" ]]; then
+  format="apk"
+  check_only=1
+fi
+
 # Resolve the Flutter SDK: PATH first, then $FLUTTER_BIN, then the common
 # install location. A clear error beats "flutter: command not found" after
 # every check has already passed.
@@ -112,6 +121,10 @@ if [[ "$app_pub" != "$banner_pub" || "$app_pub" != "$rewarded_pub" ]]; then
 fi
 
 echo "AdMob identifiers present. Building $format."
+if [[ "${check_only:-0}" == "1" ]]; then
+  echo "(--check-only: identifiers are valid, stopping before the build.)"
+  exit 0
+fi
 
 # Gradle injects the app id into the manifest; --dart-define reaches Dart.
 # Capped daemon memory keeps the build inside a small container.

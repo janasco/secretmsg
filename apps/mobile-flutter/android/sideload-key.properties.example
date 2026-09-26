@@ -1,0 +1,30 @@
+# Copy this file to android/sideload-key.properties and fill it in to produce
+# the release APKs published on the website. Both sideload-key.properties and
+# the keystore itself are gitignored - never commit either one.
+#
+# This is NOT the Play upload key (that one is configured in key.properties).
+# Google Play App Signing re-signs every upload with a per-app key it manages,
+# so the upload key is not the signature users install. The sideload key is, and
+# it is a public fact which certificate signed a downloadable APK - so it must
+# be a key whose loss you can plan around, not a debug key.
+#
+# Prefer letting the release manager generate it: scripts/setup-sideload-keystore.sh
+# does this by hand for you and keeps it out of your shell history.
+#
+# Losing this key means already-sideloaded users can never install a future
+# update signed with it; they would have to uninstall, losing local data. Back
+# the .jks up off-host.
+#
+#   keytool -genkeypair -v \
+#     -keystore $HOME/secretmsg-sideload.jks \
+#     -storetype PKCS12 \
+#     -keyalg RSA -keysize 2048 -validity 10000 \
+#     -alias sideload
+#
+# storeFile must be an absolute path. On Windows use forward slashes,
+# e.g. C:/Users/you/secretmsg-sideload.jks
+
+storePassword=
+keyPassword=
+keyAlias=sideload
+storeFile=
