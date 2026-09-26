@@ -9,14 +9,18 @@ const dist = join(root, 'dist');
 const templatePath = join(dist, 'index.html');
 const template = readFileSync(templatePath, 'utf8');
 const rendererEntry = join(root, 'src', 'prerender-renderer.tsx');
+const securityHeadersEntry = join(root, 'src', 'security-headers.ts');
 const esbuildPath = join(root, '../../../node_modules/.bin/esbuild');
 
-async function loadRenderer() {
+// src/ is TypeScript, so a node script cannot import it directly. Bundling the
+// entry with esbuild and importing the result is how prerender.mjs already
+// reaches the renderer, and it is how it reaches any other shared src/ module.
+async function loadModule(entry) {
   const tempRoot = mkdtempSync(join('/tmp/opencode', 'secretmsg-prerender-'));
-  const tempFile = join(tempRoot, 'renderer.cjs');
+  const tempFile = join(tempRoot, 'module.cjs');
   try {
     execFileSync(esbuildPath, [
-      rendererEntry,
+      entry,
       '--bundle',
       '--platform=node',
       '--format=cjs',
@@ -133,7 +137,7 @@ function staticJsonLd(route) {
   return { ...data, isPartOf: { '@type': 'WebSite', name: 'SecretMsg', url: HOST } };
 }
 
-const renderer = await loadRenderer();
+const renderer = await loadModule(rendererEntry);
 const staticFiles = [];
 for (const route of STATIC_ROUTES) {
   const body = route.component ? renderer.renderManifestPage(route.path, route.component) : '';
@@ -158,12 +162,21 @@ const legacyRoutes = [
     [`/legal/${doc}/`, `/p/${doc}/`],
   ]),
 ];
-writeFileSync(join(dist, '_redirects'), `${legacyRoutes.map(([source, destination]) => `${source} ${destination} 301`).join('\n')}\n`);
-writeFileSync(join(dist, '_headers'), `/*
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
-  Referrer-Policy: strict-origin-when-cross-origin
-`);
+// Browsers ask for /favicon.ico at the origin root on every page view whether or
+// not any page references it, and it is not a file in dist, so without a rule it
+// falls through to the Worker's HTML 404. logo.svg is the icon index.html already
+// declares, so answer the implicit request with the one icon that ships instead of
+// committing a second binary.
+const faviconRoutes = [
+  ['/favicon.ico', '/logo.svg'],
+];
+const redirectRoutes = [...legacyRoutes, ...faviconRoutes];
+writeFileSync(join(dist, '_redirects'), `${redirectRoutes.map(([source, destination]) => `${source} ${destination} 301`).join('\n')}\n`);
+// The asset layer serves most of the site without the Worker, so this file — not
+// the Worker's copy of the headers — is what the site actually returns. Both come
+// from src/security-headers.ts so they cannot drift apart.
+const { SECURITY_HEADERS } = await loadModule(securityHeadersEntry);
+writeFileSync(join(dist, '_headers'), `/*\n${Object.entries(SECURITY_HEADERS).map(([name, value]) => `  ${name}: ${value}`).join('\n')}\n`);
 
 const postFiles = index.map((post) => {
   if (typeof post?.slug !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(post.slug)) {

@@ -1,10 +1,5 @@
 import { isAssetRequest, isClientRoute, legacyRedirect, notFoundHtml } from './route-policy';
-
-const SECURITY_HEADERS = {
-  'x-content-type-options': 'nosniff',
-  'x-frame-options': 'DENY',
-  'referrer-policy': 'strict-origin-when-cross-origin',
-};
+import { SECURITY_HEADERS } from './security-headers';
 
 export interface AssetBinding {
   fetch(input: Request | URL | string): Promise<Response>;

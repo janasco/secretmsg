@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /inbox
+Disallow: /settings
+Disallow: /reply/
 
 Sitemap: https://secretmsg.net/sitemap.xml

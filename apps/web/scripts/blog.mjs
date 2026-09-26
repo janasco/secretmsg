@@ -242,5 +242,18 @@ writeFileSync(
       `      <guid isPermaLink="true">${esc(`${HOST}/post/${p.slug}`)}</guid>\n      <pubDate>${rfc822(p.date)}</pubDate>\n      <description>${esc(p.excerpt)}</description>\n    </item>`).join('\n') +
     `\n  </channel>\n</rss>\n`,
 );
-writeFileSync(join(root, 'public', 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${HOST}/sitemap.xml\n`);
+// Account routes, and the private per-user routes. None of these exist as files
+// in dist, so the Worker answers them with the SPA shell and a 200, which
+// leaves them crawlable even though they are not public pages.
+//
+// Everything in sitemap.xml stays crawlable: every STATIC_ROUTES entry and every
+// /post/<slug> is prerendered, canonical and worth indexing. That includes
+// /login, which is an account page by function but is deliberately shipped as a
+// prerendered page with its own canonical and a sitemap entry, so blocking it
+// would only contradict the sitemap. robots.txt has no way to say "any single
+// segment below the root" without also blocking /about, /blog and the rest, so
+// user boards are left crawlable; the shell they serve canonicalises to the
+// homepage, which keeps them out of the index anyway.
+const disallowRules = ['/inbox', '/settings', '/reply/'];
+writeFileSync(join(root, 'public', 'robots.txt'), `User-agent: *\nAllow: /\n${disallowRules.map((rule) => `Disallow: ${rule}`).join('\n')}\n\nSitemap: ${HOST}/sitemap.xml\n`);
 console.log(`blog: ${published.length} live of ${files.length} files -> index, posts, sitemap, feed, robots`);

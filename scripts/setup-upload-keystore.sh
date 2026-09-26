@@ -29,6 +29,20 @@ if [ "$KEY_PASSWORD" != "$ANDROID_KEYSTORE_STORE_PASSWORD" ] && [ "${#KEY_PASSWO
   exit 1
 fi
 
+# PKCS12 protects the private key with the *store* password; keytool prints
+# "Different store and key password not supported for PKCS12 KeyStores" and
+# silently drops -keypass. The keystore that lands on disk therefore only ever
+# opens with the store password, and an android/key.properties carrying a
+# different keyPassword makes Gradle fail at packageRelease with a padding
+# error that looks nothing like a password mismatch. Refuse to write that config
+# rather than leave a keystore nobody can sign with.
+if [ "$KEY_PASSWORD" != "$ANDROID_KEYSTORE_STORE_PASSWORD" ]; then
+  echo "ERROR: ANDROID_KEYSTORE_KEY_PASSWORD differs from ANDROID_KEYSTORE_STORE_PASSWORD." >&2
+  echo "       A PKCS12 keystore has a single password. Set them equal, or switch" >&2
+  echo "       -storetype to JKS in this script if you truly need two." >&2
+  exit 1
+fi
+
 export ANDROID_KEYSTORE_STORE_PASSWORD ANDROID_KEYSTORE_KEY_PASSWORD="$KEY_PASSWORD"
 
 mkdir -p "$(dirname "$ANDROID_KEYSTORE_PATH")"
@@ -38,13 +52,13 @@ if [ -f "$ANDROID_KEYSTORE_PATH" ]; then
   echo "Keystore already exists at $ANDROID_KEYSTORE_PATH — refusing to overwrite."
 else
   echo "Generating upload keystore (alias $ANDROID_KEYSTORE_KEY_ALIAS)..."
+  # A single password: PKCS12 has no separate key password (see check above).
   keytool -genkeypair -v \
     -keystore "$ANDROID_KEYSTORE_PATH" \
     -storetype PKCS12 \
     -keyalg RSA -keysize 2048 -validity 10000 \
     -alias "$ANDROID_KEYSTORE_KEY_ALIAS" \
     -storepass:env ANDROID_KEYSTORE_STORE_PASSWORD \
-    -keypass:env ANDROID_KEYSTORE_KEY_PASSWORD \
     -dname "CN=SecretMsg, O=SecretMsg, L=Remote, ST=NA, C=US"
   echo "Keystore created."
 fi
