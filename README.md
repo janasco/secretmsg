@@ -117,7 +117,7 @@ flutter build apk --release          # release APK
 flutter build appbundle --release    # Play Store bundle
 ```
 
-See [`apps/mobile-flutter/README.md`](apps/mobile-flutter/README.md) for release signing, the `--obfuscate` recommendation, and how download size should be measured.
+See [`apps/mobile-flutter/README.md`](apps/mobile-flutter/README.md) for release signing, the `--obfuscate` recommendation, how download size should be measured, and why the Play and sideload tracks are two installs that never converge.
 
 **Key Native Mobile Capabilities**:
 - **Bot screening**: A native widget produces a verified human-check token before any message send (fail-closed at the API).

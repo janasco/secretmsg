@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Download, Check, Copy, ShieldCheck, BellRing, Play } from 'lucide-react';
+import { Download, Check, Copy, ShieldCheck, BellRing, Play, Split } from 'lucide-react';
 import { PublicPage } from '@/components/PublicPage';
 import { APK_VERSION, APK_VARIANTS, APK_PRIMARY } from '@/lib/appVersion';
 
@@ -91,6 +91,45 @@ export const DownloadPage: React.FC = () => {
             ))}
           </div>
 
+          <p className="text-xs text-slate-400 leading-relaxed">
+            <span className="font-semibold text-slate-300">Already on an older SecretMsg APK?</span>{' '}
+            v1.6.8 and v1.6.9 were published under a different signing key, so Android will not
+            update them in place — it will ask you to uninstall the old copy first, which clears
+            the data stored on the phone. Your account, messages and unlocks live on our servers
+            and are waiting when you sign in again.
+          </p>
+
+          <div className="bg-dark-900 border border-indigo-500/20 rounded-xl p-3.5 space-y-2">
+            <span className="text-[11px] font-semibold text-slate-300 flex items-center gap-1.5">
+              <Split className="w-3.5 h-3.5 text-indigo-400" />
+              Sideload and Google Play are two separate installs
+            </span>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              This APK is signed with a key we control; the Google Play build is signed by Google.
+              Android identifies an app by its package name and its signature, so it treats the two
+              as different apps — and they never merge into one.
+            </p>
+            <ul className="text-xs text-slate-400 leading-relaxed list-disc pl-4 space-y-1">
+              <li>
+                Install this one and your updates keep arriving here, straight from this page.
+              </li>
+              <li>
+                You won&apos;t be able to move to the Google Play version later. Android will only
+                accept it after you uninstall this one, and uninstalling clears what is stored on
+                the phone — streaks, Daily Drop history, reminders and your saved sign-in.
+              </li>
+              <li>
+                It works the other way round too: a copy you installed from Google Play cannot be
+                updated by this APK.
+              </li>
+            </ul>
+            <p className="text-xs text-slate-400">
+              Either build talks to the same servers, so both keep your account and your messages.
+              Pick the one you&apos;d rather stay with — switching tracks is the only part that
+              costs you anything.
+            </p>
+          </div>
+
           <div className="bg-dark-900 border border-white/10 rounded-xl p-3.5 space-y-2">
             <div className="flex items-center justify-between gap-2">
               <span className="text-[11px] font-semibold text-slate-300 flex items-center gap-1.5">
@@ -149,6 +188,11 @@ export const DownloadPage: React.FC = () => {
             The Play release ships as a signed Android App Bundle, including the Google AdMob
             integration and the one-time Play-verified “Remove Ads” purchase. Until then, the APK
             above is the current build — same features, direct from this site.
+          </p>
+          <p className="text-xs text-slate-400 leading-relaxed">
+            Google re-signs the Play build with a key of its own, which makes it a different app to
+            Android than the APK above. Whichever one you start with is the one you keep: moving
+            between them means uninstalling first, and reinstalling from the other source.
           </p>
         </div>
       </div>
