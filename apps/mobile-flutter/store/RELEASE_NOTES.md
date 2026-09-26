@@ -8,9 +8,9 @@ that version, taken from the commits between the previous release and this one.
 Commits that only touch the website, the API, or release tooling are excluded
 unless they changed app behaviour.
 
-**v1.6.9 is the version in the current upload bundle**
-(`/opt/secretmsg/.secrets/release-artifacts/v1.6.9/secretmsg-v1.6.9-upload.aab`,
-versionCode 24). Its entry covers everything shipped since v1.6.8.
+**v1.6.10 is the version in the current upload bundle**
+(`/opt/secretmsg/.secrets/release-artifacts/v1.6.10/secretmsg-v1.6.10-upload.aab`,
+versionCode 25). Its entry covers the Play Billing library upgrade.
 
 ---
 
@@ -24,6 +24,16 @@ messages, streaks and progress.
 • Dice prompts load off the UI thread, so the screen opens instantly.
 • Accessibility: labelled controls, larger tap targets, better contrast.
 • Removed an unnecessary restricted alarm permission.
+
+## v1.6.10 — current, ready to upload (263 chars)
+
+Stability update.
+
+• Updated to the current Google Play Billing library (8.0.0) for the latest
+monetization features and compatibility.
+• Purchase unlocking, restore and pending-purchase handling verified against
+the updated library.
+• No other behaviour changes.
 
 ---
 
