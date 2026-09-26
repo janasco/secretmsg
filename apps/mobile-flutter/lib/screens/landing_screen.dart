@@ -26,7 +26,7 @@ class _LandingScreenState extends State<LandingScreen> {
   ];
 
   void _go(Widget screen) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
+    Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => screen));
   }
 
   @override

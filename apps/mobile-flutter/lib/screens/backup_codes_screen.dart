@@ -64,7 +64,7 @@ class _BackupCodesScreenState extends State<BackupCodesScreen> {
 
   void _continue() {
     Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (_) => const AppShell(initialTab: AppTab.inbox)),
+      MaterialPageRoute<void>(builder: (_) => const AppShell(initialTab: AppTab.inbox)),
       (route) => false,
     );
   }

@@ -274,7 +274,7 @@ class _DiceScreenState extends State<DiceScreen> {
                         key: ValueKey(_current),
                         text: _current!,
                         onSend: () => Navigator.of(context).push(
-                          MaterialPageRoute(
+                          MaterialPageRoute<void>(
                             builder: (_) => SendScreen(initialMessage: _current),
                           ),
                         ),

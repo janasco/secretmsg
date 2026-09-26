@@ -35,7 +35,7 @@ class _SendLookupScreenState extends State<SendLookupScreen> {
       return;
     }
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => SendScreen(initialUsername: handle)),
+      MaterialPageRoute<void>(builder: (_) => SendScreen(initialUsername: handle)),
     );
   }
 

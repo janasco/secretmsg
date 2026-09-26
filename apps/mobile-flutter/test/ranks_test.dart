@@ -55,7 +55,7 @@ void main() {
     test('tolerates missing and malformed payloads', () {
       expect(RankInfo.parse(null).tier, 'newcomer');
       expect(RankInfo.parse('nope').tier, 'newcomer');
-      expect(RankInfo.parse({}).tier, 'newcomer');
+      expect(RankInfo.parse(<String, dynamic>{}).tier, 'newcomer');
       final clamped = RankInfo.parse({'tier': 'regular', 'progress': 9});
       expect(clamped.progress, 1.0);
     });

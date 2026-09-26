@@ -478,7 +478,7 @@ class _InboxScreenState extends State<InboxScreen> {
               child: FilledButton(
                 style: FilledButton.styleFrom(backgroundColor: context.colors.accent, foregroundColor: Colors.white, padding: const EdgeInsets.symmetric(vertical: 14)),
                 onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => const LoginScreen()),
+                  MaterialPageRoute<void>(builder: (_) => const LoginScreen()),
                 ),
                 child: const Text('Sign in to your inbox', style: TextStyle(fontWeight: FontWeight.w800)),
               ),
@@ -688,7 +688,7 @@ class _InboxScreenState extends State<InboxScreen> {
     final content = (op.params['content'] ?? '').trim();
     await Outbox.remove(op.id);
     if (!mounted) return;
-    Navigator.of(context).push(MaterialPageRoute(
+    Navigator.of(context).push(MaterialPageRoute<void>(
       builder: (_) => SendScreen(
         initialUsername: username.isEmpty ? null : username,
         initialMessage: content.isEmpty ? null : content,
@@ -987,7 +987,7 @@ class _InboxScreenState extends State<InboxScreen> {
 
   void _openMessage(AnonymousMessage m) {
     Navigator.of(context).push(
-      MaterialPageRoute(
+      MaterialPageRoute<void>(
         builder: (_) => _MessageDetailScreen(message: m, onReplied: (reply) {
           if (!mounted) return;
           setState(() {

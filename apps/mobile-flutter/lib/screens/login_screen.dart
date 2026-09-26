@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
       final result = await ApiClient.authSignup(pin: pin, turnstileToken: _turnstileToken);
       if (!mounted) return;
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => BackupCodesScreen(
+        MaterialPageRoute<void>(builder: (_) => BackupCodesScreen(
           handle: result.handle,
           backupCodes: result.backupCodes,
         )),
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
       await ApiClient.authLogin(handle: handle, pin: pin);
       if (!mounted) return;
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => const AppShell(initialTab: AppTab.inbox)),
+        MaterialPageRoute<void>(builder: (_) => const AppShell(initialTab: AppTab.inbox)),
         (route) => false,
       );
     } on ApiException catch (e) {
@@ -108,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final handle = _handleCtrl.text.trim();
     final code = _pinCtrl.text.trim();
     Navigator.of(context).push(
-      MaterialPageRoute(
+      MaterialPageRoute<void>(
         builder: (_) => RecoveryScreen(initialHandle: handle, initialCode: code),
       ),
     );
@@ -173,7 +173,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 4),
                   GestureDetector(
                     onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const SupportersScreen()),
+                      MaterialPageRoute<void>(builder: (_) => const SupportersScreen()),
                     ),
                     child: Text(
                       'Want your own name instead? Custom handles are a supporter perk — learn more.',

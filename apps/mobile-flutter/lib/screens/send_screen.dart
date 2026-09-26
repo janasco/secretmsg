@@ -651,7 +651,7 @@ class _SendScreenState extends State<SendScreen> {
               const SizedBox(height: 8),
               TextButton(
                 onPressed: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
+                  MaterialPageRoute<void>(
                     builder: (_) => const LoginScreen(),
                   ),
                 ),

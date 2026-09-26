@@ -53,7 +53,7 @@ class _RecoveryScreenState extends State<RecoveryScreen> {
       final result = await ApiClient.authRecover(handle: handle, backupCode: code, newPin: pin);
       if (!mounted) return;
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => BackupCodesScreen(
+        MaterialPageRoute<void>(builder: (_) => BackupCodesScreen(
           handle: result.handle,
           backupCodes: result.backupCodes,
         )),

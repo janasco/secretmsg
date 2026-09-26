@@ -146,7 +146,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (!mounted) return;
     showErrorSnack(context, 'Session expired. Please log in again.');
     Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (_) => const LandingScreen()),
+      MaterialPageRoute<void>(builder: (_) => const LandingScreen()),
       (route) => false,
     );
   }
@@ -348,7 +348,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
       );
       if (result != null && result.isNotEmpty && context.mounted) {
-        showDialog(
+        showDialog<void>(
           context: context,
           builder: (ctx) => AlertDialog(
             title: const Text('New Backup Codes'),
@@ -545,7 +545,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     } catch (_) {}
     if (!mounted) return;
     Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (_) => const LandingScreen()),
+      MaterialPageRoute<void>(builder: (_) => const LandingScreen()),
       (route) => false,
     );
   }
@@ -586,7 +586,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         await ApiClient.deleteAccount();
         if (!mounted) return;
         Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (_) => const LandingScreen()),
+          MaterialPageRoute<void>(builder: (_) => const LandingScreen()),
           (route) => false,
         );
       } catch (_) {
@@ -618,7 +618,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       shell.switchTo(tab);
       return;
     }
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) => standalone));
+    Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => standalone));
   }
 
   Future<void> _showPairCode() async {
@@ -659,7 +659,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(height: 18),
             FilledButton(
               style: FilledButton.styleFrom(backgroundColor: context.colors.accent, foregroundColor: Colors.white),
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const LoginScreen())),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const LoginScreen())),
               child: const Text('Sign in'),
             ),
           ],
@@ -750,14 +750,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         icon: Icons.block_outlined,
                         label: 'Blocked senders',
                         onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => const BlockedSendersScreen()),
+                          MaterialPageRoute<void>(builder: (_) => const BlockedSendersScreen()),
                         ),
                       ),
                       _ActionTile(
                         icon: Icons.flag_outlined,
                         label: 'My reports',
                         onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => const MyReportsScreen()),
+                          MaterialPageRoute<void>(builder: (_) => const MyReportsScreen()),
                         ),
                       ),
                     ],
@@ -807,12 +807,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       _ActionTile(
                         icon: Icons.emoji_events_outlined,
                         label: 'Supporters wall',
-                        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SupportersScreen())),
+                        onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const SupportersScreen())),
                       ),
                       _ActionTile(
                         icon: Icons.article_outlined,
                         label: 'Terms & safety center',
-                        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const StaticScreen(keyOf: 'about'))),
+                        onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const StaticScreen(keyOf: 'about'))),
                       ),
                       const _PrivacyOptionsTile(),
                     ],
