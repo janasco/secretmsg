@@ -10,6 +10,7 @@ const templatePath = join(dist, 'index.html');
 const template = readFileSync(templatePath, 'utf8');
 const rendererEntry = join(root, 'src', 'prerender-renderer.tsx');
 const securityHeadersEntry = join(root, 'src', 'security-headers.ts');
+const postSlugsEntry = join(root, 'src', 'post-slugs.ts');
 const esbuildPath = join(root, '../../../node_modules/.bin/esbuild');
 
 // src/ is TypeScript, so a node script cannot import it directly. Bundling the
@@ -226,5 +227,14 @@ const postFiles = index.map((post) => {
     jsonLd,
   }, `/post/${post.slug}`);
 });
+
+// The slugs this build ships, as a Worker-readable asset. index is the array
+// blog.mjs published — `published` in blog.mjs, which is also what feeds
+// sitemap.xml and feed.xml — so the sitemap, the prerendered pages and the
+// Worker's 404 set are all the same list and cannot drift. A post that is
+// `scheduled` with a future date is not in it, which is the point: the site
+// does not ship that post either, so the Worker must not claim it exists.
+const { POST_SLUGS_PATH } = await loadModule(postSlugsEntry);
+writeFileSync(join(dist, POST_SLUGS_PATH), JSON.stringify(index.map((post) => post.slug)));
 
 console.log(`prerender: ${postFiles.length} posts + ${staticFiles.length} static routes -> ${postFiles.length + staticFiles.length} HTML files`);
