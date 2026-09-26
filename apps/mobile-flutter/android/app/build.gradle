@@ -131,7 +131,14 @@ android {
             //
             // Deflating costs one extraction step at install time and shrinks the
             // download roughly in half; the installed footprint is unchanged.
-            useLegacyPackaging = true
+            //
+            // The ceiling is a property of hosting the APKs on the website, and it
+            // does not apply to the Play bundle, which is 61 MB and is never
+            // served by us. So this is tied to the sideload switch: absent the
+            // flag the Play upload path keeps AGP's default uncompressed .so
+            // packaging, which is the better trade when the delivery channel
+            // takes the file apart and re-serves it itself.
+            useLegacyPackaging = sideloadSigningRequested
         }
     }
 
