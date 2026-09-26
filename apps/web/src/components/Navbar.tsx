@@ -23,11 +23,11 @@ const LogoIcon = ({ className = 'w-8 h-8' }: { className?: string }) => (
 
 interface NavbarProps {
   user: UserProfile | null;
-  onOpenDonation: () => void;
+  onOpenSupport: () => void;
   onLogout: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ user, onOpenDonation, onLogout }) => {
+export const Navbar: React.FC<NavbarProps> = ({ user, onOpenSupport, onLogout }) => {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-dark-950/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
@@ -40,12 +40,12 @@ export const Navbar: React.FC<NavbarProps> = ({ user, onOpenDonation, onLogout }
 
         <div className="flex items-center gap-1.5 sm:gap-2">
           <button
-            onClick={onOpenDonation}
+            onClick={onOpenSupport}
             className="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-300 border border-amber-500/20 hover:bg-amber-500/20 hover:border-amber-500/30 transition-colors shadow-sm"
           >
             <Heart className="w-3.5 h-3.5 fill-amber-400 text-amber-400 shrink-0" />
-            <span className="hidden sm:inline">Donate & Unlock Perks</span>
-            <span className="sm:hidden">Donate</span>
+            <span className="hidden sm:inline">Support the Project</span>
+            <span className="sm:hidden">Support</span>
           </button>
 
           {user ? (

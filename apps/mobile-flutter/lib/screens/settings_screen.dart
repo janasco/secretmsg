@@ -7,6 +7,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../ads/ads_service.dart';
 import '../api/api_client.dart';
 import '../api/config.dart';
 import '../api/models.dart';
@@ -111,6 +112,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         }
         _loading = false;
       });
+      AdsService.instance.applyProfile(user);
       await RankUp.maybeShow(context, user);
       if (!mounted) return;
       try {
@@ -529,6 +531,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     } catch (_) {}
     await Session.clear();
     try {
+      AdsService.instance.applyProfile(null);
+    } catch (_) {}
+    try {
       await cancelAllReminders();
     } catch (_) {}
     if (!mounted) return;
@@ -539,6 +544,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _deleteAccount() async {
+    AdsService.instance.suppress('account-deletion');
+    try {
+      await _runDeleteAccount();
+    } finally {
+      AdsService.instance.unsuppress('account-deletion');
+    }
+  }
+
+  Future<void> _runDeleteAccount() async {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(

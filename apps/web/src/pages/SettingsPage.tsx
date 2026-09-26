@@ -10,10 +10,10 @@ interface SettingsPageProps {
   user: UserProfile | null;
   setUser?: (user: UserProfile) => void;
   onLogout: () => void;
-  onOpenDonation: () => void;
+  onOpenSupport: () => void;
 }
 
-export const SettingsPage: React.FC<SettingsPageProps> = ({ user, setUser, onLogout, onOpenDonation }) => {
+export const SettingsPage: React.FC<SettingsPageProps> = ({ user, setUser, onLogout, onOpenSupport }) => {
   const isReadOnly = ApiClient.isReadOnly();
   const navigate = useNavigate();
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -500,7 +500,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, setUser, onLog
         )}
       </div>
 
-      {/* Supporter Tier & Perks */}
+      {/* Ad-Free Status */}
       <div className="glass-panel p-6 rounded-2xl space-y-4 border-amber-500/20">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2.5">
@@ -508,21 +508,21 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, setUser, onLog
               <Heart className="w-4 h-4 fill-amber-400" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-white">Supporter Status</h4>
+              <h4 className="text-sm font-bold text-white">Ad-Free Status</h4>
               <p className="text-xs text-slate-400">
-                {user.is_premium === 1 ? 'Active Supporter Tier' : 'Free Standard Tier'}
+                {user.is_premium === 1 ? 'Ads Removed' : 'Ads Shown in the App'}
               </p>
             </div>
           </div>
 
           {isReadOnly ? (
-            <ViewOnlyNote>Purchases happen in the app.</ViewOnlyNote>
+            <ViewOnlyNote>The ad-free purchase is made in the app.</ViewOnlyNote>
           ) : (
             <button
-              onClick={onOpenDonation}
+              onClick={onOpenSupport}
               className="py-2 px-3 rounded-lg text-xs font-semibold bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/20 transition-colors"
             >
-              {user.is_premium === 1 ? 'Supporter Perks' : 'Upgrade & Support'}
+              How to Support
             </button>
           )}
         </div>
@@ -536,7 +536,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, setUser, onLog
               <div>
                 <h4 className="text-sm font-bold text-white">Claim your custom username</h4>
                 <p className="text-xs text-slate-400">
-                  Your supporter perk. Replace the random handle with a clean name — no numbers required.
+                  Unlocked on your account. Replace the random handle with a clean name — no numbers required.
                 </p>
               </div>
             </div>

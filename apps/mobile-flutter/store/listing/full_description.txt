@@ -19,15 +19,15 @@ CONTROLS THAT ARE ACTUALLY YOURS
 
 PRIVACY BY DEFAULT
 
-Senders are anonymous to you, and you are anonymous to senders. We do not ask a sender for a name, a phone number, or an account — there is nothing to hand over. We do not sell data, and there are no third-party ad or analytics trackers in this app.
+Senders are anonymous to you, and you are anonymous to senders. We do not ask a sender for a name, a phone number, or an account — there is nothing to hand over. We do not sell your data to anyone.
 
 VIEW ON THE WEB
 
 Prefer a bigger screen? Settings gives you a short pairing code. Type it at secretmsg.net and that browser can read your inbox for the session — view-only, so your settings and replies stay on your phone.
 
-SUPPORT THE PROJECT
+HOW IT'S FUNDED
 
-SecretMsg is an independent, open-source project with no ads. Optional one-off purchases unlock cosmetic and quality-of-life extras — a verified badge, viewer hints, sender hints — or you can use everything essential for free, forever. Nothing behind a subscription.
+SecretMsg is an independent, open-source project. It is free to use and ad-supported: a small banner, and a short optional video you can watch for a streak freeze. One one-off purchase — remove ads — takes them away for good, and the app stays otherwise free. Nothing behind a subscription. Ads in the Android app only; the website has none.
 
 A NOTE ON KINDNESS
 

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+import '../ads/ads_flags.dart';
 import '../ritual/drop_store.dart';
 import '../ritual/reminders.dart';
 import '../ritual/streak_store.dart';
@@ -43,6 +44,7 @@ class AccountDataWipe {
     });
     await run('inbox cache', InboxCache.clear);
     await run('outbox', Outbox.clearAll);
+    await run('ads flag cache', AdsFlagCache.clear);
     await run('streak', StreakStore.clear);
     await run('Daily Drop', DropStore.clear);
     await run('vibe', VibeStore.clear);

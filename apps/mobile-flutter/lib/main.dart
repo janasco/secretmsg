@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'ads/ads_service.dart';
 import 'api/session.dart';
 import 'diag/turnstile_diag.dart';
 import 'ritual/daily_drop.dart';
@@ -49,6 +50,7 @@ Future<void> main() async {
   runApp(SecretMsgApp(
     initialRoute: isDiag ? '/diag' : WidgetsBinding.instance.platformDispatcher.defaultRouteName,
   ));
+  unawaited(AdsService.instance.init());
 }
 
 /// Translates web URLs shared to the app into their native screens.

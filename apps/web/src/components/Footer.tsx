@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
           <ul className="space-y-2 text-xs text-slate-500">
             <li><Link to="/" className="hover:text-slate-300 transition-colors">Home</Link></li>
             <li><Link to="/about" className="hover:text-slate-300 transition-colors">About Us</Link></li>
-            <li><Link to="/supporters" className="hover:text-slate-300 transition-colors">Supporters Wall</Link></li>
+            <li><Link to="/supporters" className="hover:text-slate-300 transition-colors">Support the Project</Link></li>
             <li><Link to="/faq" className="hover:text-slate-300 transition-colors">Help & FAQs</Link></li>
             <li><Link to="/demo" className="hover:text-slate-300 transition-colors">Interactive Demo</Link></li>
           </ul>

@@ -5,7 +5,7 @@ import { initTheme } from '@/lib/theme';
 import { ViewOnlyBanner } from '@/components/ViewOnlyBanner';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { DonationModal } from '@/components/DonationModal';
+import { SupportModal } from '@/components/SupportModal';
 import { LandingPage } from '@/pages/LandingPage';
 
 const SendMessagePage = lazy(() => import('@//pages/SendMessagePage').then(m => ({ default: m.SendMessagePage })));
@@ -47,7 +47,7 @@ const ROUTE_TITLES: Array<[RegExp, string]> = [
   [/^\/inbox/, 'Inbox - SecretMsg'],
   [/^\/settings/, 'Settings - SecretMsg'],
   [/^\/login/, 'Log In - SecretMsg'],
-  [/^\/supporters/, 'Supporters - SecretMsg'],
+  [/^\/supporters/, 'Support SecretMsg'],
   [/^\/dice/, 'Dice Roulette - SecretMsg'],
   [/^\/sticker-studio/, 'Sticker Studio - SecretMsg'],
   [/^\/demo/, 'Demo - SecretMsg'],
@@ -83,7 +83,7 @@ const RouteTitle: React.FC = () => {
 
 export const App: React.FC = () => {
   const [user, setUser] = useState<UserProfile | null>(() => ApiClient.getSavedUser());
-  const [isDonationOpen, setIsDonationOpen] = useState(false);
+  const [isSupportOpen, setIsSupportOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -107,7 +107,7 @@ export const App: React.FC = () => {
       </a>
       <Navbar
         user={user}
-        onOpenDonation={() => setIsDonationOpen(true)}
+        onOpenSupport={() => setIsSupportOpen(true)}
         onLogout={handleLogout}
       />
 
@@ -116,11 +116,11 @@ export const App: React.FC = () => {
       <RouteTitle />
       <main id="main-content" className="flex-1">
         <Routes>
-          <Route path="/" element={<LandingPage onOpenDonation={() => setIsDonationOpen(true)} />} />
+          <Route path="/" element={<LandingPage onOpenSupport={() => setIsSupportOpen(true)} />} />
           <Route path="/login" element={<Suspense fallback={<PublicSuspense />}><LoginPage onLoginSuccess={(u) => setUser(u)} /></Suspense>} />
-          <Route path="/inbox" element={<Suspense fallback={<PublicSuspense />}><InboxPage user={user} onOpenDonation={() => setIsDonationOpen(true)} onLogout={handleLogout} /></Suspense>} />
-          <Route path="/settings" element={<Suspense fallback={<PublicSuspense />}><SettingsPage user={user} setUser={setUser} onLogout={handleLogout} onOpenDonation={() => setIsDonationOpen(true)} /></Suspense>} />
-          <Route path="/supporters" element={<Suspense fallback={<PublicSuspense />}><SupportersPage onOpenDonation={() => setIsDonationOpen(true)} /></Suspense>} />
+          <Route path="/inbox" element={<Suspense fallback={<PublicSuspense />}><InboxPage user={user} onOpenSupport={() => setIsSupportOpen(true)} onLogout={handleLogout} /></Suspense>} />
+          <Route path="/settings" element={<Suspense fallback={<PublicSuspense />}><SettingsPage user={user} setUser={setUser} onLogout={handleLogout} onOpenSupport={() => setIsSupportOpen(true)} /></Suspense>} />
+          <Route path="/supporters" element={<Suspense fallback={<PublicSuspense />}><SupportersPage onOpenSupport={() => setIsSupportOpen(true)} /></Suspense>} />
           <Route path="/about" element={<Suspense fallback={<PublicSuspense />}><AboutPage /></Suspense>} />
           <Route path="/dice" element={<Suspense fallback={<PublicSuspense />}><DicePage /></Suspense>} />
           <Route path="/sticker-studio" element={<Suspense fallback={<PublicSuspense />}><StickerStudioPage /></Suspense>} />
@@ -149,9 +149,9 @@ export const App: React.FC = () => {
         </Routes>
       </main>
 
-      <DonationModal
-        isOpen={isDonationOpen}
-        onClose={() => setIsDonationOpen(false)}
+      <SupportModal
+        isOpen={isSupportOpen}
+        onClose={() => setIsSupportOpen(false)}
       />
 
       <Footer />

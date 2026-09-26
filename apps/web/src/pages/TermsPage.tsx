@@ -40,7 +40,7 @@ export const TermsPage: React.FC = () => {
             <li><strong className="text-slate-200">Content:</strong> Text, images, stickers, responses, or other information posted, uploaded, or transmitted by You or Message Senders.</li>
             <li><strong className="text-slate-200">Device:</strong> Any device that can access the Service, including a computer, cellphone, or digital tablet.</li>
             <li><strong className="text-slate-200">Feedback:</strong> Any feedback, suggestions, ideas, or innovations regarding attributes, features, or performance of the Service sent by You.</li>
-            <li><strong className="text-slate-200">In-app Purchases / Supporter Contributions:</strong> Optional purchases of virtual items, supporter badges, or feature unlocks made through the Service.</li>
+            <li><strong className="text-slate-200">In-app Purchases:</strong> Optional one-time purchases made through the Service or an authorized application store, currently limited to removing ads from the Android app.</li>
             <li><strong className="text-slate-200">Third-Party Social Media Service:</strong> External networks (such as Instagram, TikTok, WhatsApp, Snapchat, or X) where users share their SecretMsg links or export Q&amp;A stickers.</li>
             <li><strong className="text-slate-200">You:</strong> The individual accessing or using the Service, or the entity on behalf of which such individual is accessing or using the Service.</li>
           </ul>
@@ -161,14 +161,17 @@ export const TermsPage: React.FC = () => {
 
         <section className="space-y-3">
           <h2 className="text-lg font-bold text-white flex items-center gap-2">
-            <span className="text-slate-500 font-mono text-xs">09</span> In-App Purchases, Billing &amp; Subscriptions
+            <span className="text-slate-500 font-mono text-xs">09</span> In-App Purchases &amp; Advertising
           </h2>
           <div className="space-y-2 text-xs sm:text-sm text-slate-400">
             <p>
-              The Service may offer optional In-App Purchases, virtual items, or supporter badges. All billing and transaction processing are handled by authorized payment processors or application stores.
+              The Service offers one optional in-app purchase: a single payment that removes ads from the Android app. It is not a subscription and does not renew. There are no paid tiers, recurring charges, or supporter badges. All billing and transaction processing is handled by Google Play, and SecretMsg does not receive or store your card details.
             </p>
             <p>
-              In-App Purchases are consumed within the Service and cannot be cancelled or redeemed for cash once initiated. If an item fails to deliver due to technical error, contact us at <a href="mailto:support@secretmsg.net" className="text-indigo-400 underline font-mono">support@secretmsg.net</a> for investigation and prompt resolution or refund authorization.
+              The Android app displays advertising supplied by Google AdMob. This website displays no advertising. Advertising revenue from the app is what funds hosting; it is not derived from selling your messages or your identity. Our <Link to="/p/privacy" className="text-indigo-400 underline">Privacy Policy</Link> describes the ad data involved, your consent rights in the EEA and the UK, and the opt-out rights available to US state residents. You may withdraw consent or opt out at any time as described there, and a completed “Remove Ads” purchase stops ad requests from the app.
+            </p>
+            <p>
+              In-App Purchases are consumed within the Service and cannot be cancelled or redeemed for cash once initiated. If an item fails to deliver due to technical error, contact us at <a href="mailto:support@secretmsg.net" className="text-indigo-400 underline font-mono">support@secretmsg.net</a> for investigation and prompt resolution or refund authorization. Refund rights for Google Play purchases are also set by the Google Play refund policy.
             </p>
           </div>
         </section>

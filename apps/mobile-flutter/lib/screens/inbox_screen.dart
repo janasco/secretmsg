@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../ads/ads_config.dart';
+import '../ads/ads_service.dart';
 import '../api/api_client.dart';
 import '../api/config.dart';
 import '../api/models.dart';
@@ -47,6 +49,18 @@ class _InboxScreenState extends State<InboxScreen> {
   bool _dropDone = true; // Hidden until ritual state loads.
   bool _vibePrompted = false;
   bool _vibeDialogOpen = false;
+  bool _rewardBusy = false;
+  final Set<String> _adsOwned = <String>{};
+
+  void _suppressAds(String reason) {
+    AdsService.instance.suppress(reason);
+    _adsOwned.add(reason);
+  }
+
+  void _unsuppressAds(String reason) {
+    AdsService.instance.unsuppress(reason);
+    _adsOwned.remove(reason);
+  }
 
   @override
   void initState() {
@@ -60,6 +74,9 @@ class _InboxScreenState extends State<InboxScreen> {
   @override
   void dispose() {
     SyncService.online.removeListener(_onOnlineChanged);
+    for (final reason in _adsOwned) {
+      AdsService.instance.unsuppress(reason);
+    }
     super.dispose();
   }
 
@@ -71,7 +88,10 @@ class _InboxScreenState extends State<InboxScreen> {
     final token = await Session.getToken();
     if (!mounted) return;
     setState(() => _isAuthed = token != null);
-    if (token == null) return;
+    if (token == null) {
+      _suppressAds('inbox-signed-out');
+      return;
+    }
     // Cache first: instant render + offline survival. Fresh fetch replaces.
     try {
       final snap = await InboxCache.load();
@@ -89,6 +109,7 @@ class _InboxScreenState extends State<InboxScreen> {
 
   Future<void> _load() async {
     if (!mounted) return;
+    if (_messages == null) _suppressAds('inbox-pending');
     setState(() {
       _loading = true;
       _error = null;
@@ -114,6 +135,8 @@ class _InboxScreenState extends State<InboxScreen> {
         _offline = false;
         _cacheSavedAt = null; // Fresh: no staleness to show.
       });
+      _unsuppressAds('inbox-error');
+      AdsService.instance.applyProfile(me);
       // Snapshot the fresh head page for instant/offline boots.
       unawaited(InboxCache.save(inboxPage.messages, trayPage.messages));
       // Ritual check-in rides the inbox refresh: streak rolls, tonight's
@@ -136,6 +159,7 @@ class _InboxScreenState extends State<InboxScreen> {
         _isAuthed = false;
         _messages = null;
       });
+      _unsuppressAds('inbox-error');
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -149,6 +173,13 @@ class _InboxScreenState extends State<InboxScreen> {
           _error = 'Could not load your inbox.';
         }
       });
+      if (_error == null) {
+        _unsuppressAds('inbox-error');
+      } else {
+        _suppressAds('inbox-error');
+      }
+    } finally {
+      _unsuppressAds('inbox-pending');
     }
   }
 
@@ -251,6 +282,118 @@ class _InboxScreenState extends State<InboxScreen> {
         );
       } catch (_) {}
     }
+  }
+
+  void _setFilter(String filter) {
+    setState(() => _filter = filter);
+    if (filter == 'filtered') {
+      _suppressAds('inbox-moderation');
+    } else {
+      _unsuppressAds('inbox-moderation');
+    }
+  }
+
+  bool get _canOfferFreezeByAd => canOfferStreakFreezeByAd(
+        adsEnabled: AdsService.instance.isEnabled,
+        streakCount: _streak?.count ?? 0,
+        freezes: _streak?.freezes ?? 0,
+      );
+
+  Future<void> _watchAdForFreeze() async {
+    if (_rewardBusy || !_canOfferFreezeByAd) return;
+    setState(() => _rewardBusy = true);
+    final outcome = await AdsService.instance.showRewardedForStreakFreeze();
+    if (!mounted) return;
+    setState(() => _rewardBusy = false);
+    switch (outcome) {
+      case RewardedOutcome.earned:
+        break;
+      case RewardedOutcome.skipped:
+        showSuccessSnack(context, 'No freeze this time — your streak is untouched.');
+        return;
+      case RewardedOutcome.noFill:
+        showSuccessSnack(context, 'No video available right now. Try again later.');
+        return;
+      case RewardedOutcome.failed:
+        showErrorSnack(context, 'That video could not be played. Try again later.');
+        return;
+      case RewardedOutcome.unavailable:
+        showErrorSnack(context, 'Rewarded videos are not available right now.');
+        return;
+    }
+
+    try {
+      final granted = await StreakStore.grantFreeze();
+      if (!mounted) return;
+      if (!granted.earned) {
+        showSuccessSnack(context, 'You already hold a streak freeze.');
+        return;
+      }
+      setState(() => _streak = granted.state);
+      showSuccessSnack(context, '🧊 Streak freeze banked');
+      final now = DateTime.now();
+      await rescheduleAll(
+        now: now,
+        dropAnswered: await DropStore.isDone(now),
+        checkedInToday: true,
+        streakCount: granted.state.count,
+        dropPrompt: _todayPrompt(),
+        filteredWeekCount: _trayWeekCount,
+      );
+    } catch (_) {}
+  }
+
+  Widget _buildFreezeCard() {
+    if (_streak == null || !_canOfferFreezeByAd) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
+      child: InkWell(
+        onTap: _rewardBusy ? null : _watchAdForFreeze,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          decoration: BoxDecoration(
+            color: context.colors.surface,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: context.colors.accent.withValues(alpha: 0.3)),
+          ),
+          child: Row(
+            children: [
+              const Text('🧊', style: TextStyle(fontSize: 22)),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  'Bank a streak freeze',
+                  style: TextStyle(
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w800,
+                    color: context.colors.textPrimary,
+                  ),
+                ),
+              ),
+              if (_rewardBusy)
+                SizedBox(
+                  height: 16,
+                  width: 16,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: context.colors.accentFaint,
+                  ),
+                )
+              else
+                Text(
+                  'Watch',
+                  style: TextStyle(
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w800,
+                    color: context.colors.accentSoft,
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   List<AnonymousMessage> get _filtered {
@@ -404,7 +547,7 @@ class _InboxScreenState extends State<InboxScreen> {
           final f = filters[i];
           final active = _filter == f.$1;
           return GestureDetector(
-            onTap: () => setState(() => _filter = f.$1),
+              onTap: () => _setFilter(f.$1),
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
               decoration: BoxDecoration(
@@ -557,7 +700,7 @@ class _InboxScreenState extends State<InboxScreen> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
       child: InkWell(
-        onTap: () => setState(() => _filter = 'filtered'),
+            onTap: () => _setFilter('filtered'),
         borderRadius: BorderRadius.circular(12),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
@@ -647,6 +790,7 @@ class _InboxScreenState extends State<InboxScreen> {
         _buildSyncRow(),
         if (!_dropDone) _buildDropBanner(),
         if (_trayWeekCount > 0 && _filter != 'filtered') _buildDigestChip(),
+        if (_error == null) _buildFreezeCard(),
         const SizedBox(height: 8),
         _buildFilters(),
         _buildStats(),
@@ -1139,6 +1283,15 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
   }
 
   Future<void> _report() async {
+    AdsService.instance.suppress('message-report');
+    try {
+      await _runReport();
+    } finally {
+      AdsService.instance.unsuppress('message-report');
+    }
+  }
+
+  Future<void> _runReport() async {
     final reasonCtrl = TextEditingController();
     String? token;
     var confirmToken = 0;

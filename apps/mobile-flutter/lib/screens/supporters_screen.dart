@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
+import '../ads/ads_service.dart';
 import '../api/billing.dart';
 
 import '../api/api_client.dart';
@@ -161,7 +162,7 @@ class _HeroCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'SecretMsg is a personal project with zero ad trackers and zero data selling. Running secure, always-on infrastructure costs real money — every supporter keeps the lights on.',
+            'SecretMsg is a personal project that pays for its own infrastructure. It runs one ad network, Google AdMob, and sells none of your data. Every supporter keeps the lights on.',
             style: TextStyle(color: context.colors.textSecondary, fontSize: 12.5, height: 1.55),
           ),
           const SizedBox(height: 18),
@@ -352,6 +353,13 @@ class _SupportCtaState extends State<_SupportCta> {
           break;
       }
     });
+    if (e.stage == BillingStage.granted) unawaited(_refreshEntitlement());
+  }
+
+  Future<void> _refreshEntitlement() async {
+    try {
+      AdsService.instance.applyProfile(await ApiClient.getMe());
+    } catch (_) {}
   }
 
   Future<void> _buy(ProductDetails product) async {
@@ -398,7 +406,7 @@ class _SupportCtaState extends State<_SupportCta> {
           ),
           const SizedBox(height: 4),
           Text(
-            'Supporting keeps SecretMsg ad-free and fully private.',
+            'One purchase removes the ads from this app, for good. No subscription.',
             textAlign: TextAlign.center,
             style: TextStyle(color: context.colors.textSecondary, fontSize: 12, height: 1.5),
           ),

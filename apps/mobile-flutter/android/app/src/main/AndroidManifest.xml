@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <!-- AdMob serves ads in this app. Declared explicitly because the app uses
+         the Android advertising identifier; it is a normal permission with no
+         runtime prompt, and users can reset or limit it in Android Settings. -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
     <application
         android:label="SecretMsg"
         android:name="${applicationName}"
@@ -47,6 +51,15 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <!-- AdMob application id. PLACEHOLDER: replace this value with the real
+             id from the operator's AdMob console (AdMob > App settings), and
+             replace the matching ad unit ids in lib/ads/ads_config.dart
+             (kBannerAdUnitIdPlaceholder / kRewardedAdUnitIdPlaceholder).
+             An all-zero id is a deliberate placeholder: the SDK reports an
+             invalid-app-id error and no ad ever fills. -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-0000000000000000"/>
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

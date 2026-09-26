@@ -22,14 +22,11 @@ describe('links', () => {
 });
 
 describe('offlineSupportersFallback', () => {
-  it('returns a demo wall with stats', () => {
+  it('returns aggregate stats with no donor identities', () => {
     const data = offlineSupportersFallback();
-    expect(data.supporters.length).toBeGreaterThan(0);
-    expect(data.stats.totalSupporters).toBe(data.supporters.length);
-    for (const s of data.supporters) {
-      expect(s.id).toBeTruthy();
-      expect(s.alias).toBeTruthy();
-      expect(s.tier).toBeTruthy();
-    }
+    expect(data.stats).toBeDefined();
+    expect(typeof data.stats.totalSupporters).toBe('number');
+    expect(typeof data.stats.monthlyServerGoalPercent).toBe('number');
+    expect(data).not.toHaveProperty('supporters');
   });
 });

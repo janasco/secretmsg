@@ -7,6 +7,8 @@ const String kTurnstileSiteKey = '0x4AAAAAAEsIItNVg9CO0YY9';
 /// Maximum characters for a message / reply.
 const int kMaxMessageLength = 500;
 
+const String kAdsFlagsPath = '/api/config/ads';
+
 String shareUrlFor(String username) {
   return '$kPublicBaseUrl/${Uri.encodeComponent(username)}';
 }

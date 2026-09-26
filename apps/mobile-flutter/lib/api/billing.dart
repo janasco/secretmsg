@@ -12,12 +12,14 @@ class BillingProducts {
   static const viewerHints = 'viewer_hints';
   static const senderHints = 'sender_hints';
   static const supporterBundle = 'supporter_bundle';
+  static const removeAds = 'remove_ads';
 
   static const all = <String>{
     verifiedBadge,
     viewerHints,
     senderHints,
     supporterBundle,
+    removeAds,
   };
 
   static String labelFor(String id) {
@@ -30,6 +32,8 @@ class BillingProducts {
         return 'Sender Hints';
       case supporterBundle:
         return 'Supporter Bundle';
+      case removeAds:
+        return 'Remove Ads';
       default:
         return id;
     }

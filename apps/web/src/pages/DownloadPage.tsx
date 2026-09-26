@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Download, Check, Copy, ShieldCheck, BellRing, Play } from 'lucide-react';
 import { PublicPage } from '@/components/PublicPage';
 import { APK_VERSION, APK_VARIANTS, APK_PRIMARY } from '@/lib/appVersion';
@@ -34,9 +35,20 @@ export const DownloadPage: React.FC = () => {
     <PublicPage
       title="Get the Android App"
       eyebrow="Free • Open Source"
-      description="The native SecretMsg experience: Daily Drop ritual, streaks, bot-checked sending, inbox with double-blind replies, ranks, challenges, badges, and Play-verified supporter perks."
+      description="The native SecretMsg experience: Daily Drop ritual, streaks, bot-checked sending, inbox with double-blind replies, ranks, challenges, and badges. The app shows ads; a one-time purchase removes them."
     >
       <div className="space-y-6">
+        <div className="glass-panel p-5 rounded-2xl border-amber-500/20 space-y-1.5">
+          <h2 className="text-sm font-bold text-amber-300">Before you install: the app shows ads</h2>
+          <p className="text-xs text-slate-400 leading-relaxed">
+            The Android app serves ads from Google AdMob — a banner and an optional rewarded
+            video. A single in-app purchase, “Remove Ads,” switches them off for good; there is no
+            subscription. Ads never receive your messages, your handle, or a sender&apos;s identity,
+            and the website you are on right now carries no ads at all. Details are in the{' '}
+            <Link to="/p/privacy" className="text-indigo-400 underline">Privacy Policy</Link>.
+          </p>
+        </div>
+
         {/* Current build */}
         <div className="glass-panel p-6 sm:p-8 rounded-3xl border-emerald-500/20 space-y-5">
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
@@ -134,9 +146,9 @@ export const DownloadPage: React.FC = () => {
             </span>
           </div>
           <p className="text-xs text-slate-400 leading-relaxed">
-            The Play release ships as a signed Android App Bundle with Play-verified supporter
-            perks (Verified Badge, Viewer/Sender Hints). Until then, the APK above is the
-            current build — same features, direct from this site.
+            The Play release ships as a signed Android App Bundle, including the Google AdMob
+            integration and the one-time Play-verified “Remove Ads” purchase. Until then, the APK
+            above is the current build — same features, direct from this site.
           </p>
         </div>
       </div>

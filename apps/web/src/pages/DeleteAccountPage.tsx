@@ -12,7 +12,7 @@ interface DeleteAccountPageProps {
 
 const deletedData = [
   'Your received messages, blocked-sender records, and reports involving you as either the reporter or recipient',
-  'Your pairing codes, purchases, linked donations, and email-keyed one-time-code sessions',
+  'Your pairing codes, purchases including your ad-free entitlement, and email-keyed one-time-code sessions',
   'The account-linked rate-limit rows that can be identified from your email, handle, or account ID',
   'Your account row, including your handle, email address, profile, and settings',
 ];
@@ -20,7 +20,7 @@ const deletedData = [
 const deletionDisclosures = [
   'Deletion is immediate and irreversible. There is no restore or account recovery after confirmation.',
   'Deletion cannot retract copies you already exported, downloaded, saved, or shared elsewhere.',
-  'Deletion does not erase provider-side records held by Google, Resend, Polar, or in Cloudflare backups.',
+  'Deletion does not erase provider-side records held by Google (including Google Play and AdMob), Resend, or in Cloudflare backups.',
   'IP-keyed rate limits that cannot be mapped to your account are not explicitly purged and expire under their own retention periods.',
 ];
 

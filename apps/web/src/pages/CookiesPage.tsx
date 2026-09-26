@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BadgeCheck } from 'lucide-react';
 import { PublicPage } from '@/components/PublicPage';
 
@@ -6,7 +7,7 @@ export const CookiesPage: React.FC = () => {
   return (
     <PublicPage
       title="Cookies & Local Storage Policy"
-      description="SecretMsg is engineered without invasive trackers. We believe your online activity across other websites is none of our business."
+      description="secretmsg.net sets no advertising cookies and runs no ad or cross-site tracking code. We believe your online activity across other websites is none of our business."
     >
       <p className="text-xs text-slate-400 mb-6"><strong className="text-slate-300">Last Updated: September 2026</strong></p>
 
@@ -66,7 +67,7 @@ export const CookiesPage: React.FC = () => {
             <span className="text-slate-500 font-mono text-xs">03</span> What We NEVER Store or Use
           </h2>
           <div className="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-2 text-xs sm:text-sm text-slate-300">
-            <p><strong>Zero Advertising Cookies:</strong> We do not partner with ad exchanges, data brokers, or retargeting networks.</p>
+            <p><strong>No Advertising Cookies on This Website:</strong> secretmsg.net does not partner with ad exchanges, data brokers, or retargeting networks, and sets no advertising cookies. The advertising in the Android app is served by Google AdMob inside the app, not by cookies on this site.</p>
             <p><strong>Zero Cross-Site Tracking:</strong> We never fingerprint your hardware or monitor your browsing behavior outside of secretmsg.net.</p>
             <p><strong>Zero Commercial Analytics:</strong> No third-party marketing company receives session replay recordings or clickstream heatmaps.</p>
           </div>
@@ -86,7 +87,7 @@ export const CookiesPage: React.FC = () => {
             <span className="text-slate-500 font-mono text-xs">05</span> GDPR &amp; International Compliance
           </h2>
           <p className="text-slate-400 leading-relaxed text-xs sm:text-sm">
-            This Cookie Policy complies with the General Data Protection Regulation (GDPR) and the EU ePrivacy Directive. Because we use strictly essential, non-tracking technologies for basic security and preferences, we do not require intrusive tracking consent banners while ensuring you have complete transparency and control. For questions, reach out to <a href="mailto:privacy@secretmsg.net" className="text-indigo-400 underline font-mono">privacy@secretmsg.net</a>.
+            This Cookie Policy complies with the General Data Protection Regulation (GDPR) and the EU ePrivacy Directive. Because this website uses only strictly essential, non-tracking cookies and local storage, we do not require intrusive tracking consent banners here, while the Android app runs its own consent flow for advertising as described in our <Link to="/p/privacy" className="text-indigo-400 underline">Privacy Policy</Link>. Either way you keep full transparency and control. For questions, reach out to <a href="mailto:privacy@secretmsg.net" className="text-indigo-400 underline font-mono">privacy@secretmsg.net</a>.
           </p>
         </section>
       </div>

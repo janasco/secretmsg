@@ -26,9 +26,9 @@ Word filters hold exact matches for review. They do not catch every piece of jun
 
 ## Monetizing honesty
 
-Supporter contributions can help fund the project, but the available grant depends on the checkout and account. Eligible options can include a supporter badge, sender hints, or a custom username; the app does not automatically give perks to top fans or mods.
+Supporter contributions fund the project through ad revenue and optional ad-removal purchases. The purchase is what grants something: a single one-time unlock removes the ads, and the app does not automatically give extras to top fans or mods.
 
-The supporters wall lists qualifying Polar contributions. Treat a public wall as community information, not a promise of sponsor reach or a guaranteed conversion result.
+The supporters page reports how many accounts hold the ad-free purchase, without naming anyone. Treat it as aggregate information, not a promise of sponsor reach or a guaranteed conversion result.
 
 ## Feedback that improves the work
 

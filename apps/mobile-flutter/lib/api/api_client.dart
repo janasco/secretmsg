@@ -18,7 +18,8 @@ class UnauthorizedError implements Exception {
 class ApiClient {
   static const _timeout = Duration(seconds: 30);
 
-  static Future<Map<String, dynamic>> _getJson(String path, {bool auth = false}) async {
+  static Future<Map<String, dynamic>> _getJson(String path,
+      {bool auth = false, Duration? timeout}) async {
     final headers = <String, String>{};
     if (auth) {
       final token = await Session.getToken();
@@ -26,7 +27,8 @@ class ApiClient {
       headers['Authorization'] = 'Bearer $token';
     }
     final uri = Uri.parse('$kApiBaseUrl$path');
-    final res = await http.get(uri, headers: headers).timeout(_timeout);
+    final res =
+        await http.get(uri, headers: headers).timeout(timeout ?? _timeout);
     return _decode(res);
   }
 
@@ -395,6 +397,17 @@ class ApiClient {
   static Future<SupportersData> getSupporters() async {
     final data = await _getJson('/api/supporters');
     return SupportersData.fromJson(data);
+  }
+
+  // ---- Remote ad kill-switch (GET /api/config/ads) ----
+  static Future<bool?> getAdsEnabled() async {
+    final data =
+        await _getJson(kAdsFlagsPath, timeout: const Duration(seconds: 5));
+    final raw = data['ads_enabled'];
+    if (raw is bool) return raw;
+    if (raw is num) return raw != 0;
+    if (raw is String) return raw == 'true' || raw == '1';
+    return null;
   }
 
 }

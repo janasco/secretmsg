@@ -137,6 +137,22 @@ class StreakStore {
     return StreakCheckIn(state: state, froze: froze, earnedFreeze: earned);
   }
 
+  static Future<({StreakState state, bool earned})> grantFreeze({
+    int maxFreezes = 1,
+  }) async {
+    final prev = await load();
+    final capped = earnFreeze(prev.freezes, maxFreezes: maxFreezes);
+    final earned = capped != prev.freezes;
+    final state = StreakState(
+      count: prev.count,
+      lastDay: prev.lastDay,
+      freezes: capped,
+      lastRepairAt: prev.lastRepairAt,
+    );
+    if (earned) await _save(state);
+    return (state: state, earned: earned);
+  }
+
   /// Supporter repair: restores the pre-break count when [canRepair] allows.
   /// Returns true when a repair was applied.
   static Future<bool> repair(DateTime now, {required bool isSupporter}) async {

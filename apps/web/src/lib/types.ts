@@ -42,16 +42,12 @@ export interface AnonymousMessage {
   created_at: string;
 }
 
-export interface AnonymousSupporter {
-  id: string;
-  alias: string;
-  tier: string;
-  note: string | null;
-  createdAt: string;
-}
-
+/**
+ * Aggregate support numbers only. There are no donor identities, aliases,
+ * tiers, or notes: support is the anonymous `remove_ads` purchase, so the
+ * API has nobody to name.
+ */
 export interface SupportersData {
-  supporters: AnonymousSupporter[];
   stats: {
     totalSupporters: number;
     monthlyServerGoalPercent: number;

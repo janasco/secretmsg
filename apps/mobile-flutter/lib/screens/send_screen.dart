@@ -696,8 +696,8 @@ class _SafeNote extends StatelessWidget {
       children: [
         Text('Built for safe, honest connection', style: TextStyle(color: context.colors.textPrimary, fontSize: 14, fontWeight: FontWeight.w800)),
         const SizedBox(height: 8),
-        const _Bullet(icon: Icons.visibility_off, text: 'Zero IP tracking, zero ad surveillance, zero profile mining.'),
-        const _Bullet(icon: Icons.filter_list, text: 'Automated moderation scans every message before it reaches the inbox.'),
+        const _Bullet(icon: Icons.visibility_off, text: 'No hardware fingerprinting, no data selling, no profile mining.'),
+        const _Bullet(icon: Icons.filter_list, text: 'Filtered Words refuse matching sends at the moment they are sent.'),
         const _Bullet(icon: Icons.auto_awesome, text: 'Blind reply link keeps identities private on both ends.'),
         const _Bullet(icon: Icons.pause_circle_outline, text: 'Recipients can pause, filter, or wipe their inbox anytime.'),
       ],

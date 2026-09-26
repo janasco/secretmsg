@@ -10,11 +10,28 @@ unless they changed app behaviour.
 
 **v1.6.10 is the version in the current upload bundle**
 (`/opt/secretmsg/.secrets/release-artifacts/v1.6.10/secretmsg-v1.6.10-upload.aab`,
-versionCode 25). Its entry covers the Play Billing library upgrade.
+versionCode 25). It is not yet uploaded to Play. Its entry covers the
+business-model change — the app is now ad-supported, with a one-time
+`remove_ads` purchase — together with the Play Billing library upgrade. v1.6.9
+was prepared but never uploaded, so its entry is kept for reference only.
 
 ---
 
-## v1.6.9 — current, ready to upload (493 chars)
+## v1.6.10 — current, ready to upload (491 chars)
+
+Ads, and a one-off way to remove them.
+
+• Ad-supported now: a small banner, plus a short optional video that can earn
+  a streak freeze.
+• One one-off purchase — remove ads — removes them for good. No subscription.
+• Ads are in the Android app only. The website has none.
+• Senders are still never asked who they are, and your data is still not sold.
+  Messages are not used for ads.
+• Updated to the current Google Play Billing library (8.0.0); purchase
+  unlocking and restore re-verified.
+
+## v1.6.9 — superseded, never uploaded (493 chars)
+
 Privacy, stability and accessibility pass.
 
 • Deleting your account now also wipes local data: cached inbox, queued
@@ -24,16 +41,6 @@ messages, streaks and progress.
 • Dice prompts load off the UI thread, so the screen opens instantly.
 • Accessibility: labelled controls, larger tap targets, better contrast.
 • Removed an unnecessary restricted alarm permission.
-
-## v1.6.10 — current, ready to upload (263 chars)
-
-Stability update.
-
-• Updated to the current Google Play Billing library (8.0.0) for the latest
-monetization features and compatibility.
-• Purchase unlocking, restore and pending-purchase handling verified against
-the updated library.
-• No other behaviour changes.
 
 ---
 

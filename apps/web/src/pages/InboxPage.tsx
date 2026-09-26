@@ -9,11 +9,11 @@ import { MessageSquare, Reply, Flag, Copy, Check, Share2, Heart, Smartphone, Clo
 
 interface InboxPageProps {
   user: UserProfile | null;
-  onOpenDonation: () => void;
+  onOpenSupport: () => void;
   onLogout: () => void;
 }
 
-export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLogout }) => {
+export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenSupport, onLogout }) => {
   // A browser paired from the app holds a read-only token; every write 403s.
   const isReadOnly = ApiClient.isReadOnly();
   const navigate = useNavigate();
@@ -202,11 +202,11 @@ export const InboxPage: React.FC<InboxPageProps> = ({ user, onOpenDonation, onLo
 
         {user.is_premium === 0 && (
           <button
-            onClick={onOpenDonation}
+            onClick={onOpenSupport}
             className="text-xs text-amber-400 hover:underline flex items-center space-x-1 font-medium"
           >
             <Heart className="w-3.5 h-3.5 fill-amber-400" />
-            <span>Support & Unlock Custom Handles</span>
+            <span>Remove Ads in the App</span>
           </button>
         )}
       </div>

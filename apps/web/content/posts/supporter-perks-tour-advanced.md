@@ -32,7 +32,7 @@ Treat the badge as account status, not a promise of extra reach. The app does no
 
 ## How backing works
 
-Android purchases use Google Play Billing and the server verifies the purchase token before granting the supported perk. A Polar contribution is recorded only through a verified webhook, and any eligible account grant is applied server-side.
+The app is free and ad-supported. Android purchases use Google Play Billing, and the server verifies the purchase token before granting anything. A single one-time purchase removes the ads for good, and the grant is applied server-side.
 
 The available checkout and the exact grant vary by path. Do not treat a supporter badge, custom handle, or hint as automatically included in every contribution; check the current checkout and your account settings.
 

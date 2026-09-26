@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 
 interface LandingPageProps {
-  onOpenDonation: () => void;
+  onOpenSupport: () => void;
 }
 
 const SAMPLE_VIBES = [
@@ -52,7 +52,7 @@ const SAMPLE_VIBES = [
   },
 ];
 
-export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
+export const LandingPage: React.FC<LandingPageProps> = ({ onOpenSupport }) => {
   const [selectedVibeIndex, setSelectedVibeIndex] = useState(0);
 
   return (
@@ -85,11 +85,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
           </Link>
 
           <button
-            onClick={onOpenDonation}
+            onClick={onOpenSupport}
             className="w-full sm:w-auto py-3.5 px-6 rounded-xl font-medium text-sm bg-dark-900/90 hover:bg-dark-800 text-amber-300 border border-amber-500/20 flex items-center justify-center space-x-2 transition-colors"
           >
             <Heart className="w-4 h-4 text-amber-400 fill-amber-400" />
-            <span>Support Project & Get Badge</span>
+            <span>How to Support the Project</span>
           </button>
         </div>
 
@@ -255,10 +255,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
           <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
             <ShieldCheck className="w-5 h-5" />
           </div>
-          <h3 className="text-base font-bold text-white">3. Zero Tracker Guarantee</h3>
-          <p className="text-xs text-slate-400 leading-relaxed">
-            Protected by secure storage and automated spam screening. No sketchy paywalls to reveal identities, no ad profiling, pure privacy.
-          </p>
+            <h3 className="text-base font-bold text-white">3. No Identity Trail</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Protected by secure storage and automated spam screening. No paywall that reveals who sent what, and your messages are never handed to an advertiser.
+            </p>
         </div>
       </div>
 
@@ -268,9 +268,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenDonation }) => {
           <div className="flex items-center justify-center md:justify-start space-x-2 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
             <span>Open Source & Transparent</span>
           </div>
-          <h3 className="text-xl font-bold text-white">Built for Privacy, Not for Profit</h3>
+          <h3 className="text-xl font-bold text-white">Independent, and Straight About the Money</h3>
           <p className="text-xs sm:text-sm text-slate-400 max-w-xl">
-            SecretMsg is an open-source personal project created by janasco. No hidden trackers, no ad networks, no data selling. Hosted on secure, hardened infrastructure.
+            SecretMsg is an open-source project created by janasco. We sell your data to nobody. The Android app
+            carries ads from Google AdMob to pay for hosting, and one in-app purchase removes them. This website carries
+            no ads. How that works is written up plainly in the privacy policy.
           </p>
         </div>
         <div className="flex items-center space-x-3 shrink-0">

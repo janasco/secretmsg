@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../ads/ads_banner.dart';
 import '../theme.dart';
 import '../widgets/notch_nav_bar.dart';
 import 'dice_screen.dart';
@@ -98,34 +99,40 @@ class _AppShellState extends State<AppShell> {
                 if (_visited.contains(tab)) _screenFor(tab) else const SizedBox.shrink(),
             ],
           ),
-          bottomNavigationBar: NotchNavBar(
-            selectedIndex: index,
-            onTap: (i) => _switchTo(order[i]),
-            destinations: const [
-              NotchDestination(
-                icon: Icons.inbox_outlined,
-                selectedIcon: Icons.inbox,
-                label: 'Inbox',
-              ),
-              NotchDestination(
-                icon: Icons.edit_outlined,
-                selectedIcon: Icons.edit,
-                label: 'Send',
-              ),
-              NotchDestination(
-                icon: Icons.casino_outlined,
-                selectedIcon: Icons.casino,
-                label: 'Dice',
-              ),
-              NotchDestination(
-                icon: Icons.auto_awesome_outlined,
-                selectedIcon: Icons.auto_awesome,
-                label: 'Stickers',
-              ),
-              NotchDestination(
-                icon: Icons.person_outline,
-                selectedIcon: Icons.person,
-                label: 'Profile',
+          bottomNavigationBar: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AdsBanner(),
+              NotchNavBar(
+                selectedIndex: index,
+                onTap: (i) => _switchTo(order[i]),
+                destinations: const [
+                  NotchDestination(
+                    icon: Icons.inbox_outlined,
+                    selectedIcon: Icons.inbox,
+                    label: 'Inbox',
+                  ),
+                  NotchDestination(
+                    icon: Icons.edit_outlined,
+                    selectedIcon: Icons.edit,
+                    label: 'Send',
+                  ),
+                  NotchDestination(
+                    icon: Icons.casino_outlined,
+                    selectedIcon: Icons.casino,
+                    label: 'Dice',
+                  ),
+                  NotchDestination(
+                    icon: Icons.auto_awesome_outlined,
+                    selectedIcon: Icons.auto_awesome,
+                    label: 'Stickers',
+                  ),
+                  NotchDestination(
+                    icon: Icons.person_outline,
+                    selectedIcon: Icons.person,
+                    label: 'Profile',
+                  ),
+                ],
               ),
             ],
           ),

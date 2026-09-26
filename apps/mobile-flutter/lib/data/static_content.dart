@@ -208,7 +208,7 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'Only present when you register and log into your board to access your private inbox. Kept encrypted, strictly restricted to secretmsg.net, and permanently discarded upon logout or account deletion.',
     ]),
     StaticSection('03 What We NEVER Store or Use', [
-      '🚫 Zero Advertising Cookies: We do not partner with ad exchanges, data brokers, or retargeting networks.',
+      '🚫 No Ad Exchanges or Data Brokers: The only advertising is Google AdMob in this app, used to show a banner or a rewarded video. We do not run retargeting, and we do not sell or share your data with advertisers.',
       '🚫 Zero Cross-Site Tracking: We never fingerprint your hardware or monitor your browsing behavior outside of secretmsg.net.',
       '🚫 Zero Commercial Analytics: No third-party marketing company receives session replay recordings or clickstream heatmaps.',
     ]),
@@ -281,7 +281,7 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'No account, sign-up, name, email address, or social handle is required to send. The Account User cannot receive a sender name because none is requested.',
       'If a link or authenticated page does not load, verify the URL, paused-link status, and authentication. Browser storage settings can affect web sessions.',
       'A SecretMsg link can be shared through a bio, direct link, or story sticker. Publicly exported story stickers can be saved or shared outside SecretMsg and are not deleted if the Account User later deletes the account.',
-      'Account creation and anonymous sending are available without supporter payment. Optional Google Play purchases and Polar web donations support development.',
+      'Account creation and anonymous sending are free and never paywalled. An optional one-time Google Play purchase removes the ads from this app.',
       'Account Users can delete individual messages, change their PIN, use safety controls, or request account deletion. A recipient can report a message or separately block the app-generated sender-fingerprint hash for that link.',
       'Delete or report uncomfortable messages from the inbox. For serious threats, contact local authorities. Do not claim that individual senders can be identified: the service does not ask for their identity, but a recipient can block future submissions from a sender-fingerprint hash.',
     ]),
@@ -338,7 +338,7 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'The primary sign-in method is a handle and 4–6 digit PIN. An account may contain a random account ID, display name, avatar selection, bio, safety settings, hashed credentials, and an optional FCM registration token. Handle/PIN accounts store the synthetic placeholder <handle>@v2.secretmsg; it is not a mailbox. A real email is optional and is used only with the legacy email-code path.',
       'Message data includes text, replies, recipient settings, timestamps, delivery metadata, and report reasons. Cloudflare processes the raw connecting IP and request data to serve the service. Turnstile receives its challenge response and the raw connecting IP when verification is requested. No precise location is collected through SecretMsg.',
       'D1 stores SHA-256-derived rate-limit keys based on an IP address, handle, email address, or account ID as applicable. Raw IP addresses are not stored in readable form in the D1 rate-limit table, but Cloudflare processes the raw IP to serve the request and Turnstile receives it when verification is requested.',
-      'The identifiers disclosed here are account IDs, optional FCM tokens, hashes of app-generated random sender values, and hashed rate-limit keys. None is a hardware ID or advertising ID. SecretMsg has no advertising, marketing, or analytics SDK.',
+      'The identifiers disclosed here are account IDs, optional FCM tokens, hashes of app-generated random sender values, and hashed rate-limit keys. None is a hardware ID. SecretMsg itself collects no advertising identifier and runs no marketing or analytics SDK; the Android advertising ID is handled only by Google AdMob for ad serving, and you can reset or limit it in Android Settings.',
       'For a new message, FCM receives the registered token, a random message ID, the unread count, and a preview truncated to 140 characters, plus an ellipsis when truncated. The full message body is not sent through FCM.',
     ]),
     StaticSection('03 What We Will NEVER Do', [
@@ -356,14 +356,14 @@ const Map<String, StaticPageContent> STATIC_PAGES = {
       'Resend: receives a real email address and six-digit login code only for the legacy email-code path. The handle/PIN path uses a synthetic placeholder and does not send a login email.',
       'Google Play Billing: receives the purchase token and product ID for verification. SecretMsg receives purchase state and an order ID when available, but never receives or stores card details.',
       'Google Firebase Cloud Messaging: receives the FCM token, random message ID, unread count, and 140-character truncated preview. It does not receive the full message body.',
-      'Polar: the current web donation link does not append a SecretMsg username or email. Checkout information is provided directly to Polar, which may return a verified webhook with donor information, amount, and donation metadata. SecretMsg may use a public name or email local part as the supporter alias and supplied account metadata to link eligible perks.',
+      'Advertising: this Android app shows ads through Google AdMob, as a banner and as an optional rewarded video. Ad requests may carry the Android advertising identifier, IP address, device and OS details, app version, and coarse IP-derived location. They never carry your handle, display name, messages, replies, or anything that identifies a sender. Ads are non-personalised unless you consent to personalised ads, which is required in the EEA, the UK, and Switzerland. This website shows no ads and loads no ad SDK.',
       'We may disclose relevant information to comply with valid legal process, prevent imminent harm, enforce our terms, protect users, or preserve relevant records.',
     ]),
     StaticSection('07 Your Rights & Choices (GDPR & CCPA)', [
       'Depending on your location, you may have rights to access, correct, export, restrict, object to, or request deletion of personal information. Profile and safety fields can be updated directly; contact privacy@secretmsg.net for other requests.',
       'Open Settings → Delete Account or use the public Delete Account page at secretmsg.net/delete-account with a full signed-in session. A successful request deletes received messages, blocked-sender records, reports involving the account as recipient or reporter, pairing codes, purchase records, linked donations, email-keyed one-time-code sessions, identifiable account-derived rate-limit rows, and the primary D1 account row.',
       'For a handle/PIN account, account-row deletion removes the synthetic <handle>@v2.secretmsg placeholder; no deletion message is sent because it is not a mailbox. For a legacy account, the real email is removed from D1, but provider-side copies are outside this operation.',
-      'Deletion limits: IP-keyed rate-limit rows that cannot be mapped to the account are not explicitly purged; copies you exported, saved, posted, or shared cannot be retracted; records held independently by Google, Resend, Polar, Cloudflare, or other providers are not erased by this endpoint; encrypted R2 backups have no verified post-deletion purge; and the server deletion steps are sequential rather than transactional, so a failed request can leave partial deletion until retried or support assists.',
+      'Deletion limits: IP-keyed rate-limit rows that cannot be mapped to the account are not explicitly purged; copies you exported, saved, posted, or shared cannot be retracted; records held independently by Google, Resend, Cloudflare, or other providers are not erased by this endpoint; encrypted R2 backups have no verified post-deletion purge; and the server deletion steps are sequential rather than transactional, so a failed request can leave partial deletion until retried or support assists.',
       'The mobile app attempts to clear local account data after the server request, but local cleanup is separate from the server transaction. The account cannot be restored after successful deletion.',
     ]),
     StaticSection('08 Do Not Track Signals', [

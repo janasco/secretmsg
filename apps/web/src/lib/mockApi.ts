@@ -63,7 +63,7 @@ export class MockApiClient {
       avatar_seed: username || 'janasco',
       bio: 'Open source contributor & privacy advocate',
       is_premium: 1,
-      badge_title: 'Golden Guardian',
+      badge_title: 'Ad-Free',
     };
   }
 
@@ -112,7 +112,7 @@ export class MockApiClient {
       email,
       avatar_seed: email,
       is_premium: 1,
-      badge_title: 'Developer',
+      badge_title: 'Ad-Free',
       custom_slug_unlocked: 1,
     };
     return { user, token: 'mock_jwt_token_for_local_testing' };
@@ -159,15 +159,6 @@ export class MockApiClient {
 
   static async getSupporters(): Promise<SupportersData> {
     return {
-      supporters: [
-        {
-          id: 'sup-1',
-          alias: 'Open Source Supporter',
-          tier: 'Golden Guardian',
-          note: 'Supporting privacy-focused communication platforms.',
-          createdAt: new Date().toISOString(),
-        },
-      ],
       stats: {
         totalSupporters: 42,
         monthlyServerGoalPercent: 100,
