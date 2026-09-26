@@ -22,6 +22,11 @@ class FakeAdsPlatform implements AdsPlatform {
   int rewardedCalls = 0;
 
   AdsConsentState consent = AdsConsentState.notRequired;
+  PrivacyOptionsRequirement privacyRequirement = PrivacyOptionsRequirement.notRequired;
+  PrivacyOptionsOutcome privacyOutcome = PrivacyOptionsOutcome.completed;
+  Object? throwOnPrivacyOptions;
+  int privacyRequirementCalls = 0;
+  int privacyOptionCalls = 0;
   bool bannerFill = true;
   RewardedOutcome outcome = RewardedOutcome.earned;
   Object? throwOnRewarded;
@@ -39,6 +44,20 @@ class FakeAdsPlatform implements AdsPlatform {
   Future<AdsConsentState> gatherConsent() async {
     consentCalls++;
     return consent;
+  }
+
+  @override
+  Future<PrivacyOptionsRequirement> privacyOptionsRequirement() async {
+    privacyRequirementCalls++;
+    if (throwOnPrivacyOptions != null) throw throwOnPrivacyOptions!;
+    return privacyRequirement;
+  }
+
+  @override
+  Future<PrivacyOptionsOutcome> showPrivacyOptions() async {
+    privacyOptionCalls++;
+    if (throwOnPrivacyOptions != null) throw throwOnPrivacyOptions!;
+    return privacyOutcome;
   }
 
   @override
@@ -590,6 +609,104 @@ void main() {
       expect(find.text('ad'), findsNothing);
       expect(find.byType(NotchNavBar), findsOneWidget);
       expect(tester.takeException(), isNull);
+    });
+  });
+
+  group('privacy options entry point', () {
+    // The service refuses the entry point whenever no ad requests are being
+    // made, because there is no advertising choice to revisit in that case.
+    test('is hidden when the remote flag is off', () async {
+      final platform = FakeAdsPlatform()
+        ..privacyRequirement = PrivacyOptionsRequirement.required;
+      final service = _build(platform: platform, flag: false);
+      addTearDown(service.dispose);
+      await service.init();
+      expect(await service.privacyOptionsRequired(), isFalse);
+    });
+
+    test('is hidden when the SDK says it is not required', () async {
+      final platform = FakeAdsPlatform()
+        ..privacyRequirement = PrivacyOptionsRequirement.notRequired;
+      final service = _build(platform: platform, flag: true);
+      addTearDown(service.dispose);
+      await service.init();
+      expect(await service.privacyOptionsRequired(), isFalse);
+    });
+
+    test('is hidden when the SDK status is unknown', () async {
+      final platform = FakeAdsPlatform()
+        ..privacyRequirement = PrivacyOptionsRequirement.unknown;
+      final service = _build(platform: platform, flag: true);
+      addTearDown(service.dispose);
+      await service.init();
+      expect(await service.privacyOptionsRequired(), isFalse);
+    });
+
+    test('is offered when the SDK requires it', () async {
+      final platform = FakeAdsPlatform()
+        ..privacyRequirement = PrivacyOptionsRequirement.required;
+      final service = _build(platform: platform, flag: true);
+      addTearDown(service.dispose);
+      await service.init();
+      expect(await service.privacyOptionsRequired(), isTrue);
+    });
+
+    test('an ad-free account is never offered the entry point', () async {
+      final platform = FakeAdsPlatform()
+        ..privacyRequirement = PrivacyOptionsRequirement.required;
+      final service = _build(platform: platform, flag: true);
+      addTearDown(service.dispose);
+      service.applyProfile(_supporter);
+      await service.init();
+      expect(service.isAdFree, isTrue);
+      expect(await service.privacyOptionsRequired(), isFalse);
+    });
+
+    test('showing options re-reads consent so a withdrawal takes effect',
+        () async {
+      final platform = FakeAdsPlatform()
+        ..privacyRequirement = PrivacyOptionsRequirement.required
+        ..consent = AdsConsentState.obtained;
+      final service = _build(platform: platform, flag: true);
+      addTearDown(service.dispose);
+      await service.init();
+      expect(service.canRequestPersonalised, isTrue);
+      final before = platform.consentCalls;
+
+      // The user revokes consent in the form.
+      platform.consent = AdsConsentState.denied;
+      final outcome = await service.showPrivacyOptions();
+      expect(outcome, PrivacyOptionsOutcome.completed);
+      expect(platform.consentCalls, greaterThan(before));
+      expect(service.canRequestPersonalised, isFalse);
+    });
+
+    test('does not open the form when it is not required', () async {
+      final platform = FakeAdsPlatform()
+        ..privacyRequirement = PrivacyOptionsRequirement.notRequired;
+      final service = _build(platform: platform, flag: true);
+      addTearDown(service.dispose);
+      await service.init();
+      final outcome = await service.showPrivacyOptions();
+      expect(outcome, PrivacyOptionsOutcome.unavailable);
+      expect(platform.privacyOptionCalls, 0);
+    });
+
+    test('surfaces an unavailable form rather than claiming success',
+        () async {
+      final platform = FakeAdsPlatform()
+        ..privacyRequirement = PrivacyOptionsRequirement.required
+        ..privacyOutcome = PrivacyOptionsOutcome.unavailable;
+      final service = _build(platform: platform, flag: true);
+      addTearDown(service.dispose);
+      await service.init();
+      final before = platform.consentCalls;
+      expect(
+        await service.showPrivacyOptions(),
+        PrivacyOptionsOutcome.unavailable,
+      );
+      // No re-read, because nothing changed.
+      expect(platform.consentCalls, before);
     });
   });
 

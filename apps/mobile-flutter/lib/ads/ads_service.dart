@@ -179,6 +179,48 @@ class AdsService extends ChangeNotifier {
     }
   }
 
+  Future<PrivacyOptionsOutcome> showPrivacyOptions() async {
+    if (!await privacyOptionsRequired()) {
+      return PrivacyOptionsOutcome.unavailable;
+    }
+    final outcome = await _platform.showPrivacyOptions();
+    // The user may have flipped the choice, so re-read consent rather than
+    // assuming the previous value still holds. Otherwise a withdrawal would
+    // leave personalised ads enabled for the rest of the session.
+    if (outcome == PrivacyOptionsOutcome.completed) {
+      await _refreshConsent();
+    }
+    return outcome;
+  }
+
+  /// Whether a privacy options entry point must be shown.
+  ///
+  /// Never true when ads are off or an ad-free account is active: with no ad
+  /// requests being made there is no advertising choice to revisit. Missing
+  /// identifiers need no separate check here, because a platform that cannot
+  /// initialize throws and init() then clears the remote flag, so _remoteEnabled
+  /// is already false in that case.
+  Future<bool> privacyOptionsRequired() async {
+    if (_adFree || !_remoteEnabled) return false;
+    switch (await _platform.privacyOptionsRequirement()) {
+      case PrivacyOptionsRequirement.required:
+        return true;
+      case PrivacyOptionsRequirement.notRequired:
+      case PrivacyOptionsRequirement.unknown:
+        return false;
+    }
+  }
+
+  Future<void> _refreshConsent() async {
+    try {
+      _consent = await _platform.gatherConsent();
+    } catch (_) {
+      _consent = AdsConsentState.unavailable;
+    }
+    if (_released) return;
+    notifyListeners();
+  }
+
   @override
   void dispose() {
     _released = true;

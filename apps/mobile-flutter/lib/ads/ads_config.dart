@@ -74,6 +74,16 @@ bool get adsIdsConfigured =>
 
 enum AdsConsentState { unknown, notRequired, obtained, denied, unavailable }
 
+/// Whether Google requires the app to expose a privacy options entry point.
+///
+/// Mirrors the SDK's PrivacyOptionsRequirementStatus. `required` means a user in
+/// a jurisdiction with opt-out rights has a right to a control that lets them
+/// change the choice they already made, so the entry point must be reachable.
+enum PrivacyOptionsRequirement { notRequired, required, unknown }
+
+/// Result of presenting the privacy options form.
+enum PrivacyOptionsOutcome { completed, unavailable, failed }
+
 enum AdsSlotState { empty, loading, ready, failed }
 
 enum RewardedOutcome { earned, skipped, noFill, failed, unavailable }

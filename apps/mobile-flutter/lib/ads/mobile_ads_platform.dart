@@ -100,6 +100,51 @@ class MobileAdsPlatform implements AdsPlatform {
   }
 
   @override
+  Future<PrivacyOptionsRequirement> privacyOptionsRequirement() async {
+    try {
+      final status = await ConsentInformation.instance
+          .getPrivacyOptionsRequirementStatus();
+      switch (status) {
+        case PrivacyOptionsRequirementStatus.required:
+          return PrivacyOptionsRequirement.required;
+        case PrivacyOptionsRequirementStatus.notRequired:
+          return PrivacyOptionsRequirement.notRequired;
+        case PrivacyOptionsRequirementStatus.unknown:
+          return PrivacyOptionsRequirement.unknown;
+      }
+    } catch (_) {}
+    return PrivacyOptionsRequirement.unknown;
+  }
+
+  @override
+  Future<PrivacyOptionsOutcome> showPrivacyOptions() async {
+    // The SDK reports an error rather than throwing when no form is available,
+    // so treat that as "nothing to show" rather than an error. Callers gate the
+    // entry point on privacyOptionsRequirement, so this is a fallback.
+    final errors = <Object?>[];
+    try {
+      final done = Completer<void>();
+      try {
+        unawaited(ConsentForm.showPrivacyOptionsForm((error) {
+          if (error != null) errors.add(error);
+          if (!done.isCompleted) done.complete();
+        }));
+      } catch (_) {
+        return PrivacyOptionsOutcome.unavailable;
+      }
+      try {
+        await done.future.timeout(const Duration(seconds: 120));
+      } catch (_) {
+        return PrivacyOptionsOutcome.failed;
+      }
+      if (errors.isNotEmpty) return PrivacyOptionsOutcome.unavailable;
+      return PrivacyOptionsOutcome.completed;
+    } catch (_) {
+      return PrivacyOptionsOutcome.failed;
+    }
+  }
+
+  @override
   Future<RewardedOutcome> showRewarded(AdsRequest request) async {
     final outcome = Completer<RewardedOutcome>();
     try {

@@ -7,6 +7,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../ads/ads_config.dart';
 import '../ads/ads_service.dart';
 import '../api/api_client.dart';
 import '../api/config.dart';
@@ -807,6 +808,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         label: 'Terms & safety center',
                         onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const StaticScreen(keyOf: 'about'))),
                       ),
+                      const _PrivacyOptionsTile(),
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -1838,6 +1840,80 @@ class _PairCodeDialogState extends State<_PairCodeDialog> {
           child: Text('Done', style: TextStyle(color: context.colors.accentSoft)),
         ),
       ],
+    );
+  }
+}
+
+/// Privacy options entry point for the ad consent choice.
+///
+/// Google requires an app to expose a control that lets a user revisit a choice
+/// they already made whenever the user is in a jurisdiction that grants that
+/// right. The row appears only when the SDK says it is required, and is hidden
+/// entirely when ads are off or the account is ad-free: with no ad requests
+/// being made there is no advertising choice to revisit.
+class _PrivacyOptionsTile extends StatefulWidget {
+  const _PrivacyOptionsTile();
+
+  @override
+  State<_PrivacyOptionsTile> createState() => _PrivacyOptionsTileState();
+}
+
+class _PrivacyOptionsTileState extends State<_PrivacyOptionsTile> {
+  bool _required = false;
+  bool _checked = false;
+  bool _busy = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Future<void> _load() async {
+    bool required;
+    try {
+      required = await AdsService.instance.privacyOptionsRequired();
+    } catch (_) {
+      required = false;
+    }
+    if (!mounted) return;
+    setState(() {
+      _required = required;
+      _checked = true;
+    });
+  }
+
+  Future<void> _open() async {
+    if (_busy) return;
+    setState(() => _busy = true);
+    PrivacyOptionsOutcome outcome;
+    try {
+      outcome = await AdsService.instance.showPrivacyOptions();
+    } catch (_) {
+      outcome = PrivacyOptionsOutcome.failed;
+    }
+    if (!mounted) return;
+    setState(() => _busy = false);
+    final message = switch (outcome) {
+      PrivacyOptionsOutcome.completed => 'Privacy choices updated',
+      PrivacyOptionsOutcome.unavailable => 'No privacy options to change right now',
+      PrivacyOptionsOutcome.failed => 'Could not open privacy options. Try again.',
+    };
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    // The user may have withdrawn consent, which changes whether an entry point
+    // is still required, so re-evaluate rather than trusting the prior answer.
+    if (outcome == PrivacyOptionsOutcome.completed) {
+      await _load();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!_checked || !_required) return const SizedBox.shrink();
+    return _ActionTile(
+      icon: Icons.privacy_tip_outlined,
+      label: 'Ad privacy options',
+      onTap: _busy ? null : _open,
     );
   }
 }
