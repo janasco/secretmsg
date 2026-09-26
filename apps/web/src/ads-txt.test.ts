@@ -55,12 +55,11 @@ describe.each(['ads.txt', 'app-ads.txt'])('%s', (file) => {
     expect(google?.[3]).toBe(ADMOD_CERTIFICATION_ID);
   });
 
-  it('still carries the unsubstituted placeholder publisher ID', () => {
-    // Deliberate. These files ship with a placeholder seller ID, which is a
-    // known and documented gap. Flip this to a positive assertion once the real
-    // AdMob publisher ID is in place, so the check becomes a guard instead of a
-    // standing reminder.
-    expect(body).toContain('pub-0000000000000000');
+  it('no longer carries the unsubstituted placeholder publisher ID', () => {
+    // The real AdMob publisher ID is in place. This is now a guard: reverting it
+    // to the placeholder, or leaving one of the two files unedited, is a zero-fill
+    // misconfiguration that AdMob reports only as "not authorized".
+    expect(body).not.toContain('pub-0000000000000000');
   });
 });
 

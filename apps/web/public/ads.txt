@@ -14,4 +14,4 @@
 # This file is public by design. It must never contain secrets, and it must not
 # live in .env: ad networks fetch it unauthenticated over plain HTTPS.
 
-google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+google.com, pub-1165824705893364, DIRECT, f08c47fec0942fa0
