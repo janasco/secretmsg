@@ -603,28 +603,68 @@ void main() {
       expect(kBannerAdUnitId, isEmpty);
       expect(kRewardedAdUnitId, isEmpty);
       expect(adsIdsConfigured, isFalse);
+      expect(adIdsSharePublisher, isFalse);
     });
 
-    test('placeholder ids do not count as configured', () {
-      expect(isRealAdId('ca-app-pub-0000000000000000'), isFalse);
+    // An app id carries a tilde; an ad unit id carries a slash. Conflating them
+    // is the classic setup mistake, so each slot is checked against its own form.
+    test('app ids use the tilde form', () {
       expect(
-        isRealAdId('ca-app-pub-0000000000000000/0000000000000000'),
+        isRealAdMobAppId('ca-app-pub-1165824705893364~7180472622'),
+        isTrue,
+      );
+      // An ad unit id is not a valid app id.
+      expect(
+        isRealAdMobAppId('ca-app-pub-1165824705893364/7180472622'),
         isFalse,
       );
     });
 
-    test('real-looking ids are accepted', () {
-      expect(isRealAdId('ca-app-pub-3940256099942544'), isTrue);
+    test('ad unit ids use the slash form', () {
       expect(
-        isRealAdId('ca-app-pub-3940256099942544/6300978111'),
+        isRealAdUnitId('ca-app-pub-1165824705893364/6300978111'),
         isTrue,
+      );
+      // An app id is not a valid ad unit id.
+      expect(
+        isRealAdUnitId('ca-app-pub-1165824705893364~7180472622'),
+        isFalse,
+      );
+    });
+
+    test('placeholder ids are rejected in both formats', () {
+      expect(isRealAdMobAppId('ca-app-pub-0000000000000000~0000000000'), isFalse);
+      expect(
+        isRealAdUnitId('ca-app-pub-0000000000000000/0000000000'),
+        isFalse,
       );
     });
 
     test('malformed ids are rejected', () {
-      expect(isRealAdId(''), isFalse);
-      expect(isRealAdId('3940256099942544'), isFalse);
-      expect(isRealAdId('ca-app-pub-'), isFalse);
+      for (final bad in [
+        '',
+        'ca-app-pub-',
+        '1165824705893364',
+        'ca-app-pub-1165824705893364',
+        'ca-app-pub-1165824705893364~',
+        'ca-app-pub-1165824705893364/',
+      ]) {
+        expect(isRealAdMobAppId(bad), isFalse, reason: 'app: $bad');
+        expect(isRealAdUnitId(bad), isFalse, reason: 'unit: $bad');
+      }
+    });
+
+    test('the publisher id is recovered from either form', () {
+      expect(
+        adMobPublisherId('ca-app-pub-1165824705893364~7180472622'),
+        '1165824705893364',
+      );
+      expect(
+        adMobPublisherId('ca-app-pub-1165824705893364/6300978111'),
+        '1165824705893364',
+      );
+      expect(adMobPublisherId('ca-app-pub-0000000000000000~1'), isNull);
+      expect(adMobPublisherId('nonsense'), isNull);
     });
   });
 }

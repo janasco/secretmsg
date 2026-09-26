@@ -50,33 +50,66 @@ fi
 shift
 
 # A placeholder is rejected here so the failure is immediate and obvious rather
-# than surfacing later as an unexplained Gradle error.
-placeholder="ca-app-pub-0000000000000000"
-is_real() {
-  [[ "$1" == ca-app-pub-* && "$1" != *"$placeholder"* && "$1" == *"/"* ]]
+# than surfacing later as an unexplained Gradle error. AdMob uses two formats: the
+# app id has a ~ and belongs in the manifest, ad unit ids have a / and are used
+# in requests. Each slot is checked against its own format.
+placeholder_pub="0000000000000000"
+app_id_re='^ca-app-pub-([0-9]{16})~[0-9]{6,16}$'
+ad_unit_re='^ca-app-pub-([0-9]{16})/[0-9]{6,16}$'
+
+publisher_of() {
+  local value="$1"
+  if [[ "$value" =~ $app_id_re ]]; then printf '%s' "${BASH_REMATCH[1]}"
+  elif [[ "$value" =~ $ad_unit_re ]]; then printf '%s' "${BASH_REMATCH[1]}"
+  else printf ''
+  fi
 }
 
-for var in ADMOB_APP_ID ADMOB_BANNER_AD_UNIT_ID ADMOB_REWARDED_AD_UNIT_ID; do
-  value="${!var:-}"
+check() {
+  local var="$1" value="${!1:-}" pattern="$2" label="$3"
   if [[ -z "$value" ]]; then
     echo "error: $var is not set." >&2
     echo "       Create the app and ad units in the AdMob console, then export:" >&2
-    if [[ "$var" == ADMOB_APP_ID ]]; then
-      echo "         export $var=ca-app-pub-XXXXXXXXXXXXXXXX" >&2
+    if [[ "$label" == "app" ]]; then
+      echo "         export $var=ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY" >&2
     else
       echo "         export $var=ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY" >&2
     fi
     exit 78
   fi
-  if [[ "$value" == *"$placeholder"* ]]; then
+  if [[ "$value" == *"$placeholder_pub"* ]]; then
     echo "error: $var still holds the placeholder value." >&2
     exit 78
   fi
-  if [[ "$var" != ADMOB_APP_ID ]] && ! is_real "$value"; then
-    echo "error: $var must be a full ad unit id (ca-app-pub-APP/UNIT)." >&2
+  if [[ ! "$value" =~ $pattern ]]; then
+    echo "error: $var is not a valid AdMob $label id." >&2
+    if [[ "$label" == "app" ]]; then
+      echo "       An app id looks like ca-app-pub-1234567890123456~1234567890" >&2
+      echo "       (tilde, and it goes in the manifest)." >&2
+    else
+      echo "       An ad unit id looks like ca-app-pub-1234567890123456/1234567890" >&2
+      echo "       (slash, and it is used in ad requests)." >&2
+    fi
     exit 78
   fi
-done
+}
+
+check ADMOB_APP_ID "$app_id_re" "app"
+check ADMOB_BANNER_AD_UNIT_ID "$ad_unit_re" "ad unit"
+check ADMOB_REWARDED_AD_UNIT_ID "$ad_unit_re" "ad unit"
+
+# All three must belong to one AdMob account. A unit from another account builds
+# fine, serves nothing, and reports no error.
+app_pub="$(publisher_of "$ADMOB_APP_ID")"
+banner_pub="$(publisher_of "$ADMOB_BANNER_AD_UNIT_ID")"
+rewarded_pub="$(publisher_of "$ADMOB_REWARDED_AD_UNIT_ID")"
+if [[ "$app_pub" != "$banner_pub" || "$app_pub" != "$rewarded_pub" ]]; then
+  echo "error: the three ids come from different AdMob accounts." >&2
+  echo "       app      ${ADMOB_APP_ID} -> pub-$app_pub" >&2
+  echo "       banner   ${ADMOB_BANNER_AD_UNIT_ID} -> pub-$banner_pub" >&2
+  echo "       rewarded ${ADMOB_REWARDED_AD_UNIT_ID} -> pub-$rewarded_pub" >&2
+  exit 78
+fi
 
 echo "AdMob identifiers present. Building $format."
 

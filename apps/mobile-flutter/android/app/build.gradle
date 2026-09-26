@@ -30,12 +30,35 @@ def admobAppId = (project.findProperty("admobAppId") ?: System.getenv("ADMOB_APP
 def admobBannerId = (project.findProperty("admobBannerAdUnitId") ?: System.getenv("ADMOB_BANNER_AD_UNIT_ID") ?: "")
 def admobRewardedId = (project.findProperty("admobRewardedAdUnitId") ?: System.getenv("ADMOB_REWARDED_AD_UNIT_ID") ?: "")
 
-def isRealAdId = { String value ->
-    value?.startsWith("ca-app-pub-") && !value.contains("0000000000000000")
+// AdMob uses two identifier formats: an app id is ca-app-pub-<16 digits>~<digits>
+// and belongs in the manifest, while an ad unit id is ca-app-pub-<16 digits>/<digits>
+// and belongs in ad requests. Conflating them makes the SDK reject the app id, so
+// each slot is validated against its own format.
+def placeholderPubId = "0000000000000000"
+def appIdMatcher = ~/^ca-app-pub-(\d{16})~\d{6,16}$/
+def adUnitMatcher = ~/^ca-app-pub-(\d{16})\/\d{6,16}$/
+def isPlaceholder = { String value -> value?.contains(placeholderPubId) }
+
+def isRealAppId = { String value ->
+    value != null && !isPlaceholder(value) && appIdMatcher.matcher(value).matches()
+}
+def isRealAdUnitId = { String value ->
+    value != null && !isPlaceholder(value) && adUnitMatcher.matcher(value).matches()
+}
+// All three ids must come from one AdMob account, or nothing fills and nothing errors.
+def publisherOf = { String value ->
+    if (value == null || isPlaceholder(value)) return null
+    def m = appIdMatcher.matcher(value)
+    if (m.matches()) return m.group(1)
+    m = adUnitMatcher.matcher(value)
+    return m.matches() ? m.group(1) : null
 }
 
-def admobIdsSupplied = isRealAdId(admobAppId) || admobBannerId || admobRewardedId
-def admobIdsComplete = isRealAdId(admobAppId) && isRealAdId(admobBannerId) && isRealAdId(admobRewardedId)
+def admobIdsSupplied = isRealAppId(admobAppId) || admobBannerId || admobRewardedId
+def admobIdsWellFormed = isRealAppId(admobAppId) && isRealAdUnitId(admobBannerId) && isRealAdUnitId(admobRewardedId)
+def admobPublishers = [publisherOf(admobAppId), publisherOf(admobBannerId), publisherOf(admobRewardedId)]
+def admobSameAccount = !admobPublishers.contains(null) && admobPublishers.toSet().size() == 1
+def admobIdsComplete = admobIdsWellFormed && admobSameAccount
 
 android {
     namespace = "net.secretmsg.android_app"
@@ -95,10 +118,16 @@ gradle.taskGraph.whenReady { graph ->
     }
     if (!releaseRequested) return
     if (admobIdsSupplied && !admobIdsComplete) {
+        def reason = ""
+        if (admobIdsWellFormed && !admobSameAccount) {
+            reason = "\nThe three ids do not share one publisher id. The app id uses the ~ form and " +
+                     "ad unit ids use the / form, and all three must come from the same AdMob account.\n" +
+                     "  publishers seen: " + admobPublishers
+        }
         throw new GradleException(
             "Incomplete AdMob configuration. Provide all three as Gradle properties " +
-            "or environment variables, and no others:\n" +
-            "  -PadmobAppId=ca-app-pub-XXXXXXXXXXXXXXXX\n" +
+            "or environment variables, and no others:" + reason + "\n" +
+            "  -PadmobAppId=ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY\n" +
             "  -PadmobBannerAdUnitId=ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY\n" +
             "  -PadmobRewardedAdUnitId=ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY\n" +
             "(env: ADMOB_APP_ID, ADMOB_BANNER_AD_UNIT_ID, ADMOB_REWARDED_AD_UNIT_ID)\n" +

@@ -15,22 +15,53 @@ const String kAdMobAppId = String.fromEnvironment('ADMOB_APP_ID');
 const String kBannerAdUnitId = String.fromEnvironment('ADMOB_BANNER_AD_UNIT_ID');
 const String kRewardedAdUnitId = String.fromEnvironment('ADMOB_REWARDED_AD_UNIT_ID');
 
-/// True when every AdMob identifier is a real value rather than a placeholder.
+/// AdMob uses two different identifier formats, and conflating them is a common
+/// mistake: an **app id** is `ca-app-pub-<16 digits>~<digits>` (tilde) and goes in
+/// the manifest, while an **ad unit id** is `ca-app-pub-<16 digits>/<digits>`
+/// (slash) and goes in ad requests. Putting an ad unit id in the manifest makes
+/// the SDK reject the app id, and vice versa.
+final RegExp _adMobAppIdPattern = RegExp(r'^ca-app-pub-(\d{16})~\d{6,16}$');
+final RegExp _adUnitIdPattern = RegExp(r'^ca-app-pub-(\d{16})/\d{6,16}$');
+
+bool _isPlaceholder(String value) => value.contains('0000000000000000');
+
+/// True for a well-formed, non-placeholder AdMob **app** id (`~` form).
+bool isRealAdMobAppId(String value) =>
+    _adMobAppIdPattern.hasMatch(value) && !_isPlaceholder(value);
+
+/// True for a well-formed, non-placeholder **ad unit** id (`/` form).
+bool isRealAdUnitId(String value) =>
+    _adUnitIdPattern.hasMatch(value) && !_isPlaceholder(value);
+
+/// The publisher id embedded in either identifier form, or null if malformed.
 ///
-/// Ad unit ids must additionally belong to [kAdMobAppId]'s app; the Gradle
-/// guard enforces that pairing at build time, since it is the only layer that
-/// can see both the manifest value and these defines.
+/// All three identifiers must come from the same AdMob account. Pasting an ad
+/// unit belonging to a different account produces a build that serves no ads
+/// with no error, so the mismatch is rejected instead.
+String? adMobPublisherId(String value) {
+  if (_isPlaceholder(value)) return null;
+  final match = _adMobAppIdPattern.firstMatch(value) ??
+      _adUnitIdPattern.firstMatch(value);
+  return match?.group(1);
+}
+
+/// True when the app id and both ad unit ids belong to one AdMob account.
+bool get adIdsSharePublisher {
+  final publishers = [
+    adMobPublisherId(kAdMobAppId),
+    adMobPublisherId(kBannerAdUnitId),
+    adMobPublisherId(kRewardedAdUnitId),
+  ];
+  return !publishers.contains(null) && publishers.toSet().length == 1;
+}
+
+/// True when every AdMob identifier is a real value rather than a placeholder,
+/// uses the correct format for its slot, and comes from the same account.
 bool get adsIdsConfigured =>
-    isRealAdId(kAdMobAppId) &&
-    isRealAdId(kBannerAdUnitId) &&
-    isRealAdId(kRewardedAdUnitId);
-
-/// Matches a well-formed AdMob app id (`ca-app-pub-` + 16 digits) or ad unit id
-/// (the same, plus `/` + 10 digits).
-final RegExp _adIdPattern = RegExp(r'^ca-app-pub-\d{16}(/\d{10})?$');
-
-bool isRealAdId(String value) =>
-    _adIdPattern.hasMatch(value) && !value.contains('0000000000000000');
+    isRealAdMobAppId(kAdMobAppId) &&
+    isRealAdUnitId(kBannerAdUnitId) &&
+    isRealAdUnitId(kRewardedAdUnitId) &&
+    adIdsSharePublisher;
 
 enum AdsConsentState { unknown, notRequired, obtained, denied, unavailable }
 
