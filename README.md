@@ -83,6 +83,7 @@ This repository contains the **open-source client applications and frontend pack
 - **CORS strict allowlist**: disallowed origins receive `Access-Control-Allow-Origin: null` and are blocked, rather than silently falling back to `secretmsg.net`.
 - **Cryptographically clean tokens**: `generateRandomToken` uses rejection sampling to remove modulo bias.
 - **Rate limiting**: message sending, OTP requests/verification, checkout, public profile views, and abuse reports are all rate-limited per IP / email.
+- **Report-only CSP**: every response carries a `Content-Security-Policy-Report-Only` derived from what the site actually loads, with violation reports POSTed to the frontend Worker and logged to Workers Logs. It is deliberately not enforcing yet — the fail-closed bot screening above means a wrong `connect-src` or `frame-src` would break signup, OTP, send and report at once. See [`apps/web/README.md`](apps/web/README.md#security-headers) for the two open questions it is measuring and the criteria for promoting it.
 
 ---
 

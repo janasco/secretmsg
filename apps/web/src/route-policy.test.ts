@@ -1,8 +1,10 @@
 import { describe, expect, it, vi } from 'vitest';
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { isAssetRequest, isClientRoute, isNoindexRoute, legacyRedirect, postSlug } from './route-policy';
+import { isAssetRequest, isClientRoute, isNoindexRoute, legacyRedirect, notFoundHtml, postSlug } from './route-policy';
 import { POST_SLUGS_PATH } from './post-slugs';
+import { CSP_REPORT_MAX_BYTES, CSP_REPORT_PATH, SECURITY_HEADERS } from './security-headers';
 import { handleRequest, type WorkerEnv } from './worker';
 
 const PUBLIC_DIR = resolve(__dirname, '..', 'public');
@@ -88,6 +90,9 @@ function expectSecurityHeaders(response: Response): void {
   expect(response.headers.get('x-content-type-options')).toBe('nosniff');
   expect(response.headers.get('x-frame-options')).toBe('DENY');
   expect(response.headers.get('referrer-policy')).toBe('strict-origin-when-cross-origin');
+  expect(response.headers.get('content-security-policy-report-only')).toBe(
+    SECURITY_HEADERS['Content-Security-Policy-Report-Only'],
+  );
 }
 
 describe('route policy', () => {
@@ -442,5 +447,218 @@ describe('robots headers', () => {
 
     expect(notFound.headers.get('x-robots-tag')).toBeNull();
     expect(missing.headers.get('x-robots-tag')).toBeNull();
+  });
+});
+
+const POLICY = SECURITY_HEADERS['Content-Security-Policy-Report-Only'];
+
+function directive(policy: string, name: string): string {
+  const found = policy.split(';').map((part) => part.trim()).find((part) => part.startsWith(`${name} `));
+  if (found === undefined) throw new Error(`No ${name} directive in the report-only policy`);
+  return found;
+}
+
+/** Every script element in the markup with no src, i.e. the ones with a body. */
+function inlineScriptBodies(html: string): string[] {
+  return [...html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)]
+    .filter(([, attributes]) => !/\bsrc\s*=/.test(attributes))
+    .map(([, , body]) => body);
+}
+
+const REPORT_BODY = JSON.stringify({
+  'csp-report': {
+    'document-uri': 'https://secretmsg.net/p/privacy/',
+    'effective-directive': 'script-src',
+    'violated-directive': 'script-src',
+    'blocked-uri': 'eval',
+    disposition: 'report',
+    'source-file': 'https://challenges.cloudflare.com/turnstile/v0/api.js',
+    'line-number': 1,
+    sample: '\n      (function(){\n        // Must matc',
+  },
+});
+
+describe('the report-only CSP', () => {
+  // Every answer the policy exists to produce, as assertions rather than as
+  // prose in a comment that drifts.
+  it('is report-only, and there is no enforcing policy anywhere', () => {
+    expect(SECURITY_HEADERS).not.toHaveProperty('Content-Security-Policy');
+    expect(POLICY).toContain(`report-uri ${CSP_REPORT_PATH}`);
+    expect(POLICY).not.toContain('Strict-Transport-Security');
+  });
+
+  it('allows exactly the origins the built site loads from', () => {
+    expect(directive(POLICY, 'default-src')).toBe("default-src 'self'");
+    expect(directive(POLICY, 'connect-src')).toBe("connect-src 'self' https://api.secretmsg.net");
+    expect(directive(POLICY, 'font-src')).toBe("font-src 'self' https://fonts.gstatic.com");
+    expect(directive(POLICY, 'frame-src')).toBe('frame-src https://challenges.cloudflare.com');
+    expect(directive(POLICY, 'img-src')).toBe("img-src 'self'");
+    expect(directive(POLICY, 'object-src')).toBe("object-src 'none'");
+    expect(directive(POLICY, 'base-uri')).toBe("base-uri 'self'");
+  });
+
+  it('keeps script-src free of unsafe-inline and unsafe-eval', () => {
+    // 'unsafe-inline' would swallow the very violations that answer (a), and
+    // 'unsafe-eval' has to stay absent for (b) to be observable at all. If
+    // either is added, the report data stops answering the question.
+    const scriptSrc = directive(POLICY, 'script-src');
+
+    expect(scriptSrc).toContain("'self'");
+    expect(scriptSrc).toContain('https://challenges.cloudflare.com');
+    expect(scriptSrc).toContain("'report-sample'");
+    expect(scriptSrc).not.toContain("'unsafe-inline'");
+    expect(scriptSrc).not.toContain("'unsafe-eval'");
+    expect(scriptSrc).not.toContain("'strict-dynamic'");
+    expect(scriptSrc).not.toContain("'nonce-");
+  });
+
+  it('pins the only in-page script in index.html and nothing else', () => {
+    // The theme-flash IIFE is the sole in-page script the build ships, and it is
+    // byte-identical on all 239 pages, so one hash covers the whole site. The
+    // per-page JSON-LD blocks are data blocks, which HTML's "prepare the script
+    // element" never passes to the CSP inline-check. If this test fails, the
+    // digest in the policy is stale and the enforcing promotion would break
+    // first paint.
+    const [themeScript] = inlineScriptBodies(readFileSync(resolve(__dirname, '..', 'index.html'), 'utf8'));
+    const digest = `sha256-${createHash('sha256').update(themeScript, 'utf8').digest('base64')}`;
+
+    expect(themeScript).toContain('secretmsg_theme');
+    expect(directive(POLICY, 'script-src')).toContain(`'${digest}'`);
+    expect([...directive(POLICY, 'script-src').matchAll(/'sha256-[^']+'/g)]).toHaveLength(1);
+  });
+
+  it('admits the style block the Worker 404 page ships', () => {
+    // notFoundHtml has a <style> block and the prerendered markup has style
+    // attributes, so style-src needs 'unsafe-inline'. Recorded here so that it
+    // is a known quantity rather than a surprise.
+    expect(notFoundHtml).toContain('<style>');
+    expect(directive(POLICY, 'style-src')).toBe("style-src 'self' https://fonts.googleapis.com 'unsafe-inline'");
+  });
+});
+
+describe('the CSP report sink', () => {
+  function captureLog(): { lines: unknown[][]; restore: () => void } {
+    const spy = vi.spyOn(console, 'log').mockImplementation(() => {});
+    return { lines: spy.mock.calls, restore: () => spy.mockRestore() };
+  }
+
+  function report(body: string, contentType = 'application/csp-report'): Request {
+    return new Request(`https://secretmsg.net${CSP_REPORT_PATH}`, {
+      method: 'POST',
+      headers: { 'content-type': contentType },
+      body,
+    });
+  }
+
+  it('accepts a report the way a browser sends one', async () => {
+    const log = captureLog();
+    try {
+      const env = environment();
+      const response = await handleRequest(report(REPORT_BODY), env);
+
+      expect(response.status).toBe(204);
+      expect(await response.text()).toBe('');
+      expect(response.headers.get('cache-control')).toBe('no-store');
+      expectSecurityHeaders(response);
+      expect(env.ASSETS.fetch).not.toHaveBeenCalled();
+
+      expect(log.lines).toHaveLength(1);
+      const [tag, payload] = log.lines[0] as [string, string];
+      expect(tag).toBe('csp-report');
+      expect(payload).toContain('https://secretmsg.net/p/privacy/');
+      expect(payload).toContain('"blocked-uri":"eval"');
+      expect(payload).toContain('Must matc');
+    } finally {
+      log.restore();
+    }
+  });
+
+  it('never reflects the report back and never logs more than it reads', async () => {
+    const log = captureLog();
+    try {
+      const oversized = JSON.stringify({ 'csp-report': { 'document-uri': 'https://secretmsg.net/', sample: 'x'.repeat(4000) } });
+      const response = await handleRequest(report(oversized), environment());
+
+      expect(response.status).toBe(204);
+      expect(await response.text()).toBe('');
+      const [, payload] = log.lines[0] as [string, string];
+      expect(payload.length).toBeLessThan(oversized.length);
+      expect(payload).not.toContain('x'.repeat(300));
+    } finally {
+      log.restore();
+    }
+  });
+
+  it('takes the report-uri media type and nothing else', async () => {
+    const log = captureLog();
+    try {
+      const response = await handleRequest(report(REPORT_BODY, 'application/csp-report; charset=utf-8'), environment());
+
+      expect(response.status).toBe(204);
+      expect(log.lines).toHaveLength(1);
+
+      // report-to's application/reports+json is not accepted, because the
+      // policy does not ask for it: a rejected report is visible in the browser
+      // console, which is the right outcome for a sink that is not listening.
+      const reports = await handleRequest(report(REPORT_BODY, 'application/reports+json'), environment());
+      expect(reports.status).toBe(415);
+      expect(log.lines).toHaveLength(1);
+    } finally {
+      log.restore();
+    }
+  });
+
+  it('caps the body, so a report cannot be used to push data at us', async () => {
+    const log = captureLog();
+    try {
+      const response = await handleRequest(report(JSON.stringify({ 'csp-report': { sample: 'x'.repeat(CSP_REPORT_MAX_BYTES) } })), environment());
+
+      expect(response.status).toBe(413);
+      expect(await response.text()).toBe('');
+      expect(response.headers.get('cache-control')).toBe('no-store');
+      expect(log.lines).toHaveLength(0);
+    } finally {
+      log.restore();
+    }
+  });
+
+  it('is not a general-purpose write endpoint', async () => {
+    const log = captureLog();
+    try {
+      const response = await handleRequest(report('not json at all', 'text/plain'), environment());
+
+      expect(response.status).toBe(415);
+      expect(await response.text()).toBe('');
+      expect(log.lines).toHaveLength(0);
+    } finally {
+      log.restore();
+    }
+  });
+
+  it('leaves every other path and method exactly as it was', async () => {
+    const log = captureLog();
+    try {
+      const elsewhere = await handleRequest(new Request('https://secretmsg.net/reply/abc123', { method: 'POST' }), environment());
+      expect(elsewhere.status).toBe(404);
+
+      // A report-shaped POST to any other path is still the 404 it always was:
+      // the sink is one path, not a write endpoint.
+      const otherPath = new Request('https://secretmsg.net/janasco', {
+        method: 'POST',
+        headers: { 'content-type': 'application/csp-report' },
+        body: REPORT_BODY,
+      });
+      expect((await handleRequest(otherPath, environment())).status).toBe(404);
+
+      // GET on the report path is still routing, not a sink, so no board URL is
+      // reserved by the endpoint.
+      const env = environment();
+      const page = await handleRequest(new Request(`https://secretmsg.net${CSP_REPORT_PATH}`), env);
+      expect(page.status).toBe(200);
+      expect(await page.text()).toContain('<title>SPA</title>');
+      expect(log.lines).toHaveLength(0);
+    } finally {
+      log.restore();
+    }
   });
 });

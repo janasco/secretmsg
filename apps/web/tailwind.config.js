@@ -1,5 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  // Scanned as raw text, not as modules: every file under src/ counts,
+  // comments and Worker-only files included. A stray word that happens to be a
+  // utility name ("inline" is the one that has bitten) adds a rule, changes the
+  // stylesheet hash and rehashes the whole bundle for a rule nothing uses.
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
   theme: {
