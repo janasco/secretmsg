@@ -200,22 +200,34 @@ There is no donations processor, no donor alias, no donor note, and no
 supporter tiers. The only monetisation path in the app is the one-time
 `remove_ads` product above.
 
-Residual code observed at the time of this re-derivation, which must be removed
-or confirmed dormant before the ad-supported build is submitted:
+**Verified against the source, not assumed.** Every item previously listed here
+as "residual" has been re-checked in the private repo:
 
-- `api/src/polar.ts` (Polar webhook signature verification) and the
-  `POLAR_WEBHOOK_SECRET` binding in `api/src/db.ts`.
-- `POST /api/webhook/polar` and `GET /api/supporters` in the Worker.
-- The `donations` table in `api/schema.sql` and `db/schema.sql`, and the
-  fail-closed `POST /api/donation/google-pay` (HTTP 501) endpoint.
-- The `users.is_premium`, `users.badge_title`, `users.has_verified_badge`,
-  `users.has_viewer_hints`, and `users.has_sender_hints` columns, which exist
-  only to serve the retired perk products.
+| Item | State |
+|---|---|
+| `api/src/polar.ts` | **Gone.** Deleted in `1a42731` (2026-09-26). |
+| `POLAR_WEBHOOK_SECRET` in `api/src/db.ts` | **Gone.** No `POLAR` binding remains in the `Env` type. |
+| `POST /api/webhook/polar` | **Gone.** No such route in the Worker. |
+| `GET /api/supporters` | **Still live, and is not a Polar path.** It counts accounts holding the `remove_ads` entitlement (`api/src/index.ts:1629`). Keep it. |
+| `donations` table | **Gone.** Dropped from `api/schema.sql` and `db/schema.sql`, the account-deletion `DELETE` removed, and the production rows purged. |
+| `POST /api/donation/google-pay` | **Retired, fail-closed, returns HTTP 410** (not 501 — the doc was wrong on the status code). It grants nothing. Keep as a tombstone. |
 
-Until that removal lands, historical `donations` rows may still exist in
-production D1. Existing rows are not a Play "collection" of new data, but they
-should be deleted or the endpoint disabled so the declared practice matches the
-shipped build.
+> [!IMPORTANT]
+> **The `users.is_premium` / `badge_title` / `has_verified_badge` /
+> `has_viewer_hints` / `has_sender_hints` columns must NOT be removed.** An
+> earlier draft of this annex listed them as residual code serving the retired
+> perk products. That is wrong, and acting on it would break a live feature.
+> `remove_ads` is the only purchasable product, and it grants the whole set:
+> `api/src/billing.ts:9` maps it to `{ badge: true, viewer: true, sender: true,
+> tier: 'Supporter' }`, `POST /api/billing/google/verify` writes all five columns,
+> and `GET /api/inbox` reads `has_sender_hints` to decide whether sender hints are
+> returned. They are how the ad-free purchase confers supporter status — a
+> consequence of `remove_ads`, not a separate perk product.
+
+One cleanup remains out of band: the `POLAR_WEBHOOK_SECRET`, `POLAR_ACCESS_TOKEN`
+and `POLAR_PRODUCT_ID` secrets are still set in the Cloudflare secret store. No
+code reads them, so they are inert, but they should be deleted with
+`wrangler secret delete`. Nothing in the app depends on this.
 
 ### Advertising — ad requests, ad interaction, and measurement
 
@@ -631,12 +643,13 @@ Recorded posture:
    `users.is_premium` via the profile payload (`lib/ads/ads_service.dart:95`),
    so ad suppression is presently keyed to a legacy perk flag. The Financial
    info section above describes the required end state, not the current code.
-5. **Polar removal is not yet reflected in the Worker.** `api/src/polar.ts`,
-   `POLAR_WEBHOOK_SECRET` in `api/src/db.ts`, `POST /api/webhook/polar`,
-   `GET /api/supporters`, the `donations` table in both schemas, the
-   fail-closed `POST /api/donation/google-pay`, and the perk columns
-   (`is_premium`, `badge_title`, `has_verified_badge`, `has_viewer_hints`,
-   `has_sender_hints`) all still exist. See "Supporter donations — removed".
+5. **Polar is fully removed from the Worker.** This was previously recorded as
+   outstanding work; it is now done. `api/src/polar.ts`, the `POLAR_WEBHOOK_SECRET`
+   binding, `POST /api/webhook/polar`, the `donations` table in both schemas and
+   its production rows are all gone. `POST /api/donation/google-pay` remains as a
+   410 tombstone that grants nothing. The five perk columns are **not** residual —
+   `remove_ads` grants and reads them; see the warning in "Supporter donations —
+   removed". See that section for the full per-item table.
 6. **The US privacy-options form is not surfaced.** The client gates ads on
    `ConsentInformation.instance.canRequestAds()` but does not call
    `getPrivacyOptionsRequirementStatus()` or
@@ -739,9 +752,11 @@ Recorded posture:
     already exported, saved, or shared by the user is unaffected.
 16. **Deletion behavior:** `DELETE /api/account` explicitly deletes received
     messages, blocked senders, reports where the user is recipient and reports
-    where the user is reporter, pair codes, purchases, linked donations,
+    where the user is reporter, pair codes, purchases,
     email-keyed OTP sessions, selected user-derived rate-limit rows, and then
-    the user row. It is not a schema-cascade operation and the sequential
+    the user row. (The `donations` table this list previously named no longer
+    exists — it was dropped and its rows purged.) It is not a schema-cascade
+    operation and the sequential
     statements are not transactional; a failure can leave partial deletion.
     IP-keyed rate-limit rows are not mapped to the account and can survive.
     Token invalidation is immediate after the user row is gone because
@@ -832,8 +847,9 @@ Recorded posture:
   present, beyond the source manifest and dependency inspection described
   above.
 - The live contents of production D1, including old rows, migrations not
-  reflected in the schema files, historical accounts, historical `donations`
-  rows, historical backups, and any data created outside the current code paths.
+  reflected in the schema files, historical accounts, historical backups, and any
+  data created outside the current code paths. (The historical `donations` rows
+  that used to appear in this bullet have been purged.)
 - Whether a particular processor receives a particular field in a particular
   failed, retried, legacy, or web-only request path beyond the processor calls
   visible in the current source.
@@ -905,8 +921,9 @@ Recorded posture:
   that every AdMob identifier in the repository is still a placeholder.
 - **Removed Polar from every processor list** and **replaced the supporter-
   donations data-type section** with the single `remove_ads` purchase and the
-  ad-free entitlement. Residual Polar and `donations` code in the Worker is
-  listed as a known gap rather than declared as current practice.
+  ad-free entitlement. Residual Polar and `donations` code in the Worker was
+  listed as a known gap; that gap is now closed and the claim above records it
+  as closed rather than outstanding.
 - **Added a deletion caveat** stating that the in-app delete flow does not and
   cannot delete the advertising identifier or any Google-held ad data, and that
   the app must not claim otherwise. The new local ad state
