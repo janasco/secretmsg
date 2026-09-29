@@ -1,45 +1,49 @@
-# Personal Project Disclaimer & Limitation of Liability
+# Disclaimer & Limitation of Liability for SecretMsg (`secretmsg.net`)
 
-**Website:** `secretmsg.net`  
-**Maintainer:** `janasco` (`janasco@duck.com`)  
-**Effective Date:** September 2026
+**Last Updated:** September 2026
 
----
+> **This file is a convenience copy, not the canonical text.** The Disclaimer
+> that is actually served and prerendered is
+> **`https://secretmsg.net/p/disclaimer/`**, generated from
+> `apps/web/src/pages/DisclaimerPage.tsx`. If this markdown and the shipped page
+> disagree, **the shipped page is correct**.
+>
+> The canonical legal URL is `/p/disclaimer/`, **not** `/disclaimer`.
 
-## 1. Non-Commercial Personal Project Notice
-
-**SecretMsg (`secretmsg.net`) is an independent, non-commercial open-source personal project.** 
-
-- It is not operated by a corporation, registered entity, or venture-backed enterprise.
-- It is created and maintained by an individual developer as a creative and educational initiative.
-- All development, edge hosting, and maintenance are supported by voluntary donor contributions.
+Operational disclosures, warranty disclaimers, and user-content limitations for SecretMsg.
 
 ---
 
-## 2. "As-Is" Warranty Waiver
+## 1. Non-Commercial Personal Project Status
 
-The software, website, mobile applications, APIs, and services are provided on an **"AS-IS" and "AS-AVAILABLE"** basis, without warranty of any kind, either express or implied, including but not limited to:
-- Warranties of merchantability, fitness for a particular purpose, or uninterrupted availability.
-- Guarantees of 100% uptime, zero message loss, or continuous server operational status.
+**SecretMsg is an independent, non-commercial open-source project** engineered and maintained by the **SecretMsg Team** for creative, social, and educational purposes.
 
----
-
-## 3. Assumption of Risk & Zero Liability
-
-By using SecretMsg, you explicitly acknowledge that:
-1. **Use at Your Own Risk**: Your use of the service is entirely at your own risk.
-2. **No Consequential Damages**: In no event shall the author or maintainer be liable for any claim, damages, emotional distress, loss of data, loss of business, or other liability arising from the use of the platform.
-3. **User-Generated Content**: SecretMsg operates as an automated transmission conduit for user-generated communications. The maintainer does not endorse, verify, or assume responsibility for content sent by third-party anonymous users.
+- It is **not** an enterprise corporation, venture-backed conglomerate, or commercial publisher.
+- All server hosting, database storage, and domain renewals are maintained through user contributions — in practice, **advertising revenue from the Android app** and one-time in-app purchases, not donations. There is no donation button and no web checkout.
 
 ---
 
-## 4. Abuse Prevention & User Safety Controls
+## 2. "As-Is" and "As-Available" Warranty Exclusion
 
-We maintain a strict zero-tolerance standard against malicious behavior, cyberbullying, harassment, and harmful communications.
+The service, content, and underlying software are provided on an **"AS-IS" BASIS WITHOUT WARRANTIES OF ANY KIND**, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, non-infringement, or uninterrupted error-free operation. We do not guarantee 100% continuous service availability or the prevention of occasional service interruptions.
 
-Every user is equipped with real-time proactive safety controls in **Settings**:
-1. **Pause Submissions**: Instantly freeze your board for 1 hour, 6 hours, 24 hours, or permanently to prevent anyone from submitting messages.
-2. **Filtered Words Blocklist**: Create custom filters for words, phrases, or emojis. These are enforced server-side when a message is submitted, so filtered content is rejected before delivery.
-3. **Report & Delete**: Report any abusive message directly from your inbox for operator review, and delete unwanted messages from your inbox at any time.
-4. **Permanent Account Deletion**: Instant, cascade deletion of your entire account and all received messages.
-5. **Contact & Escalations**: Direct human escalations to `abuse@secretmsg.net` or `janasco@duck.com` with rapid turnaround.
+---
+
+## 3. User-Generated Content & Conduit Rule
+
+SecretMsg functions solely as an **automated technical conduit** facilitating message transmission between consenting participants. SecretMsg does not pre-screen, verify, endorse, or assume responsibility for opinions, statements, or claims transmitted by anonymous message senders. Each user assumes full responsibility for messages they transmit.
+
+Automated safety controls exist — a send-time Cloudflare Turnstile check and recipient-configured hidden-word filtering — but these are **rules-based safeguards, not machine-learning content classification**. They do not understand context and cannot be represented as a comprehensive detector of abuse.
+
+---
+
+## 4. DMCA & Copyright Takedown Procedure
+
+If you believe material hosted on or accessible via SecretMsg infringes your copyright or intellectual property rights, submit a takedown request containing:
+
+- Identification of the copyrighted work claimed to have been infringed.
+- Specific URL or screenshot of the infringing material on SecretMsg.
+- Your contact information (name, email address, physical address).
+- A statement of good faith belief that the disputed use is unauthorized.
+
+**Send DMCA notices to:** `dmca@secretmsg.net`

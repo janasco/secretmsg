@@ -1,6 +1,24 @@
 # SecretMsg for Android
 
 Flutter client for SecretMsg. Application id `net.secretmsg.android_app`.
+Current version **1.6.10** (`versionCode 25`) in `pubspec.yaml`.
+
+The published sideload build is enumerated in
+`apps/web/src/lib/appVersion.ts` (`APK_VERSION = 'v1.6.10'`), which is the
+single source of truth for the version, sizes and SHA-256 checksums that
+`DownloadPage` and `LandingPage` both read, so the download page cannot drift
+from the artifacts.
+
+| File | Size | Notes |
+|---|---|---|
+| `secretmsg-android-v1.6.10-arm64.apk` | 13.1 MB | 64-bit, recommended for most phones |
+| `secretmsg-android-v1.6.10-arm32.apk` | 12.7 MB | 32-bit, older phones |
+| `secretmsg-android-v1.6.10-x64.apk` | 13.3 MB | x86 64-bit, emulators and Chromebooks |
+
+Per-ABI APKs are shipped because Cloudflare Workers static assets reject any
+single file over 25 MiB. v1.6.8 and v1.6.9 are still on disk under
+`apps/web/public/downloads/` (20–24 MB each) and remain downloadable, but they
+are not the current build.
 
 ## Running
 
@@ -12,9 +30,85 @@ flutter run
 ## Tests
 
 ```
-flutter test
-flutter analyze
+flutter test        # 162 tests
+flutter analyze     # lints, clean
 ```
+
+The analyzer runs in **strict language mode** (`analysis_options.yaml` sets
+`strict-casts`, `strict-inference` and `strict-raw-types`, nested correctly
+under `analyzer: language:`). Do not move them to the top level — current
+analyzers no longer accept the top-level form and emit `unsupported_option`
+warnings. The file also turns off `constant_identifier_names`, because the
+uppercase module-constant tables in `lib/data/static_content.dart` are
+intentional.
+
+Three accessibility checks run in the gate alongside the tests, all plain Dart
+in `tool/a11y/` (no Flutter toolchain needed, so they finish in under a second
+against a ten-minute gate):
+
+| Check | What it finds |
+|---|---|
+| `dart run tool/a11y/test/detector_test.dart` | The detector's own self-test |
+| `dart run tool/a11y/lint.dart` | Theme-blind colour literals — hardcoded dark values that render as light-on-light — and the full contrast matrix for both themes |
+| `dart run tool/a11y/regen_baseline.dart --check` | Fails if a palette value moved without regenerating the recorded pairings in `tool/a11y/a11y_baseline.json` |
+
+`flutter analyze` cannot see this class of defect, because nothing about the
+offending code is ill-typed. A hardcoded dark gradient in both themes once
+shipped with light-mode text on it at 1.06:1 contrast; these checks are what
+catch it.
+
+## Advertising
+
+The app serves **ads**: a Google AdMob banner and an optional rewarded video.
+The website serves none. A single one-time Google Play purchase, `remove_ads`,
+permanently removes ads for the account on every device — it is not a
+subscription. Four earlier products (`verified_badge`, `viewer_hints`,
+`sender_hints`, `supporter_bundle`) are retired; `remove_ads` is the only entry
+in the API's `PLAY_PRODUCTS` map, and the other client-side product constants in
+`lib/api/billing.dart` remain only so historical purchases still resolve.
+
+- **Consent**: personalised ads require consent in the EEA, the UK and
+  Switzerland. Declining leaves you on non-personalised ads rather than locking
+  you out (`AdsRequestPolicy.forConsent` in `lib/ads/ads_config.dart`).
+- **Ad privacy options**: **Settings → Support & legal → Ad privacy options**
+  opens Google's privacy options form. It is rendered only when the SDK reports
+  that a choice is actually available to the user (`_required` in
+  `settings_screen.dart`), so it is absent for users with no choice to make.
+- **Kill-switch**: `ADS_ENABLED` on the API Worker, public at
+  `/api/config/ads`, is currently **off**, so no ads are being served in
+  production even though the SDK and ad units ship in the build. The client
+  fails closed: `canServeAds` requires the remote flag, a resolved consent
+  state, SDK readiness and a non-ad-free account, and
+  `kAdsEnabledWithoutServerFlag` is `false`, so a missing, errored or stale
+  flag (6-hour max age) means no ads.
+- **Identifiers**: `kAdMobAppId`, `kBannerAdUnitId` and `kRewardedAdUnitId` are
+  `String.fromEnvironment` build-time inputs read from
+  `/opt/secretmsg/.secrets/admob.env` and are **never committed**. See
+  `scripts/build_release.sh` for the canonical invocation. The app id uses the
+  `ca-app-pub-…~…` tilde form and the ad units use the `…/…` slash form; all
+  three must come from one AdMob account, which `adIdsSharePublisher` enforces
+  so a cross-account paste produces a build that silently serves no ads.
+
+## The gate
+
+```bash
+bash scripts/verify.sh
+```
+
+From the repository root. This is the **only** enforcement point for the project
+— there is deliberately no CI and no `.github` directory, by decision, to avoid
+GitHub Actions billing, and this script runs the equivalent checks locally so
+the safety net survives that choice. It runs 15 named checks and takes 10+
+minutes. For this app that means `flutter analyze`, `flutter test` (162 tests) and
+the three `tool/a11y` checks; the rest cover the web client, the private API, and
+file ownership. It must be green before any commit.
+
+> **Ownership.** Everything runs as root, so files a build or an editor creates
+> land owned by `root:root` and the human operator then cannot edit them. After
+> creating files by hand, `chown -R janasco:janasco` them. The gate reconciles
+> ownership of all git-tracked files in both repos and then asserts it, because
+> the web build's prerender step rewrites hundreds of tracked files on every run
+> and undoes a one-off `chown`.
 
 ## Release builds
 
@@ -70,15 +164,27 @@ Signing for the upload artifact is read from `android/key.properties` (see
 debug key, which Play rejects — so a build meant for upload must be made on a
 machine that has it.
 
-```
-flutter build appbundle --release \
-  --obfuscate --split-debug-info=build/symbols
+Build the upload bundle with the script, not with a bare `flutter build`:
+
+```bash
+set -a; . /opt/secretmsg/.secrets/admob.env; set +a
+scripts/build_release.sh aab --obfuscate --split-debug-info=build/symbols
 ```
 
-`--obfuscate` strips Dart symbol names from the snapshot and takes roughly
-470 KB off the download. It also makes crash traces unreadable on their own:
-**keep the `build/symbols` directory for every release you ship**, or you will
-not be able to symbolicate a stack trace from it.
+A bare `flutter build appbundle --release` **fails on purpose**: the AdMob
+identifiers are build-time inputs that are never committed, and
+`android/app/build.gradle` throws a `GradleException` on any release build that
+would carry the placeholder app id. `scripts/build_release.sh` refuses a
+missing, malformed, or cross-account identifier set before it starts. That
+refusal is the feature — do not work around it by substituting a placeholder or
+by editing the guard. `scripts/build_release.sh --check-only` validates the
+identifiers without building anything.
+
+`--obfuscate` strips Dart symbol names from the snapshot, and it also makes
+crash traces unreadable on their own: **keep the `build/symbols` directory for
+every release you ship**, or you will not be able to symbolicate a stack trace
+from it. A build that skips it produces a snapshot nobody can debug in the
+field, so pass it on every release.
 
 ### Two tracks that never merge
 
@@ -189,22 +295,35 @@ published version under a new certificate, which breaks every install that exist
 
 The `.aab` on disk is far larger than what anyone downloads. It carries native
 libraries for three ABIs plus a deobfuscation map, and Play delivers only the
-one ABI a device needs. Judge size by a single-ABI APK, not by the bundle:
-
-```
-flutter build apk --release --target-platform=android-arm64
-```
+one ABI a device needs. Judge size by a single-ABI APK, not by the bundle — and
+build it with `scripts/build_sideload.sh`, because a bare
+`flutter build apk --release` produces the *Play* track (no `-PsideloadSigning`,
+native libs stored uncompressed) and would tell you nothing about the published
+APK.
 
 The per-ABI APKs on the website also carry a hard ceiling: Cloudflare Workers
 static assets reject any single file over 25 MiB. They stay under it because
-`android/app/build.gradle` sets `jniLibs.useLegacyPackaging = true`, which
-deflates `libflutter.so` and `libapp.so` instead of storing them uncompressed
-for direct mmap. Those two libraries are 21.5 MB of a 26.6 MB x86_64 APK, so
-deflating them roughly halves every download. The cost is one extraction step
-when the app is installed; the installed footprint is unchanged.
+`android/app/build.gradle` sets `jniLibs.useLegacyPackaging = sideloadSigningRequested`,
+which deflates `libflutter.so` and `libapp.so` instead of storing them
+uncompressed for direct mmap.
 
-Over half of that is the Flutter engine (`libflutter.so`), which is a fixed
-cost. The next largest piece is `libapp.so`, the compiled Dart.
+Measured from the actual v1.6.10 artifacts (2026-09-29):
+
+| APK | On disk | Uncompressed | `libapp.so` + `libflutter.so` stored |
+|---|---|---|---|
+| `x64` | 13.3 MB | 30.4 MiB | 8.5 MiB (from 20.6 MiB raw) |
+| `arm64` | 13.1 MB | 28.9 MiB | 8.3 MiB (from 19.1 MiB raw) |
+| `arm32` | 12.7 MB | 26.7 MiB | 7.9 MiB (from 16.9 MiB raw) |
+
+So deflating the native libraries is worth roughly 12 MiB per download — a
+little over half the on-disk size. For contrast, the v1.6.9 x64 APK still in
+`apps/web/public/downloads/` stores those same two libraries uncompressed and is
+23.0 MiB on disk against 13.3 MiB for v1.6.10.
+
+The cost is one extraction step when the app is installed; the installed
+footprint is unchanged. Over half of the remaining payload is the Flutter engine
+(`libflutter.so`), which is a fixed cost. The next largest piece is `libapp.so`,
+the compiled Dart.
 
 ## Assets
 
