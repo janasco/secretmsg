@@ -81,10 +81,10 @@ class _DailyDropScreenState extends State<DailyDropScreen> {
           Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
+              gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [Color(0xFF2A2356), Color(0xFF151B26)],
+                colors: [context.colors.accentDeep, context.colors.surface],
               ),
               borderRadius: BorderRadius.circular(20),
               border: Border.all(color: context.colors.accent.withValues(alpha: 0.35)),
@@ -123,7 +123,7 @@ class _DailyDropScreenState extends State<DailyDropScreen> {
                 const SizedBox(height: 8),
                 Text(
                   'Share it out and collect anonymous answers — or answer it yourself. Gone at midnight.',
-                  style: TextStyle(fontSize: 12.5, height: 1.5, color: context.colors.textSecondary),
+                  style: TextStyle(fontSize: 12.5, height: 1.5, color: context.colors.textHigh),
                 ),
               ],
             ),
