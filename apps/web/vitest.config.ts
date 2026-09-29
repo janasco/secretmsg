@@ -11,6 +11,10 @@ export default defineConfig({
   },
   test: {
     environment: 'node',
-    include: ['src/**/*.test.ts'],
+    // The static-analysis tool in scripts/ carries its own tests. They live
+    // beside the tool rather than in src/ so the Tailwind content glob
+    // (`./src/**\/*.{js,ts,jsx,tsx}`, scanned as raw text) does not see the
+    // palette tables and start emitting utilities nothing uses.
+    include: ['src/**/*.test.ts', 'scripts/**/*.test.mjs'],
   },
 });

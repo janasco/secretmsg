@@ -1,0 +1,1032 @@
+{
+  "version": 1,
+  "tool": "scripts/a11y-color.mjs",
+  "webRoot": "apps/web",
+  "note": "Findings already present when this tool was introduced. They do not fail the default gate; remove an entry to make that finding fail again. Do not add entries casually - the point is that the gate catches the *next* one.",
+  "findings": [
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:324|text-amber-300|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:363|hover:text-slate-200|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:363|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:372|text-amber-300|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:376|hover:text-slate-200|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:376|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:385|text-cyan-300|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:389|hover:text-slate-200|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:389|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:398|text-rose-300|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:402|hover:text-slate-200|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:402|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:414|hover:text-slate-200|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:414|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:423|text-amber-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:431|text-white|card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:443|text-indigo-200|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:482|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:482|text-slate-100|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:491|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:498|text-indigo-600|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:504|group-hover:text-slate-300|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/ComposeModal.tsx:536|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/Footer.tsx:10|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/Footer.tsx:21|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/Footer.tsx:32|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/Footer.tsx:46|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/Footer.tsx:57|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/Footer.tsx:64|text-slate-600|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/Footer.tsx:67|text-slate-600|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/Navbar.tsx:42|text-amber-300|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/Navbar.tsx:46|fill-amber-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/StoryCardModal.tsx:101|text-slate-400|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/StoryCardModal.tsx:115|hover:text-slate-200|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/StoryCardModal.tsx:115|text-indigo-200|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/StoryCardModal.tsx:133|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/StoryCardModal.tsx:145|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/StoryCardModal.tsx:148|text-white|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/StoryCardModal.tsx:56|text-slate-400|card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/StoryCardModal.tsx:69|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/StoryCardModal.tsx:86|text-white|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/StoryCardModal.tsx:87|text-indigo-300|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/StoryCardModal.tsx:98|text-white/90|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/SupportModal.tsx:106|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/SupportModal.tsx:45|text-slate-400|card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/SupportModal.tsx:54|text-amber-400|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/SupportModal.tsx:55|fill-amber-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/components/SupportModal.tsx:58|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/AboutPage.tsx:184|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/AboutPage.tsx:47|text-sky-400|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ApproachToSafetyPage.tsx:103|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ApproachToSafetyPage.tsx:155|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ApproachToSafetyPage.tsx:163|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ApproachToSafetyPage.tsx:45|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ApproachToSafetyPage.tsx:57|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ApproachToSafetyPage.tsx:86|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/BlindReplyPage.tsx:86|text-indigo-100|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/BlindReplyPage.tsx:93|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/BlogPage.tsx:112|text-slate-400|card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/BlogPage.tsx:120|group-hover:text-indigo-300|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/BlogPage.tsx:122|group-hover:text-indigo-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/BlogPage.tsx:122|text-slate-600|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ChildSafetyPage.tsx:115|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ChildSafetyPage.tsx:130|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ChildSafetyPage.tsx:144|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ChildSafetyPage.tsx:152|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ChildSafetyPage.tsx:154|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ChildSafetyPage.tsx:25|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ChildSafetyPage.tsx:34|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ChildSafetyPage.tsx:52|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ChildSafetyPage.tsx:78|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ChildSafetyPage.tsx:97|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/CommunityGuidelinesPage.tsx:38|text-rose-400|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/CommunityGuidelinesPage.tsx:93|text-sky-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ContactPage.tsx:103|text-rose-300|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ContactPage.tsx:104|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ContactPage.tsx:108|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ContactPage.tsx:112|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/ContactPage.tsx:116|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/CookiesPage.tsx:27|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/CookiesPage.tsx:36|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/CookiesPage.tsx:67|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/CookiesPage.tsx:78|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/CookiesPage.tsx:87|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DemoPage.tsx:160|hover:text-slate-200|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DemoPage.tsx:160|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DemoPage.tsx:172|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DemoPage.tsx:193|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DemoPage.tsx:204|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DemoPage.tsx:229|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DemoPage.tsx:233|text-emerald-400|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DemoPage.tsx:254|text-indigo-200|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DemoPage.tsx:302|text-white|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DemoPage.tsx:313|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DemoPage.tsx:328|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DemoPage.tsx:354|text-white|glass-card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DicePage.tsx:169|hover:text-white|glass-card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DicePage.tsx:169|text-dark-900|glass-card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DicePage.tsx:232|text-white|glass-card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DisclaimerPage.tsx:15|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DisclaimerPage.tsx:30|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DisclaimerPage.tsx:39|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DisclaimerPage.tsx:48|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DownloadPage.tsx:147|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DownloadPage.tsx:148|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DownloadPage.tsx:182|text-slate-400|card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DownloadPage.tsx:71|text-white|gradient",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/DownloadPage.tsx:80|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/FaqPage.tsx:142|text-indigo-300|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/FaqPage.tsx:143|text-indigo-300|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/FaqPage.tsx:148|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/FaqPage.tsx:173|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/FaqPage.tsx:178|text-emerald-300|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/FaqPage.tsx:231|text-rose-300|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/InboxPage.tsx:135|text-rose-300|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/InboxPage.tsx:146|text-amber-300|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/InboxPage.tsx:208|fill-amber-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/InboxPage.tsx:222|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/InboxPage.tsx:246|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/InboxPage.tsx:262|text-slate-500|card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/InboxPage.tsx:270|text-slate-500|card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/InboxPage.tsx:354|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/InboxPage.tsx:355|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/InboxPage.tsx:365|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/InboxPage.tsx:379|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/InboxPage.tsx:381|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/InboxPage.tsx:382|text-amber-200|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:139|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:141|text-slate-500|card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:155|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:157|text-slate-500|card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:163|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:187|hover:text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:187|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:206|text-white|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:209|text-slate-400|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:210|text-indigo-400|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:215|text-white|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:219|text-slate-300|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:224|text-indigo-300|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LandingPage.tsx:91|fill-amber-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:198|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:200|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:202|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:211|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:213|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:223|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:225|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:229|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:235|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:246|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:258|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:260|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:275|hover:text-slate-300|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:275|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:276|text-slate-600|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:277|hover:text-slate-300|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:277|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:278|text-slate-600|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:279|hover:text-slate-300|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:279|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/LoginPage.tsx:286|text-slate-600|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/OnlineSafetyGuidePage.tsx:185|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/OnlineSafetyGuidePage.tsx:187|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/OnlineSafetyGuidePage.tsx:25|text-sky-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/OnlineSafetyGuidePage.tsx:73|text-sky-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PostPage.tsx:261|group-hover:text-indigo-300|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:111|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:123|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:137|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:146|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:164|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:203|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:21|text-sky-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:212|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:221|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:239|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:247|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:35|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:51|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/PrivacyPage.tsx:92|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyPage.tsx:12|text-sky-300|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyPage.tsx:23|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyPage.tsx:27|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyPage.tsx:31|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyPage.tsx:85|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyPage.tsx:87|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyResourcesPage.tsx:277|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyResourcesPage.tsx:321|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyResourcesPage.tsx:332|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyResourcesPage.tsx:334|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyToolsPage.tsx:118|text-slate-400|card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyToolsPage.tsx:16|text-amber-400|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyToolsPage.tsx:248|text-sky-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyToolsPage.tsx:256|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyToolsPage.tsx:272|text-white|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyToolsPage.tsx:39|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyToolsPage.tsx:43|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyToolsPage.tsx:47|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyToolsPage.tsx:51|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SafetyToolsPage.tsx:78|text-purple-400|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:238|text-rose-300|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:255|text-amber-300|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:329|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:358|text-indigo-600|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:364|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:371|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:399|hover:text-white|card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:399|text-white|card",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:425|text-cyan-200|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:458|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:459|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:465|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:486|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:493|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:508|fill-amber-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:547|placeholder-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:594|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SettingsPage.tsx:618|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/StickerStudioPage.tsx:120|hover:text-slate-200|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/StickerStudioPage.tsx:120|text-indigo-200|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/StickerStudioPage.tsx:145|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/StickerStudioPage.tsx:162|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/StickerStudioPage.tsx:180|text-white|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/StickerStudioPage.tsx:71|text-white|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/StickerStudioPage.tsx:72|text-indigo-300|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/StickerStudioPage.tsx:78|text-white/90|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/StickerStudioPage.tsx:81|text-slate-400|dark-island",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SupportersPage.tsx:72|text-amber-300|tinted-banner",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/SupportersPage.tsx:73|fill-amber-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:105|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:127|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:136|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:155|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:164|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:181|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:190|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:199|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:213|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:222|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:242|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:256|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:264|text-slate-400|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:29|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:51|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:71|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "contrast|src/pages/TermsPage.tsx:88|text-slate-500|surface",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "unremapped-surface|src/pages/AboutPage.tsx:180|bg-white",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "unremapped-surface|src/pages/ContactPage.tsx:57|bg-white",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "unremapped-surface|src/pages/DemoPage.tsx:199|bg-white",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "unremapped-surface|src/pages/DicePage.tsx:118|bg-white",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "unremapped-surface|src/pages/DicePage.tsx:130|bg-white",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "unremapped-surface|src/pages/DicePage.tsx:174|bg-white",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "unremapped-surface|src/pages/DicePage.tsx:209|hover:bg-white",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "unremapped-surface|src/pages/PrivacyPage.tsx:249|bg-white",
+      "note": "recorded pre-existing, see note"
+    },
+    {
+      "id": "unremapped-surface|src/pages/TermsPage.tsx:266|bg-white",
+      "note": "recorded pre-existing, see note"
+    }
+  ]
+}

@@ -138,7 +138,7 @@ export const SupportersPage: React.FC<SupportersPageProps> = ({ onOpenSupport })
             <p className="text-2xl font-bold text-emerald-300">
               {error ? '—' : `${stats?.monthlyServerGoalPercent ?? 0}%`}
             </p>
-            <span className="text-xs text-emerald-400/80 font-medium">
+            <span className="text-xs text-emerald-700 dark:text-emerald-400/80 font-medium">
               {error ? 'Funding status unavailable' : `Funded for ${stats?.currentMonth || 'the current month'}`}
             </span>
           </div>

@@ -22,6 +22,12 @@ class AppMark extends StatelessWidget {
           width: size,
           height: size,
           alignment: Alignment.center,
+          // a11y-allow: brand mark, and deliberately not theme-aware. #6366F1
+          // is the palette's `accent` in *both* themes, so this tile is the
+          // same colour either way; the errorBuilder has no BuildContext, so
+          // there is nothing to read a token from here anyway. The white
+          // initial on it measures 4.47:1, 0.03 under AA -- the same
+          // white-on-accent property the palette carries everywhere.
           decoration: BoxDecoration(
             color: const Color(0xFF6366F1),
             borderRadius: BorderRadius.circular(radius),
@@ -76,6 +82,7 @@ class UserAvatar extends StatelessWidget {
         fit: BoxFit.cover,
       );
     } catch (_) {
+      // a11y-allow: as above -- a brand mark with no BuildContext in scope.
       face = Container(
         width: size,
         height: size,

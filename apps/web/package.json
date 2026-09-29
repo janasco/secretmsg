@@ -13,6 +13,8 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "a11y": "node scripts/a11y-color.mjs",
+    "a11y:strict": "node scripts/a11y-color.mjs --strict",
     "slop": "antislop src",
     "slop:aislop": "aislop scan src",
     "slop:ci": "aislop ci src"

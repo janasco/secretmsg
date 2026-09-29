@@ -752,6 +752,9 @@ class _GuidesOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget band(String label) => Container(
           alignment: Alignment.center,
+          // a11y-allow: editor-only overlay on the sticker canvas, which
+          // carries its own theme table (see _STICKER_THEME_BY_ID) and is
+          // never captured into a shareable image. Not an app surface.
           color: const Color(0xFFE11D48).withValues(alpha: 0.22),
           child: Text(label,
               style: const TextStyle(

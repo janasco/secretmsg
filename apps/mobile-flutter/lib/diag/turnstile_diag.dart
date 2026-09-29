@@ -194,9 +194,15 @@ class _TurnstileDiagScreenState extends State<TurnstileDiagScreen> {
                   Container(
                     padding: const EdgeInsets.all(14),
                     decoration: BoxDecoration(
-                      color: _result.startsWith('ACCEPTED')
-                          ? const Color(0xFF06281D)
-                          : const Color(0xFF330F13),
+                      // A 12% tint of the semantic colour over the themed
+                      // surface, rather than the hardcoded near-black bands
+                      // this used to carry. Those were dark in both themes, so
+                      // in light mode this text measured 1.13:1 and 1.04:1 —
+                      // the same defect class as the Daily Drop gradient.
+                      color: (_result.startsWith('ACCEPTED')
+                              ? context.colors.emerald
+                              : context.colors.rose)
+                          .withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(color: context.colors.border),
                     ),

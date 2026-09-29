@@ -176,6 +176,10 @@ class TurnstileWidgetState extends State<TurnstileWidget> {
       _status = 'Preparing verification…';
       widget.onError?.call(null);
       try {
+        // The upstream challenge's own appearance, not this app's theme: the
+        // widget host picks the Cloudflare widget's scheme and the page behind
+        // it has to match, or the iframe shows a seam.
+        // a11y-allow: matches the upstream Turnstile challenge theme
         _controller!.setBackgroundColor(
           want == 'light' ? const Color(0xFFFFFFFF) : const Color(0xFF101322),
         );
@@ -380,10 +384,10 @@ class TurnstileWidgetState extends State<TurnstileWidget> {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: _errored
-              ? const Color(0xFFF43F5E)
+              ? context.colors.rose
               : _turnstileTokenReady
                   ? context.colors.emerald
-                  : const Color(0x336366F1),
+                  : context.colors.accent.withValues(alpha: 0.2),
         ),
       ),
       child: Column(
@@ -394,7 +398,7 @@ class TurnstileWidgetState extends State<TurnstileWidget> {
           Row(
             children: [
               if (_errored)
-                const Icon(Icons.error_outline, size: 18, color: Color(0xFFF43F5E))
+                Icon(Icons.error_outline, size: 18, color: context.colors.rose)
               else if (_turnstileTokenReady)
                 Icon(Icons.verified_user_outlined, size: 18, color: context.colors.emerald)
               else

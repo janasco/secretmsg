@@ -144,14 +144,14 @@ export const DeleteAccountPage: React.FC<DeleteAccountPageProps> = ({ user, setU
           </div>
 
           {deleteError && (
-            <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-xs text-rose-200" role="alert">
+            <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-xs text-rose-700 dark:text-rose-200" role="alert">
               {deleteError}
             </div>
           )}
 
           {confirming ? (
             <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 space-y-3">
-              <p className="text-sm font-semibold text-rose-200">
+              <p className="text-sm font-semibold text-rose-700 dark:text-rose-200">
                 Final confirmation: permanently delete @{user.username} and all account data listed on this page?
               </p>
               <div className="flex flex-wrap items-center gap-2">

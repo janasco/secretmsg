@@ -59,7 +59,9 @@ class _MyReportsScreenState extends State<MyReportsScreen> {
 
   Widget _buildBody() {
     if (_loading && _reports == null) {
-      return const Center(child: CircularProgressIndicator(color: Color(0xFF6366F1)));
+      return Center(
+        child: CircularProgressIndicator(color: context.colors.accent),
+      );
     }
     if (_error != null) {
       return ListView(

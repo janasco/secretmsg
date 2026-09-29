@@ -34,9 +34,42 @@ check "tests" bash -c "cd '$WEB' && npm test"
 check "build + prerender" bash -c "cd '$WEB' && npm run build"
 check "blog link integrity" bash -c "cd '$WEB' && node scripts/analyze-links.mjs --emitted | grep -q 'broken emitted /post links: 0'"
 
+# Theme/contrast analysis. src/index.css remaps individual Tailwind *class
+# tokens* for light mode, so an opacity-modified class (text-amber-200/90 vs
+# text-amber-200) silently opts out of the remap and renders the dark-theme
+# colour on light paper. That shipped once already and no other check here can
+# see it. Default failing mode is `bypass` and findings already present are held
+# in scripts/a11y/baseline.json, so this fails on the *next* one and not on
+# today's backlog; --strict is opt-in for the whole set.
+check "a11y colour remap bypasses + contrast" bash -c "cd '$WEB' && node scripts/a11y-color.mjs"
+
 section "Android (apps/mobile-flutter)"
 check "analyze" bash -c "cd '$MOB' && flutter analyze"
 check "tests" bash -c "cd '$MOB' && flutter test"
+
+# Theme-blind colour literals and the palette contrast matrix. The Daily Drop
+# bug (fixed in 43aa190) was a hardcoded dark gradient in both themes, with
+# light-mode text on top of it at 1.06:1 - and `flutter analyze` cannot see it,
+# because nothing about that code is ill-typed. This is the check that can.
+#
+# It is plain Dart and reads the palette out of lib/theme.dart as text, so it
+# needs no Flutter toolchain and runs in well under a second against a gate
+# that takes ten minutes.
+#
+# The default strictness, `surface`, fails on a NEW theme-blind surface or
+# gradient-stop literal and nothing else. That is deliberate: the defect that
+# actually shipped was a surface, and a gate that also failed on the 94
+# pre-existing palette shortfalls would be red on day one with no bug to point
+# at, and would be switched off. The shortfalls are recorded in
+# tool/a11y/a11y_baseline.json with a reason each and stay visible in the
+# report on every run. `--strictness=text` widens the gate to text literals,
+# `--strictness=strict` also fails on an unrecorded pairing.
+check "a11y detector self-test" bash -c "cd '$MOB' && dart run tool/a11y/test/detector_test.dart"
+check "a11y theme-blind colours + contrast matrix" bash -c "cd '$MOB' && dart run tool/a11y/lint.dart"
+# Fails if a palette value moved without regenerating the recorded pairings.
+# Without this, an edit to lib/theme.dart silently invalidates 94 recorded
+# exceptions and the next run reports nothing at all.
+check "a11y baseline matches the palette" bash -c "cd '$MOB' && dart run tool/a11y/regen_baseline.dart --check"
 
 section "API (secretmsg-private)"
 check "tests" bash -c "cd '$API' && npm run api:test"

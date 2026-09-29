@@ -342,9 +342,16 @@ class _SendScreenState extends State<SendScreen> {
             ),
           ),
           if (p.isPaused)
-            const Padding(
-              padding: EdgeInsets.only(left: 8),
-              child: Icon(Icons.pause_circle_filled, color: Color(0xFFF59E0B), size: 20),
+            Padding(
+              padding: const EdgeInsets.only(left: 8),
+              // amberLight rather than the hardcoded #F59E0B: that literal is
+              // the light palette's amber, and it measured 2.05:1 on the light
+              // scaffold. amberLight is 4.80:1 light and 13.40:1 dark.
+              child: Icon(
+                Icons.pause_circle_filled,
+                color: context.colors.amberLight,
+                size: 20,
+              ),
             ),
         ],
       ),
@@ -563,11 +570,15 @@ class _SendScreenState extends State<SendScreen> {
                   height: 88,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: const Color(0xFF10B981).withValues(alpha: 0.12),
-                    border: Border.all(color: const Color(0xFF10B981).withValues(alpha: 0.3)),
+                    // The tint and the glyph both read tokens. Hardcoding
+                    // #10B981 and #34D399 here meant the glyph was the *dark*
+                    // palette's emeraldSoft in both themes, so in light mode
+                    // this 40px check sat at 1.84:1 on its own 12% tint.
+                    color: context.colors.emerald.withValues(alpha: 0.12),
+                    border: Border.all(color: context.colors.emerald.withValues(alpha: 0.3)),
                   ),
                   child: Icon(queued ? Icons.cloud_upload_outlined : Icons.check_circle,
-                      color: const Color(0xFF34D399), size: 40),
+                      color: context.colors.emeraldSoft, size: 40),
                 ),
               ),
               const SizedBox(height: 18),
@@ -593,9 +604,13 @@ class _SendScreenState extends State<SendScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'Private Reply Link (Double-Blind)',
-                        style: TextStyle(color: Color(0xFF818CF8), fontSize: 12, fontWeight: FontWeight.w800),
+                        // accentSoft, not the hardcoded #818CF8 this used to
+                        // carry: that literal is the *dark* palette's
+                        // accentFaint, and at 12px it measured 2.98:1 on the
+                        // light card. accentSoft is 7.90:1 light, 8.66:1 dark.
+                        style: TextStyle(color: context.colors.accentSoft, fontSize: 12, fontWeight: FontWeight.w800),
                       ),
                       const SizedBox(height: 6),
                       Text(
@@ -717,7 +732,7 @@ class _Bullet extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, size: 15, color: const Color(0xFF818CF8)),
+          Icon(icon, size: 15, color: context.colors.accentFaint),
           const SizedBox(width: 8),
           Expanded(
             child: Text(text, style: TextStyle(color: context.colors.textMuted, fontSize: 12, height: 1.45)),

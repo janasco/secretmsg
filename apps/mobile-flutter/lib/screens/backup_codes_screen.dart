@@ -84,14 +84,24 @@ class _BackupCodesScreenState extends State<BackupCodesScreen> {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFEF4444).withValues(alpha: 0.1),
+                    // The theme's own rose rather than a hardcoded #EF4444, so
+                    // the band tints the surface it actually sits on. The
+                    // literal was red-500 in both themes; the palette's rose is
+                    // #F43F5E, which is a hair different, so the band shifts by
+                    // one or two in each channel. The 12px body text on it
+                    // moves 4.04 -> 4.06 in light and 6.42 -> 6.43 in dark.
+                    color: context.colors.rose.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: const Color(0xFFEF4444).withValues(alpha: 0.3)),
+                    border: Border.all(color: context.colors.rose.withValues(alpha: 0.3)),
                   ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Icon(Icons.warning_amber_rounded, color: Color(0xFFEF4444), size: 20),
+                      // roseLight, not #EF4444: the icon is a glyph, and
+                      // roseLight on this band is 4.06:1 light / 6.43:1 dark
+                      // where the literal was 3.15:1 / 4.72:1. It also matches
+                      // the text beside it, which already used roseLight.
+                      Icon(Icons.warning_amber_rounded, color: context.colors.roseLight, size: 20),
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(

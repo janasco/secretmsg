@@ -1,0 +1,327 @@
+{
+  "_comment": [
+    "Recorded, deliberate exceptions for tool/a11y/lint.dart.",
+    "",
+    "GENERATED. The `pairings` block is derived from the palette by",
+    "tool/a11y/regen_baseline.dart, so it always describes today's values",
+    "rather than a hand-typed list that drifts the moment a palette value",
+    "changes and then hides the next regression on the same cell. Regenerate",
+    "with `dart run tool/a11y/regen_baseline.dart --write`; the gate runs",
+    "`--check` and fails if this file is stale.",
+    "",
+    "Every group carries a reason. A pairing recorded with no reason is just a",
+    "way of making the gate quiet.",
+    "",
+    "These are POSSIBLE pairings, not observed ones. The matrix measures every",
+    "text-bearing token against every surface-bearing token, and a cell only",
+    "becomes a bug when a screen puts those two together. None of these is a",
+    "live defect today. They are listed because that is the point of the",
+    "matrix: a token that is unusable on a surface should be caught before a",
+    "screen reaches for it.",
+    "",
+    "Fixing any of them means changing a value in lib/theme.dart, which shifts",
+    "contrast app-wide. That is deliberately out of scope. The Daily Drop bug",
+    "was a SURFACE problem, and the fix that shipped correctly left the palette",
+    "alone; these are reported with numbers and left.",
+    "",
+    "`literals` is empty and should stay that way. Every hardcoded colour that",
+    "is genuinely correct in this app is annotated in place with an",
+    "`// a11y-allow: <reason>` comment, so the judgement sits next to the code",
+    "it defends and shows up in the diff."
+  ],
+  "literals": [],
+  "pairings": [
+    {
+      "pairings": [
+        "dark/roseDeep/roseDeep",
+        "light/roseDeep/roseDeep"
+      ],
+      "worst": "dark/roseDeep/roseDeep at 1.00:1",
+      "reason": "a surface token measured against itself, which is never a real pairing"
+    },
+    {
+      "pairings": [
+        "light/textHigh/roseDeep"
+      ],
+      "worst": "light/textHigh/roseDeep at 1.03:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts textHigh text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "light/accentSoft/roseDeep"
+      ],
+      "worst": "light/accentSoft/roseDeep at 1.27:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts accentSoft text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "dark/textFaint/roseDeep"
+      ],
+      "worst": "dark/textFaint/roseDeep at 1.32:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts textFaint text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "dark/textFaint/accentDeep",
+        "dark/textFaint/bg",
+        "dark/textFaint/bgSoft",
+        "dark/textFaint/surface",
+        "dark/textFaint/surfaceLight",
+        "light/textFaint/accentDeep",
+        "light/textFaint/bg",
+        "light/textFaint/bgSoft",
+        "light/textFaint/surface",
+        "light/textFaint/surfaceLight"
+      ],
+      "worst": "light/textFaint/accentDeep at 1.33:1",
+      "reason": "textFaint is the hairline and placeholder token (1px separators, hint text, disabled labels), not readable copy. WCAG 1.4.3 excludes placeholder text from its contrast requirement, and no screen uses this token for body text."
+    },
+    {
+      "pairings": [
+        "dark/roseDeep/accentDeep",
+        "dark/roseDeep/bg",
+        "dark/roseDeep/bgSoft",
+        "dark/roseDeep/surface",
+        "dark/roseDeep/surfaceLight"
+      ],
+      "worst": "dark/roseDeep/surfaceLight at 1.55:1",
+      "reason": "roseDeep is a surface token, not a glyph colour: it is the destructive-button fill (widgets/common.dart:432) and no screen draws text in it. Every cell in this group becomes a live bug the moment someone uses roseDeep as a text or icon colour."
+    },
+    {
+      "pairings": [
+        "dark/accentDark/roseDeep",
+        "light/accentDark/roseDeep"
+      ],
+      "worst": "dark/accentDark/roseDeep at 1.59:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts accentDark text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "light/textPrimary/roseDeep"
+      ],
+      "worst": "light/textPrimary/roseDeep at 1.78:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts textPrimary text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "light/emeraldLight/roseDeep"
+      ],
+      "worst": "light/emeraldLight/roseDeep at 1.83:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts emeraldLight text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "light/amber/accentDeep",
+        "light/amber/bg",
+        "light/amber/bgSoft",
+        "light/amber/surface",
+        "light/amber/surfaceLight"
+      ],
+      "worst": "light/amber/accentDeep at 1.92:1",
+      "reason": "amber is the fill/tint token: pill washes, borders, and icons on a dark surface. In light mode it carries the same #F59E0B as dark, so it cannot be a glyph colour there. Screens that need an amber glyph use amberLight, which is what the send-screen pause icon now does."
+    },
+    {
+      "pairings": [
+        "light/amberLight/roseDeep"
+      ],
+      "worst": "light/amberLight/roseDeep at 2.00:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts amberLight text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "dark/roseLight/roseDeep",
+        "light/roseLight/roseDeep"
+      ],
+      "worst": "light/roseLight/roseDeep at 2.07:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts roseLight text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "dark/textMuted/roseDeep",
+        "light/textMuted/roseDeep"
+      ],
+      "worst": "dark/textMuted/roseDeep at 2.11:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts textMuted text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "dark/textSecondary/roseDeep",
+        "light/textSecondary/roseDeep"
+      ],
+      "worst": "light/textSecondary/roseDeep at 2.11:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts textSecondary text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "dark/accent/roseDeep",
+        "light/accent/roseDeep"
+      ],
+      "worst": "dark/accent/roseDeep at 2.24:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts accent text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "dark/accentFaint/roseDeep",
+        "light/accentFaint/roseDeep"
+      ],
+      "worst": "light/accentFaint/roseDeep at 2.24:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts accentFaint text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "light/emerald/accentDeep",
+        "light/emerald/bg",
+        "light/emerald/bgSoft",
+        "light/emerald/surface",
+        "light/emerald/surfaceLight"
+      ],
+      "worst": "light/emerald/accentDeep at 2.27:1",
+      "reason": "emerald is a fill/tint token: success washes, borders, and icons on a dark surface. Unusable as a glyph colour in light mode (2.42:1 on bg). Screens that need a green glyph use emeraldSoft or emeraldLight, which is what the send-screen success card now does."
+    },
+    {
+      "pairings": [
+        "dark/accentDark/accentDeep",
+        "dark/accentDark/bg",
+        "dark/accentDark/bgSoft",
+        "dark/accentDark/surface",
+        "dark/accentDark/surfaceLight"
+      ],
+      "worst": "dark/accentDark/surfaceLight at 2.47:1",
+      "reason": "accentDark is a gradient stop and the focused-border token, never body copy. No screen draws an accentDark glyph on any of these surfaces."
+    },
+    {
+      "pairings": [
+        "light/emeraldSoft/roseDeep"
+      ],
+      "worst": "light/emeraldSoft/roseDeep at 2.66:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts emeraldSoft text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "dark/rose/roseDeep",
+        "light/rose/roseDeep"
+      ],
+      "worst": "dark/rose/roseDeep at 2.73:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts rose text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "dark/textMuted/accentDeep",
+        "dark/textMuted/bg",
+        "dark/textMuted/bgSoft",
+        "dark/textMuted/surface",
+        "dark/textMuted/surfaceLight",
+        "light/textMuted/accentDeep",
+        "light/textMuted/surfaceLight"
+      ],
+      "worst": "dark/textMuted/surfaceLight at 3.26:1",
+      "reason": "textMuted is the metadata token (timestamps, counts) and measures 3.2-4.4:1 across the dark surfaces. In light mode it is the same value as textSecondary, so the Daily Drop fix could not have swapped to it: the change would have been a no-op."
+    },
+    {
+      "pairings": [
+        "dark/rose/accentDeep",
+        "dark/rose/surfaceLight",
+        "light/rose/accentDeep",
+        "light/rose/bg",
+        "light/rose/bgSoft",
+        "light/rose/surface",
+        "light/rose/surfaceLight"
+      ],
+      "worst": "light/rose/accentDeep at 3.28:1",
+      "reason": "rose is the destructive fill and the error border. Unusable as a glyph colour in light mode (2.05:1 on bg). Screens that need a red glyph use roseLight, which is what the Turnstile error icon and the backup-codes warning now do."
+    },
+    {
+      "pairings": [
+        "light/emeraldSoft/accentDeep"
+      ],
+      "worst": "light/emeraldSoft/accentDeep at 3.37:1",
+      "reason": "emeraldSoft is an icon and inline-glyph token. It clears the 3:1 non-text requirement on the neutral surfaces (3.4:1 to 3.8:1) and falls short only on a tinted card. No screen pairs it with accentDeep."
+    },
+    {
+      "pairings": [
+        "light/emeraldSoft/surfaceLight"
+      ],
+      "worst": "light/emeraldSoft/surfaceLight at 3.44:1",
+      "reason": "emeraldSoft is an icon and inline-glyph token. It clears the 3:1 non-text requirement on the neutral surfaces (3.4:1 to 3.8:1) and falls short only on a tinted card. No screen pairs it with surfaceLight."
+    },
+    {
+      "pairings": [
+        "dark/accent/accentDeep",
+        "dark/accent/bg",
+        "dark/accent/bgSoft",
+        "dark/accent/surface",
+        "dark/accent/surfaceLight",
+        "light/accent/accentDeep",
+        "light/accent/bg",
+        "light/accent/bgSoft",
+        "light/accent/surface",
+        "light/accent/surfaceLight"
+      ],
+      "worst": "dark/accent/surfaceLight at 3.48:1",
+      "reason": "accent is the FilledButton fill. A button label is white on accent, never accent on a surface, and the screens that do use accent as a glyph colour put it on a dark surface where it clears 3:1."
+    },
+    {
+      "pairings": [
+        "light/emeraldSoft/bg"
+      ],
+      "worst": "light/emeraldSoft/bg at 3.60:1",
+      "reason": "emeraldSoft is an icon and inline-glyph token. It clears the 3:1 non-text requirement on the neutral surfaces (3.4:1 to 3.8:1) and falls short only on a tinted card. No screen pairs it with bg."
+    },
+    {
+      "pairings": [
+        "light/emeraldSoft/bgSoft"
+      ],
+      "worst": "light/emeraldSoft/bgSoft at 3.77:1",
+      "reason": "emeraldSoft is an icon and inline-glyph token. It clears the 3:1 non-text requirement on the neutral surfaces (3.4:1 to 3.8:1) and falls short only on a tinted card. No screen pairs it with bgSoft."
+    },
+    {
+      "pairings": [
+        "light/emeraldSoft/surface"
+      ],
+      "worst": "light/emeraldSoft/surface at 3.77:1",
+      "reason": "emeraldSoft is an icon and inline-glyph token. It clears the 3:1 non-text requirement on the neutral surfaces (3.4:1 to 3.8:1) and falls short only on a tinted card. No screen pairs it with surface."
+    },
+    {
+      "pairings": [
+        "dark/emerald/roseDeep",
+        "light/emerald/roseDeep"
+      ],
+      "worst": "dark/emerald/roseDeep at 3.95:1",
+      "reason": "roseDeep is the destructive-button fill (widgets/common.dart:432) and no screen puts emerald text on it. This cell only becomes a bug if someone does."
+    },
+    {
+      "pairings": [
+        "light/accentFaint/accentDeep",
+        "light/accentFaint/bg",
+        "light/accentFaint/bgSoft",
+        "light/accentFaint/surface",
+        "light/accentFaint/surfaceLight"
+      ],
+      "worst": "light/accentFaint/accentDeep at 3.99:1",
+      "reason": "accentFaint is the progress-indicator tint. Its real use is a spinner stroke, which needs 3:1 and not 4.5:1, not readable copy."
+    },
+    {
+      "pairings": [
+        "light/textSecondary/accentDeep",
+        "light/textSecondary/surfaceLight"
+      ],
+      "worst": "light/textSecondary/accentDeep at 4.26:1",
+      "reason": "textSecondary measures 4.55:1 on light bg and 4.76:1 on the white surfaces, so it misses AA only on the tinted cards, by 0.01 to 0.24. It is the app-wide body-secondary token; screens that need AA on a tinted card use textHigh, which is what the Daily Drop fix did."
+    },
+    {
+      "pairings": [
+        "light/roseLight/accentDeep",
+        "light/roseLight/surfaceLight"
+      ],
+      "worst": "light/roseLight/accentDeep at 4.32:1",
+      "reason": "roseLight is the red-glyph token. It clears AA on the neutral surfaces and lands at 4.32:1 on the tinted card, which commit 43aa190 measured and recorded as a token property rather than a screen bug."
+    },
+    {
+      "pairings": [
+        "light/amberLight/accentDeep"
+      ],
+      "worst": "light/amberLight/accentDeep at 4.49:1",
+      "reason": "amberLight on accentDeep measures 4.49:1. A possible pairing, not an observed one: no screen currently puts these two tokens together, and this cell is the warning if one starts to."
+    }
+  ]
+}

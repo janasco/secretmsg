@@ -152,7 +152,7 @@ class _HeroCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Icon(Icons.emoji_events, color: Color(0xFFF59E0B), size: 22),
+              Icon(Icons.emoji_events, color: context.colors.amber, size: 22),
               const SizedBox(width: 8),
               Text(
                 'Powering an anonymous, independent internet',
@@ -218,13 +218,18 @@ class _SupporterTile extends StatelessWidget {
   (String, Color) tierStyle(BuildContext context, String tier) {
     switch (tier) {
       case 'Golden Guardian':
-        return ('👑', const Color(0xFFF59E0B));
+        return ('👑', context.colors.amber);
       case 'Silver Patron':
         return ('🥈', context.colors.textSecondary);
       case 'Coffee Backer':
+        // a11y-allow: the Coffee tier's identity colour. There is no purple in
+        // the palette and adding one is a palette change, which is out of scope
+        // for an accessibility fix. The chip this feeds is a 12% tint, so it
+        // composites over the themed surface rather than sitting on a fixed
+        // dark band.
         return ('☕', const Color(0xFFC084FC));
       default:
-        return ('🛡️', const Color(0xFF818CF8));
+        return ('🛡️', context.colors.accentFaint);
     }
   }
 
@@ -267,7 +272,11 @@ class _SupporterTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(999),
                   border: Border.all(color: color.withValues(alpha: 0.3)),
                 ),
-                child: Text('$icon ${supporter.tier}', style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w700)),
+                // textPrimary, not Colors.white: the chip fill is a 12% tint
+                // of the tier colour over context.colors.surface, which is
+                // near-white in light mode. White text on it measured 1.00:1
+                // there; textPrimary measures 17.06:1 light, 18.46:1 dark.
+                child: Text('$icon ${supporter.tier}', style: TextStyle(color: context.colors.textPrimary, fontSize: 10, fontWeight: FontWeight.w700)),
               ),
             ],
           ),

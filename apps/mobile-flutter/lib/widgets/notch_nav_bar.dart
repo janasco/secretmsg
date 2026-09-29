@@ -172,6 +172,14 @@ class _NotchNavBarState extends State<NotchNavBar>
                             height: bubbleR * 2,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
+                              // a11y-allow: brand mark. #6366F1 is `accent`,
+                              // identical in both palettes; #8B5CF6 (violet-500)
+                              // is not a palette value. The bar itself tracks the
+                              // theme via `palette.surface`; this bubble is the
+                              // brand's selected-tab indicator and is not meant
+                              // to. Measured: the 25px white icon reads 4.23:1 at
+                              // the violet end and 4.47:1 at the accent end,
+                              // above the 3:1 non-text floor in both themes.
                               gradient: const LinearGradient(
                                 colors: [Color(0xFF8B5CF6), Color(0xFF6366F1)],
                                 begin: Alignment.topLeft,

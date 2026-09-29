@@ -53,7 +53,7 @@ export const SafetyToolsPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-[#10131A] rounded-2xl p-4 border border-white/10 space-y-2">
+          <div className="dark-island bg-[#10131A] rounded-2xl p-4 border border-white/10 space-y-2">
             <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
               <Eye className="w-4 h-4 text-amber-400" />
               What Senders See When Your Board Is Paused
