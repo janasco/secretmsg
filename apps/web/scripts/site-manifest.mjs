@@ -6,6 +6,24 @@ export const canonicalUrl = (path) => {
   return `${HOST}${path.replace(/\/+$/, '')}/`;
 };
 
+/**
+ * Routes that require a session to use.
+ *
+ * `/dice` and `/sticker-studio` are deliberately NOT in STATIC_ROUTES, which is
+ * what actually un-publishes them. STATIC_ROUTES feeds both the prerenderer and
+ * sitemap.xml, so a route listed there is written to dist as public HTML and
+ * published for indexing — a client-side lock screen over prerendered content
+ * gates nothing, because the content is already a fetchable file. Keeping them
+ * out of that list means they are served as SPA shells by the Worker and carry
+ * `X-Robots-Tag: noindex` (see NOINDEX_ROUTES in route-policy.ts).
+ *
+ * Both tools are pure client-side: neither calls the API. Gating them on a
+ * session therefore does not conflict with the pairing contract, where a
+ * paired browser holds `scope: 'read'` and the API enforces it as never-write.
+ * Neither can write, so neither needs write scope.
+ */
+export const ACCOUNT_ROUTES = Object.freeze(['/dice', '/sticker-studio']);
+
 export const STATIC_ROUTES = Object.freeze([
   {
     path: '/',
@@ -47,18 +65,6 @@ export const STATIC_ROUTES = Object.freeze([
     path: '/demo',
     title: 'SecretMsg Interactive Demo',
     description: 'Test anonymous messages, prompt roulette, story stickers, and double-blind replies in a safe interactive sandbox.',
-    type: 'WebPage',
-  },
-  {
-    path: '/dice',
-    title: '3D Dice Prompt Roulette - SecretMsg',
-    description: 'Roll the dice for a candid, viral, or deep anonymous message prompt, or browse the SecretMsg prompt library.',
-    type: 'WebPage',
-  },
-  {
-    path: '/sticker-studio',
-    title: 'Story Sticker Studio - SecretMsg',
-    description: 'Create a 9:16 story sticker for your anonymous message board with a custom theme and message prompt.',
     type: 'WebPage',
   },
   {

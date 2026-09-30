@@ -19,8 +19,21 @@ export const Footer: React.FC = () => {
         <div>
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Explore</h4>
           <ul className="space-y-2 text-xs text-slate-500">
-            <li><Link to="/dice" className="hover:text-slate-300 transition-colors">3D Dice Roulette</Link></li>
-            <li><Link to="/sticker-studio" className="hover:text-slate-300 transition-colors">Sticker Studio</Link></li>
+            {/* Both tools require a paired session. Saying so here rather than
+                letting every public page's footer send people into a lock
+                screen without warning. */}
+            <li>
+              <Link to="/dice" className="hover:text-slate-300 transition-colors">
+                3D Dice Roulette
+                <span className="block text-[10px] text-slate-600">paired account</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/sticker-studio" className="hover:text-slate-300 transition-colors">
+                Sticker Studio
+                <span className="block text-[10px] text-slate-600">paired account</span>
+              </Link>
+            </li>
             <li><Link to="/blog" className="hover:text-slate-300 transition-colors">Blog</Link></li>
             <li><Link to="/download" className="hover:text-slate-300 transition-colors">Android App (APK)</Link></li>
             <li><a href="https://secretmsg.net/inbox" className="hover:text-slate-300 transition-colors">Anonymous Inbox</a></li>

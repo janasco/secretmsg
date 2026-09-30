@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import { Dices, Send, Copy, Check, Wand2, Sparkles } from 'lucide-react';
 import { PublicPage } from '@/components/PublicPage';
+import { RequireSession } from '@/components/RequireSession';
 import { loadRouletteCategory, type RouletteCategory } from '@/lib/data/rouletteData';
 
 type CatKey = RouletteCategory;
@@ -27,7 +28,28 @@ const CAT_TAG: Record<string, { label: string; color: string }> = {
 
 const POOL_PAGE_SIZE = 20;
 
-export const DicePage: React.FC = () => {
+/**
+ * The roulette itself. Account-only, so it renders only once
+ * `RequireSession` has confirmed a live session. Nothing here calls the API —
+ * the prompt pool is bundled — which is why a paired read-only session is
+ * enough to unlock it.
+ */
+export const DicePage: React.FC = () => (
+  <RequireSession
+    tool="3D Dice Roulette"
+    blurb="Roll the dice for a prompt worth posting. Pair a browser to unlock it — the roulette is for your account, not for anonymous visitors."
+  >
+    <PublicPage
+      title="3D Dice Prompt Roulette"
+      eyebrow="1,500+ curated prompts per category · 9,000+ total"
+      description="Roll the dice to shake out a viral, candid, or deep question to post on your story — or browse the pool manually."
+    >
+      <Roulette />
+    </PublicPage>
+  </RequireSession>
+);
+
+const Roulette: React.FC = () => {
   const [activeCat, setActiveCat] = useState<CatKey>('all');
   const [featured, setFeatured] = useState<string>('"Send me an honest TBH. Don\'t hold back 👋"');
   const [rolling, setRolling] = useState(false);
@@ -94,11 +116,6 @@ export const DicePage: React.FC = () => {
 
   return (
     <>
-      <PublicPage
-        title="3D Dice Prompt Roulette"
-        eyebrow="1,500+ curated prompts per category · 9,000+ total"
-        description="Roll the dice to shake out a viral, candid, or deep question to post on your story — or browse the pool manually."
-      >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
           {/* Left: Die + actions */}
           <div className="md:col-span-5 md:sticky md:top-24 space-y-4">
@@ -226,7 +243,6 @@ export const DicePage: React.FC = () => {
             )}
           </div>
         </div>
-      </PublicPage>
 
       {/* Toast */}
       <div

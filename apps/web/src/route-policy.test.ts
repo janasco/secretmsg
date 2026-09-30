@@ -9,7 +9,12 @@ import { handleRequest, type WorkerEnv } from './worker';
 
 const PUBLIC_DIR = resolve(__dirname, '..', 'public');
 
-type SiteManifest = { HOST: string; STATIC_ROUTES: Array<{ path: string }> };
+type SiteManifest = {
+  HOST: string;
+  STATIC_ROUTES: Array<{ path: string }>;
+  /** Routes that require a session; deliberately not in STATIC_ROUTES. */
+  ACCOUNT_ROUTES: string[];
+};
 type GlobImportMeta = ImportMeta & {
   glob: (pattern: string, options: { eager: boolean }) => Record<string, SiteManifest>;
 };
@@ -114,15 +119,18 @@ describe('route policy', () => {
   });
 
   it('allows every static and dynamic client route', () => {
-    const staticRoutes = [
-      '/', '/about', '/faq', '/contact', '/download', '/supporters', '/demo', '/dice',
-      '/sticker-studio', '/login', '/delete-account', '/blog', '/p/safety',
+    const clientRoutes = [
+      '/', '/about', '/faq', '/contact', '/download', '/supporters', '/demo',
+      '/login', '/delete-account', '/blog', '/p/safety',
       '/p/child-safety-policy', '/p/approach-to-safety', '/p/guide-to-online-safety',
       '/p/community-guidelines', '/p/safety-tools', '/p/resources', '/p/contact-us',
       '/p/terms', '/p/privacy', '/p/cookies', '/p/disclaimer', '/inbox', '/settings',
+      // Account-only tools: still client routes, so the Worker serves the SPA
+      // shell rather than 404ing. They are gated in the UI, not here.
+      '/dice', '/sticker-studio',
     ];
 
-    for (const route of staticRoutes) expect(isClientRoute(route)).toBe(true);
+    for (const route of clientRoutes) expect(isClientRoute(route)).toBe(true);
     for (const route of ['/reply/abc123', '/post/not-live', '/legal/terms.js', '/someuser', '/janasco']) {
       expect(isClientRoute(route)).toBe(true);
     }
@@ -185,12 +193,14 @@ describe('the real route surface is untouched by the username rule', () => {
   // asset layer before the Worker runs, so a classification change here can only
   // ever cost the Worker a 404. Every published URL must therefore still be a
   // client route and must not be mistaken for a missing asset.
-  it('classifies all 240 prerendered and canonical pages as client routes', () => {
-    // 240, not 239: `summer-break-boards-psychology` is tracked source under
-    // content/posts but its generated JSON, sitemap entry and feed item were
-    // never committed. Any build regenerates them, so the count was already 240
-    // in practice and this assertion was failing before it was looked at.
-    expect(SITEMAP_PATHS.length).toBe(240);
+  it('classifies all 238 prerendered and canonical pages as client routes', () => {
+    // 238 = 216 blog posts + 22 static routes.
+    //
+    // It was 239 before `summer-break-boards-psychology` had its generated
+    // output committed (see the chore(blog) commit), briefly 240, and is 238
+    // now that /dice and /sticker-studio moved out of STATIC_ROUTES to sit
+    // behind a session.
+    expect(SITEMAP_PATHS.length).toBe(238);
 
     for (const path of SITEMAP_PATHS) {
       expect(isClientRoute(path), path).toBe(true);
@@ -241,13 +251,69 @@ describe('noindex classification', () => {
   it('covers the account routes only', () => {
     expect(isNoindexRoute('/inbox')).toBe(true);
     expect(isNoindexRoute('/settings')).toBe(true);
+    expect(isNoindexRoute('/dice')).toBe(true);
+    expect(isNoindexRoute('/sticker-studio')).toBe(true);
     expect(isNoindexRoute('/inbox/')).toBe(true);
     expect(isNoindexRoute('/SETTINGS')).toBe(true);
+    expect(isNoindexRoute('/DICE')).toBe(true);
   });
 
   it('covers nothing that is published', () => {
     for (const path of ['/', '/about', '/login', '/blog', '/download', '/p/privacy', '/janasco', '/reply/abc123', '/post/summer-break-boards-mistakes']) {
       expect(isNoindexRoute(path), path).toBe(false);
+    }
+  });
+});
+
+/**
+ * The account-only tools.
+ *
+ * The gate in the UI is a product affordance, not the control that keeps these
+ * private. What actually keeps them private is that they are absent from
+ * `site-manifest.mjs`'s STATIC_ROUTES: that list is walked by the prerenderer
+ * (writing public HTML into dist) and by blog.mjs (writing sitemap.xml). A
+ * route in it is already a fetchable file on disk before any JavaScript runs,
+ * so a lock screen drawn over prerendered content protects nothing.
+ *
+ * These assertions are deliberately at the manifest level rather than on the
+ * rendered route, because that is the layer where a future "small tidy-up,
+ * move the tool back with the others" would quietly re-publish both pages with
+ * every test still green.
+ */
+describe('account-only tools are not published', () => {
+  const GATED = ['/dice', '/sticker-studio'];
+
+  it('keeps them out of the prerendered route manifest', () => {
+    const published = new Set(manifest.STATIC_ROUTES.map((r) => r.path));
+    for (const route of GATED) {
+      expect(published.has(route), `${route} must not be in STATIC_ROUTES`).toBe(false);
+    }
+  });
+
+  it('keeps them out of the generated sitemap', () => {
+    for (const route of GATED) {
+      const expected = `${manifest.HOST}${route}/`;
+      expect(SITEMAP_LOCS, `${route} must not be in sitemap.xml`).not.toContain(expected);
+    }
+  });
+
+  it('still serves them as client routes so the Worker does not 404', () => {
+    // Being unpublished must not mean unreachable: the SPA shell is what the
+    // gate is rendered into.
+    for (const route of GATED) {
+      expect(isClientRoute(route), route).toBe(true);
+      expect(isClientRoute(`${route}/`), route).toBe(true);
+      expect(isAssetRequest(route), route).toBe(false);
+    }
+  });
+
+  it('declares them as account routes in the manifest', () => {
+    expect([...manifest.ACCOUNT_ROUTES].sort()).toEqual([...GATED].sort());
+  });
+
+  it('noindexes them, so a stale link is not indexed from anywhere', () => {
+    for (const route of GATED) {
+      expect(isNoindexRoute(route), route).toBe(true);
     }
   });
 });

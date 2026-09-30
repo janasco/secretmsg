@@ -42,8 +42,6 @@ const STATIC_ROUTES = new Set([
   '/download',
   '/supporters',
   '/demo',
-  '/dice',
-  '/sticker-studio',
   '/login',
   '/delete-account',
   '/blog',
@@ -61,7 +59,16 @@ const STATIC_ROUTES = new Set([
   '/p/disclaimer',
 ]);
 
-const CLIENT_ROUTES = new Set([...STATIC_ROUTES, '/inbox', '/settings']);
+// `/dice` and `/sticker-studio` are account-only tools. They are deliberately
+// absent from STATIC_ROUTES above: that list is what the prerenderer walks and
+// what sitemap.xml is generated from, so a route in it is written to dist as
+// public HTML and published for indexing. A lock screen drawn over prerendered
+// content gates nothing — the file is already fetchable. Out of that list they
+// are served as SPA shells like the other account routes, and NOINDEX_ROUTES
+// below keeps them out of search indexes.
+const ACCOUNT_ROUTES = new Set(['/dice', '/sticker-studio']);
+
+const CLIENT_ROUTES = new Set([...STATIC_ROUTES, ...ACCOUNT_ROUTES, '/inbox', '/settings']);
 const RESERVED_PATHS = new Set(['/_headers', '/_headers.tmp', '/_redirects', '/_redirects.tmp']);
 const LEGAL_DOCUMENTS = new Set(['terms', 'privacy', 'cookies', 'disclaimer']);
 // Account pages. They are not files in dist, so the Worker answers them with
@@ -71,10 +78,14 @@ const LEGAL_DOCUMENTS = new Set(['terms', 'privacy', 'cookies', 'disclaimer']);
 // stop that — Disallow only asks well-behaved crawlers not to fetch a URL, it
 // does not remove an already-indexed one and does nothing about a crawler that
 // ignores it. X-Robots-Tag is the directive that says "do not put this in an
-// index" at the point of serving, so these two carry it and nothing else does.
+// index" at the point of serving, so these carry it and nothing else does.
 // /login is deliberately absent: it is prerendered, canonical and listed in
 // sitemap.xml, so noindexing it would contradict the sitemap.
-const NOINDEX_ROUTES = new Set(['/inbox', '/settings']);
+// /dice and /sticker-studio are here for the same reason as /inbox and
+// /settings — they are gated behind a session and, unlike the account pages,
+// they were also removed from STATIC_ROUTES, so they are gone from the sitemap
+// as well and must not be indexed from anywhere else.
+const NOINDEX_ROUTES = new Set(['/inbox', '/settings', ...ACCOUNT_ROUTES]);
 
 function normalizedPath(pathname: string): string {
   const normalized = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
