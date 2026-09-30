@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SecretMsg — Sticker Studio prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;700&family=Poppins:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300..900&family=Cormorant+Garamond:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="base.css">
+<style>
+  .studio {
+    display: grid;
+    grid-template-columns: 300px minmax(320px, 1fr) 340px;
+    gap: var(--sp-8);
+    align-items: start;
+    padding: var(--sp-8) 0 var(--sp-16);
+    min-width: 0;
+  }
+  @media (max-width: 1180px) { .studio { grid-template-columns: 1fr; } }
+
+  .rail { display: grid; gap: var(--sp-3); align-content: start; min-width: 0; }
+  .rail-title { font-size: var(--t-label); font-weight: var(--w-semi); letter-spacing: var(--track-label);
+    text-transform: uppercase; color: var(--text-muted); margin: var(--sp-4) 0 var(--sp-1); }
+
+  .style-btn {
+    display: grid; grid-template-columns: 54px 1fr; gap: var(--sp-3); align-items: center;
+    padding: var(--sp-3); border-radius: var(--r-md); border: 1px solid var(--border);
+    background: var(--surface-1); cursor: pointer; text-align: left; font: inherit; color: inherit;
+    transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+  }
+  .style-btn:hover { border-color: var(--border-strong); }
+  .style-btn[aria-pressed='true'] { border-color: var(--accent); background: var(--accent-wash); }
+  .style-btn canvas { width: 54px; height: 96px; border-radius: 6px; display: block; }
+  .style-btn b { display: block; font-size: 0.875rem; font-weight: 600; letter-spacing: -0.01em; }
+  .style-btn span { display: block; font-size: 0.6875rem; color: var(--text-muted); margin-top: 2px; }
+
+  .stage { display: grid; gap: var(--sp-4); justify-items: center; position: sticky; top: 80px; min-width: 0; }
+  .stage canvas {
+    width: 100%; max-width: 380px; height: auto; aspect-ratio: 1080 / 1920;
+    border-radius: var(--r-lg); border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-lg); display: block;
+  }
+  .stage-meta { font-size: 0.75rem; color: var(--text-muted); text-align: center; }
+
+  .controls { display: grid; gap: var(--sp-5); align-content: start; min-width: 0; }
+  .field-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: var(--sp-2); display: block; }
+  .hint { font-size: 0.75rem; color: var(--text-muted); margin-top: 6px; }
+  .actions { display: grid; gap: var(--sp-2); }
+  .btn-full { width: 100%; }
+  .counter { font-size: 0.6875rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<div class="proto-bar">
+  <strong>Sticker Studio</strong>
+  <span class="muted">8 real styles · real 1080×1920 PNG export</span>
+  <div class="spacer"></div>
+  <a class="pill" href="index.html">← Web screens</a>
+  <a class="pill" href="mobile.html">Mobile</a>
+  <button class="pill" id="theme-toggle" aria-pressed="false">Light mode</button>
+</div>
+
+<div class="shell">
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html"><span class="mark">S</span>SecretMsg</a>
+    <div class="nav-links"><a href="index.html" aria-current="page">Redesign prototype</a></div>
+    <div class="spacer"></div>
+    <span class="tag">9:16 story format</span>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="studio">
+
+    <!-- ============ STYLE RAIL ============ -->
+    <div class="rail" id="rail">
+      <p class="rail-title">Style</p>
+    </div>
+
+    <!-- ============ STAGE ============ -->
+    <div class="stage">
+      <canvas id="preview" width="1080" height="1920" aria-label="Sticker preview"></canvas>
+      <p class="stage-meta" id="stageMeta"></p>
+    </div>
+
+    <!-- ============ CONTROLS ============ -->
+    <div class="controls">
+      <div>
+        <label class="field-label" for="prompt">Prompt</label>
+        <textarea class="field" id="prompt" rows="3" style="height:auto;padding:14px;min-height:88px;resize:vertical;line-height:1.5"></textarea>
+        <p class="hint counter" id="counter">0 / 120</p>
+      </div>
+
+      <div>
+        <label class="field-label" for="displayName">Board name</label>
+        <input class="field" id="displayName" maxlength="30" value="Your Board">
+      </div>
+
+      <div>
+        <label class="field-label" for="handle">Handle</label>
+        <input class="field" id="handle" maxlength="30" value="yourname" spellcheck="false">
+        <p class="hint">Appears on the card and in the exported PNG.</p>
+      </div>
+
+      <div>
+        <span class="field-label">Presets</span>
+        <div class="m-chip-row" id="presets">
+          <button class="m-chip" type="button">send me anonymous tbh 💬</button>
+          <button class="m-chip" type="button">who has a crush on me? 👀</button>
+          <button class="m-chip" type="button">honest hype only 🌟</button>
+          <button class="m-chip" type="button">ask me anything 🤫</button>
+          <button class="m-chip" type="button">rate my vibe ⚡</button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary btn-full" id="download" type="button">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M8 11l4 4 4-4"/><path d="M4 19h16"/></svg>
+          Download PNG (1080×1920)
+        </button>
+        <button class="btn btn-ghost btn-full" id="copyCaption" type="button">Copy caption</button>
+        <button class="btn btn-ghost btn-full" id="copyLink" type="button">Copy link</button>
+      </div>
+
+      <div class="card card-pad" style="display:grid;gap:var(--sp-3);font-size:0.8125rem;line-height:1.6">
+        <b style="font-size:0.875rem">What changed vs. the current studio</b>
+        <ul style="margin:0;padding-left:1.05rem;color:var(--text-secondary);display:grid;gap:6px">
+          <li><b>8 distinct designs, not 7 recolours.</b> The shipped studio varies only the background gradient; layout and type treatment are identical in all of them.</li>
+          <li><b>Real export.</b> <code>Save Sticker</code> currently just prints a tip telling you to screenshot. This writes an actual 1080×1920 PNG.</li>
+          <li><b>Eight typefaces.</b> Only Inter is bundled today, so every card looks the same.</li>
+          <li><b>No CSP change needed.</b> <code>style-src</code> and <code>font-src</code> already allow Google Fonts.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<script src="stickers.js"></script>
+<script>
+(async () => {
+  const $ = (id) => document.getElementById(id);
+  const preview = $('preview');
+  const state = { style: Studio.styles[0].id };
+
+  function data() {
+    const h = ($('handle').value || '').replace(/[^a-zA-Z0-9_.-]/g, '').toLowerCase();
+    return {
+      prompt: $('prompt').value || 'say something honest',
+      name: $('displayName').value,
+      handle: h,
+      url: h ? `secretmsg.net/${h}` : 'secretmsg.net/yourname',
+    };
+  }
+
+  function meta() {
+    const s = Studio.styles.find((x) => x.id === state.style);
+    $('stageMeta').textContent = `${s.name} · ${s.font} · ${s.trend}`;
+  }
+
+  function paint() {
+    Studio.render(preview, state.style, data());
+    const n = $('prompt').value.length;
+    $('counter').textContent = `${n} / 120`;
+    meta();
+  }
+
+  // Build the style rail with a live thumbnail of each design.
+  const rail = $('rail');
+  for (const s of Studio.styles) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'style-btn';
+    btn.setAttribute('aria-pressed', String(s.id === state.style));
+    btn.innerHTML = `<canvas width="1080" height="1920"></canvas>
+      <span><b></b><span></span></span>`;
+    btn.querySelector('b').textContent = s.name;
+    btn.querySelectorAll('span span')[0].textContent = s.font;
+    const thumb = btn.querySelector('canvas');
+    Studio.render(thumb, s.id, { prompt: 'say something honest', name: 'Your Board', handle: 'yourname', url: 'secretmsg.net/yourname' });
+    btn.addEventListener('click', () => {
+      state.style = s.id;
+      rail.querySelectorAll('.style-btn').forEach((b) => b.setAttribute('aria-pressed', 'false'));
+      btn.setAttribute('aria-pressed', 'true');
+      paint();
+    });
+    rail.appendChild(btn);
+  }
+
+  $('prompt').value = 'send me anonymous tbh messages 💬';
+  $('prompt').maxLength = 120;
+
+  for (const id of ['prompt', 'displayName', 'handle']) {
+    $(id).addEventListener('input', paint);
+  }
+
+  $('presets').addEventListener('click', (e) => {
+    const b = e.target.closest('.m-chip');
+    if (!b) return;
+    $('prompt').value = b.textContent.trim();
+    paint();
+  });
+
+  $('download').addEventListener('click', async () => {
+    const btn = $('download');
+    const label = btn.innerHTML;
+    btn.textContent = 'Rendering…';
+    await Studio.ready();
+    Studio.render(preview, state.style, data());
+    const blob = await Studio.toBlob(preview);
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `secretmsg-${state.style}-${(data().handle || 'board')}.png`;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    btn.innerHTML = label;
+    paint();
+  });
+
+  $('copyCaption').addEventListener('click', async (e) => {
+    await navigator.clipboard?.writeText($('prompt').value);
+    e.target.textContent = 'Copied ✓';
+    setTimeout(() => (e.target.textContent = 'Copy caption'), 1600);
+  });
+
+  $('copyLink').addEventListener('click', async (e) => {
+    await navigator.clipboard?.writeText('https://' + data().url);
+    e.target.textContent = 'Copied ✓';
+    setTimeout(() => (e.target.textContent = 'Copy link'), 1600);
+  });
+
+  const toggle = $('theme-toggle');
+  toggle.addEventListener('click', () => {
+    const light = document.documentElement.dataset.theme === 'light';
+    document.documentElement.dataset.theme = light ? 'dark' : 'light';
+    toggle.textContent = light ? 'Light mode' : 'Dark mode';
+    toggle.setAttribute('aria-pressed', String(!light));
+  });
+
+  // Fonts must be loaded before the first paint or canvas falls back to a
+  // system face and every style silently renders in the wrong typeface.
+  await Studio.ready();
+  paint();
+  document.body.dataset.ready = 'true';
+})();
+</script>
+</body>
+</html>

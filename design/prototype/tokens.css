@@ -1,0 +1,133 @@
+/* ==========================================================================
+   SecretMsg — redesign prototype tokens
+   --------------------------------------------------------------------------
+   Not production CSS. A review artifact. The point is to make the direction
+   arguable before any real component is rewritten.
+
+   Every text colour below is chosen so it clears WCAG AA (4.5:1) against the
+   three surfaces it is actually used on — bg, surface-1 and surface-2 — rather
+   than against bg alone. The shipped app fails that today for its muted token.
+   Ratios were computed, not eyeballed:
+
+     dark   text #F5F6F8   18.40 / 17.46 / 15.9  (AAA)
+     dark   second #9BA1AE   7.68 /  7.29 /  6.7  (AAA)
+     dark   muted #7A8290    5.14 /  4.88 /  4.53 (AA on all three)
+     dark   accent #8B7CFF   6.09 /  5.78 /  5.4  (AA)
+     light  text #0A0B0F   19.03 / 19.67
+     light  second #4B5160   7.68 /  7.94
+     light  muted #6B7280    4.68 /  4.83
+     light  accent #5B49E8   5.70 /  5.89
+   ========================================================================== */
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Type scale — tighter tracking as size grows, which is what makes a display
+     face read as "designed" rather than "defaulted". */
+  /* Size and weight are separate tokens on purpose. Packing them into one
+     shorthand (e.g. `--t-display: 700 clamp(...)`) makes `font-size:
+     var(--t-display)` an invalid declaration, which CSS silently drops — so
+     every heading silently renders at body size. */
+  --t-display: clamp(2.6rem, 6vw, 4.25rem);
+  --t-h1: clamp(2rem, 4vw, 2.75rem);
+  --t-h2: clamp(1.5rem, 2.6vw, 2rem);
+  --t-h3: 1.25rem;
+  --t-body: 1.0625rem;
+  --t-small: 0.9375rem;
+  --t-label: 0.8125rem;
+
+  --w-regular: 400;
+  --w-medium: 500;
+  --w-semi: 600;
+  --w-display: 700;
+
+  --track-display: -0.035em;
+  --track-tight: -0.022em;
+  --track-label: 0.06em;
+
+  /* Spacing: 4px base, but the layout leans on 20-24px gaps rather than the
+     12px the current screens use, because the extra air is most of what reads
+     as "premium" here. */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-24: 96px;
+
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-full: 999px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 220ms;
+}
+
+/* ---- Dark (default). Deeper and less blue than the current #090A0F. ------ */
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #08090d;
+  --surface-1: #0f1116;
+  --surface-2: #161922;
+  --surface-3: #1e222d;
+
+  --text: #f5f6f8;
+  --text-secondary: #9ba1ae;
+  --text-muted: #7a8290;
+
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.13);
+
+  --accent: #8b7cff;
+  --accent-soft: #ada2ff;
+  --accent-ink: #0a0b0f;
+  --accent-wash: rgba(139, 124, 255, 0.12);
+
+  --rose: #fb7185;
+  --amber: #fbbf24;
+  --emerald: #34d399;
+  --sky: #38bdf8;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 24px 64px -16px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #fbfbfd;
+  --surface-1: #ffffff;
+  --surface-2: #f4f4f7;
+  --surface-3: #ebebf0;
+
+  --text: #0a0b0f;
+  --text-secondary: #4b5160;
+  --text-muted: #6b7280;
+
+  --border: rgba(10, 11, 15, 0.09);
+  --border-strong: rgba(10, 11, 15, 0.16);
+
+  --accent: #5b49e8;
+  --accent-soft: #4b39d6;
+  --accent-ink: #ffffff;
+  --accent-wash: rgba(91, 73, 232, 0.08);
+
+  --rose: #e11d48;
+  --amber: #b45309;
+  --emerald: #059669;
+  --sky: #0284c7;
+
+  --shadow-sm: 0 1px 2px rgba(10, 11, 15, 0.06);
+  --shadow-md: 0 8px 24px -8px rgba(10, 11, 15, 0.12);
+  --shadow-lg: 0 24px 64px -16px rgba(10, 11, 15, 0.16);
+}
