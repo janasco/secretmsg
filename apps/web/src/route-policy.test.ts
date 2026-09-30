@@ -185,8 +185,12 @@ describe('the real route surface is untouched by the username rule', () => {
   // asset layer before the Worker runs, so a classification change here can only
   // ever cost the Worker a 404. Every published URL must therefore still be a
   // client route and must not be mistaken for a missing asset.
-  it('classifies all 239 prerendered and canonical pages as client routes', () => {
-    expect(SITEMAP_PATHS.length).toBe(239);
+  it('classifies all 240 prerendered and canonical pages as client routes', () => {
+    // 240, not 239: `summer-break-boards-psychology` is tracked source under
+    // content/posts but its generated JSON, sitemap entry and feed item were
+    // never committed. Any build regenerates them, so the count was already 240
+    // in practice and this assertion was failing before it was looked at.
+    expect(SITEMAP_PATHS.length).toBe(240);
 
     for (const path of SITEMAP_PATHS) {
       expect(isClientRoute(path), path).toBe(true);
