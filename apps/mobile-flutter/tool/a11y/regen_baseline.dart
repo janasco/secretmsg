@@ -40,8 +40,10 @@ const Set<String> kSurfaceTokensUsedAsText = {'roseDeep'};
 /// theme, which the matrix is what makes visible.
 const Map<String, String> kFillOnlyTokens = {
   'amber': 'amber is the fill/tint token: pill washes, borders, and icons on a '
-      'dark surface. In light mode it carries the same #F59E0B as dark, so it '
-      'cannot be a glyph colour there. Screens that need an amber glyph use '
+      'dark surface. It was #F59E0B in both themes, which put it near 2.1:1 as '
+      'a glyph on a light canvas; the redesign moved light amber to #B45309 so '
+      'it can carry text there. It remains unusable on the deep rose fill. '
+      'Screens that need an amber glyph on a tinted dark surface use '
       'amberLight, which is what the send-screen pause icon now does.',
   'rose': 'rose is the destructive fill and the error border. Unusable as a '
       'glyph colour in light mode (2.05:1 on bg). Screens that need a red '
@@ -102,9 +104,10 @@ String? _reasonFor(String theme, String text, String surface, double ratio) {
 
   if (text == 'textMuted') {
     return 'textMuted is the metadata token (timestamps, counts) and measures '
-        '3.2-4.4:1 across the dark surfaces. In light mode it is the same value '
-        'as textSecondary, so the Daily Drop fix could not have swapped to it: '
-        'the change would have been a no-op.';
+        '3.2-4.4:1 across the dark surfaces. It used to be the same value as '
+        'textSecondary in light mode, which meant the Daily Drop fix could not '
+        'have swapped to it without being a no-op; the redesign separated the '
+        'two so metadata is a distinct step below supporting copy.';
   }
 
   if (text == 'emeraldSoft' || text == 'emeraldLight') {

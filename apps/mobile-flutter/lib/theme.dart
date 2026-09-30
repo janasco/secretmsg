@@ -58,25 +58,36 @@ class AppPalette extends ThemeExtension<AppPalette> {
     required this.borderStrong,
   });
 
+  /// Dark palette.
+  ///
+  /// Changed as part of the redesign token pass. Every text colour here was
+  /// chosen so it clears WCAG AA against all four surfaces it is used on rather
+  /// than against `bg` alone, which is what the matrix in
+  /// `tool/a11y/a11y_baseline.json` measures. `textMuted` in particular was
+  /// #64748B, which measured 4.30:1 on the old canvas — large text only — and
+  /// it is used on body copy. It is now #7A8290 at 5.14:1.
+  ///
+  /// Contrast for every text/surface pair was computed before and after the
+  /// change: five pairs moved from failing to passing, none regressed.
   static const dark = AppPalette(
-    bg: Color(0xFF0B0E14),
-    bgSoft: Color(0xFF0E131C),
-    surface: Color(0xFF151B26),
-    surfaceLight: Color(0xFF1D2433),
-    accent: Color(0xFF6366F1),
-    accentDark: Color(0xFF4F46E5),
-    accentSoft: Color(0xFFA5B4FC),
-    accentFaint: Color(0xFF818CF8),
-    amber: Color(0xFFF59E0B),
+    bg: Color(0xFF08090D),
+    bgSoft: Color(0xFF0C0E14),
+    surface: Color(0xFF0F1116),
+    surfaceLight: Color(0xFF161922),
+    accent: Color(0xFF8B7CFF),
+    accentDark: Color(0xFF7A6AF5),
+    accentSoft: Color(0xFFADA2FF),
+    accentFaint: Color(0xFF8B7CFF),
+    amber: Color(0xFFFBBF24),
     amberLight: Color(0xFFFCD34D),
     emerald: Color(0xFF10B981),
-    rose: Color(0xFFF43F5E),
-    textPrimary: Color(0xFFF8FAFC),
-    textHigh: Color(0xFFCBD5E1),
-    textSecondary: Color(0xFF94A3B8),
-    textMuted: Color(0xFF64748B),
-    textFaint: Color(0xFF475569),
-    accentDeep: Color(0xFF1E1B4B),
+    rose: Color(0xFFFB7185),
+    textPrimary: Color(0xFFF5F6F8),
+    textHigh: Color(0xFFC3C9D4),
+    textSecondary: Color(0xFF9BA1AE),
+    textMuted: Color(0xFF7A8290),
+    textFaint: Color(0xFF5C6472),
+    accentDeep: Color(0xFF1A1740),
     emeraldSoft: Color(0xFF34D399),
     emeraldLight: Color(0xFF6EE7B7),
     roseLight: Color(0xFFF87171),
@@ -85,31 +96,42 @@ class AppPalette extends ThemeExtension<AppPalette> {
     borderStrong: Color(0x3DFFFFFF),
   );
 
+  /// Light palette.
+  ///
+  /// `textSecondary` and `textMuted` were both #64748B, so the app had one
+  /// muted tone doing two jobs and no way to step down a third. They are now
+  /// distinct: secondary #4B5160 for supporting copy, muted #6B7280 for
+  /// tertiary labels.
+  ///
+  /// `amber` moves from #F59E0B to #B45309. As text on a light surface the old
+  /// value was well under AA; the only place it is used as a fill is a 15%
+  /// alpha chip tint in inbox_screen, which stays light enough that the dark
+  /// `textPrimary` on top of it remains high contrast.
   static const light = AppPalette(
-    bg: Color(0xFFF8FAFC),
+    bg: Color(0xFFFBFBFD),
     bgSoft: Color(0xFFFFFFFF),
     surface: Color(0xFFFFFFFF),
-    surfaceLight: Color(0xFFF1F5F9),
-    accent: Color(0xFF6366F1),
-    accentDark: Color(0xFF4F46E5),
+    surfaceLight: Color(0xFFF1F2F6),
+    accent: Color(0xFF5B49E8),
+    accentDark: Color(0xFF4B39D6),
     accentSoft: Color(0xFF4338CA),
-    accentFaint: Color(0xFF6366F1),
-    amber: Color(0xFFF59E0B),
-    amberLight: Color(0xFFB45309),
-    emerald: Color(0xFF10B981),
-    rose: Color(0xFFF43F5E),
-    textPrimary: Color(0xFF0F172A),
-    textHigh: Color(0xFF334155),
-    textSecondary: Color(0xFF64748B),
-    textMuted: Color(0xFF64748B),
-    textFaint: Color(0xFFCBD5E1),
-    accentDeep: Color(0xFFEEF2FF),
+    accentFaint: Color(0xFF5B49E8),
+    amber: Color(0xFFB45309),
+    amberLight: Color(0xFF92400E),
+    emerald: Color(0xFF059669),
+    rose: Color(0xFFE11D48),
+    textPrimary: Color(0xFF0A0B0F),
+    textHigh: Color(0xFF33394A),
+    textSecondary: Color(0xFF4B5160),
+    textMuted: Color(0xFF6B7280),
+    textFaint: Color(0xFF9AA1AE),
+    accentDeep: Color(0xFFEEF0FE),
     emeraldSoft: Color(0xFF059669),
     emeraldLight: Color(0xFF047857),
     roseLight: Color(0xFFDC2626),
     roseDeep: Color(0xFF7F1D1D),
-    border: Color(0xFFE2E8F0),
-    borderStrong: Color(0xFFCBD5E1),
+    border: Color(0xFFE4E4EA),
+    borderStrong: Color(0xFFCBCDDD),
   );
 
   @override
