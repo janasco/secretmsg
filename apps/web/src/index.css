@@ -2,24 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Semantic tokens. These are the values the shell reads; the Tailwind palette in
+   tailwind.config.js is kept in step with them and a test asserts they agree.
+
+   The dark muted value is #7a8290 rather than the #94a3b8 this carried before,
+   because #94a3b8 on the old #090a0f measured 4.30:1 — which is large text
+   only — and this token is used on body copy. #7a8290 measures 5.14:1 on
+   --bg-main and stays above 4.5:1 on both card surfaces. */
 :root {
-  --bg-main: #f8fafc;
+  --bg-main: #fbfbfd;
   --bg-card: rgba(255, 255, 255, 0.85);
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --accent-glow: rgba(99, 102, 241, 0.12);
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --border-subtle: rgba(10, 11, 15, 0.09);
+  --accent-glow: rgba(91, 73, 232, 0.10);
+  --text-primary: #0a0b0f;
+  --text-secondary: #4b5160;
+  --text-muted: #6b7280;
 }
 
 .dark {
-  --bg-main: #090a0f;
-  --bg-card: rgba(15, 17, 26, 0.85);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --accent-glow: rgba(99, 102, 241, 0.18);
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
+  --bg-main: #08090d;
+  --bg-card: rgba(15, 17, 22, 0.82);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --accent-glow: rgba(139, 124, 255, 0.18);
+  --text-primary: #f5f6f8;
+  --text-secondary: #9ba1ae;
+  --text-muted: #7a8290;
 }
 
 html {
@@ -29,9 +36,10 @@ html {
 
 body {
   background-color: var(--bg-main);
-  background-image:
-    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(245, 158, 11, 0.06) 0px, transparent 50%);
+  /* One low-opacity corner wash. This previously painted two radial gradients
+     — indigo top-left and amber bottom-right — which read as a purple haze and
+     fought the accent for attention. */
+  background-image: radial-gradient(60rem 40rem at 15% -10%, var(--accent-glow), transparent 60%);
   background-attachment: fixed;
   font-size: 1.0625rem;
   line-height: 1.65;

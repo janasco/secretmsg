@@ -211,9 +211,13 @@ export const StickerStudio: React.FC = () => {
                 className={[
                   'px-2.5 py-1 rounded-lg border text-[11px] font-medium transition-colors',
                   prompt === preset.prompt
-                    // `text-indigo-100` has no light-mode remap in index.css and
-                    // rendered white-on-white. `text-white` is remapped for both
-                    // themes, so the selected chip stays legible either way.
+                    // The selected chip uses the remapped plain `text-white`,
+                    // not a pale indigo step. That step has no light-mode remap
+                    // in index.css and rendered white-on-white. Written without
+                    // naming the utility literally: both the Tailwind content
+                    // glob and scripts/a11y-color.mjs scan raw source text,
+                    // comments included, so naming it here would both emit an
+                    // unused rule and register a phantom finding.
                     ? 'border-indigo-400/70 bg-indigo-500/20 text-white'
                     : 'border-white/10 bg-dark-900/60 text-slate-400 hover:text-slate-200 hover:border-white/25',
                 ].join(' ')}

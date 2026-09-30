@@ -40,7 +40,7 @@ const CTX = {
   states: STATES,
   table: TABLE,
   components: parseComponentRules(CSS),
-  palette: { ...TAILWIND_PALETTE, dark: { 950: '#090a0f', 900: '#0f111a', 850: '#141824', 800: '#1b2030', 700: '#2b324a' } },
+  palette: { ...TAILWIND_PALETTE, dark: { 950: '#08090d', 900: '#0f1116', 850: '#161922', 800: '#1e222d', 700: '#2b3242' } },
   vars: {
     light: varsForState(VARS, 'light'),
     dark: varsForState(VARS, 'dark'),
@@ -116,16 +116,20 @@ describe('acceptance: the defect that shipped', () => {
     okModel.nodes.forEach((n) => { n.file = 'src/Synthetic.tsx'; });
     const okResults = analyseContrast(okModel, CTX).results
       .filter((r) => r.token === 'text-amber-200');
-    // The remapped class is never a *bypass*. It can still miss AA marginally:
-    // #b45309 on an amber-500/10 tint measures ~4.0:1, the token-level shortfall
-    // already recorded in the ViewOnlyBanner commit message. What matters here
-    // is the order of magnitude against the bypass.
+    // The remapped class is never a *bypass*. It may still miss AA marginally —
+    // it did at #4.0:1 on the old canvas — in which case it appears in the
+    // results and must be an order of magnitude better than the bypass. It may
+    // also now clear AA entirely, in which case `analyseContrast` emits no
+    // result for it at all (see analyze.mjs: results are only pushed when
+    // something fails), and that is the better outcome. Both are acceptable;
+    // what must never happen is the remap being bypassed.
     expect(okResults.every((r) => !r.themes.light.unresolved)).toBe(true);
-    const okLight = analyseContrast(okModel, CTX).results
-      .find((r) => r.token === 'text-amber-200')?.themes.light.ratio;
     const bypassLight = finding.themes.light.ratio;
-    expect(okLight).toBeGreaterThan(bypassLight * 2);
-    expect(okLight).toBeGreaterThanOrEqual(3.5);
+    const okLight = okResults[0]?.themes.light.ratio;
+    if (okLight !== undefined) {
+      expect(okLight).toBeGreaterThan(bypassLight * 2);
+      expect(okLight).toBeGreaterThanOrEqual(3.5);
+    }
   });
 });
 
@@ -218,7 +222,7 @@ describe('colour utility classification', () => {
   });
 
   it('resolves the custom palette the project extends', () => {
-    expect(c('bg-dark-950')).toMatchObject({ family: 'dark', shade: '950', hex: '#090a0f' });
+    expect(c('bg-dark-950')).toMatchObject({ family: 'dark', shade: '950', hex: '#08090d' });
   });
 });
 
@@ -233,8 +237,8 @@ describe('colour maths', () => {
   });
 
   it('resolves var() through the theme variable map, and refuses otherwise', () => {
-    expect(parseColor('var(--bg-main)', CTX.vars.light)).toMatchObject({ r: 248, g: 250, b: 252 });
-    expect(parseColor('var(--bg-main)', CTX.vars.dark)).toMatchObject({ r: 9, g: 10, b: 15 });
+    expect(parseColor('var(--bg-main)', CTX.vars.light)).toMatchObject({ r: 251, g: 251, b: 253 });
+    expect(parseColor('var(--bg-main)', CTX.vars.dark)).toMatchObject({ r: 8, g: 9, b: 13 });
     expect(parseColor('var(--nope)', CTX.vars.light)).toBeNull();
     expect(parseColor('var(--bg-main)')).toBeNull();
   });
@@ -257,8 +261,8 @@ describe('colour maths', () => {
 
 describe('contrast resolution against the real project', () => {
   it('derives the page background from <body> in index.html, per theme', () => {
-    expect(toHex(pageBackground(CTX, 'light'))).toBe('#f8fafc');
-    expect(toHex(pageBackground(CTX, 'dark'))).toBe('#090a0f');
+    expect(toHex(pageBackground(CTX, 'light'))).toBe('#fbfbfd');
+    expect(toHex(pageBackground(CTX, 'dark'))).toBe('#08090d');
   });
 
   it('reads both theme states out of the inline bootstrap script', () => {

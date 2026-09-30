@@ -9,17 +9,20 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Kept in step with the semantic tokens in src/index.css: the accent
+        // and the 950/900 pair are asserted to match by index.css.test.ts, so
+        // the two files cannot drift apart silently.
         dark: {
-          950: '#090a0f',
-          900: '#0f111a',
-          850: '#141824',
-          800: '#1b2030',
-          700: '#2b324a',
+          950: '#08090d',
+          900: '#0f1116',
+          850: '#161922',
+          800: '#1e222d',
+          700: '#2b3242',
         },
         accent: {
-          primary: '#6366f1', // Indigo
-          glow: '#818cf8',
-          gold: '#f59e0b',
+          primary: '#8b7cff',
+          glow: '#ada2ff',
+          gold: '#fbbf24',
         },
       },
       fontFamily: {
