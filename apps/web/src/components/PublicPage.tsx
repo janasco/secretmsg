@@ -45,7 +45,10 @@ export const PublicPage: React.FC<PublicPageProps> = ({ title, eyebrow, descript
             {eyebrow}
           </div>
         )}
-        <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">{title}</h1>
+        {/* `display-2` rather than an ad-hoc size: this heading is rendered for
+            21 public pages, so the scale belongs here once rather than being
+            re-picked on each of them. */}
+        <h1 className="display-2 text-white">{title}</h1>
         {description && (
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mt-3">{description}</p>
         )}
