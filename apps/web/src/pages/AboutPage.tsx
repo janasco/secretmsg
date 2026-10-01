@@ -39,7 +39,7 @@ export const AboutPage: React.FC = () => {
       <div className="space-y-6 mb-12">
         <div className="text-center sm:text-left">
           <span className="text-xs font-bold uppercase tracking-wider text-indigo-400 block mb-1">Purposeful Anonymity</span>
-          <h2 className="text-2xl font-black text-white tracking-tight">Real-World Moments Where Candor Matters</h2>
+          <h2 className="display-3 text-white">Real-World Moments Where Candor Matters</h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -79,7 +79,7 @@ export const AboutPage: React.FC = () => {
       <div className="space-y-6 mb-12">
         <div className="text-center sm:text-left">
           <span className="text-xs font-bold uppercase tracking-wider text-indigo-400 block mb-1">Our Architecture</span>
-          <h2 className="text-2xl font-black text-white tracking-tight">Engineering Trust into Every Message</h2>
+          <h2 className="display-3 text-white">Engineering Trust into Every Message</h2>
         </div>
 
         <div className="glass-panel p-6 sm:p-7 rounded-2xl border border-white/10 space-y-3 text-sm text-slate-300 leading-relaxed">
@@ -138,7 +138,7 @@ export const AboutPage: React.FC = () => {
       <div className="space-y-6 mb-12">
         <div className="text-center sm:text-left">
           <span className="text-xs font-bold uppercase tracking-wider text-purple-400 block mb-1">Our DNA</span>
-          <h2 className="text-2xl font-black text-white tracking-tight">Our Grounding Values</h2>
+          <h2 className="display-3 text-white">Our Grounding Values</h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

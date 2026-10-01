@@ -68,10 +68,13 @@ export const DownloadPage: React.FC = () => {
             </div>
           </div>
 
+          {/* Flat accent, not a two-stop gradient. On a page whose single job is
+              this download, the button should read as the one action rather
+              than as a decorative panel. */}
           <a
             href={`/downloads/${APK_PRIMARY.file}`}
             download={APK_PRIMARY.file}
-            className="w-full py-3.5 px-4 rounded-xl font-semibold text-sm bg-gradient-to-r from-emerald-600 to-emerald-500 hover:opacity-95 text-white shadow-lg shadow-emerald-500/25 flex items-center justify-center space-x-2 transition-all"
+            className="w-full h-12 px-4 rounded-full font-semibold text-sm bg-emerald-500 hover:bg-emerald-400 text-dark-950 shadow-lg shadow-emerald-500/20 flex items-center justify-center space-x-2 transition-colors"
           >
             <Download className="w-4 h-4" />
             <span>Download APK ({APK_PRIMARY.size})</span>

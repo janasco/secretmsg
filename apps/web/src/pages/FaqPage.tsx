@@ -122,7 +122,7 @@ export const FaqPage: React.FC = () => {
             1
           </div>
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            <h2 className="display-3 text-white">
               How to Create Your Anonymous Message Link
             </h2>
             <p className="text-xs text-slate-400">Getting started takes less than a minute:</p>
@@ -157,7 +157,7 @@ export const FaqPage: React.FC = () => {
             2
           </div>
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            <h2 className="display-3 text-white">
               How to Send an Anonymous Message
             </h2>
             <p className="text-xs text-slate-400">Sending an anonymous message is even easier than creating one:</p>
@@ -182,7 +182,7 @@ export const FaqPage: React.FC = () => {
       </div>
 
       <div className="space-y-4 mb-10">
-        <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+        <h2 className="display-3 text-white">
           Creative Ways to Use Anonymous Messages
         </h2>
         <p className="text-xs text-slate-400">Here are popular ways people use SecretMsg every day:</p>
@@ -204,7 +204,7 @@ export const FaqPage: React.FC = () => {
       </div>
 
       <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-white/10 space-y-4 mb-10 text-sm text-slate-300 leading-relaxed">
-        <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+        <h2 className="display-3 text-white">
           Manage Your Secret Msg Board
         </h2>
         <p className="text-xs text-slate-400">
@@ -240,7 +240,7 @@ export const FaqPage: React.FC = () => {
             <Info className="w-4 h-4" />
             Fix Common Issues
           </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          <h2 className="display-3 text-white">
             Troubleshooting: Why Your Secret Msg URL Might Not Work
           </h2>
           <p className="text-xs text-slate-400 mt-1">If your anonymous message link won't open or looks broken, try these simple fixes:</p>
@@ -265,7 +265,7 @@ export const FaqPage: React.FC = () => {
             <MessageSquare className="w-4 h-4" />
             Knowledge Base
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          <h2 className="display-2 text-white">
             Frequently Asked Questions
           </h2>
         </div>
