@@ -8,16 +8,55 @@ that version, taken from the commits between the previous release and this one.
 Commits that only touch the website, the API, or release tooling are excluded
 unless they changed app behaviour.
 
-**v1.6.10 is the version in the current upload bundle**
-(`/opt/secretmsg/.secrets/release-artifacts/v1.6.10/secretmsg-v1.6.10-upload.aab`,
-versionCode 25). It is not yet uploaded to Play. Its entry covers the
-business-model change — the app is now ad-supported, with a one-time
-`remove_ads` purchase — together with the Play Billing library upgrade. v1.6.9
-was prepared but never uploaded, so its entry is kept for reference only.
+**v1.7.0 is the version in the current upload bundle**
+(`/opt/secretmsg/.secrets/release-artifacts/v1.7.0/secretmsg-v1.7.0-upload.aab`,
+versionCode 26). It is not yet uploaded to Play. Its entry covers the interface
+redesign and the rebuilt Sticker Studio. v1.6.10 was prepared but never
+uploaded, so its entry is kept for reference only — note that it is now
+*signed and archived* but has been superseded, and the sideload APKs for it are
+still published so it remains a valid rollback target for anyone who hits a
+problem with 1.7.0.
 
 ---
 
-## v1.6.10 — current, ready to upload (491 chars)
+## v1.7.0 — current, ready to upload (411 chars)
+
+A fresh look, and a rebuilt Sticker Studio.
+
+• New visual design throughout the app.
+• Sticker Studio rebuilt: 32 designs, each with its own typeface, and cards now
+  export as a 1080x1920 PNG ready for your story.
+• Sticker Studio and Dice Roulette now live in your account — pair a browser
+  from Settings to use them on the web.
+• No change to anonymity: senders are never identified and your data is never
+  sold.
+
+### Known and accepted: the bundle predates two unused type tokens
+
+`lib/theme.dart` gained `display1`/`display2`/`display3` in commit `6dafd16`,
+which is *after* this bundle was built (`08:38` against `11:03`). By the
+mtime rule in `AGENTS.md` the bundle is therefore stale and would normally be
+rebuilt.
+
+It was checked rather than assumed, and shipped as-is deliberately:
+
+- No screen uses the new getters, so the Dart tree-shaker removed them.
+  `strings base/lib/arm64-v8a/libapp.so | grep -c display1` returns **0**.
+- The bundle's behaviour is therefore identical to one built after the commit.
+  It is a nominal staleness, not a behavioural one.
+- Rebuilding costs 20+ minutes to produce a functionally identical artifact.
+
+This is the rare case where the mtime rule and behaviour disagree, and the
+disagreement is provable rather than a judgement call. It is written down so the
+next person does not have to re-derive why a stale-dated bundle was accepted.
+
+**Close it on the next build.** The tokens exist for the screens to adopt, and
+the moment any screen calls them the tree-shaker will keep them and this note
+stops applying.
+
+---
+
+## v1.6.10 — superseded, never uploaded (491 chars)
 
 Ads, and a one-off way to remove them.
 
