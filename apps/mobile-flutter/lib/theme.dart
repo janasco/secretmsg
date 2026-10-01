@@ -189,9 +189,30 @@ extension PaletteContext on BuildContext {
 
 /// Theme-aware type scale: same metrics as [AppType], colors from the
 /// active palette. Prefer `context.type.*` over [AppType] in UI code.
+/// Shared type scale.
+///
+/// The three `display*` steps mirror the web's `.display-1/-2/-3` classes in
+/// `apps/web/src/index.css`, so the two clients set headlines at the same sizes
+/// and the same tracking rather than each drifting to its own. Tracking
+/// tightens as size grows — that is the thing that makes a display face read as
+/// designed, and it is why a single `letterSpacing` for every size does not
+/// work.
+///
+/// The web scale is fluid (`clamp`) because a browser has to serve every
+/// viewport; Flutter gets explicit sizes because it already lays out against a
+/// known device width.
 class AppTypeSet {
   final AppPalette c;
   const AppTypeSet(this.c);
+
+  /// Hero headline. Web `.display-1`, at its upper bound.
+  TextStyle get display1 => TextStyle(fontSize: 40, height: 44 / 40, fontWeight: FontWeight.w700, letterSpacing: -0.035 * 40, color: c.textPrimary);
+
+  /// Section headline. Web `.display-2`.
+  TextStyle get display2 => TextStyle(fontSize: 30, height: 34 / 30, fontWeight: FontWeight.w700, letterSpacing: -0.022 * 30, color: c.textPrimary);
+
+  /// Sub-section headline. Web `.display-3`.
+  TextStyle get display3 => TextStyle(fontSize: 22, height: 28 / 22, fontWeight: FontWeight.w600, letterSpacing: -0.015 * 22, color: c.textPrimary);
 
   TextStyle get displayLg => TextStyle(fontSize: 28, height: 34 / 28, fontWeight: FontWeight.w700, letterSpacing: -0.02 * 28, color: c.textPrimary);
   TextStyle get headlineMd => TextStyle(fontSize: 20, height: 28 / 20, fontWeight: FontWeight.w600, letterSpacing: -0.01 * 20, color: c.textPrimary);
