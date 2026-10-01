@@ -86,4 +86,22 @@ describe('web palette', () => {
     const raised = ramp![2].slice(1);
     expect(raised).not.toBe(canvas);
   });
+
+  it('honours prefers-reduced-motion', () => {
+    // The app shipped without this for a long time: every `animate-pulse` and
+    // every `transition-*` fired regardless of the visitor's system setting.
+    // The assertion is deliberately on the media query reaching a universal
+    // selector rather than on the exact property list, because the property
+    // list is the part that should be allowed to change and the coverage is
+    // the part that must not.
+    const block = /@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{([\s\S]*?)\n\}/.exec(CSS);
+    expect(block, 'index.css must contain a prefers-reduced-motion block').not.toBeNull();
+    const body = block![1];
+    expect(body, 'the rule must reach every element, not a hand-listed few').toMatch(
+      /\*[\s\S]*\*/,
+    );
+    expect(body).toMatch(/animation-duration\s*:/);
+    expect(body).toMatch(/animation-iteration-count\s*:/);
+    expect(body).toMatch(/transition-duration\s*:/);
+  });
 });

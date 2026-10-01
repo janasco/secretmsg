@@ -72,6 +72,36 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* --------------------------------------------------------------------------
+   Reduced motion.
+
+   The app had no handling for this at all: `animate-pulse` ran forever on
+   every status dot and every `transition-*` fired on every interactive
+   element, regardless of the visitor's system preference. That matters beyond
+   polish — a perpetual pulse is a vestibular trigger for some people, and the
+   preference exists precisely because they have already told the OS.
+
+   Blanket rather than per-utility. Enumerating the handful of animations that
+   exist today would leave the next `animate-*` or `transition-*` class
+   uncovered, and the failure mode of this rule is that motion stops, which is
+   the intent. Opacity-only transitions at this duration still read as instant
+   rather than broken.
+
+   The `animate-pulse` status dots are kept in the normal case: they
+   communicate state ("APK ready", "live"), which is the bar the vendored
+   motion guidance sets for keeping motion at all.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   background-color: var(--bg-main);
   /* One low-opacity corner wash. This previously painted two radial gradients
