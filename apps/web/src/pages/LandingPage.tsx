@@ -58,27 +58,31 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenSupport }) => {
   return (
     <div className="space-y-24 py-10 sm:py-20 max-w-5xl mx-auto px-4">
       {/* Hero Section */}
-      <div className="text-center space-y-6 max-w-3xl mx-auto">
-        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 shadow-sm animate-pulse">
+      <div className="text-center space-y-7 max-w-3xl mx-auto">
+        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
           <Sparkles className="w-3.5 h-3.5 text-amber-400" />
           <span>The Open Source NGL & TBH Alternative • True Anonymity</span>
         </div>
 
-        <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+        {/* The accent is carried by one word, not by a three-stop gradient.
+            The previous `from-indigo-400 via-amber-300 to-amber-500` ran warm
+            to orange across four words, which read as decoration and put a
+            second hue in competition with the accent everywhere else. */}
+        <h1 className="display-1 text-white">
           Authentic thoughts. Positive vibes.{' '}
-          <span className="bg-gradient-to-r from-indigo-400 via-amber-300 to-amber-500 bg-clip-text text-transparent">
-            100% Anonymous.
-          </span>
+          <span className="text-indigo-300">100% Anonymous.</span>
         </h1>
 
-        <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
           Post your customized story sticker to Instagram or Snapchat. Receive candid, uplifting TBH statements, confessions, and honest feedback from friends, crushes, and followers without tracking.
         </p>
 
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
+          {/* Flat accent rather than a gradient: the button should look like the
+              one interactive thing on the page, not the fourth gradient. */}
           <Link
             to="/login"
-            className="w-full sm:w-auto py-3.5 px-7 rounded-xl font-semibold text-sm bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-600 hover:opacity-95 text-white shadow-xl shadow-indigo-500/25 flex items-center justify-center space-x-2 transition-all"
+            className="w-full sm:w-auto h-12 px-7 rounded-full font-semibold text-sm bg-indigo-500 hover:bg-indigo-300 text-dark-950 flex items-center justify-center space-x-2 transition-colors shadow-lg shadow-indigo-500/20"
           >
             <span>Get Your Free Secret Link</span>
             <ArrowRight className="w-4 h-4" />
@@ -86,16 +90,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenSupport }) => {
 
           <button
             onClick={onOpenSupport}
-            className="w-full sm:w-auto py-3.5 px-6 rounded-xl font-medium text-sm bg-dark-900/90 hover:bg-dark-800 text-amber-300 border border-amber-500/20 flex items-center justify-center space-x-2 transition-colors"
+            className="w-full sm:w-auto h-12 px-6 rounded-full font-medium text-sm bg-dark-900/90 hover:bg-dark-800 text-amber-300 border border-amber-500/20 flex items-center justify-center space-x-2 transition-colors"
           >
             <Heart className="w-4 h-4 text-amber-400 fill-amber-400" />
             <span>How to Support the Project</span>
           </button>
         </div>
 
-        <div className="pt-2">
+        <div className="pt-1">
           <span className="text-xs text-slate-400">
-            <Link to="/download" className="text-indigo-400 hover:text-indigo-300 font-medium">Get the Android app</Link>
+            <Link to="/download" className="text-indigo-300 hover:text-indigo-200 font-medium">Get the Android app</Link>
             {' '}— or use the full mobile-friendly site on any phone.
           </span>
         </div>
@@ -104,8 +108,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenSupport }) => {
       {/* App Download Cards */}
       <div className="space-y-5">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-white">Get SecretMsg for Your Phone</h2>
-          <p className="text-sm text-slate-400 mt-1">Download the native app or use the mobile-friendly site</p>
+          <h2 className="display-3 text-white">Get SecretMsg for Your Phone</h2>
+          <p className="text-sm text-slate-400 mt-1.5">Download the native app or use the mobile-friendly site</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
@@ -175,7 +179,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenSupport }) => {
               <Sparkles className="w-4 h-4" />
               <span>Trending Social Media Format</span>
             </div>
-            <h2 className="text-2xl font-bold text-white">Choose Your Vibe or Shuffle</h2>
+            <h2 className="display-3 text-white">Choose Your Vibe or Shuffle</h2>
             <p className="text-xs sm:text-sm text-slate-400">
               Senders don't have to struggle with writer's block. One tap loads curated candid messages.
             </p>

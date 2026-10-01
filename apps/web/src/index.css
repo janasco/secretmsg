@@ -29,6 +29,44 @@
   --text-muted: #7a8290;
 }
 
+/* --------------------------------------------------------------------------
+   Display scale.
+
+   Tracking tightens as size grows, which is most of what makes a display face
+   read as designed rather than defaulted. Tailwind's own `tracking-tight` is
+   -0.025em at every size, so it cannot express this; these three classes can,
+   and they give every screen one scale instead of each picking a size.
+
+   Added with the landing page as the pilot. Further screens adopt these in
+   place of ad-hoc `text-5xl font-extrabold` combinations rather than adding
+   another size.
+   -------------------------------------------------------------------------- */
+:root {
+  --track-display: -0.035em;
+  --track-tight: -0.022em;
+}
+
+.display-1 {
+  font-size: clamp(2.5rem, 5.4vw, 4rem);
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: var(--track-display);
+}
+
+.display-2 {
+  font-size: clamp(1.875rem, 3.4vw, 2.625rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: var(--track-tight);
+}
+
+.display-3 {
+  font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
 html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
