@@ -18,7 +18,7 @@ export const AboutPage: React.FC = () => {
       {/* Why we built */}
       <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 mb-10 relative overflow-hidden">
         <div className="absolute -right-8 -bottom-8 w-40 h-40 bg-gradient-to-br from-purple-500/20 to-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-        <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 flex items-center gap-2">
+        <h2 className="display-3 text-white mb-3 flex items-center gap-2">
           <Users className="w-6 h-6 text-purple-400" />
           Why We Built SecretMsg
         </h2>

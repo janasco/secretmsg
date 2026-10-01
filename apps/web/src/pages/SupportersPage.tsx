@@ -74,11 +74,12 @@ export const SupportersPage: React.FC<SupportersPageProps> = ({ onOpenSupport })
           <span>How SecretMsg Is Paid For</span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+        <h1 className="display-1 text-white">
           Ads in the App,{' '}
-          <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-indigo-400 bg-clip-text text-transparent">
-            No Ads on the Web
-          </span>
+          {/* Accent rather than a three-stop gradient across a heading. Same
+              reasoning as the landing hero: a gradient here competes with the
+              page instead of emphasising a phrase. */}
+          <span className="text-indigo-300">No Ads on the Web</span>
         </h1>
 
         <p className="text-sm sm:text-base text-slate-400 leading-relaxed">

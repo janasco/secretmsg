@@ -54,7 +54,7 @@ export const SupportModal: React.FC<SupportModalProps> = ({ isOpen, onClose }) =
           <div className="w-14 h-14 bg-amber-500/10 border border-amber-500/20 rounded-2xl flex items-center justify-center mx-auto text-amber-400 shadow-lg shadow-amber-500/10">
             <Heart className="w-7 h-7 fill-amber-400" />
           </div>
-          <h3 id={titleId} className="text-2xl font-bold text-white tracking-tight">Support SecretMsg</h3>
+          <h3 id={titleId} className="display-3 text-white">Support SecretMsg</h3>
           <p className="text-xs sm:text-sm text-slate-400 max-w-sm mx-auto">
             SecretMsg is an independent project. Here is exactly how paying for it works now — no website checkout, no subscriptions.
           </p>

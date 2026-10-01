@@ -230,7 +230,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ user, setUser, onLog
   return (
     <div className="max-w-2xl mx-auto py-8 sm:py-12 px-4 space-y-8">
       <div className="space-y-1">
-        <h2 className="text-2xl font-bold text-white">Account Settings</h2>
+        <h2 className="display-3 text-white">Account Settings</h2>
         <p className="text-xs text-slate-400">Manage your SecretMsg handle, privacy options, and data.</p>
       </div>
 

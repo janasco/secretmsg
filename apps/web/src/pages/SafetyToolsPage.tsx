@@ -18,7 +18,7 @@ export const SafetyToolsPage: React.FC = () => {
               </div>
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Boundary Setting</span>
-                <h2 className="text-xl sm:text-2xl font-bold text-white">Pause Submissions (Quiet Mode)</h2>
+                <h2 className="display-3 text-white">Pause Submissions (Quiet Mode)</h2>
               </div>
             </div>
             <span className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300">
@@ -80,7 +80,7 @@ export const SafetyToolsPage: React.FC = () => {
               </div>
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-purple-400">Content Moderation</span>
-                <h2 className="text-xl sm:text-2xl font-bold text-white">Filtered Words, Phrases &amp; Emojis</h2>
+                <h2 className="display-3 text-white">Filtered Words, Phrases &amp; Emojis</h2>
               </div>
             </div>
             <span className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300">
@@ -155,7 +155,7 @@ export const SafetyToolsPage: React.FC = () => {
               </div>
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-rose-400">Harassment Defense</span>
-                <h2 className="text-xl sm:text-2xl font-bold text-white">Device-Level Sender Blocking</h2>
+                <h2 className="display-3 text-white">Device-Level Sender Blocking</h2>
               </div>
             </div>
             <span className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-300">

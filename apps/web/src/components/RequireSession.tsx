@@ -128,7 +128,7 @@ const Locked: React.FC<{
           <Lock className="w-6 h-6" />
         </div>
 
-        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-3">{tool}</h1>
+        <h1 className="display-3 text-white mb-3">{tool}</h1>
         <p className="text-sm text-slate-400 leading-relaxed mb-8">{blurb}</p>
       </div>
 

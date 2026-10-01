@@ -147,7 +147,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
         <div className="w-full max-w-md space-y-6">
           <div className="text-center space-y-2">
             <Shield className="w-10 h-10 text-indigo-400 mx-auto" />
-            <h1 className="text-2xl font-bold text-white">Save Your Backup Codes</h1>
+            <h1 className="display-3 text-white">Save Your Backup Codes</h1>
             <p className="text-sm text-red-400 font-medium">These will NEVER be shown again. Save them somewhere safe.</p>
           </div>
           <div className="glass-panel p-6 rounded-2xl space-y-4">
@@ -188,7 +188,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
       <div className="w-full max-w-md space-y-6">
         <div className="text-center space-y-2">
           <Shield className="w-10 h-10 text-indigo-400 mx-auto" />
-          <h1 className="text-2xl font-bold text-white">{title}</h1>
+          <h1 className="display-3 text-white">{title}</h1>
           <p className="text-sm text-slate-400">{subtitle}</p>
         </div>
 
