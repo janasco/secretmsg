@@ -16,6 +16,31 @@
 > pass. Re-check them before relying on any of them. Reference a symbol name
 > where you can, not only a line.
 >
+> [!WARNING]
+> **This annex predates the ad build-out and needs a full re-derivation before
+> the Play submission, not more spot fixes.**
+>
+> Six items below were checked on 2026-10-02 and all six described a state of the
+> app that has since changed: item 1 (no AdMob identifier supplied), item 4
+> (`remove_ads` not in the code), item 6 (privacy-options form not surfaced),
+> item 8 (in-app "no ads" copy still false), plus the `/api/config/ads` endpoint
+> said not to exist and the missing `GOOGLE_PLAY_*` credentials recorded as a new
+> item 11. Six stale claims out of the items checked is a provenance problem, not
+> six mistakes: the document was derived before the advertising work landed and
+> has not been re-derived since, so the items that were *not* checked are
+> equally suspect.
+>
+> The document's own provenance note already asks for re-verification "against
+> the code, merged Android manifest, provider configuration, the AdMob console
+> and Play Console account settings, live database, and release build before
+> every release". That has not happened for the 1.7.0 build.
+>
+> **This matters more than a normal doc drift.** The Data safety form is filled
+> in from this document, and a declaration made to Google from a stale annex is
+> a compliance claim, not just an inaccurate file. Re-derive before submitting.
+> The individual corrections below are accurate as of the date given; they are
+> not a substitute for the pass.
+>
 > **Business-model change (v1.6.10+ / next Play submission).** SecretMsg moved
 > from a no-ads model to an ad-supported model. Google AdMob (Google Mobile Ads
 > SDK) now runs **in the Android app only** — a banner and a rewarded video. The
@@ -95,18 +120,23 @@ not claim otherwise in its UI or in the Play listing.
   from one set of environment variables. **The real IDs must be supplied at build
   time for an ad-supported submission, and they are operator facts of the
   console, not code facts.**
-- **The ads kill-switch is fail-closed and currently unsatisfied.** Ads are
+- **The ads kill-switch is fail-closed and currently resolves to off.** Ads are
   gated on a public server flag read from `/api/config/ads`
   (`lib/api/config.dart:12`), cached for six hours in `SharedPreferences` under
   `ads_enabled` / `ads_enabled_fetched_at` (`lib/ads/ads_config.dart:8-10`,
   `lib/ads/ads_flags.dart`), and default to **off** when the server says
   nothing (`kAdsEnabledWithoutServerFlag = false`, `lib/ads/ads_config.dart:11`;
-  resolver at `lib/ads/ads_flags.dart:73-88`). **That endpoint does not exist in
-  the Worker at the time of this re-derivation, so the current build resolves to
-  ads-off.** Serve can also be suppressed per screen. This is a useful safety
-  property, and it also means a build can be technically "ad-enabled" while
-  serving nothing — verify with real fill before trusting a zero-impression
-  result in either direction.
+  resolver at `lib/ads/ads_flags.dart:73-88`).
+  **Corrected:** this section previously said the endpoint "does not exist in
+  the Worker at the time of this re-derivation". That is no longer true — the
+  route was added with the `remove_ads` work and live-checked on 2026-10-01
+  returning `{"ads_enabled":false,...}`. The conclusion was right and the
+  reason given for it was wrong, which is the more dangerous kind of error: a
+  future reader who checks the reason, finds the endpoint present, and concludes
+  ads must be on would have overturned a correct answer. Ads are off because
+  the flag is `false`, not because the route is missing. Serve can also be
+  suppressed per screen. Verify with real fill before trusting a
+  zero-impression result in either direction.
 - **Web:** the website shows no ads. Do not declare app ads for the website.
 - **AdMob account, `ads.txt`, and consent configuration** are operator tasks
   recorded in [SUBMISSION.md](SUBMISSION.md); none of them can be verified from
@@ -609,21 +639,24 @@ Recorded posture:
 
 ## Known gaps and honest disclosures
 
-1. **The ad SDK and ad surfaces are in the client, but no real AdMob identifier
-   has been supplied yet and ads are currently switched off.**
-   `pubspec.yaml:53` declares `google_mobile_ads: ^9.1.0`, `pubspec.lock`
-   resolves `9.1.0`, and the client has a complete ad layer under `lib/ads/`
-   (`ads_config.dart`, `ads_flags.dart`, `ads_platform.dart`,
-   `mobile_ads_platform.dart`, `ads_service.dart`, `ads_banner.dart`) plus the
-   banner mounted at `lib/screens/app_shell.dart:105`. No AdMob identifier is
-   committed; all three are build-time inputs, and the build refuses to produce
-   a release artifact without them. As of this re-derivation they have not been
-   supplied, so no ad-supported artifact exists, and the `ADS_ENABLED="false"`
-   kill-switch keeps ad code paths inert in the meantime. **The declarations in
-   this annex describe the agreed and partly implemented target state. They
-   become accurate for a Play submission only once the real AdMob ids are
-   supplied at build time, the kill-switch is turned on, and the merged manifest
-   of the uploaded AAB is re-inspected.** Re-derive this annex against that AAB.
+1. **The ad SDK, ad surfaces and real AdMob identifiers are all now in place —
+   re-derived, item closed.** This item previously said no AdMob identifier had
+   been supplied "as of this re-derivation", so no ad-supported artifact
+   existed. **That is no longer true.** The 1.7.0 bundle was built with the real
+   identifiers and the archive was inspected rather than trusted:
+   `base/manifest/AndroidManifest.xml` inside
+   `/opt/secretmsg/.secrets/release-artifacts/v1.7.0/secretmsg-v1.7.0-upload.aab`
+   carries `ca-app-pub-1165824705893364~7180472622`, and the same file contains
+   **zero** occurrences of the `ca-app-pub-0000000000000000` placeholder — which
+   is the Gradle guard passing, not an assumption that it would. `ads.txt` and
+   `app-ads.txt` carry the matching publisher id `pub-1165824705893364`.
+   `pubspec.yaml:53` still declares `google_mobile_ads: ^9.1.0` resolving to
+   `9.1.0` in `pubspec.lock`, and the ad layer and banner mount
+   (`lib/screens/app_shell.dart:105`) are unchanged.
+   **What is still true from the original item:** `ADS_ENABLED="false"`, so the
+   kill-switch keeps the ad code paths inert and no ads are served. An
+   ad-supported *artifact* now exists and is archived; ad *serving* does not.
+   Those are different claims and the original item ran them together.
 2. **The AdMob account configuration is not verifiable here.** The real
    application id and ad unit ids, `ads.txt` authorization, mediation partners,
    EEA/UK consent message, US state opt-out configuration, console ad content
@@ -634,15 +667,19 @@ Recorded posture:
    Manager is enabled, additional ad networks become independent recipients and
    the Advertising, Personal info, and Device or other IDs sections all need to
    be expanded. Nothing in the repository indicates which is the case.
-4. **`remove_ads` is not yet in the code.** The Worker's `PLAY_PRODUCTS` map
-   still contains `verified_badge`, `viewer_hints`, `sender_hints`, and
-   `supporter_bundle` (`/opt/secretmsg/secretmsg-private/api/src/billing.ts:8-12`),
-   and the client's `BillingProducts` class still lists the same four
-   (`apps/mobile-flutter/lib/api/billing.dart:10-21`). Neither side has
-   `remove_ads`. The ad-free entitlement is currently read from
-   `users.is_premium` via the profile payload (`lib/ads/ads_service.dart:95`),
-   so ad suppression is presently keyed to a legacy perk flag. The Financial
-   info section above describes the required end state, not the current code.
+4. **`remove_ads` is in the code on both sides — corrected.** This item
+   previously said neither the Worker nor the client had `remove_ads`. Both do.
+   `PLAY_PRODUCTS` in `/opt/secretmsg/secretmsg-private/api/src/billing.ts:8-10`
+   now contains exactly one entry,
+   `remove_ads: { badge: true, viewer: true, sender: true, tier: 'Supporter' }`,
+   and the client's `BillingProducts` carries `removeAds = 'remove_ads'`. The
+   ad-free entitlement is still read from `users.is_premium` via the profile
+   payload (`lib/ads/ads_service.dart:95`), which is now a *consequence* of the
+   purchase rather than a leftover: `remove_ads` grants that flag, so ad
+   suppression is keyed to the entitlement the purchase sets. What remains is
+   the Play Console side — the product must exist, be active, and be published
+   to the submitted track — and the missing credentials recorded at item 11,
+   which currently stop any purchase from completing at all.
 5. **Polar is fully removed from the Worker.** This was previously recorded as
    outstanding work; it is now done. `api/src/polar.ts`, the `POLAR_WEBHOOK_SECRET`
    binding, `POST /api/webhook/polar`, the `donations` table in both schemas and
@@ -650,12 +687,17 @@ Recorded posture:
    410 tombstone that grants nothing. The five perk columns are **not** residual —
    `remove_ads` grants and reads them; see the warning in "Supporter donations —
    removed". See that section for the full per-item table.
-6. **The US privacy-options form is not surfaced.** The client gates ads on
-   `ConsentInformation.instance.canRequestAds()` but does not call
-   `getPrivacyOptionsRequirementStatus()` or
-   `ConsentForm.showPrivacyOptionsForm()`. Whether the resulting behaviour
-   satisfies US state opt-out requirements is a legal question this annex flags
-   rather than answers.
+6. **The privacy-options form — checked, already implemented.** This item
+   previously said the client gates ads on `canRequestAds()` but never calls the
+   requirement-status check or the privacy-options form. It does now:
+   `AdsService.showPrivacyOptions()` (`lib/ads/ads_service.dart:182`) checks
+   `PrivacyOptionsRequirement` (`:206-208`, handling both `required` and
+   `notRequired`) and the form is reachable from Settings via the "Ad privacy
+   options" entry at `lib/screens/settings_screen.dart:1921`. Whether the
+   resulting behaviour satisfies US state opt-out requirements is still a legal
+   question this annex flags rather than answers — but the *absence* the item
+   described no longer holds, and leaving it written as a gap would have sent
+   someone to build something that already exists.
 
 7. **The rewarded-ad reward is a streak freeze, capped at one.** The client
    exposes `AdsService.showRewardedForStreakFreeze`
@@ -669,12 +711,16 @@ Recorded posture:
    stored in D1, and is not restored on a new device. A user who clears app
    data loses it. Do not describe the freeze as something stored in the
    account.
-8. **The in-app "no ads" strings are still in the client.** The in-app privacy
-   copy states there is no advertising SDK and no advertising ID (see
-   `lib/data/static_content.dart` and `lib/screens/supporters_screen.dart`).
-   Those strings are now false and must be corrected in the client before the
-   ad-supported build ships. Until they are, the app's own text contradicts this
-   annex and the Play declaration. This annex does not describe client copy.
+8. **The in-app "no ads" strings — checked, already corrected.** This item
+   previously said the client still asserted "no advertising SDK" and "no
+   advertising ID", and listed it as a blocker. **Those strings do not exist in
+   `lib/`.** Verified by grep across `lib/data/static_content.dart`,
+   `lib/screens/supporters_screen.dart` and the rest of the client:
+   `static_content.dart:359` describes AdMob accurately, including that ads are
+   non-personalised without consent, and `:341` attributes the advertising
+   identifier to AdMob rather than to SecretMsg. Nothing to correct. Retained as
+   a closed item rather than deleted, so the next reader can see it was checked
+   rather than skipped.
 9. **Cloudflare scope and Play sharing judgment:** the Worker runs on
    Cloudflare, uses Cloudflare D1, and uses Cloudflare Turnstile. Cloudflare
    receives request content and raw network information, including the raw
@@ -689,20 +735,37 @@ Recorded posture:
    ID, unread count, and a 140-character preview. **Google AdMob receives the
    advertising identifier and IP-derived request data on every ad request plus
    ad interaction events; the donation processor is gone.**
-11. **Identifiers and raw IP:** "IP addresses are not stored readable" is only
+11. **The `remove_ads` purchase cannot complete in production.** This is the
+    only item in this annex that is a live defect rather than a declaration
+    caveat. `GOOGLE_PLAY_SA_KEY`, `GOOGLE_PLAY_SA_EMAIL` and
+    `GOOGLE_PLAY_PACKAGE_NAME` are all absent from the Worker's environment —
+    empty in `.env.production` and not present in the Cloudflare secret store
+    (verified: 7 secrets, none of them Google). `getGoogleAccessToken` therefore
+    returns null at `api/src/billing.ts:40`, and `POST /api/billing/google/verify`
+    answers **502 "Could not reach the purchase verifier."**
+
+    A user who paid would be charged with nothing granted, and Play
+    automatically refunds an unacknowledged purchase after three days. It is
+    invisible to users today only because `ADS_ENABLED=false`, so no ads are
+    served and nobody needs `remove_ads` — the state is coherent, but it means
+    the paid flow has never been exercised end to end. Everything in "Financial
+    info — purchase history" above describes what the code is *built* to do,
+    which is not the same as what it currently does. Provision the three
+    secrets and confirm a real purchase before enabling ads.
+12. **Identifiers and raw IP:** "IP addresses are not stored readable" is only
     locally true in the D1 rate-limit table. D1 stores SHA-256-derived rate-
     limit IDs, but Cloudflare receives the raw IP as infrastructure and the
     Turnstile verifier is explicitly sent the raw connecting IP. AdMob
     separately receives the request IP as part of an ad request.
-12. **Authentication:** email is not the only sign-in method and is not
+13. **Authentication:** email is not the only sign-in method and is not
     required. The current primary auth is handle plus a 4–6 digit PIN, with
     backup-code recovery. Real email is optional legacy email OTP and is not
     exposed in the current Flutter APK login UI. Handle signup stores a
     synthetic `<handle>@v2.secretmsg` placeholder.
-13. **Message metadata:** senders are not asked for a name, but the app stores
+14. **Message metadata:** senders are not asked for a name, but the app stores
     `sender_fp_hash`, `client_msg_id`, `reply_token`, and conditionally
     `device_hint`; the coarse `device_hint` is not a unique ID.
-14. **Runtime and build permissions:** the app requests notification permission
+15. **Runtime and build permissions:** the app requests notification permission
     through Settings on Android 13+ (`POST_NOTIFICATIONS`). The main manifest
     declares `INTERNET`, `POST_NOTIFICATIONS`, `SCHEDULE_EXACT_ALARM`, and
     `RECEIVE_BOOT_COMPLETED`; exact alarms and boot completion support local
@@ -725,7 +788,7 @@ Recorded posture:
     of the uploaded AAB rather than assuming it. The merged manifest and final
     APK must be checked again at each release because source-manifest
     inspection alone is not the final merged permission set.
-15. **Local data:** as of v1.6.9 the in-app delete flow does attempt a full
+16. **Local data:** as of v1.6.9 the in-app delete flow does attempt a full
     local wipe: `ApiClient.deleteAccount` calls `AccountDataWipe.wipeAllLocalAccountData`
     after the server request succeeds, which clears the auth token, cached
     profile, and `secretmsg_device_fingerprint` from `flutter_secure_storage`,
@@ -750,7 +813,7 @@ Recorded posture:
     as clearing ad state until it does. The streak wipe does clear ad-earned
     streak freezes, which is consistent with the freeze being local-only. Data
     already exported, saved, or shared by the user is unaffected.
-16. **Deletion behavior:** `DELETE /api/account` explicitly deletes received
+17. **Deletion behavior:** `DELETE /api/account` explicitly deletes received
     messages, blocked senders, reports where the user is recipient and reports
     where the user is reporter, pair codes, purchases,
     email-keyed OTP sessions, selected user-derived rate-limit rows, and then
@@ -762,23 +825,23 @@ Recorded posture:
     Token invalidation is immediate after the user row is gone because
     protected requests re-check that row and its token version, but this is not
     universal erasure, and it does not extend to Google AdMob.
-17. **Backups:** the operator backup command exports D1 to a local plaintext
+18. **Backups:** the operator backup command exports D1 to a local plaintext
     SQL file, encrypts a copy with AES-256-CBC, and uploads the encrypted file
     to R2. The script does not delete the local plaintext export. The code
     does not establish a post-deletion purge for encrypted D1/R2 backups.
-18. **Retention:** pairing codes expire after 5 minutes, but rows are actually
+19. **Retention:** pairing codes expire after 5 minutes, but rows are actually
     pruned by the nightly cron: consumed rows after 24 hours and expired rows
     on the next scheduled run. OTPs expire after 15 minutes, but expired
     `auth_sessions` rows are pruned by the nightly cron rather than at the
     exact expiry second. Messages persist until the recipient deletes them or
     the account is deleted. Rate-limit rows are logically windowed and rows
     older than approximately 2 hours are pruned by the nightly cron.
-19. **Analytics/crash posture:** Firebase Messaging is present; Firebase
+20. **Analytics/crash posture:** Firebase Messaging is present; Firebase
     Analytics and Crashlytics are not. There is no Sentry, Bugsnag, analytics,
     or attribution SDK. **An ads SDK is now present and must no longer be listed
     among the absent SDKs.** Worker `console.error` calls mean Cloudflare may
     hold operational logs.
-20. **Current dependency list:** the direct Flutter dependencies currently
+21. **Current dependency list:** the direct Flutter dependencies currently
     declared in `pubspec.yaml` are `http`, `webview_flutter`,
     `webview_flutter_android`, `flutter_secure_storage`, `share_plus`,
     `path_provider`, `url_launcher`, `in_app_purchase`,
@@ -788,7 +851,7 @@ Recorded posture:
     `shared_preferences`, and **`google_mobile_ads`**. This is not an SDK
     analytics declaration; the list is included to prevent the previous stale
     dependency inventory from being reused.
-21. **Play "Sensitive info" category is undeclared:** this annex has no
+22. **Play "Sensitive info" category is undeclared:** this annex has no
     Sensitive info section. The service has no dedicated field for health,
     financial, sexual, political, religious, or biometric data, and no
     structure requests it. The open question is the free-text content itself:
