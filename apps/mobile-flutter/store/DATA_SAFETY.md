@@ -17,29 +17,49 @@
 > where you can, not only a line.
 >
 > [!WARNING]
-> **This annex predates the ad build-out and needs a full re-derivation before
-> the Play submission, not more spot fixes.**
+> **Re-derivation pass: 2026-10-05, partial.** Six items were found stale and
+> corrected — item 1 (claimed no AdMob identifier supplied), item 4 (claimed
+> `remove_ads` absent from the code), item 6 (claimed the privacy-options form
+> was never surfaced), item 8 (claimed the in-app "no ads" copy was still
+> false), the `/api/config/ads` endpoint said not to exist, and the missing
+> `GOOGLE_PLAY_*` credentials, which were absent from the document entirely and
+> are now item 11. Six out of six checked is a provenance problem rather than
+> six mistakes: the annex was derived before the advertising work landed and had
+> not been re-derived since.
 >
-> Six items below were checked on 2026-10-02 and all six described a state of the
-> app that has since changed: item 1 (no AdMob identifier supplied), item 4
-> (`remove_ads` not in the code), item 6 (privacy-options form not surfaced),
-> item 8 (in-app "no ads" copy still false), plus the `/api/config/ads` endpoint
-> said not to exist and the missing `GOOGLE_PLAY_*` credentials recorded as a new
-> item 11. Six stale claims out of the items checked is a provenance problem, not
-> six mistakes: the document was derived before the advertising work landed and
-> has not been re-derived since, so the items that were *not* checked are
-> equally suspect.
+> **Verified against code in this pass, and found accurate** — these no longer
+> need re-checking for the 1.7.0 submission:
 >
-> The document's own provenance note already asks for re-verification "against
-> the code, merged Android manifest, provider configuration, the AdMob console
-> and Play Console account settings, live database, and release build before
-> every release". That has not happened for the 1.7.0 build.
+> - No analytics, crash-reporter or attribution SDK (`pubspec.yaml` grep clean)
+> - `firebase_messaging` present; `firebase_core` and `flutter_secure_storage`
+>   present; `shared_preferences` present
+> - **No location permission** in the manifest — "Location: No" holds
+> - `android.permission.INTERNET` present
+> - **`com.google.android.gms.permission.AD_ID` is declared**, consistent with
+>   the advertising-identifier declaration
+> - `POST /api/report` and `DELETE /api/account` both exist in the Worker, which
+>   is what makes the content-rating "unmoderated content: No" answer true
+> - Item 7 — `kMaxStreakFreezes = 1`, stored only in the local streak store,
+>   **zero** occurrences in the Worker: the rewarded reward is local device
+>   state and is not a server-side grant
+> - Item 21 — the direct dependency list matches `pubspec.yaml` exactly, all 22
+>   entries including `google_mobile_ads`
 >
-> **This matters more than a normal doc drift.** The Data safety form is filled
-> in from this document, and a declaration made to Google from a stale annex is
-> a compliance claim, not just an inaccurate file. Re-derive before submitting.
-> The individual corrections below are accurate as of the date given; they are
-> not a substitute for the pass.
+> **Still not verifiable from this repository**, and each one is a console or
+> account fact that must be confirmed by hand before submitting: the AdMob
+> account configuration and mediation partners; the EEA/UK consent message and
+> US state opt-out settings; console-side child-directed and under-age-of-consent
+> flags; whether IP-derived approximate-location targeting is enabled; whether
+> the app reports as *authorised* in AdMob; and the Play Console product setup.
+> Item 2 and item 3 cover these and are unchanged.
+>
+> **This pass did not re-derive the whole document.** It checked the code-derived
+> claims that the Data safety form depends on and corrected the ones that had
+> rotted. The un-checked items are less suspect than before but are not
+> certified. The provenance note above still asks for a full pass against the
+> merged manifest and both consoles before every release, and that has still not
+> happened for the 1.7.0 build. A declaration made to Google from a stale annex
+> is a compliance claim, not just an inaccurate file.
 >
 > **Business-model change (v1.6.10+ / next Play submission).** SecretMsg moved
 > from a no-ads model to an ad-supported model. Google AdMob (Google Mobile Ads
