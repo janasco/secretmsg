@@ -8,77 +8,13 @@ This is the canonical checklist and release runbook for submitting `net.secretms
 
 ## Open blockers
 
-- [ ] **The `remove_ads` purchase cannot complete — all three Play credentials are missing.** This is the one defect that makes a shipped feature fail for a paying user, and it is not something a rebuild fixes.
+- [x] **Play billing credentials — provisioned and verified 2026-10-06.** `GOOGLE_PLAY_PACKAGE_NAME`, `GOOGLE_PLAY_SA_EMAIL` and `GOOGLE_PLAY_SA_KEY` are set on the Worker (10 secrets total, confirmed by `wrangler secret list`) and the API was redeployed so they bind to the running version.
 
-  `GOOGLE_PLAY_SA_KEY`, `GOOGLE_PLAY_SA_EMAIL` and `GOOGLE_PLAY_PACKAGE_NAME` are all absent from the Worker. They are empty in `.env.production` and are not in the Cloudflare secret store (verified 2026-10-05: 7 secrets, none of them Google). `getGoogleAccessToken` therefore returns null at `api/src/billing.ts:40` and `POST /api/billing/google/verify` answers **502 "Could not reach the purchase verifier."** A user who paid would be charged with nothing granted, and Play auto-refunds unacknowledged purchases after three days.
+  The service account is `firebase-adminsdk-fbsvc@secretmsg-7cbf8.iam.gserviceaccount.com` — the Firebase account, reused deliberately rather than creating a dedicated one, because its key was already on disk and the Play Console invite was already made.
 
-  It is invisible today only because `ADS_ENABLED=false`, so no ads are served and nobody needs `remove_ads`. **Do not enable ads before this is fixed.**
+  **Verified against the live Play API, not against configuration.** Using exactly these credentials: token exchange succeeds, `POST .../edits` returns **200** and issues an edit id, and `GET .../edits/{id}/tracks` returns **200** listing `production, beta, alpha, internal`. A successful edit is the strongest available proof because it requires both the Cloud API enablement *and* the Play Console grant, which are independent conditions — and they failed independently on the way here, first as "API has not been used in project", then as "caller does not have permission".
 
-  **Status 2026-10-06: the API half is resolved; only the Play Console grant remains.**
-
-  The failure changed, which is the useful signal:
-
-  | | Error |
-  |---|---|
-  | 10-05 | `403 — Google Play Android Developer API has not been used in project 687972125646 before or it is disabled` |
-  | 10-06 | `403 — The caller does not have permission` (`PERMISSION_DENIED`) |
-
-  The first error is about API enablement and the second is about authorisation, so the API is now enabled for the project that owns the service account and that condition is closed. Confirmed stable across two runs rather than read from a single response.
-
-  **What remains is one Play Console action.** Invite this account under
-  **Play Console → Users and permissions → Invite new users**:
-
-  ```
-  firebase-adminsdk-fbsvc@secretmsg-7cbf8.iam.gserviceaccount.com
-  ```
-
-  Grant it app access to `net.secretmsg.android_app` plus financial data and
-  order management — `purchases.products.get` needs the financial-data
-  permission and `acknowledge` needs order management. Without the grant every
-  call returns `PERMISSION_DENIED` regardless of what Google Cloud allows, which
-  is exactly what is happening now.
-
-  `secretmsgnet` was deleted from Google Cloud on 10-06. That was the unused
-  project, not the Firebase one: `secretmsg-7cbf8` was verified still live
-  immediately afterwards — its service account exchanges a token and the FCM
-  endpoint answers correctly — which matters because `google-services.json` is
-  compiled into shipped APKs and cannot be redirected without a new build.
-
-  **Status 2026-10-05: both were attempted and the API one is still failing, for a specific and fixable reason.** A token exchange with the service account succeeds, and the Play API call now returns a different failure than before — but still a 403:
-
-  ```
-  Google Play Android Developer API has not been used in project 687972125646
-  before or it is disabled.
-  ```
-
-  **Enabled in the wrong project.** `687972125646` is the project number of `secretmsg-7cbf8`, which is where this service account lives — its `client_email` is `firebase-adminsdk-fbsvc@secretmsg-7cbf8.iam.gserviceaccount.com`, and its `project_id` field reads `secretmsg-7cbf8`. If the API was enabled in a different Google Cloud project than that one, the service account's project still reports it as disabled and nothing changes. The API has to be enabled **in the project that owns the service account**, which is `secretmsg-7cbf8` / `687972125646`.
-
-  Retried after a wait to rule out propagation delay — the error was identical, so this is not eventual consistency.
-
-  Two ways forward, and they are equivalent in effort:
-  - **Enable it in `secretmsg-7cbf8`.** Use the URL above, or pick project `secretmsg-7cbf8` in the console's API library and enable *Google Play Android Developer API* there.
-  - **Or create a Play service account in whichever project was enabled**, and use that account's email and key instead. Cleaner if a dedicated Play project was created on purpose — one credential per service, and it is the better practice anyway.
-
-  Separately: the Play Console permission is independent of the Cloud API. Even with the API enabled, the account must be present in **Play Console → Users and permissions**. Both conditions have to hold; enabling the API alone will still 403.
-
-  Then provision the three secrets. `GOOGLE_PLAY_PACKAGE_NAME` is not actually secret and is `net.secretmsg.android_app` (from `android/app/build.gradle:148`):
-
-  ```bash
-  cd /opt/secretmsg/secretmsg-private/api
-  set -a; . ../.env.production; set +a
-  node /opt/secretmsg/node_modules/wrangler/bin/wrangler.js secret put GOOGLE_PLAY_PACKAGE_NAME
-  node /opt/secretmsg/node_modules/wrangler/bin/wrangler.js secret put GOOGLE_PLAY_SA_EMAIL
-  node /opt/secretmsg/node_modules/wrangler/bin/wrangler.js secret put GOOGLE_PLAY_SA_KEY
-  ```
-
-  **Reuse the existing Firebase service account or create a dedicated one?** Reusing `firebase-adminsdk-fbsvc@secretmsg-7cbf8.iam.gserviceaccount.com` is one console step fewer, because its key is already on disk at `.firebase-service-account.json`. A dedicated account is the better practice — one credential per service — and is what I would pick if the extra five minutes are available. Either way the account needs the Play Console grant from step 2. Do not commit any key; both paths keep it out of the repository.
-
-  Verified after provisioning: complete a real purchase in an internal-test build and confirm the entitlement lands, rather than trusting that a 200 from the endpoint means the grant happened. **The purchase flow has never been exercised end to end.**
-- [x] **Stale Android artifacts — done, 1.7.0 built and deployed.** `pubspec.yaml` is `1.7.0+26`, superseding the `1.6.10+25` that was already published. Both tracks were rebuilt on 2026-10-01 from source that includes the redesign: the AAB with AdMob env sourced, and the three sideload APKs. `apps/web/src/lib/appVersion.ts` carries sizes and SHA-256s **recomputed from the new bytes** — and that check earned its place, catching a mistyped x64 hash (`cdcdf3` for `cdc19d`) that no amount of proofreading would have found. The AAB is archived with its symbols under `.secrets/release-artifacts/v1.7.0/`.
-
-  Verified rather than assumed, at each layer: `versionName="1.7.0"` / `versionCode="26"` from the merged manifest; AdMob id `ca-app-pub-1165824705893364~7180472622` present with **zero** placeholder occurrences; all three APKs signed `CN=SecretMsg Sideload`; the track asymmetry holding exactly (`url_play` in the AAB and no `url_sideload`, the reverse in each APK); the update feed reporting `1.7.0`; and the live `arm64` APK downloaded from `secretmsg.net` hashing to the advertised checksum end to end.
-
-  One accepted and recorded exception: the AAB was built at `08:38` and `lib/theme.dart` changed at `11:03` when three unused display tokens were added. By the mtime rule it is stale; `strings ... | grep -c display1` returns 0, so the tree-shaker removed them and behaviour is identical. Recorded in [RELEASE_NOTES.md](RELEASE_NOTES.md) with the reasoning and the condition that closes it.
+  **What is still NOT verified, and cannot be from here.** `/api/billing/google/verify` returns `401` to an unauthenticated probe because the auth gate runs first; the credential check at `api/src/index.ts:950` sits *after* it, so no unauthenticated request can reach the code path this item is about. Confirming it end to end needs an authenticated call or a real purchase, which needs the `playreview` PIN — held in the operator's password manager by design, not in this repository. **Complete a real purchase in an internal-test build before enabling ads.** A 200 from the endpoint is not sufficient on its own; what matters is that the entitlement lands.
 - [ ] **Play Console enrollment and app creation:** complete account registration and identity verification, then create the app with default language, app-not-game, free distribution, and package `net.secretmsg.android_app`. The application ID is defined at `android/app/build.gradle:148`.
 - [x] **Upload keystore — verified in use, closed.** `android/key.properties` exists with `keyAlias=upload` and `storeFile` pointing at `/opt/secretmsg/.secrets/secretmsg-upload.jks`, so Gradle is not falling back to the debug key. Confirmed against the actual artifact rather than the configuration: `jarsigner -verify -verbose -certs` on `/opt/secretmsg/.secrets/release-artifacts/v1.7.0/secretmsg-v1.7.0-upload.aab` reports `CN=SecretMsg`, which is the upload certificate. The sideload APKs report `CN=SecretMsg Sideload`, so the two keys are genuinely distinct and each artifact carries the right one. Backups of both keystores live under `/opt/secretmsg/.secrets/`. The distinction matters because the upload key only ever hands a bundle to Play App Signing, which re-signs it — shipping it on a public artifact would publish a Play credential.
 - [ ] **Reviewer access:** the dedicated handle `playreview` is **provisioned and verified** in production D1 (display name "Play Review Demo", no purchase history, synthetic `email` placeholder, 10 backup codes, 4 seeded messages plus 1 quarantined moderation sample, rank "Newcomer"). Login was confirmed working against the live API. Remaining step: store its PIN and backup codes in the password manager and enter the exact credentials in **App content → App access**. Never put the PIN or backup codes in this repository.
