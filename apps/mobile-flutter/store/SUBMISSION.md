@@ -14,6 +14,36 @@ This is the canonical checklist and release runbook for submitting `net.secretms
 
   It is invisible today only because `ADS_ENABLED=false`, so no ads are served and nobody needs `remove_ads`. **Do not enable ads before this is fixed.**
 
+  **Status 2026-10-06: the API half is resolved; only the Play Console grant remains.**
+
+  The failure changed, which is the useful signal:
+
+  | | Error |
+  |---|---|
+  | 10-05 | `403 — Google Play Android Developer API has not been used in project 687972125646 before or it is disabled` |
+  | 10-06 | `403 — The caller does not have permission` (`PERMISSION_DENIED`) |
+
+  The first error is about API enablement and the second is about authorisation, so the API is now enabled for the project that owns the service account and that condition is closed. Confirmed stable across two runs rather than read from a single response.
+
+  **What remains is one Play Console action.** Invite this account under
+  **Play Console → Users and permissions → Invite new users**:
+
+  ```
+  firebase-adminsdk-fbsvc@secretmsg-7cbf8.iam.gserviceaccount.com
+  ```
+
+  Grant it app access to `net.secretmsg.android_app` plus financial data and
+  order management — `purchases.products.get` needs the financial-data
+  permission and `acknowledge` needs order management. Without the grant every
+  call returns `PERMISSION_DENIED` regardless of what Google Cloud allows, which
+  is exactly what is happening now.
+
+  `secretmsgnet` was deleted from Google Cloud on 10-06. That was the unused
+  project, not the Firebase one: `secretmsg-7cbf8` was verified still live
+  immediately afterwards — its service account exchanges a token and the FCM
+  endpoint answers correctly — which matters because `google-services.json` is
+  compiled into shipped APKs and cannot be redirected without a new build.
+
   **Status 2026-10-05: both were attempted and the API one is still failing, for a specific and fixable reason.** A token exchange with the service account succeeds, and the Play API call now returns a different failure than before — but still a 403:
 
   ```
