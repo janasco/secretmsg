@@ -30,6 +30,13 @@ dependencies:
     sdk: flutter
 
   http: ^1.2.2
+  # End-to-end message encryption (X25519 key agreement + AES-256-GCM).
+  # Pure Dart, no native plugin and no Google Play Services dependency, so the
+  # de-Googled sideload build keeps working. Chosen over hand-rolled crypto and
+  # over platform-keystore-backed plugins: message bodies are <= 500 chars, so
+  # software performance is irrelevant here. NOT independently audited as
+  # integrated by SecretMsg — see lib/crypto/README.md.
+  cryptography: ^2.9.0
   webview_flutter: ^4.10.0
   webview_flutter_android: ^4.3.2
   flutter_secure_storage: ^9.2.2

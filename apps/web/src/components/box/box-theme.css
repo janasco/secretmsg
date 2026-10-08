@@ -1,0 +1,103 @@
+/*
+ * Box page theming — static, auditable CSS.
+ *
+ * Rules of this file:
+ *   - No `@font-face`, no external `url()`, no remote origin. Font families
+ *     are named only; SecretMsg self-hosts the woff2 subsets from its own
+ *     origin and the box-page CSP is `font-src 'self'`.
+ *   - No user-supplied value is interpolated into a selector or a URL. The only
+ *     values that reach CSS from data are validated `#rrggbb` colors, passed as
+ *     custom properties by BoxThemeShell.
+ *   - Patterns are low-opacity so they can never cut text contrast; every
+ *     animation is off under `prefers-reduced-motion`.
+ */
+
+.box-page {
+  background-color: var(--box-bg, #0b1020);
+  position: relative;
+  min-height: 100%;
+  isolation: isolate;
+}
+
+.box-pattern-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.box-pattern-dots {
+  background-image: radial-gradient(color-mix(in srgb, var(--box-accent, #6366f1) 22%, transparent) 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+}
+
+.box-pattern-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--box-accent, #6366f1) 12%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--box-accent, #6366f1) 12%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.box-pattern-waves {
+  background-image: repeating-radial-gradient(
+    circle at 0 0,
+    transparent 0,
+    color-mix(in srgb, var(--box-accent, #6366f1) 10%, transparent) 12px,
+    transparent 24px
+  );
+  background-size: 64px 64px;
+}
+
+.box-pattern-confetti {
+  background-image:
+    radial-gradient(circle at 12% 22%, color-mix(in srgb, var(--box-accent, #6366f1) 30%, transparent) 2px, transparent 3px),
+    radial-gradient(circle at 78% 14%, color-mix(in srgb, var(--box-accent, #6366f1) 22%, transparent) 2px, transparent 3px),
+    radial-gradient(circle at 44% 68%, color-mix(in srgb, var(--box-accent, #6366f1) 26%, transparent) 2px, transparent 3px),
+    radial-gradient(circle at 88% 76%, color-mix(in srgb, var(--box-accent, #6366f1) 20%, transparent) 2px, transparent 3px);
+  background-size: 140px 140px;
+}
+
+.box-pattern-aurora {
+  background:
+    radial-gradient(60% 40% at 15% 10%, color-mix(in srgb, var(--box-accent, #6366f1) 22%, transparent), transparent 70%),
+    radial-gradient(50% 45% at 85% 30%, color-mix(in srgb, var(--box-accent, #6366f1) 16%, transparent), transparent 70%);
+  animation: box-aurora-drift 22s ease-in-out infinite alternate;
+}
+
+@keyframes box-aurora-drift {
+  from { transform: translate3d(-1.5%, -1%, 0) scale(1.02); }
+  to { transform: translate3d(1.5%, 1%, 0) scale(1.04); }
+}
+
+.box-page .glass-panel {
+  background: color-mix(in srgb, var(--box-bg, #0b1020) 78%, transparent);
+  border-color: color-mix(in srgb, var(--box-accent, #6366f1) 26%, transparent);
+}
+
+.box-page .box-accent-text {
+  color: var(--box-accent, #818cf8);
+}
+
+.box-page .box-accent-border {
+  border-color: color-mix(in srgb, var(--box-accent, #6366f1) 45%, transparent);
+}
+
+.box-theme-toggle:focus-visible,
+.box-report-link:focus-visible {
+  outline: 2px solid var(--box-accent, #818cf8);
+  outline-offset: 2px;
+}
+
+/* Google Fonts families, self-hosted. Family names only — no URLs here. */
+.box-font-inter { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+.box-font-lora { font-family: 'Lora', Georgia, 'Times New Roman', serif; }
+.box-font-space-grotesk { font-family: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif; }
+.box-font-bitter { font-family: 'Bitter', Georgia, serif; }
+.box-font-ibm-plex-sans { font-family: 'IBM Plex Sans', 'Inter', ui-sans-serif, system-ui, sans-serif; }
+
+@media (prefers-reduced-motion: reduce) {
+  .box-pattern-aurora {
+    animation: none;
+  }
+}
