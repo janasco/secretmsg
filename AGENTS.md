@@ -278,10 +278,16 @@ the archived `symbols/` came from the *same* build as the AAB next to them.
 - **Running the gate dirties `apps/web/public/sitemap.xml`.** `npm run build`
   runs `scripts/blog.mjs`, which regenerates `public/sitemap.xml` with `lastmod`
   values derived from source file mtimes — so any file you touched since the
-  last commit re-stamps it. `git status` showing only `sitemap.xml` modified
-  after a gate run is expected and is not on its own a change to commit. The
-  same script also rewrites `public/feed.xml`, `public/robots.txt` and
-  `public/blog-index.json`.
+  last commit re-stamps it. The same script also rewrites `public/feed.xml`,
+  `public/robots.txt` and `public/blog-index.json`.
+  **`lastmod`-only churn is not a change to commit, but a change in the post
+  COUNT is.** Blog posts publish on a schedule (`published` always ships,
+  `scheduled` ships once due in UTC, `draft` never), so a post that has become
+  due appears in `public/posts/` and in `sitemap.xml` together on the next
+  build. Committing one without the other leaves the two artifacts disagreeing,
+  and `route-policy.test.ts` asserts they agree — because that mismatch is a
+  real defect, while time passing is not.
+  If you revert one of them with `git checkout`, revert both.
 - **Security headers are report-only, on purpose.** The CSP is
   `Content-Security-Policy-Report-Only`, and there is deliberately no enforcing
   policy and no HSTS. The API fails closed, so an enforcing policy with a wrong
