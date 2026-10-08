@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { createHash } from 'node:crypto';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { isAssetRequest, isClientRoute, isNoindexRoute, legacyRedirect, notFoundHtml, postSlug } from './route-policy';
 import { POST_SLUGS_PATH } from './post-slugs';
@@ -8,6 +8,36 @@ import { CSP_REPORT_MAX_BYTES, CSP_REPORT_PATH, SECURITY_HEADERS } from './secur
 import { handleRequest, type WorkerEnv } from './worker';
 
 const PUBLIC_DIR = resolve(__dirname, '..', 'public');
+
+/**
+ * The same due-rule `scripts/blog.mjs` applies, reimplemented here so the
+ * expected sitemap size is DERIVED rather than hardcoded.
+ *
+ * It used to be a literal (239, then 240, then 238) and it broke every time a
+ * scheduled post's date arrived — 83 of them are still future-dated, so the
+ * gate would have failed roughly weekly for months, each time looking like a
+ * regression and each time inviting someone to bump the number again. A count
+ * that changes with the calendar is not an invariant.
+ *
+ * `published` always ships; `scheduled` ships once its date is due in UTC;
+ * `draft` never ships. Keep this in step with blog.mjs if that rule changes.
+ */
+function duePostCount(): number {
+  const today = new Date().toISOString().slice(0, 10);
+  const dir = resolve(__dirname, '..', 'content', 'posts');
+  let n = 0;
+  for (const f of readdirSync(dir)) {
+    if (!f.endsWith('.md')) continue;
+    // Frontmatter only; the body is irrelevant to the due rule.
+    const head = readFileSync(resolve(dir, f), 'utf8').slice(0, 1200);
+    const status = /^status:\s*(\w+)/m.exec(head)?.[1];
+    const date = /^date:\s*(\S+)/m.exec(head)?.[1];
+    if (!status) continue;
+    if (status === 'published') n++;
+    else if (status === 'scheduled' && date && date <= today) n++;
+  }
+  return n;
+}
 
 type SiteManifest = {
   HOST: string;
@@ -193,14 +223,11 @@ describe('the real route surface is untouched by the username rule', () => {
   // asset layer before the Worker runs, so a classification change here can only
   // ever cost the Worker a 404. Every published URL must therefore still be a
   // client route and must not be mistaken for a missing asset.
-  it('classifies all 238 prerendered and canonical pages as client routes', () => {
-    // 238 = 216 blog posts + 22 static routes.
-    //
-    // It was 239 before `summer-break-boards-psychology` had its generated
-    // output committed (see the chore(blog) commit), briefly 240, and is 238
-    // now that /dice and /sticker-studio moved out of STATIC_ROUTES to sit
-    // behind a session.
-    expect(SITEMAP_PATHS.length).toBe(238);
+  it('classifies every prerendered and canonical page as a client route', () => {
+    // Derived, not hardcoded: blog posts become due on a schedule, so any
+    // literal here goes stale on its own. See duePostCount above.
+    const expected = duePostCount() + manifest.STATIC_ROUTES.length;
+    expect(SITEMAP_PATHS.length).toBe(expected);
 
     for (const path of SITEMAP_PATHS) {
       expect(isClientRoute(path), path).toBe(true);

@@ -64,7 +64,7 @@ export const StoryCardModal: React.FC<StoryCardModalProps> = ({ user, isOpen, on
         <div className="space-y-1">
           <h3 id={titleId} className="text-lg font-bold text-white flex items-center space-x-2">
             <Share2 className="w-5 h-5 text-indigo-400" />
-            <span>NGL & TBH Story Sticker</span>
+            <span>Story Sticker</span>
           </h3>
           <p className="text-xs text-slate-400">
             Post this sticker card on Instagram, Snapchat, or TikTok stories with your secret link!

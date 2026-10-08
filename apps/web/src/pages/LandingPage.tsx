@@ -61,7 +61,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenSupport }) => {
       <div className="text-center space-y-7 max-w-3xl mx-auto">
         <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
           <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-          <span>The Open Source NGL & TBH Alternative • True Anonymity</span>
+          <span>Open Source • Privacy-First • Truly Anonymous</span>
         </div>
 
         {/* The accent is carried by one word, not by a three-stop gradient.
@@ -171,7 +171,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenSupport }) => {
         </div>
       </div>
 
-      {/* Interactive TBH / NGL Vibe Preview Showcase */}
+      {/* Prompt preview showcase */}
       <div className="glass-panel p-6 sm:p-8 rounded-3xl border-indigo-500/30 space-y-6 relative overflow-hidden">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-5">
           <div className="space-y-1">
@@ -241,7 +241,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenSupport }) => {
           </div>
           <h3 className="text-base font-bold text-white">1. Post Story Sticker</h3>
           <p className="text-xs text-slate-400 leading-relaxed">
-            Generate your NGL/TBH styled sticker card and attach your link to your Instagram, Snapchat, or TikTok story.
+            Generate a story sticker card and attach your link to your Instagram, Snapchat, or TikTok story.
           </p>
         </div>
 
