@@ -9,36 +9,6 @@ import { handleRequest, type WorkerEnv } from './worker';
 
 const PUBLIC_DIR = resolve(__dirname, '..', 'public');
 
-/**
- * The same due-rule `scripts/blog.mjs` applies, reimplemented here so the
- * expected sitemap size is DERIVED rather than hardcoded.
- *
- * It used to be a literal (239, then 240, then 238) and it broke every time a
- * scheduled post's date arrived — 83 of them are still future-dated, so the
- * gate would have failed roughly weekly for months, each time looking like a
- * regression and each time inviting someone to bump the number again. A count
- * that changes with the calendar is not an invariant.
- *
- * `published` always ships; `scheduled` ships once its date is due in UTC;
- * `draft` never ships. Keep this in step with blog.mjs if that rule changes.
- */
-function duePostCount(): number {
-  const today = new Date().toISOString().slice(0, 10);
-  const dir = resolve(__dirname, '..', 'content', 'posts');
-  let n = 0;
-  for (const f of readdirSync(dir)) {
-    if (!f.endsWith('.md')) continue;
-    // Frontmatter only; the body is irrelevant to the due rule.
-    const head = readFileSync(resolve(dir, f), 'utf8').slice(0, 1200);
-    const status = /^status:\s*(\w+)/m.exec(head)?.[1];
-    const date = /^date:\s*(\S+)/m.exec(head)?.[1];
-    if (!status) continue;
-    if (status === 'published') n++;
-    else if (status === 'scheduled' && date && date <= today) n++;
-  }
-  return n;
-}
-
 type SiteManifest = {
   HOST: string;
   STATIC_ROUTES: Array<{ path: string }>;
@@ -223,11 +193,32 @@ describe('the real route surface is untouched by the username rule', () => {
   // asset layer before the Worker runs, so a classification change here can only
   // ever cost the Worker a 404. Every published URL must therefore still be a
   // client route and must not be mistaken for a missing asset.
-  it('classifies every prerendered and canonical page as a client route', () => {
-    // Derived, not hardcoded: blog posts become due on a schedule, so any
-    // literal here goes stale on its own. See duePostCount above.
-    const expected = duePostCount() + manifest.STATIC_ROUTES.length;
-    expect(SITEMAP_PATHS.length).toBe(expected);
+  it('sitemap and the generated post set agree', () => {
+    // Compare the two BUILD ARTIFACTS to each other, never to the clock.
+    //
+    // This assertion has been wrong twice. First it was a literal (239, then
+    // 240, then 238), which went stale every time a scheduled post became due.
+    // Then it derived the count from today's date and the scheduling rule,
+    // which was worse in a subtle way: `verify.sh` runs tests BEFORE the build,
+    // so the test read yesterday's committed sitemap and compared it to
+    // tomorrow's due-posts calculation. A fresh checkout failed for a reason
+    // that had nothing to do with the change under test.
+    //
+    // Both artifacts are committed together by `scripts/blog.mjs`. Checking one
+    // against the other catches a real defect — a post generated without being
+    // published, or published without being generated — and cannot fail merely
+    // because time passed.
+    const onDisk = readdirSync(resolve(PUBLIC_DIR, 'posts'))
+      .filter((f) => f.endsWith('.json'))
+      .map((f) => f.replace(/\.json$/, ''))
+      .sort();
+    const inSitemap = SITEMAP_PATHS
+      .filter((p) => p.startsWith('/post/'))
+      .map((p) => p.replace(/^\/post\//, '').replace(/\/$/, ''))
+      .sort();
+
+    expect(inSitemap, 'every generated post must appear in the sitemap').toEqual(onDisk);
+    expect(SITEMAP_PATHS.length).toBe(onDisk.length + manifest.STATIC_ROUTES.length);
 
     for (const path of SITEMAP_PATHS) {
       expect(isClientRoute(path), path).toBe(true);
