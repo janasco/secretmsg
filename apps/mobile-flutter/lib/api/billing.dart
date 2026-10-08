@@ -8,32 +8,44 @@ import 'api_client.dart';
 /// Console *and* the PLAY_PRODUCTS map in the API worker, or verification
 /// will reject the purchase.
 class BillingProducts {
-  static const verifiedBadge = 'verified_badge';
-  static const viewerHints = 'viewer_hints';
-  static const senderHints = 'sender_hints';
-  static const supporterBundle = 'supporter_bundle';
+  /// The only purchasable product. The app is ad-supported; this removes ads.
   static const removeAds = 'remove_ads';
 
-  static const all = <String>{
-    verifiedBadge,
-    viewerHints,
-    senderHints,
-    supporterBundle,
-    removeAds,
+  /// Products retired when the app moved to an ad-supported model. They are
+  /// kept here as a named set rather than deleted so the client can actively
+  /// refuse to offer them.
+  ///
+  /// This matters because the store listing is not under our control at
+  /// runtime: if a retired product is still active in Play Console, it appears
+  /// in the billing query and the UI would render it as purchasable. The worker
+  /// answers 400 "Unknown product" for anything outside `PLAY_PRODUCTS`, so a
+  /// user who bought one would be charged, granted nothing, and refunded by
+  /// Google three days later. Filtering on the client turns that into a product
+  /// that simply is not shown.
+  static const retired = <String>{
+    'verified_badge',
+    'viewer_hints',
+    'sender_hints',
+    'supporter_bundle',
   };
+
+  static const all = <String>{removeAds};
+
+  /// True only for products the worker will actually honour.
+  static bool isPurchasable(String id) => all.contains(id);
 
   static String labelFor(String id) {
     switch (id) {
-      case verifiedBadge:
-        return 'Verified Badge';
-      case viewerHints:
-        return 'Viewer Hints';
-      case senderHints:
-        return 'Sender Hints';
-      case supporterBundle:
-        return 'Supporter Bundle';
       case removeAds:
         return 'Remove Ads';
+      case 'verified_badge':
+        return 'Verified Badge';
+      case 'viewer_hints':
+        return 'Viewer Hints';
+      case 'sender_hints':
+        return 'Sender Hints';
+      case 'supporter_bundle':
+        return 'Supporter Bundle';
       default:
         return id;
     }

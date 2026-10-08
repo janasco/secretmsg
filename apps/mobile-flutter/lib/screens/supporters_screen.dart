@@ -458,7 +458,23 @@ class _SupportCtaState extends State<_SupportCta> {
       ];
     }
 
-    final sorted = [...Billing.products]..sort((a, b) => a.rawPrice.compareTo(b.rawPrice));
+    // Only offer what the worker will honour. A retired product still active in
+    // Play Console would otherwise render as purchasable and then fail
+    // verification with a 400 after the user had already been charged.
+    final sorted = [
+      ...Billing.products.where((p) => BillingProducts.isPurchasable(p.id)),
+    ]..sort((a, b) => a.rawPrice.compareTo(b.rawPrice));
+
+    if (sorted.isEmpty) {
+      return [
+        Text(
+          'Nothing to purchase right now. Ads can be removed from Settings once '
+          'the store product is available.',
+          textAlign: TextAlign.center,
+          style: TextStyle(color: context.colors.textMuted, fontSize: 11, height: 1.5),
+        ),
+      ];
+    }
 
     return [
       for (final p in sorted) ...[
