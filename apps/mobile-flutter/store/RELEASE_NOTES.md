@@ -19,7 +19,16 @@ problem with 1.7.0.
 
 ---
 
-## v1.7.0 — current, ready to upload (411 chars)
+## v1.7.1 — current, ready to upload (241 chars)
+
+Fixes a purchase bug.
+
+• Some older one-off items could still appear in the shop even though they are
+  no longer sold. They have been removed from the list.
+• Nothing else changed. Messages, anonymity and your data work exactly as
+  before.
+
+## v1.7.0 — superseded by 1.7.1 (411 chars)
 
 A fresh look, and a rebuilt Sticker Studio.
 
