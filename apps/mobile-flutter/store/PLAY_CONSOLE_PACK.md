@@ -162,17 +162,23 @@ action the user takes themselves, and the app claims no in-app control.
 | App has in-app purchases? | **Yes** |
 | Product | `remove_ads` — one-time, non-subscription, no tiers |
 
-> [!CAUTION]
-> **The purchase currently cannot complete.** `GOOGLE_PLAY_SA_KEY`,
-> `GOOGLE_PLAY_SA_EMAIL` and `GOOGLE_PLAY_PACKAGE_NAME` are all absent from the
-> Worker's environment, so `getGoogleAccessToken` returns null
-> (`api/src/billing.ts:40`) and `POST /api/billing/google/verify` answers
-> **502**. A user who paid would be charged with nothing granted, and Play
-> auto-refunds unacknowledged purchases after three days.
+> [!NOTE]
+> **Updated 2026-10-09 — the purchase path is no longer broken.** An earlier
+> revision of this pack warned that the three `GOOGLE_PLAY_*` credentials were
+> absent and that a paying user would be charged with nothing granted. They are
+> now provisioned and bound (`GOOGLE_PLAY_PACKAGE_NAME`, `GOOGLE_PLAY_SA_EMAIL`,
+> `GOOGLE_PLAY_SA_KEY`), and the Play Developer API answers 200 for this
+> service account — an edit is created and tracks are listed.
 >
-> This is not user-visible today only because `ADS_ENABLED=false`, so no ads are
-> served and nobody needs `remove_ads`. **Provision these three secrets and test
-> a real purchase before enabling ads.**
+> **What is still unverified:** a real purchase has never completed once. The
+> credentials work and the endpoint is reachable, but the end-to-end flow —
+> pay, verify, grant, acknowledge — has only been reasoned about. Confirm it
+> with one transaction before enabling ads, because a user who wants the ads
+> gone must be able to buy them away.
+>
+> **Declare only what ships.** The retired `/api/donation/google-pay` endpoint
+> returns HTTP 410 and grants nothing; it exists so an old client gets "retired"
+> rather than a 404. It is not a payment path and must not be declared as one.
 
 ## 8. Other declarations
 
