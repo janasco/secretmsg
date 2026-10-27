@@ -1364,21 +1364,23 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
     if (ok != true || !mounted) return;
     setState(() => _reported = true);
     try {
-      final online = await Outbox.runOrEnqueue(
-        OutboxKind.report,
-        {'messageId': widget.message.id, 'reason': reason},
-        () => ApiClient.reportMessage(widget.message.id, reason, turnstileToken: token),
-      );
+      // Reports are not queued: /api/report requires a fresh Turnstile token,
+      // which cannot be obtained headlessly at drain time. Saying "queued"
+      // would promise a delivery that can only fail with 403.
+      await ApiClient.reportMessage(widget.message.id, reason,
+          turnstileToken: token);
       if (!mounted) return;
-      showErrorSnack(context, online
-          ? 'Message reported. Our team will review it shortly.'
-          : 'Report queued — files automatically when online.');
+      showErrorSnack(context, 'Message reported. Our team will review it shortly.');
+    } on ApiException catch (e) {
+      if (!mounted) return;
+      showErrorSnack(context, e.message);
     } catch (_) {
       if (!mounted) return;
-      showErrorSnack(context, 'Could not file report.');
+      showErrorSnack(context,
+          'Reporting needs a connection. Reconnect and submit again.');
+    } finally {
+      if (mounted) setState(() => _reported = false);
     }
-    if (!mounted) return;
-    setState(() => _reported = false);
   }
 
   Future<void> _block() async {

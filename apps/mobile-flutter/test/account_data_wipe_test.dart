@@ -70,8 +70,8 @@ void main() {
     await prefs.setBool('rem_digest', true);
     await InboxCache.save([], []);
     await Outbox.enqueue(
-      OutboxKind.report,
-      {'messageId': 'm1', 'reason': 'bad'},
+      OutboxKind.reply,
+      {'messageId': 'm1', 'reply': 'hello'},
       autoDrain: false,
     );
 

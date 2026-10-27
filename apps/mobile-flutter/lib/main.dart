@@ -14,6 +14,7 @@ import 'ritual/update_check.dart';
 import 'sync/connectivity.dart';
 import 'data/vibe_templates.dart';
 import 'screens/app_shell.dart';
+import 'screens/daily_drop_screen.dart';
 import 'screens/landing_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/send_screen.dart';
@@ -109,6 +110,8 @@ class DeepLinkRouter {
     switch (first) {
       case 'inbox':
         return const AppShell(initialTab: AppTab.inbox);
+      case 'drop':
+        return const DailyDropScreen();
       case 'settings':
         return const AppShell(initialTab: AppTab.settings);
       case 'supporters':
@@ -156,7 +159,36 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
   @override
   void initState() {
     super.initState();
+    pendingRoute.addListener(_onPendingRoute);
     _resolveHome();
+  }
+
+  @override
+  void dispose() {
+    pendingRoute.removeListener(_onPendingRoute);
+    super.dispose();
+  }
+
+  /// A notification tap while the app is already running must navigate now,
+  /// not wait for the next cold start.
+  void _onPendingRoute() {
+    final route = pendingRoute.value;
+    if (route == null || route.isEmpty || !mounted) return;
+    pendingRoute.value = null;
+    final nav = _navKey.currentState;
+    if (nav != null) {
+      nav.push(MaterialPageRoute<void>(
+        builder: (_) => DeepLinkRouter.routeFor(route),
+      ));
+      return;
+    }
+    // The first frame has not built the Navigator yet; push as soon as it has.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _navKey.currentState?.push(MaterialPageRoute<void>(
+        builder: (_) => DeepLinkRouter.routeFor(route),
+      ));
+    });
   }
 
   /// A shared link always wins. On a plain launch we check for a stored session
@@ -164,11 +196,11 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
   /// A notification tap wins over both, and a signed-in cold start refreshes
   /// today's ritual reminders from current state.
   Future<void> _resolveHome() async {
-    final tapRoute = pendingRoute;
-    pendingRoute = null;
-    if (tapRoute == '/drop' || tapRoute == '/inbox') {
+    final tapRoute = pendingRoute.value;
+    pendingRoute.value = null;
+    if (tapRoute != null && tapRoute.isNotEmpty) {
       if (!mounted) return;
-      setState(() => _home = const AppShell(initialTab: AppTab.inbox));
+      setState(() => _home = DeepLinkRouter.routeFor(tapRoute));
       unawaited(_maybePromptUpdate());
       return;
     }
@@ -273,6 +305,7 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
       routes: {
         '/home': (_) => const LandingScreen(),
         '/inbox': (_) => const AppShell(initialTab: AppTab.inbox),
+        '/drop': (_) => const DailyDropScreen(),
         '/settings': (_) => const AppShell(initialTab: AppTab.settings),
         '/supporters': (_) => const SupportersScreen(),
         '/sticker': (_) => const StickerStudioScreen(),
@@ -284,6 +317,16 @@ class _SecretMsgAppState extends State<SecretMsgApp> {
         '/privacy': (_) => const StaticScreen(keyOf: 'privacy'),
         '/terms': (_) => const StaticScreen(keyOf: 'terms'),
         '/safety': (_) => const StaticScreen(keyOf: 'safety'),
+      },
+      // Warm app links arrive as a named push of the URL path (for example
+      // `/janasco`). Without a generator Flutter reports an unknown route and
+      // the tap does nothing; route it through the same table as cold start.
+      onGenerateRoute: (settings) {
+        final name = settings.name ?? '/';
+        return MaterialPageRoute<void>(
+          settings: settings,
+          builder: (_) => DeepLinkRouter.routeFor(name),
+        );
       },
         );
       },

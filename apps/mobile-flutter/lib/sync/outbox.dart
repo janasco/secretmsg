@@ -7,6 +7,11 @@
 /// the first *network* error and resumes on the next connectivity event.
 /// A send whose Turnstile token expired parks as `needsVerification` while
 /// the rest of the queue keeps flowing.
+///
+/// Queue mutations are serialized and always re-read the persisted list
+/// immediately before writing. A network call never holds a stale snapshot
+/// across an await, so an operation enqueued (or a sign-out that clears the
+/// queue) during a drain cannot be overwritten or resurrected.
 library;
 
 import 'dart:async';
@@ -19,6 +24,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/api_client.dart';
+import 'sent_links.dart';
 
 const String _kOutboxKey = 'outbox_ops_v1';
 
@@ -37,6 +43,11 @@ class OutboxOp {
   final bool failed;
   final String? error;
 
+  /// Set once the server has confirmed a send. If the app dies between that
+  /// confirmation and removing the op, the next drain saves the link and
+  /// removes the op without re-posting the message.
+  final String? replyToken;
+
   const OutboxOp({
     required this.id,
     required this.kind,
@@ -46,6 +57,7 @@ class OutboxOp {
     this.needsVerification = false,
     this.failed = false,
     this.error,
+    this.replyToken,
   });
 
   Map<String, dynamic> toJson() => {
@@ -57,6 +69,7 @@ class OutboxOp {
         'needsVerification': needsVerification,
         'failed': failed,
         'error': error,
+        'replyToken': replyToken,
       };
 
   factory OutboxOp.fromJson(Map<String, dynamic> json) => OutboxOp(
@@ -70,6 +83,7 @@ class OutboxOp {
         needsVerification: json['needsVerification'] == true,
         failed: json['failed'] == true,
         error: json['error']?.toString(),
+        replyToken: json['replyToken']?.toString(),
       );
 
   OutboxOp bumped({bool? needsVerification}) => OutboxOp(
@@ -81,6 +95,7 @@ class OutboxOp {
         needsVerification: needsVerification ?? this.needsVerification,
         failed: failed,
         error: error,
+        replyToken: replyToken,
       );
 
   OutboxOp withFailure(String error) => OutboxOp(
@@ -92,6 +107,19 @@ class OutboxOp {
         needsVerification: needsVerification,
         failed: true,
         error: error,
+        replyToken: replyToken,
+      );
+
+  OutboxOp withReplyToken(String token) => OutboxOp(
+        id: id,
+        kind: kind,
+        params: params,
+        queuedAt: queuedAt,
+        attempts: attempts,
+        needsVerification: needsVerification,
+        failed: failed,
+        error: error,
+        replyToken: token,
       );
 }
 
@@ -122,6 +150,19 @@ class Outbox {
       ValueNotifier(const OutboxStatus(pending: 0, blocked: null, draining: false));
   static bool _draining = false;
 
+  /// Serializes every read-modify-write of the persisted queue. Network
+  /// calls run outside this lock, so enqueue/clearAll never wait on a drain.
+  static Future<void> _queueTail = Future<void>.value();
+
+  static Future<T> _locked<T>(Future<T> Function() action) {
+    final previous = _queueTail;
+    final done = Completer<void>();
+    _queueTail = done.future;
+    return previous
+        .then((_) => action())
+        .whenComplete(() => done.complete());
+  }
+
   static Future<List<OutboxOp>> _read() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -145,6 +186,30 @@ class Outbox {
     } catch (_) {}
     _emit(ops, draining: _draining);
   }
+
+  /// Applies [change] to the freshest persisted queue and writes the result.
+  static Future<List<OutboxOp>> _mutate(
+      List<OutboxOp> Function(List<OutboxOp> ops) change) {
+    return _locked(() async {
+      final ops = await _read();
+      final next = change(ops);
+      await _write(next);
+      return next;
+    });
+  }
+
+  static Future<void> _removeById(String id) =>
+      _mutate((ops) => ops..removeWhere((o) => o.id == id));
+
+  static Future<void> _replaceById(
+    String id,
+    OutboxOp Function(OutboxOp op) change,
+  ) =>
+      _mutate((ops) {
+        final i = ops.indexWhere((o) => o.id == id);
+        if (i >= 0) ops[i] = change(ops[i]);
+        return ops;
+      });
 
   static void _emit(List<OutboxOp> ops, {required bool draining}) {
     final blocked = ops.where((o) => o.needsVerification).firstOrNull;
@@ -171,15 +236,23 @@ class Outbox {
     Map<String, String> params, {
     bool autoDrain = true,
   }) async {
+    // The API requires a fresh Turnstile token, which cannot be obtained
+    // headlessly at drain time. Queuing a report would promise delivery and
+    // then fail with 403 forever, so callers must submit it while online.
+    if (kind == OutboxKind.report) {
+      throw UnsupportedError(
+          'Abuse reports need a connection and a fresh verification.');
+    }
     final op = OutboxOp(
       id: '${DateTime.now().microsecondsSinceEpoch}_${Random.secure().nextInt(1 << 32)}',
       kind: kind,
       params: Map.of(params),
       queuedAt: DateTime.now().millisecondsSinceEpoch,
     );
-    final ops = await _read();
-    ops.add(op);
-    await _write(ops);
+    await _mutate((ops) {
+      ops.add(op);
+      return ops;
+    });
     if (autoDrain) unawaited(drain());
     return op;
   }
@@ -191,53 +264,94 @@ class Outbox {
       e is http.ClientException ||
       e is TlsException;
 
+  static String _clientMsgId(OutboxOp op) =>
+      (op.params['clientMsgId'] ?? '').trim();
+
+  static Future<void> _saveSendLink(OutboxOp op) async {
+    final token = (op.replyToken ?? '').trim();
+    if (token.isEmpty) return;
+    final id = _clientMsgId(op);
+    await SentLinks.add(
+      clientMsgId: id.isEmpty ? op.id : id,
+      token: token,
+      username: op.params['username'] ?? '',
+    );
+  }
+
   /// Drains the queue in order. Returns true when fully drained.
   /// [onChanged] fires when server state may have moved (caller refreshes).
   static Future<bool> drain({
     Future<void> Function()? onChanged,
-    Future<void> Function(OutboxOp op)? execute,
+    Future<String?> Function(OutboxOp op)? execute,
   }) async {
     if (_draining) return false;
     _draining = true;
     var changed = false;
     try {
-      var ops = await _read();
-      _emit(ops, draining: true);
-      var i = 0;
-      while (i < ops.length) {
-        final op = ops[i];
-        if (op.needsVerification || op.failed) {
-          i++;
+      final snapshot = await _read();
+      _emit(snapshot, draining: true);
+      for (final op in snapshot) {
+        if (op.needsVerification || op.failed) continue;
+
+        // The server already accepted this send; keep the reply link instead
+        // of posting it again.
+        if (op.kind == OutboxKind.send &&
+            (op.replyToken?.isNotEmpty ?? false)) {
+          try {
+            await _saveSendLink(op);
+            await _removeById(op.id);
+            changed = true;
+          } catch (e) {
+            await _replaceById(op.id,
+                (cur) => cur.withFailure('Could not save your reply link. Tap Retry.'));
+          }
           continue;
         }
+
+        // A send recorded as delivered must never be posted a second time,
+        // even if its queue entry outlived the first drain.
+        if (op.kind == OutboxKind.send) {
+          final id = _clientMsgId(op);
+          if (id.isNotEmpty && await SentLinks.find(id) != null) {
+            await _removeById(op.id);
+            changed = true;
+            continue;
+          }
+        }
+
         try {
-          await (execute?.call(op) ?? _execute(op));
-          ops.removeAt(i);
+          final replyToken = execute != null
+              ? await execute(op)
+              : await _execute(op);
+          if (op.kind == OutboxKind.send &&
+              replyToken != null &&
+              replyToken.isNotEmpty) {
+            await _replaceById(op.id, (cur) => cur.withReplyToken(replyToken));
+            await SentLinks.add(
+              clientMsgId: _clientMsgId(op).isEmpty ? op.id : _clientMsgId(op),
+              token: replyToken,
+              username: op.params['username'] ?? '',
+            );
+          }
+          await _removeById(op.id);
           changed = true;
-          await _write(ops);
         } on ApiException catch (e) {
           if (op.kind == OutboxKind.send &&
               (e.statusCode == 403 || e.statusCode == 400)) {
-            ops[i] = op.bumped(needsVerification: true);
-            await _write(ops);
-            i++;
-            continue;
+            await _replaceById(
+                op.id, (cur) => cur.bumped(needsVerification: true));
+          } else {
+            await _replaceById(op.id, (cur) => cur.withFailure(e.message));
           }
-          ops[i] = op.withFailure(e.message);
-          await _write(ops);
-          i++;
         } on UnauthorizedError {
-          ops.removeAt(i);
-          await _write(ops);
+          await _removeById(op.id);
         } catch (e) {
           if (_isNetworkError(e)) {
-            ops[i] = op.bumped();
-            await _write(ops);
+            await _replaceById(op.id, (cur) => cur.bumped());
             break;
           }
-          ops[i] = op.withFailure('Queued action failed unexpectedly.');
-          await _write(ops);
-          i++;
+          await _replaceById(op.id,
+              (cur) => cur.withFailure('Queued action failed unexpectedly.'));
         }
       }
       if (changed) {
@@ -245,34 +359,43 @@ class Outbox {
           await onChanged?.call();
         } catch (_) {}
       }
-      return ops.isEmpty;
+      return (await _read()).isEmpty;
     } finally {
       _draining = false;
       await refresh();
     }
   }
 
-  static Future<void> _execute(OutboxOp op) {
+  static Future<String?> _execute(OutboxOp op) async {
     final p = op.params;
     switch (op.kind) {
       case OutboxKind.send:
-        return ApiClient.sendAnonymousMessage(
+        final token = await ApiClient.sendAnonymousMessage(
           username: p['username'] ?? '',
           content: p['content'] ?? '',
           turnstileToken: p['turnstileToken'],
           allowClue: p['allowClue'] == '1',
           clientMsgId: p['clientMsgId'],
-        ).then((_) {});
+        );
+        return token;
       case OutboxKind.reply:
-        return ApiClient.replyMessage(p['messageId'] ?? '', p['reply'] ?? '');
+        await ApiClient.replyMessage(p['messageId'] ?? '', p['reply'] ?? '');
+        return null;
       case OutboxKind.approve:
-        return ApiClient.approveMessage(p['messageId'] ?? '');
+        await ApiClient.approveMessage(p['messageId'] ?? '');
+        return null;
       case OutboxKind.discard:
-        return ApiClient.discardMessage(p['messageId'] ?? '');
+        await ApiClient.discardMessage(p['messageId'] ?? '');
+        return null;
       case OutboxKind.report:
-        return ApiClient.reportMessage(p['messageId'] ?? '', p['reason'] ?? '');
+        throw ApiException(
+          'Reports need a connection and a fresh verification. Open the message and report it again.',
+          statusCode: 403,
+          body: const {},
+        );
       case OutboxKind.sensitivity:
-        return ApiClient.setSensitivity(p['level'] ?? 'standard');
+        await ApiClient.setSensitivity(p['level'] ?? 'standard');
+        return null;
     }
   }
 
@@ -301,57 +424,64 @@ class Outbox {
   }
   /// Drops the whole queue (logout: parked ops are authed as the previous
   /// owner and could never succeed — the drain drops them on 401 anyway).
-  static Future<void> clearAll() async {
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.remove(_kOutboxKey);
-      _emit([], draining: _draining);
-    } catch (_) {
-      await refresh();
-    }
+  static Future<void> clearAll() {
+    return _locked(() async {
+      try {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.remove(_kOutboxKey);
+        _emit([], draining: _draining);
+      } catch (_) {
+        final ops = await _read();
+        _emit(ops, draining: _draining);
+      }
+    });
   }
 
   /// Removes a parked op (user chose the manual composer handoff instead).
-  static Future<void> remove(String id) async {
-    final ops = await _read();
-    ops.removeWhere((o) => o.id == id);
-    await _write(ops);
-  }
+  static Future<void> remove(String id) => _removeById(id);
 
   static Future<void> discard(String id) => remove(id);
 
   static Future<bool> retry(String id) async {
-    final ops = await _read();
-    final i = ops.indexWhere((o) => o.id == id);
-    if (i < 0) return false;
-    final op = ops[i];
-    ops[i] = OutboxOp(
-      id: op.id,
-      kind: op.kind,
-      params: op.params,
-      queuedAt: op.queuedAt,
-      needsVerification: false,
-    );
-    await _write(ops);
+    final updated = await _locked<OutboxOp?>(() async {
+      final ops = await _read();
+      final i = ops.indexWhere((o) => o.id == id);
+      if (i < 0) return null;
+      final op = ops[i];
+      ops[i] = OutboxOp(
+        id: op.id,
+        kind: op.kind,
+        params: op.params,
+        queuedAt: op.queuedAt,
+        needsVerification: false,
+        replyToken: op.replyToken,
+      );
+      await _write(ops);
+      return ops[i];
+    });
+    if (updated == null) return false;
     return drain();
   }
 
   static Future<void> unpark(String id) async {
-    final ops = await _read();
-    final i = ops.indexWhere((o) => o.id == id);
-    if (i < 0) return;
-    final op = ops[i];
-    ops[i] = OutboxOp(
-      id: op.id,
-      kind: op.kind,
-      params: op.params,
-      queuedAt: op.queuedAt,
-      attempts: op.attempts,
-      needsVerification: false,
-      failed: op.failed,
-      error: op.error,
-    );
-    await _write(ops);
+    await _locked(() async {
+      final ops = await _read();
+      final i = ops.indexWhere((o) => o.id == id);
+      if (i < 0) return;
+      final op = ops[i];
+      ops[i] = OutboxOp(
+        id: op.id,
+        kind: op.kind,
+        params: op.params,
+        queuedAt: op.queuedAt,
+        attempts: op.attempts,
+        needsVerification: false,
+        failed: op.failed,
+        error: op.error,
+        replyToken: op.replyToken,
+      );
+      await _write(ops);
+    });
   }
 }
 

@@ -10,6 +10,7 @@
 /// action completes.
 library;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -35,8 +36,9 @@ const String prefMilestoneEnabled = 'rem_milestone';
 const String prefDigestEnabled = 'rem_digest';
 
 /// Route payload the app should open when launched from a notification tap.
-/// Written by the tap handler, consumed once by `main()` after init.
-String? pendingRoute;
+/// Written by the tap handlers and observed by `SecretMsgApp`, both for a cold
+/// start (read once during boot) and while the app is already running.
+final ValueNotifier<String?> pendingRoute = ValueNotifier<String?>(null);
 
 final FlutterLocalNotificationsPlugin _plugin = FlutterLocalNotificationsPlugin();
 
@@ -84,7 +86,7 @@ Future<void> initReminders() async {
     initSettings,
     onDidReceiveNotificationResponse: (resp) {
       final payload = resp.payload;
-      if (payload != null && payload.isNotEmpty) pendingRoute = payload;
+      if (payload != null && payload.isNotEmpty) pendingRoute.value = payload;
     },
   );
 
@@ -119,7 +121,7 @@ Future<void> initReminders() async {
   final launch = await _plugin.getNotificationAppLaunchDetails();
   if (launch?.didNotificationLaunchApp ?? false) {
     final payload = launch!.notificationResponse?.payload;
-    if (payload != null && payload.isNotEmpty) pendingRoute = payload;
+    if (payload != null && payload.isNotEmpty) pendingRoute.value = payload;
   }
   _ready = true;
 }

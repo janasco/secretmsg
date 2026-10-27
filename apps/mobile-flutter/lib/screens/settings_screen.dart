@@ -35,6 +35,7 @@ import 'inbox_screen.dart';
 import 'landing_screen.dart';
 import 'login_screen.dart';
 import 'my_reports_screen.dart';
+import 'sent_links_screen.dart';
 import 'static_screen.dart';
 import 'supporters_screen.dart';
 
@@ -712,6 +713,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         icon: Icons.ios_share,
                         label: 'Share my link',
                         onTap: _shareLink,
+                      ),
+                      _ActionTile(
+                        icon: Icons.mark_email_read_outlined,
+                        label: 'Sent messages & reply links',
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute<void>(
+                              builder: (_) => const SentLinksScreen()),
+                        ),
                       ),
                       if (u.customSlugUnlocked == 1) ...[
                         Divider(color: context.colors.border, height: 24),
