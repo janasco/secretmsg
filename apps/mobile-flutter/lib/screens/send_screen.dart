@@ -10,6 +10,7 @@ import '../widgets/common.dart';
 import '../widgets/turnstile_widget.dart';
 import '../widgets/user_avatar.dart';
 import 'login_screen.dart';
+import 'sent_links_screen.dart';
 
 class SendScreen extends StatefulWidget {
   final String? initialUsername;
@@ -592,6 +593,24 @@ class _SendScreenState extends State<SendScreen> {
                 textAlign: TextAlign.center,
                 style: TextStyle(color: context.colors.textSecondary, fontSize: 13, height: 1.5),
               ),
+              if (queued) ...[
+                const SizedBox(height: 10),
+                Text(
+                  'When it sends, your private reply link is saved under Sent messages.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: context.colors.textMuted, fontSize: 11.5, height: 1.5),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                        builder: (_) => const SentLinksScreen()),
+                  ),
+                  child: Text('Sent messages & reply links',
+                      style: TextStyle(
+                          color: context.colors.accentSoft,
+                          fontWeight: FontWeight.w700)),
+                ),
+              ],
               if (_replyToken != null) ...[
                 const SizedBox(height: 18),
                 Container(

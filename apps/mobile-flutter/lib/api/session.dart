@@ -4,6 +4,8 @@ import 'dart:math';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../sync/cache.dart';
+import '../sync/outbox.dart';
 import 'models.dart';
 
 const _kTokenKey = 'secretmsg_auth_token';
@@ -57,9 +59,21 @@ class Session {
     }
   }
 
+  /// Registered by the push layer (`initPush`) so every session teardown —
+  /// sign-out, account deletion, or a dead token — also removes this device's
+  /// FCM registration and stops message previews for the previous account.
+  static Future<void> Function()? onSessionCleared;
+
   static Future<void> clear() async {
     _memToken = null;
     _memFp = null;
+    // Account-scoped caches go first: if the process dies mid-teardown, the
+    // next person on this device must not see the previous account's mail.
+    await InboxCache.clear();
+    await Outbox.clearAll();
+    try {
+      await onSessionCleared?.call();
+    } catch (_) {}
     await _storage.delete(key: _kTokenKey);
     await _storage.delete(key: _kProfileKey);
   }
@@ -156,6 +170,10 @@ class Session {
 
     _memToken = null;
     _memFp = null;
+
+    try {
+      await onSessionCleared?.call();
+    } catch (_) {}
 
     Future<void> deleteSecure(String key) async {
       try {

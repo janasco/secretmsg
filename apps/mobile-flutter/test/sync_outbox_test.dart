@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:secretmsg_mobile/api/api_client.dart';
 import 'package:secretmsg_mobile/sync/cache.dart';
 import 'package:secretmsg_mobile/sync/outbox.dart';
+import 'package:secretmsg_mobile/sync/sent_links.dart';
 
 void main() {
   setUp(() async {
@@ -68,8 +69,8 @@ void main() {
   group('failed operations', () {
     test('preserves server rejection and surfaces its safe message', () async {
       final op = await Outbox.enqueue(
-        OutboxKind.report,
-        {'messageId': 'm1', 'reason': 'bad'},
+        OutboxKind.reply,
+        {'messageId': 'm1', 'reply': 'bad'},
         autoDrain: false,
       );
 
@@ -152,7 +153,7 @@ void main() {
       expect(await Outbox.depth(), 1);
       expect(Outbox.status.value.pending, 1);
       expect(Outbox.status.value.failed, isNull);
-      expect(await Outbox.drain(execute: (_) async {}), true);
+      expect(await Outbox.drain(execute: (_) async => null), true);
       expect(await Outbox.depth(), 0);
       expect(op.id, isNotEmpty);
     });
@@ -206,6 +207,7 @@ void main() {
       needsVerification: true,
       failed: true,
       error: 'needs attention',
+      replyToken: 'rep_serialized',
     );
 
     expect(OutboxOp.fromJson(op.toJson()).toJson(), op.toJson());
@@ -225,10 +227,174 @@ void main() {
     final drained = await Outbox.drain(
       execute: (op) async {
         seen.add(op.params['label']!);
+        return null;
       },
     );
 
     expect(drained, true);
     expect(seen, labels);
+  });
+
+  test('refuses to queue an abuse report that cannot carry verification', () async {
+    await expectLater(
+      Outbox.enqueue(
+        OutboxKind.report,
+        {'messageId': 'm1', 'reason': 'bad'},
+        autoDrain: false,
+      ),
+      throwsA(isA<UnsupportedError>()),
+    );
+    expect(await Outbox.depth(), 0);
+  });
+
+  group('drain concurrency', () {
+    test('keeps an operation enqueued while a request is in flight', () async {
+      await Outbox.enqueue(
+        OutboxKind.reply,
+        {'label': 'first'},
+        autoDrain: false,
+      );
+
+      var enqueued = false;
+      final drained = await Outbox.drain(
+        execute: (op) async {
+          if (!enqueued) {
+            enqueued = true;
+            // Exactly what runOrEnqueue does when a second action happens
+            // while the previous request is still awaiting the network.
+            await Outbox.enqueue(
+              OutboxKind.reply,
+              {'label': 'second'},
+            );
+          }
+          return null;
+        },
+      );
+
+      expect(enqueued, true);
+      expect(drained, false, reason: 'the second op is still queued');
+      expect(await Outbox.depth(), 1);
+      expect(Outbox.status.value.pending, 1);
+
+      final seen = <String>[];
+      final second = await Outbox.drain(
+        execute: (op) async {
+          seen.add(op.params['label']!);
+          return null;
+        },
+      );
+      expect(second, true);
+      expect(seen, ['second']);
+      expect(await Outbox.depth(), 0);
+    });
+
+    test('clearAll during a drain is not undone by the stale snapshot', () async {
+      await Outbox.enqueue(
+        OutboxKind.reply,
+        {'label': 'first'},
+        autoDrain: false,
+      );
+
+      final drained = await Outbox.drain(
+        execute: (_) async {
+          await Outbox.clearAll();
+          return null;
+        },
+      );
+
+      expect(drained, true);
+      expect(await Outbox.depth(), 0);
+      expect(Outbox.status.value.pending, 0);
+    });
+  });
+
+  group('reply links', () {
+    test('persists the token returned by a queued send', () async {
+      const clientMsgId = 'queued-send-01';
+      await Outbox.enqueue(
+        OutboxKind.send,
+        {
+          'username': 'u1',
+          'content': 'hello',
+          'clientMsgId': clientMsgId,
+        },
+        autoDrain: false,
+      );
+
+      final drained = await Outbox.drain(
+        execute: (_) async => 'rep_queued_token',
+      );
+
+      expect(drained, true);
+      expect(await Outbox.depth(), 0);
+      final link = await SentLinks.find(clientMsgId);
+      expect(link, isNotNull);
+      expect(link!.token, 'rep_queued_token');
+      expect(link.username, 'u1');
+    });
+
+    test('does not resend a send already recorded as delivered', () async {
+      const clientMsgId = 'queued-send-02';
+      await SentLinks.add(
+        clientMsgId: clientMsgId,
+        token: 'rep_already_there',
+        username: 'u1',
+      );
+      await Outbox.enqueue(
+        OutboxKind.send,
+        {
+          'username': 'u1',
+          'content': 'hello',
+          'clientMsgId': clientMsgId,
+        },
+        autoDrain: false,
+      );
+
+      var calls = 0;
+      final drained = await Outbox.drain(
+        execute: (_) async {
+          calls++;
+          return null;
+        },
+      );
+
+      expect(drained, true);
+      expect(calls, 0, reason: 'a delivered client_msg_id must never repost');
+      expect(await Outbox.depth(), 0);
+      expect((await SentLinks.find(clientMsgId))!.token, 'rep_already_there');
+    });
+
+    test('recovers a token written just before an interrupted drain', () async {
+      const clientMsgId = 'queued-send-03';
+      final op = await Outbox.enqueue(
+        OutboxKind.send,
+        {
+          'username': 'u1',
+          'content': 'hello',
+          'clientMsgId': clientMsgId,
+        },
+        autoDrain: false,
+      );
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(
+        'outbox_ops_v1',
+        '[{"id":"${op.id}","kind":"send","params":'
+        '{"username":"u1","content":"hello","clientMsgId":"$clientMsgId"},'
+        '"queuedAt":${op.queuedAt},"replyToken":"rep_survived_restart"}]',
+      );
+
+      var calls = 0;
+      final drained = await Outbox.drain(
+        execute: (_) async {
+          calls++;
+          return null;
+        },
+      );
+
+      expect(drained, true);
+      expect(calls, 0, reason: 'the server already accepted this send');
+      expect((await SentLinks.find(clientMsgId))!.token, 'rep_survived_restart');
+      expect(await Outbox.depth(), 0);
+    });
   });
 }

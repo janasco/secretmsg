@@ -43,9 +43,20 @@ Future<void> pushBackgroundHandler(RemoteMessage message) async {
 
 /// Renders a `message:new` data message as a high-priority notification with
 /// an inline Reply action. No-op for unknown types.
+///
+/// A notification that arrives after sign-out must never reveal the previous
+/// account's preview, even if FCM was still in flight while the token was
+/// being deleted.
+bool pushSessionActive(String? token) => token != null && token.isNotEmpty;
+
 Future<void> showMessageNotification(RemoteMessage message) async {
   final data = message.data;
   if (data['type'] != 'message:new') return;
+  try {
+    if (!pushSessionActive(await Session.getToken())) return;
+  } catch (_) {
+    return;
+  }
   final messageId = (data['message_id'] ?? '').toString();
   if (messageId.isEmpty) return;
   final preview = (data['preview'] ?? 'Someone sent you a message').toString();
@@ -124,7 +135,9 @@ Future<void> handlePushResponse(NotificationResponse resp) async {
     }
     return;
   }
-  if (payload.isNotEmpty) pendingRoute = payload.startsWith('msg:') ? '/inbox' : payload;
+  if (payload.isNotEmpty) {
+    pendingRoute.value = payload.startsWith('msg:') ? '/inbox' : payload;
+  }
 }
 
 /// One-time init: Firebase, channel, tap handlers, foreground listener.
@@ -132,6 +145,16 @@ Future<void> handlePushResponse(NotificationResponse resp) async {
 Future<void> initPush() async {
   if (_pushReady) return;
   await Firebase.initializeApp();
+
+  // Every session teardown (normal sign-out, account deletion, dead 401)
+  // deletes the local FCM token, so a signed-out device cannot keep receiving
+  // previews for the previous account even when the unregister call fails.
+  Session.onSessionCleared = () async {
+    _registeredThisProcess = false;
+    try {
+      await FirebaseMessaging.instance.deleteToken();
+    } catch (_) {}
+  };
 
   const channel = AndroidNotificationChannel(
     _channelPush,

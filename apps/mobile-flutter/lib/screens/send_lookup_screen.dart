@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import 'send_screen.dart';
+import 'sent_links_screen.dart';
 
 /// Standalone "who are you sending to?" step for signed-out senders.
 /// Deliberately outside the AppShell: no bottom menu, no account needed —
@@ -93,6 +94,17 @@ class _SendLookupScreenState extends State<SendLookupScreen> {
             ),
             onPressed: _continue,
             child: const Text('Continue', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+          ),
+          const SizedBox(height: 8),
+          TextButton(
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                  builder: (_) => const SentLinksScreen()),
+            ),
+            child: Text('Sent messages & reply links',
+                style: TextStyle(
+                    color: context.colors.accentSoft,
+                    fontWeight: FontWeight.w700)),
           ),
         ],
       ),

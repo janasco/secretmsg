@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -29,13 +28,14 @@ class ApiClient {
     final uri = Uri.parse('$kApiBaseUrl$path');
     final res =
         await http.get(uri, headers: headers).timeout(timeout ?? _timeout);
-    return _decode(res);
+    return _decode(res, authenticated: auth);
   }
 
   static Future<Map<String, dynamic>> _postJson(
     String path,
     Map<String, dynamic> body, {
     bool auth = false,
+    bool credentialCheck = false,
   }) async {
     final headers = <String, String>{'Content-Type': 'application/json'};
     if (auth) {
@@ -47,7 +47,8 @@ class ApiClient {
     final res = await http
         .post(uri, headers: headers, body: jsonEncode(body))
         .timeout(_timeout);
-    return _decode(res);
+    return _decode(res,
+        authenticated: auth, credentialCheck: credentialCheck);
   }
 
   static Future<Map<String, dynamic>> _patchJson(
@@ -67,7 +68,7 @@ class ApiClient {
           body: jsonEncode(body),
         )
         .timeout(_timeout);
-    return _decode(res);
+    return _decode(res, authenticated: true);
   }
 
   static Future<Map<String, dynamic>> _deleteJson(String path) async {
@@ -77,10 +78,25 @@ class ApiClient {
     final res = await http
         .delete(uri, headers: {'Authorization': 'Bearer $token'})
         .timeout(_timeout);
-    return _decode(res);
+    return _decode(res, authenticated: true);
   }
 
-  static Map<String, dynamic> _decode(http.Response res) {
+  /// A 401 only means the session is dead when the request carried a bearer
+  /// token and the failure was not the server rejecting a credential the user
+  /// just typed. Wrong-PIN endpoints return 401 too; clearing there would sign
+  /// the user out for a typo.
+  static bool _isCredentialFailure(String message) {
+    final m = message.toLowerCase();
+    return m.contains('pin incorrect') ||
+        m.contains('invalid handle') ||
+        m.contains('backup code');
+  }
+
+  static Future<Map<String, dynamic>> _decode(
+    http.Response res, {
+    bool authenticated = false,
+    bool credentialCheck = false,
+  }) async {
     Map<String, dynamic> data;
     try {
       data = jsonDecode(res.body) as Map<String, dynamic>;
@@ -88,12 +104,18 @@ class ApiClient {
       data = <String, dynamic>{};
     }
     if (res.statusCode == 401) {
-      // Dead session (expired, revoked, or account gone): drop it now so a
-      // stale token can't loop the user back into authed screens.
-      unawaited(Session.clear());
-      throw UnauthorizedError(
-        data['error']?.toString() ?? 'Session expired. Please log in again.',
-      );
+      final message = data['error']?.toString() ??
+          'Session expired. Please log in again.';
+      final credentialsRejected =
+          credentialCheck && _isCredentialFailure(message);
+      if (authenticated && !credentialsRejected) {
+        // Dead session (expired, revoked, or account gone): drop the token,
+        // cached mail, queued work, and push registration before surfacing it.
+        await Session.clear();
+        throw UnauthorizedError(message);
+      }
+      throw ApiException(message,
+          statusCode: res.statusCode, body: data);
     }
     if (res.statusCode >= 400) {
       throw ApiException(
@@ -104,6 +126,15 @@ class ApiClient {
     }
     return data;
   }
+
+  /// Exposes the response-decoding rules to tests without a live HTTP call.
+  static Future<Map<String, dynamic>> decodeResponseForTest(
+    http.Response res, {
+    bool authenticated = false,
+    bool credentialCheck = false,
+  }) =>
+      _decode(res,
+          authenticated: authenticated, credentialCheck: credentialCheck);
 
   // ---- Public profile lookup ----
   static Future<UserProfile> getRecipientProfile(String username) async {
@@ -207,7 +238,7 @@ class ApiClient {
     final data = await _postJson('/api/auth/change-pin', {
       'current_pin': currentPin,
       'new_pin': newPin,
-    }, auth: true);
+    }, auth: true, credentialCheck: true);
     final token = data['token']?.toString();
     if (token != null && token.isNotEmpty) {
       await Session.setToken(token);
@@ -217,7 +248,7 @@ class ApiClient {
   static Future<List<String>> authRefreshBackupCodes({required String currentPin}) async {
     final data = await _postJson('/api/auth/refresh-backup-codes', {
       'current_pin': currentPin,
-    }, auth: true);
+    }, auth: true, credentialCheck: true);
     final token = data['token']?.toString();
     if (token != null && token.isNotEmpty) {
       await Session.setToken(token);
