@@ -48,3 +48,8 @@ local.properties
 
 # Firebase config (must not be committed)
 google-services.json
+
+# JVM heap dumps. The Gradle build runs with -XX:+HeapDumpOnOutOfMemoryError, so
+# an OOM writes a file here that can be over a gigabyte — far past GitHub's
+# 100 MB limit, and it will be swept up by `git add -A` if it is not ignored.
+*.hprof

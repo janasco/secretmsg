@@ -181,9 +181,17 @@ Notes that cost time to rediscover:
   `apps/mobile-flutter/android/gradle.properties`, which is committed at
   `-Xmx4G -XX:MaxMetaspaceSize=2G`. On a ~9.5 GB host a long release build at
   the committed value runs the daemon, the Kotlin daemon and the AOT compiler
-  together, so **lower `org.gradle.jvmargs` to the same
-  `-Xmx1G -XX:MaxMetaspaceSize=512m` before starting a long Android build, and
-  restore `-Xmx4G -XX:MaxMetaspaceSize=2G` afterwards.** A build that gets
+  together, so **lower `org.gradle.jvmargs` before starting a long Android
+  build, and restore `-Xmx4G -XX:MaxMetaspaceSize=2G` afterwards. Use
+  `-Xmx2G -XX:MaxMetaspaceSize=768m`, not `-Xmx1G`.**
+
+  The earlier advice here said 1G, and on 2026-10-28 that failed with
+  `Java heap space` partway through `bundleRelease` — the project has grown past
+  it. 2G completes on the same host with ~3 GB still free. If a build ever OOMs
+  at 2G, raise it rather than retrying the same value: the failure is
+  deterministic, not flaky.
+
+  A build that gets
   killed never reaches the restore and leaves the caps in a committed file, so
   check `git diff apps/mobile-flutter/android/gradle.properties` before you
   commit anything after an Android build.

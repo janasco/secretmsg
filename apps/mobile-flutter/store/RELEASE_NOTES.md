@@ -19,7 +19,19 @@ problem with 1.7.0.
 
 ---
 
-## v1.7.1 — current, ready to upload (241 chars)
+## v1.7.2 — current, ready to upload (439 chars)
+
+Fixes several bugs in messaging and sign-in.
+
+• Messages written while offline are no longer lost if another message is
+  sending at the same time.
+• A mistyped PIN no longer signs you out.
+• Signing out now clears the inbox from the device.
+• Sent messages keep their reply link, so replies to offline sends can be read.
+• Reported messages are no longer silently dropped when you are offline.
+• A retried send can no longer arrive twice.
+
+## v1.7.1 — superseded by 1.7.2 (241 chars)
 
 Fixes a purchase bug.
 
